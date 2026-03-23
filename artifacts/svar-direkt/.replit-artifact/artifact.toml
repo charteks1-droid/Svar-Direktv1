@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "Svar Direkt"
+version = "1.0.0"
+id = "artifacts/svar-direkt"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 23573
+
+[services.development]
+run = "pnpm --filter @workspace/svar-direkt run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/svar-direkt", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/svar-direkt", "run", "serve" ]
+
+[services.env]
+PORT = "23573"
+BASE_PATH = "/"
