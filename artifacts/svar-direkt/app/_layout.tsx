@@ -48,6 +48,10 @@ function RootLayoutNav() {
         name="template-detail"
         options={{ title: "Mall", headerBackTitle: "Tillbaka", presentation: "modal" }}
       />
+      <Stack.Screen
+        name="quick-solution"
+        options={{ title: "Snabb lösning", headerBackTitle: "Tillbaka" }}
+      />
     </Stack>
   );
 }

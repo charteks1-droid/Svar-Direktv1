@@ -215,6 +215,13 @@ export default function HomeScreen() {
       <SectionHeader title="VERKTYG" />
       <View style={styles.menuGrid}>
         <MenuItem
+          icon={<Feather name="zap" size={22} color="#e17055" />}
+          title="Snabb lösning ⚡"
+          subtitle="Direkta svar på några sekunder"
+          onPress={() => router.push("/quick-solution")}
+          accent="#e17055"
+        />
+        <MenuItem
           icon={<Ionicons name="document-text-outline" size={22} color="#6c5ce7" />}
           title="Anteckningsblock"
           subtitle="Dina personliga noteringar"
@@ -236,7 +243,7 @@ export default function HomeScreen() {
           accent="#00b894"
         />
         <MenuItem
-          icon={<Feather name="zap" size={22} color="#fdcb6e" />}
+          icon={<Feather name="message-circle" size={22} color="#fdcb6e" />}
           title="Snabba svar"
           subtitle="Kortare färdiga svar"
           onPress={() => router.push("/quick-responses")}
