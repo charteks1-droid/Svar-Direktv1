@@ -3,6 +3,7 @@ import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
 import React, { useEffect, useState } from "react";
 import {
+  Linking,
   Modal,
   Platform,
   Pressable,
@@ -381,6 +382,16 @@ export default function QuickSolutionScreen() {
     }
   };
 
+  const handleEmail = async () => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    const finalMsg = buildFinalMessage();
+    const subject = encodeURIComponent("Ärende – begäran");
+    const body = encodeURIComponent(finalMsg);
+    const url = `mailto:?subject=${subject}&body=${body}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) await Linking.openURL(url);
+  };
+
   const handleCopy = async () => {
     const finalMsg = buildFinalMessage();
     await Clipboard.setStringAsync(finalMsg);
@@ -589,6 +600,16 @@ export default function QuickSolutionScreen() {
             </Pressable>
 
             <Pressable
+              onPress={handleEmail}
+              style={[styles.emailBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+            >
+              <Feather name="mail" size={18} color={theme.textSecondary} />
+              <Text style={[styles.emailBtnText, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
+                Skicka via e-post
+              </Text>
+            </Pressable>
+
+            <Pressable
               onPress={handleReset}
               style={[styles.resetBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
             >
@@ -741,6 +762,18 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 17,
   },
+
+  emailBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    height: 48,
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginTop: 10,
+  },
+  emailBtnText: { fontSize: 15 },
 
   resetBtn: {
     flexDirection: "row",

@@ -5,6 +5,7 @@ import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
 import {
   Alert,
+  Linking,
   Platform,
   Pressable,
   ScrollView,
@@ -48,6 +49,16 @@ export default function TemplateDetailScreen() {
     setCopied(true);
     addToHistory({ templateTitle: template.title, content: template.content });
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleEmail = async () => {
+    if (!template) return;
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    const subject = encodeURIComponent("Ärende – begäran");
+    const body = encodeURIComponent(template.content);
+    const url = `mailto:?subject=${subject}&body=${body}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) await Linking.openURL(url);
   };
 
   const handleFav = async () => {
@@ -198,6 +209,15 @@ export default function TemplateDetailScreen() {
             {copied ? "Kopierat!" : "Kopiera mall"}
           </Text>
         </Pressable>
+        <Pressable
+          onPress={handleEmail}
+          style={[styles.emailBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+        >
+          <Feather name="mail" size={18} color={theme.textSecondary} />
+          <Text style={[styles.emailBtnText, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
+            Skicka via e-post
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -263,6 +283,17 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
   },
+  emailBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    height: 50,
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginTop: 10,
+  },
+  emailBtnText: { fontSize: 15 },
   notFound: {
     flex: 1,
     alignItems: "center",
