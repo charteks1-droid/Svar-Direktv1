@@ -281,6 +281,51 @@ export default function HomeScreen() {
         />
       </View>
 
+      {/* FÖRSVARA DIG */}
+      <View style={[styles.forsvarBanner, { backgroundColor: "#d63031" + "10", borderColor: "#d63031" + "30" }]}>
+        <View style={styles.forsvarBannerTop}>
+          <View style={[styles.forsvarIcon, { backgroundColor: "#d63031" + "20" }]}>
+            <Feather name="shield" size={22} color="#d63031" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.forsvarTitle, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
+              FÖRSVARA DIG ⚖️
+            </Text>
+            <Text style={[styles.forsvarDesc, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              Skydda dina rättigheter och agera mot felaktiga krav
+            </Text>
+          </View>
+        </View>
+        <View style={styles.forsvarGrid}>
+          {[
+            { id: "felaktigt", label: "Felaktigt krav", icon: "x-circle" },
+            { id: "avgift", label: "För hög avgift", icon: "dollar-sign" },
+            { id: "ingenvar", label: "Inget svar", icon: "mail" },
+            { id: "overklagan", label: "Överklagan", icon: "chevrons-up" },
+            { id: "bevis", label: "Begäran om bevis", icon: "file-minus" },
+          ].map((item) => (
+            <Pressable
+              key={item.id}
+              onPress={() => router.push({ pathname: "/forsvar", params: { situation: item.id } })}
+              style={({ pressed }) => [
+                styles.forsvarBtn,
+                {
+                  backgroundColor: pressed ? "#d63031" + "15" : theme.card,
+                  borderColor: "#d63031" + "35",
+                  opacity: pressed ? 0.9 : 1,
+                  transform: [{ scale: pressed ? 0.97 : 1 }],
+                },
+              ]}
+            >
+              <Feather name={item.icon as any} size={16} color="#d63031" />
+              <Text style={[styles.forsvarBtnText, { color: theme.text, fontFamily: "Inter_500Medium" }]} numberOfLines={2}>
+                {item.label}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      </View>
+
       {/* Pro-funktioner */}
       <SectionHeader title="PRO-FUNKTIONER" />
       <View style={styles.menuGrid}>
@@ -451,4 +496,53 @@ const styles = StyleSheet.create({
   menuText: { flex: 1 },
   menuTitle: { fontSize: 15 },
   menuSubtitle: { fontSize: 12, marginTop: 2 },
+
+  forsvarBanner: {
+    borderRadius: 18,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 16,
+    gap: 14,
+    marginBottom: 20,
+    marginTop: 8,
+  },
+  forsvarBannerTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  forsvarIcon: {
+    width: 46,
+    height: 46,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+  },
+  forsvarTitle: {
+    fontSize: 15,
+    letterSpacing: 0.2,
+  },
+  forsvarDesc: {
+    fontSize: 12,
+    lineHeight: 17,
+    marginTop: 2,
+  },
+  forsvarGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  forsvarBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 7,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  forsvarBtnText: {
+    fontSize: 13,
+    flexShrink: 1,
+  },
 });

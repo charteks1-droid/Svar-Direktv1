@@ -52,6 +52,10 @@ function RootLayoutNav() {
         name="quick-solution"
         options={{ title: "Snabb lösning", headerBackTitle: "Tillbaka" }}
       />
+      <Stack.Screen
+        name="forsvar"
+        options={{ title: "Försvara dig", headerBackTitle: "Tillbaka" }}
+      />
     </Stack>
   );
 }
