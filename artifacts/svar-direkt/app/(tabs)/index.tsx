@@ -44,26 +44,14 @@ function MenuItem({ icon, title, subtitle, onPress, accent }: MenuItemProps) {
         },
       ]}
     >
-      <View
-        style={[
-          styles.menuIcon,
-          { backgroundColor: (accent || Colors.primary) + "18" },
-        ]}
-      >
+      <View style={[styles.menuIcon, { backgroundColor: (accent || Colors.primary) + "18" }]}>
         {icon}
       </View>
       <View style={styles.menuText}>
-        <Text
-          style={[styles.menuTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
-        >
+        <Text style={[styles.menuTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}>
           {title}
         </Text>
-        <Text
-          style={[
-            styles.menuSubtitle,
-            { color: theme.textSecondary, fontFamily: "Inter_400Regular" },
-          ]}
-        >
+        <Text style={[styles.menuSubtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
           {subtitle}
         </Text>
       </View>
@@ -75,35 +63,80 @@ function MenuItem({ icon, title, subtitle, onPress, accent }: MenuItemProps) {
 interface SectionHeaderProps {
   title: string;
   badge?: string;
+  action?: { label: string; onPress: () => void };
 }
 
-function SectionHeader({ title, badge }: SectionHeaderProps) {
+function SectionHeader({ title, badge, action }: SectionHeaderProps) {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
 
   return (
     <View style={styles.sectionHeader}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" },
-        ]}
-      >
+      <Text style={[styles.sectionTitle, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
         {title}
       </Text>
       {badge && (
         <View style={[styles.badge, { backgroundColor: Colors.primary + "20" }]}>
-          <Text
-            style={[
-              styles.badgeText,
-              { color: Colors.primary, fontFamily: "Inter_600SemiBold" },
-            ]}
-          >
+          <Text style={[styles.badgeText, { color: Colors.primary, fontFamily: "Inter_600SemiBold" }]}>
             {badge}
           </Text>
         </View>
       )}
+      {action && (
+        <Pressable onPress={action.onPress} style={styles.sectionAction}>
+          <Text style={[styles.sectionActionText, { color: Colors.primary, fontFamily: "Inter_500Medium" }]}>
+            {action.label}
+          </Text>
+        </Pressable>
+      )}
+    </View>
+  );
+}
+
+function RecentCard({ item }: { item: { id: string; templateTitle: string; content: string } }) {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+  const theme = isDark ? Colors.dark : Colors.light;
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = async () => {
+    await Clipboard.setStringAsync(item.content);
+    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <View style={[styles.recentCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+      <View style={styles.recentMain}>
+        <View style={[styles.recentIcon, { backgroundColor: Colors.primary + "14" }]}>
+          <Feather name="clock" size={15} color={Colors.primary} />
+        </View>
+        <Text
+          style={[styles.recentTitle, { color: theme.text, fontFamily: "Inter_500Medium" }]}
+          numberOfLines={1}
+        >
+          {item.templateTitle}
+        </Text>
+      </View>
+      <Pressable
+        onPress={handleCopy}
+        style={[
+          styles.recentCopyBtn,
+          { backgroundColor: copied ? (theme.success + "20") : Colors.primary + "14" },
+        ]}
+      >
+        <Feather name={copied ? "check" : "copy"} size={14} color={copied ? theme.success : Colors.primary} />
+        <Text
+          style={[
+            styles.recentCopyText,
+            { color: copied ? theme.success : Colors.primary, fontFamily: "Inter_600SemiBold" },
+          ]}
+        >
+          {copied ? "Kopierat" : "Kopiera"}
+        </Text>
+      </Pressable>
     </View>
   );
 }
@@ -113,10 +146,12 @@ export default function HomeScreen() {
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
-  const { addToHistory } = useApp();
+  const { addToHistory, history } = useApp();
 
   const topPad = Platform.OS === "web" ? 67 : insets.top;
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
+
+  const recentItems = history.slice(0, 2);
 
   const handleBoverketTemplate = async (template: (typeof BOVERKET_TEMPLATES)[0]) => {
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -136,23 +171,14 @@ export default function HomeScreen() {
       ]}
       showsVerticalScrollIndicator={false}
     >
+      {/* Header */}
       <View style={styles.heroRow}>
         <View>
-          <Text
-            style={[
-              styles.heroTitle,
-              { color: theme.text, fontFamily: "Inter_700Bold" },
-            ]}
-          >
+          <Text style={[styles.heroTitle, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
             Svar Direkt
           </Text>
-          <Text
-            style={[
-              styles.heroSubtitle,
-              { color: theme.textSecondary, fontFamily: "Inter_400Regular" },
-            ]}
-          >
-            Professionella svar på rätt sätt
+          <Text style={[styles.heroSubtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+            Skriv rätt. Få svar direkt.
           </Text>
         </View>
         <Pressable
@@ -163,6 +189,22 @@ export default function HomeScreen() {
         </Pressable>
       </View>
 
+      {/* Senast använda */}
+      {recentItems.length > 0 && (
+        <>
+          <SectionHeader
+            title="SENAST ANVÄNDA"
+            action={{ label: "Visa alla", onPress: () => router.push("/history") }}
+          />
+          <View style={[styles.recentGrid, { marginBottom: 20 }]}>
+            {recentItems.map((item) => (
+              <RecentCard key={item.id} item={item} />
+            ))}
+          </View>
+        </>
+      )}
+
+      {/* Boverket templates */}
       <SectionHeader title="BOVERKETS MALLAR" badge={`${BOVERKET_TEMPLATES.length} mallar`} />
       <ScrollView
         horizontal
@@ -183,35 +225,23 @@ export default function HomeScreen() {
               },
             ]}
           >
-            <View
-              style={[
-                styles.boverketIconWrap,
-                { backgroundColor: Colors.primary + "15" },
-              ]}
-            >
+            <View style={[styles.boverketIconWrap, { backgroundColor: Colors.primary + "15" }]}>
               <Feather name="file-text" size={22} color={Colors.primary} />
             </View>
             <Text
-              style={[
-                styles.boverketTitle,
-                { color: theme.text, fontFamily: "Inter_600SemiBold" },
-              ]}
+              style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
               numberOfLines={2}
             >
               {template.title}
             </Text>
-            <Text
-              style={[
-                styles.boverketCategory,
-                { color: theme.textSecondary, fontFamily: "Inter_400Regular" },
-              ]}
-            >
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
               {template.category}
             </Text>
           </Pressable>
         ))}
       </ScrollView>
 
+      {/* Verktyg */}
       <SectionHeader title="VERKTYG" />
       <View style={styles.menuGrid}>
         <MenuItem
@@ -251,6 +281,7 @@ export default function HomeScreen() {
         />
       </View>
 
+      {/* Pro-funktioner */}
       <SectionHeader title="PRO-FUNKTIONER" />
       <View style={styles.menuGrid}>
         <MenuItem
@@ -289,6 +320,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   content: { paddingHorizontal: 16 },
+
   heroRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -301,7 +333,7 @@ const styles = StyleSheet.create({
   },
   heroSubtitle: {
     fontSize: 14,
-    marginTop: 2,
+    marginTop: 3,
   },
   aboutBtn: {
     width: 40,
@@ -312,25 +344,68 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     marginTop: 4,
   },
+
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 12,
     marginTop: 8,
+    gap: 6,
   },
   sectionTitle: {
     fontSize: 11,
     letterSpacing: 0.8,
   },
   badge: {
-    marginLeft: 8,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 10,
   },
-  badgeText: {
-    fontSize: 11,
+  badgeText: { fontSize: 11 },
+  sectionAction: {
+    marginLeft: "auto",
   },
+  sectionActionText: { fontSize: 13 },
+
+  recentGrid: { gap: 8 },
+  recentCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    gap: 10,
+  },
+  recentMain: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    flex: 1,
+  },
+  recentIcon: {
+    width: 30,
+    height: 30,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+  },
+  recentTitle: {
+    fontSize: 14,
+    flex: 1,
+  },
+  recentCopyBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+  },
+  recentCopyText: { fontSize: 13 },
+
   boverketRow: {
     paddingBottom: 4,
     paddingRight: 4,
@@ -355,13 +430,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 18,
   },
-  boverketCategory: {
-    fontSize: 11,
-  },
-  menuGrid: {
-    gap: 8,
-    marginBottom: 20,
-  },
+  boverketCategory: { fontSize: 11 },
+
+  menuGrid: { gap: 8, marginBottom: 20 },
   menuItem: {
     flexDirection: "row",
     alignItems: "center",
@@ -377,14 +448,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  menuText: {
-    flex: 1,
-  },
-  menuTitle: {
-    fontSize: 15,
-  },
-  menuSubtitle: {
-    fontSize: 12,
-    marginTop: 2,
-  },
+  menuText: { flex: 1 },
+  menuTitle: { fontSize: 15 },
+  menuSubtitle: { fontSize: 12, marginTop: 2 },
 });

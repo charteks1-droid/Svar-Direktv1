@@ -54,6 +54,7 @@ interface AppContextType {
   quickResponses: QuickResponse[];
   reminders: Reminder[];
   customTemplates: CustomTemplate[];
+  disclaimerAccepted: boolean;
 
   toggleFavorite: (templateId: string) => void;
   isFavorite: (templateId: string) => boolean;
@@ -66,9 +67,7 @@ interface AppContextType {
   deleteHistoryItem: (id: string) => void;
   clearHistory: () => void;
 
-  addQuickResponse: (
-    qr: Omit<QuickResponse, "id" | "createdAt">
-  ) => void;
+  addQuickResponse: (qr: Omit<QuickResponse, "id" | "createdAt">) => void;
   updateQuickResponse: (id: string, updates: Partial<QuickResponse>) => void;
   deleteQuickResponse: (id: string) => void;
 
@@ -77,11 +76,11 @@ interface AppContextType {
   deleteReminder: (id: string) => void;
   toggleReminderComplete: (id: string) => void;
 
-  addCustomTemplate: (
-    t: Omit<CustomTemplate, "id" | "createdAt" | "updatedAt">
-  ) => void;
+  addCustomTemplate: (t: Omit<CustomTemplate, "id" | "createdAt" | "updatedAt">) => void;
   updateCustomTemplate: (id: string, updates: Partial<CustomTemplate>) => void;
   deleteCustomTemplate: (id: string) => void;
+
+  acceptDisclaimer: () => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -96,6 +95,7 @@ const STORAGE_KEYS = {
   quickResponses: "@svardirekt:quickResponses",
   reminders: "@svardirekt:reminders",
   customTemplates: "@svardirekt:customTemplates",
+  disclaimerAccepted: "@svardirekt:disclaimerAccepted",
 };
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
@@ -105,17 +105,19 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [quickResponses, setQuickResponses] = useState<QuickResponse[]>([]);
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>([]);
+  const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const [favs, nts, hist, qrs, rems, cts] = await Promise.all([
+        const [favs, nts, hist, qrs, rems, cts, disc] = await Promise.all([
           AsyncStorage.getItem(STORAGE_KEYS.favorites),
           AsyncStorage.getItem(STORAGE_KEYS.notes),
           AsyncStorage.getItem(STORAGE_KEYS.history),
           AsyncStorage.getItem(STORAGE_KEYS.quickResponses),
           AsyncStorage.getItem(STORAGE_KEYS.reminders),
           AsyncStorage.getItem(STORAGE_KEYS.customTemplates),
+          AsyncStorage.getItem(STORAGE_KEYS.disclaimerAccepted),
         ]);
         if (favs) setFavorites(JSON.parse(favs));
         if (nts) setNotes(JSON.parse(nts));
@@ -123,6 +125,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         if (qrs) setQuickResponses(JSON.parse(qrs));
         if (rems) setReminders(JSON.parse(rems));
         if (cts) setCustomTemplates(JSON.parse(cts));
+        if (disc) setDisclaimerAccepted(JSON.parse(disc));
       } catch {}
     };
     load();
@@ -133,6 +136,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       await AsyncStorage.setItem(key, JSON.stringify(value));
     } catch {}
   }, []);
+
+  const acceptDisclaimer = useCallback(() => {
+    setDisclaimerAccepted(true);
+    persist(STORAGE_KEYS.disclaimerAccepted, true);
+  }, [persist]);
 
   const toggleFavorite = useCallback(
     (templateId: string) => {
@@ -368,6 +376,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         quickResponses,
         reminders,
         customTemplates,
+        disclaimerAccepted,
         toggleFavorite,
         isFavorite,
         addNote,
@@ -386,6 +395,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         addCustomTemplate,
         updateCustomTemplate,
         deleteCustomTemplate,
+        acceptDisclaimer,
       }}
     >
       {children}
