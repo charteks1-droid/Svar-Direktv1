@@ -535,7 +535,7 @@ const styles = StyleSheet.create({
   forsvarBtn: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 7,
+    gap: 8,
     paddingVertical: 10,
     paddingHorizontal: 12,
     borderRadius: 12,

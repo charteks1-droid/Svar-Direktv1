@@ -179,36 +179,32 @@ export default function TemplateDetailScreen() {
           },
         ]}
       >
-        <Pressable
-          onPress={handleFav}
-          style={[
-            styles.favBtn,
-            {
-              backgroundColor: fav ? "#fd79a8" + "20" : theme.card,
-              borderColor: fav ? "#fd79a8" : theme.cardBorder,
-            },
-          ]}
-        >
-          <Feather name="heart" size={20} color={fav ? "#fd79a8" : theme.textSecondary} />
-        </Pressable>
-        <Pressable
-          onPress={handleCopy}
-          style={[
-            styles.copyBtn,
-            { backgroundColor: copied ? theme.success : Colors.primary },
-          ]}
-        >
-          <Feather
-            name={copied ? "check" : "copy"}
-            size={18}
-            color="#fff"
-          />
-          <Text
-            style={[styles.copyBtnText, { fontFamily: "Inter_600SemiBold" }]}
+        <View style={styles.actionRow}>
+          <Pressable
+            onPress={handleFav}
+            style={[
+              styles.favBtn,
+              {
+                backgroundColor: fav ? "#fd79a8" + "20" : theme.card,
+                borderColor: fav ? "#fd79a8" : theme.cardBorder,
+              },
+            ]}
           >
-            {copied ? "Kopierat!" : "Kopiera mall"}
-          </Text>
-        </Pressable>
+            <Feather name="heart" size={20} color={fav ? "#fd79a8" : theme.textSecondary} />
+          </Pressable>
+          <Pressable
+            onPress={handleCopy}
+            style={[
+              styles.copyBtn,
+              { backgroundColor: copied ? theme.success : Colors.primary },
+            ]}
+          >
+            <Feather name={copied ? "check" : "copy"} size={20} color="#fff" />
+            <Text style={[styles.copyBtnText, { fontFamily: "Inter_700Bold" }]}>
+              {copied ? "Kopierat!" : "Kopiera mall"}
+            </Text>
+          </Pressable>
+        </View>
         <Pressable
           onPress={handleEmail}
           style={[styles.emailBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
@@ -256,42 +252,47 @@ const styles = StyleSheet.create({
   },
   hintText: { flex: 1, fontSize: 13, lineHeight: 18 },
   actions: {
-    flexDirection: "row",
+    flexDirection: "column",
     gap: 10,
     paddingHorizontal: 16,
     paddingTop: 12,
     borderTopWidth: StyleSheet.hairlineWidth,
   },
+  actionRow: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+  },
   favBtn: {
-    width: 50,
-    height: 50,
-    borderRadius: 14,
+    width: 56,
+    height: 56,
+    borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
     borderWidth: StyleSheet.hairlineWidth,
+    flexShrink: 0,
   },
   copyBtn: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-    height: 50,
-    borderRadius: 14,
+    gap: 10,
+    height: 56,
+    borderRadius: 16,
   },
   copyBtnText: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 17,
   },
   emailBtn: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    gap: 10,
     height: 50,
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
-    marginTop: 10,
   },
   emailBtnText: { fontSize: 15 },
   notFound: {

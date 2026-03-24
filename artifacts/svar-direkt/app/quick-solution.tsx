@@ -613,7 +613,7 @@ export default function QuickSolutionScreen() {
               onPress={handleReset}
               style={[styles.resetBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
             >
-              <Feather name="refresh-cw" size={16} color={theme.textSecondary} />
+              <Feather name="refresh-cw" size={18} color={theme.textSecondary} />
               <Text style={[styles.resetBtnText, { color: theme.textSecondary, fontFamily: "Inter_500Medium" }]}>
                 Börja om
               </Text>
@@ -767,8 +767,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-    height: 48,
+    gap: 10,
+    height: 50,
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
     marginTop: 10,
@@ -779,8 +779,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-    height: 48,
+    gap: 10,
+    height: 50,
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
   },
