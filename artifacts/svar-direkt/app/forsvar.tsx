@@ -5,6 +5,7 @@ import { useLocalSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
   KeyboardAvoidingView,
+  Linking,
   Platform,
   Pressable,
   ScrollView,
@@ -398,6 +399,17 @@ export default function ForsvarScreen() {
     setTimeout(() => setCopied(false), 2500);
   };
 
+  const handleEmail = async () => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    const subject = encodeURIComponent("Ärende – begäran");
+    const body = encodeURIComponent(message);
+    const url = `mailto:?subject=${subject}&body=${body}`;
+    const supported = await Linking.canOpenURL(url);
+    if (supported) {
+      await Linking.openURL(url);
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       style={[styles.container, { backgroundColor: theme.background }]}
@@ -532,6 +544,23 @@ export default function ForsvarScreen() {
             {copied ? "Kopierat!" : "Kopiera meddelande"}
           </Text>
         </Pressable>
+        <Pressable
+          onPress={handleEmail}
+          style={({ pressed }) => [
+            styles.emailBtn,
+            {
+              backgroundColor: theme.card,
+              borderColor: theme.cardBorder,
+              opacity: pressed ? 0.85 : 1,
+              transform: [{ scale: pressed ? 0.98 : 1 }],
+            },
+          ]}
+        >
+          <Feather name="mail" size={18} color={theme.textSecondary} />
+          <Text style={[styles.emailBtnText, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
+            Skicka via e-post
+          </Text>
+        </Pressable>
       </View>
     </KeyboardAvoidingView>
   );
@@ -644,5 +673,19 @@ const styles = StyleSheet.create({
   copyBtnText: {
     color: "#fff",
     fontSize: 17,
+  },
+
+  emailBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    height: 46,
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginTop: 8,
+  },
+  emailBtnText: {
+    fontSize: 15,
   },
 });
