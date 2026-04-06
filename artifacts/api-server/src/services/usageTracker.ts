@@ -34,7 +34,10 @@ export async function recordGeneration(data: {
   deviceId: string;
   institution: string;
   caseType: string;
+  tone?: string;
+  length?: string;
   requestStatus: "success" | "failed" | "limit_exceeded";
+  generatedText?: string;
 }): Promise<void> {
   await db.insert(aiGenerations).values({
     userId: data.userId,
@@ -42,6 +45,9 @@ export async function recordGeneration(data: {
     date: todayUTC(),
     institution: data.institution,
     caseType: data.caseType,
+    tone: data.tone,
+    length: data.length,
     requestStatus: data.requestStatus,
+    generatedText: data.generatedText,
   });
 }

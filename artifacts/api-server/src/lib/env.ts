@@ -25,6 +25,11 @@ const envSchema = z.object({
     .optional()
     .transform((val: string | undefined) => (val ? Number(val) : 100)),
 
+  JWT_SECRET: z
+    .string()
+    .min(32, "JWT_SECRET must be at least 32 characters")
+    .default("dev-secret-change-in-production-min-32-chars!!"),
+
   AI_API_KEY: z.string().optional(),
   AI_MODEL: z.string().default("gpt-4o-mini"),
   AI_MAX_TOKENS: z

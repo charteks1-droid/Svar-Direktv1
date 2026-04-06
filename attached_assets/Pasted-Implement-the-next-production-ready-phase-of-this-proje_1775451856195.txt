@@ -1,0 +1,166 @@
+Implement the next production-ready phase of this project carefully and without breaking existing functionality.
+
+This phase must focus on the real foundation required before payments:
+
+1. user accounts
+2. database persistence
+3. strict daily AI usage limits
+4. real AI integration for official Swedish messages
+
+Critical rule:
+Do not simplify the app.
+Do not remove existing features.
+Do not redesign the UI unless necessary for the new flow.
+Keep the app running correctly.
+
+PART 1 — Authentication
+
+Implement a proper user system for the app.
+
+Requirements:
+
+- Add user registration with email + password
+- Add login with email + password
+- Store users securely in the database
+- Hash passwords properly
+- Use JWT or secure session-based authentication
+- Add protected backend routes where needed
+- Add the minimal frontend auth flow required for signup/login/logout
+- Keep this implementation clean and production-oriented
+
+PART 2 — Database
+
+Add persistent database support for:
+
+- users
+- daily AI usage
+- AI generation history
+- future subscription readiness
+
+Create the necessary schema/migrations/models for:
+
+- users
+- ai_usage_daily
+- ai_generations
+- subscriptions (prepare structure even if billing is not yet active)
+
+The database must be persistent and not in-memory.
+
+PART 3 — Daily AI limits
+
+Implement strict server-side AI generation limits:
+
+- 4 AI generations per day per user
+- enforce the limit on the backend only
+- do not rely on frontend-only enforcement
+
+Rules:
+
+- identify the main user by authenticated account
+- also capture deviceId as secondary anti-abuse metadata
+- store daily usage in the database
+- increment only on successful generation
+- block when limit is reached
+- return a clean, user-safe response when blocked
+- add daily reset logic based on date
+
+PART 4 — Real AI integration
+
+Replace the current placeholder AI generation with a real server-side AI integration.
+
+Requirements:
+
+- keep AI calls server-side only
+- no API keys in the frontend
+- use the existing AI route/service structure and improve it
+- integrate a real AI provider via environment variable AI_API_KEY
+- validate all inputs
+
+The AI must be specialized for:
+
+- Swedish official messages
+- authorities
+- institutions
+- debt collection
+- employers
+- landlords
+- formal complaint / request / explanation cases
+
+It must NOT behave like a generic chatbot.
+
+PART 5 — Structured input
+
+Implement the AI generation flow around structured fields:
+
+- institution / authority
+- case type
+- short situation description
+- user goal
+- tone
+- message length
+
+Use these fields to build the AI request.
+Do not rely primarily on raw free-form prompting.
+
+PART 6 — Output quality
+
+Create a strong system prompt so the AI:
+
+- writes in Swedish
+- writes formal, useful, realistic messages
+- stays focused on official/institutional communication
+- avoids invented laws or false facts
+- produces thoughtful and practical text
+- remains calm, clear, and professional
+
+PART 7 — History and metadata
+
+Store AI generation metadata and result:
+
+- userId
+- deviceId
+- date/time
+- institution
+- case type
+- tone
+- length
+- generation status
+- generated response
+
+Do this safely and cleanly.
+
+PART 8 — Stability
+
+After implementation:
+
+- verify the backend still runs
+- verify the mobile app still runs
+- verify the AI route works
+- verify login works
+- verify limit logic works
+- do not leave broken screens or dead routes
+
+Required environment variables
+
+Use environment variables and document them clearly:
+
+- AI_API_KEY
+- JWT_SECRET
+- DATABASE_URL
+- any additional auth/database values you need
+
+Create or update ".env.example" accordingly.
+
+Final output
+
+After implementation, provide a concise summary with:
+
+- what auth system was added
+- what database was added
+- how the 4/day user limit works
+- what files were changed
+- what secrets I must manually set
+- what remains for the future payment phase
+
+Build this carefully and conservatively.
+Functionality must remain intact while making the app truly ready for AI and later payments.

@@ -2,7 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -20,6 +20,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { APP_CONFIG } from "@/constants/config";
+import { useAuth } from "@/contexts/AuthContext";
 import { getDeviceId } from "@/services/deviceId";
 
 const CASE_TYPES = [
@@ -120,6 +121,8 @@ export default function AiComposeScreen() {
   const insets = useSafeAreaInsets();
   const topPad = Platform.OS === "web" ? 67 : insets.top;
 
+  const { isAuthenticated, token } = useAuth();
+
   const [institution, setInstitution] = useState("");
   const [selectedCaseType, setSelectedCaseType] = useState<string | null>(null);
   const [situation, setSituation] = useState("");
@@ -138,12 +141,32 @@ export default function AiComposeScreen() {
     situation.trim().length >= 10 &&
     goal.trim().length >= 5;
 
+  useEffect(() => {
+    if (!isAuthenticated || !token) return;
+    const apiBase = APP_CONFIG.apiBaseUrl;
+    if (!apiBase) return;
+    fetch(`${apiBase}/ai/usage`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.used !== undefined) {
+          setUsage({ used: d.used, remaining: d.remaining, limit: d.limit });
+        }
+      })
+      .catch(() => {});
+  }, [isAuthenticated, token]);
+
   const handleGenerate = async () => {
     if (!isValid || loading) return;
 
     const apiBase = APP_CONFIG.apiBaseUrl;
     if (!apiBase) {
       Alert.alert("Konfigurationsfel", "API-adressen är inte konfigurerad. Kontakta support.");
+      return;
+    }
+    if (!token) {
+      Alert.alert("Ej inloggad", "Du måste logga in för att använda AI-assistenten.");
       return;
     }
 
@@ -153,13 +176,14 @@ export default function AiComposeScreen() {
 
     try {
       const deviceId = await getDeviceId();
-      const userId = deviceId;
 
       const resp = await fetch(`${apiBase}/ai/generate`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({
-          userId,
           deviceId,
           institution: institution.trim(),
           caseType: selectedCaseType,
@@ -253,6 +277,33 @@ export default function AiComposeScreen() {
         {!result && <View style={{ width: 40 }} />}
       </View>
 
+      {/* Auth gate — shown if not logged in */}
+      {!isAuthenticated ? (
+        <View style={[styles.authGate, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+          <View style={[styles.authGateIcon, { backgroundColor: Colors.primary + "18" }]}>
+            <Feather name="lock" size={32} color={Colors.primary} />
+          </View>
+          <Text style={[styles.authGateTitle, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
+            Logga in för att fortsätta
+          </Text>
+          <Text style={[styles.authGateText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+            AI-assistenten kräver ett konto. Gratis att skapa – du får 4 AI-generationer per dag.
+          </Text>
+          <Pressable
+            onPress={() => router.push("/login")}
+            style={({ pressed }) => [styles.authGateBtn, { backgroundColor: Colors.primary, opacity: pressed ? 0.88 : 1 }]}
+          >
+            <Feather name="log-in" size={18} color="#fff" />
+            <Text style={[styles.authGateBtnText, { fontFamily: "Inter_600SemiBold" }]}>Logga in</Text>
+          </Pressable>
+          <Pressable onPress={() => router.push("/register")}>
+            <Text style={[styles.authGateSecondary, { color: Colors.primary, fontFamily: "Inter_500Medium" }]}>
+              Inget konto? Skapa ett gratis konto →
+            </Text>
+          </Pressable>
+        </View>
+      ) : (
+        <>
       {/* Subtitle + usage */}
       <View style={styles.subtitleRow}>
         <Text style={[styles.subtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
@@ -494,6 +545,8 @@ export default function AiComposeScreen() {
           </View>
         </>
       )}
+        </>
+      )}
     </ScrollView>
   );
 }
@@ -674,4 +727,35 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
   },
   secondaryBtnText: { fontSize: 15 },
+
+  authGate: {
+    marginTop: 24,
+    borderRadius: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 28,
+    alignItems: "center",
+    gap: 14,
+  },
+  authGateIcon: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 4,
+  },
+  authGateTitle: { fontSize: 20, textAlign: "center" },
+  authGateText: { fontSize: 14, textAlign: "center", lineHeight: 21 },
+  authGateBtn: {
+    width: "100%",
+    height: 52,
+    borderRadius: 14,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    marginTop: 4,
+  },
+  authGateBtnText: { color: "#fff", fontSize: 16 },
+  authGateSecondary: { fontSize: 14, marginTop: 4 },
 });
