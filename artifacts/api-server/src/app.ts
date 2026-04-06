@@ -1,10 +1,34 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import helmet from "helmet";
 import pinoHttp from "pino-http";
-import router from "./routes";
-import { logger } from "./lib/logger";
+import router from "./routes/index.js";
+import { logger } from "./lib/logger.js";
+import { env } from "./lib/env.js";
+import { globalRateLimit } from "./middleware/rateLimit.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 const app: Express = express();
+
+app.set("trust proxy", 1);
+
+app.use(
+  helmet({
+    contentSecurityPolicy: env.NODE_ENV === "production",
+    crossOriginEmbedderPolicy: false,
+  }),
+);
+
+app.use(
+  cors({
+    origin:
+      env.ALLOWED_ORIGINS?.includes("*") ? true : env.ALLOWED_ORIGINS,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+    maxAge: 86400,
+  }),
+);
 
 app.use(
   pinoHttp({
@@ -25,10 +49,14 @@ app.use(
     },
   }),
 );
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
+app.use(express.json({ limit: "32kb" }));
+app.use(express.urlencoded({ extended: true, limit: "32kb" }));
+
+app.use(globalRateLimit);
 
 app.use("/api", router);
+
+app.use(errorHandler);
 
 export default app;

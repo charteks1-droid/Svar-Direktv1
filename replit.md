@@ -52,15 +52,59 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 
 ### `artifacts/api-server` (`@workspace/api-server`)
 
-Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` for request and response validation and `@workspace/db` for persistence.
+Express 5 API server with full security hardening.
 
-- Entry: `src/index.ts` — reads `PORT`, starts Express
-- App setup: `src/app.ts` — mounts CORS, JSON/urlencoded parsing, routes at `/api`
-- Routes: `src/routes/index.ts` mounts sub-routers; `src/routes/health.ts` exposes `GET /health` (full path: `/api/health`)
-- Depends on: `@workspace/db`, `@workspace/api-zod`
+- Entry: `src/index.ts` — reads/validates `PORT`, starts Express
+- App setup: `src/app.ts` — Helmet, CORS (origin whitelist), rate limiting, body size limits, routes at `/api`
+- `src/lib/env.ts` — Zod-validated environment config (fails fast at startup if missing required vars)
+- `src/middleware/rateLimit.ts` — global (100 req/min) + AI-specific (10 req/min) rate limits
+- `src/middleware/errorHandler.ts` — centralized error handler; Zod errors → 400, server errors → 500
+- `src/middleware/validate.ts` — reusable `validateBody()` / `validateQuery()` helpers
+- Routes:
+  - `GET /api/healthz` — health check (excluded from rate limiting)
+  - `POST /api/ai/generate` — AI message generation placeholder (requires `AI_API_KEY`)
+  - `GET /api/subscription/status` — premium status placeholder
+  - `POST /api/subscription/verify` — receipt verification placeholder
+- Depends on: `@workspace/db`, `@workspace/api-zod`, `zod`, `helmet`, `express-rate-limit`
 - `pnpm --filter @workspace/api-server run dev` — run the dev server
-- `pnpm --filter @workspace/api-server run build` — production esbuild bundle (`dist/index.cjs`)
-- Build bundles an allowlist of deps (express, cors, pg, drizzle-orm, zod, etc.) and externalizes the rest
+- `pnpm --filter @workspace/api-server run build` — production esbuild bundle
+
+## Security Architecture
+
+### Secrets and environment variables
+
+Never commit secrets. All secrets go in environment variables only.
+
+Required variables — see `.env.example` for full list:
+| Variable | Required | Purpose |
+|---|---|---|
+| `PORT` | Yes | Server listen port |
+| `NODE_ENV` | Yes | `development` / `production` |
+| `ALLOWED_ORIGINS` | No | Comma-separated CORS origins (default: `*`) |
+| `RATE_LIMIT_WINDOW_MS` | No | Rate limit window in ms (default: 60000) |
+| `RATE_LIMIT_MAX` | No | Max requests per window (default: 100) |
+| `AI_API_KEY` | No | OpenAI / AI provider key (server-side only) |
+| `AI_MODEL` | No | AI model to use (default: gpt-4o-mini) |
+| `STRIPE_SECRET_KEY` | No | Stripe secret key (server-side only) |
+| `STRIPE_WEBHOOK_SECRET` | No | Stripe webhook signature secret |
+| `EXPO_PUBLIC_API_URL` | No | Mobile app's API base URL |
+
+### Client/server boundary
+
+- Mobile app (client) — NEVER contains API keys, secrets, or payment logic
+- API server — ALL sensitive operations: AI calls, payment verification, subscription checks
+- Future AI feature: client sends request to `/api/ai/generate`, server calls AI provider with its own key
+- Future payments: client shows paywall, server verifies receipt via Stripe/RevenueCat
+
+### Production checklist (manual steps)
+
+Before going to production:
+1. Set `AI_API_KEY` in Replit Secrets if enabling AI generation
+2. Set `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET` if enabling payments
+3. Set `ALLOWED_ORIGINS` to your production domain(s)
+4. Set `NODE_ENV=production`
+5. Implement actual AI generation logic in `src/routes/ai.ts`
+6. Implement actual receipt verification in `src/routes/subscription.ts`
 
 ### `lib/db` (`@workspace/db`)
 
@@ -90,6 +134,16 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 ### `lib/api-client-react` (`@workspace/api-client-react`)
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
+
+### `artifacts/svar-direkt` (`@workspace/svar-direkt`)
+
+Expo React Native mobile app — Swedish tenant/landlord response management tool.
+
+- Fully offline-first; all data stored in AsyncStorage
+- All message generation is client-side (template-based, no AI calls)
+- `constants/config.ts` — central app configuration, reads `EXPO_PUBLIC_API_URL`
+- `contexts/AppContext.tsx` — global state: history, favorites, notepad, custom templates
+- No API keys or secrets in the client bundle
 
 ### `scripts` (`@workspace/scripts`)
 
