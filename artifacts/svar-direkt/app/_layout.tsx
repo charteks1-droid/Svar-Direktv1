@@ -56,6 +56,10 @@ function RootLayoutNav() {
         name="forsvar"
         options={{ title: "Försvara dig", headerBackTitle: "Tillbaka" }}
       />
+      <Stack.Screen
+        name="ai-compose"
+        options={{ title: "AI-Assistent", headerShown: false }}
+      />
     </Stack>
   );
 }

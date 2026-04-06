@@ -69,6 +69,55 @@ Express 5 API server with full security hardening.
 - `pnpm --filter @workspace/api-server run dev` — run the dev server
 - `pnpm --filter @workspace/api-server run build` — production esbuild bundle
 
+## AI Generation System
+
+### How it works
+
+1. User opens AI-Assistent screen (`app/ai-compose.tsx`)
+2. App retrieves or generates a persistent `deviceId` from AsyncStorage (`services/deviceId.ts`)
+3. User fills structured form: institution, case type, situation, goal, tone, length
+4. App calls `POST /api/ai/generate` (server at `/api` path) with the device ID as userId
+5. Server checks daily limit (4/day) in `ai_generations` DB table
+6. If allowed: calls OpenAI `gpt-5-mini` with a formal Swedish system prompt
+7. Response returned to client with updated usage counters
+
+### Daily limit (4/day)
+
+- Limit is checked server-side against the `ai_generations` PostgreSQL table
+- One row is inserted per generation attempt (status: success / failed / limit_exceeded)
+- Limit resets automatically at midnight UTC (date stored as `YYYY-MM-DD` string)
+- Endpoint `GET /api/ai/usage?userId=<id>` returns current day's usage
+- Future: replace device ID with real user account for stronger identity
+
+### DB table: `ai_generations`
+
+| Column | Type | Description |
+|---|---|---|
+| `id` | serial | PK |
+| `user_id` | text | Device ID (used as proxy userId) |
+| `device_id` | text | Same as userId for now |
+| `date` | text | `YYYY-MM-DD` for daily count |
+| `institution` | text | Who was being written to |
+| `case_type` | text | Category of the case |
+| `request_status` | text | `success` / `failed` / `limit_exceeded` |
+| `created_at` | timestamp | Creation time |
+
+### System prompt
+
+The AI is specialized with a strict Swedish formal writing system prompt:
+- Always writes in formal, correct Swedish
+- Never fabricates laws or paragraph numbers
+- Stays strictly within the user's provided facts
+- Produces complete, usable letters (with placeholders for name/contact info)
+- Does NOT behave as a general chatbot — only outputs the message text
+
+### Future premium readiness
+
+The system is designed for easy upgrade:
+- Add a `isPremium` field lookup in `checkDailyLimit()` and raise limit for premium users
+- Add Stripe/RevenueCat subscription verification to unlock higher limits
+- Could add model upgrade (gpt-5.2 for premium vs gpt-5-mini for free)
+
 ## Security Architecture
 
 ### Secrets and environment variables
@@ -139,11 +188,14 @@ Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHea
 
 Expo React Native mobile app — Swedish tenant/landlord response management tool.
 
-- Fully offline-first; all data stored in AsyncStorage
-- All message generation is client-side (template-based, no AI calls)
-- `constants/config.ts` — central app configuration, reads `EXPO_PUBLIC_API_URL`
+- Mostly offline-first; template generation uses AsyncStorage only
+- AI generation calls the shared api-server (server-side, no keys on client)
+- `constants/config.ts` — API URL config: `EXPO_PUBLIC_API_URL` → `EXPO_PUBLIC_DOMAIN` auto-detect → `""`
+- `services/deviceId.ts` — generates/persists a per-device ID used as userId for AI rate limiting
 - `contexts/AppContext.tsx` — global state: history, favorites, notepad, custom templates
+- `app/ai-compose.tsx` — AI generation screen: structured form → server → formal Swedish letter
 - No API keys or secrets in the client bundle
+- API URL auto-detected in dev: `https://${EXPO_PUBLIC_DOMAIN}/api` (api-server at `/api` path)
 
 ### `scripts` (`@workspace/scripts`)
 

@@ -1,0 +1,96 @@
+Implement the AI generation system for this app in a controlled, production-ready way without breaking existing functionality.
+
+Requirements:
+
+1. AI purpose
+
+- This AI must be specialized for formal messages to authorities, institutions, companies, landlords, employers, debt collection services, and similar official recipients.
+- It must not behave like a general chatbot.
+- It must generate thoughtful, structured, formal Swedish messages based on user input.
+
+2. Input structure
+   Create a controlled AI generation flow with structured fields:
+
+- institution / authority
+- case type
+- short description of the situation
+- user goal
+- tone
+- message length
+
+Do not allow raw unstructured prompting as the main flow.
+
+3. Output quality
+   Use a strong server-side system prompt so the AI:
+
+- writes in Swedish
+- writes formal, clear, practical messages
+- avoids hallucinating laws or false facts
+- stays focused on administrative, institutional, and official communication
+- produces usable, realistic text for real-life situations
+
+4. Security
+
+- AI calls must remain server-side only
+- no API key exposure in the client
+- validate all inputs
+- handle errors safely
+- keep existing app behavior intact
+
+5. Usage limits
+   Implement daily generation limits:
+
+- 4 AI generations per day per user
+- limit must be enforced server-side
+- do not rely only on client-side checks
+
+6. Identity and abuse prevention
+   Implement a proper control model:
+
+- user account is the main identity
+- device ID is secondary anti-abuse support
+- store daily usage per user on the server
+- block requests after the limit is reached
+- prepare reset logic for daily limits
+
+7. Logging
+   Store useful generation metadata:
+
+- userId
+- deviceId
+- date
+- institution
+- case type
+- request status
+- usage count for the day
+
+Do not store unnecessary sensitive content unless needed.
+
+8. Architecture
+   Create clean server-side endpoints/services for:
+
+- AI generation
+- daily usage check
+- usage increment
+- response handling
+
+9. Future premium readiness
+   Prepare the system so later we can add:
+
+- higher paid limits
+- premium AI access
+- better message refinement
+  without rebuilding the whole architecture
+
+10. Stability
+
+- do not break current app flows
+- keep current features working
+- verify that the app still builds and runs
+
+After implementation, provide a concise summary:
+
+- what was added
+- how the 4/day limit works
+- what still requires manual setup
+- what secrets I need to add
