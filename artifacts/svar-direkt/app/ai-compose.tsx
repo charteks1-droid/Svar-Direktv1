@@ -134,6 +134,7 @@ export default function AiComposeScreen() {
   const [result, setResult] = useState<string | null>(null);
   const [usage, setUsage] = useState<UsageInfo | null>(null);
   const [copied, setCopied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const isValid =
     institution.trim().length > 0 &&
@@ -173,6 +174,7 @@ export default function AiComposeScreen() {
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setLoading(true);
     setResult(null);
+    setError(null);
 
     try {
       const deviceId = await getDeviceId();
@@ -198,20 +200,20 @@ export default function AiComposeScreen() {
 
       if (resp.status === 429) {
         setUsage({ used: data.used ?? 4, remaining: 0, limit: data.limit ?? 4 });
-        Alert.alert("Dagsgräns nådd", data.message ?? "Du har använt alla dina AI-generationer för idag.");
+        setError(data.message ?? "Du har använt alla dina AI-generationer för idag. Prova igen imorgon.");
         return;
       }
 
       if (!resp.ok) {
-        throw new Error(data.error ?? "Okänt fel");
+        throw new Error(data.error ?? `Serverfel (${resp.status})`);
       }
 
       setResult(data.message);
       setUsage({ used: data.used, remaining: data.remaining, limit: data.limit });
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Försök igen om en stund.";
-      Alert.alert("Fel", `Kunde inte generera meddelandet. ${msg}`);
+      const msg = err instanceof Error ? err.message : "Kontrollera din anslutning och försök igen.";
+      setError(`Kunde inte generera meddelandet: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -234,6 +236,7 @@ export default function AiComposeScreen() {
 
   const handleReset = () => {
     setResult(null);
+    setError(null);
     setInstitution("");
     setSelectedCaseType(null);
     setSituation("");
@@ -492,6 +495,16 @@ export default function AiComposeScreen() {
               </Text>
             )}
 
+            {/* Inline error banner */}
+            {error && (
+              <View style={[styles.errorBanner, { backgroundColor: "#fff0f0", borderColor: "#e53e3e33" }]}>
+                <Feather name="alert-circle" size={15} color="#e53e3e" />
+                <Text style={[styles.errorBannerText, { color: "#c0392b", fontFamily: "Inter_400Regular" }]}>
+                  {error}
+                </Text>
+              </View>
+            )}
+
             {/* Generate button */}
             <Pressable
               onPress={handleGenerate}
@@ -665,6 +678,17 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginTop: -8,
   },
+
+  errorBanner: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    gap: 8,
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginBottom: 8,
+  },
+  errorBannerText: { fontSize: 13, lineHeight: 18, flex: 1 },
 
   generateBtn: {
     height: 56,
