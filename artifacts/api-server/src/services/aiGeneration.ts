@@ -1,5 +1,7 @@
 import { openai } from "@workspace/integrations-openai-ai-server";
 
+import { env } from "../lib/env.js";
+
 const SYSTEM_PROMPT = `Du är en specialiserad assistent för att skriva formella brev och meddelanden på svenska. Din uppgift är att hjälpa privatpersoner att kommunicera professionellt och effektivt med myndigheter, hyresvärdar, inkassobolag, arbetsgivare, försäkringsbolag och liknande institutioner.
 
 REGLER DU MÅSTE FÖLJA:
@@ -46,9 +48,11 @@ Mål – vad jag vill uppnå: ${input.goal}
 ${toneInstruction}
 ${lengthInstruction}`;
 
+  const maxTokens = Math.max(env.AI_MAX_TOKENS, 800);
+
   const response = await openai.chat.completions.create({
-    model: "gpt-5-mini",
-    max_completion_tokens: 8192,
+    model: env.AI_MODEL,
+    max_completion_tokens: maxTokens,
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
       { role: "user", content: userPrompt },

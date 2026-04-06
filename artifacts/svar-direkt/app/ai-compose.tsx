@@ -131,10 +131,17 @@ export default function AiComposeScreen() {
   const [length, setLength] = useState<Length>("standard");
 
   const [loading, setLoading] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
   const [result, setResult] = useState<string | null>(null);
   const [usage, setUsage] = useState<UsageInfo | null>(null);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!loading) { setElapsed(0); return; }
+    const t = setInterval(() => setElapsed((s) => s + 1), 1000);
+    return () => clearInterval(t);
+  }, [loading]);
 
   const isValid =
     institution.trim().length > 0 &&
@@ -512,25 +519,26 @@ export default function AiComposeScreen() {
               style={({ pressed }) => [
                 styles.generateBtn,
                 {
-                  backgroundColor: isValid && !loading ? Colors.primary : theme.card,
-                  borderColor: isValid && !loading ? Colors.primary : theme.cardBorder,
+                  backgroundColor: loading || isValid ? Colors.primary : theme.card,
+                  borderColor: loading || isValid ? Colors.primary : theme.cardBorder,
                   opacity: pressed ? 0.9 : 1,
                 },
               ]}
             >
               {loading ? (
                 <>
-                  <ActivityIndicator size="small" color={isValid ? "#fff" : theme.textSecondary} />
+                  <ActivityIndicator size="small" color="#fff" />
                   <Text
                     style={[
                       styles.generateBtnText,
-                      {
-                        color: isValid ? "#fff" : theme.textSecondary,
-                        fontFamily: "Inter_600SemiBold",
-                      },
+                      { color: "#fff", fontFamily: "Inter_600SemiBold" },
                     ]}
                   >
-                    Genererar…
+                    {elapsed < 3
+                      ? "Skickar till AI…"
+                      : elapsed < 8
+                        ? `Skriver brevet… (${elapsed} s)`
+                        : `Nästan klart… (${elapsed} s)`}
                   </Text>
                 </>
               ) : (
