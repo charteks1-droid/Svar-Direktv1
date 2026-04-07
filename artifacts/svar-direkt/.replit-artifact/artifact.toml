@@ -16,11 +16,11 @@ paths = [ "/" ]
 localPort = 23573
 
 [services.development]
-run = "pnpm --filter @workspace/svar-direkt run dev"
+run = "pnpm run dev"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/svar-direkt", "run", "build" ]
-run = [ "pnpm", "--filter", "@workspace/svar-direkt", "run", "serve" ]
+build = [ "node", "scripts/build.js" ]
+run = [ "node", "server/serve.js" ]
 
 [services.env]
 PORT = "23573"
