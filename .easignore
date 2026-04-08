@@ -1,0 +1,9 @@
+pnpm-workspace.yaml
+artifacts/
+lib/
+attached_assets/
+exports/
+.local/
+.agents/
+.cache/
+screenshots/
