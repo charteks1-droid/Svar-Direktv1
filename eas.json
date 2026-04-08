@@ -8,21 +8,27 @@
       "developmentClient": true,
       "distribution": "internal",
       "node": "20.18.0",
-      "image": "latest"
+      "env": {
+        "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64"
+      }
     },
     "preview": {
       "distribution": "internal",
       "node": "20.18.0",
-      "image": "latest",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64"
       }
     },
     "production": {
       "node": "20.18.0",
-      "image": "latest",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64"
       }
     }
   },
