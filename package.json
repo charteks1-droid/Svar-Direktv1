@@ -9,7 +9,7 @@
     "serve": "node server/serve.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "workspace:typecheck": "pnpm -r --filter \"./artifacts/api-server\" --if-present run typecheck",
-    "eas-build-post-install": "node scripts/set-java17.js"
+    "eas-build-post-install": "node scripts/set-java17.cjs"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
