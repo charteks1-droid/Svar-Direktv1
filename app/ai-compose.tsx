@@ -234,11 +234,21 @@ export default function AiComposeScreen() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleEmail = () => {
+  const handleEmail = async () => {
     if (!result) return;
     const subject = encodeURIComponent(`Ärende – ${selectedCaseType ?? "begäran"}`);
     const body = encodeURIComponent(result);
-    Linking.openURL(`mailto:?subject=${subject}&body=${body}`);
+    const url = `mailto:?subject=${subject}&body=${body}`;
+    try {
+      const supported = await Linking.canOpenURL(url);
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        Alert.alert("E-post ej tillgänglig", "Ingen e-postapp hittades på enheten.");
+      }
+    } catch {
+      Alert.alert("Fel", "Kunde inte öppna e-postappen. Kopiera texten och klistra in manuellt.");
+    }
   };
 
   const handleReset = () => {
