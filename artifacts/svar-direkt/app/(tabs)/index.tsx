@@ -241,33 +241,6 @@ export default function HomeScreen() {
         ))}
       </ScrollView>
 
-      {/* AI-Assistent banner */}
-      <Pressable
-        onPress={() => router.push("/ai-compose")}
-        style={({ pressed }) => [
-          styles.aiBanner,
-          {
-            backgroundColor: Colors.primary + "12",
-            borderColor: Colors.primary + "35",
-            opacity: pressed ? 0.9 : 1,
-            transform: [{ scale: pressed ? 0.99 : 1 }],
-          },
-        ]}
-      >
-        <View style={[styles.aiBannerIcon, { backgroundColor: Colors.primary + "20" }]}>
-          <Feather name="cpu" size={24} color={Colors.primary} />
-        </View>
-        <View style={styles.aiBannerText}>
-          <Text style={[styles.aiBannerTitle, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
-            AI-Assistent ✨
-          </Text>
-          <Text style={[styles.aiBannerDesc, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-            Generera formella brev med AI – 4 per dag
-          </Text>
-        </View>
-        <Feather name="chevron-right" size={18} color={Colors.primary} />
-      </Pressable>
-
       {/* Verktyg */}
       <SectionHeader title="VERKTYG" />
       <View style={styles.menuGrid}>
@@ -523,28 +496,6 @@ const styles = StyleSheet.create({
   menuText: { flex: 1 },
   menuTitle: { fontSize: 15 },
   menuSubtitle: { fontSize: 12, marginTop: 2 },
-
-  aiBanner: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    padding: 16,
-    borderRadius: 18,
-    borderWidth: StyleSheet.hairlineWidth,
-    marginBottom: 20,
-    marginTop: 8,
-  },
-  aiBannerIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
-    alignItems: "center",
-    justifyContent: "center",
-    flexShrink: 0,
-  },
-  aiBannerText: { flex: 1 },
-  aiBannerTitle: { fontSize: 16 },
-  aiBannerDesc: { fontSize: 12, marginTop: 2, lineHeight: 17 },
 
   forsvarBanner: {
     borderRadius: 18,
