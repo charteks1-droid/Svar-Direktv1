@@ -388,8 +388,11 @@ export default function QuickSolutionScreen() {
     const subject = encodeURIComponent("Ärende – begäran");
     const body = encodeURIComponent(finalMsg);
     const url = `mailto:?subject=${subject}&body=${body}`;
-    const supported = await Linking.canOpenURL(url);
-    if (supported) await Linking.openURL(url);
+    try {
+      await Linking.openURL(url);
+    } catch {
+      Alert.alert("E-post ej tillgänglig", "Ingen e-postapp hittades på enheten.");
+    }
   };
 
   const handleCopy = async () => {

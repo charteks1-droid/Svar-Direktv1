@@ -45,7 +45,7 @@
       "reactCompiler": true
     },
     "extra": {
-      "apiBaseUrl": "https://c11fb1aa-c8a5-494a-82d5-6e40e01b85cc-00-151780krlaqfm.kirk.replit.dev:8080/api",
+      "apiBaseUrl": "https://c11fb1aa-c8a5-494a-82d5-6e40e01b85cc-00-151780krlaqfm.kirk.replit.dev/api",
       "eas": {
         "projectId": "0e221c32-280f-44c7-a998-e7aa0a722e0c"
       }
