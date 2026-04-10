@@ -6,3 +6,9 @@ id = "YHSxzrJy-a-uC3_5YEpvW"
 uri = "file://exports/svar-direkt-project.zip"
 type = "unspecified"
 title = "Svar Direkt — Complete Project (with EAS config)"
+
+[[outputs]]
+id = "JHKsVz5WmKC_XilPPJTiB"
+uri = "file://assets/modules/snabba-svar-sms.json"
+type = "unspecified"
+title = "snabba-svar-sms.json"
