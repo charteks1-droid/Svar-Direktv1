@@ -16,7 +16,7 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
-import { ModuleData, useApp } from "@/contexts/AppContext";
+import { InstalledModule, ModuleData, useApp } from "@/contexts/AppContext";
 
 function validate(data: unknown): data is ModuleData {
   if (!data || typeof data !== "object") return false;
@@ -28,14 +28,76 @@ function validate(data: unknown): data is ModuleData {
   return true;
 }
 
+function formatDate(iso: string) {
+  const d = new Date(iso);
+  return d.toLocaleDateString("sv-SE", { year: "numeric", month: "short", day: "numeric" });
+}
+
+function ModuleCard({
+  mod,
+  onRemove,
+  theme,
+}: {
+  mod: InstalledModule;
+  onRemove: () => void;
+  theme: (typeof Colors)["light"];
+}) {
+  const total = mod.quickResponseIds.length + mod.templateIds.length;
+  return (
+    <View style={[styles.modCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+      <View style={[styles.modIconWrap, { backgroundColor: Colors.primary + "15" }]}>
+        <Feather name="package" size={20} color={Colors.primary} />
+      </View>
+      <View style={styles.modInfo}>
+        <Text style={[styles.modName, { color: theme.text, fontFamily: "Inter_600SemiBold" }]} numberOfLines={1}>
+          {mod.name}
+        </Text>
+        <Text style={[styles.modMeta, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+          {mod.quickResponseIds.length > 0 && `${mod.quickResponseIds.length} snabba svar`}
+          {mod.quickResponseIds.length > 0 && mod.templateIds.length > 0 && "  ·  "}
+          {mod.templateIds.length > 0 && `${mod.templateIds.length} mallar`}
+          {total === 0 && "Tom modul"}
+          {"  ·  "}
+          {formatDate(mod.importedAt)}
+        </Text>
+      </View>
+      <Pressable
+        onPress={onRemove}
+        hitSlop={12}
+        style={({ pressed }) => [styles.removeBtn, { opacity: pressed ? 0.6 : 1 }]}
+      >
+        <Feather name="trash-2" size={18} color="#e17055" />
+      </Pressable>
+    </View>
+  );
+}
+
 export default function ImportModuleScreen() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
-  const { importModule } = useApp();
+  const { importModule, removeModule, installedModules } = useApp();
   const [loading, setLoading] = useState(false);
-  const [lastResult, setLastResult] = useState<{ name: string; qr: number; tpl: number } | null>(null);
+  const [showFormat, setShowFormat] = useState(false);
+
+  const handleRemove = (mod: InstalledModule) => {
+    Alert.alert(
+      "Ta bort modul",
+      `Vill du ta bort "${mod.name}"?\n\n${mod.quickResponseIds.length} snabba svar och ${mod.templateIds.length} mallar tas bort. Grundinnehållet i appen påverkas inte.`,
+      [
+        { text: "Avbryt", style: "cancel" },
+        {
+          text: "Ta bort",
+          style: "destructive",
+          onPress: async () => {
+            await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
+            await removeModule(mod.id);
+          },
+        },
+      ]
+    );
+  };
 
   const handlePick = async () => {
     try {
@@ -89,19 +151,18 @@ export default function ImportModuleScreen() {
       }
 
       const result = await importModule(data);
-      setLastResult({ name: data.name, qr: result.addedQuickResponses, tpl: result.addedTemplates });
-
       const total = result.addedQuickResponses + result.addedTemplates;
+
       if (total === 0) {
-        Alert.alert("Modul inläst", "Inga nya poster hittades (allt finns redan).");
+        Alert.alert("Modul inläst", "Inga nya poster hittades — allt finns redan installerat.");
       } else {
         await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         Alert.alert(
-          "Modul installerad ✓",
-          `"${data.name}" importerades.\n\n• ${result.addedQuickResponses} snabba svar\n• ${result.addedTemplates} mallar`
+          "Modul installerad",
+          `"${data.name}" är nu installerad.\n\n• ${result.addedQuickResponses} snabba svar\n• ${result.addedTemplates} mallar`
         );
       }
-    } catch (err) {
+    } catch {
       Alert.alert("Fel", "Något gick fel vid import. Försök igen.");
     } finally {
       setLoading(false);
@@ -113,7 +174,7 @@ export default function ImportModuleScreen() {
       style={[styles.container, { backgroundColor: theme.background }]}
       contentContainerStyle={[
         styles.content,
-        { paddingTop: insets.top + 16, paddingBottom: insets.bottom + 40 },
+        { paddingTop: insets.top + 16, paddingBottom: insets.bottom + 48 },
       ]}
       showsVerticalScrollIndicator={false}
     >
@@ -126,52 +187,73 @@ export default function ImportModuleScreen() {
 
       <View style={styles.header}>
         <View style={[styles.headerIcon, { backgroundColor: Colors.primary + "18" }]}>
-          <Feather name="package" size={32} color={Colors.primary} />
+          <Feather name="package" size={30} color={Colors.primary} />
         </View>
         <Text style={[styles.title, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
-          Lägg till modul
+          Moduler
         </Text>
         <Text style={[styles.subtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-          Importera en JSON-fil med snabba svar och mallar direkt till appen.
+          Importera och hantera datapaket med snabba svar och mallar.
         </Text>
       </View>
 
-      <View style={[styles.formatCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
-        <Text style={[styles.formatTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}>
-          Modulformat (JSON)
-        </Text>
-        <View style={[styles.codeBlock, { backgroundColor: theme.backgroundSecondary ?? theme.background }]}>
-          <Text style={[styles.code, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-            {`{\n  "version": 1,\n  "name": "Modulnamn",\n  "quickResponses": [\n    { "id": "q1", "title": "...", "content": "..." }\n  ],\n  "customTemplates": [\n    { "id": "t1", "title": "...", "category": "...", "content": "..." }\n  ]\n}`}
+      {/* Installed modules */}
+      <Text style={[styles.sectionLabel, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
+        INSTALLERADE MODULER
+      </Text>
+
+      {installedModules.length === 0 ? (
+        <View style={[styles.emptyCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+          <Feather name="inbox" size={28} color={theme.textTertiary} />
+          <Text style={[styles.emptyText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+            Inga moduler installerade ännu.{"\n"}Importera din första modul nedan.
           </Text>
         </View>
-        <View style={styles.rulesList}>
-          {[
-            "Endast data — ingen kod",
-            "Befintliga poster skrivs inte över",
-            "Dubbletter (samma ID eller titel) ignoreras",
-            "Fungerar helt offline",
-          ].map((rule) => (
-            <View key={rule} style={styles.ruleRow}>
-              <Feather name="check-circle" size={14} color={Colors.primary} />
-              <Text style={[styles.ruleText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-                {rule}
-              </Text>
-            </View>
+      ) : (
+        <View style={styles.modList}>
+          {installedModules.map((mod) => (
+            <ModuleCard key={mod.id} mod={mod} onRemove={() => handleRemove(mod)} theme={theme} />
           ))}
         </View>
-      </View>
+      )}
 
-      {lastResult && (
-        <View style={[styles.resultCard, { backgroundColor: Colors.primary + "10", borderColor: Colors.primary + "30" }]}>
-          <Feather name="check-circle" size={18} color={Colors.primary} />
-          <View style={{ flex: 1 }}>
-            <Text style={[styles.resultTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}>
-              Senast importerad: {lastResult.name}
+      {/* Import section */}
+      <Text style={[styles.sectionLabel, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold", marginTop: 28 }]}>
+        IMPORTERA NY MODUL
+      </Text>
+
+      {/* Format reference – collapsible */}
+      <Pressable
+        onPress={() => setShowFormat((v) => !v)}
+        style={[styles.formatToggle, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+      >
+        <Text style={[styles.formatToggleLabel, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}>
+          Modulformat (JSON)
+        </Text>
+        <Feather name={showFormat ? "chevron-up" : "chevron-down"} size={16} color={theme.textSecondary} />
+      </Pressable>
+
+      {showFormat && (
+        <View style={[styles.formatCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+          <View style={[styles.codeBlock, { backgroundColor: theme.backgroundSecondary ?? theme.background }]}>
+            <Text style={[styles.code, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              {`{\n  "version": 1,\n  "name": "Modulnamn",\n  "quickResponses": [\n    { "id": "q1", "title": "...", "content": "..." }\n  ],\n  "customTemplates": [\n    { "id": "t1", "title": "...",\n      "category": "...", "content": "..." }\n  ]\n}`}
             </Text>
-            <Text style={[styles.resultSub, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-              {lastResult.qr} snabba svar · {lastResult.tpl} mallar
-            </Text>
+          </View>
+          <View style={styles.rulesList}>
+            {[
+              "Befintliga poster skrivs inte över",
+              "Dubbletter (samma ID eller titel) ignoreras",
+              "Fungerar helt offline",
+              "Moduler kan tas bort separat",
+            ].map((rule) => (
+              <View key={rule} style={styles.ruleRow}>
+                <Feather name="check-circle" size={13} color={Colors.primary} />
+                <Text style={[styles.ruleText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+                  {rule}
+                </Text>
+              </View>
+            ))}
           </View>
         </View>
       )}
@@ -182,7 +264,7 @@ export default function ImportModuleScreen() {
         style={({ pressed }) => [
           styles.pickBtn,
           {
-            backgroundColor: loading ? (Colors.primary + "60") : Colors.primary,
+            backgroundColor: loading ? Colors.primary + "70" : Colors.primary,
             opacity: pressed ? 0.85 : 1,
             transform: [{ scale: pressed ? 0.98 : 1 }],
           },
@@ -195,7 +277,7 @@ export default function ImportModuleScreen() {
       </Pressable>
 
       <Text style={[styles.hint, { color: theme.textTertiary, fontFamily: "Inter_400Regular" }]}>
-        Filen läses lokalt på enheten. Ingen data skickas till internet.
+        Filen läses lokalt. Ingen data skickas till internet.
       </Text>
     </ScrollView>
   );
@@ -215,45 +297,75 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
 
-  header: { alignItems: "center", marginBottom: 28, gap: 12 },
+  header: { alignItems: "center", marginBottom: 28, gap: 10 },
   headerIcon: {
-    width: 72,
-    height: 72,
-    borderRadius: 22,
+    width: 64,
+    height: 64,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
   },
-  title: { fontSize: 26, letterSpacing: -0.5, textAlign: "center" },
+  title: { fontSize: 26, letterSpacing: -0.5 },
   subtitle: { fontSize: 14, lineHeight: 20, textAlign: "center", maxWidth: 280 },
 
-  formatCard: {
+  sectionLabel: { fontSize: 11, letterSpacing: 0.8, marginBottom: 10 },
+
+  emptyCard: {
     borderRadius: 16,
     borderWidth: StyleSheet.hairlineWidth,
-    padding: 16,
-    marginBottom: 16,
-    gap: 12,
-  },
-  formatTitle: { fontSize: 14 },
-  codeBlock: {
-    borderRadius: 10,
-    padding: 12,
-  },
-  code: { fontSize: 12, lineHeight: 20 },
-  rulesList: { gap: 8 },
-  ruleRow: { flexDirection: "row", alignItems: "center", gap: 8 },
-  ruleText: { fontSize: 13, flex: 1 },
-
-  resultCard: {
-    flexDirection: "row",
-    alignItems: "flex-start",
+    padding: 28,
+    alignItems: "center",
     gap: 10,
+  },
+  emptyText: { fontSize: 13, lineHeight: 20, textAlign: "center" },
+
+  modList: { gap: 10 },
+  modCard: {
+    flexDirection: "row",
+    alignItems: "center",
     borderRadius: 14,
     borderWidth: StyleSheet.hairlineWidth,
     padding: 14,
-    marginBottom: 16,
+    gap: 12,
   },
-  resultTitle: { fontSize: 14 },
-  resultSub: { fontSize: 12, marginTop: 2 },
+  modIconWrap: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modInfo: { flex: 1, gap: 3 },
+  modName: { fontSize: 14 },
+  modMeta: { fontSize: 12, lineHeight: 16 },
+  removeBtn: { padding: 4 },
+
+  formatToggle: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    marginBottom: 2,
+  },
+  formatToggleLabel: { fontSize: 14 },
+
+  formatCard: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
+    padding: 14,
+    marginBottom: 16,
+    gap: 12,
+  },
+  codeBlock: { borderRadius: 10, padding: 12 },
+  code: { fontSize: 11, lineHeight: 19 },
+  rulesList: { gap: 7 },
+  ruleRow: { flexDirection: "row", alignItems: "center", gap: 8 },
+  ruleText: { fontSize: 12, flex: 1 },
 
   pickBtn: {
     flexDirection: "row",
@@ -262,7 +374,8 @@ const styles = StyleSheet.create({
     gap: 10,
     borderRadius: 16,
     paddingVertical: 16,
-    marginBottom: 16,
+    marginTop: 12,
+    marginBottom: 14,
   },
   pickBtnText: { fontSize: 16, color: "#fff" },
 

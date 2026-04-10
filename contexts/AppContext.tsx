@@ -47,6 +47,15 @@ export interface CustomTemplate {
   updatedAt: string;
 }
 
+export interface InstalledModule {
+  id: string;
+  name: string;
+  description?: string;
+  importedAt: string;
+  quickResponseIds: string[];
+  templateIds: string[];
+}
+
 interface AppContextType {
   favorites: string[];
   notes: Note[];
@@ -54,6 +63,7 @@ interface AppContextType {
   quickResponses: QuickResponse[];
   reminders: Reminder[];
   customTemplates: CustomTemplate[];
+  installedModules: InstalledModule[];
   disclaimerAccepted: boolean;
 
   toggleFavorite: (templateId: string) => void;
@@ -81,6 +91,7 @@ interface AppContextType {
   deleteCustomTemplate: (id: string) => void;
 
   importModule: (data: ModuleData) => Promise<{ addedQuickResponses: number; addedTemplates: number }>;
+  removeModule: (moduleId: string) => Promise<void>;
 
   acceptDisclaimer: () => void;
 }
@@ -127,6 +138,7 @@ const STORAGE_KEYS = {
   quickResponses: "@svardirekt:quickResponses",
   reminders: "@svardirekt:reminders",
   customTemplates: "@svardirekt:customTemplates",
+  installedModules: "@svardirekt:installedModules",
   disclaimerAccepted: "@svardirekt:disclaimerAccepted",
 };
 
@@ -137,18 +149,20 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [quickResponses, setQuickResponses] = useState<QuickResponse[]>([]);
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>([]);
+  const [installedModules, setInstalledModules] = useState<InstalledModule[]>([]);
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const [favs, nts, hist, qrs, rems, cts, disc] = await Promise.all([
+        const [favs, nts, hist, qrs, rems, cts, mods, disc] = await Promise.all([
           AsyncStorage.getItem(STORAGE_KEYS.favorites),
           AsyncStorage.getItem(STORAGE_KEYS.notes),
           AsyncStorage.getItem(STORAGE_KEYS.history),
           AsyncStorage.getItem(STORAGE_KEYS.quickResponses),
           AsyncStorage.getItem(STORAGE_KEYS.reminders),
           AsyncStorage.getItem(STORAGE_KEYS.customTemplates),
+          AsyncStorage.getItem(STORAGE_KEYS.installedModules),
           AsyncStorage.getItem(STORAGE_KEYS.disclaimerAccepted),
         ]);
         if (favs) setFavorites(JSON.parse(favs));
@@ -168,6 +182,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         }
         if (rems) setReminders(JSON.parse(rems));
         if (cts) setCustomTemplates(JSON.parse(cts));
+        if (mods) setInstalledModules(JSON.parse(mods));
         if (disc) setDisclaimerAccepted(JSON.parse(disc));
       } catch {}
     };
@@ -412,9 +427,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const importModule = useCallback(
     async (data: ModuleData): Promise<{ addedQuickResponses: number; addedTemplates: number }> => {
-      let addedQr = 0;
-      let addedTpl = 0;
+      const addedQrIds: string[] = [];
+      const addedTplIds: string[] = [];
       const now = new Date().toISOString();
+      const moduleId = `mod-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`;
 
       if (Array.isArray(data.quickResponses) && data.quickResponses.length > 0) {
         await new Promise<void>((resolve) => {
@@ -429,8 +445,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
               toAdd.push({ id: item.id, title: item.title, content: item.content, createdAt: now });
               existingIds.add(item.id);
               existingTitles.add(item.title.toLowerCase().trim());
+              addedQrIds.push(item.id);
             }
-            addedQr = toAdd.length;
             const next = [...prev, ...toAdd];
             persist(STORAGE_KEYS.quickResponses, next);
             resolve();
@@ -459,8 +475,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
               });
               existingIds.add(item.id);
               existingTitles.add(item.title.toLowerCase().trim());
+              addedTplIds.push(item.id);
             }
-            addedTpl = toAdd.length;
             const next = [...prev, ...toAdd];
             persist(STORAGE_KEYS.customTemplates, next);
             resolve();
@@ -469,7 +485,48 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         });
       }
 
-      return { addedQuickResponses: addedQr, addedTemplates: addedTpl };
+      if (addedQrIds.length > 0 || addedTplIds.length > 0) {
+        const record: InstalledModule = {
+          id: moduleId,
+          name: data.name,
+          description: data.description,
+          importedAt: now,
+          quickResponseIds: addedQrIds,
+          templateIds: addedTplIds,
+        };
+        setInstalledModules((prev) => {
+          const next = [...prev, record];
+          persist(STORAGE_KEYS.installedModules, next);
+          return next;
+        });
+      }
+
+      return { addedQuickResponses: addedQrIds.length, addedTemplates: addedTplIds.length };
+    },
+    [persist]
+  );
+
+  const removeModule = useCallback(
+    async (moduleId: string): Promise<void> => {
+      setInstalledModules((prevMods) => {
+        const mod = prevMods.find((m) => m.id === moduleId);
+        if (!mod) return prevMods;
+        const qrIds = new Set(mod.quickResponseIds);
+        const tplIds = new Set(mod.templateIds);
+        setQuickResponses((prev) => {
+          const next = prev.filter((qr) => !qrIds.has(qr.id));
+          persist(STORAGE_KEYS.quickResponses, next);
+          return next;
+        });
+        setCustomTemplates((prev) => {
+          const next = prev.filter((t) => !tplIds.has(t.id));
+          persist(STORAGE_KEYS.customTemplates, next);
+          return next;
+        });
+        const nextMods = prevMods.filter((m) => m.id !== moduleId);
+        persist(STORAGE_KEYS.installedModules, nextMods);
+        return nextMods;
+      });
     },
     [persist]
   );
@@ -483,6 +540,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         quickResponses,
         reminders,
         customTemplates,
+        installedModules,
         disclaimerAccepted,
         toggleFavorite,
         isFavorite,
@@ -503,6 +561,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         updateCustomTemplate,
         deleteCustomTemplate,
         importModule,
+        removeModule,
         acceptDisclaimer,
       }}
     >

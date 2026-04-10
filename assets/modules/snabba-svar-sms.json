@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "name": "Snabba svar SMS",
+  "description": "Färdiga korta SMS-svar på svenska för vanliga situationer – arbete, myndigheter, betalning, hyresvärd och allmänt.",
+  "quickResponses": [
+    {
+      "id": "sms-arb-1",
+      "title": "Sjuk idag",
+      "content": "Hej, jag mår inte bra och kan inte komma in idag. Jag hör av mig när jag vet mer."
+    },
+    {
+      "id": "sms-arb-2",
+      "title": "Kommer sent till jobbet",
+      "content": "Hej, jag blir försenad ca [X] minuter. Beklagar besväret."
+    },
+    {
+      "id": "sms-arb-3",
+      "title": "Bekräftar möte",
+      "content": "Bekräftar mötet [datum] kl [tid]. Vi ses då."
+    },
+    {
+      "id": "sms-arb-4",
+      "title": "Kan ej delta på möte",
+      "content": "Tyvärr kan jag inte delta på mötet. Vänligen skicka mötesanteckningar i efterhand."
+    },
+    {
+      "id": "sms-arb-5",
+      "title": "Jobbar hemifrån",
+      "content": "Jobbar hemifrån idag. Nås som vanligt via telefon och e-post."
+    },
+    {
+      "id": "sms-arb-6",
+      "title": "Behöver ledigt",
+      "content": "Hej, jag behöver ta ledigt [datum]. Kan vi ordna det?"
+    },
+    {
+      "id": "sms-arb-7",
+      "title": "Uppgift klar",
+      "content": "Uppgiften är klar. Hör av dig om du behöver något mer."
+    },
+    {
+      "id": "sms-myn-1",
+      "title": "Bekräftar mottagande – myndighet",
+      "content": "Jag har mottagit ert meddelande och återkommer med svar inom kort."
+    },
+    {
+      "id": "sms-myn-2",
+      "title": "Begär förlängd svarstid",
+      "content": "Jag behöver mer tid för att svara på detta ärende. Kan ni bevilja förlängd svarstid?"
+    },
+    {
+      "id": "sms-myn-3",
+      "title": "Begär skriftligt beslut",
+      "content": "Jag begär att beslut i detta ärende meddelas skriftligen med fullständig motivering."
+    },
+    {
+      "id": "sms-myn-4",
+      "title": "Vill överklaga beslut",
+      "content": "Jag vill överklaga detta beslut. Vänligen meddela hur och till vem jag ska vända mig."
+    },
+    {
+      "id": "sms-myn-5",
+      "title": "Bekräftar bokat möte",
+      "content": "Jag bekräftar mitt besök [datum] kl [tid]. Finns det något jag ska ta med?"
+    },
+    {
+      "id": "sms-myn-6",
+      "title": "Ber om handläggarens namn",
+      "content": "Kan ni meddela vem som handlägger mitt ärende och dennes kontaktuppgifter?"
+    },
+    {
+      "id": "sms-myn-7",
+      "title": "Begär kopia av handlingar",
+      "content": "Jag begär kopia av alla handlingar i mitt ärende enligt offentlighetsprincipen."
+    },
+    {
+      "id": "sms-bet-1",
+      "title": "Betalning skickad",
+      "content": "Betalning är skickad idag. Referens: [ref]. Hör av er om ni inte mottagit den."
+    },
+    {
+      "id": "sms-bet-2",
+      "title": "Kan ej betala hela summan nu",
+      "content": "Jag kan tyvärr inte betala hela beloppet just nu. Kan vi komma överens om en avbetalningsplan?"
+    },
+    {
+      "id": "sms-bet-3",
+      "title": "Faktura oklar – begär förklaring",
+      "content": "Jag har mottagit fakturan men posten [X] är oklar. Kan ni förklara den?"
+    },
+    {
+      "id": "sms-bet-4",
+      "title": "Redan betalt",
+      "content": "Denna faktura är redan betald [datum]. Kvitto kan skickas på begäran."
+    },
+    {
+      "id": "sms-bet-5",
+      "title": "Bestrider faktura",
+      "content": "Jag bestrider denna faktura. Inget avtal finns och betalning kommer inte att ske."
+    },
+    {
+      "id": "sms-bet-6",
+      "title": "Begär betalningskvitto",
+      "content": "Vänligen bekräfta att betalningen är mottagen och skicka ett kvitto."
+    },
+    {
+      "id": "sms-bet-7",
+      "title": "Önskar avbetalningsplan",
+      "content": "Jag erkänner skulden och önskar upprätta en avbetalningsplan. Vänligen kontakta mig."
+    },
+    {
+      "id": "sms-hyra-1",
+      "title": "Fel i lägenheten – anmälan",
+      "content": "Hej, det finns ett fel i lägenheten: [beskriv felet]. Vänligen åtgärda snarast möjligt."
+    },
+    {
+      "id": "sms-hyra-2",
+      "title": "Hyra betald",
+      "content": "Hyran för [månad] är betald idag. Hör av er om ni inte ser betalningen."
+    },
+    {
+      "id": "sms-hyra-3",
+      "title": "Begär reparation formellt",
+      "content": "Jag anmäler formellt behovet av reparation av [beskriv]. Vänligen bekräfta att ärendet är mottaget."
+    },
+    {
+      "id": "sms-hyra-4",
+      "title": "Önskar besiktning",
+      "content": "Jag önskar en besiktning av lägenheten för att dokumentera skicket. Föreslå gärna en tid."
+    },
+    {
+      "id": "sms-hyra-5",
+      "title": "Säger upp hyresavtal",
+      "content": "Jag säger formellt upp mitt hyresavtal med tre månaders uppsägningstid från och med [datum]."
+    },
+    {
+      "id": "sms-hyra-6",
+      "title": "Granne störer",
+      "content": "Grannen i [lägenhetsnummer] orsakar störningar, senast [datum] kl [tid]. Vänligen vidta åtgärder."
+    },
+    {
+      "id": "sms-hyra-7",
+      "title": "Nekad tillgång till lägenhet",
+      "content": "Jag nekar tillträde till min lägenhet utan föregående avisering. Vänligen meddela minst 24 timmar i förväg."
+    },
+    {
+      "id": "sms-all-1",
+      "title": "OK, bekräftat",
+      "content": "OK, bekräftat. Tack."
+    },
+    {
+      "id": "sms-all-2",
+      "title": "Återkommer senare",
+      "content": "Jag återkommer med svar lite senare."
+    },
+    {
+      "id": "sms-all-3",
+      "title": "Förstår inte – förtydliga",
+      "content": "Jag förstår tyvärr inte vad du menar. Kan du förtydliga?"
+    },
+    {
+      "id": "sms-all-4",
+      "title": "Inte intresserad",
+      "content": "Tack för ditt meddelande, men jag är inte intresserad."
+    },
+    {
+      "id": "sms-all-5",
+      "title": "Fel nummer",
+      "content": "Ni har nått fel nummer. Kontrollera och försök igen."
+    },
+    {
+      "id": "sms-all-6",
+      "title": "Ring mig istället",
+      "content": "Kan du ringa mig istället? Jag föredrar att prata."
+    },
+    {
+      "id": "sms-all-7",
+      "title": "Sitter i möte",
+      "content": "Sitter i möte just nu. Hör av mig så fort jag kan."
+    },
+    {
+      "id": "sms-all-8",
+      "title": "På semester",
+      "content": "Jag är på semester till [datum] och svarar inte förrän då."
+    },
+    {
+      "id": "sms-all-9",
+      "title": "Mottaget – återkommer",
+      "content": "Mottaget. Jag återkommer med svar inom kort."
+    },
+    {
+      "id": "sms-all-10",
+      "title": "Tack – inga fler kontakter",
+      "content": "Tack för informationen. Inga ytterligare kontakter behövs i detta ärende."
+    }
+  ]
+}
