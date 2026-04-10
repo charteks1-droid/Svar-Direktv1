@@ -6,7 +6,6 @@ import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   Alert,
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -42,14 +41,25 @@ export default function ImportModuleScreen() {
     try {
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
       const picked = await DocumentPicker.getDocumentAsync({
-        type: Platform.OS === "ios" ? "public.json" : "application/json",
+        type: "*/*",
         copyToCacheDirectory: true,
+        multiple: false,
       });
 
       if (picked.canceled || !picked.assets?.length) return;
 
       setLoading(true);
       const file = picked.assets[0];
+
+      const name = (file.name ?? "").toLowerCase();
+      if (!name.endsWith(".json") && !name.endsWith(".zip")) {
+        Alert.alert(
+          "Fel filtyp",
+          "Välj en .json-fil (eller .zip som innehåller en modul).\n\nKameran och bilder stöds inte här."
+        );
+        setLoading(false);
+        return;
+      }
 
       let text: string;
       try {
