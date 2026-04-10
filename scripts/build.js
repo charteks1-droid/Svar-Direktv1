@@ -1,8 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const { spawn } = require("child_process");
-const { Readable } = require("stream");
-const { pipeline } = require("stream/promises");
+import fs from "fs";
+import path from "path";
+import { spawn } from "child_process";
+import { Readable } from "stream";
+import { pipeline } from "stream/promises";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let metroProcess = null;
 
@@ -287,8 +291,6 @@ async function downloadBundlesAndManifests(timestamp) {
   console.log("This may take several minutes for production builds...");
 
   try {
-    // Bundles are sequential — Metro can't handle both platforms simultaneously
-    // without stalling. Manifests are cheap and run in parallel after.
     await downloadBundle("ios", timestamp);
     await downloadBundle("android", timestamp);
 
