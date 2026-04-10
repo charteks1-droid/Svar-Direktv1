@@ -357,6 +357,13 @@ export default function HomeScreen() {
           onPress={() => router.push("/(tabs)/favorites")}
           accent="#fd79a8"
         />
+        <MenuItem
+          icon={<Feather name="package" size={22} color="#00b894" />}
+          title="Lägg till modul"
+          subtitle="Importera data-paket (JSON)"
+          onPress={() => router.push("/import-module")}
+          accent="#00b894"
+        />
       </View>
     </ScrollView>
   );

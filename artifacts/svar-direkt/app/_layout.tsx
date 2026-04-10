@@ -54,6 +54,10 @@ function RootLayoutNav() {
         name="forsvar"
         options={{ title: "Försvara dig", headerBackTitle: "Tillbaka" }}
       />
+      <Stack.Screen
+        name="import-module"
+        options={{ title: "Lägg till modul", headerShown: false }}
+      />
     </Stack>
   );
 }

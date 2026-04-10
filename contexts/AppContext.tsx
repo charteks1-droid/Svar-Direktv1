@@ -80,7 +80,17 @@ interface AppContextType {
   updateCustomTemplate: (id: string, updates: Partial<CustomTemplate>) => void;
   deleteCustomTemplate: (id: string) => void;
 
+  importModule: (data: ModuleData) => Promise<{ addedQuickResponses: number; addedTemplates: number }>;
+
   acceptDisclaimer: () => void;
+}
+
+export interface ModuleData {
+  version: number;
+  name: string;
+  description?: string;
+  quickResponses?: Array<{ id: string; title: string; content: string }>;
+  customTemplates?: Array<{ id: string; title: string; category: string; content: string }>;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -400,6 +410,70 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     [persist]
   );
 
+  const importModule = useCallback(
+    async (data: ModuleData): Promise<{ addedQuickResponses: number; addedTemplates: number }> => {
+      let addedQr = 0;
+      let addedTpl = 0;
+      const now = new Date().toISOString();
+
+      if (Array.isArray(data.quickResponses) && data.quickResponses.length > 0) {
+        await new Promise<void>((resolve) => {
+          setQuickResponses((prev) => {
+            const existingIds = new Set(prev.map((q) => q.id));
+            const existingTitles = new Set(prev.map((q) => q.title.toLowerCase().trim()));
+            const toAdd: QuickResponse[] = [];
+            for (const item of data.quickResponses!) {
+              if (!item.id || !item.title || !item.content) continue;
+              if (existingIds.has(item.id)) continue;
+              if (existingTitles.has(item.title.toLowerCase().trim())) continue;
+              toAdd.push({ id: item.id, title: item.title, content: item.content, createdAt: now });
+              existingIds.add(item.id);
+              existingTitles.add(item.title.toLowerCase().trim());
+            }
+            addedQr = toAdd.length;
+            const next = [...prev, ...toAdd];
+            persist(STORAGE_KEYS.quickResponses, next);
+            resolve();
+            return next;
+          });
+        });
+      }
+
+      if (Array.isArray(data.customTemplates) && data.customTemplates.length > 0) {
+        await new Promise<void>((resolve) => {
+          setCustomTemplates((prev) => {
+            const existingIds = new Set(prev.map((t) => t.id));
+            const existingTitles = new Set(prev.map((t) => t.title.toLowerCase().trim()));
+            const toAdd: CustomTemplate[] = [];
+            for (const item of data.customTemplates!) {
+              if (!item.id || !item.title || !item.content) continue;
+              if (existingIds.has(item.id)) continue;
+              if (existingTitles.has(item.title.toLowerCase().trim())) continue;
+              toAdd.push({
+                id: item.id,
+                title: item.title,
+                category: item.category || "Importerad",
+                content: item.content,
+                createdAt: now,
+                updatedAt: now,
+              });
+              existingIds.add(item.id);
+              existingTitles.add(item.title.toLowerCase().trim());
+            }
+            addedTpl = toAdd.length;
+            const next = [...prev, ...toAdd];
+            persist(STORAGE_KEYS.customTemplates, next);
+            resolve();
+            return next;
+          });
+        });
+      }
+
+      return { addedQuickResponses: addedQr, addedTemplates: addedTpl };
+    },
+    [persist]
+  );
+
   return (
     <AppContext.Provider
       value={{
@@ -428,6 +502,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         addCustomTemplate,
         updateCustomTemplate,
         deleteCustomTemplate,
+        importModule,
         acceptDisclaimer,
       }}
     >
