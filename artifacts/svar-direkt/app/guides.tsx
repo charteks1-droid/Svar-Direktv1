@@ -1,6 +1,5 @@
 import { Feather } from "@expo/vector-icons";
 import * as DocumentPicker from "expo-document-picker";
-import * as FileSystem from "expo-file-system/legacy";
 import * as Haptics from "expo-haptics";
 import * as Sharing from "expo-sharing";
 import { router } from "expo-router";
@@ -20,7 +19,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Colors } from "@/constants/colors";
 
 const GUIDES_KEY = "guides_v1";
-const GUIDES_DIR = `${FileSystem.documentDirectory}guides/`;
 
 interface Guide {
   id: string;
@@ -28,6 +26,86 @@ interface Guide {
   fileUri: string;
   addedAt: string;
   sizeBytes: number;
+}
+
+// Lazily compute base directory so native module is ready
+function getGuidesDir(): string | null {
+  try {
+    const FS = require("expo-file-system/legacy");
+    const base: string | null = FS.documentDirectory;
+    if (!base) return null;
+    return `${base}guides/`;
+  } catch {
+    return null;
+  }
+}
+
+async function ensureGuidesDir(): Promise<string> {
+  const dir = getGuidesDir();
+  if (!dir) throw new Error("Appens lagringskatalog är inte tillgänglig.");
+  try {
+    const FS = require("expo-file-system/legacy");
+    const info = await FS.getInfoAsync(dir);
+    if (!info.exists) {
+      await FS.makeDirectoryAsync(dir, { intermediates: true });
+    }
+  } catch (e: any) {
+    throw new Error(`Kunde inte skapa lagringskatalog: ${e?.message ?? e}`);
+  }
+  return dir;
+}
+
+async function copyFileToGuides(srcUri: string, fileName: string): Promise<{ destUri: string; sizeBytes: number }> {
+  const dir = await ensureGuidesDir();
+  const safeName = fileName.replace(/[^a-zA-Z0-9._\-åäöÅÄÖ ]/g, "_");
+  const destUri = `${dir}${Date.now()}_${safeName}`;
+
+  const FS = require("expo-file-system/legacy");
+  const errors: string[] = [];
+
+  // Strategy 1: moveAsync (works when srcUri is file:// in our cache)
+  try {
+    await FS.moveAsync({ from: srcUri, to: destUri });
+    const info = await FS.getInfoAsync(destUri);
+    return { destUri, sizeBytes: (info as any).size ?? 0 };
+  } catch (e: any) {
+    errors.push(`moveAsync: ${e?.message ?? e}`);
+  }
+
+  // Strategy 2: copyAsync
+  try {
+    await FS.copyAsync({ from: srcUri, to: destUri });
+    const info = await FS.getInfoAsync(destUri);
+    return { destUri, sizeBytes: (info as any).size ?? 0 };
+  } catch (e: any) {
+    errors.push(`copyAsync: ${e?.message ?? e}`);
+  }
+
+  // Strategy 3: fetch + write binary
+  try {
+    const resp = await fetch(srcUri);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const blob = await resp.blob();
+    const sizeBytes = blob.size;
+    // Use FileSystem write from blob via base64
+    const reader = new FileReader();
+    const base64: string = await new Promise((resolve, reject) => {
+      reader.onload = () => {
+        const result = reader.result as string;
+        // result is data:...;base64,...
+        const b64 = result.split(",")[1] ?? "";
+        resolve(b64);
+      };
+      reader.onerror = () => reject(new Error("FileReader misslyckades"));
+      reader.readAsDataURL(blob);
+    });
+    await FS.writeAsStringAsync(destUri, base64, { encoding: FS.EncodingType.Base64 });
+    return { destUri, sizeBytes };
+  } catch (e: any) {
+    errors.push(`fetch+write: ${e?.message ?? e}`);
+  }
+
+  throw new Error(`Kunde inte kopiera filen:\n${errors.join("\n")}`);
 }
 
 function formatBytes(b: number) {
@@ -42,13 +120,6 @@ function formatDate(iso: string) {
     month: "short",
     day: "numeric",
   });
-}
-
-async function ensureGuidesDir() {
-  const info = await FileSystem.getInfoAsync(GUIDES_DIR);
-  if (!info.exists) {
-    await FileSystem.makeDirectoryAsync(GUIDES_DIR, { intermediates: true });
-  }
 }
 
 function GuideCard({
@@ -75,21 +146,29 @@ function GuideCard({
           {guide.name}
         </Text>
         <Text style={[styles.cardMeta, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-          {formatBytes(guide.sizeBytes)}{"  ·  "}{formatDate(guide.addedAt)}
+          {guide.sizeBytes > 0 ? formatBytes(guide.sizeBytes) : "PDF"}
+          {"  ·  "}
+          {formatDate(guide.addedAt)}
         </Text>
       </View>
       <View style={styles.cardActions}>
         <Pressable
           onPress={onOpen}
           hitSlop={10}
-          style={({ pressed }) => [styles.actionBtn, { opacity: pressed ? 0.6 : 1, backgroundColor: Colors.primary + "15" }]}
+          style={({ pressed }) => [
+            styles.actionBtn,
+            { opacity: pressed ? 0.6 : 1, backgroundColor: Colors.primary + "15" },
+          ]}
         >
           <Feather name="external-link" size={17} color={Colors.primary} />
         </Pressable>
         <Pressable
           onPress={onDelete}
           hitSlop={10}
-          style={({ pressed }) => [styles.actionBtn, { opacity: pressed ? 0.6 : 1, backgroundColor: "#e17055" + "15" }]}
+          style={({ pressed }) => [
+            styles.actionBtn,
+            { opacity: pressed ? 0.6 : 1, backgroundColor: "#e17055" + "15" },
+          ]}
         >
           <Feather name="trash-2" size={17} color="#e17055" />
         </Pressable>
@@ -110,17 +189,23 @@ export default function GuidesScreen() {
   const loadGuides = useCallback(async () => {
     try {
       const raw = await AsyncStorage.getItem(GUIDES_KEY);
-      if (raw) {
-        const parsed: Guide[] = JSON.parse(raw);
-        const valid: Guide[] = [];
-        for (const g of parsed) {
-          const info = await FileSystem.getInfoAsync(g.fileUri);
+      if (!raw) return;
+      const parsed: Guide[] = JSON.parse(raw);
+      // Verify each file still exists
+      const FS = require("expo-file-system/legacy");
+      const valid: Guide[] = [];
+      for (const g of parsed) {
+        try {
+          const info = await FS.getInfoAsync(g.fileUri);
           if (info.exists) valid.push(g);
+        } catch {
+          // If we can't check, keep it (optimistic)
+          valid.push(g);
         }
-        setGuides(valid);
-        if (valid.length !== parsed.length) {
-          await AsyncStorage.setItem(GUIDES_KEY, JSON.stringify(valid));
-        }
+      }
+      setGuides(valid);
+      if (valid.length !== parsed.length) {
+        await AsyncStorage.setItem(GUIDES_KEY, JSON.stringify(valid));
       }
     } catch {}
   }, []);
@@ -137,47 +222,44 @@ export default function GuidesScreen() {
   const handleImport = async () => {
     try {
       await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+
       const picked = await DocumentPicker.getDocumentAsync({
-        type: "*/*",
+        type: "application/pdf",
         copyToCacheDirectory: true,
         multiple: false,
       });
 
       if (picked.canceled || !picked.assets?.length) return;
 
-      const file = picked.assets[0];
-      const fileName = (file.name ?? "").toLowerCase();
-
-      if (!fileName.endsWith(".pdf")) {
-        Alert.alert("Fel filtyp", "Välj en PDF-fil (.pdf).");
-        return;
-      }
-
       setLoading(true);
+      const file = picked.assets[0];
+      const fileName = file.name ?? `guide_${Date.now()}.pdf`;
 
-      await ensureGuidesDir();
-      const destName = `guide_${Date.now()}.pdf`;
-      const destUri = `${GUIDES_DIR}${destName}`;
+      try {
+        const { destUri, sizeBytes } = await copyFileToGuides(file.uri, fileName);
 
-      await FileSystem.copyAsync({ from: file.uri, to: destUri });
+        const newGuide: Guide = {
+          id: Date.now().toString(),
+          name: fileName.replace(/\.[^.]+$/, ""), // strip extension for display
+          fileUri: destUri,
+          addedAt: new Date().toISOString(),
+          sizeBytes,
+        };
 
-      const info = await FileSystem.getInfoAsync(destUri);
-      const sizeBytes = info.exists && "size" in info ? (info as any).size : 0;
-
-      const guide: Guide = {
-        id: `guide_${Date.now()}`,
-        name: file.name ?? destName,
-        fileUri: destUri,
-        addedAt: new Date().toISOString(),
-        sizeBytes,
-      };
-
-      const updated = [guide, ...guides];
-      await saveGuides(updated);
-      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      Alert.alert("Guide tillagd", `"${guide.name}" har sparats i appen.`);
-    } catch {
-      Alert.alert("Fel", "Kunde inte importera PDF-filen. Försök igen.");
+        const updated = [newGuide, ...guides];
+        await saveGuides(updated);
+        await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        Alert.alert("PDF sparad ✓", `"${newGuide.name}" har sparats i appen.`);
+      } catch (e: any) {
+        Alert.alert(
+          "PDF kunde inte sparas lokalt",
+          `Filen valdes men kunde inte sparas:\n\n${e?.message ?? "Okänt fel"}\n\nKontrollera att telefonen har ledigt lagringsutrymme.`
+        );
+      }
+    } catch (e: any) {
+      if (!String(e?.message).includes("cancel")) {
+        Alert.alert("Fel", `Oväntat fel vid filval:\n${e?.message ?? e}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -185,44 +267,38 @@ export default function GuidesScreen() {
 
   const handleOpen = async (guide: Guide) => {
     try {
-      const info = await FileSystem.getInfoAsync(guide.fileUri);
-      if (!info.exists) {
-        Alert.alert("Filen saknas", "PDF-filen hittades inte. Den kan ha tagits bort.");
+      const available = await Sharing.isAvailableAsync();
+      if (!available) {
+        Alert.alert("Kan inte öppna", "Din telefon stöder inte delning av filer.");
         return;
       }
-
-      const canShare = await Sharing.isAvailableAsync();
-      if (!canShare) {
-        Alert.alert("Kan ej öppna", "Ingen app för att öppna PDF hittades på enheten.");
-        return;
-      }
-
       await Sharing.shareAsync(guide.fileUri, {
         mimeType: "application/pdf",
         dialogTitle: guide.name,
         UTI: "com.adobe.pdf",
       });
-    } catch {
-      Alert.alert("Fel", "Kunde inte öppna PDF-filen.");
+    } catch (e: any) {
+      Alert.alert("Kunde inte öppna PDF", `Fel: ${e?.message ?? e}`);
     }
   };
 
   const handleDelete = (guide: Guide) => {
     Alert.alert(
       "Ta bort guide",
-      `Vill du ta bort "${guide.name}"? Filen raderas permanent från appen.`,
+      `Vill du ta bort "${guide.name}" från appen?\n\nOriginalfilen på telefonen påverkas inte.`,
       [
         { text: "Avbryt", style: "cancel" },
         {
           text: "Ta bort",
           style: "destructive",
           onPress: async () => {
-            await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
             try {
-              await FileSystem.deleteAsync(guide.fileUri, { idempotent: true });
+              const FS = require("expo-file-system/legacy");
+              await FS.deleteAsync(guide.fileUri, { idempotent: true });
             } catch {}
             const updated = guides.filter((g) => g.id !== guide.id);
             await saveGuides(updated);
+            await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
           },
         },
       ]
@@ -250,26 +326,26 @@ export default function GuidesScreen() {
           <Feather name="book-open" size={30} color="#e17055" />
         </View>
         <Text style={[styles.title, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
-          PDF Guider
+          PDF-guider
         </Text>
         <Text style={[styles.subtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-          Spara PDF-guider lokalt och öppna dem när som helst – utan internet.
+          Spara PDF-guider lokalt i appen för snabb åtkomst, även utan internet.
         </Text>
       </View>
 
       <Text style={[styles.sectionLabel, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
-        SPARADE GUIDER
+        SPARADE GUIDER ({guides.length})
       </Text>
 
       {guides.length === 0 ? (
         <View style={[styles.emptyCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
           <Feather name="inbox" size={28} color={theme.textTertiary} />
           <Text style={[styles.emptyText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-            Inga guider sparade ännu.{"\n"}Importera din första PDF nedan.
+            Inga PDF-guider sparade ännu.{"\n"}Importera din första guide nedan.
           </Text>
         </View>
       ) : (
-        <View style={styles.list}>
+        <View style={styles.guideList}>
           {guides.map((g) => (
             <GuideCard
               key={g.id}
@@ -281,10 +357,6 @@ export default function GuidesScreen() {
           ))}
         </View>
       )}
-
-      <Text style={[styles.sectionLabel, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold", marginTop: 28 }]}>
-        IMPORTERA PDF
-      </Text>
 
       <Pressable
         onPress={handleImport}
@@ -300,12 +372,12 @@ export default function GuidesScreen() {
       >
         <Feather name={loading ? "loader" : "upload"} size={20} color="#fff" />
         <Text style={[styles.importBtnText, { fontFamily: "Inter_600SemiBold" }]}>
-          {loading ? "Importerar…" : "Välj PDF-fil"}
+          {loading ? "Sparar…" : "Importera PDF"}
         </Text>
       </Pressable>
 
       <Text style={[styles.hint, { color: theme.textTertiary, fontFamily: "Inter_400Regular" }]}>
-        Filen sparas lokalt i appen. Ingen data skickas till internet.{"\n"}Att öppna en guide kräver att du har en PDF-läsare installerad.
+        PDF-filer sparas lokalt i appen. Välj PDF-filer från din telefon.
       </Text>
     </ScrollView>
   );
@@ -347,8 +419,7 @@ const styles = StyleSheet.create({
   },
   emptyText: { fontSize: 13, lineHeight: 20, textAlign: "center" },
 
-  list: { gap: 10 },
-
+  guideList: { gap: 10 },
   card: {
     flexDirection: "row",
     alignItems: "center",
@@ -363,15 +434,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    flexShrink: 0,
   },
   cardInfo: { flex: 1, gap: 4 },
-  cardName: { fontSize: 14, lineHeight: 20 },
+  cardName: { fontSize: 14, lineHeight: 19 },
   cardMeta: { fontSize: 12 },
   cardActions: { flexDirection: "row", gap: 8 },
   actionBtn: {
-    width: 36,
-    height: 36,
+    width: 34,
+    height: 34,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -384,10 +454,9 @@ const styles = StyleSheet.create({
     gap: 10,
     borderRadius: 16,
     paddingVertical: 16,
-    marginTop: 4,
+    marginTop: 24,
     marginBottom: 14,
   },
   importBtnText: { fontSize: 16, color: "#fff" },
-
   hint: { fontSize: 12, textAlign: "center", lineHeight: 18 },
 });

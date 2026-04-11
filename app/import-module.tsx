@@ -1,11 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 import * as DocumentPicker from "expo-document-picker";
-import * as FileSystem from "expo-file-system/legacy";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
   Alert,
+  NativeModules,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -31,6 +31,54 @@ function validate(data: unknown): data is ModuleData {
 function formatDate(iso: string) {
   const d = new Date(iso);
   return d.toLocaleDateString("sv-SE", { year: "numeric", month: "short", day: "numeric" });
+}
+
+async function readFileText(uri: string): Promise<string> {
+  const errors: string[] = [];
+
+  // Strategy 1: fetch() — works for file:// URIs (Android cache dir)
+  try {
+    const resp = await fetch(uri);
+    if (resp.ok) {
+      const t = await resp.text();
+      if (t.length > 0) return t;
+      errors.push("fetch: empty response");
+    } else {
+      errors.push(`fetch: HTTP ${resp.status}`);
+    }
+  } catch (e: any) {
+    errors.push(`fetch: ${e?.message ?? e}`);
+  }
+
+  // Strategy 2: expo-file-system/legacy readAsStringAsync directly
+  try {
+    const FS = require("expo-file-system/legacy");
+    const t = await FS.readAsStringAsync(uri, { encoding: "utf8" });
+    if (t.length > 0) return t;
+    errors.push("readAsStringAsync: empty");
+  } catch (e: any) {
+    errors.push(`readAsStringAsync: ${e?.message ?? e}`);
+  }
+
+  // Strategy 3: copy to cache first, then read
+  try {
+    const FS = require("expo-file-system/legacy");
+    const cacheDir: string | null = FS.cacheDirectory;
+    if (cacheDir) {
+      const tmp = `${cacheDir}module_read_${Date.now()}.json`;
+      await FS.copyAsync({ from: uri, to: tmp });
+      const t = await FS.readAsStringAsync(tmp, { encoding: "utf8" });
+      FS.deleteAsync(tmp, { idempotent: true }).catch(() => {});
+      if (t.length > 0) return t;
+      errors.push("copyAsync+read: empty");
+    } else {
+      errors.push("copyAsync: cacheDirectory is null");
+    }
+  } catch (e: any) {
+    errors.push(`copyAsync+read: ${e?.message ?? e}`);
+  }
+
+  throw new Error(`Alla läsmetoder misslyckades:\n${errors.join("\n")}`);
 }
 
 function ModuleCard({
@@ -113,43 +161,44 @@ export default function ImportModuleScreen() {
       setLoading(true);
       const file = picked.assets[0];
 
-      const name = (file.name ?? "").toLowerCase();
-      if (!name.endsWith(".json") && !name.endsWith(".zip")) {
+      const fileName = (file.name ?? "").toLowerCase();
+      if (!fileName.endsWith(".json")) {
+        Alert.alert("Fel filtyp", "Välj en .json-fil.");
+        setLoading(false);
+        return;
+      }
+
+      // Read file content
+      let text: string;
+      try {
+        text = await readFileText(file.uri);
+      } catch (e: any) {
         Alert.alert(
-          "Fel filtyp",
-          "Välj en .json-fil (eller .zip som innehåller en modul).\n\nKameran och bilder stöds inte här."
+          "Kunde inte kopiera filen",
+          `Filen kunde inte läsas från telefonen.\n\nDetaljer: ${e?.message ?? "okänt fel"}`
         );
         setLoading(false);
         return;
       }
 
-      let text: string;
-      try {
-        const cacheUri = `${FileSystem.cacheDirectory}import_${Date.now()}.json`;
-        await FileSystem.copyAsync({ from: file.uri, to: cacheUri });
-        text = await FileSystem.readAsStringAsync(cacheUri, {
-          encoding: FileSystem.EncodingType.UTF8,
-        });
-        FileSystem.deleteAsync(cacheUri, { idempotent: true }).catch(() => {});
-      } catch {
-        Alert.alert("Läsfel", "Kunde inte läsa filen. Kontrollera att filen inte är skadad.");
-        setLoading(false);
-        return;
-      }
-
+      // Parse JSON
       let data: unknown;
       try {
         data = JSON.parse(text);
       } catch {
-        Alert.alert("Felaktig modulfil", "Filen innehåller inte giltig JSON.");
+        Alert.alert(
+          "Ogiltigt JSON-format",
+          "Filen innehåller inte giltig JSON. Kontrollera att filen är en korrekt .json-modul."
+        );
         setLoading(false);
         return;
       }
 
+      // Validate module format
       if (!validate(data)) {
         Alert.alert(
-          "Felaktig modulfil",
-          'Modulen saknar obligatoriska fält. JSON-filen måste ha "version" (nummer) och "name" (text).'
+          "Felaktigt modulformat",
+          'JSON-filen saknar obligatoriska fält.\n\nFilen måste ha:\n• "version" (nummer)\n• "name" (text)'
         );
         setLoading(false);
         return;
@@ -163,12 +212,12 @@ export default function ImportModuleScreen() {
       } else {
         await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         Alert.alert(
-          "Modul installerad",
-          `"${data.name}" är nu installerad.\n\n• ${result.addedQuickResponses} snabba svar\n• ${result.addedTemplates} mallar`
+          "Modul installerad ✓",
+          `"${(data as ModuleData).name}" är nu installerad.\n\n• ${result.addedQuickResponses} snabba svar\n• ${result.addedTemplates} mallar`
         );
       }
-    } catch {
-      Alert.alert("Fel", "Något gick fel vid import. Försök igen.");
+    } catch (e: any) {
+      Alert.alert("Oväntat fel", `Något gick fel vid import.\n\n${e?.message ?? "Försök igen."}`);
     } finally {
       setLoading(false);
     }
@@ -202,7 +251,6 @@ export default function ImportModuleScreen() {
         </Text>
       </View>
 
-      {/* Installed modules */}
       <Text style={[styles.sectionLabel, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold" }]}>
         INSTALLERADE MODULER
       </Text>
@@ -222,12 +270,10 @@ export default function ImportModuleScreen() {
         </View>
       )}
 
-      {/* Import section */}
       <Text style={[styles.sectionLabel, { color: theme.textSecondary, fontFamily: "Inter_600SemiBold", marginTop: 28 }]}>
         IMPORTERA NY MODUL
       </Text>
 
-      {/* Format reference – collapsible */}
       <Pressable
         onPress={() => setShowFormat((v) => !v)}
         style={[styles.formatToggle, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
