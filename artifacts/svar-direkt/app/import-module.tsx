@@ -1,5 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import * as DocumentPicker from "expo-document-picker";
+import * as FileSystem from "expo-file-system";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -124,11 +125,14 @@ export default function ImportModuleScreen() {
 
       let text: string;
       try {
-        const response = await fetch(file.uri);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        text = await response.text();
+        const cacheUri = `${FileSystem.cacheDirectory}import_${Date.now()}.json`;
+        await FileSystem.copyAsync({ from: file.uri, to: cacheUri });
+        text = await FileSystem.readAsStringAsync(cacheUri, {
+          encoding: FileSystem.EncodingType.UTF8,
+        });
+        FileSystem.deleteAsync(cacheUri, { idempotent: true }).catch(() => {});
       } catch {
-        Alert.alert("Läsfel", "Kunde inte läsa filen. Filen kan vara skadad eller otillgänglig.");
+        Alert.alert("Läsfel", "Kunde inte läsa filen. Kontrollera att filen inte är skadad.");
         setLoading(false);
         return;
       }
