@@ -28,85 +28,6 @@ interface Guide {
   sizeBytes: number;
 }
 
-// Lazily compute base directory so native module is ready
-function getGuidesDir(): string | null {
-  try {
-    const FS = require("expo-file-system/legacy");
-    const base: string | null = FS.documentDirectory;
-    if (!base) return null;
-    return `${base}guides/`;
-  } catch {
-    return null;
-  }
-}
-
-async function ensureGuidesDir(): Promise<string> {
-  const dir = getGuidesDir();
-  if (!dir) throw new Error("Appens lagringskatalog är inte tillgänglig.");
-  try {
-    const FS = require("expo-file-system/legacy");
-    const info = await FS.getInfoAsync(dir);
-    if (!info.exists) {
-      await FS.makeDirectoryAsync(dir, { intermediates: true });
-    }
-  } catch (e: any) {
-    throw new Error(`Kunde inte skapa lagringskatalog: ${e?.message ?? e}`);
-  }
-  return dir;
-}
-
-async function copyFileToGuides(srcUri: string, fileName: string): Promise<{ destUri: string; sizeBytes: number }> {
-  const dir = await ensureGuidesDir();
-  const safeName = fileName.replace(/[^a-zA-Z0-9._\-åäöÅÄÖ ]/g, "_");
-  const destUri = `${dir}${Date.now()}_${safeName}`;
-
-  const FS = require("expo-file-system/legacy");
-  const errors: string[] = [];
-
-  // Strategy 1: moveAsync (works when srcUri is file:// in our cache)
-  try {
-    await FS.moveAsync({ from: srcUri, to: destUri });
-    const info = await FS.getInfoAsync(destUri);
-    return { destUri, sizeBytes: (info as any).size ?? 0 };
-  } catch (e: any) {
-    errors.push(`moveAsync: ${e?.message ?? e}`);
-  }
-
-  // Strategy 2: copyAsync
-  try {
-    await FS.copyAsync({ from: srcUri, to: destUri });
-    const info = await FS.getInfoAsync(destUri);
-    return { destUri, sizeBytes: (info as any).size ?? 0 };
-  } catch (e: any) {
-    errors.push(`copyAsync: ${e?.message ?? e}`);
-  }
-
-  // Strategy 3: fetch + write binary
-  try {
-    const resp = await fetch(srcUri);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const blob = await resp.blob();
-    const sizeBytes = blob.size;
-    // Use FileSystem write from blob via base64
-    const reader = new FileReader();
-    const base64: string = await new Promise((resolve, reject) => {
-      reader.onload = () => {
-        const result = reader.result as string;
-        // result is data:...;base64,...
-        const b64 = result.split(",")[1] ?? "";
-        resolve(b64);
-      };
-      reader.onerror = () => reject(new Error("FileReader misslyckades"));
-      reader.readAsDataURL(blob);
-    });
-    await FS.writeAsStringAsync(destUri, base64, { encoding: FS.EncodingType.Base64 });
-    return { destUri, sizeBytes };
-  } catch (e: any) {
-    errors.push(`fetch+write: ${e?.message ?? e}`);
-  }
-
-  throw new Error(`Kunde inte kopiera filen:\n${errors.join("\n")}`);
-}
 
 function formatBytes(b: number) {
   if (b < 1024) return `${b} B`;
@@ -190,23 +111,7 @@ export default function GuidesScreen() {
     try {
       const raw = await AsyncStorage.getItem(GUIDES_KEY);
       if (!raw) return;
-      const parsed: Guide[] = JSON.parse(raw);
-      // Verify each file still exists
-      const FS = require("expo-file-system/legacy");
-      const valid: Guide[] = [];
-      for (const g of parsed) {
-        try {
-          const info = await FS.getInfoAsync(g.fileUri);
-          if (info.exists) valid.push(g);
-        } catch {
-          // If we can't check, keep it (optimistic)
-          valid.push(g);
-        }
-      }
-      setGuides(valid);
-      if (valid.length !== parsed.length) {
-        await AsyncStorage.setItem(GUIDES_KEY, JSON.stringify(valid));
-      }
+      setGuides(JSON.parse(raw));
     } catch {}
   }, []);
 
@@ -235,27 +140,17 @@ export default function GuidesScreen() {
       const file = picked.assets[0];
       const fileName = file.name ?? `guide_${Date.now()}.pdf`;
 
-      try {
-        const { destUri, sizeBytes } = await copyFileToGuides(file.uri, fileName);
+      const newGuide: Guide = {
+        id: Date.now().toString(),
+        name: fileName.replace(/\.[^.]+$/, ""),
+        fileUri: file.uri,
+        addedAt: new Date().toISOString(),
+        sizeBytes: file.size ?? 0,
+      };
 
-        const newGuide: Guide = {
-          id: Date.now().toString(),
-          name: fileName.replace(/\.[^.]+$/, ""), // strip extension for display
-          fileUri: destUri,
-          addedAt: new Date().toISOString(),
-          sizeBytes,
-        };
-
-        const updated = [newGuide, ...guides];
-        await saveGuides(updated);
-        await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        Alert.alert("PDF sparad ✓", `"${newGuide.name}" har sparats i appen.`);
-      } catch (e: any) {
-        Alert.alert(
-          "PDF kunde inte sparas lokalt",
-          `Filen valdes men kunde inte sparas:\n\n${e?.message ?? "Okänt fel"}\n\nKontrollera att telefonen har ledigt lagringsutrymme.`
-        );
-      }
+      await saveGuides([newGuide, ...guides]);
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      Alert.alert("PDF sparad ✓", `"${newGuide.name}" har sparats i appen.`);
     } catch (e: any) {
       if (!String(e?.message).includes("cancel")) {
         Alert.alert("Fel", `Oväntat fel vid filval:\n${e?.message ?? e}`);
@@ -292,10 +187,6 @@ export default function GuidesScreen() {
           text: "Ta bort",
           style: "destructive",
           onPress: async () => {
-            try {
-              const FS = require("expo-file-system/legacy");
-              await FS.deleteAsync(guide.fileUri, { idempotent: true });
-            } catch {}
             const updated = guides.filter((g) => g.id !== guide.id);
             await saveGuides(updated);
             await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
