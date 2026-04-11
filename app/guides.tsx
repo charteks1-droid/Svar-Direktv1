@@ -1,11 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 import * as DocumentPicker from "expo-document-picker";
 import * as Haptics from "expo-haptics";
-import * as Sharing from "expo-sharing";
 import { router } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   Alert,
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -17,6 +17,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Colors } from "@/constants/colors";
+import { APP_CONFIG } from "@/constants/config";
 
 const GUIDES_KEY = "guides_v1";
 
@@ -140,12 +141,28 @@ export default function GuidesScreen() {
       const file = picked.assets[0];
       const fileName = file.name ?? `guide_${Date.now()}.pdf`;
 
+      // Upload to server
+      const formData = new FormData();
+      formData.append("file", { uri: file.uri, type: "application/pdf", name: fileName } as any);
+
+      const serverBase = APP_CONFIG.apiBaseUrl.replace(/\/api\/?$/, "");
+      const uploadUrl = `${APP_CONFIG.apiBaseUrl}/uploads/pdf`;
+
+      const resp = await fetch(uploadUrl, { method: "POST", body: formData });
+      if (!resp.ok) {
+        const errText = await resp.text().catch(() => resp.status.toString());
+        throw new Error(`Uppladdning misslyckades (${resp.status}): ${errText}`);
+      }
+
+      const json = await resp.json();
+      const publicUrl = `${serverBase}${json.url}`;
+
       const newGuide: Guide = {
         id: Date.now().toString(),
         name: fileName.replace(/\.[^.]+$/, ""),
-        fileUri: file.uri,
+        fileUri: publicUrl,
         addedAt: new Date().toISOString(),
-        sizeBytes: file.size ?? 0,
+        sizeBytes: file.size ?? json.size ?? 0,
       };
 
       await saveGuides([newGuide, ...guides]);
@@ -153,7 +170,7 @@ export default function GuidesScreen() {
       Alert.alert("PDF sparad ✓", `"${newGuide.name}" har sparats i appen.`);
     } catch (e: any) {
       if (!String(e?.message).includes("cancel")) {
-        Alert.alert("Fel", `Oväntat fel vid filval:\n${e?.message ?? e}`);
+        Alert.alert("Fel vid uppladdning", `${e?.message ?? e}`);
       }
     } finally {
       setLoading(false);
@@ -162,16 +179,12 @@ export default function GuidesScreen() {
 
   const handleOpen = async (guide: Guide) => {
     try {
-      const available = await Sharing.isAvailableAsync();
-      if (!available) {
-        Alert.alert("Kan inte öppna", "Din telefon stöder inte delning av filer.");
+      const supported = await Linking.canOpenURL(guide.fileUri);
+      if (!supported) {
+        Alert.alert("Kan inte öppna", `Ingen app hittades för att öppna:\n${guide.fileUri}`);
         return;
       }
-      await Sharing.shareAsync(guide.fileUri, {
-        mimeType: "application/pdf",
-        dialogTitle: guide.name,
-        UTI: "com.adobe.pdf",
-      });
+      await Linking.openURL(guide.fileUri);
     } catch (e: any) {
       Alert.alert("Kunde inte öppna PDF", `Fel: ${e?.message ?? e}`);
     }
