@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import pinoHttp from "pino-http";
 import router from "./routes/index.js";
+import { UPLOADS_DIR } from "./routes/uploads.js";
 import { logger } from "./lib/logger.js";
 import { env } from "./lib/env.js";
 import { globalRateLimit } from "./middleware/rateLimit.js";
@@ -52,6 +53,8 @@ app.use(
 
 app.use(express.json({ limit: "32kb" }));
 app.use(express.urlencoded({ extended: true, limit: "32kb" }));
+
+app.use("/uploads", express.static(UPLOADS_DIR));
 
 app.use(globalRateLimit);
 
