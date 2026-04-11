@@ -58,6 +58,10 @@ function RootLayoutNav() {
         name="import-module"
         options={{ title: "Lägg till modul", headerShown: false }}
       />
+      <Stack.Screen
+        name="guides"
+        options={{ title: "PDF Guider", headerShown: false }}
+      />
     </Stack>
   );
 }

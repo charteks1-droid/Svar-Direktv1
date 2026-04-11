@@ -358,6 +358,13 @@ export default function HomeScreen() {
           accent="#fd79a8"
         />
         <MenuItem
+          icon={<Feather name="book-open" size={22} color="#e17055" />}
+          title="PDF Guider"
+          subtitle="Spara och öppna PDF-guider offline"
+          onPress={() => router.push("/guides")}
+          accent="#e17055"
+        />
+        <MenuItem
           icon={<Feather name="package" size={22} color="#00b894" />}
           title="Lägg till modul"
           subtitle="Importera data-paket (JSON)"
