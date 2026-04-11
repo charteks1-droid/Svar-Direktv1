@@ -19,6 +19,256 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
+export const SKATTEVERKET_TEMPLATES: Template[] = [
+  {
+    id: "skat-001",
+    title: "Felaktig skatt att betala",
+    category: "Skatteverket",
+    description: "Bestrid ett felaktigt skattekrav från Skatteverket",
+    tags: ["felaktig skatt", "skattekrav", "bestrid"],
+    content: `Hej,
+
+Jag har mottagit ett krav på betalning av [BELOPP] kr avseende inkomstår [ÅR]. Jag anser att beloppet är felaktigt beräknat.
+
+Mitt personnummer är [PERSONNUMMER]. Jag ber Skatteverket att se över och korrigera beräkningen snarast.
+
+Bifogade handlingar styrker min ståndpunkt. Jag är tillgänglig för kontakt på [TELEFON/E-POST].
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-002",
+    title: "Ingen inkomst men skatt registrerad",
+    category: "Skatteverket",
+    description: "Anmäl att skatt registrerats trots noll inkomst",
+    tags: ["ingen inkomst", "skatteregistrering", "fel"],
+    content: `Hej,
+
+Under inkomstår [ÅR] hade jag ingen beskattningsbar inkomst, men jag har fått besked om att skatt registrerats på mitt konto.
+
+Mitt personnummer är [PERSONNUMMER]. Detta tycks bero på en felaktig registrering. Jag ber Skatteverket att utreda och rätta ärendet.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-003",
+    title: "Ansökan om anstånd",
+    category: "Skatteverket",
+    description: "Ansök om anstånd med skatteinbetalning",
+    tags: ["anstånd", "betalning", "skattebetalning"],
+    content: `Hej,
+
+Jag ansöker om anstånd med betalning av skatt om [BELOPP] kr som förfaller [DATUM].
+
+Skälet är [BESKRIV ORSAKEN, T.EX. TILLFÄLLIGA EKONOMISKA SVÅRIGHETER]. Mitt personnummer är [PERSONNUMMER].
+
+Jag ber om bekräftelse och svar snarast möjligt.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-004",
+    title: "Avbetalningsplan",
+    category: "Skatteverket",
+    description: "Begär en avbetalningsplan för din skatteskuld",
+    tags: ["avbetalning", "skuld", "plan"],
+    content: `Hej,
+
+Jag har en skatteskuld om [BELOPP] kr och önskar upprätta en avbetalningsplan.
+
+Mitt personnummer är [PERSONNUMMER]. Jag kan betala [BELOPP/MÅNAD] kr per månad med start [STARTDATUM].
+
+Jag ber om bekräftelse och eventuella villkor för avbetalningsplanen.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-005",
+    title: "Försenad deklaration",
+    category: "Skatteverket",
+    description: "Förklara och lämna in en försenad deklaration",
+    tags: ["försenad", "deklaration", "förseningsavgift"],
+    content: `Hej,
+
+Jag kunde inte lämna in min deklaration i tid för inkomstår [ÅR] på grund av [ORSAK, T.EX. SJUKDOM, TEKNISKA PROBLEM].
+
+Mitt personnummer är [PERSONNUMMER]. Deklarationen bifogas nu. Jag ber om att eventuell förseningsavgift tas bort med hänsyn till omständigheterna.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-006",
+    title: "Rättelse av deklaration",
+    category: "Skatteverket",
+    description: "Rätta uppgifter i en redan inlämnad deklaration",
+    tags: ["rättelse", "deklaration", "korrigering"],
+    content: `Hej,
+
+Jag önskar rätta min inkomstdeklaration för inkomstår [ÅR].
+
+Mitt personnummer är [PERSONNUMMER]. Det som ska rättas är: [BESKRIV VAD SOM ÄR FEL, T.EX. UTEGLÖMD INKOMST ELLER FEL AVDRAG]. Korrekta uppgifter bifogas.
+
+Jag ber om bekräftelse när rättelsen är registrerad.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-007",
+    title: "Inkomst från utlandet",
+    category: "Skatteverket",
+    description: "Fråga om beskattning av utländsk inkomst",
+    tags: ["utlandet", "utländsk inkomst", "dubbelbeskattning"],
+    content: `Hej,
+
+Under inkomstår [ÅR] hade jag inkomst från [LAND] om [BELOPP] kr. Jag vill säkerställa att dubbelbeskattningsavtalet mellan Sverige och [LAND] tillämpas korrekt.
+
+Mitt personnummer är [PERSONNUMMER]. Bifogat finns inkomstintyg från utlandet.
+
+Jag ber om besked om hur inkomsten ska redovisas och beskattas.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-008",
+    title: "Fel från arbetsgivare",
+    category: "Skatteverket",
+    description: "Rätta felaktiga löneuppgifter från arbetsgivare",
+    tags: ["arbetsgivare", "lön", "fel uppgifter"],
+    content: `Hej,
+
+Min arbetsgivare [ARBETSGIVARE] har rapporterat felaktiga uppgifter om min lön för inkomstår [ÅR].
+
+Mitt personnummer är [PERSONNUMMER]. Det korrekta beloppet är [KORREKT BELOPP] kr. Bifogat finns löneintyg som styrker detta.
+
+Jag ber Skatteverket att korrigera uppgifterna i enlighet med intyget.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-009",
+    title: "Svar på begäran",
+    category: "Skatteverket",
+    description: "Svara formellt på Skatteverkets begäran om uppgifter",
+    tags: ["svar", "begäran", "uppgifter"],
+    content: `Hej,
+
+Med anledning av er begäran daterad [DATUM] rörande [ÄRENDETS RUBRIK] lämnar jag härmed följande svar:
+
+[BESKRIV DITT SVAR/FÖRKLARING]
+
+Mitt personnummer är [PERSONNUMMER]. Bifogade handlingar styrker ovanstående.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-010",
+    title: "Kan inte betala skatt",
+    category: "Skatteverket",
+    description: "Meddela Skatteverket om betalningssvårigheter",
+    tags: ["betalningssvårigheter", "skatt", "ekonomi"],
+    content: `Hej,
+
+Jag har mottagit ett betalningskrav på [BELOPP] kr med förfallodag [DATUM]. Jag befinner mig för tillfället i en svår ekonomisk situation och kan inte betala hela beloppet i tid.
+
+Mitt personnummer är [PERSONNUMMER]. Jag ber om kontakt för att diskutera en lösning, exempelvis en avbetalningsplan eller tillfälligt anstånd.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-011",
+    title: "Ändring av uppgifter",
+    category: "Skatteverket",
+    description: "Begär ändring av personuppgifter i Skatteverkets register",
+    tags: ["ändring", "uppgifter", "personuppgifter"],
+    content: `Hej,
+
+Jag önskar ändra följande uppgifter i Skatteverkets register:
+
+[BESKRIV VAD SOM SKA ÄNDRAS, T.EX. ADRESS, KONTAKTUPPGIFTER, CIVILSTÅND]
+
+Mitt personnummer är [PERSONNUMMER]. Ändringen gäller från [DATUM]. Bifogade handlingar styrker ändringen.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-012",
+    title: "Saknad återbäring",
+    category: "Skatteverket",
+    description: "Efterfråga en utebliven skatteåterbäring",
+    tags: ["återbäring", "skatterestitution", "utbetalning"],
+    content: `Hej,
+
+Enligt min deklaration för inkomstår [ÅR] ska jag erhålla en återbäring om [BELOPP] kr. Trots att det gått [ANTAL] veckor har beloppet ännu inte betalats ut.
+
+Mitt personnummer är [PERSONNUMMER]. Jag ber om besked om när utbetalningen sker och till vilket konto.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-013",
+    title: "Företag – fel skatt",
+    category: "Skatteverket",
+    description: "Bestrid ett felaktigt skattekrav för företag",
+    tags: ["företag", "fel skatt", "organisationsnummer"],
+    content: `Hej,
+
+Mitt företag [FÖRETAGSNAMN], organisationsnummer [ORG.NR], har mottagit ett skattekrav som vi anser är felaktigt beräknat.
+
+Kravet avser [BESKRIV KRAVET] om [BELOPP] kr för perioden [PERIOD]. Vi bestrider beloppet och ber om en genomgång av ärendet.
+
+Bifogat finns vår bokföring och relevanta underlag.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[BEFATTNING], [FÖRETAGSNAMN]
+[DATUM]`,
+  },
+  {
+    id: "skat-014",
+    title: "Överklagande av beslut",
+    category: "Skatteverket",
+    description: "Överklaga ett beslut från Skatteverket formellt",
+    tags: ["överklagande", "beslut", "omprövning"],
+    content: `Hej,
+
+Jag önskar överklaga Skatteverkets beslut daterat [DATUM] med diarienummer [DIARIENUMMER].
+
+Mitt personnummer är [PERSONNUMMER]. Grunden för mitt överklagande är:
+
+[BESKRIV VARFÖR DU ANSER ATT BESLUTET ÄR FEL]
+
+Jag begär att ärendet omprövas. Bifogade handlingar styrker min ståndpunkt.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+];
+
 export const BOVERKET_TEMPLATES: Template[] = [
   {
     id: "bov-001",

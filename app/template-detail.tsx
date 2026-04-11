@@ -18,7 +18,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
-import { BOVERKET_TEMPLATES } from "@/data/situations";
+import { BOVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
 
 export default function TemplateDetailScreen() {
   const colorScheme = useColorScheme();
@@ -38,6 +38,8 @@ export default function TemplateDetailScreen() {
             tags: [] as string[],
           }
         : null
+      : source === "skatteverket"
+      ? SKATTEVERKET_TEMPLATES.find((t) => t.id === id) ?? null
       : BOVERKET_TEMPLATES.find((t) => t.id === id) ?? null;
 
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;

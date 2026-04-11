@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
-import { BOVERKET_TEMPLATES } from "@/data/situations";
+import { BOVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
 
 interface MenuItemProps {
   icon: React.ReactNode;
@@ -162,6 +162,15 @@ export default function HomeScreen() {
     });
   };
 
+  const handleSkatteverketTemplate = async (template: (typeof SKATTEVERKET_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "skatteverket" },
+    });
+  };
+
   return (
     <ScrollView
       style={[styles.container, { backgroundColor: theme.background }]}
@@ -227,6 +236,43 @@ export default function HomeScreen() {
           >
             <View style={[styles.boverketIconWrap, { backgroundColor: Colors.primary + "15" }]}>
               <Feather name="file-text" size={22} color={Colors.primary} />
+            </View>
+            <Text
+              style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
+              numberOfLines={2}
+            >
+              {template.title}
+            </Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              {template.category}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Skatteverket templates */}
+      <SectionHeader title="SKATTEVERKETS MALLAR" badge="14 mallar" />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.boverketRow}
+      >
+        {SKATTEVERKET_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleSkatteverketTemplate(template)}
+            style={({ pressed }) => [
+              styles.boverketCard,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.cardBorder,
+                opacity: pressed ? 0.85 : 1,
+                transform: [{ scale: pressed ? 0.97 : 1 }],
+              },
+            ]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#00b894" + "15" }]}>
+              <Feather name="briefcase" size={22} color="#00b894" />
             </View>
             <Text
               style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
