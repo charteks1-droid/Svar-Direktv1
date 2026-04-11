@@ -24,7 +24,10 @@
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#0a7ea4"
       },
-      "permissions": []
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/images/icon.png"

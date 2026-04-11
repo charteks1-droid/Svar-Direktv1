@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Svar Direkt",
-    "slug": "svar-direkt",
+    "slug": "svar-direkt-new",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.svar-direkt.app"
+      "bundleIdentifier": "com.svardirekt.app"
     },
     "android": {
       "package": "com.svardirekt.app",
@@ -24,7 +24,10 @@
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#0a7ea4"
       },
-      "permissions": []
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/images/icon.png"
@@ -37,15 +40,17 @@
         }
       ],
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      "./plugins/withJava17"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
     "extra": {
+      "apiBaseUrl": "https://c11fb1aa-c8a5-494a-82d5-6e40e01b85cc-00-151780krlaqfm.kirk.replit.dev/api",
       "eas": {
-        "projectId": "YOUR_EAS_PROJECT_ID"
+        "projectId": "0e221c32-280f-44c7-a998-e7aa0a722e0c"
       }
     }
   }
