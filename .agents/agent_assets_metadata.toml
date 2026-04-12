@@ -77,3 +77,9 @@ id = "JeuxrlymGXZ9RaTZA7Lzm"
 uri = "file://artifacts/uploads/svar-direkt-website-v6.zip"
 type = "unspecified"
 title = "Svar Direkt – strona v6 (z blogiem + pełne SEO)"
+
+[[outputs]]
+id = "o_DCPnvkI-wCy9s1EmqbC"
+uri = "file://artifacts/uploads/svar-direkt-website-v7.zip"
+type = "unspecified"
+title = "Svar Direkt – v7 (svardirekt.site + og-image + blog)"
