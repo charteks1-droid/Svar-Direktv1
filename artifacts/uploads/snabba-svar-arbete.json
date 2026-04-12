@@ -1,6 +1,7 @@
 {
-  "category": "Arbete",
-  "items": [
+  "version": 1,
+  "name": "Snabba svar – Arbete",
+  "quickResponses": [
     { "title": "Blir sen idag", "text": "Jag blir tyvärr sen idag. Är på väg." },
     { "title": "Några minuter sen", "text": "Blir några minuter sen, kommer snart." },
     { "title": "Fastnade i trafiken", "text": "Fastnade i trafiken, är snart där." },
