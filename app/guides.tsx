@@ -1,11 +1,13 @@
 import { Feather } from "@expo/vector-icons";
 import * as DocumentPicker from "expo-document-picker";
 import * as Haptics from "expo-haptics";
+import * as Sharing from "expo-sharing";
 import { router } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   Linking,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -19,16 +21,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Colors } from "@/constants/colors";
 import { APP_CONFIG } from "@/constants/config";
 
-const GUIDES_KEY = "guides_v1";
+const GUIDES_KEY = "guides_v2";
 
 interface Guide {
   id: string;
   name: string;
-  fileUri: string;
+  localUri: string;
+  serverUrl: string;
   addedAt: string;
   sizeBytes: number;
 }
-
 
 function formatBytes(b: number) {
   if (b < 1024) return `${b} B`;
@@ -55,6 +57,8 @@ function GuideCard({
   onDelete: () => void;
   theme: (typeof Colors)["light"];
 }) {
+  const hasServer = !!guide.serverUrl;
+
   return (
     <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
       <View style={[styles.cardIcon, { backgroundColor: "#e17055" + "18" }]}>
@@ -67,11 +71,26 @@ function GuideCard({
         >
           {guide.name}
         </Text>
-        <Text style={[styles.cardMeta, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-          {guide.sizeBytes > 0 ? formatBytes(guide.sizeBytes) : "PDF"}
-          {"  ·  "}
-          {formatDate(guide.addedAt)}
-        </Text>
+        <View style={styles.cardMetaRow}>
+          <Text style={[styles.cardMeta, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+            {guide.sizeBytes > 0 ? formatBytes(guide.sizeBytes) : "PDF"}
+            {"  ·  "}
+            {formatDate(guide.addedAt)}
+          </Text>
+          <View style={[
+            styles.statusDot,
+            { backgroundColor: hasServer ? "#00b894" + "25" : "#fdcb6e" + "25" },
+          ]}>
+            <Feather
+              name={hasServer ? "cloud" : "smartphone"}
+              size={10}
+              color={hasServer ? "#00b894" : "#fdcb6e"}
+            />
+            <Text style={[styles.statusText, { color: hasServer ? "#00b894" : "#fdcb6e", fontFamily: "Inter_500Medium" }]}>
+              {hasServer ? "Synkad" : "Lokal"}
+            </Text>
+          </View>
+        </View>
       </View>
       <View style={styles.cardActions}>
         <Pressable
@@ -99,6 +118,28 @@ function GuideCard({
   );
 }
 
+async function uploadToServer(localUri: string, fileName: string): Promise<string> {
+  const serverBase = APP_CONFIG.apiBaseUrl.replace(/\/api\/?$/, "");
+  const uploadUrl = `${APP_CONFIG.apiBaseUrl}/uploads/pdf`;
+
+  const formData = new FormData();
+  formData.append("file", { uri: localUri, type: "application/pdf", name: fileName } as any);
+
+  const resp = await fetch(uploadUrl, {
+    method: "POST",
+    body: formData,
+    headers: { Accept: "application/json" },
+  });
+
+  if (!resp.ok) {
+    const text = await resp.text().catch(() => resp.status.toString());
+    throw new Error(`HTTP ${resp.status}: ${text}`);
+  }
+
+  const json = await resp.json();
+  return `${serverBase}${json.url}`;
+}
+
 export default function GuidesScreen() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
@@ -107,12 +148,30 @@ export default function GuidesScreen() {
 
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loading, setLoading] = useState(false);
+  const [uploadingId, setUploadingId] = useState<string | null>(null);
 
   const loadGuides = useCallback(async () => {
     try {
       const raw = await AsyncStorage.getItem(GUIDES_KEY);
-      if (!raw) return;
-      setGuides(JSON.parse(raw));
+      if (raw) {
+        setGuides(JSON.parse(raw));
+        return;
+      }
+      const oldRaw = await AsyncStorage.getItem("guides_v1");
+      if (oldRaw) {
+        const oldGuides: Array<{ id: string; name: string; fileUri: string; addedAt: string; sizeBytes: number }> =
+          JSON.parse(oldRaw);
+        const migrated: Guide[] = oldGuides.map((g) => ({
+          id: g.id,
+          name: g.name,
+          localUri: "",
+          serverUrl: g.fileUri ?? "",
+          addedAt: g.addedAt,
+          sizeBytes: g.sizeBytes ?? 0,
+        }));
+        await AsyncStorage.setItem(GUIDES_KEY, JSON.stringify(migrated));
+        setGuides(migrated);
+      }
     } catch {}
   }, []);
 
@@ -140,37 +199,37 @@ export default function GuidesScreen() {
       setLoading(true);
       const file = picked.assets[0];
       const fileName = file.name ?? `guide_${Date.now()}.pdf`;
-
-      // Upload to server
-      const formData = new FormData();
-      formData.append("file", { uri: file.uri, type: "application/pdf", name: fileName } as any);
-
-      const serverBase = APP_CONFIG.apiBaseUrl.replace(/\/api\/?$/, "");
-      const uploadUrl = `${APP_CONFIG.apiBaseUrl}/uploads/pdf`;
-
-      const resp = await fetch(uploadUrl, { method: "POST", body: formData });
-      if (!resp.ok) {
-        const errText = await resp.text().catch(() => resp.status.toString());
-        throw new Error(`Uppladdning misslyckades (${resp.status}): ${errText}`);
-      }
-
-      const json = await resp.json();
-      const publicUrl = `${serverBase}${json.url}`;
+      const localUri = file.uri;
 
       const newGuide: Guide = {
         id: Date.now().toString(),
         name: fileName.replace(/\.[^.]+$/, ""),
-        fileUri: publicUrl,
+        localUri,
+        serverUrl: "",
         addedAt: new Date().toISOString(),
-        sizeBytes: file.size ?? json.size ?? 0,
+        sizeBytes: file.size ?? 0,
       };
 
-      await saveGuides([newGuide, ...guides]);
+      const updated = [newGuide, ...guides];
+      await saveGuides(updated);
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      Alert.alert("PDF sparad ✓", `"${newGuide.name}" har sparats i appen.`);
+      Alert.alert("PDF importerad ✓", `"${newGuide.name}" har sparats.`);
+
+      setUploadingId(newGuide.id);
+      try {
+        const serverUrl = await uploadToServer(localUri, fileName);
+        const withServer = updated.map((g) =>
+          g.id === newGuide.id ? { ...g, serverUrl } : g
+        );
+        await saveGuides(withServer);
+      } catch {
+      } finally {
+        setUploadingId(null);
+      }
     } catch (e: any) {
-      if (!String(e?.message).includes("cancel")) {
-        Alert.alert("Fel vid uppladdning", `${e?.message ?? e}`);
+      const msg = String(e?.message ?? e);
+      if (!msg.toLowerCase().includes("cancel") && !msg.includes("aborted")) {
+        Alert.alert("Fel vid import", msg);
       }
     } finally {
       setLoading(false);
@@ -179,21 +238,50 @@ export default function GuidesScreen() {
 
   const handleOpen = async (guide: Guide) => {
     try {
-      const supported = await Linking.canOpenURL(guide.fileUri);
-      if (!supported) {
-        Alert.alert("Kan inte öppna", `Ingen app hittades för att öppna:\n${guide.fileUri}`);
-        return;
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+
+      if (guide.serverUrl) {
+        const ok = await Linking.canOpenURL(guide.serverUrl).catch(() => false);
+        if (ok) {
+          await Linking.openURL(guide.serverUrl);
+          return;
+        }
       }
-      await Linking.openURL(guide.fileUri);
+
+      if (guide.localUri) {
+        const canShare = await Sharing.isAvailableAsync();
+        if (canShare) {
+          await Sharing.shareAsync(guide.localUri, {
+            mimeType: "application/pdf",
+            dialogTitle: guide.name,
+            UTI: "com.adobe.pdf",
+          });
+          return;
+        }
+
+        const ok = await Linking.canOpenURL(guide.localUri).catch(() => false);
+        if (ok) {
+          await Linking.openURL(guide.localUri);
+          return;
+        }
+      }
+
+      Alert.alert(
+        "Kan inte öppna PDF",
+        "Ingen PDF-visare hittades på enheten. Installera en PDF-app och försök igen.",
+      );
     } catch (e: any) {
-      Alert.alert("Kunde inte öppna PDF", `Fel: ${e?.message ?? e}`);
+      const msg = String(e?.message ?? e);
+      if (!msg.toLowerCase().includes("cancel")) {
+        Alert.alert("Fel vid öppning", msg);
+      }
     }
   };
 
   const handleDelete = (guide: Guide) => {
     Alert.alert(
       "Ta bort guide",
-      `Vill du ta bort "${guide.name}" från appen?\n\nOriginalfilen på telefonen påverkas inte.`,
+      `Vill du ta bort "${guide.name}"?\n\nOriginalfilen på telefonen påverkas inte.`,
       [
         { text: "Avbryt", style: "cancel" },
         {
@@ -209,12 +297,14 @@ export default function GuidesScreen() {
     );
   };
 
+  const topPad = Platform.OS === "web" ? 67 : insets.top;
+
   return (
     <ScrollView
       style={[styles.container, { backgroundColor: theme.background }]}
       contentContainerStyle={[
         styles.content,
-        { paddingTop: insets.top + 16, paddingBottom: insets.bottom + 48 },
+        { paddingTop: topPad + 16, paddingBottom: insets.bottom + 48 },
       ]}
       showsVerticalScrollIndicator={false}
     >
@@ -233,7 +323,7 @@ export default function GuidesScreen() {
           PDF-guider
         </Text>
         <Text style={[styles.subtitle, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
-          Spara PDF-guider lokalt i appen för snabb åtkomst, även utan internet.
+          Importera PDF-filer från telefonen eller internet. Lokala filer öppnas direkt utan internet.
         </Text>
       </View>
 
@@ -251,13 +341,19 @@ export default function GuidesScreen() {
       ) : (
         <View style={styles.guideList}>
           {guides.map((g) => (
-            <GuideCard
-              key={g.id}
-              guide={g}
-              onOpen={() => handleOpen(g)}
-              onDelete={() => handleDelete(g)}
-              theme={theme}
-            />
+            <View key={g.id}>
+              <GuideCard
+                guide={g}
+                onOpen={() => handleOpen(g)}
+                onDelete={() => handleDelete(g)}
+                theme={theme}
+              />
+              {uploadingId === g.id && (
+                <Text style={[styles.uploadingText, { color: theme.textTertiary, fontFamily: "Inter_400Regular" }]}>
+                  Synkroniserar till moln…
+                </Text>
+              )}
+            </View>
           ))}
         </View>
       )}
@@ -276,12 +372,12 @@ export default function GuidesScreen() {
       >
         <Feather name={loading ? "loader" : "upload"} size={20} color="#fff" />
         <Text style={[styles.importBtnText, { fontFamily: "Inter_600SemiBold" }]}>
-          {loading ? "Sparar…" : "Importera PDF"}
+          {loading ? "Importerar…" : "Importera PDF"}
         </Text>
       </Pressable>
 
       <Text style={[styles.hint, { color: theme.textTertiary, fontFamily: "Inter_400Regular" }]}>
-        PDF-filer sparas lokalt i appen. Välj PDF-filer från din telefon.
+        Välj PDF-filer från telefonen. Lokala filer fungerar offline. Med internet synkroniseras de till molnet.
       </Text>
     </ScrollView>
   );
@@ -310,7 +406,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: { fontSize: 26, letterSpacing: -0.5 },
-  subtitle: { fontSize: 14, lineHeight: 20, textAlign: "center", maxWidth: 280 },
+  subtitle: { fontSize: 14, lineHeight: 20, textAlign: "center", maxWidth: 300 },
 
   sectionLabel: { fontSize: 11, letterSpacing: 0.8, marginBottom: 10 },
 
@@ -341,7 +437,17 @@ const styles = StyleSheet.create({
   },
   cardInfo: { flex: 1, gap: 4 },
   cardName: { fontSize: 14, lineHeight: 19 },
+  cardMetaRow: { flexDirection: "row", alignItems: "center", gap: 8, flexWrap: "wrap" },
   cardMeta: { fontSize: 12 },
+  statusDot: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 3,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  statusText: { fontSize: 10 },
   cardActions: { flexDirection: "row", gap: 8 },
   actionBtn: {
     width: 34,
@@ -349,6 +455,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  uploadingText: {
+    fontSize: 11,
+    marginTop: 4,
+    marginLeft: 14,
   },
 
   importBtn: {
