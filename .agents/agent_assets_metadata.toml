@@ -35,3 +35,9 @@ id = "jiQnbnTjnFo8xUb2sdc2-"
 uri = "file://attached_assets/generated_images/svar-direkt-product-cover-3x4.png"
 type = "image"
 title = "Svar Direkt — Product Cover (3:4, Payhip)"
+
+[[outputs]]
+id = "XKtBmwA_PEkn7A6g4IQaC"
+uri = "file://artifacts/uploads/svar-direkt-website-v2.zip"
+type = "unspecified"
+title = "Svar Direkt – strona gotowa do wgrania na hosting (v2)"
