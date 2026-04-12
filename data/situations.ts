@@ -269,6 +269,547 @@ Med vänliga hälsningar,
   },
 ];
 
+export const FORSAKRINGSKASSAN_TEMPLATES: Template[] = [
+  {
+    id: "fk-001",
+    title: "Felaktig utbetalning",
+    category: "Försäkringskassan",
+    description: "Bestrid en felaktigt beräknad utbetalning från Försäkringskassan",
+    tags: ["felaktig utbetalning", "ersättning", "bestrid"],
+    content: `Hej,
+
+Jag har mottagit ett beslut om utbetalning av [ERSÄTTNINGSTYP] om [BELOPP] kr avseende perioden [PERIOD]. Jag anser att beloppet är felaktigt beräknat.
+
+Mitt personnummer är [PERSONNUMMER]. Det korrekta beloppet borde vara [KORREKT BELOPP] kr, baserat på [FÖRKLARING].
+
+Jag ber Försäkringskassan att se över beslutet och korrigera utbetalningen. Bifogade handlingar styrker min ståndpunkt.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-002",
+    title: "Svar på återkrav",
+    category: "Försäkringskassan",
+    description: "Bestrida eller ge svar på ett återkrav från Försäkringskassan",
+    tags: ["återkrav", "skuld", "bestrid"],
+    content: `Hej,
+
+Jag har mottagit ett återkrav på [BELOPP] kr avseende [ERSÄTTNINGSTYP] för perioden [PERIOD].
+
+Mitt personnummer är [PERSONNUMMER]. Jag bestrider detta återkrav av följande skäl: [BESKRIV VARFÖR ÅTERKRAVET ÄR FEL ELLER ORIMLIGT].
+
+Jag ber om en fullständig förklaring av hur beloppet beräknats samt en möjlighet att yttra mig innan eventuellt beslut fattas.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-003",
+    title: "Sjukpenning – begäran om utredning",
+    category: "Försäkringskassan",
+    description: "Begäran om utredning vid uteblivet beslut om sjukpenning",
+    tags: ["sjukpenning", "sjukskrivning", "utredning"],
+    content: `Hej,
+
+Jag är sjukskriven sedan [DATUM] och har lämnat in läkarintyg som styrker min nedsatta arbetsförmåga. Trots detta har jag ännu inte fått något beslut om sjukpenning.
+
+Mitt personnummer är [PERSONNUMMER]. Handläggningsnummer (om känt): [ÄRENDENUMMER].
+
+Jag ber om besked om ärendets status och när ett beslut kan förväntas. Om kompletterande uppgifter krävs kontaktar ni mig gärna på [TELEFON/E-POST].
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-004",
+    title: "Ansökan om VAB",
+    category: "Försäkringskassan",
+    description: "Komplettering av ansökan om vård av sjukt barn (VAB)",
+    tags: ["vab", "barn", "vård av barn"],
+    content: `Hej,
+
+Jag ansöker om tillfällig föräldrapenning (VAB) för vård av mitt barn [BARNETS NAMN], personnummer [BARNETS PERSONNUMMER].
+
+Vårddagarna avser: [STARTDATUM] till [SLUTDATUM].
+
+Mitt personnummer är [PERSONNUMMER]. Barnet var sjukt och kunde inte vistas på förskola/skola under ovanstående period. Bifogat läkarintyg bifogas om tillämpligt.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-005",
+    title: "Bostadsbidrag – felaktig beräkning",
+    category: "Försäkringskassan",
+    description: "Bestrid felaktigt bostadsbidragsbeslut",
+    tags: ["bostadsbidrag", "beräkning", "fel"],
+    content: `Hej,
+
+Jag har mottagit beslut om bostadsbidrag som jag anser är felaktigt beräknat.
+
+Mitt personnummer är [PERSONNUMMER]. Beslutet daterat [DATUM] anger [BELOPP] kr per månad. Jag anser att rätt belopp är [KORREKT BELOPP] kr eftersom [FÖRKLARING, T.EX. INKOMSTEN BERÄKNATS FEL, HYRESKOSTNADEN ÄR FELAKTIG].
+
+Jag ber om en förnyad prövning och ber er kontakta mig om ytterligare underlag behövs.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-006",
+    title: "Aktivitetsstöd – utebliven utbetalning",
+    category: "Försäkringskassan",
+    description: "Påminnelse om uteblivet aktivitetsstöd",
+    tags: ["aktivitetsstöd", "utbetalning", "påminnelse"],
+    content: `Hej,
+
+Jag deltar i [PROGRAMNAMN] via Arbetsförmedlingen och har rätt till aktivitetsstöd. Utbetalningen för perioden [PERIOD] har ännu inte skett.
+
+Mitt personnummer är [PERSONNUMMER]. Jag har uppfyllt alla krav på närvaro och deltagande. Jag ber om besked om orsaken till uteblivet stöd och när utbetalning kan förväntas.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-007",
+    title: "Överklagande av avslagsbeslut",
+    category: "Försäkringskassan",
+    description: "Överklaga ett avslag på din ansökan hos Försäkringskassan",
+    tags: ["överklagande", "avslag", "omprövning"],
+    content: `Hej,
+
+Jag önskar överklaga Försäkringskassans beslut daterat [DATUM] med diarienummer [DIARIENUMMER], avseende avslag på min ansökan om [ERSÄTTNINGSTYP].
+
+Mitt personnummer är [PERSONNUMMER]. Grunden för mitt överklagande är:
+
+[BESKRIV VARFÖR DU ANSER ATT BESLUTET ÄR FEL]
+
+Jag begär att ärendet omprövas med beaktande av bifogade handlingar.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-008",
+    title: "Föräldrapenning – komplettering",
+    category: "Försäkringskassan",
+    description: "Komplettera ansökan om föräldrapenning",
+    tags: ["föräldrapenning", "komplettering", "ansökan"],
+    content: `Hej,
+
+Med anledning av er begäran om komplettering av min ansökan om föräldrapenning, diarienummer [DIARIENUMMER], lämnar jag härmed följande uppgifter:
+
+Mitt personnummer: [PERSONNUMMER]
+Barnets personnummer: [BARNETS PERSONNUMMER]
+Period: [PERIOD]
+
+Kompletterande underlag: [BESKRIV BIFOGADE HANDLINGAR]
+
+Jag ber om bekräftelse när handlingarna mottagits.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-009",
+    title: "Begäran om avbetalningsplan – återkrav",
+    category: "Försäkringskassan",
+    description: "Ansök om avbetalningsplan för ett återkrav",
+    tags: ["avbetalning", "återkrav", "plan"],
+    content: `Hej,
+
+Jag har mottagit ett återkrav om [BELOPP] kr. Jag godtar kravet men befinner mig i en svår ekonomisk situation och kan inte betala hela beloppet på en gång.
+
+Mitt personnummer är [PERSONNUMMER]. Jag ansöker om en avbetalningsplan med [BELOPP/MÅN] kr per månad med start [STARTDATUM].
+
+Jag ber om bekräftelse och eventuella villkor för planen.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-010",
+    title: "Handikappersättning – statusfråga",
+    category: "Försäkringskassan",
+    description: "Fråga om status på ansökan om handikappersättning",
+    tags: ["handikappersättning", "status", "funktionsnedsättning"],
+    content: `Hej,
+
+Jag lämnade in en ansökan om handikappersättning/merkostnadsersättning den [DATUM]. Ärendenummer: [ÄRENDENUMMER].
+
+Mitt personnummer är [PERSONNUMMER]. Det har nu gått [ANTAL] veckor utan beslut. Jag ber om information om ärendets nuvarande status och beräknad beslutstid.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-011",
+    title: "Rehabiliteringspenning – ansökan",
+    category: "Försäkringskassan",
+    description: "Ansök om rehabiliteringspenning under pågående rehabilitering",
+    tags: ["rehabilitering", "rehabiliteringspenning", "ansökan"],
+    content: `Hej,
+
+Jag genomgår för närvarande rehabilitering i enlighet med min rehabiliteringsplan upprättad [DATUM] av [KOORDINATOR/LÄKARE].
+
+Mitt personnummer är [PERSONNUMMER]. Rehabiliteringsperioden avser [STARTDATUM] till [SLUTDATUM]. Jag ansöker om rehabiliteringspenning för denna period.
+
+Bifogat finns rehabiliteringsplan och läkarintyg.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-012",
+    title: "Vab – bestrida avslag",
+    category: "Försäkringskassan",
+    description: "Bestrida avslag på VAB-ansökan",
+    tags: ["vab", "avslag", "bestrid"],
+    content: `Hej,
+
+Jag har fått avslag på min ansökan om tillfällig föräldrapenning (VAB) för perioden [PERIOD], avseende mitt barn [BARNETS NAMN], personnummer [BARNETS PERSONNUMMER].
+
+Mitt personnummer är [PERSONNUMMER]. Avslaget motiverades med [SKÄL ENLIGT BESLUTET]. Jag bestrider detta eftersom [DIN FÖRKLARING].
+
+Bifogat läkarintyg och övriga handlingar styrker barnets sjukdom under aktuell period.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-013",
+    title: "Sjukersättning – omprövning",
+    category: "Försäkringskassan",
+    description: "Begär omprövning av beslut om sjukersättning",
+    tags: ["sjukersättning", "omprövning", "permanent"],
+    content: `Hej,
+
+Jag begär omprövning av Försäkringskassans beslut daterat [DATUM] rörande sjukersättning, diarienummer [DIARIENUMMER].
+
+Mitt personnummer är [PERSONNUMMER]. Min arbetsförmåga är varaktigt nedsatt till följd av [DIAGNOS/TILLSTÅND]. Jag anser att beslutet inte speglar min faktiska situation av följande skäl:
+
+[BESKRIV SKÄLEN]
+
+Bifogade läkarintyg och utlåtanden styrker min begäran.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "fk-014",
+    title: "Ändring av uppgifter",
+    category: "Försäkringskassan",
+    description: "Anmäl ändrade förhållanden till Försäkringskassan",
+    tags: ["ändring", "uppgifter", "anmälan"],
+    content: `Hej,
+
+Jag vill anmäla ändrade förhållanden som kan påverka mina ersättningar hos Försäkringskassan.
+
+Mitt personnummer är [PERSONNUMMER]. Förändringen avser: [BESKRIV ÄNDRINGEN, T.EX. INKOMSTÄNDRING, NYTT ARBETE, ÄNDRAT BOENDE, ÄNDRAD FAMILJESITUATION].
+
+Ändringen gäller från och med [DATUM]. Bifogat finns relevanta intyg och handlingar.
+
+Jag ber om bekräftelse på att uppgifterna uppdaterats.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+];
+
+export const MIGRATIONSVERKET_TEMPLATES: Template[] = [
+  {
+    id: "mig-001",
+    title: "Förlängning av uppehållstillstånd",
+    category: "Migrationsverket",
+    description: "Ansök om förlängning av uppehållstillstånd",
+    tags: ["uppehållstillstånd", "förlängning", "ansökan"],
+    content: `Hej,
+
+Jag ansöker om förlängning av mitt uppehållstillstånd som löper ut [UTGÅNGSDATUM].
+
+Mitt personnummer/dossienummer är [PERSONNUMMER/DOSSIENUMMER]. Grunden för ansökan är [T.EX. ARBETE, FAMILJ, STUDIER]. Jag har vistats i Sverige sedan [DATUM] och uppfyller kraven för förlängning.
+
+Bifogade handlingar: [LISTA BIFOGADE DOKUMENT, T.EX. ANSTÄLLNINGSAVTAL, INTYG].
+
+Jag ber om bekräftelse på att ansökan mottagits och ärendenummer.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-002",
+    title: "Fråga om väntetid",
+    category: "Migrationsverket",
+    description: "Fråga om handläggningstid och status på ärende",
+    tags: ["väntetid", "handläggningstid", "status"],
+    content: `Hej,
+
+Jag vill höra om status på mitt pågående ärende hos Migrationsverket.
+
+Mitt dossienummer är [DOSSIENUMMER]. Ansökan lämnades in den [DATUM] avseende [ÄRENDETYP]. Det har nu gått [ANTAL MÅNADER] sedan ansökan och jag har ännu inte fått något beslut.
+
+Jag ber om information om beräknad handläggningstid och ärendets nuvarande status.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-003",
+    title: "Komplettering av ärende",
+    category: "Migrationsverket",
+    description: "Skicka kompletterande handlingar till ett pågående ärende",
+    tags: ["komplettering", "handlingar", "ärende"],
+    content: `Hej,
+
+Med anledning av er begäran om komplettering av ärende [DOSSIENUMMER], daterad [DATUM], sänder jag härmed följande handlingar:
+
+1. [DOKUMENT 1]
+2. [DOKUMENT 2]
+3. [DOKUMENT 3]
+
+Mitt personnummer/dossienummer är [PERSONNUMMER/DOSSIENUMMER]. Jag ber om bekräftelse på att handlingarna mottagits och registrerats i ärendet.
+
+Om ytterligare uppgifter behövs kontaktar ni mig gärna på [TELEFON/E-POST].
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-004",
+    title: "Begäran om omprövning efter avslag",
+    category: "Migrationsverket",
+    description: "Begär omprövning efter avslag på ansökan",
+    tags: ["avslag", "omprövning", "överklagande"],
+    content: `Hej,
+
+Jag har mottagit beslut om avslag på min ansökan, dossienummer [DOSSIENUMMER], daterat [DATUM].
+
+Jag begär omprövning av detta beslut. Skälet är att beslutet inte tar hänsyn till följande omständigheter:
+
+[BESKRIV OMSTÄNDIGHETERNA, T.EX. NYA BEVIS, FELAKTIG BEDÖMNING, ÄNDRAD SITUATION]
+
+Bifogade handlingar styrker min begäran. Jag ber om svar snarast möjligt.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-005",
+    title: "Status på medborgarskapsansökan",
+    category: "Migrationsverket",
+    description: "Fråga om status på ansökan om svenskt medborgarskap",
+    tags: ["medborgarskap", "status", "ansökan"],
+    content: `Hej,
+
+Jag ansökte om svenskt medborgarskap den [DATUM], dossienummer [DOSSIENUMMER].
+
+Det har nu gått [ANTAL MÅNADER] och jag har ännu inte fått beslut. Jag uppfyller alla krav: jag har bott i Sverige i [ANTAL] år, haft uppehållstillstånd sedan [DATUM] och skött mig väl.
+
+Jag ber om information om ärendets status och beräknat beslutsdatum.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-006",
+    title: "Ansökan om arbetstillstånd",
+    category: "Migrationsverket",
+    description: "Frågor och komplettering kring ansökan om arbetstillstånd",
+    tags: ["arbetstillstånd", "arbete", "ansökan"],
+    content: `Hej,
+
+Jag har ansökt om arbetstillstånd för tjänsten [TJÄNST] hos arbetsgivaren [ARBETSGIVARE], dossienummer [DOSSIENUMMER].
+
+Mitt personnummer/passernummer är [PERSONNUMMER]. Anställningen avser [PERIOD] med en månadslön om [LÖNBELOPP] kr, vilket uppfyller gällande lönekrav.
+
+Bifogade handlingar: anställningsavtal, arbetsgivarens intyg och försäkringsbevis.
+
+Jag ber om bekräftelse och besked om handläggningstid.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-007",
+    title: "Familjeåterförening – ansökan",
+    category: "Migrationsverket",
+    description: "Ansökan om uppehållstillstånd för familjeåterförening",
+    tags: ["familjeåterförening", "familj", "uppehållstillstånd"],
+    content: `Hej,
+
+Jag ansöker om uppehållstillstånd för min [MAKE/MAKA/BARN/FÖRÄLDER], [NAMN], född [FÖDELSEDATUM], för att förena oss i Sverige.
+
+Min egen status: uppehållstillstånd/medborgarskap [DITT TILLSTÅND], personnummer [DITT PERSONNUMMER].
+
+Vi är [MAKE OCH MAKA/FÖRÄLDER OCH BARN] och vår relation styrks av bifogade dokument: vigselbevis, personbevis, foton och kommunikationshistorik.
+
+Jag ber om bekräftelse och information om handläggningstid.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-008",
+    title: "Överklagande till migrationsdomstolen",
+    category: "Migrationsverket",
+    description: "Överklaga Migrationsverkets beslut till migrationsdomstolen",
+    tags: ["överklagande", "domstol", "beslut"],
+    content: `Hej,
+
+Jag överklagar Migrationsverkets beslut daterat [DATUM], dossienummer [DOSSIENUMMER], till migrationsdomstolen.
+
+Mitt personnummer är [PERSONNUMMER]. Grunden för överklagandet är:
+
+[BESKRIV DETALJERAT VARFÖR BESLUTET ÄR FELAKTIGT]
+
+Jag åberopar följande bevisning: [LISTA BEVIS OCH BIFOGADE HANDLINGAR].
+
+Jag begär inhibition av beslutet medan överklagandet handläggs.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-009",
+    title: "Asylansökan – komplettering",
+    category: "Migrationsverket",
+    description: "Komplettera en asylansökan med ytterligare bevis",
+    tags: ["asyl", "komplettering", "skyddsskäl"],
+    content: `Hej,
+
+Jag kompleterar min asylansökan, dossienummer [DOSSIENUMMER], med ytterligare underlag som styrker mina skyddsskäl.
+
+Mitt personnummer/dossienummer är [PERSONNUMMER/DOSSIENUMMER]. De nya handlingarna visar: [BESKRIV KORTFATTAT VAD HANDLINGARNA VISAR].
+
+Bifogat: [LISTA BIFOGADE DOKUMENT].
+
+Jag ber om bekräftelse på att handlingarna registrerats i mitt ärende.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-010",
+    title: "Begäran om nytt PUT",
+    category: "Migrationsverket",
+    description: "Ansök om permanent uppehållstillstånd",
+    tags: ["PUT", "permanent", "uppehållstillstånd"],
+    content: `Hej,
+
+Jag ansöker om permanent uppehållstillstånd (PUT). Jag har haft tidsbegränsat uppehållstillstånd sedan [DATUM] och uppfyller kraven för permanent tillstånd.
+
+Mitt personnummer/dossienummer är [PERSONNUMMER/DOSSIENUMMER]. Jag har bott och arbetat/studerat i Sverige under [ANTAL] år, med en sammanhängande legal vistelse utan avbrott.
+
+Bifogade handlingar styrker min anknytning till Sverige och uppfyllda krav.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-011",
+    title: "Adressändring och kontaktuppgifter",
+    category: "Migrationsverket",
+    description: "Anmäl ny adress och uppdaterade kontaktuppgifter",
+    tags: ["adress", "kontaktuppgifter", "ändring"],
+    content: `Hej,
+
+Jag vill anmäla ändrade kontaktuppgifter kopplade till mitt ärende hos Migrationsverket.
+
+Dossienummer: [DOSSIENUMMER]
+Personnummer: [PERSONNUMMER]
+
+Ny adress: [NY ADRESS]
+Nytt telefonnummer: [NYTT TELEFONNUMMER]
+Ny e-post: [NY E-POST]
+
+Ändringen gäller från och med [DATUM]. Jag ber om bekräftelse på att uppgifterna uppdaterats.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-012",
+    title: "Begäran om tolkhjälp",
+    category: "Migrationsverket",
+    description: "Begär tillgång till tolk vid kommande möte eller samtal",
+    tags: ["tolk", "samtal", "möte"],
+    content: `Hej,
+
+Jag har blivit kallad till möte/samtal hos Migrationsverket den [DATUM].
+
+Dossienummer: [DOSSIENUMMER]. Jag behöver tolkhjälp på [SPRÅK] för att kunna kommunicera korrekt och förstå all information under mötet.
+
+Jag ber er bekräfta att en kompetent tolk på [SPRÅK] kommer att finnas tillgänglig vid tillfället.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-013",
+    title: "Visumansökan – följebrev",
+    category: "Migrationsverket",
+    description: "Följebrev till ansökan om besöksvisum",
+    tags: ["visum", "besöksvisum", "följebrev"],
+    content: `Hej,
+
+Jag ansöker om besöksvisum för [NAMN PÅ GÄST], medborgare i [LAND], för ett besök i Sverige under perioden [STARTDATUM]–[SLUTDATUM].
+
+Jag är [DIN RELATION, T.EX. MAKE, FÖRÄLDER, VÄN] och bjuder in [NAMN] till min adress [DIN ADRESS], personnummer [DITT PERSONNUMMER].
+
+Jag garanterar att [NAMN] kommer att lämna Sverige innan vistelsens utgång och att alla kostnader för uppehället täcks.
+
+Bifogade handlingar: inbjudningsbrev, personbevis, bankutdrag och bostadsintyg.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "mig-014",
+    title: "Begäran om skyndsam handläggning",
+    category: "Migrationsverket",
+    description: "Begär prioriterad och skyndsam handläggning av ditt ärende",
+    tags: ["skyndsam", "prioritering", "handläggning"],
+    content: `Hej,
+
+Jag begär skyndsam handläggning av mitt ärende, dossienummer [DOSSIENUMMER].
+
+Mitt personnummer är [PERSONNUMMER]. Skälet till att ärendet är brådskande är: [BESKRIV SKÄLET, T.EX. ANSTÄLLNING SOM VÄNTAR, FAMILJESKÄL, MEDICINSK SITUATION, TILLSTÅNDET LÖPER UT SNART].
+
+Utan ett snabbt beslut riskerar jag [BESKRIV KONSEKVENSER]. Jag ber om att ärendet prioriteras och att jag kontaktas snarast.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+];
+
 export const BOVERKET_TEMPLATES: Template[] = [
   {
     id: "bov-001",

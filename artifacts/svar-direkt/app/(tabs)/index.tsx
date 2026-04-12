@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
-import { BOVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
+import { BOVERKET_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
 
 interface MenuItemProps {
   icon: React.ReactNode;
@@ -171,6 +171,24 @@ export default function HomeScreen() {
     });
   };
 
+  const handleForsakringskassanTemplate = async (template: (typeof FORSAKRINGSKASSAN_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "forsakringskassan" },
+    });
+  };
+
+  const handleMigrationsverketTemplate = async (template: (typeof MIGRATIONSVERKET_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "migrationsverket" },
+    });
+  };
+
   return (
     <ScrollView
       style={[styles.container, { backgroundColor: theme.background }]}
@@ -273,6 +291,80 @@ export default function HomeScreen() {
           >
             <View style={[styles.boverketIconWrap, { backgroundColor: "#00b894" + "15" }]}>
               <Feather name="briefcase" size={22} color="#00b894" />
+            </View>
+            <Text
+              style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
+              numberOfLines={2}
+            >
+              {template.title}
+            </Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              {template.category}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Försäkringskassan templates */}
+      <SectionHeader title="FÖRSÄKRINGSKASSANS MALLAR" badge={`${FORSAKRINGSKASSAN_TEMPLATES.length} mallar`} />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.boverketRow}
+      >
+        {FORSAKRINGSKASSAN_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleForsakringskassanTemplate(template)}
+            style={({ pressed }) => [
+              styles.boverketCard,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.cardBorder,
+                opacity: pressed ? 0.85 : 1,
+                transform: [{ scale: pressed ? 0.97 : 1 }],
+              },
+            ]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#0984e3" + "15" }]}>
+              <Feather name="heart" size={22} color="#0984e3" />
+            </View>
+            <Text
+              style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
+              numberOfLines={2}
+            >
+              {template.title}
+            </Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              {template.category}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Migrationsverket templates */}
+      <SectionHeader title="MIGRATIONSVERKETS MALLAR" badge={`${MIGRATIONSVERKET_TEMPLATES.length} mallar`} />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.boverketRow}
+      >
+        {MIGRATIONSVERKET_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleMigrationsverketTemplate(template)}
+            style={({ pressed }) => [
+              styles.boverketCard,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.cardBorder,
+                opacity: pressed ? 0.85 : 1,
+                transform: [{ scale: pressed ? 0.97 : 1 }],
+              },
+            ]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#6c5ce7" + "15" }]}>
+              <Feather name="globe" size={22} color="#6c5ce7" />
             </View>
             <Text
               style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
