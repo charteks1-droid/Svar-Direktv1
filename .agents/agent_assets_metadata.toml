@@ -83,3 +83,9 @@ id = "o_DCPnvkI-wCy9s1EmqbC"
 uri = "file://artifacts/uploads/svar-direkt-website-v7.zip"
 type = "unspecified"
 title = "Svar Direkt – v7 (svardirekt.site + og-image + blog)"
+
+[[outputs]]
+id = "kfDfBn9rOkiBLwqvSw4CZ"
+uri = "file://artifacts/uploads/svar-direkt-website-v8.zip"
+type = "unspecified"
+title = "Svar Direkt – v8 (blog jako czyste pliki HTML)"
