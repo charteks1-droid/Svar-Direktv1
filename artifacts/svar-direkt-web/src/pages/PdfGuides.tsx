@@ -1,3 +1,5 @@
+const DOWNLOAD_BASE = "/api/download/";
+
 const guides = [
   {
     id: "inkasso-och-kronofogden",
@@ -153,10 +155,12 @@ export default function PdfGuides() {
               </div>
               <div className="flex gap-2">
                 <a
-                  href="#"
-                  className="px-4 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+                  href={`${DOWNLOAD_BASE}${guide.downloadFile}`}
+                  download={guide.downloadFile}
+                  className="px-4 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors flex items-center gap-1.5"
                 >
-                  Köp snart
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4.5 7l2.5 2.5L9.5 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 11h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                  Ladda ner
                 </a>
               </div>
             </div>

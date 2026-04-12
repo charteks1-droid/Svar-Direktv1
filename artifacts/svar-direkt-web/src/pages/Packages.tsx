@@ -14,6 +14,7 @@ const smsPackages = [
     price: "19 kr",
     badge: "Populär",
     badgeColor: "#0a7ea4",
+    downloadFile: "snabba-svar-arbete.json",
   },
   {
     id: "snabba-svar-relationer",
@@ -30,6 +31,7 @@ const smsPackages = [
     price: "19 kr",
     badge: "Ny",
     badgeColor: "#00b894",
+    downloadFile: "snabba-svar-relationer.json",
   },
 ];
 
@@ -41,6 +43,8 @@ function PriceTag({ price }: { price: string }) {
     </div>
   );
 }
+
+const DOWNLOAD_BASE = "/api/download/";
 
 function PackageCard({
   pkg,
@@ -88,20 +92,16 @@ function PackageCard({
 
       <div className="flex gap-2">
         <a
-          href="#"
-          className={`flex-1 py-2.5 rounded-xl text-sm font-medium text-center transition-colors ${
+          href={`${DOWNLOAD_BASE}${pkg.downloadFile}`}
+          download={pkg.downloadFile}
+          className={`flex-1 py-2.5 rounded-xl text-sm font-medium text-center transition-colors flex items-center justify-center gap-1.5 ${
             highlight
               ? "bg-primary text-white hover:bg-primary/90"
               : "bg-slate-900 text-white hover:bg-slate-800"
           }`}
         >
-          Köp snart
-        </a>
-        <a
-          href="#"
-          className="px-4 py-2.5 rounded-xl text-sm font-medium text-center border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors"
-        >
-          Läs mer
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4.5 7l2.5 2.5L9.5 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 11h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+          Ladda ner
         </a>
       </div>
     </div>
