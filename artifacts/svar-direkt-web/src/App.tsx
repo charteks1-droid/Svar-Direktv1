@@ -6,6 +6,7 @@ import Features from "@/pages/Features";
 import Packages from "@/pages/Packages";
 import PdfGuides from "@/pages/PdfGuides";
 import Contact from "@/pages/Contact";
+import Blog from "@/pages/Blog";
 import NotFound from "@/pages/not-found";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -25,6 +26,7 @@ function Navbar() {
     { href: "/funktioner", label: "Funktioner" },
     { href: "/paket", label: "Paket" },
     { href: "/pdf-guider", label: "PDF-guider" },
+    { href: "/blogg", label: "Blogg" },
     { href: "/kontakt", label: "Kontakt" },
   ];
 
@@ -139,6 +141,7 @@ function Footer() {
         { label: "Om appen", href: "/om-appen" },
         { label: "Funktioner", href: "/funktioner" },
         { label: "Hur det fungerar", href: "/#hur-det-fungerar" },
+        { label: "Blogg", href: "/blogg" },
       ],
     },
     {
@@ -228,6 +231,8 @@ export default function App() {
             <Route path="/paket" component={Packages} />
             <Route path="/pdf-guider" component={PdfGuides} />
             <Route path="/kontakt" component={Contact} />
+            <Route path="/blogg/:slug" component={Blog} />
+            <Route path="/blogg" component={Blog} />
             <Route component={NotFound} />
           </Switch>
         </main>
