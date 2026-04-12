@@ -71,3 +71,9 @@ id = "Vnmt8t6dIN78rfbKkNS6-"
 uri = "file://artifacts/uploads/svar-direkt-website-v5.zip"
 type = "unspecified"
 title = "Svar Direkt – strona v5 (pełne SEO + wszystkie linki Payhip)"
+
+[[outputs]]
+id = "JeuxrlymGXZ9RaTZA7Lzm"
+uri = "file://artifacts/uploads/svar-direkt-website-v6.zip"
+type = "unspecified"
+title = "Svar Direkt – strona v6 (z blogiem + pełne SEO)"
