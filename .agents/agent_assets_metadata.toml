@@ -1,5 +1,16 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "XaieyeX-MQwbCuc4lNhpn"
+uri = "file://attached_assets/generated_images/svar-direkt-hero-16x9.png"
+type = "image"
+title = "svar direkt hero landing page"
+
+[[generated]]
+id = "0GEUbPyilECkZsPV8SZbZ"
+uri = "file://attached_assets/generated_images/svar-direkt-product-cover-3x4.png"
+type = "image"
+title = "svar direkt product cover portrait"
 
 [[outputs]]
 id = "YHSxzrJy-a-uC3_5YEpvW"
@@ -12,3 +23,15 @@ id = "JHKsVz5WmKC_XilPPJTiB"
 uri = "file://assets/modules/snabba-svar-sms.json"
 type = "unspecified"
 title = "snabba-svar-sms.json"
+
+[[outputs]]
+id = "0Y36CeCUpNWD6-GAGpk0I"
+uri = "file://attached_assets/generated_images/svar-direkt-hero-16x9.png"
+type = "image"
+title = "Svar Direkt — Hero (16:9, landing page)"
+
+[[outputs]]
+id = "jiQnbnTjnFo8xUb2sdc2-"
+uri = "file://attached_assets/generated_images/svar-direkt-product-cover-3x4.png"
+type = "image"
+title = "Svar Direkt — Product Cover (3:4, Payhip)"
