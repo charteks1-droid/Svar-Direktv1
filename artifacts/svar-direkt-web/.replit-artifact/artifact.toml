@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/svar-direkt-web/"
+title = "Svar Direkt – Landing Page"
+version = "1.0.0"
+id = "artifacts/svar-direkt-web"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/svar-direkt-web/" ]
+localPort = 23264
+
+[services.development]
+run = "pnpm --filter @workspace/svar-direkt-web run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/svar-direkt-web", "run", "build" ]
+publicDir = "artifacts/svar-direkt-web/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23264"
+BASE_PATH = "/svar-direkt-web/"
