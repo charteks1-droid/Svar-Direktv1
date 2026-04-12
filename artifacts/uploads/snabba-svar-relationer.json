@@ -1,249 +1,311 @@
 {
-  "category": "relationer",
-  "items": [
+  "version": 1,
+  "name": "Snabba svar – Relationer",
+  "quickResponses": [
     {
+      "id": "rel-001",
       "title": "Bekräftar intresse",
-      "text": "Jag är intresserad av dig. Det vill jag att du ska veta."
+      "content": "Jag är intresserad av dig. Det vill jag att du ska veta."
     },
     {
+      "id": "rel-002",
       "title": "Frågar om det är en dejt",
-      "text": "Räknar jag rätt om jag ser det här som en dejt?"
+      "content": "Räknar jag rätt om jag ser det här som en dejt?"
     },
     {
+      "id": "rel-003",
       "title": "Vill inte gå för fort",
-      "text": "Jag tycker om dig, men jag vill inte stressa fram något. Kan vi ta det lite lugnt?"
+      "content": "Jag tycker om dig, men jag vill inte stressa fram något. Kan vi ta det lite lugnt?"
     },
     {
+      "id": "rel-004",
       "title": "Positiv efter träff",
-      "text": "Igår var riktigt bra. Jag visste inte att det kunde kännas såhär."
+      "content": "Igår var riktigt bra. Jag visste inte att det kunde kännas såhär."
     },
     {
+      "id": "rel-005",
       "title": "Frågar om relation",
-      "text": "Jag behöver veta vad vi håller på med. Inte för att sätta press, utan för att jag faktiskt bryr mig."
+      "content": "Jag behöver veta vad vi håller på med. Inte för att sätta press, utan för att jag faktiskt bryr mig."
     },
     {
+      "id": "rel-006",
       "title": "Nervös inför dejt",
-      "text": "Lite nervös om jag ska vara ärlig, men det känns ändå rätt. Vi ses om en timme?"
+      "content": "Lite nervös om jag ska vara ärlig, men det känns ändå rätt. Vi ses om en timme?"
     },
     {
+      "id": "rel-007",
       "title": "Gillar det vi har",
-      "text": "Jag gillar faktiskt det vi har. Ska vi göra något mer av det?"
+      "content": "Jag gillar faktiskt det vi har. Ska vi göra något mer av det?"
     },
     {
+      "id": "rel-008",
       "title": "Vill ses igen",
-      "text": "Jag vet att vi precis träffades, men jag skulle gärna göra om det snart."
+      "content": "Jag vet att vi precis träffades, men jag skulle gärna göra om det snart."
     },
     {
+      "id": "rel-009",
       "title": "Saknar dig",
-      "text": "Saknar dig lite mer än vad som är rimligt för att du bara gick till jobbet."
+      "content": "Saknar dig lite mer än vad som är rimligt för att du bara gick till jobbet."
     },
     {
+      "id": "rel-010",
       "title": "Tackar för stöd",
-      "text": "Tack för att du alltid lyssnar. Det betyder mer än du tror."
+      "content": "Tack för att du alltid lyssnar. Det betyder mer än du tror."
     },
     {
+      "id": "rel-011",
       "title": "Behöver tid för sig",
-      "text": "Jag behöver lite tid för mig själv ikväll. Inte för att något är fel, bara för att ladda om."
+      "content": "Jag behöver lite tid för mig själv ikväll. Inte för att något är fel, bara för att ladda om."
     },
     {
+      "id": "rel-012",
       "title": "Bekräftar kärlek",
-      "text": "Jag är glad att det är du. Ingen annan egentligen."
+      "content": "Jag är glad att det är du. Ingen annan egentligen."
     },
     {
+      "id": "rel-013",
       "title": "Vill prata om något",
-      "text": "Vi kanske borde prata om det som hänt. Inte nu, men snart."
+      "content": "Vi kanske borde prata om det som hänt. Inte nu, men snart."
     },
     {
+      "id": "rel-014",
       "title": "Planerar framtid",
-      "text": "Jag tänker på oss ganska mycket. Kan vi hitta en kväll och prata om hur vi vill ha det?"
+      "content": "Jag tänker på oss ganska mycket. Kan vi hitta en kväll och prata om hur vi vill ha det?"
     },
     {
+      "id": "rel-015",
       "title": "Tack för kvällen",
-      "text": "Kvällen med dig var exakt vad jag behövde. Tack för det."
+      "content": "Kvällen med dig var exakt vad jag behövde. Tack för det."
     },
     {
+      "id": "rel-016",
       "title": "Behöver mer närvaro",
-      "text": "Jag behöver att du är lite mer här just nu. Inte hela tiden, men mer än det är."
+      "content": "Jag behöver att du är lite mer här just nu. Inte hela tiden, men mer än det är."
     },
     {
+      "id": "rel-017",
       "title": "Reagerar på tonfall",
-      "text": "Det där var inte okej att säga, oavsett hur du menade det."
+      "content": "Det där var inte okej att säga, oavsett hur du menade det."
     },
     {
+      "id": "rel-018",
       "title": "Vill inte gräla via text",
-      "text": "Jag vill inte gräla via text. Vi pratar när vi ses."
+      "content": "Jag vill inte gräla via text. Vi pratar när vi ses."
     },
     {
+      "id": "rel-019",
       "title": "Känner sig missförstådd",
-      "text": "Det var inte det jag menade, och jag önskar att du lyssnat färdigt."
+      "content": "Det var inte det jag menade, och jag önskar att du lyssnat färdigt."
     },
     {
+      "id": "rel-020",
       "title": "Tar paus från konflikt",
-      "text": "Jag behöver lite luft. Det här samtalet tar vi när vi båda har lugnat ner oss."
+      "content": "Jag behöver lite luft. Det här samtalet tar vi när vi båda har lugnat ner oss."
     },
     {
+      "id": "rel-021",
       "title": "Trött på mönstret",
-      "text": "Jag är trött på att alltid vara den som tar upp saker. Det känns inte balanserat."
+      "content": "Jag är trött på att alltid vara den som tar upp saker. Det känns inte balanserat."
     },
     {
+      "id": "rel-022",
       "title": "Ber om förklaring",
-      "text": "Jag förstår inte riktigt vad som hände. Kan du förklara vad du menade?"
+      "content": "Jag förstår inte riktigt vad som hände. Kan du förklara vad du menade?"
     },
     {
+      "id": "rel-023",
       "title": "Satte kvar hela dagen",
-      "text": "Det du sa satt kvar hela dagen. Det kändes som att du inte respekterade mig."
+      "content": "Det du sa satt kvar hela dagen. Det kändes som att du inte respekterade mig."
     },
     {
+      "id": "rel-024",
       "title": "Erkänner sin del",
-      "text": "Jag reagerade hårdare än nödvändigt. Det erkänner jag."
+      "content": "Jag reagerade hårdare än nödvändigt. Det erkänner jag."
     },
     {
+      "id": "rel-025",
       "title": "Avslutar lugnt",
-      "text": "Jag tror inte att vi mår bra ihop. Jag önskar dig verkligen gott, men jag behöver ta ett steg tillbaka."
+      "content": "Jag tror inte att vi mår bra ihop. Jag önskar dig verkligen gott, men jag behöver ta ett steg tillbaka."
     },
     {
+      "id": "rel-026",
       "title": "Ber om avstånd",
-      "text": "Jag behöver att du slutar höra av dig ett tag. Respektera det, tack."
+      "content": "Jag behöver att du slutar höra av dig ett tag. Respektera det, tack."
     },
     {
+      "id": "rel-027",
       "title": "Tydliggör att det är slut",
-      "text": "Det vi haft är slut. Jag kommer inte svara mer på meddelanden om det."
+      "content": "Det vi haft är slut. Jag kommer inte svara mer på meddelanden om det."
     },
     {
+      "id": "rel-028",
       "title": "Vill olika saker",
-      "text": "Jag tror vi vill olika saker. Det finns ingen anledning att fortsätta."
+      "content": "Jag tror vi vill olika saker. Det finns ingen anledning att fortsätta."
     },
     {
+      "id": "rel-029",
       "title": "Inte redo att prata",
-      "text": "Jag förstår att du vill prata, men jag är inte redo för det. Hör inte av dig mer."
+      "content": "Jag förstår att du vill prata, men jag är inte redo för det. Hör inte av dig mer."
     },
     {
+      "id": "rel-030",
       "title": "Avslutar med respekt",
-      "text": "Jag bär ingen ilska, men vi behöver gå skilda vägar. Jag hoppas att det går bra för dig."
+      "content": "Jag bär ingen ilska, men vi behöver gå skilda vägar. Jag hoppas att det går bra för dig."
     },
     {
+      "id": "rel-031",
       "title": "Behöver space",
-      "text": "Jag behöver att vi inte pratar på ett tag. Inte för att hata dig, utan för att jag behöver det."
+      "content": "Jag behöver att vi inte pratar på ett tag. Inte för att hata dig, utan för att jag behöver det."
     },
     {
+      "id": "rel-032",
       "title": "Enkel ursäkt",
-      "text": "Jag borde inte ha sagt det. Det var fel av mig, och jag förstår om du är arg."
+      "content": "Jag borde inte ha sagt det. Det var fel av mig, och jag förstår om du är arg."
     },
     {
+      "id": "rel-033",
       "title": "Ursäkt med förklaring",
-      "text": "Jag vet att jag svarade kort och otrevligt. Det berodde inte på dig – jag hade en dålig dag. Förlåt."
+      "content": "Jag vet att jag svarade kort och otrevligt. Det berodde inte på dig – jag hade en dålig dag. Förlåt."
     },
     {
+      "id": "rel-034",
       "title": "Tog dig för given",
-      "text": "Jag har tagit dig för given och det är inte okej. Du förtjänar bättre."
+      "content": "Jag har tagit dig för given och det är inte okej. Du förtjänar bättre."
     },
     {
+      "id": "rel-035",
       "title": "Missad händelse",
-      "text": "Förlåt att jag inte kom igår. Det var oansvarigt av mig och jag förstår om du är besviken."
+      "content": "Förlåt att jag inte kom igår. Det var oansvarigt av mig och jag förstår om du är besviken."
     },
     {
+      "id": "rel-036",
       "title": "Tar fullt ansvar",
-      "text": "Det här är mitt fel. Jag vet det, och jag vill verkligen göra det bättre."
+      "content": "Det här är mitt fel. Jag vet det, och jag vill verkligen göra det bättre."
     },
     {
+      "id": "rel-037",
       "title": "Upprepat misstag",
-      "text": "Jag vet att det här är ett mönster. Jag jobbar på det, men det räcker inte med att bara säga det."
+      "content": "Jag vet att det här är ett mönster. Jag jobbar på det, men det räcker inte med att bara säga det."
     },
     {
+      "id": "rel-038",
       "title": "Ber om en chans till",
-      "text": "Jag förstår om du inte vill, men jag vill gärna göra om det och göra rätt den här gången."
+      "content": "Jag förstår om du inte vill, men jag vill gärna göra om det och göra rätt den här gången."
     },
     {
+      "id": "rel-039",
       "title": "Irriterande snygg",
-      "text": "Du är irriterande snygg och det stör mig lite."
+      "content": "Du är irriterande snygg och det stör mig lite."
     },
     {
+      "id": "rel-040",
       "title": "Roligare än väntat",
-      "text": "Okej, du är roligare än jag förväntade mig. Lite irriterande."
+      "content": "Okej, du är roligare än jag förväntade mig. Lite irriterande."
     },
     {
+      "id": "rel-041",
       "title": "Reagerar på bild",
-      "text": "Den bilden har jag tittat på lite för länge nu. Tack för det."
+      "content": "Den bilden har jag tittat på lite för länge nu. Tack för det."
     },
     {
+      "id": "rel-042",
       "title": "Frågar om helgen",
-      "text": "Frågar lite oskyldigt: har du några planer på lördag?"
+      "content": "Frågar lite oskyldigt: har du några planer på lördag?"
     },
     {
+      "id": "rel-043",
       "title": "Svarar på komplimang",
-      "text": "Det var snällt sagt. Eller menade du det faktiskt?"
+      "content": "Det var snällt sagt. Eller menade du det faktiskt?"
     },
     {
+      "id": "rel-044",
       "title": "Leker med ord",
-      "text": "Jag kanske inte är lätt att ha att göra med, men jag lovar att det är värt det."
+      "content": "Jag kanske inte är lätt att ha att göra med, men jag lovar att det är värt det."
     },
     {
+      "id": "rel-045",
       "title": "Kollade tre gånger",
-      "text": "Okej, jag erkänner: jag kollade om du svarat tre gånger på tio minuter."
+      "content": "Okej, jag erkänner: jag kollade om du svarat tre gånger på tio minuter."
     },
     {
+      "id": "rel-046",
       "title": "Föreslår riktigt datum",
-      "text": "Ska vi göra om det en gång till, fast lite mer som ett riktigt datum den här gången?"
+      "content": "Ska vi göra om det en gång till, fast lite mer som ett riktigt datum den här gången?"
     },
     {
+      "id": "rel-047",
       "title": "Gräns kring kvällar",
-      "text": "Jag svarar inte på meddelanden efter kl 22. Det är inte personligt, bara en gräns jag håller."
+      "content": "Jag svarar inte på meddelanden efter kl 22. Det är inte personligt, bara en gräns jag håller."
     },
     {
+      "id": "rel-048",
       "title": "Gräns kring tonfall",
-      "text": "Jag är okej med att vi är oense, men inte med att du pratar till mig på det sättet."
+      "content": "Jag är okej med att vi är oense, men inte med att du pratar till mig på det sättet."
     },
     {
+      "id": "rel-049",
       "title": "Inte alltid tillgänglig",
-      "text": "Jag kan inte alltid svara direkt. Jag hör av mig när jag kan."
+      "content": "Jag kan inte alltid svara direkt. Jag hör av mig när jag kan."
     },
     {
+      "id": "rel-050",
       "title": "Vill inte diskutera nu",
-      "text": "Det där är ett ämne jag inte vill ta upp just nu. Respektera det."
+      "content": "Det där är ett ämne jag inte vill ta upp just nu. Respektera det."
     },
     {
+      "id": "rel-051",
       "title": "Fråga innan du kommer",
-      "text": "Jag behöver att du frågar innan du dyker upp. Det är viktigt för mig."
+      "content": "Jag behöver att du frågar innan du dyker upp. Det är viktigt för mig."
     },
     {
+      "id": "rel-052",
       "title": "Sätter gräns mjukt",
-      "text": "Jag bryr mig om dig, men det här är inte okej för mig. Kan vi hitta ett annat sätt?"
+      "content": "Jag bryr mig om dig, men det här är inte okej för mig. Kan vi hitta ett annat sätt?"
     },
     {
+      "id": "rel-053",
       "title": "Håller sin gräns",
-      "text": "Jag har sagt hur jag vill ha det. Att fortsätta testa det funkar inte."
+      "content": "Jag har sagt hur jag vill ha det. Att fortsätta testa det funkar inte."
     },
     {
+      "id": "rel-054",
       "title": "Kollar hur du mår",
-      "text": "Hur mår du egentligen? Inte bara svar-för-att-man-ska-svara, utan på riktigt."
+      "content": "Hur mår du egentligen? Inte bara svar-för-att-man-ska-svara, utan på riktigt."
     },
     {
+      "id": "rel-055",
       "title": "Avbokar sent",
-      "text": "Jag orkar inte riktigt ikväll. Kan vi köra nästa vecka istället? Förlåt att det är sent."
+      "content": "Jag orkar inte riktigt ikväll. Kan vi köra nästa vecka istället? Förlåt att det är sent."
     },
     {
+      "id": "rel-056",
       "title": "Bekräftar planer",
-      "text": "Vi håller det som vi sa. Ses vid 18."
+      "content": "Vi håller det som vi sa. Ses vid 18."
     },
     {
+      "id": "rel-057",
       "title": "Ber om ärligt råd",
-      "text": "Jag behöver ett ärligt svar från dig. Vet att du ger mig det."
+      "content": "Jag behöver ett ärligt svar från dig. Vet att du ger mig det."
     },
     {
+      "id": "rel-058",
       "title": "Tänkte på dig",
-      "text": "Tänkte på dig idag av ingen speciell anledning. Hoppas det går bra."
+      "content": "Tänkte på dig idag av ingen speciell anledning. Hoppas det går bra."
     },
     {
+      "id": "rel-059",
       "title": "Ber om en tjänst",
-      "text": "Kan du göra mig en tjänst? Inget stort, jag förklarar när vi ses."
+      "content": "Kan du göra mig en tjänst? Inget stort, jag förklarar när vi ses."
     },
     {
+      "id": "rel-060",
       "title": "Hör bara av mig",
-      "text": "Hör bara av mig. Saknade att vi pratade lite."
+      "content": "Hör bara av mig. Saknade att vi pratade lite."
     },
     {
+      "id": "rel-061",
       "title": "Bra prat",
-      "text": "Bra prat idag. Vi gör om det snart."
+      "content": "Bra prat idag. Vi gör om det snart."
     }
   ]
 }
