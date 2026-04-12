@@ -56,6 +56,15 @@ app.use(express.urlencoded({ extended: true, limit: "32kb" }));
 
 app.use("/api/uploads", express.static(UPLOADS_DIR));
 
+app.get("/api/download/:filename", (req, res) => {
+  const filename = req.params.filename.replace(/[^a-zA-Z0-9._-]/g, "");
+  const filePath = `${UPLOADS_DIR}/${filename}`;
+  res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+  res.sendFile(filePath, { root: "/" }, (err) => {
+    if (err) res.status(404).json({ error: "File not found" });
+  });
+});
+
 app.use(globalRateLimit);
 
 app.use("/api", router);
