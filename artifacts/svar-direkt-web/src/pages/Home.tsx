@@ -78,13 +78,16 @@ export default function Home() {
               <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-md">
                 Färdiga mallar, snabba svar och PDF-guider för verkliga situationer i Sverige. Direkt i mobilen.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#"
-                  className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
-                >
-                  Ladda ner appen
-                </a>
+              <div className="flex flex-wrap gap-3 items-center">
+                <div className="flex items-center gap-2">
+                  <a
+                    href="#"
+                    className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
+                  >
+                    Ladda ner appen
+                  </a>
+                  <span className="text-sm font-semibold text-slate-700">49 kr</span>
+                </div>
                 <Link
                   href="/paket"
                   className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
@@ -273,7 +276,7 @@ export default function Home() {
             <div className="grid gap-3">
               {[
                 { name: "Snabba svar – Arbete", desc: "67 färdiga svar för jobbsituationer", badge: "Populär" },
-                { name: "Snabba svar – Relationer", desc: "Klara fraser för familj och vardagsliv", badge: "Ny" },
+                { name: "Snabba svar – Relationer", desc: "61 färdiga fraser för dejting, relationer och gränssättning", badge: "Ny" },
               ].map((p) => (
                 <div key={p.name} className="bg-white/10 backdrop-blur rounded-xl p-4 flex items-center justify-between border border-white/20">
                   <div>
@@ -332,13 +335,16 @@ export default function Home() {
           <p className="text-slate-500 text-sm mb-7 max-w-md mx-auto">
             Ladda ner appen och ha färdiga svar direkt i fickan.
           </p>
-          <div className="flex justify-center gap-3 flex-wrap">
-            <a
-              href="#"
-              className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
-            >
-              Ladda ner appen
-            </a>
+          <div className="flex justify-center gap-3 flex-wrap items-center">
+            <div className="flex items-center gap-2">
+              <a
+                href="#"
+                className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
+              >
+                Ladda ner appen
+              </a>
+              <span className="text-sm font-semibold text-slate-700">49 kr</span>
+            </div>
             <Link
               href="/kontakt"
               className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"

@@ -1,22 +1,23 @@
 const guides = [
   {
-    id: "kronofogden",
-    title: "Guide: Kronofogden",
-    subtitle: "Förstå och hantera skulder",
-    desc: "En praktisk guide som förklarar vad Kronofogden är, vad som händer när du får ett inkassokrav, hur du bestrider ett krav och vilka rättigheter du har som gäldenär i Sverige.",
+    id: "inkasso-och-kronofogden",
+    title: "Inkasso och Kronofogden",
+    subtitle: "Hur vanliga människor tar tillbaka kontrollen",
+    desc: "En praktisk guide som förklarar hur inkasso och Kronofogden verkligen fungerar – bortom skrämselbrev och myndighetsspråk. Lär dig vad du har rätt att göra, hur du agerar strategiskt och hur du tar tillbaka kontrollen.",
     topics: [
-      "Vad är Kronofogden?",
-      "Betalningsanmärkning – vad innebär det?",
-      "Hur du bestrider ett krav",
+      "Vad inkasso faktiskt får och inte får göra",
+      "Hur du bestrider ett inkassokrav",
+      "Kronofogden – steg för steg",
+      "Hur du undviker betalningsanmärkning",
       "Skuldsanering – vem kan ansöka?",
-      "Dina rättigheter",
-      "Viktiga tidsfrister",
+      "Agera lugnt istället för i panik",
     ],
-    pages: "ca 15 sidor",
+    pages: "ca 80 sidor",
     format: "PDF",
-    price: null,
-    badge: "Praktisk guide",
+    price: "29 kr",
+    badge: "Ekonomiguide",
     badgeColor: "#e17055",
+    downloadFile: "inkasso-och-kronofogden.pdf",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -25,23 +26,24 @@ const guides = [
     ),
   },
   {
-    id: "tjana-pengar-online",
-    title: "Guide: Tjäna pengar online",
-    subtitle: "Legala vägar till extrainkomst i Sverige",
-    desc: "En guide för dig som vill förstå hur du kan tjäna extra pengar online på ett lagligt och skattemässigt korrekt sätt i Sverige – utan att råka ut för problem med Skatteverket.",
+    id: "tjana-pengar-sverige-2025",
+    title: "30 sätt att tjäna pengar i Sverige 2025",
+    subtitle: "Utan investering – bara tid och initiativ",
+    desc: "30 konkreta och beprövade sätt att tjäna pengar i Sverige utan att investera en krona. Från översättning och städning till digital coaching och sociala medier. Alla idéer går att börja med direkt.",
     topics: [
-      "Deklarera inkomster korrekt",
-      "F-skatt vs. A-skatt",
-      "Plattformar som Blocket, CDON, Tradera",
+      "Tjäna pengar utan startkapital",
+      "Digitala sidoinkomster",
+      "Lokala tjänster med stor efterfrågan",
+      "Plattformar och marknadsplatser",
       "Frilansarbete och fakturering",
-      "Vad är skattefritt?",
-      "Vanliga misstag att undvika",
+      "Skalningsbara idéer för Sverige",
     ],
-    pages: "ca 12 sidor",
+    pages: "ca 15 sidor",
     format: "PDF",
-    price: null,
-    badge: "Ekonomiguide",
+    price: "29 kr",
+    badge: "Praktisk guide",
     badgeColor: "#0984e3",
+    downloadFile: "30-satt-att-tjana-pengar-sverige-2025.pdf",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <circle cx="14" cy="14" r="10" stroke="currentColor" strokeWidth="1.5"/>
@@ -77,7 +79,7 @@ export default function PdfGuides() {
         <div>
           <div className="font-semibold text-slate-900 text-sm mb-1">Om PDF-guiderna</div>
           <p className="text-slate-500 text-xs leading-relaxed">
-            PDF-guiderna är fristående dokument som kan köpas separat och laddas ner direkt. De är utformade för att vara enkla att läsa och spara på telefonen för offline-användning.
+            PDF-guiderna är fristående dokument som köps separat och laddas ner direkt till din enhet. Utformade för att vara enkla att läsa och spara på telefonen för offline-användning.
           </p>
         </div>
       </div>
@@ -96,9 +98,7 @@ export default function PdfGuides() {
                   {guide.icon}
                 </div>
                 <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <h3 className="font-bold text-slate-900 text-base">{guide.title}</h3>
-                  </div>
+                  <h3 className="font-bold text-slate-900 text-base leading-tight mb-1">{guide.title}</h3>
                   <div
                     className="text-xs font-medium px-2 py-0.5 rounded-full inline-block text-white"
                     style={{ backgroundColor: guide.badgeColor }}
@@ -108,7 +108,8 @@ export default function PdfGuides() {
                 </div>
               </div>
 
-              <p className="text-sm text-slate-500 leading-relaxed mb-4">{guide.desc}</p>
+              <p className="text-sm text-slate-500 leading-relaxed mb-1 font-medium">{guide.subtitle}</p>
+              <p className="text-sm text-slate-400 leading-relaxed mb-4">{guide.desc}</p>
 
               {/* Topics */}
               <div className="mb-4">
@@ -147,40 +148,20 @@ export default function PdfGuides() {
             {/* Footer */}
             <div className="border-t border-slate-100 p-4 flex items-center justify-between bg-slate-50">
               <div>
-                {guide.price ? (
-                  <span className="text-xl font-bold text-slate-900">{guide.price}</span>
-                ) : (
-                  <span className="text-sm text-slate-400">Pris meddelas snart</span>
-                )}
+                <span className="text-2xl font-bold text-slate-900">{guide.price}</span>
+                <span className="text-xs text-slate-400 ml-1">engångspris</span>
               </div>
               <div className="flex gap-2">
                 <a
                   href="#"
                   className="px-4 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
                 >
-                  Köp PDF
-                </a>
-                <a
-                  href="#"
-                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-600 text-sm font-medium hover:bg-white transition-colors"
-                >
-                  Läs mer
+                  Köp snart
                 </a>
               </div>
             </div>
           </div>
         ))}
-
-        {/* Placeholder */}
-        <div className="rounded-2xl border border-dashed border-slate-200 p-6 flex flex-col items-center justify-center text-center text-slate-300 min-h-[250px]">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="mb-3 opacity-40">
-            <path d="M18 4H10a4 4 0 00-4 4v20a4 4 0 004 4h16a4 4 0 004-4V14l-6-6H18z" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M18 4v10h8" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M18 20v8M14 24h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-          <div className="text-sm font-medium text-slate-400">Fler guider på väg</div>
-          <div className="text-xs text-slate-300 mt-1">Vi arbetar med fler PDF-guider.</div>
-        </div>
       </div>
 
       {/* FAQ */}
@@ -190,7 +171,7 @@ export default function PdfGuides() {
           {[
             {
               q: "Hur tar jag del av PDF-guiden?",
-              a: "Du köper guiden och laddar ner den direkt. Du kan öppna den i din mobils PDF-läsare eller spara den på enheten.",
+              a: "Du köper guiden och laddar ner den direkt till din enhet. Du kan öppna den i din mobils PDF-läsare eller spara den för offline-läsning.",
             },
             {
               q: "Är guiderna på svenska?",

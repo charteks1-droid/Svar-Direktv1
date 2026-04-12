@@ -11,54 +11,29 @@ const smsPackages = [
       "Sjukanmälan",
       "Kommunikation med chef",
     ],
-    price: null,
+    price: "19 kr",
     badge: "Populär",
     badgeColor: "#0a7ea4",
   },
   {
     id: "snabba-svar-relationer",
     name: "Snabba svar – Relationer",
-    desc: "Färdiga fraser för familjeliv, vänner och sociala situationer i vardagen.",
+    desc: "61 färdiga fraser för dejting, relationer, konflikter och gränssättning i privatlivet.",
     includes: [
-      "Svar i familjesituationer",
-      "Tacka och avböja",
-      "Bjuda in och bekräfta",
-      "Ge och ta emot feedback",
-      "Konfliktlösning",
-      "Vardaglig kommunikation",
+      "Dating och romantiska situationer",
+      "Kommunikation med partner",
+      "Konflikter och missförstånd",
+      "Avsluta kontakt",
+      "Ursäkter",
+      "Sätta gränser",
     ],
-    price: null,
+    price: "19 kr",
     badge: "Ny",
     badgeColor: "#00b894",
   },
 ];
 
-const modulePackages = [
-  {
-    id: "myndigheter-plus",
-    name: "Myndigheter Plus",
-    desc: "Utökat paket med fler mallar för svenska myndigheter och officiella skrivelser.",
-    includes: [
-      "Fler mallar för Skatteverket",
-      "Kronofogden",
-      "Tingsrätten",
-      "Kommunala ärenden",
-    ],
-    price: null,
-    badge: "Kommer snart",
-    badgeColor: "#636e72",
-  },
-];
-
-function PriceTag({ price }: { price: string | null }) {
-  if (!price) {
-    return (
-      <div className="text-2xl font-bold text-slate-400">
-        <span className="text-base font-normal text-slate-400">Pris</span>{" "}
-        <span className="text-sm font-normal text-slate-400 block">meddelas snart</span>
-      </div>
-    );
-  }
+function PriceTag({ price }: { price: string }) {
   return (
     <div className="text-3xl font-bold text-slate-900">
       {price}
@@ -120,7 +95,7 @@ function PackageCard({
               : "bg-slate-900 text-white hover:bg-slate-800"
           }`}
         >
-          Köp
+          Köp snart
         </a>
         <a
           href="#"
@@ -177,24 +152,28 @@ export default function Packages() {
         </div>
       </div>
 
-      {/* Modulpaket */}
+      {/* Kommande paket */}
       <div className="mb-10">
-        <h2 className="text-xl font-bold text-slate-900 mb-2">Modulpaket</h2>
+        <h2 className="text-xl font-bold text-slate-900 mb-2">Fler paket på väg</h2>
         <p className="text-slate-500 text-sm mb-6">
-          Utöka med fler kategorier och mallar för specifika behov.
+          Vi arbetar på fler kategorier och moduler.
         </p>
         <div className="grid sm:grid-cols-2 gap-5">
-          {modulePackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg as any} />
-          ))}
-          {/* Placeholder för fler paket */}
-          <div className="rounded-2xl border border-dashed border-slate-200 p-6 flex flex-col items-center justify-center text-center text-slate-400 min-h-[200px]">
+          <div className="rounded-2xl border border-dashed border-slate-200 p-6 flex flex-col items-center justify-center text-center text-slate-400 min-h-[160px]">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="mb-3 opacity-40">
               <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" strokeWidth="1.5"/>
               <path d="M16 10v12M10 16h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
-            <div className="text-sm font-medium text-slate-400">Fler paket kommer</div>
-            <div className="text-xs text-slate-300 mt-1">Vi jobbar på fler paket och kategorier.</div>
+            <div className="text-sm font-medium text-slate-400">Snabba svar – Myndigheter</div>
+            <div className="text-xs text-slate-300 mt-1">Kommer snart</div>
+          </div>
+          <div className="rounded-2xl border border-dashed border-slate-200 p-6 flex flex-col items-center justify-center text-center text-slate-400 min-h-[160px]">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="mb-3 opacity-40">
+              <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" strokeWidth="1.5"/>
+              <path d="M16 10v12M10 16h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+            <div className="text-sm font-medium text-slate-400">Snabba svar – Hälsa</div>
+            <div className="text-xs text-slate-300 mt-1">Kommer snart</div>
           </div>
         </div>
       </div>
