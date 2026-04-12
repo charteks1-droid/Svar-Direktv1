@@ -41,3 +41,9 @@ id = "XKtBmwA_PEkn7A6g4IQaC"
 uri = "file://artifacts/uploads/svar-direkt-website-v2.zip"
 type = "unspecified"
 title = "Svar Direkt – strona gotowa do wgrania na hosting (v2)"
+
+[[outputs]]
+id = "6BHa6K2tVf5bAof3MqYg_"
+uri = "file://artifacts/uploads/svar-direkt-website-v3.zip"
+type = "unspecified"
+title = "Svar Direkt – strona v3 (z przyciskami Payhip dla pakietów)"
