@@ -20,6 +20,7 @@ const guides = [
     badge: "Ekonomiguide",
     badgeColor: "#e17055",
     downloadFile: "inkasso-och-kronofogden.pdf",
+    payhipUrl: "https://payhip.com/b/kcqCZ",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -46,6 +47,7 @@ const guides = [
     badge: "Praktisk guide",
     badgeColor: "#0984e3",
     downloadFile: "30-satt-att-tjana-pengar-sverige-2025.pdf",
+    payhipUrl: "https://payhip.com/b/ZM38i",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <circle cx="14" cy="14" r="10" stroke="currentColor" strokeWidth="1.5"/>
@@ -155,12 +157,12 @@ export default function PdfGuides() {
               </div>
               <div className="flex gap-2">
                 <a
-                  href={`${DOWNLOAD_BASE}${guide.downloadFile}`}
-                  download={guide.downloadFile}
-                  className="px-4 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors flex items-center gap-1.5"
+                  href={guide.payhipUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
                 >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4.5 7l2.5 2.5L9.5 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M2 11h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                  Ladda ner
+                  Köp – 29 kr
                 </a>
               </div>
             </div>

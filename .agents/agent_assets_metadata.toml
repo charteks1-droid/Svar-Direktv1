@@ -59,3 +59,9 @@ id = "SqxZM-aLTyP9mmSZSn8ps"
 uri = "file://attached_assets/generated_images/inkasso-cover-payhip.png"
 type = "image"
 title = "Inkasso och Kronofogden — okładka Payhip (3:4)"
+
+[[outputs]]
+id = "ga2NEMMGUyVg8IXv_2VvS"
+uri = "file://artifacts/uploads/svar-direkt-website-v4.zip"
+type = "unspecified"
+title = "Svar Direkt – strona v4 (wszystkie przyciski Payhip gotowe)"
