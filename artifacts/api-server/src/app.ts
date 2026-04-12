@@ -2,12 +2,17 @@ import express, { type Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import pinoHttp from "pino-http";
+import path from "path";
+import { fileURLToPath } from "url";
 import router from "./routes/index.js";
 import { UPLOADS_DIR } from "./routes/uploads.js";
 import { logger } from "./lib/logger.js";
 import { env } from "./lib/env.js";
 import { globalRateLimit } from "./middleware/rateLimit.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const WEBSITE_DIR = path.resolve(__dirname, "../../svar-direkt-web/dist/public");
 
 const app: Express = express();
 
@@ -53,6 +58,11 @@ app.use(
 
 app.use(express.json({ limit: "32kb" }));
 app.use(express.urlencoded({ extended: true, limit: "32kb" }));
+
+app.use("/svar-direkt-web", express.static(WEBSITE_DIR));
+app.get("/svar-direkt-web/{*path}", (_req, res) => {
+  res.sendFile(path.join(WEBSITE_DIR, "index.html"));
+});
 
 app.use("/api/uploads", express.static(UPLOADS_DIR));
 

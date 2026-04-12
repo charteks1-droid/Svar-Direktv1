@@ -12,7 +12,7 @@ version = "1.0.0"
 [[services]]
 name = "web"
 paths = [ "/svar-direkt-web/" ]
-localPort = 3001
+localPort = 8080
 
 [services.development]
 run = "pnpm --filter @workspace/svar-direkt-web run dev"
@@ -27,5 +27,5 @@ from = "/*"
 to = "/index.html"
 
 [services.env]
-PORT = "3001"
+PORT = "8080"
 BASE_PATH = "/svar-direkt-web/"
