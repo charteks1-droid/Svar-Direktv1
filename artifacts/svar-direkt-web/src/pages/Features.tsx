@@ -194,7 +194,9 @@ export default function Features() {
         </p>
         <div className="flex justify-center gap-3 flex-wrap">
           <a
-            href="#"
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors"
           >
             Ladda ner appen

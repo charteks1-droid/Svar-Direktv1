@@ -70,7 +70,9 @@ function Navbar() {
               Se paket
             </Link>
             <a
-              href="#"
+              href="https://payhip.com/b/WxtV3"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Ladda ner appen
@@ -112,7 +114,9 @@ function Navbar() {
             ))}
             <div className="pt-2 mt-1 border-t border-slate-100 flex flex-col gap-2">
               <a
-                href="#"
+                href="https://payhip.com/b/WxtV3"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-3 py-2.5 rounded-lg bg-primary text-white text-sm font-medium text-center"
                 onClick={() => setOpen(false)}
               >

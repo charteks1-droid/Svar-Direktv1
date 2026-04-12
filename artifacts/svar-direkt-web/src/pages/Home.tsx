@@ -81,7 +81,9 @@ export default function Home() {
               <div className="flex flex-wrap gap-3 items-center">
                 <div className="flex items-center gap-2">
                   <a
-                    href="#"
+                    href="https://payhip.com/b/WxtV3"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
                   >
                     Ladda ner appen
@@ -338,7 +340,9 @@ export default function Home() {
           <div className="flex justify-center gap-3 flex-wrap items-center">
             <div className="flex items-center gap-2">
               <a
-                href="#"
+                href="https://payhip.com/b/WxtV3"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
               >
                 Ladda ner appen
