@@ -154,7 +154,16 @@ export default function GuidesScreen() {
     try {
       const raw = await AsyncStorage.getItem(GUIDES_KEY);
       if (raw) {
-        setGuides(JSON.parse(raw));
+        const parsed: Guide[] = JSON.parse(raw);
+        const fixed = parsed.map((g) => ({
+          ...g,
+          serverUrl:
+            g.serverUrl && g.serverUrl.includes("/uploads/") && !g.serverUrl.includes("/api/uploads/")
+              ? g.serverUrl.replace("/uploads/", "/api/uploads/")
+              : g.serverUrl,
+        }));
+        setGuides(fixed);
+        await AsyncStorage.setItem(GUIDES_KEY, JSON.stringify(fixed));
         return;
       }
       const oldRaw = await AsyncStorage.getItem("guides_v1");

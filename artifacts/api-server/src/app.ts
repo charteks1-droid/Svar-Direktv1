@@ -54,7 +54,7 @@ app.use(
 app.use(express.json({ limit: "32kb" }));
 app.use(express.urlencoded({ extended: true, limit: "32kb" }));
 
-app.use("/uploads", express.static(UPLOADS_DIR));
+app.use("/api/uploads", express.static(UPLOADS_DIR));
 
 app.use(globalRateLimit);
 
