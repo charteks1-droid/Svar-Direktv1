@@ -7,6 +7,7 @@ import Packages from "@/pages/Packages";
 import PdfGuides from "@/pages/PdfGuides";
 import Contact from "@/pages/Contact";
 import Blog from "@/pages/Blog";
+import Generator from "@/pages/Generator";
 import NotFound from "@/pages/not-found";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -27,6 +28,7 @@ function Navbar() {
     { href: "/paket", label: "Paket" },
     { href: "/pdf-guider", label: "PDF-guider" },
     { href: "/blogg", label: "Blogg" },
+    { href: "/generator", label: "Textgenerator" },
     { href: "/kontakt", label: "Kontakt" },
   ];
 
@@ -240,6 +242,7 @@ export default function App() {
             <Route path="/kontakt" component={Contact} />
             <Route path="/blogg/:slug" component={Blog} />
             <Route path="/blogg" component={Blog} />
+            <Route path="/generator" component={Generator} />
             <Route component={NotFound} />
           </Switch>
         </main>

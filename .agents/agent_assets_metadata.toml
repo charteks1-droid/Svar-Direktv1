@@ -125,3 +125,9 @@ id = "a6C2k4obJqDUziNx-ASqi"
 uri = "file://artifacts/uploads/svar-direkt-website-v14.zip"
 type = "unspecified"
 title = "Svar Direkt – v14 poprawki wiarygodności"
+
+[[outputs]]
+id = "mzKFOqrFk54QxZhLU0iSf"
+uri = "file://artifacts/uploads/svar-direkt-website-v15.zip"
+type = "unspecified"
+title = "Svar Direkt – v15 Textgenerator (CV + Brev + Myndighetsbrev)"
