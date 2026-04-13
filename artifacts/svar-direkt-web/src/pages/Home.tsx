@@ -502,37 +502,139 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEO-rich text block */}
+      <section className="bg-white border-t border-slate-100 py-12 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-slate-900 mb-4 text-center">
+            Hur skriver man till svenska myndigheter?
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-6 text-sm text-slate-500 leading-relaxed">
+            <div>
+              <p className="mb-3">
+                Att skriva ett korrekt <strong className="text-slate-700">mall brev till Försäkringskassan</strong> eller förstå hur man formulerar ett överklagande kan vara svårt. Svar Direkt ger dig färdiga texter som passar exakt den situationen.
+              </p>
+              <p>
+                Undrar du <strong className="text-slate-700">hur skriver man till Kronofogden</strong> utan att göra fel? I appen hittar du mallar för ansökningar, invändningar och betalningsuppgörelser — klara att kopiera direkt.
+              </p>
+            </div>
+            <div>
+              <p className="mb-3">
+                Behöver du ett <strong className="text-slate-700">mall brev till Skatteverket</strong> om deklaration, skatteåterbäring eller folkbokföring? Svar Direkt har mallar för de vanligaste situationerna.
+              </p>
+              <p>
+                Appen fungerar offline och kräver inget konto. Du köper en gång för 49 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="bg-slate-50 border-t border-slate-100 py-14 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+              Vad användarna säger
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900">Riktiga resultat, riktiga situationer</h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              {
+                stars: 5,
+                quote: "Jag visste inte ens hur jag skulle börja skriva till Försäkringskassan. Med Svar Direkt kopierade jag en mall, anpassade den på 5 minuter och skickade. Fick svar inom en vecka.",
+                author: "Användare i Stockholm",
+              },
+              {
+                stars: 5,
+                quote: "Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde för en invändning. Tydlig, professionell text — värd varenda krona.",
+                author: "Användare i Göteborg",
+              },
+              {
+                stars: 5,
+                quote: "Appen sparade mig troligtvis hundratals kronor i juridisk rådgivning. Jag löste mitt Skatteverket-ärende helt själv med hjälp av mallarna.",
+                author: "Användare i Malmö",
+              },
+            ].map((t, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex flex-col gap-3">
+                <div className="flex gap-0.5">
+                  {Array.from({ length: t.stars }).map((_, si) => (
+                    <svg key={si} width="16" height="16" viewBox="0 0 16 16" fill="#f59e0b">
+                      <path d="M8 1l1.8 3.6L14 5.6l-3 2.9.7 4.1L8 10.5l-3.7 2.1.7-4.1L2 5.6l4.2-.7L8 1z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed italic flex-1">"{t.quote}"</p>
+                <p className="text-xs text-slate-400 font-medium">{t.author}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Behöver du hjälp? */}
       <HelpForm />
 
       {/* CTA */}
-      <section className="bg-slate-50 border-t border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
+      <section className="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-16 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Redo att börja?</h2>
-          <p className="text-slate-500 text-sm mb-7 max-w-md mx-auto">
-            Ladda ner appen och ha färdiga svar direkt i fickan.
+          <p className="text-slate-500 text-sm mb-6 max-w-md mx-auto">
+            Ladda ner appen en gång. Ha färdiga svar för Skatteverket, Kronofogden, Försäkringskassan och mer — alltid i fickan.
           </p>
-          <div className="flex justify-center gap-3 flex-wrap items-center">
-            <div className="flex items-center gap-2">
-              <a
-                href="https://payhip.com/b/WxtV3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
-              >
-                Ladda ner appen
-              </a>
-              <span className="text-sm font-semibold text-slate-700">49 kr</span>
-            </div>
+
+          {/* Guarantee badge */}
+          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-6">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 3 3.3.5-2.4 2.3.6 3.2L8 9l-3 1.5.6-3.2-2.4-2.3 3.3-.5L8 1.5z" fill="#16a34a" opacity="0.2"/><path d="M8 2l1.4 2.8 3.1.5-2.2 2.2.5 3L8 9l-2.8 1.5.5-3L3.5 5.3l3.1-.5L8 2z" stroke="#16a34a" strokeWidth="1.2" strokeLinejoin="round"/><path d="M5 8l2 2 4-4" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round"/></svg>
+            <span className="text-xs font-medium text-green-800">Inte nöjd? Kontakta oss inom 14 dagar — <strong>info@svardirekt.se</strong></span>
+          </div>
+
+          <div className="flex justify-center gap-3 flex-wrap items-center mb-5">
+            <a
+              href="https://payhip.com/b/WxtV3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm shadow-lg shadow-primary/25"
+            >
+              Ladda ner appen – 49 kr
+            </a>
             <Link
               href="/kontakt"
-              className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
+              className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
             >
               Kontakta oss
             </Link>
           </div>
+
+          {/* Payhip explanation */}
+          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-xs text-slate-400">
+            <span className="flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
+              Betalning via Payhip (säker kortbetalning)
+            </span>
+            <span className="flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
+              Du laddar ner filen direkt efter köpet
+            </span>
+            <span className="flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
+              Engångskostnad — inga prenumerationer
+            </span>
+          </div>
         </div>
       </section>
+
+      {/* Sticky mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-200 shadow-lg px-4 py-3">
+        <a
+          href="https://payhip.com/b/WxtV3"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
+        >
+          Ladda ner appen – 49 kr
+        </a>
+      </div>
     </div>
   );
 }

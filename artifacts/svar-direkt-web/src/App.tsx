@@ -1,5 +1,6 @@
 import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter";
 import { useState, useRef, useEffect } from "react";
+
 import Home from "@/pages/Home";
 import AboutApp from "@/pages/AboutApp";
 import Features from "@/pages/Features";
@@ -10,6 +11,36 @@ import Blog from "@/pages/Blog";
 import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
 import NotFound from "@/pages/not-found";
+
+function CookieBanner() {
+  const [visible, setVisible] = useState(() => {
+    try { return !localStorage.getItem("cookie_ok"); } catch { return true; }
+  });
+  if (!visible) return null;
+  const accept = () => {
+    try { localStorage.setItem("cookie_ok", "1"); } catch {}
+    setVisible(false);
+  };
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900 border-t border-slate-700 px-4 py-4 shadow-2xl">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3 justify-between">
+        <p className="text-xs text-slate-300 leading-relaxed flex-1">
+          Vi använder nödvändiga cookies för att webbplatsen ska fungera. Ingen spårning för reklam sker.
+          Läs mer i vår{" "}
+          <a href="/integritetspolicy.html" className="text-primary underline">integritetspolicy</a>.
+        </p>
+        <div className="flex gap-2 flex-shrink-0">
+          <button
+            onClick={accept}
+            className="px-4 py-2 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Jag förstår
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -306,6 +337,7 @@ export default function App() {
           </Switch>
         </main>
         <Footer />
+        <CookieBanner />
       </div>
     </WouterRouter>
   );
