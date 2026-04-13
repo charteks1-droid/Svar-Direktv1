@@ -79,7 +79,7 @@ function HelpForm() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14">
         <h2 className="text-2xl font-bold text-slate-900 mb-3 text-center">Behöver du hjälp?</h2>
         <p className="text-slate-500 text-sm text-center mb-8 max-w-lg mx-auto">
-          Hittar du inte rätt mall eller kategori? Skicka ett meddelande så hjälper vi dig att hitta rätt innehåll i Svar Direkt.
+          Hittar du inte rätt mall eller kategori? Skicka ett meddelande så guidar vi dig till rätt mall eller formulering i Svar Direkt.
         </p>
 
         {submitted ? (
@@ -315,7 +315,7 @@ export default function Home() {
             {
               step: "1",
               title: "Ladda ner appen",
-              desc: "Gratis att ladda ner. Tillgänglig för Android.",
+              desc: "Köp appen för 49 kr och ladda ner den till Android.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>

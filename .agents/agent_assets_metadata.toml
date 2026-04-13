@@ -119,3 +119,9 @@ id = "pioNS4vHTwFckmGKGhIPC"
 uri = "file://artifacts/uploads/svar-direkt-website-v13.zip"
 type = "unspecified"
 title = "Svar Direkt – v13 formulär utan mailto, success-meddelande"
+
+[[outputs]]
+id = "a6C2k4obJqDUziNx-ASqi"
+uri = "file://artifacts/uploads/svar-direkt-website-v14.zip"
+type = "unspecified"
+title = "Svar Direkt – v14 poprawki wiarygodności"

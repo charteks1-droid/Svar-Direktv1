@@ -190,7 +190,7 @@ export default function Features() {
       {/* CTA */}
       <div className="mt-12 text-center">
         <p className="text-slate-500 text-sm mb-4">
-          Alla funktioner ingår i gratisappen. Utöka med paket och guider vid behov.
+          Alla funktioner ingår i appen. Utöka med paket och guider vid behov.
         </p>
         <div className="flex justify-center gap-3 flex-wrap">
           <a
