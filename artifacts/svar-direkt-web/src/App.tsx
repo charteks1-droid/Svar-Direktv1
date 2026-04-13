@@ -160,6 +160,7 @@ function Footer() {
         { label: "Integritetspolicy", href: "/integritetspolicy.html" },
         { label: "Användarvillkor", href: "/anvandarvillkor.html" },
         { label: "Cookies", href: "/cookies.html" },
+        { label: "Ansvarsfriskrivning", href: "/ansvarsfriskrivning.html" },
       ],
     },
   ];

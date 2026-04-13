@@ -398,6 +398,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Behöver du hjälp? */}
+      <section className="bg-white border-t border-slate-100">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14">
+          <h2 className="text-2xl font-bold text-slate-900 mb-3 text-center">Behöver du hjälp?</h2>
+          <p className="text-slate-500 text-sm text-center mb-8 max-w-lg mx-auto">
+            Hittar du inte rätt mall eller kategori? Skicka ett meddelande så hjälper vi dig att hitta rätt innehåll i Svar Direkt.
+          </p>
+          <form
+            action="mailto:info@svardirekt.se"
+            method="get"
+            encType="text/plain"
+            className="bg-slate-50 rounded-2xl border border-slate-100 p-6 sm:p-8 flex flex-col gap-5"
+          >
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Kategori</label>
+              <select
+                name="kategori"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              >
+                <option value="">Välj kategori…</option>
+                <option>Skatteverket</option>
+                <option>Försäkringskassan</option>
+                <option>Boverket</option>
+                <option>Migrationsverket</option>
+                <option>Annat</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Vad gäller det?</label>
+              <input
+                type="text"
+                name="amne"
+                placeholder="Beskriv kortfattat vad ärendet handlar om"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Meddelande</label>
+              <textarea
+                name="meddelande"
+                rows={4}
+                placeholder="Berätta mer om vad du söker hjälp med…"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              Skicka
+            </button>
+          </form>
+          <p className="mt-5 text-xs text-slate-400 text-center leading-relaxed">
+            Observera: Svar Direkt erbjuder inte juridisk rådgivning och gör ingen individuell bedömning. Vi hjälper endast till att guida dig till rätt mallar och innehåll.
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-slate-50 border-t border-slate-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 text-center">
