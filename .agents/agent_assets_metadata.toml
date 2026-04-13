@@ -101,3 +101,9 @@ id = "f-0KvDtDT4M5foSm_69Fk"
 uri = "file://artifacts/uploads/svar-direkt-website-v10.zip"
 type = "unspecified"
 title = "Svar Direkt – v10 (naprawione linki, brak 404)"
+
+[[outputs]]
+id = "8MU_hDvHzug__FxRQmCXE"
+uri = "file://artifacts/uploads/svar-direkt-website-v11.zip"
+type = "unspecified"
+title = "Svar Direkt – v11 FINAL (info@svardirekt.se, brak 404)"
