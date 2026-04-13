@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useState } from "react";
 
 function PhoneMockup() {
   return (
@@ -56,6 +57,109 @@ function SectionCard({ icon, title, desc }: { icon: React.ReactNode; title: stri
         <div className="text-slate-500 text-xs leading-relaxed">{desc}</div>
       </div>
     </div>
+  );
+}
+
+function HelpForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [kategori, setKategori] = useState("");
+  const [amne, setAmne] = useState("");
+  const [meddelande, setMeddelande] = useState("");
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted(true);
+    setKategori("");
+    setAmne("");
+    setMeddelande("");
+  }
+
+  return (
+    <section className="bg-white border-t border-slate-100">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14">
+        <h2 className="text-2xl font-bold text-slate-900 mb-3 text-center">Behöver du hjälp?</h2>
+        <p className="text-slate-500 text-sm text-center mb-8 max-w-lg mx-auto">
+          Hittar du inte rätt mall eller kategori? Skicka ett meddelande så hjälper vi dig att hitta rätt innehåll i Svar Direkt.
+        </p>
+
+        {submitted ? (
+          <div className="bg-green-50 border border-green-100 rounded-2xl p-8 flex flex-col items-center text-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold text-slate-900">Tack! Vi har tagit emot ditt meddelande.</h3>
+            <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
+              Vi återkommer så snart vi kan. Under tiden kan du redan nu använda våra färdiga mallar direkt i appen.
+            </p>
+            <a
+              href="https://payhip.com/b/WxtV3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 px-6 py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              Ladda ner appen – 49 kr
+            </a>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="bg-slate-50 rounded-2xl border border-slate-100 p-6 sm:p-8 flex flex-col gap-5"
+          >
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Kategori</label>
+              <select
+                value={kategori}
+                onChange={e => setKategori(e.target.value)}
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              >
+                <option value="">Välj kategori…</option>
+                <option>Skatteverket</option>
+                <option>Försäkringskassan</option>
+                <option>Boverket</option>
+                <option>Migrationsverket</option>
+                <option>Annat</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Vad gäller det?</label>
+              <input
+                type="text"
+                value={amne}
+                onChange={e => setAmne(e.target.value)}
+                placeholder="Beskriv kortfattat vad ärendet handlar om"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Meddelande</label>
+              <textarea
+                value={meddelande}
+                onChange={e => setMeddelande(e.target.value)}
+                rows={4}
+                placeholder="Berätta mer om vad du söker hjälp med…"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              Skicka
+            </button>
+          </form>
+        )}
+
+        <p className="mt-5 text-xs text-slate-400 text-center leading-relaxed">
+          Observera: Svar Direkt erbjuder inte juridisk rådgivning och gör ingen individuell bedömning. Vi hjälper endast till att guida dig till rätt mallar och innehåll.
+        </p>
+        <p className="mt-2 text-xs text-slate-400 text-center">
+          Vill du kontakta oss direkt?{" "}
+          <a href="mailto:info@svardirekt.se" className="text-primary hover:underline">info@svardirekt.se</a>
+        </p>
+      </div>
+    </section>
   );
 }
 
@@ -399,62 +503,7 @@ export default function Home() {
       </section>
 
       {/* Behöver du hjälp? */}
-      <section className="bg-white border-t border-slate-100">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-14">
-          <h2 className="text-2xl font-bold text-slate-900 mb-3 text-center">Behöver du hjälp?</h2>
-          <p className="text-slate-500 text-sm text-center mb-8 max-w-lg mx-auto">
-            Hittar du inte rätt mall eller kategori? Skicka ett meddelande så hjälper vi dig att hitta rätt innehåll i Svar Direkt.
-          </p>
-          <form
-            action="mailto:info@svardirekt.se"
-            method="get"
-            encType="text/plain"
-            className="bg-slate-50 rounded-2xl border border-slate-100 p-6 sm:p-8 flex flex-col gap-5"
-          >
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Kategori</label>
-              <select
-                name="kategori"
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/40"
-              >
-                <option value="">Välj kategori…</option>
-                <option>Skatteverket</option>
-                <option>Försäkringskassan</option>
-                <option>Boverket</option>
-                <option>Migrationsverket</option>
-                <option>Annat</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Vad gäller det?</label>
-              <input
-                type="text"
-                name="amne"
-                placeholder="Beskriv kortfattat vad ärendet handlar om"
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Meddelande</label>
-              <textarea
-                name="meddelande"
-                rows={4}
-                placeholder="Berätta mer om vad du söker hjälp med…"
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
-            >
-              Skicka
-            </button>
-          </form>
-          <p className="mt-5 text-xs text-slate-400 text-center leading-relaxed">
-            Observera: Svar Direkt erbjuder inte juridisk rådgivning och gör ingen individuell bedömning. Vi hjälper endast till att guida dig till rätt mallar och innehåll.
-          </p>
-        </div>
-      </section>
+      <HelpForm />
 
       {/* CTA */}
       <section className="bg-slate-50 border-t border-slate-100">

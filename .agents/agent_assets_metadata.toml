@@ -113,3 +113,9 @@ id = "JztiZTBxE6Hb4b_4hQlp8"
 uri = "file://artifacts/uploads/svar-direkt-website-v12.zip"
 type = "unspecified"
 title = "Svar Direkt – v12 med kontaktformulär + ansvarsfriskrivning"
+
+[[outputs]]
+id = "pioNS4vHTwFckmGKGhIPC"
+uri = "file://artifacts/uploads/svar-direkt-website-v13.zip"
+type = "unspecified"
+title = "Svar Direkt – v13 formulär utan mailto, success-meddelande"
