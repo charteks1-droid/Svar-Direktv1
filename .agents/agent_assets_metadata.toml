@@ -137,3 +137,9 @@ id = "pWOq-L-_vW4nxtk4j63eu"
 uri = "file://artifacts/uploads/svar-direkt-website-v16.zip"
 type = "unspecified"
 title = "Svar Direkt – v16 nowa nawigacja z dropdownem „Mer“"
+
+[[outputs]]
+id = "X0rWHfKt5GXq2PJxgqV-f"
+uri = "file://artifacts/uploads/svar-direkt-landing.zip"
+type = "unspecified"
+title = "Svar Direkt – Landing Page HTML (gotowy do WordPressa)"
