@@ -131,3 +131,9 @@ id = "mzKFOqrFk54QxZhLU0iSf"
 uri = "file://artifacts/uploads/svar-direkt-website-v15.zip"
 type = "unspecified"
 title = "Svar Direkt – v15 Textgenerator (CV + Brev + Myndighetsbrev)"
+
+[[outputs]]
+id = "pWOq-L-_vW4nxtk4j63eu"
+uri = "file://artifacts/uploads/svar-direkt-website-v16.zip"
+type = "unspecified"
+title = "Svar Direkt – v16 nowa nawigacja z dropdownem „Mer“"

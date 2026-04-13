@@ -1,5 +1,5 @@
 import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Home from "@/pages/Home";
 import AboutApp from "@/pages/AboutApp";
 import Features from "@/pages/Features";
@@ -18,28 +18,49 @@ function useHashLocation(): [string, (to: string) => void] {
 }
 
 function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropOpen, setDropOpen]     = useState(false);
   const [loc] = useLocation();
+  const dropRef = useRef<HTMLDivElement>(null);
 
-  const links = [
-    { href: "/", label: "Startsida" },
-    { href: "/om-appen", label: "Om appen" },
-    { href: "/funktioner", label: "Funktioner" },
-    { href: "/paket", label: "Paket" },
-    { href: "/pdf-guider", label: "PDF-guider" },
-    { href: "/blogg", label: "Blogg" },
-    { href: "/generator", label: "Textgenerator" },
-    { href: "/kontakt", label: "Kontakt" },
+  const primary = [
+    { href: "/",       label: "Startsida" },
+    { href: "/paket",  label: "Paket" },
+    { href: "/blogg",  label: "Blogg" },
+    { href: "/kontakt",label: "Kontakt" },
   ];
+
+  const secondary = [
+    { href: "/om-appen",    label: "Om appen" },
+    { href: "/funktioner",  label: "Funktioner" },
+    { href: "/pdf-guider",  label: "PDF-guider" },
+    { href: "/generator",   label: "Textgenerator" },
+  ];
+
+  const allLinks = [...primary, ...secondary];
 
   const isActive = (href: string) =>
     href === "/" ? loc === "/" : loc.startsWith(href);
+
+  const secondaryActive = secondary.some(l => isActive(l.href));
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
+        setDropOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 group">
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <rect x="2" y="2" width="14" height="10" rx="2" fill="white" fillOpacity="0.9"/>
@@ -50,8 +71,9 @@ function Navbar() {
             <span className="font-semibold text-slate-900 text-[15px]">Svar Direkt</span>
           </Link>
 
+          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {links.map((l) => (
+            {primary.map(l => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -64,31 +86,64 @@ function Navbar() {
                 {l.label}
               </Link>
             ))}
+
+            {/* "Mer" dropdown */}
+            <div className="relative" ref={dropRef}>
+              <button
+                onClick={() => setDropOpen(p => !p)}
+                className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  secondaryActive
+                    ? "bg-primary/10 text-primary"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+              >
+                Mer
+                <svg
+                  width="14" height="14" viewBox="0 0 14 14" fill="none"
+                  className={`transition-transform duration-200 ${dropOpen ? "rotate-180" : ""}`}
+                >
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+
+              {dropOpen && (
+                <div className="absolute left-0 top-full mt-1.5 w-48 bg-white rounded-xl border border-slate-100 shadow-lg py-1.5 z-50">
+                  {secondary.map(l => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      onClick={() => setDropOpen(false)}
+                      className={`block px-4 py-2 text-sm transition-colors ${
+                        isActive(l.href)
+                          ? "text-primary font-medium bg-primary/5"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                      }`}
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/paket"
-              className="text-sm font-medium text-primary hover:underline"
-            >
-              Se paket
-            </Link>
-            <a
-              href="https://payhip.com/b/WxtV3"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
-            >
-              Ladda ner appen
-            </a>
-          </div>
+          {/* Desktop CTA */}
+          <a
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+          >
+            Ladda ner appen
+          </a>
 
+          {/* Mobile hamburger */}
           <button
             className="md:hidden p-2 rounded-md text-slate-500 hover:bg-slate-50"
-            onClick={() => setOpen(!open)}
+            onClick={() => setMobileOpen(p => !p)}
             aria-label="Meny"
           >
-            {open ? (
+            {mobileOpen ? (
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
@@ -100,13 +155,14 @@ function Navbar() {
           </button>
         </div>
 
-        {open && (
+        {/* Mobile menu */}
+        {mobileOpen && (
           <div className="md:hidden border-t border-slate-100 py-3 flex flex-col gap-1">
-            {links.map((l) => (
+            {allLinks.map(l => (
               <Link
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={() => setMobileOpen(false)}
                 className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
                   isActive(l.href)
                     ? "bg-primary/10 text-primary"
@@ -116,13 +172,13 @@ function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <div className="pt-2 mt-1 border-t border-slate-100 flex flex-col gap-2">
+            <div className="pt-2 mt-1 border-t border-slate-100">
               <a
                 href="https://payhip.com/b/WxtV3"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-2.5 rounded-lg bg-primary text-white text-sm font-medium text-center"
-                onClick={() => setOpen(false)}
+                className="block px-3 py-2.5 rounded-lg bg-primary text-white text-sm font-medium text-center"
+                onClick={() => setMobileOpen(false)}
               >
                 Ladda ner appen
               </a>
