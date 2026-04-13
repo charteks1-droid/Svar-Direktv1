@@ -89,3 +89,9 @@ id = "kfDfBn9rOkiBLwqvSw4CZ"
 uri = "file://artifacts/uploads/svar-direkt-website-v8.zip"
 type = "unspecified"
 title = "Svar Direkt – v8 (blog jako czyste pliki HTML)"
+
+[[outputs]]
+id = "WtaoMwQVzrF7ijkc4IVwE"
+uri = "file://artifacts/uploads/svar-direkt-website-v9.zip"
+type = "unspecified"
+title = "Svar Direkt – v9 (porównanie konkurencji + strony prawne + blog)"

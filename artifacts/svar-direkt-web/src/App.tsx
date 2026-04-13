@@ -157,9 +157,9 @@ function Footer() {
       title: "Information",
       links: [
         { label: "Kontakt", href: "/kontakt" },
-        { label: "Integritetspolicy", href: "#" },
-        { label: "Användarvillkor", href: "#" },
-        { label: "Cookies", href: "#" },
+        { label: "Integritetspolicy", href: "/integritetspolicy.html" },
+        { label: "Användarvillkor", href: "/anvandarvillkor.html" },
+        { label: "Cookies", href: "/cookies.html" },
       ],
     },
   ];
