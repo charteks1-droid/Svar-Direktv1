@@ -195,9 +195,15 @@ function Footer() {
               <ul className="space-y-2">
                 {s.links.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-sm text-slate-400 hover:text-white transition-colors">
-                      {l.label}
-                    </Link>
+                    {l.href.endsWith(".html") ? (
+                      <a href={l.href} className="text-sm text-slate-400 hover:text-white transition-colors">
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link href={l.href} className="text-sm text-slate-400 hover:text-white transition-colors">
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

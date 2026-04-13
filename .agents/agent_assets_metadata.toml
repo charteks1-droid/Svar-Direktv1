@@ -95,3 +95,9 @@ id = "WtaoMwQVzrF7ijkc4IVwE"
 uri = "file://artifacts/uploads/svar-direkt-website-v9.zip"
 type = "unspecified"
 title = "Svar Direkt – v9 (porównanie konkurencji + strony prawne + blog)"
+
+[[outputs]]
+id = "f-0KvDtDT4M5foSm_69Fk"
+uri = "file://artifacts/uploads/svar-direkt-website-v10.zip"
+type = "unspecified"
+title = "Svar Direkt – v10 (naprawione linki, brak 404)"
