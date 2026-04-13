@@ -8,6 +8,7 @@ import PdfGuides from "@/pages/PdfGuides";
 import Contact from "@/pages/Contact";
 import Blog from "@/pages/Blog";
 import Generator from "@/pages/Generator";
+import Mallar from "@/pages/Mallar";
 import NotFound from "@/pages/not-found";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -33,6 +34,7 @@ function Navbar() {
   const secondary = [
     { href: "/om-appen",    label: "Om appen" },
     { href: "/funktioner",  label: "Funktioner" },
+    { href: "/mallar",      label: "Mallar & texter" },
     { href: "/pdf-guider",  label: "PDF-guider" },
     { href: "/generator",   label: "Textgenerator" },
   ];
@@ -206,9 +208,9 @@ function Footer() {
       title: "Produkter",
       links: [
         { label: "Paket", href: "/paket" },
+        { label: "Mallar & texter", href: "/mallar" },
         { label: "PDF-guider", href: "/pdf-guider" },
         { label: "Snabba svar – Arbete", href: "/paket" },
-        { label: "Snabba svar – Relationer", href: "/paket" },
       ],
     },
     {
@@ -299,6 +301,7 @@ export default function App() {
             <Route path="/blogg/:slug" component={Blog} />
             <Route path="/blogg" component={Blog} />
             <Route path="/generator" component={Generator} />
+            <Route path="/mallar" component={Mallar} />
             <Route component={NotFound} />
           </Switch>
         </main>

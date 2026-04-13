@@ -143,3 +143,9 @@ id = "X0rWHfKt5GXq2PJxgqV-f"
 uri = "file://artifacts/uploads/svar-direkt-landing.zip"
 type = "unspecified"
 title = "Svar Direkt – Landing Page HTML (gotowy do WordPressa)"
+
+[[outputs]]
+id = "Og7iDQEJUvCCuUwJPJB4m"
+uri = "file://artifacts/uploads/svar-direkt-website-v17.zip"
+type = "unspecified"
+title = "Svar Direkt – Website v17 (med Mallar & texter)"
