@@ -149,3 +149,9 @@ id = "Og7iDQEJUvCCuUwJPJB4m"
 uri = "file://artifacts/uploads/svar-direkt-website-v17.zip"
 type = "unspecified"
 title = "Svar Direkt – Website v17 (med Mallar & texter)"
+
+[[outputs]]
+id = "9yumS6_s8-fPu27Rz4fI8"
+uri = "file://artifacts/uploads/svar-direkt-website-v18.zip"
+type = "unspecified"
+title = "Svar Direkt – Website v18 (med CV-mallar)"
