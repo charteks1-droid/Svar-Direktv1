@@ -269,3 +269,9 @@ id = "Y5AfTE9m9rSJTE9GOKUSP"
 uri = "file://artifacts/uploads/svar-direkt-website-v36.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v36 (Paket Hälsa live)"
+
+[[outputs]]
+id = "ruoZRbI46fJq_R7LjNZNC"
+uri = "file://artifacts/uploads/svar-direkt-website-v37.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v37 (3 nowe PDF-y Överklagan)"

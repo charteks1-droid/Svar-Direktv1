@@ -57,6 +57,93 @@ const guides = [
       </svg>
     ),
   },
+  {
+    id: "overklagan-csn",
+    title: "Överklagan till CSN",
+    subtitle: "Skriv rätt – få rätt",
+    desc: "En praktisk guide med färdiga mallar och tydliga instruktioner för att överklaga beslut från CSN. Perfekt vid avslag på lån, felaktiga återkrav eller ändrad studietakt.",
+    topics: [
+      "Hur du läser och förstår CSN:s beslut",
+      "Steg-för-steg att skriva en överklagan",
+      "Färdig mall att fylla i direkt",
+      "Vad du måste skicka med som bilaga",
+      "Tidsfrister och vart du skickar",
+      "Vad händer efter att du överklagat?",
+    ],
+    pages: "ca 10 sidor",
+    format: "PDF",
+    price: "5 kr",
+    badge: "Överklagan",
+    badgeColor: "#6c5ce7",
+    downloadFile: "overklagan-csn.pdf",
+    payhipUrl: "https://payhip.com/b/3K12w",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h10M9 13h10M9 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="20" cy="20" r="5" fill="white" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M18 20l1.5 1.5L22 18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "overklagan-migrationsverket",
+    title: "Överklagan till Migrationsverket",
+    subtitle: "Ta tillbaka din rätt att stanna",
+    desc: "Guide med mallar och vägledning för att överklaga avslag från Migrationsverket – uppehållstillstånd, asyl eller visum. Anpassad för den som inte har juridisk bakgrund.",
+    topics: [
+      "Förstå Migrationsverkets avslagsbeslut",
+      "Skillnaden mellan omprövning och överklagan",
+      "Färdig mall för överklagandet",
+      "Vilka dokument och bevis du ska bifoga",
+      "Tidsfrist – viktigt att agera snabbt",
+      "Förvaltningsrätten – vad händer sen?",
+    ],
+    pages: "ca 10 sidor",
+    format: "PDF",
+    price: "5 kr",
+    badge: "Överklagan",
+    badgeColor: "#6c5ce7",
+    downloadFile: "overklagan-migrationsverket.pdf",
+    payhipUrl: "https://payhip.com/b/MI8mo",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h10M9 13h10M9 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="20" cy="20" r="5" fill="white" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M18 20l1.5 1.5L22 18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "overklagan-arbetsformedlingen",
+    title: "Överklagan till Arbetsförmedlingen",
+    subtitle: "Känn till dina rättigheter som arbetssökande",
+    desc: "Praktisk guide med färdiga mallar för att överklaga beslut från Arbetsförmedlingen – avslag på ersättning, varningar eller krav på återbetalning av a-kassa.",
+    topics: [
+      "Förstå Arbetsförmedlingens beslutsbrev",
+      "Hur du bestrider en varning eller avstängning",
+      "Färdig mall för överklagandet",
+      "Vad som räknas som giltig frånvaro",
+      "IAF – vad de granskar och hur",
+      "Tidsfrist och vart du skickar handlingarna",
+    ],
+    pages: "ca 10 sidor",
+    format: "PDF",
+    price: "5 kr",
+    badge: "Överklagan",
+    badgeColor: "#6c5ce7",
+    downloadFile: "overklagan-arbetsformedlingen.pdf",
+    payhipUrl: "https://payhip.com/b/2bwR1",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h10M9 13h10M9 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="20" cy="20" r="5" fill="white" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M18 20l1.5 1.5L22 18" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function PdfGuides() {
@@ -167,7 +254,7 @@ export default function PdfGuides() {
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
                 >
-                  Köp – 29 kr
+                  Köp – {guide.price}
                 </a>
               </div>
             </div>
