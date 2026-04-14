@@ -257,3 +257,9 @@ id = "CZKCiysddi4ebL57Edyv1"
 uri = "file://artifacts/uploads/svar-direkt-website-v35.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v35 (licznik pobran)"
+
+[[outputs]]
+id = "-s5ZXVRdwrcFZBJMLa8dP"
+uri = "file://artifacts/uploads/snabba-svar-halsa.json"
+type = "unspecified"
+title = "Snabba svar – Hälsa (paket, 70 meddelanden)"
