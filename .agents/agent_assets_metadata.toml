@@ -233,3 +233,9 @@ id = "7kDdP0fmeT1XgPqKOto2u"
 uri = "file://artifacts/uploads/svar-direkt-website-v31.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v31 (formularz → email)"
+
+[[outputs]]
+id = "XQ-uKk0lHt2rdY0uqW1RF"
+uri = "file://artifacts/uploads/svar-direkt-website-v32.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v32"
