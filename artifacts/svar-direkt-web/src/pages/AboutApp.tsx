@@ -12,7 +12,13 @@ export default function AboutApp() {
           Svar Direkt – din guide<br />genom det svenska systemet
         </h1>
         <p className="text-slate-500 text-base leading-relaxed max-w-2xl">
-          Svar Direkt är en mobilapp som ger dig färdiga mallar, snabba svar och PDF-guider för verkliga situationer i Sverige. Oavsett om du ska skriva till en myndighet, svara på en jobbannons eller hantera en konflikt med en hyresvärd – appen har svaret.
+          Svar Direkt är en mobilapp som ger dig färdiga mallar, snabba svar och{" "}
+          <Link href="/pdf-guider" className="text-primary underline hover:no-underline">PDF-guider</Link>{" "}
+          för verkliga situationer i Sverige. Oavsett om du ska skriva till en myndighet, svara på en jobbannons eller hantera en konflikt med en hyresvärd – appen har svaret.
+          Läs mer om{" "}
+          <Link href="/funktioner" className="text-primary underline hover:no-underline">alla funktioner</Link>{" "}
+          eller se{" "}
+          <Link href="/paket" className="text-primary underline hover:no-underline">tillgängliga paket</Link>.
         </p>
       </div>
 
@@ -108,10 +114,12 @@ export default function AboutApp() {
         </p>
         <div className="flex justify-center gap-3 flex-wrap">
           <a
-            href="#"
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-5 py-2.5 bg-white text-primary rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors"
           >
-            Ladda ner för Android
+            Ladda ner för Android – 49 kr
           </a>
           <Link
             href="/funktioner"
@@ -119,6 +127,26 @@ export default function AboutApp() {
           >
             Se funktioner
           </Link>
+        </div>
+      </div>
+
+      {/* Related pages */}
+      <div className="mt-10 pt-8 border-t border-slate-100">
+        <h2 className="text-base font-semibold text-slate-900 mb-4">Utforska mer</h2>
+        <div className="grid sm:grid-cols-3 gap-3">
+          {[
+            { href: "/funktioner", label: "Appens funktioner", desc: "Allt som ingår i Svar Direkt" },
+            { href: "/paket", label: "Paket och tillägg", desc: "Utöka med fler mallar och fraser" },
+            { href: "/pdf-guider", label: "PDF-guider", desc: "Guider om inkasso, Kronofogden och mer" },
+            { href: "/mallar", label: "Jobbansökningsmallar", desc: "Gratis mallar för jobbsökare" },
+            { href: "/blogg", label: "Blogg", desc: "Artiklar om myndigheter och kommunikation" },
+            { href: "/kontakt", label: "Kontakt", desc: "Frågor eller feedback? Hör av dig" },
+          ].map(item => (
+            <Link key={item.href} href={item.href} className="flex flex-col gap-0.5 p-3 bg-slate-50 border border-slate-100 rounded-xl hover:border-primary/30 hover:bg-white transition-colors group">
+              <span className="text-sm font-medium text-slate-800 group-hover:text-primary transition-colors">{item.label}</span>
+              <span className="text-xs text-slate-400">{item.desc}</span>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

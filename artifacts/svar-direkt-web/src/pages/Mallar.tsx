@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "wouter";
 
 const templates = [
   {
@@ -964,6 +965,29 @@ export default function Mallar() {
             Använd färdiga mallar i appen – 49 kr
           </a>
           <p className="text-slate-400 text-xs mt-4">Engångsbetalning · Inga prenumerationer</p>
+        </div>
+      </section>
+
+      {/* Related pages */}
+      <section className="py-10 px-4 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-base font-semibold text-slate-900 mb-1">Relaterade sidor</h2>
+          <p className="text-xs text-slate-400 mb-5">Fler resurser som kan hjälpa dig</p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { href: "/om-appen", label: "Om Svar Direkt-appen" },
+              { href: "/funktioner", label: "Appens funktioner" },
+              { href: "/paket", label: "Paket och tillägg" },
+              { href: "/pdf-guider", label: "PDF-guider" },
+              { href: "/blogg", label: "Blogg och artiklar" },
+              { href: "/kontakt", label: "Kontakt" },
+              { href: "/", label: "Startsidan" },
+            ].map(item => (
+              <Link key={item.href} href={item.href} className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

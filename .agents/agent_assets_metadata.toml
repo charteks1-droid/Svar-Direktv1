@@ -197,3 +197,9 @@ id = "d3r6NyL_TYualfJ8dRitW"
 uri = "file://artifacts/uploads/svar-direkt-website-v25.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona v25 (logo działa)"
+
+[[outputs]]
+id = "o2HKPG2et5Fp05nGbe7N_"
+uri = "file://artifacts/uploads/svar-direkt-website-v26.zip"
+type = "unspecified"
+title = "Svar Direkt – v26 (SEO – wewnętrzne linki)"

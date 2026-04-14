@@ -140,6 +140,10 @@ export default function Features() {
         </h1>
         <p className="text-slate-500 text-base max-w-xl leading-relaxed">
           Svar Direkt innehåller 9 huvudfunktioner som täcker de vanligaste kommunikationsbehoven i Sverige.
+          Vill du se ett urval av mallarna direkt? Gå till{" "}
+          <Link href="/mallar" className="text-primary underline hover:no-underline">jobbansökningsmallar</Link>{" "}
+          eller läs mer{" "}
+          <Link href="/om-appen" className="text-primary underline hover:no-underline">om appen</Link>.
         </p>
       </div>
 
@@ -207,6 +211,25 @@ export default function Features() {
           >
             Se paket
           </Link>
+        </div>
+      </div>
+
+      {/* Related pages */}
+      <div className="mt-12 pt-8 border-t border-slate-100">
+        <h2 className="text-base font-semibold text-slate-900 mb-4">Relaterade sidor</h2>
+        <div className="flex flex-wrap gap-3">
+          {[
+            { href: "/om-appen", label: "Om Svar Direkt" },
+            { href: "/pdf-guider", label: "PDF-guider" },
+            { href: "/mallar", label: "Jobbansökningsmallar" },
+            { href: "/blogg", label: "Blogg" },
+            { href: "/kontakt", label: "Kontakt" },
+            { href: "/", label: "Startsidan" },
+          ].map(item => (
+            <Link key={item.href} href={item.href} className="px-4 py-2 bg-slate-50 border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

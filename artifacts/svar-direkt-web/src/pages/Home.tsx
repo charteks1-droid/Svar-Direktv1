@@ -579,6 +579,66 @@ export default function Home() {
       {/* Behöver du hjälp? */}
       <HelpForm />
 
+      {/* Blog preview */}
+      <section className="bg-slate-50 border-t border-slate-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">Från bloggen</h2>
+              <p className="text-slate-500 text-sm mt-1">Läs mer om hur du kommunicerar med svenska myndigheter</p>
+            </div>
+            <Link href="/blogg" className="text-sm font-medium text-primary hover:underline hidden sm:block">
+              Alla artiklar →
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4 mb-6">
+            {[
+              {
+                href: "/blogg",
+                articleHref: "/blog/forsakringskassan-skriver-till-dig.html",
+                tag: "Försäkringskassan",
+                title: "Försäkringskassan skriver till dig – vad gör du nu?",
+                desc: "Omprövning, återkrav, kompletteringsbegäran — lär dig vad varje brev kräver av dig.",
+              },
+              {
+                href: "/blogg",
+                articleHref: "/blog/svara-pa-krav-fran-kronofogden.html",
+                tag: "Kronofogden",
+                title: "Svara på krav från Kronofogden",
+                desc: "Så agerar du lugnt och strategiskt när Kronofogden hör av sig.",
+              },
+              {
+                href: "/blogg",
+                articleHref: "/blog/ratt-ton-i-myndighetsbrev.html",
+                tag: "Kommunikation",
+                title: "Rätt ton i myndighetsbrev",
+                desc: "Varför formellt och faktabaserat alltid fungerar bäst när du skriver till myndigheter.",
+              },
+            ].map(post => (
+              <a key={post.articleHref} href={post.articleHref} className="bg-white rounded-2xl border border-slate-100 p-5 hover:shadow-md transition-shadow group block">
+                <div className="inline-block text-xs font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-3">{post.tag}</div>
+                <h3 className="text-sm font-semibold text-slate-900 leading-snug mb-2 group-hover:text-primary transition-colors">{post.title}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">{post.desc}</p>
+              </a>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-3 items-center">
+            <Link href="/blogg" className="text-sm font-medium text-primary hover:underline sm:hidden">
+              Alla artiklar →
+            </Link>
+            <Link href="/pdf-guider" className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
+              PDF-guider
+            </Link>
+            <Link href="/mallar" className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
+              Jobbansökningsmallar
+            </Link>
+            <Link href="/kontakt" className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
+              Kontakt
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-16 text-center">

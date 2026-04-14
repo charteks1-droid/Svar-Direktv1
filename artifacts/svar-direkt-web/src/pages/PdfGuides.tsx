@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+
 const DOWNLOAD_BASE = "/api/download/";
 
 const guides = [
@@ -68,7 +70,10 @@ export default function PdfGuides() {
           Praktiska guider för verkliga situationer
         </h1>
         <p className="text-slate-500 text-base max-w-xl leading-relaxed">
-          Våra PDF-guider förklarar komplicerade ämnen på ett enkelt och tydligt sätt. Perfekt att ha sparad på telefonen.
+          Våra PDF-guider förklarar komplicerade ämnen på ett enkelt och tydligt sätt. Perfekt att ha sparad på telefonen. Letar du efter färdiga mallar istället? Se vår{" "}
+          <Link href="/mallar" className="text-primary underline hover:no-underline">samling av jobbansökningsmallar</Link>{" "}
+          eller{" "}
+          <Link href="/funktioner" className="text-primary underline hover:no-underline">appens alla funktioner</Link>.
         </p>
       </div>
 
@@ -168,6 +173,30 @@ export default function PdfGuides() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Related content */}
+      <div className="mb-8 bg-slate-50 rounded-2xl border border-slate-100 p-6">
+        <h2 className="text-base font-semibold text-slate-900 mb-1">Relaterat innehåll</h2>
+        <p className="text-xs text-slate-400 mb-4">Andra sidor som kan vara till hjälp</p>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {[
+            { href: "/mallar", label: "Jobbansökningsmallar", desc: "15 färdiga mallar att redigera direkt" },
+            { href: "/funktioner", label: "Appens alla funktioner", desc: "52+ myndighetmallar, snabba svar och mer" },
+            { href: "/om-appen", label: "Om Svar Direkt", desc: "Vad appen är och vem den är till för" },
+            { href: "/blogg", label: "Blogg och guider", desc: "Artiklar om myndigheter och kommunikation" },
+          ].map(item => (
+            <Link key={item.href} href={item.href} className="flex items-start gap-2 p-3 bg-white rounded-xl border border-slate-100 hover:border-primary/30 transition-colors group">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-primary mt-0.5 flex-shrink-0">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <div>
+                <div className="text-sm font-medium text-slate-800 group-hover:text-primary transition-colors">{item.label}</div>
+                <div className="text-xs text-slate-400">{item.desc}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* FAQ */}
