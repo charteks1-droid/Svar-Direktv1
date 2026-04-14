@@ -61,6 +61,131 @@ function SectionCard({ icon, title, desc }: { icon: React.ReactNode; title: stri
   );
 }
 
+function ShareBar() {
+  const [copied, setCopied] = useState(false);
+
+  function getUrl() {
+    return typeof window !== "undefined" ? window.location.href : "https://svardirekt.site";
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText(getUrl()).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    });
+  }
+
+  function shareUrl(base: string) {
+    const url = encodeURIComponent(getUrl());
+    const title = encodeURIComponent("Svar Direkt – Färdiga mallar till svenska myndigheter");
+    if (base === "fb") return `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    if (base === "x") return `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+    if (base === "li") return `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    return "#";
+  }
+
+  const btnBase = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-opacity hover:opacity-85";
+
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dela:</span>
+      <a href={shareUrl("fb")} target="_blank" rel="noopener noreferrer"
+        className={`${btnBase} bg-[#1877f2] text-white`}
+        aria-label="Dela på Facebook">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        Facebook
+      </a>
+      <a href={shareUrl("x")} target="_blank" rel="noopener noreferrer"
+        className={`${btnBase} bg-black text-white`}
+        aria-label="Dela på X">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
+      <a href={shareUrl("li")} target="_blank" rel="noopener noreferrer"
+        className={`${btnBase} bg-[#0a66c2] text-white`}
+        aria-label="Dela på LinkedIn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <button onClick={copyLink}
+        className={`${btnBase} bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200`}
+        aria-label="Kopiera länk">
+        {copied ? (
+          <><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>Länk kopierad</>
+        ) : (
+          <><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Kopiera länk</>
+        )}
+      </button>
+    </div>
+  );
+}
+
+function FaqSection() {
+  const [open, setOpen] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "Vad är Svar Direkt?",
+      a: "Svar Direkt är en app med 52+ färdiga mallar och fraser för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Du kopierar, anpassar och skickar. Inga tomma sidor, ingen gissning.",
+    },
+    {
+      q: "För vem passar appen?",
+      a: "Appen passar alla som bor och lever i Sverige och ibland behöver kommunicera med myndigheter men inte alltid vet hur man formulerar sig. Nyanlända, personer med svenska som andraspråk, men också infödda svenskar som vill spara tid och slippa stressa.",
+    },
+    {
+      q: "Hur fungerar mallarna?",
+      a: "Du väljer situation — t.ex. 'svar på begäran om komplettering från Försäkringskassan' — kopierar texten, fyller i dina egna uppgifter och skickar. Alla mallar är skrivna på korrekt, formell svenska och anpassade till den specifika myndighetens kommunikationsstil.",
+    },
+    {
+      q: "Är det här juridisk rådgivning?",
+      a: "Nej. Svar Direkt ger dig hjälp att formulera dig — inte juridisk rådgivning. För komplexa juridiska frågor bör du alltid kontakta en jurist. Men för de flesta vardagliga myndighetssituationer räcker en välformulerad mall långt.",
+    },
+    {
+      q: "Vad ingår i appen och vad kostar den?",
+      a: "Grundappen kostar 49 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
+    },
+  ];
+
+  return (
+    <section className="border-t border-slate-100 bg-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+        <div className="text-center mb-10">
+          <span className="inline-block bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+            Vanliga frågor
+          </span>
+          <h2 className="text-2xl font-bold text-slate-900">Har du frågor om Svar Direkt?</h2>
+          <p className="text-slate-500 text-sm mt-2">Här svarar vi på det vi får frågor om mest.</p>
+        </div>
+        <div className="divide-y divide-slate-100">
+          {faqs.map((faq, i) => (
+            <div key={i}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between py-4 text-left gap-4 group"
+                aria-expanded={open === i}
+              >
+                <span className="font-semibold text-slate-900 text-sm group-hover:text-primary transition-colors">{faq.q}</span>
+                <svg
+                  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round"
+                  className={`flex-shrink-0 text-slate-400 transition-transform duration-200 ${open === i ? "rotate-180 text-primary" : ""}`}
+                >
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+              {open === i && (
+                <div className="pb-5 text-sm text-slate-500 leading-relaxed">
+                  {faq.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HelpForm() {
   const [submitted, setSubmitted] = useState(false);
   const [kategori, setKategori] = useState("");
@@ -624,6 +749,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <FaqSection />
+
       {/* Behöver du hjälp? */}
       <HelpForm />
 
@@ -683,6 +811,18 @@ export default function Home() {
             <Link href="/kontakt" className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
               Kontakt
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Sharing */}
+      <section className="border-t border-slate-100 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+            <p className="text-sm text-slate-500 flex-shrink-0">
+              Känner du någon som behöver hjälp med myndigheter? Dela sidan:
+            </p>
+            <ShareBar />
           </div>
         </div>
       </section>

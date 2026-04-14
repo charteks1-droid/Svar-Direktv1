@@ -39,6 +39,23 @@
     .related-box li::before { content: "→ "; color: #0a7ea4; font-weight: 700; }
     .related-box li a { color: #0a7ea4; font-size: 15px; font-weight: 500; text-decoration: underline; }
     .related-box li a:hover { text-decoration: underline; }
+    .share-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 20px 0 32px; }
+    .share-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-right: 2px; }
+    .share-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: opacity 0.15s; }
+    .share-btn:hover { opacity: 0.85; text-decoration: none; }
+    .share-fb { background: #1877f2; color: #fff; }
+    .share-x { background: #000; color: #fff; }
+    .share-li { background: #0a66c2; color: #fff; }
+    .share-copy { background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; }
+    .cta-box { background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%); border: 1px solid #bae6fd; border-radius: 20px; padding: 36px 32px; text-align: center; margin-top: 56px; }
+    .cta-box .cta-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #0a7ea4; margin-bottom: 10px; }
+    .cta-box strong { display: block; font-size: 21px; color: #0f172a; margin-bottom: 10px; font-weight: 800; line-height: 1.3; }
+    .cta-box p { color: #475569; margin-bottom: 20px; font-size: 15px; line-height: 1.6; }
+    .cta-box .cta-bullets { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .cta-box .cta-bullets li { font-size: 13px; color: #0a7ea4; background: rgba(10,126,164,0.08); padding: 4px 12px; border-radius: 100px; font-weight: 500; }
+    .cta-box .btn { display: inline-block; background: #0a7ea4; color: #fff; font-weight: 700; padding: 15px 36px; border-radius: 12px; font-size: 16px; box-shadow: 0 4px 14px rgba(10,126,164,0.3); }
+    .cta-box .btn:hover { background: #086d8f; text-decoration: none; }
+    .cta-box .cta-note { margin-top: 14px; font-size: 12px; color: #94a3b8; }
     footer { text-align: center; padding: 24px; font-size: 13px; color: #94a3b8; }
   </style>
 </head>
@@ -56,6 +73,37 @@
   <span class="tag">Kommunikation</span>
   <h1>Konsten att svara professionellt – på jobbet och i privatlivet</h1>
   <div class="meta">4 min läsning &nbsp;·&nbsp; 20 mars 2026</div>
+
+  <div class="share-bar" id="share-bar">
+    <span class="share-label">Dela:</span>
+    <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank');return false;" class="share-btn share-fb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      Facebook
+    </a>
+    <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&text='+encodeURIComponent(document.title),'_blank');return false;" class="share-btn share-x">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X
+    </a>
+    <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank');return false;" class="share-btn share-li">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <button onclick="copyPageLink()" id="copy-link-btn" class="share-btn share-copy">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      Kopiera länk
+    </button>
+  </div>
+  <script>
+    function copyPageLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        var btn = document.getElementById('copy-link-btn');
+        btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"><\/polyline><\/svg> ✔ Länk kopierad';
+        setTimeout(function() {
+          btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"><\/rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"><\/path><\/svg> Kopiera länk';
+        }, 2500);
+      });
+    }
+  </script>
 
   <p>Vi kommunicerar mer än någonsin — mejl, SMS, chatt, kommentarsfält. Ändå har de flesta aldrig fått lära sig hur man faktiskt svarar professionellt. Det är en färdighet som kan förbättra både arbetsrelationer och personliga relationer dramatiskt.</p>
 
@@ -90,10 +138,13 @@
   </div>
 
 <div class="cta-box">
-    <strong>Redo att spara tid?</strong>
-    <p>Hämta Svar Direkt och få tillgång till färdiga mallar för alla situationer — Skatteverket, Försäkringskassan, Kronofogden och mer.</p>
-    <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="btn">Ladda ner appen – 49 kr</a>
-  </div>
+  <div class="cta-eyebrow">Prova det i praktiken</div>
+  <strong>Färdiga svar för varje situation</strong>
+  <p>Oavsett om du svarar en myndighet, en arbetsgivare eller i en privat situation — Svar Direkt ger dig rätt ord direkt. Spara tid och kommunicera med säkerhet.</p>
+  <ul class="cta-bullets"><li>52+ färdiga mallar</li><li>Arbete & relationer</li><li>Myndigheter & vardagen</li></ul>
+  <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="btn">Ladda ner appen – 49 kr</a>
+  <p class="cta-note">Engångskostnad · Ingen prenumeration · Offline-redo</p>
+</div>
 
 </div>
 
