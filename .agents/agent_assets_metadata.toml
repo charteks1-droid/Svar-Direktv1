@@ -215,3 +215,9 @@ id = "cofZEwhRjxTt-CeuiXndV"
 uri = "file://artifacts/uploads/svar-direkt-website-v28.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v28"
+
+[[outputs]]
+id = "OfQhXs8QJohTjr9RnvDiT"
+uri = "file://artifacts/uploads/svar-direkt-website-v29.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v29 (delą/FAQ/CTA)"

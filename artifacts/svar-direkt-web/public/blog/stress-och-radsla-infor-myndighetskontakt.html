@@ -96,6 +96,14 @@
   </div>
   <script>
     function copyPageLink() {
+      // also update bottom button if present
+      var btnB = document.getElementById('copy-link-btn-bottom');
+      if (btnB) {
+        btnB.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"><\/polyline><\/svg> Länk kopierad';
+        setTimeout(function() {
+          btnB.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"><\/rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"><\/path><\/svg> Kopiera länk';
+        }, 2500);
+      }
       navigator.clipboard.writeText(window.location.href).then(function() {
         var btn = document.getElementById('copy-link-btn');
         btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"><\/polyline><\/svg> ✔ Länk kopierad';
@@ -104,6 +112,15 @@
         }, 2500);
       });
     }
+    function copyPageLinkBottom() {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+          var btn = document.getElementById('copy-link-btn-bottom');
+          btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"><\/polyline><\/svg> Länk kopierad';
+          setTimeout(function() {
+            btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"><\/rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"><\/path><\/svg> Kopiera länk';
+          }, 2500);
+        });
+      }
   </script>
 
   <p>Det är ingen skam att känna sig stressad inför ett brev från en myndighet. Det är tvärtom en helt normal mänsklig reaktion på en situation med osäkerhet, maktskillnad och potentiella konsekvenser. Läs mer om ämnet i vår artikel om <a href="/blog/overvinna-radslan-for-myndigheter.html">att övervinna rädslan för myndigheter</a>.</p>
@@ -143,6 +160,26 @@
     </ul>
   </div>
 
+
+  <div class="share-bar" style="margin-top:40px; padding-top:24px; border-top:1px solid #e2e8f0;">
+    <span class="share-label">Dela artikeln:</span>
+    <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank');return false;" class="share-btn share-fb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      Facebook
+    </a>
+    <a href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&text='+encodeURIComponent(document.title),'_blank');return false;" class="share-btn share-x">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X
+    </a>
+    <a href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank');return false;" class="share-btn share-li">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <button onclick="copyPageLinkBottom()" id="copy-link-btn-bottom" class="share-btn share-copy">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      Kopiera länk
+    </button>
+  </div>
 <div class="cta-box">
   <div class="cta-eyebrow">Minska stressen konkret</div>
   <strong>Starta med en färdig mall — slipp den tomma sidan</strong>
