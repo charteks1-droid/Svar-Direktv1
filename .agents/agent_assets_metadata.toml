@@ -287,3 +287,9 @@ id = "827pgHaF36bulKoBHzNCM"
 uri = "file://artifacts/uploads/svar-direkt-website-v39.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v39 (3 nowe PDF-y myndighetsmeddelanden)"
+
+[[outputs]]
+id = "sOMfBExagyvG6Kce5dgt2"
+uri = "file://artifacts/uploads/svar-direkt-website-v40.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v40 (trwały licznik pobrań)"

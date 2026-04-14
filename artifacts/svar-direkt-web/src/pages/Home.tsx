@@ -337,21 +337,37 @@ function HelpForm() {
   );
 }
 
+const STORAGE_KEY = "sd_dl_v1";
+const BASE_COUNT = 767;
+const INTERVALS_MIN = [5, 10, 30, 60, 90, 120];
+const AVG_INTERVAL_MIN = INTERVALS_MIN.reduce((a, b) => a + b, 0) / INTERVALS_MIN.length;
+
+function calcCountFromStorage(): number {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const { count, ts } = JSON.parse(raw);
+      const elapsedMin = (Date.now() - ts) / 60000;
+      const gained = Math.floor(elapsedMin / AVG_INTERVAL_MIN);
+      return Math.max(count, count + gained);
+    }
+  } catch {}
+  return BASE_COUNT;
+}
+
 function DownloadCounter() {
-  const START = 767;
-  const [count, setCount] = useState(START);
+  const [count, setCount] = useState<number>(calcCountFromStorage);
   const [bump, setBump] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const INTERVALS_MS = [
-      5 * 60 * 1000,
-      10 * 60 * 1000,
-      30 * 60 * 1000,
-      60 * 60 * 1000,
-      90 * 60 * 1000,
-      120 * 60 * 1000,
-    ];
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ count, ts: Date.now() }));
+    } catch {}
+  }, [count]);
+
+  useEffect(() => {
+    const INTERVALS_MS = INTERVALS_MIN.map(m => m * 60 * 1000);
 
     function scheduleNext() {
       const delay = INTERVALS_MS[Math.floor(Math.random() * INTERVALS_MS.length)];
