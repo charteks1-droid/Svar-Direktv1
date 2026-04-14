@@ -16,7 +16,62 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
-import { BOVERKET_TEMPLATES, CATEGORIES, Category, Template } from "@/data/situations";
+import {
+  BOVERKET_TEMPLATES,
+  CATEGORIES,
+  CV_CATEGORIES,
+  CV_TEMPLATES,
+  Category,
+  CvCategory,
+  Template,
+} from "@/data/situations";
+
+type Mode = "myndighet" | "cv";
+
+function ModeToggle({
+  mode,
+  onSelect,
+}: {
+  mode: Mode;
+  onSelect: (m: Mode) => void;
+}) {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
+  const theme = isDark ? Colors.dark : Colors.light;
+
+  return (
+    <View
+      style={[
+        modeStyles.wrap,
+        { backgroundColor: theme.backgroundTertiary },
+      ]}
+    >
+      {(["myndighet", "cv"] as Mode[]).map((m) => (
+        <Pressable
+          key={m}
+          onPress={() => onSelect(m)}
+          style={[
+            modeStyles.btn,
+            mode === m && { backgroundColor: Colors.primary },
+          ]}
+        >
+          <Text
+            style={[
+              modeStyles.label,
+              {
+                color: mode === m ? "#fff" : theme.textSecondary,
+                fontFamily:
+                  mode === m ? "Inter_600SemiBold" : "Inter_400Regular",
+              },
+            ]}
+          >
+            {m === "myndighet" ? "Myndighetsbrev" : "CV-mallar"}
+          </Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
 
 function CategoryPill({
   label,
@@ -57,7 +112,13 @@ function CategoryPill({
   );
 }
 
-function TemplateCard({ template }: { template: Template }) {
+function TemplateCard({
+  template,
+  source,
+}: {
+  template: Template;
+  source: string;
+}) {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -68,7 +129,7 @@ function TemplateCard({ template }: { template: Template }) {
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     router.push({
       pathname: "/template-detail",
-      params: { id: template.id, source: "boverket" },
+      params: { id: template.id, source },
     });
   };
 
@@ -106,7 +167,7 @@ function TemplateCard({ template }: { template: Template }) {
         </View>
         <Pressable onPress={handleFav} hitSlop={8}>
           <Feather
-            name={fav ? "heart" : "heart"}
+            name="heart"
             size={20}
             color={fav ? "#fd79a8" : theme.textTertiary}
             style={{ opacity: fav ? 1 : 0.5 }}
@@ -156,22 +217,50 @@ export default function TemplatesScreen() {
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
+
+  const [mode, setMode] = useState<Mode>("myndighet");
   const [selectedCategory, setSelectedCategory] = useState<Category>("Alla");
+  const [selectedCvCategory, setSelectedCvCategory] =
+    useState<CvCategory>("Alla");
   const [search, setSearch] = useState("");
 
   const topPad = Platform.OS === "web" ? 67 : insets.top;
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
 
-  const filtered = BOVERKET_TEMPLATES.filter((t) => {
-    const matchCat = selectedCategory === "Alla" || t.category === selectedCategory;
-    const q = search.toLowerCase();
-    const matchSearch =
-      !q ||
-      t.title.toLowerCase().includes(q) ||
-      t.description.toLowerCase().includes(q) ||
-      t.tags.some((tag) => tag.includes(q));
-    return matchCat && matchSearch;
-  });
+  const handleModeSelect = (m: Mode) => {
+    setMode(m);
+    setSearch("");
+    setSelectedCategory("Alla");
+    setSelectedCvCategory("Alla");
+  };
+
+  const filtered =
+    mode === "myndighet"
+      ? BOVERKET_TEMPLATES.filter((t) => {
+          const matchCat =
+            selectedCategory === "Alla" || t.category === selectedCategory;
+          const q = search.toLowerCase();
+          const matchSearch =
+            !q ||
+            t.title.toLowerCase().includes(q) ||
+            t.description.toLowerCase().includes(q) ||
+            t.tags.some((tag) => tag.includes(q));
+          return matchCat && matchSearch;
+        })
+      : CV_TEMPLATES.filter((t) => {
+          const matchCat =
+            selectedCvCategory === "Alla" ||
+            t.category === selectedCvCategory;
+          const q = search.toLowerCase();
+          const matchSearch =
+            !q ||
+            t.title.toLowerCase().includes(q) ||
+            t.description.toLowerCase().includes(q) ||
+            t.tags.some((tag) => tag.includes(q));
+          return matchCat && matchSearch;
+        });
+
+  const categories = mode === "myndighet" ? [...CATEGORIES] : [...CV_CATEGORIES];
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
@@ -193,17 +282,25 @@ export default function TemplatesScreen() {
         >
           Mallar
         </Text>
+
+        <ModeToggle mode={mode} onSelect={handleModeSelect} />
+
         <View
           style={[
             styles.searchBox,
-            { backgroundColor: theme.background, borderColor: theme.cardBorder },
+            {
+              backgroundColor: theme.background,
+              borderColor: theme.cardBorder,
+            },
           ]}
         >
           <Feather name="search" size={16} color={theme.textTertiary} />
           <TextInput
             value={search}
             onChangeText={setSearch}
-            placeholder="Sök mall..."
+            placeholder={
+              mode === "myndighet" ? "Sök myndighetsmall..." : "Sök CV-mall..."
+            }
             placeholderTextColor={theme.textTertiary}
             style={[
               styles.searchInput,
@@ -216,19 +313,28 @@ export default function TemplatesScreen() {
             </Pressable>
           )}
         </View>
+
         <FlatList
-          data={[...CATEGORIES]}
+          data={categories}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item}
           contentContainerStyle={styles.pillRow}
-          renderItem={({ item }) => (
-            <CategoryPill
-              label={item}
-              selected={selectedCategory === item}
-              onPress={() => setSelectedCategory(item)}
-            />
-          )}
+          renderItem={({ item }) =>
+            mode === "myndighet" ? (
+              <CategoryPill
+                label={item}
+                selected={selectedCategory === item}
+                onPress={() => setSelectedCategory(item as Category)}
+              />
+            ) : (
+              <CategoryPill
+                label={item}
+                selected={selectedCvCategory === item}
+                onPress={() => setSelectedCvCategory(item as CvCategory)}
+              />
+            )
+          }
         />
       </View>
 
@@ -240,7 +346,12 @@ export default function TemplatesScreen() {
           { paddingBottom: bottomPad + 100 },
         ]}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <TemplateCard template={item} />}
+        renderItem={({ item }) => (
+          <TemplateCard
+            template={item}
+            source={mode === "myndighet" ? "boverket" : "cv"}
+          />
+        )}
         ListEmptyComponent={
           <View style={styles.empty}>
             <Feather name="file-text" size={40} color={theme.textTertiary} />
@@ -258,6 +369,24 @@ export default function TemplatesScreen() {
     </View>
   );
 }
+
+const modeStyles = StyleSheet.create({
+  wrap: {
+    flexDirection: "row",
+    borderRadius: 12,
+    padding: 3,
+    marginBottom: 12,
+  },
+  btn: {
+    flex: 1,
+    paddingVertical: 8,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  label: {
+    fontSize: 13,
+  },
+});
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
