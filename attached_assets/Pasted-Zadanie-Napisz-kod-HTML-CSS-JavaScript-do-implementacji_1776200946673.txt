@@ -1,0 +1,103 @@
+Zadanie: Napisz kod HTML/CSS/JavaScript do implementacji 3 technik psychologicznych
+
+Język: Szwedzki
+
+Framework: React / HTML + CSS + JS (do wyboru)
+
+INSTRUKCJE:
+
+Napisz kod (HTML + CSS + JavaScript), który implementuje 3 psychologiczne techniki konwersji dla strony svardirekt.site:
+
+Technika 1: "Ostatnio Pobrano" (Recently Downloaded)
+
+Wyświetl listę 5-6 ostatnich pobrań
+
+Format: "Imię Nazwisko, Miasto - X minut temu"
+
+Dane powinny być realistyczne (szwedzkie miasta, imiona)
+
+Liczby minut powinny się aktualizować co 30 sekund
+
+Umieść w hero-sekcji, pod głównym CTA
+
+Przykład:
+
+Plain Text
+
+Właśnie pobrano:
+
+Anna K., Stockholm - 2 minuty temu
+
+Marcus L., Göteborg - 5 minut temu
+
+Karin S., Malmö - 12 minut temu
+
+
+
+Technika 5: "Co Tracisz?" (Loss Aversion)
+
+Dwie kolumny: "Bez Svar Direkt" vs "Z Svar Direkt"
+
+Każda kolumna ma 5-6 punktów
+
+Lewa kolumna (bez): czerwone X, negatywne
+
+Prawa kolumna (z): zielone checkmarki, pozytywne
+
+Umieść między sekcją "Hur det fungerar" a "Varför Svar Direkt?"
+
+Przykład:
+
+Plain Text
+
+BEZ SVAR DIREKT          |  Z SVAR DIREKT
+
+❌ 2 godziny na pisanie   |  ✅ 30 sekund
+
+❌ Ryzyko błędów         |  ✅ Profesjonalne
+
+❌ Stres i niepewność    |  ✅ Spokój
+
+WYMAGANIA TECHNICZNE:
+
+Responsywny design - Działa na mobilu i desktopie
+
+Animacje - Gładkie, nie rozpraszające
+
+Performance - Nie spowalnia strony
+
+Kolory - Spójne z designem (niebieski #0a7ea4, zielony, czerwony)
+
+Tekst - Po szwedzku
+
+Dane - Realistyczne (szwedzkie miasta, imiona)
+
+OPCJONALNIE:
+
+Dodaj dźwięk powiadomienia, gdy pojawia się nowe pobranie (opcja wyłączenia)
+
+Dodaj animację fade-in dla nowych pobrań
+
+Dodaj tooltip: "Dlaczego to widzisz?" (wyjaśnienie psychologii)
+
+FORMAT WYJŚCIA:
+
+Dostarcz:
+
+HTML - Struktura
+
+CSS - Styling (Tailwind lub zwykły CSS)
+
+JavaScript - Logika (vanilla JS lub React)
+
+Instrukcje instalacji - Jak to wkleić do strony
+
+DODATKOWE NOTATKI:
+
+Dane powinny być realistyczne, ale mogą być fikcyjne (nie rzeczywiste)
+
+Liczby powinny się aktualizować losowo, aby wyglądało naturalnie
+
+Nie dodawaj fake'owych ocen - tylko liczby pobrań i miasta
+
+Kod powinien być łatwy do modyfikacji (aby zmienić liczby, miasta, itp.)

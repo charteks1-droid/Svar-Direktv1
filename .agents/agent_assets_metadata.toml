@@ -245,3 +245,9 @@ id = "hh2bevJFklpVdjBqCteS1"
 uri = "file://artifacts/uploads/svar-direkt-website-v33.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v33 (formularz z mailem + PHP)"
+
+[[outputs]]
+id = "lfumKTMK2AsPKseQPeyZ_"
+uri = "file://artifacts/uploads/svar-direkt-website-v34.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v34 (psychologia konwersji)"

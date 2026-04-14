@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import logoSrc from "../assets/logo.png";
 
 function PhoneMockup() {
@@ -337,6 +337,167 @@ function HelpForm() {
   );
 }
 
+const ALL_DOWNLOADS = [
+  { name: "Anna K.", city: "Stockholm" },
+  { name: "Marcus L.", city: "Göteborg" },
+  { name: "Karin S.", city: "Malmö" },
+  { name: "Erik J.", city: "Uppsala" },
+  { name: "Sara M.", city: "Västerås" },
+  { name: "Johan A.", city: "Örebro" },
+  { name: "Lena B.", city: "Linköping" },
+  { name: "Mikael N.", city: "Helsingborg" },
+  { name: "Petra H.", city: "Norrköping" },
+  { name: "Andreas C.", city: "Jönköping" },
+  { name: "Emma W.", city: "Umeå" },
+  { name: "David F.", city: "Lund" },
+];
+
+function RecentDownloads() {
+  const [entries, setEntries] = useState(() =>
+    [2, 5, 9, 14, 21].map((mins, i) => ({
+      ...ALL_DOWNLOADS[i],
+      minutes: mins,
+      id: i,
+    }))
+  );
+  const [fadingIn, setFadingIn] = useState<number | null>(null);
+  const nextIdx = useRef(5);
+  const nextId = useRef(100);
+
+  useEffect(() => {
+    const addNew = setInterval(() => {
+      const person = ALL_DOWNLOADS[nextIdx.current % ALL_DOWNLOADS.length];
+      nextIdx.current++;
+      const id = nextId.current++;
+      setFadingIn(id);
+      setEntries(prev => [{ ...person, minutes: 1, id }, ...prev.slice(0, 4)]);
+      setTimeout(() => setFadingIn(null), 700);
+    }, 30000);
+
+    const tick = setInterval(() => {
+      setEntries(prev => prev.map(e => ({ ...e, minutes: e.minutes + 1 })));
+    }, 60000);
+
+    return () => { clearInterval(addNew); clearInterval(tick); };
+  }, []);
+
+  return (
+    <div className="mt-7 pt-5 border-t border-slate-100">
+      <div className="flex items-center gap-2 mb-3">
+        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Nyligen nedladdad</span>
+      </div>
+      <div className="space-y-2">
+        {entries.map((e) => (
+          <div
+            key={e.id}
+            style={{
+              transition: "opacity 0.6s, transform 0.6s",
+              opacity: e.id === fadingIn ? 0 : 1,
+              transform: e.id === fadingIn ? "translateY(-6px)" : "translateY(0)",
+            }}
+            className="flex items-center gap-2 text-xs text-slate-500"
+          >
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="flex-shrink-0">
+              <rect x="2" y="1" width="9" height="11" rx="1.5" fill="#0a7ea4" fillOpacity="0.15"/>
+              <path d="M6.5 3.5v4M4.5 6l2 2 2-2" stroke="#0a7ea4" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>
+              <span className="font-semibold text-slate-700">{e.name}</span>, {e.city}
+              <span className="text-slate-400 ml-1.5">— {e.minutes} min sedan</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const LOSS_ITEMS = [
+  { utan: "2–3 timmar att hitta rätt formulering", med: "Redo mall på under 30 sekunder" },
+  { utan: "Risk att skriva fel ton eller missförstås", med: "Korrekt, formell svenska — direkt" },
+  { utan: "Stress och osäkerhet inför varje svar", med: "Lugn och trygghet — texten är redan klar" },
+  { utan: "Ärendet försenas pga misstag eller tomma sidor", med: "Skickar i tid — missar inga frister" },
+  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "49 kr en gång — inga prenumerationer" },
+  { utan: "Vet inte ens var du ska börja", med: "Klar text att kopiera och anpassa direkt" },
+];
+
+function LossAversion() {
+  return (
+    <section className="bg-white border-t border-slate-100 py-14 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="inline-block bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+            Vad kostar det att vänta?
+          </span>
+          <h2 className="text-2xl font-bold text-slate-900">Vad händer utan Svar Direkt?</h2>
+          <p className="text-slate-500 text-sm mt-2 max-w-md mx-auto">Varje myndighetsbrev du skjuter upp kostar tid, pengar och nerv.</p>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="bg-red-50/50 rounded-2xl border border-red-100 overflow-hidden">
+            <div className="bg-red-50 border-b border-red-100 px-5 py-3.5 flex items-center gap-2.5">
+              <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 2l6 6M8 2L2 8" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <span className="font-bold text-red-700 text-sm">Utan Svar Direkt</span>
+            </div>
+            <div className="p-5 space-y-3">
+              {LOSS_ITEMS.map((item, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center mt-0.5">
+                    <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                      <path d="M2.5 2.5l5 5M7.5 2.5l-5 5" stroke="#ef4444" strokeWidth="1.6" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                  <span className="text-sm text-slate-600 leading-snug">{item.utan}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-green-50/50 rounded-2xl border border-green-100 overflow-hidden">
+            <div className="bg-green-50 border-b border-green-100 px-5 py-3.5 flex items-center gap-2.5">
+              <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 5l2.5 2.5L8 3" stroke="#16a34a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="font-bold text-green-700 text-sm">Med Svar Direkt</span>
+            </div>
+            <div className="p-5 space-y-3">
+              {LOSS_ITEMS.map((item, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                    <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2.5 2.5L8 3" stroke="#16a34a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span className="text-sm text-slate-700 font-medium leading-snug">{item.med}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
+          <a
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+          >
+            Ladda ner appen – 49 kr
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </a>
+          <p className="text-xs text-slate-400 mt-2">Engångskostnad — inga prenumerationer</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div>
@@ -384,6 +545,7 @@ export default function Home() {
                   Se PDF-guider
                 </Link>
               </div>
+              <RecentDownloads />
             </div>
             <div className="flex justify-center">
               <PhoneMockup />
@@ -626,6 +788,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Loss Aversion */}
+      <LossAversion />
 
       {/* Fördelar */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
