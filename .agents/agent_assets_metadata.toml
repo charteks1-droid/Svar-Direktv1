@@ -263,3 +263,9 @@ id = "-s5ZXVRdwrcFZBJMLa8dP"
 uri = "file://artifacts/uploads/snabba-svar-halsa.json"
 type = "unspecified"
 title = "snabba-svar-halsa.json – gotowy do wgrania na Payhip"
+
+[[outputs]]
+id = "Y5AfTE9m9rSJTE9GOKUSP"
+uri = "file://artifacts/uploads/svar-direkt-website-v36.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v36 (Paket Hälsa live)"

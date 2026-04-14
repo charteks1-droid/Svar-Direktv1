@@ -30,10 +30,28 @@ const smsPackages = [
       "Sätta gränser",
     ],
     price: "19 kr",
-    badge: "Ny",
+    badge: "",
     badgeColor: "#00b894",
     downloadFile: "snabba-svar-relationer.json",
     payhipUrl: "https://payhip.com/b/tYMcV",
+  },
+  {
+    id: "snabba-svar-halsa",
+    name: "Snabba svar – Hälsa",
+    desc: "70 färdiga meddelanden för sjukdom – till chefen, kollegor, vänner och för att beskriva symptom.",
+    includes: [
+      "Sjukanmälan till chefen",
+      "VAB och läkarintyg",
+      "Avboka träffar och fester",
+      "Meddelanden till kollegor",
+      "Symptombeskrivningar",
+      "Återhämtning och uppföljning",
+    ],
+    price: "19 kr",
+    badge: "Ny",
+    badgeColor: "#00b894",
+    downloadFile: "snabba-svar-halsa.json",
+    payhipUrl: "https://payhip.com/b/3K12w",
   },
 ];
 
@@ -103,7 +121,7 @@ function PackageCard({
               : "bg-slate-900 text-white hover:bg-slate-800"
           }`}
         >
-          Köp – 19 kr
+          Köp – {pkg.price}
         </a>
       </div>
     </div>
@@ -167,14 +185,6 @@ export default function Packages() {
               <path d="M16 10v12M10 16h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
             </svg>
             <div className="text-sm font-medium text-slate-400">Snabba svar – Myndigheter</div>
-            <div className="text-xs text-slate-300 mt-1">Kommer snart</div>
-          </div>
-          <div className="rounded-2xl border border-dashed border-slate-200 p-6 flex flex-col items-center justify-center text-center text-slate-400 min-h-[160px]">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="mb-3 opacity-40">
-              <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" strokeWidth="1.5"/>
-              <path d="M16 10v12M10 16h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-            <div className="text-sm font-medium text-slate-400">Snabba svar – Hälsa</div>
             <div className="text-xs text-slate-300 mt-1">Kommer snart</div>
           </div>
         </div>
