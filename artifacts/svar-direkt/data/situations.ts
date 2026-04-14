@@ -19,6 +19,15 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number];
 
+export const CV_CATEGORIES = [
+  "Alla",
+  "Grundläggande",
+  "Bransch",
+  "Specifik situation",
+] as const;
+
+export type CvCategory = (typeof CV_CATEGORIES)[number];
+
 export const SKATTEVERKET_TEMPLATES: Template[] = [
   {
     id: "skat-001",
@@ -1010,5 +1019,537 @@ Med vänliga hälsningar,
 [DITT NAMN]
 [KONTAKTUPPGIFTER]
 [DATUM]`,
+  },
+];
+
+export const CV_TEMPLATES: Template[] = [
+  {
+    id: "cv-001",
+    title: "Allmänt CV – grundmall",
+    category: "Grundläggande",
+    description: "En komplett och professionell CV-mall för de flesta yrken",
+    tags: ["cv", "ansökan", "allmänt"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+[LINKEDIN-URL eller WEBBPLATS]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+[Skriv 2–3 meningar om dig själv, dina styrkor och vad du söker. Exempel: Engagerad och lösningsorienterad [YRKE] med [ANTAL] års erfarenhet inom [BRANSCH]. Jag trivs i miljöer där jag kan kombinera [STYRKA 1] och [STYRKA 2]. Söker nu en tjänst där jag kan bidra med min kompetens och fortsätta utvecklas.]
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[STARTMÅNAD ÅR] – [SLUTMÅNAD ÅR / Nuvarande]
+• [Beskriv ansvar och prestation, t.ex.: Ansvarade för kundservice och hantering av inkommande ärenden]
+• [Beskriv ansvar och prestation]
+• [Beskriv ansvar och prestation]
+
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[STARTMÅNAD ÅR] – [SLUTMÅNAD ÅR]
+• [Beskriv ansvar och prestation]
+• [Beskriv ansvar och prestation]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[EXAMEN / PROGRAM] · [SKOLA/UNIVERSITET], [ORT]
+[STARTÅR] – [SLUTÅR]
+[Eventuellt: Inriktning, uppsats, utmärkelse]
+
+[GYMNASIEPROGRAM] · [GYMNASIESKOLA], [ORT]
+[STARTÅR] – [SLUTÅR]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+Språk: [T.ex. Svenska (modersmål), Engelska (flytande), Spanska (grundläggande)]
+Program: [T.ex. Microsoft Office, Adobe Creative Suite, Salesforce]
+Övrigt: [T.ex. B-körkort, truckkort, certifikat]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-002",
+    title: "CV – första jobbet",
+    category: "Specifik situation",
+    description: "CV-mall för dig som söker ditt första jobb eller sommarjobb",
+    tags: ["första jobbet", "student", "sommarjobb", "nyexaminerad"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+Född: [ÅR]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Motiverad och snabblärd person med starkt intresse för [BRANSCH/YRKE]. Jag är van att arbeta både självständigt och i team, tar ansvar och lär mig snabbt nya arbetsuppgifter. Söker nu mitt första jobb för att omsätta mina kunskaper i praktiken.
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[GYMNASIEPROGRAM / UNIVERSITETSUTBILDNING] · [SKOLA], [ORT]
+[STARTÅR] – [SLUTÅR / Pågående]
+Relevanta kurser: [T.ex. Ekonomi, Kommunikation, Programmering]
+
+──────────────────────────────
+ERFARENHET
+──────────────────────────────
+[VOLONTÄRARBETE / PRAKTIK / EXTRAJOBB] · [ORGANISATION/FÖRETAG], [ORT]
+[PERIOD]
+• [Vad du gjorde och lärde dig]
+• [Ansvarsområden]
+
+Skolprojekt / Eget initiativ
+• [Beskriv ett relevant projekt du genomfört på skolan eller på eget initiativ]
+
+──────────────────────────────
+ÖVRIGA MERITER
+──────────────────────────────
+• [Föreningsengagemang, ledaruppdrag, idrottsträning, etc.]
+• [Eventuella kurser eller certifikat, t.ex. Säker Trafik, First Aid, etc.]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+Språk: [Svenska, Engelska, etc.]
+Dator: [Word, Excel, sociala medier, etc.]
+Körkort: [Ja/Nej, klass]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+[Lärare: NAMN, TELEFON] eller Lämnas på begäran.`,
+  },
+  {
+    id: "cv-003",
+    title: "CV – karriärbyte",
+    category: "Specifik situation",
+    description: "CV-mall anpassad för dig som byter bransch eller yrke",
+    tags: ["karriärbyte", "ny bransch", "omställning"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+
+──────────────────────────────
+PROFIL – VARFÖR JAG BYTER RIKTNING
+──────────────────────────────
+Erfaren [NUVARANDE YRKE] som nu söker sig mot [NY BRANSCH/YRKE]. Mina [ANTAL] år inom [NUVARANDE BRANSCH] har gett mig starka kunskaper i [ÖVERFÖRBAR KOMPETENS 1], [ÖVERFÖRBAR KOMPETENS 2] och [ÖVERFÖRBAR KOMPETENS 3] — färdigheter som jag ser stor nytta av i den nya rollen. Motiverad av [ORSAK TILL KARRIÄRBYTET, T.EX. INTRESSE, VÄRDERINGAR, LIVSSTILSVAL].
+
+──────────────────────────────
+ÖVERFÖRBARA KOMPETENSER
+──────────────────────────────
+• [Kompetens 1 från tidigare jobb som är relevant för det nya yrket]
+• [Kompetens 2]
+• [Kompetens 3]
+• [Kompetens 4]
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Fokusera på uppgifter som är relevanta för det nya yrket]
+• [Lyft fram ledarskap, kommunikation, analys eller andra transferabla förmågor]
+
+──────────────────────────────
+UTBILDNING & KOMPETENSUTVECKLING
+──────────────────────────────
+[RELEVANT KURS / UTBILDNING] · [SKOLA/PLATTFORM], [ÅR]
+[Examen/Certifikat]
+
+[GRUNDUTBILDNING] · [SKOLA], [ÅR]
+
+──────────────────────────────
+ÖVRIGT
+──────────────────────────────
+• [Volontärarbete, sidoprojekt eller eget initiativ inom den nya branschen]
+• [Nätverkande, branschorganisationer, etc.]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-004",
+    title: "CV – teknisk roll",
+    category: "Bransch",
+    description: "CV-mall för IT, teknik och ingenjörsyrken",
+    tags: ["it", "teknik", "ingenjör", "programmering"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST] · [GITHUB/PORTFOLIO-URL]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+[JOBBTITEL, t.ex. Fullstackutvecklare] med [ANTAL] års erfarenhet av [TEKNIKER/PLATTFORMAR]. Jag brinner för att bygga robusta och användarvänliga lösningar. Trivs i agila miljöer och är van vid att arbeta nära produktteam och slutanvändare.
+
+──────────────────────────────
+TEKNISK KOMPETENS
+──────────────────────────────
+Programmeringsspråk: [T.ex. Python, JavaScript, Java, C#]
+Ramverk & bibliotek: [T.ex. React, Node.js, Spring Boot, Django]
+Databaser: [T.ex. PostgreSQL, MySQL, MongoDB]
+Verktyg & plattformar: [T.ex. Git, Docker, AWS, Azure, Jira]
+Metodik: [T.ex. Scrum, Kanban, CI/CD, TDD]
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv projekt och teknisk lösning, t.ex.: Utvecklade REST API i Node.js som minskade svarstiden med 40 %]
+• [Beskriv ansvar]
+• [Mätbara resultat om möjligt]
+
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv ansvar och prestation]
+
+──────────────────────────────
+PROJEKT (URVAL)
+──────────────────────────────
+[PROJEKTNAMN] · [TEKNIKER ANVÄNDA]
+[Kort beskrivning – vad projektet löste och din roll. Länk om möjligt.]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[EXAMEN] · [SKOLA], [ORT]
+[PERIOD]
+
+──────────────────────────────
+CERTIFIKAT
+──────────────────────────────
+• [T.ex. AWS Certified Developer, Google Cloud Professional, etc.]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-005",
+    title: "CV – vård och omsorg",
+    category: "Bransch",
+    description: "CV-mall för sjukvård, äldreomsorg och socialt arbete",
+    tags: ["vård", "omsorg", "sjuksköterska", "undersköterska", "socialt arbete"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Omtänksam och ansvarstagande [YRKE, t.ex. undersköterska] med [ANTAL] års erfarenhet inom [VERKSAMHETSTYP, t.ex. hemtjänst, äldreboende, akutvård]. Jag arbetar med stort engagemang för patientens/brukarens välmående och är van vid att hantera krävande situationer med lugn och empati.
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[YRKETITEL] · [ARBETSGIVARE], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter, t.ex.: Personlig omvårdnad, medicindelning, dokumentation i journalsystem]
+• [Beskriv ansvarsområden]
+• [Eventuella specialuppgifter eller ledaransvar]
+
+[YRKETITEL] · [ARBETSGIVARE], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[EXAMEN / PROGRAM, t.ex. Omvårdnadsprogrammet] · [SKOLA], [ORT]
+[PERIOD]
+
+──────────────────────────────
+LEGITIMATION & CERTIFIKAT
+──────────────────────────────
+• [T.ex. Legitimerad sjuksköterska, Socialstyrelsen, ÅR]
+• [T.ex. Hjärt-lungräddning (HLR), ÅR]
+• [T.ex. Demensutbildning, ÅR]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+Journalsystem: [T.ex. TakeCare, Lifecare, Procapita]
+Språk: [T.ex. Svenska (modersmål), Engelska, Arabiska]
+Övrigt: [T.ex. B-körkort, förarbevis for truck]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-006",
+    title: "CV – handel och service",
+    category: "Bransch",
+    description: "CV-mall för butik, kundservice och restaurang",
+    tags: ["handel", "butik", "kundservice", "restaurang", "service"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Serviceinriktad och energisk person med god vana av kundkontakt och kassaarbete. Jag trivs i ett högt tempo, samarbetar väl med kollegor och sätter alltid kunden i fokus. Har erfarenhet av [BUTIK/RESTAURANG/HOTELL] och är van vid att arbeta kvällar och helger.
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[TJÄNST, t.ex. Butikssäljare] · [ARBETSGIVARE], [ORT]
+[PERIOD]
+• Kundmottagning, kassahantering och rådgivning
+• [Beskriv övriga arbetsuppgifter, t.ex.: Varupåfyllning, lagerhantering, prismärkning]
+• [Eventuella extrauppgifter, t.ex.: Tränat nyanställda, skötsel av skyltfönster]
+
+[TJÄNST] · [ARBETSGIVARE], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[GYMNASIEPROGRAM, t.ex. Handelsprogrammet] · [SKOLA], [ORT]
+[PERIOD]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+Kassasystem: [T.ex. Sitoo, Pyramid, Trivec]
+Språk: [T.ex. Svenska, Engelska, Somaliska]
+Övrigt: [T.ex. B-körkort, truckkörkort, kassaansvar]
+
+──────────────────────────────
+ÖVRIGA MERITER
+──────────────────────────────
+• [Föreningsengagemang, idrottsträning, volontärarbete]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-007",
+    title: "CV – offentlig sektor",
+    category: "Bransch",
+    description: "CV-mall för statliga myndigheter, kommuner och regioner",
+    tags: ["offentlig sektor", "myndighet", "kommun", "region", "handläggare"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Strukturerad och noggrann [YRKE, t.ex. handläggare/utredare/koordinator] med [ANTAL] års erfarenhet inom [SEKTOR, t.ex. kommunal förvaltning]. Jag har god kunskap om relevant lagstiftning, är van att skriva formella beslut och rapporter samt arbetar självständigt med komplexa ärenden.
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[JOBBTITEL] · [MYNDIGHET/FÖRVALTNING], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter, t.ex.: Handläggning av ärenden enligt [LAG], skriftlig ärendekommunikation med medborgare]
+• [Dokumentation, diarieföring, samordning]
+• [Beskriv eventuella specialuppdrag eller projektansvar]
+
+[JOBBTITEL] · [ARBETSGIVARE], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[EXAMEN, t.ex. Kandidatexamen i statsvetenskap/juridik/socionom] · [SKOLA], [ORT]
+[PERIOD]
+
+──────────────────────────────
+LAGSTIFTNING & SYSTEM
+──────────────────────────────
+Lagar: [T.ex. Förvaltningslagen, Socialtjänstlagen, Offentlighetsprincipen]
+Ärendesystem: [T.ex. W3D3, Platina, Treserva, Pulsen Combine]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+• Utmärkt skriftlig förmåga på svenska
+• Vana vid formell myndighetskommunikation
+• [Övriga relevanta kompetenser]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-008",
+    title: "CV – återgång till arbete",
+    category: "Specifik situation",
+    description: "CV-mall efter föräldraledighet, sjukskrivning eller studieuppehåll",
+    tags: ["föräldraledighet", "sjukskrivning", "uppehåll", "återgång"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Erfaren [YRKE] som nu återvänder till arbetslivet efter [FÖRÄLDRALEDIGHET/STUDIER/SJUKSKRIVNING]. Jag har under den här perioden [BESKRIV VAD DU GJORT, t.ex. friskat upp mina kunskaper genom kurser, engagerat mig i volontärarbete, fokuserat på rehabilitering]. Jag är redo att ta nya kliv och ser fram emot att bidra med min kompetens och erfarenhet.
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[UPPEHÅLLSPERIOD] · [ORSAK, t.ex. Föräldraledighet, Sjukskrivning, Studier]
+[PERIOD]
+[Valfritt: nämn kort vad du gjort under uppehållet — kurs, volontärarbete, etc.]
+
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv dina mest relevanta arbetsuppgifter och prestationer]
+• [Beskriv ansvar]
+
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[EXAMEN] · [SKOLA], [ORT]
+[PERIOD]
+
+[KURS VID ÅTERKOMST, om tillämpligt] · [SKOLA/PLATTFORM]
+[ÅR]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+Språk: [T.ex. Svenska, Engelska]
+Program: [Relevanta verktyg]
+Övrigt: [Körkort, certifikat etc.]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-009",
+    title: "CV – byggnad och hantverk",
+    category: "Bransch",
+    description: "CV-mall för bygg, el, VVS och hantverksyrken",
+    tags: ["bygg", "hantverkare", "el", "vvs", "snickare", "målare"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Erfaren [YRKE, t.ex. snickare/elektriker/rörmokare] med [ANTAL] års arbete inom [BYGGBRANSCHEN/VVS/EL]. Jag har gedigen erfarenhet av [SPECIFICERA, t.ex. nybyggnation, renovering, installationer], arbetar noggrant och levererar alltid i tid. Trivs lika bra med självständigt arbete som i team på bygget.
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter, t.ex.: Nybyggnation av villor och flerbostadshus]
+• [T.ex. Renovering av kök och badrum, golvläggning, fönsterbyte]
+• [Eventuella ledaruppdrag, t.ex. arbetsledare, lagbas]
+
+[JOBBTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv arbetsuppgifter]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[GYMNASIEPROGRAM, t.ex. Bygg- och anläggningsprogrammet] · [SKOLA], [ORT]
+[PERIOD]
+
+[GESÄLLBREV / MÄSTARBREV / CERTIFIKAT] · [UTFÄRDARE]
+[ÅR]
+
+──────────────────────────────
+KOMPETENSER & BEHÖRIGHETER
+──────────────────────────────
+• B-körkort [och eventuellt C/CE, truckkort, skyliftbehörighet]
+• [T.ex. Elinstallationsbehörighet, Gasinstallationsbehörighet]
+• [T.ex. Svetsning MIG/MAG, Certifikat tätskikt]
+• Verktyg: [Relevanta maskiner och verktyg]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
+  },
+  {
+    id: "cv-010",
+    title: "CV – ledarskap och chef",
+    category: "Grundläggande",
+    description: "CV-mall för chefer, teamledare och projektledare",
+    tags: ["chef", "ledare", "teamledare", "projektledare", "manager"],
+    content: `[DITT NAMN]
+[ADRESS], [POSTNUMMER] [ORT]
+[TELEFON] · [E-POST] · [LINKEDIN]
+
+──────────────────────────────
+PROFIL
+──────────────────────────────
+Resultatdriven [LEDARROLL, t.ex. avdelningschef / projektledare] med [ANTAL] års erfarenhet av att leda team inom [BRANSCH]. Jag driver förändring med tydlig kommunikation, skapar engagemang och levererar affärsresultat. Skicklig på att kombinera strategiskt tänkande med operativt ansvar.
+
+──────────────────────────────
+NYCKELKOMPETENSER
+──────────────────────────────
+• Personalansvar för [ANTAL] medarbetare
+• Budget- och resultatansvar (ca [BUDGET] MSEK)
+• [Ledarskapsmetod, t.ex. Coachande ledarskap, OKR, Agile]
+• [Förändringsledning / Rekrytering / Medarbetarutveckling]
+
+──────────────────────────────
+ARBETSLIVSERFARENHET
+──────────────────────────────
+[CHEFSROLL / LEDARTITEL] · [FÖRETAG], [ORT]
+[PERIOD]
+• Led ett team av [ANTAL] medarbetare inom [FUNKTION]
+• [Mätbart resultat, t.ex.: Ökade omsättningen med 25 % under [ÅR]]
+• [Beskriv strategiska initiativ, organisationsförändringar, etc.]
+• [Rekrytering, onboarding, medarbetarsamtal, kompetensutveckling]
+
+[TIDIGARE LEDARROLL] · [FÖRETAG], [ORT]
+[PERIOD]
+• [Beskriv ansvar och prestationer]
+
+──────────────────────────────
+UTBILDNING
+──────────────────────────────
+[EXAMEN, t.ex. Civilekonom / MBA / Kandidat i ledarskap] · [SKOLA], [ORT]
+[PERIOD]
+
+[LEDARUTVECKLINGSPROGRAM / KURS] · [ARRANGÖR]
+[ÅR]
+
+──────────────────────────────
+KOMPETENSER
+──────────────────────────────
+Språk: [T.ex. Svenska, Engelska, Tyska]
+System: [T.ex. SAP, Workday, Salesforce, Microsoft 365]
+Metodik: [T.ex. Lean, Six Sigma, Prince2, PMP]
+
+──────────────────────────────
+REFERENSER
+──────────────────────────────
+Lämnas på begäran.`,
   },
 ];
