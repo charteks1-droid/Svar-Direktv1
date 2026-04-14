@@ -338,6 +338,224 @@ const articles: Article[] = [
       </>
     ),
   },
+  {
+    slug: "overvinna-radslan-for-myndigheter",
+    title: "Hur vi kan övervinna rädslan för att skriva till myndigheter",
+    excerpt:
+      "Rädslan för att skriva till Skatteverket, Försäkringskassan eller Migrationsverket är vanlig. Men den går att övervinna – med rätt verktyg och tankesätt.",
+    category: "Psykologi",
+    readTime: "5 min",
+    date: "8 mars 2026",
+    content: (
+      <>
+        <p>
+          Att skriva till en myndighet känns för många som att kliva in på okänd mark. Det är lätt att tveka, skjuta upp och i värsta fall låta saker rulla iväg tills situationen förvärras. Men rädslan är inte oundviklig — och den går att hantera.
+        </p>
+        <h2>Förstå varför rädslan uppstår</h2>
+        <p>
+          Rädslan är rationell i grunden. Myndigheter representerar makt och kan påverka ditt liv på konkreta sätt — ekonomiskt, juridiskt, socialt. När du skriver till dem är det naturligt att känna att du måste "prestera rätt". Det är inte ett tecken på svaghet utan på att din hjärna förstår vad som står på spel.
+        </p>
+        <h2>Börja litet – bara öppna brevet</h2>
+        <p>
+          Det viktigaste steget är att bryta den initiala inaktiviteten. Ge dig själv ett enda mål: öppna brevet och läs det. Inget mer. Ofta märker du att situationen är mer hanterbar än du befarat, och det är lättare att ta nästa steg när du väl vet vad du har att göra.
+        </p>
+        <h2>Skriv med stöd av en mall</h2>
+        <p>
+          En stor del av ångesten handlar om det tomma pappret — att inte veta hur man börjar. Med en färdig mall som grund försvinner det hindret. Du behöver inte hitta på rätt ord från noll, utan anpassa något som redan är korrekt formulerat. Det sänker tröskeln enormt.
+        </p>
+        <h2>Kom ihåg: du har rätt att kommunicera</h2>
+        <p>
+          Du har inte bara rätt att skriva till myndigheter — i många fall är du skyldig att göra det inom en viss tid. Att svara, ens kort och enkelt, är alltid bättre än tystnad. Myndigheter är inte dina fiender; de följer regler och processer. Och ett välformulerat, sakligt brev bemöts alltid med respekt.
+        </p>
+        <p>
+          Svar Direkt är byggt för att göra det här konkret och enkelt. Välj situation, anpassa mallen och skicka.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "ekonomi-under-press-vad-gor-du",
+    title: "Ekonomi under press – vad gör du när pengarna inte räcker?",
+    excerpt:
+      "Inflation, höjda räntor och ökade levnadskostnader pressar svenska hushåll. Vad har du rätt till – och hur kommunicerar du med banker och myndigheter när ekonomin är tight?",
+    category: "Ekonomi",
+    readTime: "6 min",
+    date: "9 april 2026",
+    content: (
+      <>
+        <p>
+          De senaste åren har satt ekonomin på prov för många svenska hushåll. Inflationen slog hårt mot matpriser och drivmedel, räntorna höjdes snabbt och levnadskostnaderna ökade på bred front. Många som aldrig tidigare haft ekonomiska problem befinner sig nu i ett pressat läge. Det viktiga är att veta vad du har rätt till – och att kommunicera i tid.
+        </p>
+        <h2>Vad har du rätt till när ekonomin är tight?</h2>
+        <p>
+          Svenska välfärdssystemet erbjuder flera skyddsnät som aktiveras just i svåra situationer. <strong>Bostadsbidrag</strong> kan sökas om din inkomst är låg i förhållande till din boendekostnad. <strong>Ekonomiskt bistånd</strong> (socialbidrag) från kommunen är en sista utväg men en reell rättighet. <strong>Skuldsanering</strong> är möjlig för den som har skulder utan realistisk möjlighet att betala dem på normalt sätt.
+        </p>
+        <h2>Kontakta banken innan det är krisläge</h2>
+        <p>
+          Banker föredrar proaktiv kommunikation framför tystnad. Om du ser att du inte kommer att klara nästa månads amortering — kontakta banken nu, inte i sista stund. Du kan begära amorteringsfrihet, omstrukturera lånet eller förhandla om räntan. Skriv ett kortfattat, sakligt brev med din situation och ett konkret förslag.
+        </p>
+        <h2>Skatteverket och betalningssvårigheter</h2>
+        <p>
+          Kan du inte betala din kvarskatt eller moms i tid? Skatteverket erbjuder möjlighet att ansöka om anstånd med betalning — men du måste begära det skriftligen och i tid. Dröjer du utan att höra av dig kan ränta och avgifter snabbt göra situationen värre.
+        </p>
+        <h2>Kronofogden – ta kontakt innan de tar kontakt med dig</h2>
+        <p>
+          Om en skuld riskerar att hamna hos Kronofogden är det bättre att du kontaktar dem eller borgenären proaktivt. En ansökan om avbetalningsplan, gjord i god tid, visar god vilja och kan förhindra betalningsanmärkning. Tystnad uppfattas alltid som sämre än att kommunicera.
+        </p>
+        <h2>Det viktigaste rådet</h2>
+        <p>
+          Skjut inte upp. Kontakta rätt instans, förklara din situation sakligt och be om hjälp. Sverige har system som är byggda för att hjälpa – men bara om du aktivt söker dem. Svar Direkt har mallar för just dessa situationer: ansökan om bostadsbidrag, kontakt med Kronofogden och avbetalningsplan.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "radsla-fran-alla-hall-en-otrygg-tid",
+    title: "Rädsla från alla håll – att klara sig i en orolig tid",
+    excerpt:
+      "Ekonomisk oro, höjda priser, otrygghet i samhället, myndighetsbrev i brevlådan. Vi lever i en tid där stressen kommer från alla håll. Vad kan du faktiskt göra?",
+    category: "Samhälle",
+    readTime: "5 min",
+    date: "6 april 2026",
+    content: (
+      <>
+        <p>
+          Det är svårt att inte känna av trycket. Priserna stiger, nyheterna är dystra, brevlådan innehåller krav och formulär, och det verkar som att något nytt alltid kräver din uppmärksamhet och din energi. Många beskriver en känsla av att vara omringad av problem — som om det inte finns något säkert ställe att andas ut.
+        </p>
+        <h2>Rädslan från ekonomin</h2>
+        <p>
+          Inflationen har inte bara påverkat plånboken — den har påverkat hur vi tänker om framtiden. Frågan "har vi råd?" har blivit en konstant bakgrundsbrus för miljontals hushåll. Osäkra anställningar, höga räntor och ökade levnadskostnader skapar en kronisk lågintensiv stress som tär på välbefinnandet.
+        </p>
+        <h2>Rädslan från myndighetssystemet</h2>
+        <p>
+          Sverige har ett av världens mest omfattande välfärdssystem — men det är också ett av de mest komplexa att navigera. Regler ändras, digitaliseringen ökar tempot och kraven på att hålla koll på sina rättigheter och skyldigheter har aldrig varit större. Många faller mellan stolarna inte för att de inte har rätt till stöd, utan för att de inte vet hur de ska kommunicera.
+        </p>
+        <h2>Rädslan från informationsbruset</h2>
+        <p>
+          Sociala medier, nyhetsflöden och gruppchattar levererar en konstant ström av oroande information. Studier visar att överexponering mot negativa nyheter förstärker känslan av hjälplöshet och kontrollförlust — även om de flesta av problemen inte direkt berör ens eget liv.
+        </p>
+        <h2>Vad du faktiskt kan kontrollera</h2>
+        <p>
+          Det viktigaste motvapnet mot generell oro är att fokusera på det du faktiskt kan påverka. Betala den räkning som kan vänta. Svara på det brevet du skjutit upp. Ring det samtal du undvikit. Varje liten konkret handling minskar den diffusa oron och ersätter den med en känsla av kontroll.
+        </p>
+        <p>
+          Svar Direkt kan inte lösa samhällsproblemen. Men vi kan hjälpa dig att ta hand om den del av stressen som handlar om att kommunicera med myndigheter och i vardagen — så att du kan frigöra energi till det som verkligen betyder något.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "vad-hander-om-du-inte-svarar-myndigheter",
+    title: "Vad händer om du inte svarar på ett myndighetsbrev?",
+    excerpt:
+      "Att lägga brevet på hög är frestande. Men vad händer egentligen om du ignorerar ett brev från Skatteverket, Kronofogden eller Försäkringskassan? Konsekvenserna är allvarligare än du tror.",
+    category: "Tips",
+    readTime: "4 min",
+    date: "2 april 2026",
+    content: (
+      <>
+        <p>
+          Det är ett av de vanligaste misstagen: ett brev från en myndighet anländer, du mår inte för att ta tag i det, och det hamnar i en hög. Dagar blir veckor. Veckor blir månader. Och plötsligt är situationen mycket värre än den behövde vara. Här är vad som faktiskt händer när du inte svarar.
+        </p>
+        <h2>Hos Skatteverket</h2>
+        <p>
+          Om Skatteverket begär komplettering till din deklaration och du inte svarar i tid kan de göra en <strong>skönstaxering</strong> — en uppskattning av din inkomst baserad på tillgängliga uppgifter. Den landar ofta högre än verkligheten. Du kan även få böter och i värsta fall bli föremål för en revision. Svarar du däremot snabbt och sakligt är processen i regel smidig.
+        </p>
+        <h2>Hos Kronofogden</h2>
+        <p>
+          Det här är det allvarligaste scenariot. Om du får ett <strong>betalningsföreläggande</strong> och inte bestrider det inom tidsfristen — vanligtvis 10 dagar — går ärendet automatiskt vidare. Kronofogden kan då utfärda ett utslag och påbörja utmätning av lön, bankkonto eller tillgångar. En betalningsanmärkning kan följa och påverka ditt liv i upp till tre år.
+        </p>
+        <h2>Hos Försäkringskassan</h2>
+        <p>
+          Svarar du inte på en begäran om komplettering kan din ansökan om sjukpenning, föräldrapenning eller bostadsbidrag avslås automatiskt. Om du redan får ersättning och inte svarar på en utredning kan utbetalningarna stoppas — eller om de fortsätter, kan du senare krävas på återbetalning.
+        </p>
+        <h2>Principen är densamma för alla myndigheter</h2>
+        <p>
+          Tystnad tolkas antingen som samtycke eller som eskalation. Inget av dem är bra för dig. Myndigheter är skyldiga att följa sina processer, och de gör det — med eller utan ditt svar. Skillnaden är att om du inte deltar kan du inte påverka utgången.
+        </p>
+        <h2>Vad du ska göra</h2>
+        <p>
+          Svara alltid — ens ett kort brev som bekräftar att du fått meddelandet och behöver mer tid är bättre än ingenting. De flesta myndigheter är mer flexibla med tidsfrister om du kommunicerar proaktivt. Svar Direkt har färdiga mallar för precis dessa situationer.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "skatteverket-6-vanliga-situationer",
+    title: "Skatteverket och du – 6 vanliga situationer och hur du hanterar dem",
+    excerpt:
+      "Deklaration, folkbokföring, F-skatt, återbetalning – Skatteverket dyker upp i många viktiga livssituationer. Här är de sex vanligaste och exakt vad du ska skriva.",
+    category: "Skatteverket",
+    readTime: "5 min",
+    date: "15 mars 2026",
+    content: (
+      <>
+        <p>
+          Skatteverket är den myndighet de flesta möter fler gånger i livet än de egentligen vill. Deklaration varje år, folkbokföring vid flytt, F-skatt om du driver eget. Här är de sex vanligaste situationerna och hur du kommunicerar dem korrekt.
+        </p>
+        <h2>1. Komplettera deklarationen</h2>
+        <p>
+          Glömde du en inkomst, en kapitalvinst eller ett avdrag? Skatteverket accepterar kompletteringar och rättelser — men gör det snarast. Ange tydligt vad som ska ändras, varför, och bifoga relevant underlag. Var saklig och kortfattad.
+        </p>
+        <h2>2. Ändra folkbokföringsuppgifter</h2>
+        <p>
+          Har du flyttat? Du är skyldig att anmäla ny adress till Skatteverket inom en vecka. Glömmer du det kan det påverka allt från rösträtt till myndighetsbrev som hamnar på fel adress. Anmälan görs enklast digitalt, men kan också göras skriftligen.
+        </p>
+        <h2>3. Ansöka om F-skatt</h2>
+        <p>
+          Driver du eget företag eller frilansarbete? F-skattsedel är ett krav för att fakturera utan att kunden ska göra skatteavdrag. Ansökan sker skriftligen med motivering om din verksamhet. Var konkret och professionell.
+        </p>
+        <h2>4. Begära anstånd med betalning</h2>
+        <p>
+          Kan du inte betala kvarskatten i tid? Ansök om anstånd skriftligen innan förfallodatumet. Ange anledning, hur länge du behöver anstånd och din plan för betalning. Beviljat anstånd förhindrar ränteuppbyggnad.
+        </p>
+        <h2>5. Bestrida ett beslut</h2>
+        <p>
+          Anser du att Skatteverket gjort en felaktig bedömning? Du har rätt att begära omprövning inom fem år från beskattningsåret. Skriv ett strukturerat brev: vad du bestrider, varför, och vilket underlag du stödjer dig på.
+        </p>
+        <h2>6. Fråga om kapitalvinst och försäljning</h2>
+        <p>
+          Sålde du en bostad, aktier eller kryptovaluta? Kapitalvinster ska deklareras och reglerna är komplexa. Om du är osäker — kontakta Skatteverket skriftligen med din fråga innan du deklarerar. Det är alltid bättre att fråga i förväg än att rättfärdiga i efterhand.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "hyresgastens-rattigheter-i-sverige",
+    title: "Dina rättigheter som hyresgäst – vad lagen faktiskt säger",
+    excerpt:
+      "Hyresvärden höjer hyran, vägrar reparera eller hotar med vräkning? Du har fler rättigheter än du tror. Här är vad lagen säger – och hur du kommunicerar det skriftligen.",
+    category: "Rättigheter",
+    readTime: "5 min",
+    date: "25 mars 2026",
+    content: (
+      <>
+        <p>
+          Hyresrätten är ett av de starkast skyddade kontrakten i svensk rätt. Som hyresgäst har du rättigheter som din hyresvärd är skyldig att respektera — oavsett vad som står i ett enskilt kontrakt. Problemet är att de flesta inte vet om dem.
+        </p>
+        <h2>Hyreshöjningar – vad är rimligt?</h2>
+        <p>
+          Hyresvärden kan inte höja hyran hur som helst. Höjningen ska vara skälig i förhållande till jämförbara lägenheter i samma område och förhandlas normalt via Hyresgästföreningen. Får du ett höjningsbesked du inte är nöjd med — bestrida det skriftligen och kontakta din Hyresgästförening. Accepterar du tyst anses du ha godkänt höjningen.
+        </p>
+        <h2>Underhåll och reparationer</h2>
+        <p>
+          Det är hyresvärdens ansvar att hålla lägenheten i godtagbart skick. Det innebär att de ska åtgärda fel på värme, vatten, el och konstruktion. Om hyresvärden vägrar agera trots skriftlig begäran kan du anmäla till <strong>Hyresnämnden</strong>, som kan förelägga hyresvärden att utföra arbetet — ibland med vite.
+        </p>
+        <h2>Att bestrida en vräkning</h2>
+        <p>
+          En hyresvärd kan inte kasta ut dig utan att följa en strikt juridisk process. Om du fått en uppsägning eller ett besked om vräkning har du rätt att bestrida det i domstol. Kontakta omedelbart Hyresgästföreningen eller en jurist — tidsfrister är korta och avgörande.
+        </p>
+        <h2>Störningar i fastigheten</h2>
+        <p>
+          Har du grannproblem? Anmäl skriftligen till hyresvärden och be om åtgärd. Dokumentera störningarna med datum och tid. Om hyresvärden inte agerar kan du vända dig till Hyresnämnden. Som hyresgäst är du också skyldig att inte störa andra — tänk på att det gäller ömsesidigt.
+        </p>
+        <h2>Hur du kommunicerar med din hyresvärd</h2>
+        <p>
+          All kommunikation med hyresvärden bör ske skriftligen — mejl är tillräckligt men spara alltid kopior. Undvik muntliga överenskommelser. Ange datum, vad ärendet gäller och vad du begär. Ett kort, sakligt brev är alltid mer effektivt än ett långt, frustrerat. Svar Direkt har mallar för hyresgäst-situationer som hjälper dig formulera dig korrekt.
+        </p>
+      </>
+    ),
+  },
 ];
 
 const categoryColors: Record<string, string> = {
@@ -346,6 +564,10 @@ const categoryColors: Record<string, string> = {
   Kronofogden: "bg-red-50 text-red-700",
   Försäkringskassan: "bg-orange-50 text-orange-700",
   Psykologi: "bg-purple-50 text-purple-700",
+  Ekonomi: "bg-emerald-50 text-emerald-700",
+  Samhälle: "bg-slate-100 text-slate-700",
+  Skatteverket: "bg-yellow-50 text-yellow-700",
+  Rättigheter: "bg-indigo-50 text-indigo-700",
 };
 
 function ArticleCard({ article }: { article: Article }) {
