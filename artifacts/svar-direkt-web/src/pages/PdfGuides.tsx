@@ -76,7 +76,7 @@ const guides = [
     badge: "Överklagan",
     badgeColor: "#6c5ce7",
     downloadFile: "overklagan-csn.pdf",
-    payhipUrl: "https://payhip.com/b/3K12w",
+    payhipUrl: "https://payhip.com/b/K6Ecv",
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
         <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>

@@ -275,3 +275,9 @@ id = "ruoZRbI46fJq_R7LjNZNC"
 uri = "file://artifacts/uploads/svar-direkt-website-v37.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v37 (3 nowe PDF-y Överklagan)"
+
+[[outputs]]
+id = "grh4z9LhaDT3Wy3zFc0EC"
+uri = "file://artifacts/uploads/svar-direkt-website-v38.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v38 (poprawiony link CSN)"
