@@ -227,3 +227,9 @@ id = "Wfho9KPgdDr0ky0yBGXag"
 uri = "file://artifacts/uploads/svar-direkt-website-v30.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v30 (poprawiony favicon)"
+
+[[outputs]]
+id = "7kDdP0fmeT1XgPqKOto2u"
+uri = "file://artifacts/uploads/svar-direkt-website-v31.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v31 (externa länkar + Officiella källor)"

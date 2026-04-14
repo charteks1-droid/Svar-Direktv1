@@ -696,7 +696,8 @@ export default function Home() {
             </div>
             <div>
               <p className="mb-3">
-                Behöver du ett <strong className="text-slate-700">mall brev till Skatteverket</strong> om deklaration, skatteåterbäring eller folkbokföring? Svar Direkt har mallar för de vanligaste situationerna.
+                Behöver du ett <strong className="text-slate-700">mall brev till Skatteverket</strong> om deklaration, skatteåterbäring eller folkbokföring? Svar Direkt har mallar för de vanligaste situationerna. Du kan även hitta allmän information om skatter och folkbokföring direkt på{" "}
+                <a href="https://www.skatteverket.se" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline font-medium">Skatteverkets webbplats</a>.
               </p>
               <p>
                 Appen fungerar offline och kräver inget konto. Du köper en gång för 49 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
@@ -811,6 +812,41 @@ export default function Home() {
             <Link href="/kontakt" className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm hover:border-primary/40 hover:text-primary transition-colors">
               Kontakt
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Officiella källor */}
+      <section className="border-t border-slate-100 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+          <h2 className="text-base font-semibold text-slate-700 mb-4">Officiella källor</h2>
+          <p className="text-sm text-slate-500 mb-5 max-w-lg">
+            Svar Direkt är ett komplement till — inte en ersättning för — officiell myndighetsinformation. Här hittar du direktlänkar till de myndigheter vi hjälper dig kommunicera med:
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { name: "Skatteverket", url: "https://www.skatteverket.se", desc: "Skatt & folkbokföring" },
+              { name: "Försäkringskassan", url: "https://www.forsakringskassan.se", desc: "Bidrag & ersättning" },
+              { name: "Kronofogden", url: "https://www.kronofogden.se", desc: "Skulder & utmätning" },
+              { name: "Migrationsverket", url: "https://www.migrationsverket.se", desc: "Tillstånd & medborgarskap" },
+              { name: "Boverket", url: "https://www.boverket.se", desc: "Boende & hyresrätt" },
+            ].map((src) => (
+              <a
+                key={src.name}
+                href={src.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm hover:border-primary/40 hover:text-primary transition-colors group"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-slate-400 group-hover:text-primary transition-colors flex-shrink-0">
+                  <path d="M7 1.5A5.5 5.5 0 117 12.5 5.5 5.5 0 017 1.5zM7 1.5c-1.2 1.8-1.2 9.2 0 11M7 1.5c1.2 1.8 1.2 9.2 0 11M1.5 7h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                </svg>
+                <span>
+                  <span className="font-medium text-slate-800 group-hover:text-primary transition-colors">{src.name}</span>
+                  <span className="text-xs text-slate-400 ml-1.5">{src.desc}</span>
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
