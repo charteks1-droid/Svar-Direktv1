@@ -1,0 +1,31 @@
+[
+  {
+    "buildId": "3f59f16d-a6ed-452e-91a4-fcd165334bbe",
+    "version": "1.1.0",
+    "versionCode": 2,
+    "platform": "android",
+    "profile": "preview",
+    "buildType": "apk",
+    "status": "FINISHED",
+    "apkUrl": "https://expo.dev/artifacts/eas/8PJdpHJ8bvTPeNBVxRJ8Bm.apk",
+    "buildPageUrl": "https://expo.dev/accounts/charteks/projects/svar-direkt-new/builds/3f59f16d-a6ed-452e-91a4-fcd165334bbe",
+    "builtAt": "2026-04-14T04:22:00Z",
+    "newFeatures": [
+      "10 CV-mallar i 3 kategorier (Grundlaggande, Bransch, Specifik situation)",
+      "Lage for att valja mellan Myndighetsbrev och CV-mallar i mallfliken",
+      "Stod for source=cv i malldetaljer"
+    ]
+  },
+  {
+    "buildId": "FAILED-a2df5507",
+    "version": "1.1.0",
+    "status": "ERRORED",
+    "note": "Misslyckades - EAS korde fran artifacts/svar-direkt/ istallet for workspace root"
+  },
+  {
+    "buildId": "FAILED-first",
+    "version": "1.1.0",
+    "status": "ERRORED",
+    "note": "Forsta misslyckade forsok - samma monorepo-problem"
+  }
+]
