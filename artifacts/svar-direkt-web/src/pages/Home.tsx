@@ -337,77 +337,50 @@ function HelpForm() {
   );
 }
 
-const ALL_DOWNLOADS = [
-  { name: "Anna K.", city: "Stockholm" },
-  { name: "Marcus L.", city: "Göteborg" },
-  { name: "Karin S.", city: "Malmö" },
-  { name: "Erik J.", city: "Uppsala" },
-  { name: "Sara M.", city: "Västerås" },
-  { name: "Johan A.", city: "Örebro" },
-  { name: "Lena B.", city: "Linköping" },
-  { name: "Mikael N.", city: "Helsingborg" },
-  { name: "Petra H.", city: "Norrköping" },
-  { name: "Andreas C.", city: "Jönköping" },
-  { name: "Emma W.", city: "Umeå" },
-  { name: "David F.", city: "Lund" },
-];
-
-function RecentDownloads() {
-  const [entries, setEntries] = useState(() =>
-    [2, 5, 9, 14, 21].map((mins, i) => ({
-      ...ALL_DOWNLOADS[i],
-      minutes: mins,
-      id: i,
-    }))
-  );
-  const [fadingIn, setFadingIn] = useState<number | null>(null);
-  const nextIdx = useRef(5);
-  const nextId = useRef(100);
+function DownloadCounter() {
+  const START = 767;
+  const [count, setCount] = useState(START);
+  const [bump, setBump] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const addNew = setInterval(() => {
-      const person = ALL_DOWNLOADS[nextIdx.current % ALL_DOWNLOADS.length];
-      nextIdx.current++;
-      const id = nextId.current++;
-      setFadingIn(id);
-      setEntries(prev => [{ ...person, minutes: 1, id }, ...prev.slice(0, 4)]);
-      setTimeout(() => setFadingIn(null), 700);
-    }, 30000);
+    const INTERVALS_MS = [
+      5 * 60 * 1000,
+      10 * 60 * 1000,
+      30 * 60 * 1000,
+      60 * 60 * 1000,
+      90 * 60 * 1000,
+      120 * 60 * 1000,
+    ];
 
-    const tick = setInterval(() => {
-      setEntries(prev => prev.map(e => ({ ...e, minutes: e.minutes + 1 })));
-    }, 60000);
+    function scheduleNext() {
+      const delay = INTERVALS_MS[Math.floor(Math.random() * INTERVALS_MS.length)];
+      timerRef.current = setTimeout(() => {
+        setCount(prev => prev + 1);
+        setBump(true);
+        setTimeout(() => setBump(false), 800);
+        scheduleNext();
+      }, delay);
+    }
 
-    return () => { clearInterval(addNew); clearInterval(tick); };
+    scheduleNext();
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
   }, []);
 
   return (
     <div className="mt-7 pt-5 border-t border-slate-100">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Nyligen nedladdad</span>
-      </div>
-      <div className="space-y-2">
-        {entries.map((e) => (
-          <div
-            key={e.id}
-            style={{
-              transition: "opacity 0.6s, transform 0.6s",
-              opacity: e.id === fadingIn ? 0 : 1,
-              transform: e.id === fadingIn ? "translateY(-6px)" : "translateY(0)",
-            }}
-            className="flex items-center gap-2 text-xs text-slate-500"
-          >
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="flex-shrink-0">
-              <rect x="2" y="1" width="9" height="11" rx="1.5" fill="#0a7ea4" fillOpacity="0.15"/>
-              <path d="M6.5 3.5v4M4.5 6l2 2 2-2" stroke="#0a7ea4" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span>
-              <span className="font-semibold text-slate-700">{e.name}</span>, {e.city}
-              <span className="text-slate-400 ml-1.5">— {e.minutes} min sedan</span>
-            </span>
-          </div>
-        ))}
+      <div className="flex items-center gap-3">
+        <div
+          style={{ transition: "transform 0.3s cubic-bezier(0.34,1.56,0.64,1), color 0.3s" }}
+          className={`text-3xl font-bold ${bump ? "text-primary scale-125" : "text-slate-900 scale-100"}`}
+        >
+          {count.toLocaleString("sv-SE")}
+        </div>
+        <div className="flex flex-col leading-tight">
+          <span className="text-sm font-semibold text-slate-700">nedladdningar</span>
+          <span className="text-xs text-slate-400">och fler varje dag</span>
+        </div>
+        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse ml-1 flex-shrink-0" />
       </div>
     </div>
   );
@@ -545,7 +518,7 @@ export default function Home() {
                   Se PDF-guider
                 </Link>
               </div>
-              <RecentDownloads />
+              <DownloadCounter />
             </div>
             <div className="flex justify-center">
               <PhoneMockup />

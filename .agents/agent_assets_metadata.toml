@@ -251,3 +251,9 @@ id = "lfumKTMK2AsPKseQPeyZ_"
 uri = "file://artifacts/uploads/svar-direkt-website-v34.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v34 (psychologia konwersji)"
+
+[[outputs]]
+id = "CZKCiysddi4ebL57Edyv1"
+uri = "file://artifacts/uploads/svar-direkt-website-v35.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v35 (licznik pobran)"
