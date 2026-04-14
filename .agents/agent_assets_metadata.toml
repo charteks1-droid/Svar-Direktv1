@@ -293,3 +293,9 @@ id = "sOMfBExagyvG6Kce5dgt2"
 uri = "file://artifacts/uploads/svar-direkt-website-v40.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v40 (trwały licznik pobrań)"
+
+[[outputs]]
+id = "5shOFXrLp0om2u1E6uSdN"
+uri = "file://artifacts/uploads/svar-direkt-website-v41.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v41 (licznik usunięty)"

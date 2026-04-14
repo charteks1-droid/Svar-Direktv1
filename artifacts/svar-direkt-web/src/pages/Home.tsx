@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import logoSrc from "../assets/logo.png";
 
 function PhoneMockup() {
@@ -337,70 +337,6 @@ function HelpForm() {
   );
 }
 
-const STORAGE_KEY = "sd_dl_v1";
-const BASE_COUNT = 767;
-const INTERVALS_MIN = [5, 10, 30, 60, 90, 120];
-const AVG_INTERVAL_MIN = INTERVALS_MIN.reduce((a, b) => a + b, 0) / INTERVALS_MIN.length;
-
-function calcCountFromStorage(): number {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const { count, ts } = JSON.parse(raw);
-      const elapsedMin = (Date.now() - ts) / 60000;
-      const gained = Math.floor(elapsedMin / AVG_INTERVAL_MIN);
-      return Math.max(count, count + gained);
-    }
-  } catch {}
-  return BASE_COUNT;
-}
-
-function DownloadCounter() {
-  const [count, setCount] = useState<number>(calcCountFromStorage);
-  const [bump, setBump] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ count, ts: Date.now() }));
-    } catch {}
-  }, [count]);
-
-  useEffect(() => {
-    const INTERVALS_MS = INTERVALS_MIN.map(m => m * 60 * 1000);
-
-    function scheduleNext() {
-      const delay = INTERVALS_MS[Math.floor(Math.random() * INTERVALS_MS.length)];
-      timerRef.current = setTimeout(() => {
-        setCount(prev => prev + 1);
-        setBump(true);
-        setTimeout(() => setBump(false), 800);
-        scheduleNext();
-      }, delay);
-    }
-
-    scheduleNext();
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, []);
-
-  return (
-    <div className="mt-7 pt-5 border-t border-slate-100">
-      <div className="flex items-center gap-3">
-        <div
-          style={{ transition: "transform 0.3s cubic-bezier(0.34,1.56,0.64,1), color 0.3s" }}
-          className={`text-3xl font-bold ${bump ? "text-primary scale-125" : "text-slate-900 scale-100"}`}
-        >
-          {count.toLocaleString("sv-SE")}
-        </div>
-        <div className="flex flex-col leading-tight">
-          <span className="text-sm font-semibold text-slate-700">nedladdningar</span>
-          <span className="text-xs text-slate-400">och fler varje dag</span>
-        </div>
-        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse ml-1 flex-shrink-0" />
-      </div>
-    </div>
-  );
-}
 
 const LOSS_ITEMS = [
   { utan: "2–3 timmar att hitta rätt formulering", med: "Redo mall på under 30 sekunder" },
@@ -534,7 +470,6 @@ export default function Home() {
                   Se PDF-guider
                 </Link>
               </div>
-              <DownloadCounter />
             </div>
             <div className="flex justify-center">
               <PhoneMockup />
