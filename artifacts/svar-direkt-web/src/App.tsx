@@ -1,5 +1,6 @@
 import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter";
 import { useState, useRef, useEffect } from "react";
+import logoSrc from "./assets/logo.png";
 
 import Home from "@/pages/Home";
 import AboutApp from "@/pages/AboutApp";
@@ -94,7 +95,7 @@ function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <img src="/logo.png" alt="Svar Direkt" className="h-10 w-10 rounded-lg object-cover" />
+            <img src={logoSrc} alt="Svar Direkt" className="h-10 w-10 rounded-lg object-cover" />
             <span className="font-semibold text-slate-900 text-[15px]">Svar Direkt</span>
           </Link>
 
@@ -256,7 +257,7 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="Svar Direkt" className="h-12 w-12 rounded-xl object-cover" />
+              <img src={logoSrc} alt="Svar Direkt" className="h-12 w-12 rounded-xl object-cover" />
               <span className="font-semibold text-white text-[15px]">Svar Direkt</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed">

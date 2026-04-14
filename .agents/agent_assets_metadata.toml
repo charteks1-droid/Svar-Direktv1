@@ -191,3 +191,9 @@ id = "gTK_vl3BCWg8WIjwq1mbw"
 uri = "file://artifacts/uploads/svar-direkt-website-v24.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona v24 (z logo wszędzie)"
+
+[[outputs]]
+id = "d3r6NyL_TYualfJ8dRitW"
+uri = "file://artifacts/uploads/svar-direkt-website-v25.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona v25 (logo działa)"
