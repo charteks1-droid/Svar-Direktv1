@@ -3,75 +3,355 @@
   "name": "Snabba svar – Hälsa",
   "description": "70 färdiga meddelanden för sjukdom – till chefen, kollegor, vänner och för att beskriva symptom.",
   "quickResponses": [
-    { "id": "halsa-001", "title": "Sjukanmälan – feber", "content": "Jag är sjuk idag och kan tyvärr inte komma in. Har feber och mår illa. Meddelar dig när jag är bättre." },
-    { "id": "halsa-002", "title": "Sjukanmälan – magsjuka", "content": "Jag har fått magsjuka och kan inte arbeta idag. Stannar hemma för att återhämta mig. Återkommer så snart jag kan." },
-    { "id": "halsa-003", "title": "Sjukanmälan – förkylning", "content": "Jag är förkylad och mår för dåligt för att komma in. Vill inte heller smitta kollegorna. Hör av mig imorgon." },
-    { "id": "halsa-004", "title": "Sjukanmälan – migrän", "content": "Har fått kraftig migrän och kan inte arbeta idag. Behöver vila i mörker och tystnad. Återkommer när det ger sig." },
-    { "id": "halsa-005", "title": "Sjukanmälan – halsont", "content": "Jag har halsont och feber sedan i morse. Stannar hemma för att inte smitta kollegor. Meddelar om det fortsätter imorgon." },
-    { "id": "halsa-006", "title": "Förlänger sjukledigheten", "content": "Jag mår tyvärr fortfarande inte bra och behöver stanna hemma en dag till. Beklagar besväret. Hör av mig imorgon igen." },
-    { "id": "halsa-007", "title": "Läkarbesök idag", "content": "Jag behöver gå till läkaren idag och kan eventuellt komma in lite senare. Meddelar dig när jag vet mer. Tack för förståelsen." },
-    { "id": "halsa-008", "title": "Sjukintyg skickas", "content": "Jag har besökt läkaren och fått sjukintyg. Jag är sjukskriven till och med [DATUM]. Intyget skickas till er snarast." },
-    { "id": "halsa-009", "title": "Tillbaka efter sjukdom", "content": "Jag är nu frisk och är tillbaka på jobbet imorgon. Tack för tålamodet under min sjukfrånvaro. Ser fram emot att återgå." },
-    { "id": "halsa-010", "title": "Jobbar hemifrån – sjuk", "content": "Jag mår inte toppen men kan jobba hemifrån idag. Är tillgänglig på mail och telefon under hela dagen." },
-    { "id": "halsa-011", "title": "Karantän / smitta i familjen", "content": "Jag har blivit rekommenderad att stanna hemma på grund av smitta i familjen. Jobbar på distans om det är möjligt. Meddelar mer imorgon." },
-    { "id": "halsa-012", "title": "VAB – barn sjukt", "content": "Mitt barn är sjukt idag och jag stannar hemma med det. Tar VAB idag och meddelar om det fortsätter imorgon." },
-    { "id": "halsa-013", "title": "Akut sjukdom – kort varsel", "content": "Jag mår akut dåligt och kan absolut inte komma in idag. Ber om ursäkt för det korta varselnet. Återkommer så snart möjligt." },
-    { "id": "halsa-014", "title": "Akut tandvärk", "content": "Jag har fått akut tandvärk och måste besöka tandläkaren idag. Försöker vara inne eftermiddag om det ordnar sig. Återkommer med besked." },
-    { "id": "halsa-015", "title": "Medicinskt ingrepp", "content": "Jag ska genomgå ett litet medicinskt ingrepp idag. Jag är tillbaka på jobbet från och med [DATUM]. Tack för förståelsen." },
-    { "id": "halsa-016", "title": "Allergireaction", "content": "Jag har fått en allergireaction och mår illa. Stannar hemma idag tills det lagt sig. Hör av mig imorgon." },
-    { "id": "halsa-017", "title": "Yrsel – kan inte ta mig dit", "content": "Jag är yr och kan inte ta mig till jobbet idag. Stannar hemma och vilar. Hör av mig imorgon med en lägesuppdatering." },
-    { "id": "halsa-018", "title": "Akut ryggvärk", "content": "Jag har fått akut ryggvärk och kan knappt röra mig. Behöver stanna hemma idag. Hör av mig imorgon." },
-    { "id": "halsa-019", "title": "Sjuk – vet inte hur länge", "content": "Jag är sjuk och kan inte komma in. Vet ännu inte hur länge det varar. Håller dig uppdaterad varje dag." },
-    { "id": "halsa-020", "title": "Tackar för förståelsen", "content": "Tack för förståelsen under min sjukfrånvaro. Jag är tillbaka och redo att jobba igen. Ser fram emot att komma igång." },
-    { "id": "halsa-021", "title": "Till kollega – sjuk idag", "content": "Hej! Jag är sjuk idag och är inte på jobbet. Hör av dig om det är något akut." },
-    { "id": "halsa-022", "title": "Till kollega – täck för mig?", "content": "Jag är sjuk och kommer inte in idag. Kan du hålla koll på [UPPGIFT] under min frånvaro? Tack så mycket!" },
-    { "id": "halsa-023", "title": "Till kollega – tillbaka imorgon", "content": "Är sjuk idag men ska förhoppningsvis vara tillbaka imorgon. Tack för hjälpen och tålamodet!" },
-    { "id": "halsa-024", "title": "Till kollega – inte smittsam", "content": "Är inte smittsam längre och är tillbaka imorgon. Tack för att ni skötte det utan mig, vi ses!" },
-    { "id": "halsa-025", "title": "Till kollega – skickar digitalt", "content": "Är sjuk hemma men skickar materialet digitalt under dagen. Ta hand om dig du med!" },
-    { "id": "halsa-026", "title": "Till kollega – hade tagit passet", "content": "Tyvärr är jag sjuk annars hade jag gärna tagit ditt pass. Hoppas du hittar någon annan. Krya på dig!" },
-    { "id": "halsa-027", "title": "Till kollega – bättre snart", "content": "Är sjuk men hoppas vara bättre inom kort. Ta hand om er på jobbet under tiden!" },
-    { "id": "halsa-028", "title": "Till kollega – magsjuka", "content": "Har magsjuka tyvärr, riktigt jobbigt. Håll lite avstånd om vi ses nästa gång. Tillbaka så snart jag kan." },
-    { "id": "halsa-029", "title": "Till kollega – förkylning", "content": "Är förkylad och stannar hemma för att inte smitta alla. Vi ses snart igen!" },
-    { "id": "halsa-030", "title": "Till kollega – nås på mobilen", "content": "Är sjuk men går att nå på mobilen om det är riktigt viktigt. Annars ses vi snart!" },
-    { "id": "halsa-031", "title": "Till kollega – distans", "content": "Jobbar hemifrån idag på grund av sjukdom men är tillgänglig på chatten. Hör av dig om du behöver något." },
-    { "id": "halsa-032", "title": "Till kollega – tack för hjälpen", "content": "Tack för att ni täckte upp under min sjukdom. Det uppskattas verkligen. Nu är jag tillbaka!" },
-    { "id": "halsa-033", "title": "Till kollega – hör av dig", "content": "Är sjuk idag. Hör gärna av dig om det är något du behöver hjälp med digitalt." },
-    { "id": "halsa-034", "title": "Till kollega – fixar digitalt", "content": "Är sjuk men fixar uppgiften hemifrån under dagen. Den är klar till kvällen." },
-    { "id": "halsa-035", "title": "Till kollega – önskar krya", "content": "Hörde att du är sjuk också! Krypa på dig, vi ses när vi båda är friska igen." },
-    { "id": "halsa-036", "title": "Till vän – kan inte ses idag", "content": "Tyvärr är jag sjuk och kan inte ses idag. Beklagar om det kom sent. Vi stämmer av en ny tid snart!" },
-    { "id": "halsa-037", "title": "Till vän – avbokar middagen", "content": "Måste avboka middagen – jag är sjuk och vill inte smitta er. Hoppas vi kan boka om snart. Förlåt!" },
-    { "id": "halsa-038", "title": "Till vän – missar festen", "content": "Är sjuk och kan tyvärr inte komma på festen. Ledsen att missa det, ha det så kul!" },
-    { "id": "halsa-039", "title": "Till vän – håller mig hemma", "content": "Håller mig hemma idag, är lite sjuk. Hör av mig när jag är bättre!" },
-    { "id": "halsa-040", "title": "Till vän – soffdag", "content": "Är sjuk och kryper ihop på soffan idag. Kan vi ses en annan dag? Längtar!" },
-    { "id": "halsa-041", "title": "Till vän – återkommer", "content": "Är sjuk men återkommer så fort jag är på fötter igen. Hör snart av mig!" },
-    { "id": "halsa-042", "title": "Till vän – ber om förståelse", "content": "Hoppas du förstår att jag inte kan ses nu. Är sjuk men hör av mig så snart det klarnat." },
-    { "id": "halsa-043", "title": "Till vän – inte smittsam", "content": "Är inte smittsam längre! Kan vi ses snart? Saknar dig." },
-    { "id": "halsa-044", "title": "Till vän – tack för omtanke", "content": "Tack för att du frågade, det värmer! Är lite sjuk men hoppas vara bättre snart." },
-    { "id": "halsa-045", "title": "Till vän – hoppas du inte smittats", "content": "Hoppas du inte fångat samma sak som jag! Är lite sjuk men klarar mig. Säg till om du behöver något." },
-    { "id": "halsa-046", "title": "Till vän – besök mig?", "content": "Är sjuk hemma. Skulle uppskatta sällskap om du inte är rädd för smitta. Hör gärna av dig!" },
-    { "id": "halsa-047", "title": "Till vän – tack för omsorgen", "content": "Tack för att du tog hand om mig när jag var sjuk. Det betyder mer än du tror!" },
-    { "id": "halsa-048", "title": "Till vän – mår bättre", "content": "Är äntligen bättre! Kan vi stämma av en ny tid snart? Saknade att ses." },
-    { "id": "halsa-049", "title": "Till vän – kräksjuka", "content": "Har kräksjuka, håll avstånd! Hör av mig om några dagar när allt lagt sig." },
-    { "id": "halsa-050", "title": "Till vän – hoppar inte av", "content": "Hoppar bara av nu för att jag är sjuk – inte för att jag inte vill ses. Vi stämmer av igen snart!" },
-    { "id": "halsa-051", "title": "Till vän – väntar på läkarsvar", "content": "Väntar på svar från läkaren och vet inte riktigt hur länge jag är sjuk. Återkommer med mer info!" },
-    { "id": "halsa-052", "title": "Till vän – orkar inte", "content": "Orkar inte idag tyvärr. Är sjuk och behöver vila. Vi hörs snart, lovar!" },
-    { "id": "halsa-053", "title": "Till vän – helt sänkt", "content": "Är helt sänkt idag av sjukdom. Hör av mig när det lättat och vi bokar något kul!" },
-    { "id": "halsa-054", "title": "Till vän – vill vara frisk snabbt", "content": "Hoppas det går fort! Tål inte att vara sjuk och saknar att ses. Snart är jag tillbaka!" },
-    { "id": "halsa-055", "title": "Till vän – behöver vila", "content": "Behöver vila idag, är inte riktigt i form. Vi ses snart igen, lovar!" },
-    { "id": "halsa-056", "title": "Symptom – hög feber", "content": "Jag har feber, nästan 39 grader. Är trött och darrig och kan knappt stå upp. Behöver vila." },
-    { "id": "halsa-057", "title": "Symptom – magsjuka", "content": "Har magsjuka sedan igår kväll. Mår illa och kan inte äta någonting. Håller mig i sängen." },
-    { "id": "halsa-058", "title": "Symptom – halsont och feber", "content": "Har ont i halsen och feber sedan i morse. Det är svårt att svälja. Har tagit febernedsättande men det hjälper lite." },
-    { "id": "halsa-059", "title": "Symptom – förkylning", "content": "Är förkylad med rinnande näsa och huvudvärk. Mår inte toppen men klarar mig. Tar det lugnt idag." },
-    { "id": "halsa-060", "title": "Symptom – migrän", "content": "Har migrän med stark huvudvärk och ljuskänslighet. Kan inte titta på skärmar eller vara i ljuset. Behöver ligga stilla." },
-    { "id": "halsa-061", "title": "Symptom – yrsel", "content": "Är yr och ostabil, kan knappt stå upp. Vet inte riktigt vad det beror på. Ska ringa vårdcentralen." },
-    { "id": "halsa-062", "title": "Symptom – ryggvärk", "content": "Har fått akut ryggvärk och kan knappt röra mig. Troligtvis ett snedsteg. Ska ta det helt lugnt idag." },
-    { "id": "halsa-063", "title": "Symptom – magen dålig", "content": "Magen är dålig med halsbränna och illamående. Äter ingenting idag och dricker bara vatten." },
-    { "id": "halsa-064", "title": "Symptom – allergi", "content": "Får allergireaktioner med nysningar och kliande ögon. Har tagit antihistamin men det hjälper inte helt än." },
-    { "id": "halsa-065", "title": "Symptom – högt blodtryck", "content": "Läkaren sa att mitt blodtryck är för högt. Behöver ta det lugnt och börja medicinera. Kollar upp det ordentligt." },
-    { "id": "halsa-066", "title": "Symptom – influensa", "content": "Har troligen influensa med hög feber, muskelvärk och är totalt slut. Stannar hemma i minst tre dagar." },
-    { "id": "halsa-067", "title": "Symptom – covid", "content": "Testade positivt på covid idag. Har feber och hosta men klarar mig. Stannar hemma tills jag är frisk." },
-    { "id": "halsa-068", "title": "Symptom – infekterat sår", "content": "Har ett sår som verkar infekterat och ont. Ska till vårdcentralen idag för att kolla upp det." },
-    { "id": "halsa-069", "title": "Symptom – hjärtklappning", "content": "Har haft hjärtklappning och är lite orolig. Ska kontakta läkaren idag för att utesluta något allvarligt." },
-    { "id": "halsa-070", "title": "Symptom – öroninflammation", "content": "Har öroninflammation med stark smärta i örat. Ska hämta ut antibiotika på apoteket idag." }
+    {
+      "id": "halsa-001",
+      "title": "Sjukanmälan – feber",
+      "content": "Jag är sjuk idag och kan tyvärr inte komma in. Har feber och mår illa. Meddelar dig när jag är bättre."
+    },
+    {
+      "id": "halsa-002",
+      "title": "Sjukanmälan – magsjuka",
+      "content": "Jag har fått magsjuka och kan inte arbeta idag. Stannar hemma för att återhämta mig. Återkommer så snart jag kan."
+    },
+    {
+      "id": "halsa-003",
+      "title": "Sjukanmälan – förkylning",
+      "content": "Jag är förkylad och mår för dåligt för att komma in. Vill inte heller smitta kollegorna. Hör av mig imorgon."
+    },
+    {
+      "id": "halsa-004",
+      "title": "Sjukanmälan – migrän",
+      "content": "Har fått kraftig migrän och kan inte arbeta idag. Behöver vila i mörker och tystnad. Återkommer när det ger sig."
+    },
+    {
+      "id": "halsa-005",
+      "title": "Sjukanmälan – halsont",
+      "content": "Jag har halsont och feber sedan i morse. Stannar hemma för att inte smitta kollegor. Meddelar om det fortsätter imorgon."
+    },
+    {
+      "id": "halsa-006",
+      "title": "Förlänger sjukledigheten",
+      "content": "Jag mår tyvärr fortfarande inte bra och behöver stanna hemma en dag till. Beklagar besväret. Hör av mig imorgon igen."
+    },
+    {
+      "id": "halsa-007",
+      "title": "Läkarbesök idag",
+      "content": "Jag behöver gå till läkaren idag och kan eventuellt komma in lite senare. Meddelar dig när jag vet mer. Tack för förståelsen."
+    },
+    {
+      "id": "halsa-008",
+      "title": "Sjukintyg skickas",
+      "content": "Jag har besökt läkaren och fått sjukintyg. Jag är sjukskriven till och med [DATUM]. Intyget skickas till er snarast."
+    },
+    {
+      "id": "halsa-009",
+      "title": "Tillbaka efter sjukdom",
+      "content": "Jag är nu frisk och är tillbaka på jobbet imorgon. Tack för tålamodet under min sjukfrånvaro. Ser fram emot att återgå."
+    },
+    {
+      "id": "halsa-010",
+      "title": "Jobbar hemifrån – sjuk",
+      "content": "Jag mår inte toppen men kan jobba hemifrån idag. Är tillgänglig på mail och telefon under hela dagen."
+    },
+    {
+      "id": "halsa-011",
+      "title": "Karantän / smitta i familjen",
+      "content": "Jag har blivit rekommenderad att stanna hemma på grund av smitta i familjen. Jobbar på distans om det är möjligt. Meddelar mer imorgon."
+    },
+    {
+      "id": "halsa-012",
+      "title": "VAB – barn sjukt",
+      "content": "Mitt barn är sjukt idag och jag stannar hemma med det. Tar VAB idag och meddelar om det fortsätter imorgon."
+    },
+    {
+      "id": "halsa-013",
+      "title": "Akut sjukdom – kort varsel",
+      "content": "Jag mår akut dåligt och kan absolut inte komma in idag. Ber om ursäkt för det korta varselnet. Återkommer så snart möjligt."
+    },
+    {
+      "id": "halsa-014",
+      "title": "Akut tandvärk",
+      "content": "Jag har fått akut tandvärk och måste besöka tandläkaren idag. Försöker vara inne eftermiddag om det ordnar sig. Återkommer med besked."
+    },
+    {
+      "id": "halsa-015",
+      "title": "Medicinskt ingrepp",
+      "content": "Jag ska genomgå ett litet medicinskt ingrepp idag. Jag är tillbaka på jobbet från och med [DATUM]. Tack för förståelsen."
+    },
+    {
+      "id": "halsa-016",
+      "title": "Allergireaction",
+      "content": "Jag har fått en allergireaction och mår illa. Stannar hemma idag tills det lagt sig. Hör av mig imorgon."
+    },
+    {
+      "id": "halsa-017",
+      "title": "Yrsel – kan inte ta mig dit",
+      "content": "Jag är yr och kan inte ta mig till jobbet idag. Stannar hemma och vilar. Hör av mig imorgon med en lägesuppdatering."
+    },
+    {
+      "id": "halsa-018",
+      "title": "Akut ryggvärk",
+      "content": "Jag har fått akut ryggvärk och kan knappt röra mig. Behöver stanna hemma idag. Hör av mig imorgon."
+    },
+    {
+      "id": "halsa-019",
+      "title": "Sjuk – vet inte hur länge",
+      "content": "Jag är sjuk och kan inte komma in. Vet ännu inte hur länge det varar. Håller dig uppdaterad varje dag."
+    },
+    {
+      "id": "halsa-020",
+      "title": "Tackar för förståelsen",
+      "content": "Tack för förståelsen under min sjukfrånvaro. Jag är tillbaka och redo att jobba igen. Ser fram emot att komma igång."
+    },
+    {
+      "id": "halsa-021",
+      "title": "Till kollega – sjuk idag",
+      "content": "Hej! Jag är sjuk idag och är inte på jobbet. Hör av dig om det är något akut."
+    },
+    {
+      "id": "halsa-022",
+      "title": "Till kollega – täck för mig?",
+      "content": "Jag är sjuk och kommer inte in idag. Kan du hålla koll på [UPPGIFT] under min frånvaro? Tack så mycket!"
+    },
+    {
+      "id": "halsa-023",
+      "title": "Till kollega – tillbaka imorgon",
+      "content": "Är sjuk idag men ska förhoppningsvis vara tillbaka imorgon. Tack för hjälpen och tålamodet!"
+    },
+    {
+      "id": "halsa-024",
+      "title": "Till kollega – inte smittsam",
+      "content": "Är inte smittsam längre och är tillbaka imorgon. Tack för att ni skötte det utan mig, vi ses!"
+    },
+    {
+      "id": "halsa-025",
+      "title": "Till kollega – skickar digitalt",
+      "content": "Är sjuk hemma men skickar materialet digitalt under dagen. Ta hand om dig du med!"
+    },
+    {
+      "id": "halsa-026",
+      "title": "Till kollega – hade tagit passet",
+      "content": "Tyvärr är jag sjuk annars hade jag gärna tagit ditt pass. Hoppas du hittar någon annan. Krya på dig!"
+    },
+    {
+      "id": "halsa-027",
+      "title": "Till kollega – bättre snart",
+      "content": "Är sjuk men hoppas vara bättre inom kort. Ta hand om er på jobbet under tiden!"
+    },
+    {
+      "id": "halsa-028",
+      "title": "Till kollega – magsjuka",
+      "content": "Har magsjuka tyvärr, riktigt jobbigt. Håll lite avstånd om vi ses nästa gång. Tillbaka så snart jag kan."
+    },
+    {
+      "id": "halsa-029",
+      "title": "Till kollega – förkylning",
+      "content": "Är förkylad och stannar hemma för att inte smitta alla. Vi ses snart igen!"
+    },
+    {
+      "id": "halsa-030",
+      "title": "Till kollega – nås på mobilen",
+      "content": "Är sjuk men går att nå på mobilen om det är riktigt viktigt. Annars ses vi snart!"
+    },
+    {
+      "id": "halsa-031",
+      "title": "Till kollega – distans",
+      "content": "Jobbar hemifrån idag på grund av sjukdom men är tillgänglig på chatten. Hör av dig om du behöver något."
+    },
+    {
+      "id": "halsa-032",
+      "title": "Till kollega – tack för hjälpen",
+      "content": "Tack för att ni täckte upp under min sjukdom. Det uppskattas verkligen. Nu är jag tillbaka!"
+    },
+    {
+      "id": "halsa-033",
+      "title": "Till kollega – hör av dig",
+      "content": "Är sjuk idag. Hör gärna av dig om det är något du behöver hjälp med digitalt."
+    },
+    {
+      "id": "halsa-034",
+      "title": "Till kollega – fixar digitalt",
+      "content": "Är sjuk men fixar uppgiften hemifrån under dagen. Den är klar till kvällen."
+    },
+    {
+      "id": "halsa-035",
+      "title": "Till kollega – önskar krya",
+      "content": "Hörde att du är sjuk också! Krypa på dig, vi ses när vi båda är friska igen."
+    },
+    {
+      "id": "halsa-036",
+      "title": "Till vän – kan inte ses idag",
+      "content": "Tyvärr är jag sjuk och kan inte ses idag. Beklagar om det kom sent. Vi stämmer av en ny tid snart!"
+    },
+    {
+      "id": "halsa-037",
+      "title": "Till vän – avbokar middagen",
+      "content": "Måste avboka middagen – jag är sjuk och vill inte smitta er. Hoppas vi kan boka om snart. Förlåt!"
+    },
+    {
+      "id": "halsa-038",
+      "title": "Till vän – missar festen",
+      "content": "Är sjuk och kan tyvärr inte komma på festen. Ledsen att missa det, ha det så kul!"
+    },
+    {
+      "id": "halsa-039",
+      "title": "Till vän – håller mig hemma",
+      "content": "Håller mig hemma idag, är lite sjuk. Hör av mig när jag är bättre!"
+    },
+    {
+      "id": "halsa-040",
+      "title": "Till vän – soffdag",
+      "content": "Är sjuk och kryper ihop på soffan idag. Kan vi ses en annan dag? Längtar!"
+    },
+    {
+      "id": "halsa-041",
+      "title": "Till vän – återkommer",
+      "content": "Är sjuk men återkommer så fort jag är på fötter igen. Hör snart av mig!"
+    },
+    {
+      "id": "halsa-042",
+      "title": "Till vän – ber om förståelse",
+      "content": "Hoppas du förstår att jag inte kan ses nu. Är sjuk men hör av mig så snart det klarnat."
+    },
+    {
+      "id": "halsa-043",
+      "title": "Till vän – inte smittsam",
+      "content": "Är inte smittsam längre! Kan vi ses snart? Saknar dig."
+    },
+    {
+      "id": "halsa-044",
+      "title": "Till vän – tack för omtanke",
+      "content": "Tack för att du frågade, det värmer! Är lite sjuk men hoppas vara bättre snart."
+    },
+    {
+      "id": "halsa-045",
+      "title": "Till vän – hoppas du inte smittats",
+      "content": "Hoppas du inte fångat samma sak som jag! Är lite sjuk men klarar mig. Säg till om du behöver något."
+    },
+    {
+      "id": "halsa-046",
+      "title": "Till vän – besök mig?",
+      "content": "Är sjuk hemma. Skulle uppskatta sällskap om du inte är rädd för smitta. Hör gärna av dig!"
+    },
+    {
+      "id": "halsa-047",
+      "title": "Till vän – tack för omsorgen",
+      "content": "Tack för att du tog hand om mig när jag var sjuk. Det betyder mer än du tror!"
+    },
+    {
+      "id": "halsa-048",
+      "title": "Till vän – mår bättre",
+      "content": "Är äntligen bättre! Kan vi stämma av en ny tid snart? Saknade att ses."
+    },
+    {
+      "id": "halsa-049",
+      "title": "Till vän – kräksjuka",
+      "content": "Har kräksjuka, håll avstånd! Hör av mig om några dagar när allt lagt sig."
+    },
+    {
+      "id": "halsa-050",
+      "title": "Till vän – hoppar inte av",
+      "content": "Hoppar bara av nu för att jag är sjuk – inte för att jag inte vill ses. Vi stämmer av igen snart!"
+    },
+    {
+      "id": "halsa-051",
+      "title": "Till vän – väntar på läkarsvar",
+      "content": "Väntar på svar från läkaren och vet inte riktigt hur länge jag är sjuk. Återkommer med mer info!"
+    },
+    {
+      "id": "halsa-052",
+      "title": "Till vän – orkar inte",
+      "content": "Orkar inte idag tyvärr. Är sjuk och behöver vila. Vi hörs snart, lovar!"
+    },
+    {
+      "id": "halsa-053",
+      "title": "Till vän – helt sänkt",
+      "content": "Är helt sänkt idag av sjukdom. Hör av mig när det lättat och vi bokar något kul!"
+    },
+    {
+      "id": "halsa-054",
+      "title": "Till vän – vill vara frisk snabbt",
+      "content": "Hoppas det går fort! Tål inte att vara sjuk och saknar att ses. Snart är jag tillbaka!"
+    },
+    {
+      "id": "halsa-055",
+      "title": "Till vän – behöver vila",
+      "content": "Behöver vila idag, är inte riktigt i form. Vi ses snart igen, lovar!"
+    },
+    {
+      "id": "halsa-056",
+      "title": "Symptom – hög feber",
+      "content": "Jag har feber, nästan 39 grader. Är trött och darrig och kan knappt stå upp. Behöver vila."
+    },
+    {
+      "id": "halsa-057",
+      "title": "Symptom – magsjuka",
+      "content": "Har magsjuka sedan igår kväll. Mår illa och kan inte äta någonting. Håller mig i sängen."
+    },
+    {
+      "id": "halsa-058",
+      "title": "Symptom – halsont och feber",
+      "content": "Har ont i halsen och feber sedan i morse. Det är svårt att svälja. Har tagit febernedsättande men det hjälper lite."
+    },
+    {
+      "id": "halsa-059",
+      "title": "Symptom – förkylning",
+      "content": "Är förkylad med rinnande näsa och huvudvärk. Mår inte toppen men klarar mig. Tar det lugnt idag."
+    },
+    {
+      "id": "halsa-060",
+      "title": "Symptom – migrän",
+      "content": "Har migrän med stark huvudvärk och ljuskänslighet. Kan inte titta på skärmar eller vara i ljuset. Behöver ligga stilla."
+    },
+    {
+      "id": "halsa-061",
+      "title": "Symptom – yrsel",
+      "content": "Är yr och ostabil, kan knappt stå upp. Vet inte riktigt vad det beror på. Ska ringa vårdcentralen."
+    },
+    {
+      "id": "halsa-062",
+      "title": "Symptom – ryggvärk",
+      "content": "Har fått akut ryggvärk och kan knappt röra mig. Troligtvis ett snedsteg. Ska ta det helt lugnt idag."
+    },
+    {
+      "id": "halsa-063",
+      "title": "Symptom – magen dålig",
+      "content": "Magen är dålig med halsbränna och illamående. Äter ingenting idag och dricker bara vatten."
+    },
+    {
+      "id": "halsa-064",
+      "title": "Symptom – allergi",
+      "content": "Får allergireaktioner med nysningar och kliande ögon. Har tagit antihistamin men det hjälper inte helt än."
+    },
+    {
+      "id": "halsa-065",
+      "title": "Symptom – högt blodtryck",
+      "content": "Läkaren sa att mitt blodtryck är för högt. Behöver ta det lugnt och börja medicinera. Kollar upp det ordentligt."
+    },
+    {
+      "id": "halsa-066",
+      "title": "Symptom – influensa",
+      "content": "Har troligen influensa med hög feber, muskelvärk och är totalt slut. Stannar hemma i minst tre dagar."
+    },
+    {
+      "id": "halsa-067",
+      "title": "Symptom – covid",
+      "content": "Testade positivt på covid idag. Har feber och hosta men klarar mig. Stannar hemma tills jag är frisk."
+    },
+    {
+      "id": "halsa-068",
+      "title": "Symptom – infekterat sår",
+      "content": "Har ett sår som verkar infekterat och ont. Ska till vårdcentralen idag för att kolla upp det."
+    },
+    {
+      "id": "halsa-069",
+      "title": "Symptom – hjärtklappning",
+      "content": "Har haft hjärtklappning och är lite orolig. Ska kontakta läkaren idag för att utesluta något allvarligt."
+    },
+    {
+      "id": "halsa-070",
+      "title": "Symptom – öroninflammation",
+      "content": "Har öroninflammation med stark smärta i örat. Ska hämta ut antibiotika på apoteket idag."
+    }
   ]
 }
