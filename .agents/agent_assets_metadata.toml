@@ -203,3 +203,9 @@ id = "o2HKPG2et5Fp05nGbe7N_"
 uri = "file://artifacts/uploads/svar-direkt-website-v26.zip"
 type = "unspecified"
 title = "Svar Direkt – v26 (SEO – wewnętrzne linki)"
+
+[[outputs]]
+id = "J7svB_9oHswDouLihYsQZ"
+uri = "file://artifacts/uploads/svar-direkt-website-v27.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v27 (SEO inline-textlänkar)"

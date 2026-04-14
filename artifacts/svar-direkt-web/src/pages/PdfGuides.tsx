@@ -216,6 +216,10 @@ export default function PdfGuides() {
               q: "Kan jag läsa guiden offline?",
               a: "Ja. När du har laddat ner PDF-filen kan du läsa den utan internetanslutning.",
             },
+            {
+              q: "Vad är skillnaden mellan PDF-guiderna och appen?",
+              a: "PDF-guiderna är fristående dokument om specifika ämnen (inkasso, tjäna pengar). Appen innehåller interaktiva mallar och färdiga fraser för myndighetskommunikation. De kompletterar varandra.",
+            },
           ].map((faq) => (
             <div key={faq.q} className="pb-4 border-b border-slate-100 last:border-0 last:pb-0">
               <div className="font-medium text-slate-900 text-sm mb-1">{faq.q}</div>

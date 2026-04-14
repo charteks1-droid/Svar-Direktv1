@@ -261,6 +261,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEO text section with inline links */}
+      <section className="border-t border-slate-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Allt samlat för din vardag i Sverige</h2>
+          <div className="grid md:grid-cols-2 gap-8 text-slate-600 text-sm leading-relaxed">
+            <div className="space-y-4">
+              <p>
+                Svar Direkt hjälper dig kommunicera med svenska myndigheter — utan stress och utan att behöva uppfinna texten från noll varje gång.{" "}
+                <Link href="/funktioner" className="text-primary underline hover:no-underline font-medium">Appen innehåller 52+ färdiga mallar</Link>{" "}
+                för Skatteverket, Försäkringskassan, Migrationsverket och Boverket.
+              </p>
+              <p>
+                Har du fått brev från Försäkringskassan och inte vet hur du ska svara?{" "}
+                <a href="/blog/forsakringskassan-skriver-till-dig.html" className="text-primary underline hover:no-underline font-medium">Läs vår guide om vad du ska göra</a>.{" "}
+                Behöver du hjälp med Kronofogden?{" "}
+                <Link href="/pdf-guider" className="text-primary underline hover:no-underline font-medium">Ladda ner vår PDF-guide om inkasso och Kronofogden</Link>.
+              </p>
+              <p>
+                Förutom myndighetskommunikation innehåller appen{" "}
+                <Link href="/paket" className="text-primary underline hover:no-underline font-medium">snabba svar för arbete och relationer</Link>{" "}
+                — till exempel svar på jobbannonser, hur du tackar nej artigt, och hur du frågar om löneökning.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <p>
+                Behöver du en jobbansökan snabbt?{" "}
+                <Link href="/mallar" className="text-primary underline hover:no-underline font-medium">Se våra 15 gratis jobbansökningsmallar</Link>{" "}
+                — fullt redigerbara, utan att du behöver skapa ett konto. Klicka i texten, fyll i dina uppgifter och kopiera direkt.
+              </p>
+              <p>
+                På vår{" "}
+                <Link href="/blogg" className="text-primary underline hover:no-underline font-medium">blogg</Link>{" "}
+                skriver vi om hur du kommunicerar effektivt med myndigheter. Läs om{" "}
+                <a href="/blog/varfor-ar-det-svart-att-skriva-till-myndigheter.html" className="text-primary underline hover:no-underline font-medium">varför det är svårt att skriva till myndigheter</a>,{" "}
+                <a href="/blog/ratt-ton-i-myndighetsbrev.html" className="text-primary underline hover:no-underline font-medium">rätt ton i myndighetsbrev</a>{" "}
+                och mer.
+              </p>
+              <p>
+                Frågor?{" "}
+                <Link href="/kontakt" className="text-primary underline hover:no-underline font-medium">Kontakta oss</Link>{" "}
+                — vi svarar alltid. Du kan också läsa mer{" "}
+                <Link href="/om-appen" className="text-primary underline hover:no-underline font-medium">om appen och vad som ingår</Link>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Myndigheter */}
       <section className="bg-slate-50 border-y border-slate-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
