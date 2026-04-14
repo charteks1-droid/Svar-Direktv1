@@ -209,3 +209,9 @@ id = "J7svB_9oHswDouLihYsQZ"
 uri = "file://artifacts/uploads/svar-direkt-website-v27.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v27 (SEO inline-textlänkar)"
+
+[[outputs]]
+id = "cofZEwhRjxTt-CeuiXndV"
+uri = "file://artifacts/uploads/svar-direkt-website-v28.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v28"
