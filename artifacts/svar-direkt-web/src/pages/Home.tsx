@@ -188,23 +188,38 @@ function FaqSection() {
 
 function HelpForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [epost, setEpost] = useState("");
   const [kategori, setKategori] = useState("");
   const [amne, setAmne] = useState("");
   const [meddelande, setMeddelande] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `Fråga från hemsidan${amne ? ": " + amne : ""}${kategori ? " [" + kategori + "]" : ""}`
-    );
-    const body = encodeURIComponent(
-      `Kategori: ${kategori || "—"}\nÄmne: ${amne || "—"}\n\nMeddelande:\n${meddelande || "—"}`
-    );
-    window.location.href = `mailto:info@svardirekt.site?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setKategori("");
-    setAmne("");
-    setMeddelande("");
+    setError("");
+    setSending(true);
+    try {
+      const res = await fetch("/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ epost, kategori, amne, meddelande }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setSubmitted(true);
+        setEpost("");
+        setKategori("");
+        setAmne("");
+        setMeddelande("");
+      } else {
+        setError(json.message || "Något gick fel. Försök igen eller skriv direkt till info@svardirekt.site");
+      }
+    } catch {
+      setError("Kunde inte nå servern. Försök igen eller skriv direkt till info@svardirekt.site");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -224,7 +239,7 @@ function HelpForm() {
             </div>
             <h3 className="text-lg font-bold text-slate-900">Tack! Vi har tagit emot ditt meddelande.</h3>
             <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
-              Vi återkommer så snart vi kan. Under tiden kan du redan nu använda våra färdiga mallar direkt i appen.
+              Vi återkommer så snart vi kan till din e-postadress. Under tiden kan du redan nu använda våra färdiga mallar direkt i appen.
             </p>
             <a
               href="https://payhip.com/b/WxtV3"
@@ -240,6 +255,19 @@ function HelpForm() {
             onSubmit={handleSubmit}
             className="bg-slate-50 rounded-2xl border border-slate-100 p-6 sm:p-8 flex flex-col gap-5"
           >
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                Din e-postadress <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                required
+                value={epost}
+                onChange={e => setEpost(e.target.value)}
+                placeholder="din@email.com"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40"
+              />
+            </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Kategori</label>
               <select
@@ -275,11 +303,24 @@ function HelpForm() {
                 className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
               />
             </div>
+            {error && (
+              <div className="bg-red-50 border border-red-100 rounded-xl px-4 py-3 text-sm text-red-700">
+                {error}
+              </div>
+            )}
             <button
               type="submit"
-              className="w-full py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+              disabled={sending}
+              className="w-full py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
             >
-              Skicka
+              {sending ? (
+                <>
+                  <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="30 70" strokeLinecap="round"/>
+                  </svg>
+                  Skickar…
+                </>
+              ) : "Skicka meddelande"}
             </button>
           </form>
         )}
