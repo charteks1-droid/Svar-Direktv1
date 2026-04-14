@@ -144,6 +144,90 @@ const guides = [
       </svg>
     ),
   },
+  {
+    id: "meddelanden-skatteverket",
+    title: "14 färdiga meddelanden till Skatteverket",
+    subtitle: "Rätt ord vid rätt tillfälle",
+    desc: "14 kortfattade och professionella meddelanden redo att använda i kontakt med Skatteverket. Perfekt för deklaration, folkbokföring, F-skatt och andra vanliga ärenden.",
+    topics: [
+      "Fråga om deklaration och komplettering",
+      "Begära anstånd med inbetalning",
+      "Ändra folkbokföringsuppgifter",
+      "Ansöka om F-skatt eller A-skatt",
+      "Bestrida ett skattebeslut",
+      "Bekräfta mottaget brev eller beslut",
+    ],
+    pages: "14 meddelanden",
+    format: "PDF",
+    price: "10 kr",
+    badge: "Myndighetsmeddelanden",
+    badgeColor: "#0a7ea4",
+    downloadFile: "meddelanden-skatteverket.pdf",
+    payhipUrl: "https://payhip.com/b/LsIGz",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h10M9 13h10M9 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M20 4v6l-2-1.5L16 10V4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "meddelanden-forsakringskassan",
+    title: "14 färdiga meddelanden till Försäkringskassan",
+    subtitle: "Skriv rätt – undvik onödiga förseningar",
+    desc: "14 direktanvändbara meddelanden för kontakt med Försäkringskassan. Täcker sjukpenning, föräldrapenning, bostadsbidrag och andra vanliga situationer.",
+    topics: [
+      "Sjukanmälan och förlängning av sjukpenning",
+      "Frågor om föräldrapenning och VAB",
+      "Begära omprövning av ett beslut",
+      "Komplettera ett pågående ärende",
+      "Fråga om handläggningstid",
+      "Bostadsbidrag och ekonomiska ersättningar",
+    ],
+    pages: "14 meddelanden",
+    format: "PDF",
+    price: "10 kr",
+    badge: "Myndighetsmeddelanden",
+    badgeColor: "#0a7ea4",
+    downloadFile: "meddelanden-forsakringskassan.pdf",
+    payhipUrl: "https://payhip.com/b/jQdzm",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h10M9 13h10M9 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M20 4v6l-2-1.5L16 10V4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: "meddelanden-kronofogden",
+    title: "14 färdiga meddelanden till Kronofogden",
+    subtitle: "Agera lugnt och korrekt",
+    desc: "14 färdiga meddelanden för att kommunicera med Kronofogden i svåra situationer – bestrida krav, begära avbetalningsplan eller fråga om ditt ärende.",
+    topics: [
+      "Bestrida ett betalningskrav",
+      "Begära avbetalningsplan",
+      "Fråga om ett pågående ärende",
+      "Meddela att skulden är betald",
+      "Begära anstånd med betalning",
+      "Kontakta om utmätning av lön",
+    ],
+    pages: "14 meddelanden",
+    format: "PDF",
+    price: "10 kr",
+    badge: "Myndighetsmeddelanden",
+    badgeColor: "#0a7ea4",
+    downloadFile: "meddelanden-kronofogden.pdf",
+    payhipUrl: "https://payhip.com/b/GjnFf",
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="3" width="20" height="22" rx="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M9 9h10M9 13h10M9 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M20 4v6l-2-1.5L16 10V4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
 ];
 
 export default function PdfGuides() {
