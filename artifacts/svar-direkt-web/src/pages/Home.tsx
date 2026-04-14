@@ -156,7 +156,7 @@ function HelpForm() {
         </p>
         <p className="mt-2 text-xs text-slate-400 text-center">
           Vill du kontakta oss direkt?{" "}
-          <a href="mailto:info@svardirekt.se" className="text-primary hover:underline">info@svardirekt.se</a>
+          <a href="mailto:info@svardirekt.site" className="text-primary hover:underline">info@svardirekt.site</a>
         </p>
       </div>
     </section>
@@ -586,7 +586,7 @@ export default function Home() {
           {/* Guarantee badge */}
           <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-6">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 3 3.3.5-2.4 2.3.6 3.2L8 9l-3 1.5.6-3.2-2.4-2.3 3.3-.5L8 1.5z" fill="#16a34a" opacity="0.2"/><path d="M8 2l1.4 2.8 3.1.5-2.2 2.2.5 3L8 9l-2.8 1.5.5-3L3.5 5.3l3.1-.5L8 2z" stroke="#16a34a" strokeWidth="1.2" strokeLinejoin="round"/><path d="M5 8l2 2 4-4" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round"/></svg>
-            <span className="text-xs font-medium text-green-800">Inte nöjd? Kontakta oss inom 14 dagar — <strong>info@svardirekt.se</strong></span>
+            <span className="text-xs font-medium text-green-800">Inte nöjd? Kontakta oss inom 14 dagar — <strong>info@svardirekt.site</strong></span>
           </div>
 
           <div className="flex justify-center gap-3 flex-wrap items-center mb-5">

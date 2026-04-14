@@ -24,8 +24,8 @@ export default function Contact() {
               </svg>
             </div>
             <div className="font-semibold text-slate-900 text-sm mb-1">E-post</div>
-            <a href="mailto:info@svardirekt.se" className="text-primary text-sm hover:underline">
-              info@svardirekt.se
+            <a href="mailto:info@svardirekt.site" className="text-primary text-sm hover:underline">
+              info@svardirekt.site
             </a>
           </div>
 

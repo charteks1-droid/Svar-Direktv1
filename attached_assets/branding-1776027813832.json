@@ -56,10 +56,10 @@
     }
   },
   "images": {
-    "logo": "https://www.svardirekt.se/wp-content/uploads/svardirekt_logo_black.svg",
-    "favicon": "https://www.svardirekt.se/wp-content/uploads/favicon.png",
+    "logo": "https://www.svardirekt.site/wp-content/uploads/svardirekt_logo_black.svg",
+    "favicon": "https://www.svardirekt.site/wp-content/uploads/favicon.png",
     "ogImage": null,
-    "logoHref": "https://www.svardirekt.se/",
+    "logoHref": "https://www.svardirekt.site/",
     "logoAlt": "Back to home"
   },
   "__llm_logo_reasoning": {
