@@ -179,3 +179,9 @@ id = "eYXOmQv9WePWlVrA43EeF"
 uri = "file://artifacts/uploads/svar-direkt-website-v22.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona v22 (POPRAWIONY)"
+
+[[outputs]]
+id = "mrpEJyydMQlp4xZBlvilH"
+uri = "file://artifacts/uploads/svar-direkt-website-v23.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona v23 (Google Analytics)"
