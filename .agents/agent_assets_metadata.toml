@@ -185,3 +185,9 @@ id = "mrpEJyydMQlp4xZBlvilH"
 uri = "file://artifacts/uploads/svar-direkt-website-v23.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona v23 (Google Analytics)"
+
+[[outputs]]
+id = "gTK_vl3BCWg8WIjwq1mbw"
+uri = "file://artifacts/uploads/svar-direkt-website-v24.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona v24 (z logo wszędzie)"

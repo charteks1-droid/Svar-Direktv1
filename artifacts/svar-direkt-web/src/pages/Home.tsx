@@ -171,6 +171,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
+              <div className="mb-6">
+                <img src="/logo.png" alt="Svar Direkt" className="h-20 w-20 rounded-2xl object-cover shadow-lg" />
+              </div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
                 Tillgänglig för Android

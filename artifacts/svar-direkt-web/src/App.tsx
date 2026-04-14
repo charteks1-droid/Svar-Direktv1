@@ -94,13 +94,7 @@ function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <rect x="2" y="2" width="14" height="10" rx="2" fill="white" fillOpacity="0.9"/>
-                <rect x="2" y="14" width="6" height="2" rx="1" fill="white" fillOpacity="0.7"/>
-                <rect x="10" y="14" width="6" height="2" rx="1" fill="white" fillOpacity="0.7"/>
-              </svg>
-            </div>
+            <img src="/logo.png" alt="Svar Direkt" className="h-10 w-10 rounded-lg object-cover" />
             <span className="font-semibold text-slate-900 text-[15px]">Svar Direkt</span>
           </Link>
 
@@ -262,13 +256,7 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-10">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <rect x="2" y="2" width="14" height="10" rx="2" fill="white" fillOpacity="0.9"/>
-                  <rect x="2" y="14" width="6" height="2" rx="1" fill="white" fillOpacity="0.7"/>
-                  <rect x="10" y="14" width="6" height="2" rx="1" fill="white" fillOpacity="0.7"/>
-                </svg>
-              </div>
+              <img src="/logo.png" alt="Svar Direkt" className="h-12 w-12 rounded-xl object-cover" />
               <span className="font-semibold text-white text-[15px]">Svar Direkt</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed">
