@@ -184,6 +184,12 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
 
+### ZIP versioning rule
+Every new ZIP build for `svar-direkt-web` must use an incremented version number.
+- Last completed ZIP: **v31** at `artifacts/uploads/svar-direkt-website-v31.zip`
+- Next ZIP must be: **v32**, then v33, etc.
+- Always increment — never overwrite a previous version number.
+
 ### `artifacts/svar-direkt` (`@workspace/svar-direkt`)
 
 Expo React Native mobile app — Swedish tenant/landlord response management tool.
