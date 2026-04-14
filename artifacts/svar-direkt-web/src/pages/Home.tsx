@@ -194,6 +194,13 @@ function HelpForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    const subject = encodeURIComponent(
+      `Fråga från hemsidan${amne ? ": " + amne : ""}${kategori ? " [" + kategori + "]" : ""}`
+    );
+    const body = encodeURIComponent(
+      `Kategori: ${kategori || "—"}\nÄmne: ${amne || "—"}\n\nMeddelande:\n${meddelande || "—"}`
+    );
+    window.location.href = `mailto:info@svardirekt.site?subject=${subject}&body=${body}`;
     setSubmitted(true);
     setKategori("");
     setAmne("");
