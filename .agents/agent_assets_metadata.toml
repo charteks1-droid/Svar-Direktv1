@@ -161,3 +161,9 @@ id = "6CJXkNcySag4kkwuDgRrt"
 uri = "file://artifacts/uploads/svar-direkt-website-v19.zip"
 type = "unspecified"
 title = "Svar Direkt – Website v19 (poprawki SEO + zaufanie + GDPR)"
+
+[[outputs]]
+id = "GcEjD0nj9aMGSnRtm4kZP"
+uri = "file://artifacts/uploads/svar-direkt-website-v20.zip"
+type = "unspecified"
+title = "Svar Direkt – Website v20 (nowy post bloga z SEO)"
