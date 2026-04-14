@@ -167,3 +167,9 @@ id = "GcEjD0nj9aMGSnRtm4kZP"
 uri = "file://artifacts/uploads/svar-direkt-website-v20.zip"
 type = "unspecified"
 title = "Svar Direkt – Website v20 (nowy post bloga z SEO)"
+
+[[outputs]]
+id = "y690yBckgMs3Ve3F8FEHO"
+uri = "file://artifacts/uploads/svar-direkt-website-v21.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona v21"
