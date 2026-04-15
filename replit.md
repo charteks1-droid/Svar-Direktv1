@@ -190,6 +190,22 @@ Every new ZIP build for `svar-direkt-web` must use an incremented version number
 - Next ZIP must be: **v49**, then v50, etc.
 - Always increment — never overwrite a previous version number.
 
+### Forum (Frågor & Svar)
+
+Anonymous Q&A forum embedded in `svar-direkt-web`. Fully functional in development via a Vite plugin that embeds the API into the Vite dev server — no separate API server workflow needed for dev.
+
+**Architecture:**
+- `artifacts/svar-direkt-web/forum-api-plugin.ts` — Vite plugin that intercepts `/svar-direkt-web/api/forum/*` requests during dev and handles them with direct pg queries
+- `artifacts/api-server/src/routes/forum.ts` — Express routes for the same API (used when deploying the full Replit app with the API server)
+- `artifacts/svar-direkt-web/src/pages/Forum.tsx` — Forum overview (categories + thread list)
+- `artifacts/svar-direkt-web/src/pages/ForumThread.tsx` — Single thread view with replies and voting
+
+**PostgreSQL tables:** `forum_threads`, `forum_replies`, `forum_helpful_votes`
+
+**API URLs:** Frontend uses `` `${import.meta.env.BASE_URL}api/forum` `` which resolves to `/svar-direkt-web/api/forum` in dev (Vite plugin) and `/api/forum` in production (Express server).
+
+**Anonymity:** Client UUID stored in `localStorage.forum_token`; server stores SHA-256 hash; display name is `Anonym #XXXXXX` (first 6 hex chars of hash).
+
 ### `artifacts/svar-direkt` (`@workspace/svar-direkt`)
 
 Expo React Native mobile app — Swedish tenant/landlord response management tool.

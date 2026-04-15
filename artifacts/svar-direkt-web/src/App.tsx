@@ -21,6 +21,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Kontakt – Svar Direkt",
     description: "Kontakta Svar Direkt med frågor, feedback eller support. Vi svarar på info@svardirekt.site.",
   },
+  "/forum": {
+    title: "Forum – Frågor & Svar – Svar Direkt",
+    description: "Ställ din fråga anonymt och få svar från andra som haft samma erfarenhet av Kronofogden, Skatteverket, Försäkringskassan och mer.",
+  },
   "/funktioner": {
     title: "Funktioner – Svar Direkt",
     description: "Allt som ingår i Svar Direkt – mallar, kategorier och hur appen fungerar.",
@@ -66,6 +70,8 @@ import Contact from "@/pages/Contact";
 import Blog from "@/pages/Blog";
 import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
+import Forum from "@/pages/Forum";
+import ForumThread from "@/pages/ForumThread";
 import NotFound from "@/pages/not-found";
 
 function CookieBanner() {
@@ -115,6 +121,7 @@ function Navbar() {
     { href: "/",       label: "Startsida" },
     { href: "/paket",  label: "Paket" },
     { href: "/blogg",  label: "Blogg" },
+    { href: "/forum",  label: "Forum" },
     { href: "/kontakt",label: "Kontakt" },
   ];
 
@@ -378,6 +385,11 @@ export default function App() {
             <Route path="/blogg" component={Blog} />
             <Route path="/generator" component={Generator} />
             <Route path="/mallar" component={Mallar} />
+            <Route path="/forum/trad/:id" component={ForumThread} />
+            <Route path="/forum/kategori/:category">
+              {(params) => <Forum categoryFilter={params.category} />}
+            </Route>
+            <Route path="/forum" component={Forum} />
             <Route component={NotFound} />
           </Switch>
         </main>
