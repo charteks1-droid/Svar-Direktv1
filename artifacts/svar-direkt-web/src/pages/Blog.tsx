@@ -131,9 +131,9 @@ const articles: Article[] = [
   },
   {
     slug: "svara-pa-krav-fran-kronofogden",
-    title: "Att svara på krav från Kronofogden – steg för steg",
+    title: "Hur skriver man till Kronofogden? Steg-för-steg-guide",
     excerpt:
-      "Ett brev från Kronofogden kan kännas skrämmande. Men du har rättigheter och möjligheter att bestrida, förhandla eller ordna avbetalning. Här är vad du ska göra.",
+      "Hur skriver man till Kronofogden på ett korrekt sätt? Ett brev från Kronofogden kräver snabb respons. Här är vad du ska skriva — och hur du bestrider, förhandlar eller ordnar avbetalning.",
     category: "Kronofogden",
     readTime: "6 min",
     date: "3 april 2026",
@@ -142,7 +142,9 @@ const articles: Article[] = [
         <p>
           Kronofogden är den myndighet som de flesta fruktar mest i sina brevlådor.
           Men det är viktigt att veta: ett brev från dem är inte slutet på världen.
-          Du har rättigheter, och det finns alltid något du kan göra.
+          Du har rättigheter, och det finns alltid något du kan göra. Nyckeln är att
+          veta <strong>hur man skriver till Kronofogden</strong> — sakligt, i rätt tid och
+          med rätt information.
         </p>
         <h2>Steg 1: Läs brevet noggrant</h2>
         <p>
@@ -185,9 +187,9 @@ const articles: Article[] = [
   },
   {
     slug: "forsakringskassan-skriver-till-dig",
-    title: "Försäkringskassan skriver till dig – vad gör du nu?",
+    title: "Mall: brev till Försäkringskassan – vad du ska skriva och hur",
     excerpt:
-      "Omprövning, återkrav, kompletteringsbegäran — Försäkringskassan skickar många olika typer av brev. Lär dig skillnaden och vad varje brev kräver av dig.",
+      "Behöver du ett mall brev till Försäkringskassan? Omprövning, återkrav, kompletteringsbegäran — Försäkringskassan skickar många typer av brev. Lär dig skillnaden och se exakt vad du ska svara.",
     category: "Försäkringskassan",
     readTime: "5 min",
     date: "28 mars 2026",
@@ -196,7 +198,9 @@ const articles: Article[] = [
         <p>
           Försäkringskassan hanterar sjukpenning, föräldrapenning, bostadsbidrag
           och många andra förmåner. Det innebär att de kommunicerar med en stor del
-          av Sveriges befolkning — och inte alltid med glada nyheter.
+          av Sveriges befolkning — och inte alltid med glada nyheter. Oavsett om du
+          behöver ett <strong>mall brev till Försäkringskassan</strong> för en omprövning,
+          komplettering eller ett återkrav — rätt formulering gör hela skillnaden.
         </p>
         <h2>De vanligaste brevtyperna</h2>
         <p>
@@ -483,16 +487,16 @@ const articles: Article[] = [
   },
   {
     slug: "skatteverket-6-vanliga-situationer",
-    title: "Skatteverket och du – 6 vanliga situationer och hur du hanterar dem",
+    title: "Skatteverket och du – 6 situationer + mall för att överklaga beslut",
     excerpt:
-      "Deklaration, folkbokföring, F-skatt, återbetalning – Skatteverket dyker upp i många viktiga livssituationer. Här är de sex vanligaste och exakt vad du ska skriva.",
+      "Behöver du en mall för att överklaga beslut från Skatteverket? Deklaration, folkbokföring, F-skatt, återbetalning – här är de sex vanligaste situationerna och exakt vad du ska skriva.",
     category: "Skatteverket",
     readTime: "5 min",
     date: "15 mars 2026",
     content: (
       <>
         <p>
-          Skatteverket är den myndighet de flesta möter fler gånger i livet än de egentligen vill. Deklaration varje år, folkbokföring vid flytt, F-skatt om du driver eget. Här är de sex vanligaste situationerna och hur du kommunicerar dem korrekt.
+          Skatteverket är den myndighet de flesta möter fler gånger i livet än de egentligen vill. Deklaration varje år, folkbokföring vid flytt, F-skatt om du driver eget. Här är de sex vanligaste situationerna — inklusive hur du <strong>överklagar beslut från Skatteverket</strong> med rätt mall.
         </p>
         <h2>1. Komplettera deklarationen</h2>
         <p>
@@ -510,9 +514,9 @@ const articles: Article[] = [
         <p>
           Kan du inte betala kvarskatten i tid? Ansök om anstånd skriftligen innan förfallodatumet. Ange anledning, hur länge du behöver anstånd och din plan för betalning. Beviljat anstånd förhindrar ränteuppbyggnad.
         </p>
-        <h2>5. Bestrida ett beslut</h2>
+        <h2>5. Överklaga beslut från Skatteverket – med rätt mall</h2>
         <p>
-          Anser du att Skatteverket gjort en felaktig bedömning? Du har rätt att begära omprövning inom fem år från beskattningsåret. Skriv ett strukturerat brev: vad du bestrider, varför, och vilket underlag du stödjer dig på.
+          Anser du att Skatteverket gjort en felaktig bedömning? Du har rätt att <strong>överklaga beslut från Skatteverket</strong> genom att begära omprövning — inom fem år från beskattningsåret. Använd en <strong>mall</strong> för att strukturera brevet: vad du bestrider, varför, och vilket underlag du stödjer dig på. Appen Svar Direkt innehåller en färdig mall för precis den här situationen.
         </p>
         <h2>6. Fråga om kapitalvinst och försäljning</h2>
         <p>

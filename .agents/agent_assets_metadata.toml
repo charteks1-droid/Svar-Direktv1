@@ -353,3 +353,9 @@ id = "8uy0NPvUEHgZzG5f103h8"
 uri = "file://artifacts/uploads/svar-direkt-website-v49.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona (v49)"
+
+[[outputs]]
+id = "1-sFS40zsxwA6kP1AWYm-"
+uri = "file://svar-direkt-web-v50.zip"
+type = "unspecified"
+title = "Svar Direkt webbplats v50"

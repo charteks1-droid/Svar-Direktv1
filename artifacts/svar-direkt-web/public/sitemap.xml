@@ -42,8 +42,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://svardirekt.site/forum</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- Blog articles (SPA routes) -->
+  <!-- Blog articles -->
   <url>
     <loc>https://svardirekt.site/blogg/varfor-ar-det-svart-att-skriva-till-myndigheter</loc>
     <changefreq>monthly</changefreq>
@@ -103,68 +108,6 @@
     <loc>https://svardirekt.site/blogg/hyresgastens-rattigheter-i-sverige</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <!-- Static blog HTML (fully rendered, accessible without JS) -->
-  <url>
-    <loc>https://svardirekt.site/blog/varfor-ar-det-svart-att-skriva-till-myndigheter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/ratt-ton-i-myndighetsbrev.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/svara-pa-krav-fran-kronofogden.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/forsakringskassan-skriver-till-dig.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/konsten-att-svara-professionellt.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/stress-och-radsla-infor-myndighetskontakt.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/overvinna-radslan-for-myndigheter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/ekonomi-under-press-vad-gor-du.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/radsla-fran-alla-hall-en-otrygg-tid.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/vad-hander-om-du-inte-svarar-myndigheter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/skatteverket-6-vanliga-situationer.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://svardirekt.site/blog/hyresgastens-rattigheter-i-sverige.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 
 </urlset>

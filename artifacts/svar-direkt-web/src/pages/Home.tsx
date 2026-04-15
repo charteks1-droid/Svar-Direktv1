@@ -247,7 +247,7 @@ function HelpForm() {
               rel="noopener noreferrer"
               className="mt-2 px-6 py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
             >
-              Ladda ner appen – 49 kr
+              Få svar direkt – 49 kr
             </a>
           </div>
         ) : (
@@ -413,10 +413,10 @@ function LossAversion() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
           >
-            Ladda ner appen – 49 kr
+            Kom igång nu – 49 kr
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
-          <p className="text-xs text-slate-400 mt-2">Engångskostnad — inga prenumerationer</p>
+          <p className="text-xs text-slate-400 mt-2">🔒 Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.</p>
         </div>
       </div>
     </section>
@@ -511,9 +511,8 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
                   >
-                    Ladda ner appen
+                    Få svar direkt – 49 kr
                   </a>
-                  <span className="text-sm font-semibold text-slate-700">49 kr</span>
                 </div>
                 <Link
                   href="/paket"
@@ -528,6 +527,9 @@ export default function Home() {
                   Se PDF-guider
                 </Link>
               </div>
+              <p className="text-xs text-slate-400 mt-3">
+                🔒 Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.
+              </p>
             </div>
             <div className="flex justify-center">
               <PhoneMockup />
@@ -575,6 +577,74 @@ export default function Home() {
             title="Lägg till moduler"
             desc="Utöka appen med fler paket och kategorier efter ditt behov."
           />
+        </div>
+      </section>
+
+      {/* Jämförelse med konkurrenter */}
+      <section className="bg-slate-50 border-t border-slate-100 py-14 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
+              Varför Svar Direkt?
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">
+              Vad skiljer oss från alternativen?
+            </h2>
+            <p className="text-slate-500 text-sm max-w-lg mx-auto">
+              Det finns många sätt att hantera myndighetsbrev — men de flesta tar tid, kostar pengar eller kräver att du vet vad du gör.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+            <table className="w-full text-sm min-w-[600px]">
+              <thead>
+                <tr className="bg-slate-900 text-white">
+                  <th className="text-left px-5 py-4 font-semibold w-[36%]">Alternativ</th>
+                  <th className="text-left px-4 py-4 font-semibold text-slate-300">Problem</th>
+                  <th className="text-center px-4 py-4 font-semibold text-primary bg-primary/10 rounded-t-none">Svar Direkt</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {[
+                  {
+                    alt: "🔍 Googla efter mallar",
+                    problem: "Generiska texter, på engelska, osäkra källor — tar timmar och ger inga garantier.",
+                    sd: "Färdiga svenska texter för exakt din situation — direkt i appen.",
+                  },
+                  {
+                    alt: "🤖 Skriva med ChatGPT",
+                    problem: "Kräver att du vet vad du ska fråga, ger inte alltid korrekt juridisk ton, kopplas inte till din specifika myndighet.",
+                    sd: "Redan formulerat, testat och anpassat för svenska myndigheter. Ingen prompt behövs.",
+                  },
+                  {
+                    alt: "⚖️ Juridisk rådgivning",
+                    problem: "Kostar 1 000–3 000 kr per timme. Inte rimligt för ett enkelt svar till Försäkringskassan.",
+                    sd: "49 kr en gång. Tillgång till alla mallar direkt.",
+                  },
+                  {
+                    alt: "📋 Andras bloggar & forum",
+                    problem: "Utdaterade råd, okänd författare, kräver att du sätter ihop texten själv.",
+                    sd: "Uppdaterade mallar, klara att kopiera — utan att behöva skriva något från noll.",
+                  },
+                  {
+                    alt: "😰 Skjuta upp och hoppas",
+                    problem: "Tidsfrister löper ut. Ärenden eskalerar. Ångesten ökar.",
+                    sd: "Sänker tröskeln så du faktiskt svarar — snabbt och rätt.",
+                  },
+                ].map((row) => (
+                  <tr key={row.alt} className="bg-white hover:bg-slate-50 transition-colors">
+                    <td className="px-5 py-4 font-medium text-slate-800 align-top">{row.alt}</td>
+                    <td className="px-4 py-4 text-slate-500 align-top leading-relaxed">{row.problem}</td>
+                    <td className="px-4 py-4 text-primary font-medium align-top text-center leading-relaxed bg-primary/5">✓ {row.sd}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-center text-xs text-slate-400 mt-4">
+            Svar Direkt är inte juridisk rådgivning — det är ett praktiskt verktyg för vardagskommunikation.
+          </p>
         </div>
       </section>
 
@@ -806,74 +876,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Jämförelse med konkurrenter */}
-      <section className="bg-slate-50 border-t border-slate-100 py-14 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
-              Varför Svar Direkt?
-            </span>
-            <h2 className="text-2xl font-bold text-slate-900 mb-3">
-              Vad skiljer oss från alternativen?
-            </h2>
-            <p className="text-slate-500 text-sm max-w-lg mx-auto">
-              Det finns många sätt att hantera myndighetsbrev — men de flesta tar tid, kostar pengar eller kräver att du vet vad du gör.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
-            <table className="w-full text-sm min-w-[600px]">
-              <thead>
-                <tr className="bg-slate-900 text-white">
-                  <th className="text-left px-5 py-4 font-semibold w-[36%]">Alternativ</th>
-                  <th className="text-left px-4 py-4 font-semibold text-slate-300">Problem</th>
-                  <th className="text-center px-4 py-4 font-semibold text-primary bg-primary/10 rounded-t-none">Svar Direkt</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {[
-                  {
-                    alt: "🔍 Googla efter mallar",
-                    problem: "Generiska texter, på engelska, osäkra källor — tar timmar och ger inga garantier.",
-                    sd: "Färdiga svenska texter för exakt din situation — direkt i appen.",
-                  },
-                  {
-                    alt: "🤖 Skriva med ChatGPT",
-                    problem: "Kräver att du vet vad du ska fråga, ger inte alltid korrekt juridisk ton, kopplas inte till din specifika myndighet.",
-                    sd: "Redan formulerat, testat och anpassat för svenska myndigheter. Ingen prompt behövs.",
-                  },
-                  {
-                    alt: "⚖️ Juridisk rådgivning",
-                    problem: "Kostar 1 000–3 000 kr per timme. Inte rimligt för ett enkelt svar till Försäkringskassan.",
-                    sd: "49 kr en gång. Tillgång till alla mallar direkt.",
-                  },
-                  {
-                    alt: "📋 Andras bloggar & forum",
-                    problem: "Utdaterade råd, okänd författare, kräver att du sätter ihop texten själv.",
-                    sd: "Uppdaterade mallar, klara att kopiera — utan att behöva skriva något från noll.",
-                  },
-                  {
-                    alt: "😰 Skjuta upp och hoppas",
-                    problem: "Tidsfrister löper ut. Ärenden eskalerar. Ångesten ökar.",
-                    sd: "Sänker tröskeln så du faktiskt svarar — snabbt och rätt.",
-                  },
-                ].map((row) => (
-                  <tr key={row.alt} className="bg-white hover:bg-slate-50 transition-colors">
-                    <td className="px-5 py-4 font-medium text-slate-800 align-top">{row.alt}</td>
-                    <td className="px-4 py-4 text-slate-500 align-top leading-relaxed">{row.problem}</td>
-                    <td className="px-4 py-4 text-primary font-medium align-top text-center leading-relaxed bg-primary/5">✓ {row.sd}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="text-center text-xs text-slate-400 mt-4">
-            Svar Direkt är inte juridisk rådgivning — det är ett praktiskt verktyg för vardagskommunikation.
-          </p>
-        </div>
-      </section>
-
       {/* SEO-rich text block */}
       <section className="bg-white border-t border-slate-100 py-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
@@ -1076,7 +1078,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm shadow-lg shadow-primary/25"
             >
-              Ladda ner appen – 49 kr
+              Få svar direkt – 49 kr
             </a>
             <Link
               href="/kontakt"
@@ -1090,11 +1092,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-xs text-slate-400">
             <span className="flex items-center gap-1">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
-              Betalning via Payhip (säker kortbetalning)
-            </span>
-            <span className="flex items-center gap-1">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
-              Du laddar ner filen direkt efter köpet
+              Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.
             </span>
             <span className="flex items-center gap-1">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
@@ -1112,7 +1110,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
         >
-          Ladda ner appen – 49 kr
+          Få svar direkt – 49 kr
         </a>
       </div>
     </div>
