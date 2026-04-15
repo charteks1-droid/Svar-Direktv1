@@ -591,7 +591,7 @@ export default function Home() {
               </p>
               <p>
                 Har du fått brev från Försäkringskassan och inte vet hur du ska svara?{" "}
-                <a href="/blog/forsakringskassan-skriver-till-dig.html" className="text-primary underline hover:no-underline font-medium">Läs vår guide om vad du ska göra</a>.{" "}
+                <Link href="/blogg/forsakringskassan-skriver-till-dig" className="text-primary underline hover:no-underline font-medium">Läs vår guide om vad du ska göra</Link>.{" "}
                 Behöver du hjälp med Kronofogden?{" "}
                 <Link href="/pdf-guider" className="text-primary underline hover:no-underline font-medium">Ladda ner vår PDF-guide om inkasso och Kronofogden</Link>.
               </p>
@@ -611,8 +611,8 @@ export default function Home() {
                 På vår{" "}
                 <Link href="/blogg" className="text-primary underline hover:no-underline font-medium">blogg</Link>{" "}
                 skriver vi om hur du kommunicerar effektivt med myndigheter. Läs om{" "}
-                <a href="/blog/varfor-ar-det-svart-att-skriva-till-myndigheter.html" className="text-primary underline hover:no-underline font-medium">varför det är svårt att skriva till myndigheter</a>,{" "}
-                <a href="/blog/ratt-ton-i-myndighetsbrev.html" className="text-primary underline hover:no-underline font-medium">rätt ton i myndighetsbrev</a>{" "}
+                <Link href="/blogg/varfor-ar-det-svart-att-skriva-till-myndigheter" className="text-primary underline hover:no-underline font-medium">varför det är svårt att skriva till myndigheter</Link>,{" "}
+                <Link href="/blogg/ratt-ton-i-myndighetsbrev" className="text-primary underline hover:no-underline font-medium">rätt ton i myndighetsbrev</Link>{" "}
                 och mer.
               </p>
               <p>
@@ -966,32 +966,29 @@ export default function Home() {
           <div className="grid sm:grid-cols-3 gap-4 mb-6">
             {[
               {
-                href: "/blogg",
-                articleHref: "/blog/forsakringskassan-skriver-till-dig.html",
+                articleHref: "/blogg/forsakringskassan-skriver-till-dig",
                 tag: "Försäkringskassan",
                 title: "Försäkringskassan skriver till dig – vad gör du nu?",
                 desc: "Omprövning, återkrav, kompletteringsbegäran — lär dig vad varje brev kräver av dig.",
               },
               {
-                href: "/blogg",
-                articleHref: "/blog/svara-pa-krav-fran-kronofogden.html",
+                articleHref: "/blogg/svara-pa-krav-fran-kronofogden",
                 tag: "Kronofogden",
                 title: "Svara på krav från Kronofogden",
                 desc: "Så agerar du lugnt och strategiskt när Kronofogden hör av sig.",
               },
               {
-                href: "/blogg",
-                articleHref: "/blog/ratt-ton-i-myndighetsbrev.html",
+                articleHref: "/blogg/ratt-ton-i-myndighetsbrev",
                 tag: "Kommunikation",
                 title: "Rätt ton i myndighetsbrev",
                 desc: "Varför formellt och faktabaserat alltid fungerar bäst när du skriver till myndigheter.",
               },
             ].map(post => (
-              <a key={post.articleHref} href={post.articleHref} className="bg-white rounded-2xl border border-slate-100 p-5 hover:shadow-md transition-shadow group block">
+              <Link key={post.articleHref} href={post.articleHref} className="bg-white rounded-2xl border border-slate-100 p-5 hover:shadow-md transition-shadow group block">
                 <div className="inline-block text-xs font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-3">{post.tag}</div>
                 <h3 className="text-sm font-semibold text-slate-900 leading-snug mb-2 group-hover:text-primary transition-colors">{post.title}</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">{post.desc}</p>
-              </a>
+              </Link>
             ))}
           </div>
           <div className="flex flex-wrap gap-3 items-center">

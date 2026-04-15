@@ -29,7 +29,7 @@ export default function AboutApp() {
           <div>
             <p className="text-slate-600 text-sm leading-relaxed mb-3">
               Svar Direkt är en app för dig som bor och lever i Sverige och ibland behöver kommunicera med myndigheter, arbetsgivare eller i andra officiella situationer – men inte alltid vet hur man formulerar sig på svenska.
-              Läs mer om <a href="/blog/varfor-ar-det-svart-att-skriva-till-myndigheter.html" className="text-primary underline hover:no-underline">varför det är svårt att skriva till myndigheter</a> i vår blogg.
+              Läs mer om <Link href="/blogg/varfor-ar-det-svart-att-skriva-till-myndigheter" className="text-primary underline hover:no-underline">varför det är svårt att skriva till myndigheter</Link> i vår blogg.
             </p>
             <p className="text-slate-600 text-sm leading-relaxed">
               Appen innehåller hundratals förberedda mallar och fraser som du enkelt kopierar, anpassar och skickar. Ingen blank sida. Inget gissande. Bara tydliga svar.
@@ -39,7 +39,7 @@ export default function AboutApp() {
           <div>
             <p className="text-slate-600 text-sm leading-relaxed mb-3">
               Vi har samlat mallar för de fyra stora myndigheterna – Skatteverket, Försäkringskassan, Migrationsverket och Boverket – samt <Link href="/paket" className="text-primary underline hover:no-underline">snabba svar för arbete, relationer och vardagliga situationer</Link>.
-              Har du fått brev från Försäkringskassan? Läs <a href="/blog/forsakringskassan-skriver-till-dig.html" className="text-primary underline hover:no-underline">vår guide om hur du svarar</a>.
+              Har du fått brev från Försäkringskassan? Läs <Link href="/blogg/forsakringskassan-skriver-till-dig" className="text-primary underline hover:no-underline">vår guide om hur du svarar</Link>.
             </p>
             <p className="text-slate-600 text-sm leading-relaxed">
               Appen är offline-redo och kräver ingen inloggning. Ladda ner och börja direkt.

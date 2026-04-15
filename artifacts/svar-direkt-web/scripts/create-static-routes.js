@@ -17,6 +17,7 @@ const ROUTES = [
   "mallar",
   "pdf-guider",
   "generator",
+  "forum",
   // Blog articles
   "blogg/varfor-ar-det-svart-att-skriva-till-myndigheter",
   "blogg/ratt-ton-i-myndighetsbrev",

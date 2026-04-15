@@ -347,3 +347,9 @@ id = "8CYri2QmzkNWFLo-VKJg1"
 uri = "file://artifacts/svar-direkt-web/public/video/promo.mp4"
 type = "video"
 title = "Svar Direkt – Promovideo (30 sek, 9:16)"
+
+[[outputs]]
+id = "8uy0NPvUEHgZzG5f103h8"
+uri = "file://artifacts/uploads/svar-direkt-website-v49.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona (v49)"
