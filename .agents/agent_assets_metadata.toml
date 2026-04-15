@@ -311,3 +311,9 @@ id = "sfwajRT7U8Q7IJdyVRDu9"
 uri = "file://artifacts/uploads/svar-direkt-website-v43.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v43 (pełne poprawki SEO)"
+
+[[outputs]]
+id = "8el1six4uCdUglUlREeP7"
+uri = "file://artifacts/uploads/svar-direkt-website-v44.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v44 (FAQ schema + pełne SEO)"

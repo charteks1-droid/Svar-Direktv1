@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
 
 function PhoneMockup() {
@@ -424,6 +424,64 @@ function LossAversion() {
 }
 
 export default function Home() {
+  useEffect(() => {
+    const id = "faq-jsonld";
+    let script = document.getElementById(id) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = id;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Vad är Svar Direkt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Svar Direkt är en app med 52+ färdiga mallar och fraser för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Du kopierar, anpassar och skickar. Inga tomma sidor, ingen gissning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "För vem passar Svar Direkt appen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Appen passar alla som bor och lever i Sverige och ibland behöver kommunicera med myndigheter men inte alltid vet hur man formulerar sig. Nyanlända, personer med svenska som andraspråk, men också infödda svenskar som vill spara tid och slippa stressa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hur fungerar mallarna för myndighetsbrev?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Du väljer situation — t.ex. 'svar på begäran om komplettering från Försäkringskassan' — kopierar texten, fyller i dina egna uppgifter och skickar. Alla mallar är skrivna på korrekt, formell svenska och anpassade till den specifika myndighetens kommunikationsstil."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Är Svar Direkt juridisk rådgivning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nej. Svar Direkt ger dig hjälp att formulera dig — inte juridisk rådgivning. För komplexa juridiska frågor bör du alltid kontakta en jurist. Men för de flesta vardagliga myndighetssituationer räcker en välformulerad mall långt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vad kostar Svar Direkt och vad ingår?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Grundappen kostar 49 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
+          }
+        }
+      ]
+    });
+    return () => { const el = document.getElementById(id); if (el) el.remove(); };
+  }, []);
+
   return (
     <div>
       {/* Hero */}
