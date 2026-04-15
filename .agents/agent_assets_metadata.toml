@@ -323,3 +323,9 @@ id = "idwBQVP5Ur4rM3Lrnlw7e"
 uri = "file://artifacts/uploads/svar-direkt-website-v45.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v45 (statyczne trasy)"
+
+[[outputs]]
+id = "oF1PuhvbY4ru2ivdYc-9t"
+uri = "file://artifacts/uploads/svar-direkt-website-v46.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v46 (FAQ + SoftwareApp schema statyczne)"
