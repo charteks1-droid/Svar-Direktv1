@@ -72,6 +72,7 @@ import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
 import Forum from "@/pages/Forum";
 import ForumThread from "@/pages/ForumThread";
+import Landing from "@/pages/Landing";
 import NotFound from "@/pages/not-found";
 
 function CookieBanner() {
@@ -390,6 +391,7 @@ export default function App() {
               {(params) => <Forum categoryFilter={params.category} />}
             </Route>
             <Route path="/forum" component={Forum} />
+            <Route path="/landing" component={Landing} />
             <Route component={NotFound} />
           </Switch>
         </main>
