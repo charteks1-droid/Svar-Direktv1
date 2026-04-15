@@ -372,32 +372,39 @@ export default function App() {
   return (
     <WouterRouter base={BASE}>
       <CanonicalUpdater />
-      <div className="min-h-screen flex flex-col bg-white">
-        <Navbar />
-        <main className="flex-1">
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/om-appen" component={AboutApp} />
-            <Route path="/funktioner" component={Features} />
-            <Route path="/paket" component={Packages} />
-            <Route path="/pdf-guider" component={PdfGuides} />
-            <Route path="/kontakt" component={Contact} />
-            <Route path="/blogg/:slug" component={Blog} />
-            <Route path="/blogg" component={Blog} />
-            <Route path="/generator" component={Generator} />
-            <Route path="/mallar" component={Mallar} />
-            <Route path="/forum/trad/:id" component={ForumThread} />
-            <Route path="/forum/kategori/:category">
-              {(params) => <Forum categoryFilter={params.category} />}
-            </Route>
-            <Route path="/forum" component={Forum} />
-            <Route path="/landing" component={Landing} />
-            <Route component={NotFound} />
-          </Switch>
-        </main>
-        <Footer />
-        <CookieBanner />
-      </div>
+      <Switch>
+        {/* Landing page — standalone, no navbar/footer */}
+        <Route path="/landing" component={Landing} />
+
+        {/* All other pages — full site layout */}
+        <Route>
+          <div className="min-h-screen flex flex-col bg-white">
+            <Navbar />
+            <main className="flex-1">
+              <Switch>
+                <Route path="/" component={Home} />
+                <Route path="/om-appen" component={AboutApp} />
+                <Route path="/funktioner" component={Features} />
+                <Route path="/paket" component={Packages} />
+                <Route path="/pdf-guider" component={PdfGuides} />
+                <Route path="/kontakt" component={Contact} />
+                <Route path="/blogg/:slug" component={Blog} />
+                <Route path="/blogg" component={Blog} />
+                <Route path="/generator" component={Generator} />
+                <Route path="/mallar" component={Mallar} />
+                <Route path="/forum/trad/:id" component={ForumThread} />
+                <Route path="/forum/kategori/:category">
+                  {(params) => <Forum categoryFilter={params.category} />}
+                </Route>
+                <Route path="/forum" component={Forum} />
+                <Route component={NotFound} />
+              </Switch>
+            </main>
+            <Footer />
+            <CookieBanner />
+          </div>
+        </Route>
+      </Switch>
     </WouterRouter>
   );
 }
