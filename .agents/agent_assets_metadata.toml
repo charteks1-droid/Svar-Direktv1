@@ -335,3 +335,9 @@ id = "CUOMGh6PWaobHQVVTjygj"
 uri = "file://artifacts/uploads/svar-direkt-website-v47.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v47 (czcionki + H1)"
+
+[[outputs]]
+id = "WuphqX2qRe7Zs-opZ0bP6"
+uri = "file://artifacts/uploads/svar-direkt-website-v48.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v48 (działający formularz kontaktowy)"

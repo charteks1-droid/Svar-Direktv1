@@ -1,4 +1,40 @@
+import { useState } from "react";
+
+type Status = "idle" | "sending" | "success" | "error";
+
 export default function Contact() {
+  const [namn, setNamn] = useState("");
+  const [epost, setEpost] = useState("");
+  const [kategori, setKategori] = useState("");
+  const [meddelande, setMeddelande] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!epost || !meddelande) return;
+    setStatus("sending");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ epost, amne: namn, kategori, meddelande }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus("success");
+        setNamn(""); setEpost(""); setKategori(""); setMeddelande("");
+      } else {
+        setStatus("error");
+        setErrorMsg(json.message || "Något gick fel. Försök igen.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMsg("Kunde inte ansluta till servern. Försök igen.");
+    }
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <div className="mb-10">
@@ -60,67 +96,108 @@ export default function Contact() {
         <div className="md:col-span-3">
           <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
             <h2 className="font-bold text-slate-900 text-lg mb-5">Skicka ett meddelande</h2>
-            <div className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    Namn
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ditt namn"
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors"
-                  />
+
+            {status === "success" ? (
+              <div className="text-center py-10">
+                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    E-post
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="din@email.se"
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                  Ämne
-                </label>
-                <select className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors bg-white">
-                  <option value="">Välj ämne...</option>
-                  <option value="app">Fråga om appen</option>
-                  <option value="paket">Fråga om paket</option>
-                  <option value="pdf">Fråga om PDF-guider</option>
-                  <option value="teknisk">Teknisk support</option>
-                  <option value="ovrig">Övrig fråga</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                  Meddelande
-                </label>
-                <textarea
-                  rows={5}
-                  placeholder="Beskriv din fråga eller ditt ärende..."
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors resize-none"
-                />
-              </div>
-
-              <div className="flex items-center gap-3 justify-between">
-                <p className="text-xs text-slate-400">
-                  Formuläret är ett placeholder – e-post kopplas till i nästa steg.
-                </p>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Tack! Meddelandet är skickat.</h3>
+                <p className="text-slate-500 text-sm mb-6">Vi svarar normalt inom 1–2 arbetsdagar.</p>
                 <button
-                  type="button"
-                  className="px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors flex-shrink-0"
+                  onClick={() => setStatus("idle")}
+                  className="text-sm text-primary hover:underline"
                 >
-                  Skicka
+                  Skicka ett nytt meddelande
                 </button>
               </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                      Namn
+                    </label>
+                    <input
+                      type="text"
+                      value={namn}
+                      onChange={e => setNamn(e.target.value)}
+                      placeholder="Ditt namn"
+                      className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                      E-post <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      value={epost}
+                      onChange={e => setEpost(e.target.value)}
+                      required
+                      placeholder="din@email.se"
+                      className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                    Ämne
+                  </label>
+                  <select
+                    value={kategori}
+                    onChange={e => setKategori(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors bg-white"
+                  >
+                    <option value="">Välj ämne...</option>
+                    <option value="app">Fråga om appen</option>
+                    <option value="paket">Fråga om paket</option>
+                    <option value="pdf">Fråga om PDF-guider</option>
+                    <option value="teknisk">Teknisk support</option>
+                    <option value="ovrig">Övrig fråga</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                    Meddelande <span className="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    rows={5}
+                    value={meddelande}
+                    onChange={e => setMeddelande(e.target.value)}
+                    required
+                    placeholder="Beskriv din fråga eller ditt ärende..."
+                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-colors resize-none"
+                  />
+                </div>
+
+                {status === "error" && (
+                  <p className="text-sm text-red-500">{errorMsg}</p>
+                )}
+
+                <div className="flex items-center justify-end">
+                  <button
+                    type="submit"
+                    disabled={status === "sending" || !epost || !meddelande}
+                    className="px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  >
+                    {status === "sending" ? (
+                      <>
+                        <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10" strokeOpacity="0.25"/>
+                          <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round"/>
+                        </svg>
+                        Skickar…
+                      </>
+                    ) : "Skicka"}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>
@@ -128,9 +205,9 @@ export default function Contact() {
       {/* Länkblock */}
       <div className="mt-10 grid sm:grid-cols-3 gap-4">
         {[
-          { label: "Integritetspolicy", href: "#", desc: "Hur vi hanterar dina uppgifter" },
-          { label: "Användarvillkor", href: "#", desc: "Regler för användning av appen" },
-          { label: "Cookies", href: "#", desc: "Information om cookies på sidan" },
+          { label: "Integritetspolicy", href: "/integritetspolicy.html", desc: "Hur vi hanterar dina uppgifter" },
+          { label: "Användarvillkor", href: "/anvandarvillkor.html", desc: "Regler för användning av appen" },
+          { label: "Cookies", href: "/cookies.html", desc: "Information om cookies på sidan" },
         ].map((item) => (
           <a
             key={item.label}
