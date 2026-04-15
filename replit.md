@@ -186,8 +186,8 @@ Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHea
 
 ### ZIP versioning rule
 Every new ZIP build for `svar-direkt-web` must use an incremented version number.
-- Last completed ZIP: **v42** at `artifacts/uploads/svar-direkt-website-v42.zip`
-- Next ZIP must be: **v43**, then v44, etc.
+- Last completed ZIP: **v43** at `artifacts/uploads/svar-direkt-website-v43.zip`
+- Next ZIP must be: **v44**, then v45, etc.
 - Always increment — never overwrite a previous version number.
 
 ### `artifacts/svar-direkt` (`@workspace/svar-direkt`)

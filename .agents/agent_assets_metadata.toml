@@ -305,3 +305,9 @@ id = "I1-D1fU4XVtgHkKt1F6LD"
 uri = "file://artifacts/uploads/svar-direkt-website-v42.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v42 (12 artykułów na blogu)"
+
+[[outputs]]
+id = "sfwajRT7U8Q7IJdyVRDu9"
+uri = "file://artifacts/uploads/svar-direkt-website-v43.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v43 (pełne poprawki SEO)"

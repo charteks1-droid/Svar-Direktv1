@@ -2,6 +2,61 @@ import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter
 import { useState, useRef, useEffect } from "react";
 import logoSrc from "./assets/logo.png";
 
+const SITE = "https://svardirekt.site";
+
+const PAGE_META: Record<string, { title: string; description: string }> = {
+  "/": {
+    title: "Svar Direkt – Färdiga svar och mallar till svenska myndigheter",
+    description: "App med färdiga mallar för Skatteverket, Försäkringskassan, Boverket och Migrationsverket. Kopiera och skicka direkt – spara tid. 49 kr engångspris.",
+  },
+  "/blogg": {
+    title: "Blogg & Guider – Svar Direkt",
+    description: "Praktiska råd och guider om myndighetskommunikation i Sverige. Skatteverket, Försäkringskassan, Kronofogden och mer.",
+  },
+  "/paket": {
+    title: "Paket och tillägg – Svar Direkt",
+    description: "Utöka Svar Direkt med fler mallar och fraser för arbete, relationer, hälsa och inkasso.",
+  },
+  "/kontakt": {
+    title: "Kontakt – Svar Direkt",
+    description: "Kontakta Svar Direkt med frågor, feedback eller support. Vi svarar på info@svardirekt.site.",
+  },
+  "/funktioner": {
+    title: "Funktioner – Svar Direkt",
+    description: "Allt som ingår i Svar Direkt – mallar, kategorier och hur appen fungerar.",
+  },
+  "/om-appen": {
+    title: "Om appen – Svar Direkt",
+    description: "Lär dig mer om Svar Direkt – appen som hjälper dig kommunicera med myndigheter i Sverige.",
+  },
+  "/mallar": {
+    title: "Gratis mallar – Svar Direkt",
+    description: "Gratis jobbansökningsmallar och textmallar. Ladda ner och anpassa direkt.",
+  },
+  "/pdf-guider": {
+    title: "PDF-guider – Svar Direkt",
+    description: "Nedladdningsbara PDF-guider för Skatteverket, Försäkringskassan, Migrationsverket och mer.",
+  },
+};
+
+function CanonicalUpdater() {
+  const [loc] = useLocation();
+  useEffect(() => {
+    const url = `${SITE}${loc === "/" ? "/" : loc}`;
+    const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
+    if (canonical) canonical.href = url;
+    if (ogUrl) ogUrl.content = url;
+    const meta = PAGE_META[loc];
+    if (meta) {
+      document.title = meta.title;
+      const desc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+      if (desc) desc.content = meta.description;
+    }
+  }, [loc]);
+  return null;
+}
+
 import Home from "@/pages/Home";
 import AboutApp from "@/pages/AboutApp";
 import Features from "@/pages/Features";
@@ -308,6 +363,7 @@ function Footer() {
 export default function App() {
   return (
     <WouterRouter base={BASE}>
+      <CanonicalUpdater />
       <div className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <main className="flex-1">

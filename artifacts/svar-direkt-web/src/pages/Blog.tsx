@@ -1,4 +1,5 @@
 import { Link, useParams } from "wouter";
+import { useEffect } from "react";
 
 export interface Article {
   slug: string;
@@ -597,6 +598,42 @@ function ArticleCard({ article }: { article: Article }) {
 
 function ArticlePage({ slug }: { slug: string }) {
   const article = articles.find((a) => a.slug === slug);
+
+  useEffect(() => {
+    if (!article) return;
+    const url = `https://svardirekt.site/blogg/${article.slug}`;
+    document.title = `${article.title} – Svar Direkt`;
+    const desc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (desc) desc.content = article.excerpt;
+    const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (canonical) canonical.href = url;
+    const id = "article-jsonld";
+    let script = document.getElementById(id) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = id;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": article.title,
+      "description": article.excerpt,
+      "url": url,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Svar Direkt",
+        "url": "https://svardirekt.site"
+      },
+      "inLanguage": "sv",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": url }
+    });
+    return () => {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    };
+  }, [article]);
 
   if (!article) {
     return (
