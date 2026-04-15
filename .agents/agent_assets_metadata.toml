@@ -341,3 +341,9 @@ id = "WuphqX2qRe7Zs-opZ0bP6"
 uri = "file://artifacts/uploads/svar-direkt-website-v48.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v48 (działający formularz kontaktowy)"
+
+[[outputs]]
+id = "8CYri2QmzkNWFLo-VKJg1"
+uri = "file://artifacts/svar-direkt-web/public/video/promo.mp4"
+type = "video"
+title = "Svar Direkt – Promovideo (30 sek, 9:16)"
