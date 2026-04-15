@@ -329,3 +329,9 @@ id = "oF1PuhvbY4ru2ivdYc-9t"
 uri = "file://artifacts/uploads/svar-direkt-website-v46.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v46 (FAQ + SoftwareApp schema statyczne)"
+
+[[outputs]]
+id = "CUOMGh6PWaobHQVVTjygj"
+uri = "file://artifacts/uploads/svar-direkt-website-v47.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v47 (czcionki + H1)"
