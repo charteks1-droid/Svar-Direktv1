@@ -142,7 +142,7 @@ function FaqSection() {
     },
     {
       q: "Vad ingår i appen och vad kostar den?",
-      a: "Grundappen kostar 79 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
+      a: "Grundappen kostar 99 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
     },
   ];
 
@@ -247,7 +247,7 @@ function HelpForm() {
               rel="noopener noreferrer"
               className="mt-2 px-6 py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
             >
-              Få svar direkt – 79 kr
+              Få svar direkt – 99 kr
             </a>
           </div>
         ) : (
@@ -343,7 +343,7 @@ const LOSS_ITEMS = [
   { utan: "Risk att skriva fel ton eller missförstås", med: "Korrekt, formell svenska — direkt" },
   { utan: "Stress och osäkerhet inför varje svar", med: "Lugn och trygghet — texten är redan klar" },
   { utan: "Ärendet försenas pga misstag eller tomma sidor", med: "Skickar i tid — missar inga frister" },
-  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "79 kr en gång — inga prenumerationer" },
+  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "99 kr en gång — inga prenumerationer" },
   { utan: "Vet inte ens var du ska börja", med: "Klar text att kopiera och anpassa direkt" },
 ];
 
@@ -413,7 +413,7 @@ function LossAversion() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
           >
-            Kom igång nu – 79 kr
+            Kom igång nu – 99 kr
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
           <p className="text-xs text-slate-400 mt-2">🔒 Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.</p>
@@ -474,7 +474,7 @@ export default function Home() {
           "name": "Vad kostar Svar Direkt och vad ingår?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Grundappen kostar 79 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
+            "text": "Grundappen kostar 99 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
           }
         }
       ]
@@ -517,7 +517,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
                   >
-                    Få svar direkt – 79 kr
+                    Få svar direkt – 99 kr
                   </a>
                 </div>
                 <Link
@@ -630,7 +630,7 @@ export default function Home() {
                   {
                     alt: "⚖️ Juridisk rådgivning",
                     problem: "Kostar 1 000–3 000 kr per timme. Inte rimligt för ett enkelt svar till Försäkringskassan.",
-                    sd: "79 kr en gång. Tillgång till alla mallar direkt.",
+                    sd: "99 kr en gång. Tillgång till alla mallar direkt.",
                   },
                   {
                     alt: "📋 Andras bloggar & forum",
@@ -765,7 +765,7 @@ export default function Home() {
             {
               step: "1",
               title: "Ladda ner appen",
-              desc: "Köp appen för 79 kr och ladda ner den till Android.",
+              desc: "Köp appen för 99 kr och ladda ner den till Android.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -908,7 +908,7 @@ export default function Home() {
                 <a href="https://www.skatteverket.se" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline font-medium">Skatteverkets webbplats</a>.
               </p>
               <p>
-                Appen fungerar offline och kräver inget konto. Du köper en gång för 79 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
+                Appen fungerar offline och kräver inget konto. Du köper en gång för 99 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
               </p>
             </div>
           </div>
@@ -1089,7 +1089,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm shadow-lg shadow-primary/25"
             >
-              Få svar direkt – 79 kr
+              Få svar direkt – 99 kr
             </a>
             <Link
               href="/kontakt"
@@ -1121,7 +1121,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
         >
-          Få svar direkt – 79 kr
+          Få svar direkt – 99 kr
         </a>
       </div>
     </div>

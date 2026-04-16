@@ -35,7 +35,7 @@ export default function Landing() {
             rel="noopener noreferrer"
             className="px-5 py-2 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors"
           >
-            Skaffa appen – 79 kr
+            Skaffa appen – 99 kr
           </a>
         </div>
       </header>
@@ -62,7 +62,7 @@ export default function Landing() {
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
             >
-              Skaffa appen – 79 kr
+              Skaffa appen – 99 kr
             </a>
             <p className="text-xs text-slate-400 mt-3">
               🔒 Säker betalning via Payhip · Engångsbetalning · Ingen prenumeration
@@ -195,7 +195,7 @@ export default function Landing() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
               >
-                Kom igång nu – 79 kr
+                Kom igång nu – 99 kr
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
               <p className="text-xs text-slate-400 mt-2">🔒 Säker betalning via Payhip · Engångsbetalning</p>
@@ -236,7 +236,7 @@ export default function Landing() {
                     {
                       alt: "⚖️ Jurist",
                       problem: "1 000–3 000 kr per timme. Orimligt för ett enkelt svar.",
-                      sd: "79 kr en gång. AI + 52 mallar direkt i mobilen.",
+                      sd: "99 kr en gång. AI + 52 mallar direkt i mobilen.",
                     },
                   ].map((row) => (
                     <tr key={row.alt} className="hover:bg-slate-50 transition-colors">
@@ -285,7 +285,7 @@ export default function Landing() {
                 {
                   num: "1",
                   title: "Köp appen",
-                  desc: "Betala 79 kr en gång via Payhip. Du får nedladdningslänken direkt.",
+                  desc: "Betala 99 kr en gång via Payhip. Du får nedladdningslänken direkt.",
                 },
                 {
                   num: "2",
@@ -320,7 +320,7 @@ export default function Landing() {
               Myndigheter väntar inte.<br />AI-hjälpen heller.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              79 kr en gång. AI-generator + 52 mallar + allt på svenska. Inga prenumerationer, inga dolda kostnader.
+              99 kr en gång. AI-generator + 52 mallar + allt på svenska. Inga prenumerationer, inga dolda kostnader.
             </p>
 
             <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-6">
@@ -335,7 +335,7 @@ export default function Landing() {
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25 w-full sm:w-auto text-center"
               >
-                Ladda ner nu – 79 kr
+                Ladda ner nu – 99 kr
               </a>
               <Link
                 href="/kontakt"
@@ -367,7 +367,7 @@ export default function Landing() {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
         >
-          ✨ Skaffa appen – 79 kr
+          ✨ Skaffa appen – 99 kr
         </a>
       </div>
     </div>
