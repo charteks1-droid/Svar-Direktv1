@@ -883,15 +883,19 @@ function ArticlePage({ slug }: { slug: string }) {
     if (desc) desc.content = article.excerpt;
     const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (canonical) canonical.href = url;
-    const id = "article-jsonld";
-    let script = document.getElementById(id) as HTMLScriptElement | null;
-    if (!script) {
-      script = document.createElement("script");
-      script.id = id;
-      script.type = "application/ld+json";
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify({
+
+    const injectJsonLd = (id: string, data: object) => {
+      let script = document.getElementById(id) as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement("script");
+        script.id = id;
+        script.type = "application/ld+json";
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(data);
+    };
+
+    injectJsonLd("article-jsonld", {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": article.title,
@@ -905,9 +909,22 @@ function ArticlePage({ slug }: { slug: string }) {
       "inLanguage": "sv",
       "mainEntityOfPage": { "@type": "WebPage", "@id": url }
     });
+
+    injectJsonLd("breadcrumb-jsonld", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Svar Direkt", "item": "https://svardirekt.site/" },
+        { "@type": "ListItem", "position": 2, "name": "Blogg", "item": "https://svardirekt.site/blogg" },
+        { "@type": "ListItem", "position": 3, "name": article.title, "item": url }
+      ]
+    });
+
     return () => {
-      const el = document.getElementById(id);
-      if (el) el.remove();
+      ["article-jsonld", "breadcrumb-jsonld"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+      });
     };
   }, [article]);
 
@@ -948,7 +965,38 @@ function ArticlePage({ slug }: { slug: string }) {
         {article.content}
       </div>
 
-      <div className="mt-12 pt-8 border-t border-slate-100">
+      {(() => {
+        const related = articles
+          .filter((a) => a.slug !== article.slug && a.category === article.category)
+          .slice(0, 3);
+        const fallback = articles
+          .filter((a) => a.slug !== article.slug && !related.find((r) => r.slug === a.slug))
+          .slice(0, 3 - related.length);
+        const shown = [...related, ...fallback];
+        if (shown.length === 0) return null;
+        return (
+          <div className="mt-12 pt-8 border-t border-slate-100">
+            <h2 className="text-lg font-semibold text-slate-900 mb-4">Relaterade artiklar</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {shown.map((rel) => (
+                <Link key={rel.slug} href={`/blogg/${rel.slug}`}>
+                  <div className="group p-4 rounded-xl border border-slate-100 hover:border-primary/25 hover:shadow-sm transition-all">
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[rel.category] ?? "bg-slate-100 text-slate-600"}`}>
+                      {rel.category}
+                    </span>
+                    <p className="mt-2 text-sm font-medium text-slate-800 leading-snug group-hover:text-primary transition-colors">
+                      {rel.title}
+                    </p>
+                    <p className="mt-1 text-xs text-primary font-medium group-hover:underline">Läs mer →</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+
+      <div className="mt-8 pt-6 border-t border-slate-100">
         <div className="bg-primary/5 border border-primary/15 rounded-2xl p-6 text-center">
           <p className="font-semibold text-slate-900 mb-1">Redo att spara tid?</p>
           <p className="text-sm text-slate-500 mb-4">
@@ -960,7 +1008,7 @@ function ArticlePage({ slug }: { slug: string }) {
             rel="noopener noreferrer"
             className="inline-block px-6 py-2.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
           >
-            Ladda ner appen – 49 kr
+            Ladda ner appen – 99 kr
           </a>
         </div>
       </div>
@@ -1007,7 +1055,7 @@ export default function Blog() {
           </h2>
           <p className="text-white/75 mb-7 text-sm leading-relaxed">
             Med Svar Direkt får du färdiga mallar för Skatteverket,
-            Försäkringskassan, Kronofogden och mer. 49 kr en gång — inga
+            Försäkringskassan, Kronofogden och mer. 99 kr en gång — inga
             prenumerationer.
           </p>
           <a

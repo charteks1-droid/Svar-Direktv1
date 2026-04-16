@@ -395,3 +395,9 @@ id = "0mPnQYYT0y-yNlSUoKz2P"
 uri = "file://svar-direkt-v57.zip"
 type = "unspecified"
 title = "Svar Direkt v57 – SEO artykuły (Hostinger)"
+
+[[outputs]]
+id = "_rYJ5KvfcZsEwbxXrvIc9"
+uri = "file://svar-direkt-v58.zip"
+type = "unspecified"
+title = "Svar Direkt v58 – SEO techniczne (Hostinger)"

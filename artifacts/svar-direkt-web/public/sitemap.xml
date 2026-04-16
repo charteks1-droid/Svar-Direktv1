@@ -43,76 +43,128 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svardirekt.site/forum</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <loc>https://svardirekt.site/landing</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://svardirekt.site/landing</loc>
+    <loc>https://svardirekt.site/generator</loc>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog articles -->
+  <!-- Blog articles – existing -->
   <url>
     <loc>https://svardirekt.site/blogg/varfor-ar-det-svart-att-skriva-till-myndigheter</loc>
+    <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/ratt-ton-i-myndighetsbrev</loc>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/svara-pa-krav-fran-kronofogden</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/forsakringskassan-skriver-till-dig</loc>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/konsten-att-svara-professionellt</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/stress-och-radsla-infor-myndighetskontakt</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/overvinna-radslan-for-myndigheter</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/ekonomi-under-press-vad-gor-du</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/radsla-fran-alla-hall-en-otrygg-tid</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/vad-hander-om-du-inte-svarar-myndigheter</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/skatteverket-6-vanliga-situationer</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://svardirekt.site/blogg/hyresgastens-rattigheter-i-sverige</loc>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog articles – new SEO -->
+  <url>
+    <loc>https://svardirekt.site/blogg/overklaga-forsakringskassan-mall</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://svardirekt.site/blogg/hur-skriver-man-till-forsakringskassan</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://svardirekt.site/blogg/mall-brev-kronofogden</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://svardirekt.site/blogg/bestrida-kronofogden</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://svardirekt.site/blogg/aterkrav-forsakringskassan-vad-gor-jag</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://svardirekt.site/blogg/skuldsanering-ansoekan-mall</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 
 </urlset>
