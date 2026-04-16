@@ -72,6 +72,7 @@ import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
 import Forum from "@/pages/Forum";
 import ForumThread from "@/pages/ForumThread";
+import ForumAdmin from "@/pages/ForumAdmin";
 import Landing from "@/pages/Landing";
 import NotFound from "@/pages/not-found";
 
@@ -375,6 +376,9 @@ export default function App() {
       <Switch>
         {/* Landing page — standalone, no navbar/footer */}
         <Route path="/landing" component={Landing} />
+
+        {/* Admin panel — standalone, no navbar/footer */}
+        <Route path="/admin-forum" component={ForumAdmin} />
 
         {/* All other pages — full site layout */}
         <Route>

@@ -12,6 +12,16 @@ function anonName(tokenHash: string): string {
   return "Anonym #" + tokenHash.slice(0, 6).toUpperCase();
 }
 
+function checkAdminKey(req: Request, res: Response): boolean {
+  const key = process.env.FORUM_ADMIN_KEY;
+  const provided = req.headers["x-admin-key"] || req.body?.admin_key;
+  if (!key || !provided || provided !== key) {
+    res.status(401).json({ error: "Unauthorized" });
+    return false;
+  }
+  return true;
+}
+
 const CATEGORIES = [
   { id: "kronofogden", name: "Kronofogden", icon: "⚖️", desc: "Skulder, utmätning, betalningsanmärkningar", color: "#dc2626" },
   { id: "skatteverket", name: "Skatteverket", icon: "📋", desc: "Deklaration, folkbokföring, personnummer", color: "#0a7ea4" },
@@ -29,6 +39,7 @@ router.get("/categories", async (_req: Request, res: Response) => {
       SELECT category, COUNT(*) as thread_count, SUM(reply_count) as total_replies,
              SUM(CASE WHEN is_solved THEN 0 ELSE 1 END) as unanswered
       FROM forum_threads
+      WHERE is_hidden = FALSE
       GROUP BY category
     `);
     const counts: Record<string, { threads: number; replies: number; unanswered: number }> = {};
@@ -63,10 +74,11 @@ router.get("/threads", async (req: Request, res: Response) => {
       SELECT t.id, t.category, t.title, t.is_solved, t.reply_count, t.created_at,
              LEFT(t.body, 200) as body_preview, t.author_token_hash
       FROM forum_threads t
+      WHERE t.is_hidden = FALSE
     `;
     const params: unknown[] = [];
     if (category && VALID_CATEGORIES.has(category)) {
-      query += ` WHERE t.category = $1`;
+      query += ` AND t.category = $1`;
       params.push(category);
       query += ` ORDER BY t.created_at DESC LIMIT $2 OFFSET $3`;
       params.push(limit, offset);
@@ -89,7 +101,7 @@ router.get("/threads/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     const threadRes = await pool.query(
-      `SELECT * FROM forum_threads WHERE id = $1`, [id]
+      `SELECT * FROM forum_threads WHERE id = $1 AND is_hidden = FALSE`, [id]
     );
     if (!threadRes.rows[0]) {
       return res.status(404).json({ error: "Thread not found" });
@@ -97,7 +109,7 @@ router.get("/threads/:id", async (req: Request, res: Response) => {
     const thread = threadRes.rows[0];
 
     const repliesRes = await pool.query(
-      `SELECT * FROM forum_replies WHERE thread_id = $1 ORDER BY is_best_answer DESC, helpful_count DESC, created_at ASC`,
+      `SELECT * FROM forum_replies WHERE thread_id = $1 AND is_hidden = FALSE ORDER BY is_best_answer DESC, helpful_count DESC, created_at ASC`,
       [id]
     );
 
@@ -154,7 +166,7 @@ router.post("/threads/:id/replies", async (req: Request, res: Response) => {
   }
   const tokenHash = hashToken(String(author_token));
   try {
-    const threadCheck = await pool.query(`SELECT id FROM forum_threads WHERE id = $1`, [id]);
+    const threadCheck = await pool.query(`SELECT id FROM forum_threads WHERE id = $1 AND is_hidden = FALSE`, [id]);
     if (!threadCheck.rows[0]) return res.status(404).json({ error: "Tråd hittades inte" });
 
     const result = await pool.query(
@@ -207,6 +219,104 @@ router.patch("/threads/:id/solve", async (req: Request, res: Response) => {
     );
     if (!result.rows[0]) return res.status(403).json({ error: "Inte tillåtet" });
     res.json({ is_solved: result.rows[0].is_solved });
+  } catch (err) {
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// ─── ADMIN ENDPOINTS ────────────────────────────────────────────────────────
+
+// GET /api/forum/admin/threads — alla trådar inkl. dolda
+router.get("/admin/threads", async (req: Request, res: Response) => {
+  if (!checkAdminKey(req, res)) return;
+  try {
+    const result = await pool.query(`
+      SELECT t.id, t.category, t.title, t.is_solved, t.is_hidden,
+             t.reply_count, t.created_at, LEFT(t.body, 300) as body_preview,
+             t.author_token_hash
+      FROM forum_threads t
+      ORDER BY t.created_at DESC
+      LIMIT 200
+    `);
+    res.json(result.rows.map(r => ({ ...r, display_name: anonName(r.author_token_hash) })));
+  } catch (err) {
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// GET /api/forum/admin/threads/:id — full tråd med alla svar (inkl. dolda)
+router.get("/admin/threads/:id", async (req: Request, res: Response) => {
+  if (!checkAdminKey(req, res)) return;
+  const { id } = req.params;
+  try {
+    const threadRes = await pool.query(`SELECT * FROM forum_threads WHERE id = $1`, [id]);
+    if (!threadRes.rows[0]) return res.status(404).json({ error: "Not found" });
+    const repliesRes = await pool.query(
+      `SELECT * FROM forum_replies WHERE thread_id = $1 ORDER BY created_at ASC`, [id]
+    );
+    const thread = threadRes.rows[0];
+    res.json({
+      ...thread,
+      display_name: anonName(thread.author_token_hash),
+      replies: repliesRes.rows.map(r => ({ ...r, display_name: anonName(r.author_token_hash) })),
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// PATCH /api/forum/admin/threads/:id/hide — dölj eller visa tråd
+router.patch("/admin/threads/:id/hide", async (req: Request, res: Response) => {
+  if (!checkAdminKey(req, res)) return;
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `UPDATE forum_threads SET is_hidden = NOT is_hidden WHERE id = $1 RETURNING id, is_hidden`, [id]
+    );
+    if (!result.rows[0]) return res.status(404).json({ error: "Not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// DELETE /api/forum/admin/threads/:id — radera tråd permanent
+router.delete("/admin/threads/:id", async (req: Request, res: Response) => {
+  if (!checkAdminKey(req, res)) return;
+  const { id } = req.params;
+  try {
+    await pool.query(`DELETE FROM forum_helpful_votes WHERE reply_id IN (SELECT id FROM forum_replies WHERE thread_id = $1)`, [id]);
+    await pool.query(`DELETE FROM forum_replies WHERE thread_id = $1`, [id]);
+    await pool.query(`DELETE FROM forum_threads WHERE id = $1`, [id]);
+    res.json({ deleted: true });
+  } catch (err) {
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// PATCH /api/forum/admin/replies/:id/hide — dölj eller visa svar
+router.patch("/admin/replies/:id/hide", async (req: Request, res: Response) => {
+  if (!checkAdminKey(req, res)) return;
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `UPDATE forum_replies SET is_hidden = NOT is_hidden WHERE id = $1 RETURNING id, is_hidden`, [id]
+    );
+    if (!result.rows[0]) return res.status(404).json({ error: "Not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+// DELETE /api/forum/admin/replies/:id — radera svar permanent
+router.delete("/admin/replies/:id", async (req: Request, res: Response) => {
+  if (!checkAdminKey(req, res)) return;
+  const { id } = req.params;
+  try {
+    await pool.query(`DELETE FROM forum_helpful_votes WHERE reply_id = $1`, [id]);
+    await pool.query(`DELETE FROM forum_replies WHERE id = $1`, [id]);
+    res.json({ deleted: true });
   } catch (err) {
     res.status(500).json({ error: "Database error" });
   }
