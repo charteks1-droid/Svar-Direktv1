@@ -59,6 +59,7 @@ app.use(
 app.use(express.json({ limit: "32kb" }));
 app.use(express.urlencoded({ extended: true, limit: "32kb" }));
 
+app.use("/svar-direkt-web/api", router);
 app.use("/svar-direkt-web", express.static(WEBSITE_DIR));
 app.get("/svar-direkt-web/{*path}", (_req, res) => {
   res.sendFile(path.join(WEBSITE_DIR, "index.html"));

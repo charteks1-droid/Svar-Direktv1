@@ -69,54 +69,50 @@ Express 5 API server with full security hardening.
 - `pnpm --filter @workspace/api-server run dev` — run the dev server
 - `pnpm --filter @workspace/api-server run build` — production esbuild bundle
 
-## AI Generation System
+## AI Generation System (Gemini)
 
-### How it works
+### Overview
 
-1. User opens AI-Assistent screen (`app/ai-compose.tsx`)
-2. App retrieves or generates a persistent `deviceId` from AsyncStorage (`services/deviceId.ts`)
-3. User fills structured form: institution, case type, situation, goal, tone, length
-4. App calls `POST /api/ai/generate` (server at `/api` path) with the device ID as userId
-5. Server checks daily limit (4/day) in `ai_generations` DB table
-6. If allowed: calls OpenAI `gpt-5-mini` with a formal Swedish system prompt
-7. Response returned to client with updated usage counters
+The AI generator is integrated into the website's `/generator` page as the default tab "✨ AI-Myndighetsbrev". It uses Google Gemini Flash via Replit AI Integrations. NO chat — pure form-to-letter generation.
 
-### Daily limit (4/day)
+### Architecture
 
-- Limit is checked server-side against the `ai_generations` PostgreSQL table
-- One row is inserted per generation attempt (status: success / failed / limit_exceeded)
-- Limit resets automatically at midnight UTC (date stored as `YYYY-MM-DD` string)
-- Endpoint `GET /api/ai/usage?userId=<id>` returns current day's usage
-- Future: replace device ID with real user account for stronger identity
+**Dev mode**: Handled directly in `artifacts/svar-direkt-web/forum-api-plugin.ts` using `@google/genai` SDK. No API server required.
 
-### DB table: `ai_generations`
+**Production**: Handled by `artifacts/api-server/src/routes/ai.ts` via the Express router. The API server also serves `/svar-direkt-web/api/*` routes (fix in `app.ts`) so frontend calls work in production.
 
-| Column | Type | Description |
-|---|---|---|
-| `id` | serial | PK |
-| `user_id` | text | Device ID (used as proxy userId) |
-| `device_id` | text | Same as userId for now |
-| `date` | text | `YYYY-MM-DD` for daily count |
-| `institution` | text | Who was being written to |
-| `case_type` | text | Category of the case |
-| `request_status` | text | `success` / `failed` / `limit_exceeded` |
-| `created_at` | timestamp | Creation time |
+### Endpoints
 
-### System prompt
+- `GET /api/ai/case-types` — returns institution→caseType mapping
+- `POST /api/ai/generate` — generates a formal Swedish authority letter
+  - Body: `{ fullName, personnummer, institution, caseType, description (min 20 chars) }`
+  - Returns: `{ message: string }`
 
-The AI is specialized with a strict Swedish formal writing system prompt:
-- Always writes in formal, correct Swedish
-- Never fabricates laws or paragraph numbers
-- Stays strictly within the user's provided facts
-- Produces complete, usable letters (with placeholders for name/contact info)
-- Does NOT behave as a general chatbot — only outputs the message text
+### Daily limit (10/day)
 
-### Future premium readiness
+- Tracked **client-side** in `localStorage` (key: `ai_gen_YYYY-MM-DD`)
+- Resets automatically at midnight (new date = new key)
+- No DB required for limit tracking
+- Frontend shows remaining count (10/10 → 0/10)
 
-The system is designed for easy upgrade:
-- Add a `isPremium` field lookup in `checkDailyLimit()` and raise limit for premium users
-- Add Stripe/RevenueCat subscription verification to unlock higher limits
-- Could add model upgrade (gpt-5.2 for premium vs gpt-5-mini for free)
+### Model
+
+- Model: `gemini-2.5-flash` (cheapest, fast, excellent Swedish)
+- Max output: 600 tokens (letter only, no fluff)
+- Temperature: 0.25 (formal, consistent output)
+- Gemini free tier: 1500 req/day — enough for early growth
+
+### Gemini SDK setup
+
+- `lib/integrations-gemini-ai/` — shared library with `@google/genai` client
+- Env vars: `AI_INTEGRATIONS_GEMINI_BASE_URL`, `AI_INTEGRATIONS_GEMINI_API_KEY` (auto-set via Replit AI Integrations)
+- `@google/genai` is installed at workspace root for Vite plugin access
+
+### Frontend (Generator.tsx)
+
+- Located at `artifacts/svar-direkt-web/src/pages/Generator.tsx`
+- 4 tabs: "✨ AI-Myndighetsbrev" (default), "CV", "Personligt brev", "Myndighetsbrev"
+- AI tab: form validation, loading spinner, copy button, error handling, usage counter
 
 ## Security Architecture
 

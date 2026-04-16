@@ -1,5 +1,6 @@
 import type { Plugin, ViteDevServer } from "vite";
 import { createHash } from "crypto";
+import { GoogleGenAI } from "@google/genai";
 import pg from "pg";
 
 const { Pool } = pg;
@@ -40,6 +41,77 @@ function json(res: any, status: number, data: unknown) {
   res.end(JSON.stringify(data));
 }
 
+const CASE_TYPES: Record<string, string[]> = {
+  Skatteverket: ["Felaktig debitering","Ändring av folkbokföring","Deklarationsfråga","Överklagande av beslut","Begära anstånd","Annat"],
+  Kronofogden: ["Bestrida skuld","Begära skuldsanering","Fråga om utmätning","Begära betalningsplan","Invändning mot betalningsföreläggande","Annat"],
+  Försäkringskassan: ["Sjukpenning nekad","Föräldrapenning","Handläggning tar för lång tid","Överklaga beslut","Begära omprövning","Aktivitetsersättning","Annat"],
+  Migrationsverket: ["Uppehållstillstånd","Medborgarskap","Asylansökan","Förlängning av tillstånd","Arbetstillstånd","Annat"],
+  Arbetsförmedlingen: ["A-kassa nekad","Aktivitetsrapport","Överklagande","Fråga om åtgärder","Annat"],
+  Inkasso: ["Bestrida inkassokrav","Begära specificering av skuld","Begära betalningsplan","Preskriberad skuld","Felaktigt krav","Annat"],
+  Socialtjänsten: ["Ekonomiskt bistånd","Överklagande av beslut","Begära utredning","Barnomsorg","Annat"],
+  Boverket: ["Bostadsbidrag","Överklagande","Fråga om bidrag","Annat"],
+  "Annan myndighet": ["Överklagande av beslut","Begära information","Klagomål","Allmän förfrågan","Annat"],
+};
+
+function getGeminiClient() {
+  const baseUrl = process.env.AI_INTEGRATIONS_GEMINI_BASE_URL;
+  const apiKey = process.env.AI_INTEGRATIONS_GEMINI_API_KEY;
+  if (!baseUrl || !apiKey) throw new Error("Gemini env vars not set");
+  return new GoogleGenAI({ apiKey, httpOptions: { apiVersion: "", baseUrl } });
+}
+
+async function handleAiRequest(pathname: string, method: string, body: any, res: any): Promise<void> {
+  if (method === "GET" && pathname === "/api/ai/case-types") {
+    return json(res, 200, CASE_TYPES);
+  }
+
+  if (method === "POST" && pathname === "/api/ai/generate") {
+    const { fullName, personnummer, institution, caseType, description } = body ?? {};
+    if (!fullName?.trim() || !personnummer?.trim() || !institution?.trim() || !caseType?.trim() || !description?.trim()) {
+      return json(res, 400, { error: "Alla fält måste fyllas i." });
+    }
+    if (description.trim().length < 20) {
+      return json(res, 400, { error: "Problembeskrivningen måste vara minst 20 tecken." });
+    }
+
+    const prompt = `Du är en professionell assistent specialiserad på formell svenska myndighetskommunikation.
+
+Skriv ett formellt brev på svenska baserat på följande uppgifter:
+- Avsändare: ${fullName.trim()}
+- Personnummer: ${personnummer.trim()}
+- Mottagare: ${institution.trim()}
+- Ärendetyp: ${caseType.trim()}
+- Beskrivning av ärendet: ${description.trim()}
+
+STRIKTA KRAV:
+1. Brevet ska vara på svenska
+2. Formell och artig ton lämplig för svenska myndigheter
+3. Exakt 6-10 meningar totalt
+4. Börja med "Till ${institution.trim()},"
+5. Andra meningen ska presentera avsändaren med namn och personnummer
+6. Var direkt och tydlig om ärendet
+7. Avsluta med "Med vänliga hälsningar," på en ny rad, sedan avsändarens fullständiga namn
+8. Returnera BARA det färdiga brevet`;
+
+    try {
+      const ai = getGeminiClient();
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        config: { maxOutputTokens: 600, temperature: 0.25 },
+      });
+      const text = response.text?.trim();
+      if (!text) return json(res, 500, { error: "Inget svar från AI. Försök igen." });
+      return json(res, 200, { message: text });
+    } catch (err) {
+      console.error("[ai-generate]", err);
+      return json(res, 500, { error: "Ett fel uppstod vid generering. Försök igen om en stund." });
+    }
+  }
+
+  return json(res, 404, { error: "Route not found" });
+}
+
 export function forumApiPlugin(): Plugin {
   return {
     name: "forum-api",
@@ -50,10 +122,14 @@ export function forumApiPlugin(): Plugin {
         const path = url.startsWith(base) ? url.slice(base.length) : url;
         const [pathname, qs] = path.split("?");
         const query = Object.fromEntries(new URLSearchParams(qs || ""));
+        const method: string = req.method || "GET";
+
+        if (pathname.startsWith("/api/ai")) {
+          const body = method !== "GET" ? await readBody(req) : undefined;
+          return handleAiRequest(pathname, method, body, res);
+        }
 
         if (!pathname.startsWith("/api/forum")) return next();
-
-        const method: string = req.method || "GET";
         const seg = pathname.replace("/api/forum", "").replace(/^\//, "");
 
         try {

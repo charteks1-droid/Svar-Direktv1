@@ -239,7 +239,7 @@ function PersonligtBrev() {
   );
 }
 
-// ─── Authority Message ────────────────────────────────────────────────────────
+// ─── Authority Message (template) ─────────────────────────────────────────────
 
 const MYNDIGHETER = [
   "Skatteverket",
@@ -330,9 +330,310 @@ function MyndighetsMeddelande() {
   );
 }
 
+// ─── AI Authority Message Generator ──────────────────────────────────────────
+
+const AI_INSTITUTIONS: Record<string, string[]> = {
+  Skatteverket: [
+    "Felaktig debitering",
+    "Ändring av folkbokföring",
+    "Deklarationsfråga",
+    "Överklagande av beslut",
+    "Begära anstånd",
+    "Annat",
+  ],
+  Kronofogden: [
+    "Bestrida skuld",
+    "Begära skuldsanering",
+    "Fråga om utmätning",
+    "Begära betalningsplan",
+    "Invändning mot betalningsföreläggande",
+    "Annat",
+  ],
+  Försäkringskassan: [
+    "Sjukpenning nekad",
+    "Föräldrapenning",
+    "Handläggning tar för lång tid",
+    "Överklaga beslut",
+    "Begära omprövning",
+    "Aktivitetsersättning",
+    "Annat",
+  ],
+  Migrationsverket: [
+    "Uppehållstillstånd",
+    "Medborgarskap",
+    "Asylansökan",
+    "Förlängning av tillstånd",
+    "Arbetstillstånd",
+    "Annat",
+  ],
+  Arbetsförmedlingen: [
+    "A-kassa nekad",
+    "Aktivitetsrapport",
+    "Överklagande",
+    "Fråga om åtgärder",
+    "Annat",
+  ],
+  Inkasso: [
+    "Bestrida inkassokrav",
+    "Begära specificering av skuld",
+    "Begära betalningsplan",
+    "Preskriberad skuld",
+    "Felaktigt krav",
+    "Annat",
+  ],
+  Socialtjänsten: [
+    "Ekonomiskt bistånd",
+    "Överklagande av beslut",
+    "Begära utredning",
+    "Barnomsorg",
+    "Annat",
+  ],
+  Boverket: ["Bostadsbidrag", "Överklagande", "Fråga om bidrag", "Annat"],
+  "Annan myndighet": [
+    "Överklagande av beslut",
+    "Begära information",
+    "Klagomål",
+    "Allmän förfrågan",
+    "Annat",
+  ],
+};
+
+const DAILY_LIMIT = 10;
+
+function getTodayKey() {
+  return "ai_gen_" + new Date().toISOString().slice(0, 10);
+}
+
+function getDailyCount(): number {
+  try {
+    return parseInt(localStorage.getItem(getTodayKey()) || "0", 10);
+  } catch {
+    return 0;
+  }
+}
+
+function incrementDailyCount() {
+  try {
+    const key = getTodayKey();
+    const current = getDailyCount();
+    localStorage.setItem(key, String(current + 1));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function AiMyndighetsGenerator() {
+  const [fullName, setFullName]       = useState("");
+  const [personnummer, setPersonnummer] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [caseType, setCaseType]       = useState("");
+  const [description, setDescription] = useState("");
+  const [result, setResult]           = useState("");
+  const [copied, setCopied]           = useState(false);
+  const [loading, setLoading]         = useState(false);
+  const [error, setError]             = useState("");
+  const [usageCount, setUsageCount]   = useState(getDailyCount);
+
+  const remaining = DAILY_LIMIT - usageCount;
+  const limitReached = remaining <= 0;
+
+  const caseTypes = institution ? (AI_INSTITUTIONS[institution] ?? []) : [];
+
+  function handleInstitutionChange(val: string) {
+    setInstitution(val);
+    setCaseType("");
+  }
+
+  const canGenerate =
+    fullName.trim() &&
+    personnummer.trim() &&
+    institution &&
+    caseType &&
+    description.trim().length >= 20 &&
+    !limitReached &&
+    !loading;
+
+  async function generate() {
+    if (!canGenerate) return;
+    setLoading(true);
+    setError("");
+    setResult("");
+
+    try {
+      const base = import.meta.env.BASE_URL as string;
+      const url = `${base}api/ai/generate`;
+      const resp = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, personnummer, institution, caseType, description }),
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        setError(data.error || "Ett fel uppstod. Försök igen.");
+        return;
+      }
+
+      setResult(data.message);
+      incrementDailyCount();
+      setUsageCount(getDailyCount());
+    } catch {
+      setError("Kunde inte nå servern. Kontrollera din internetanslutning.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex items-center gap-3 bg-gradient-to-r from-primary/10 to-blue-50 rounded-2xl px-5 py-4 border border-primary/20">
+        <div className="text-2xl">✨</div>
+        <div>
+          <p className="text-sm font-semibold text-slate-800">AI-generator med Gemini</p>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Fyll i formuläret — få ett formellt myndighetsbrev på sekunder.
+          </p>
+        </div>
+        <div className="ml-auto text-right shrink-0">
+          <p className={`text-sm font-bold ${limitReached ? "text-red-500" : remaining <= 3 ? "text-amber-600" : "text-emerald-600"}`}>
+            {remaining}/{DAILY_LIMIT}
+          </p>
+          <p className="text-xs text-slate-400">kvar idag</p>
+        </div>
+      </div>
+
+      {limitReached && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-800">
+          Du har nått dagens gräns på {DAILY_LIMIT} genereringar. Gränsen återställs vid midnatt.
+        </div>
+      )}
+
+      <div className="bg-slate-50 rounded-2xl border border-slate-100 p-6 flex flex-col gap-4">
+        <h3 className="font-semibold text-slate-800 text-base">Dina uppgifter</h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Field label="Fullständigt namn *">
+            <input
+              className={inputCls}
+              value={fullName}
+              onChange={e => setFullName(e.target.value)}
+              placeholder="Anna Svensson"
+              disabled={limitReached}
+            />
+          </Field>
+          <Field label="Personnummer *">
+            <input
+              className={inputCls}
+              value={personnummer}
+              onChange={e => setPersonnummer(e.target.value)}
+              placeholder="ÅÅMMDD-XXXX"
+              disabled={limitReached}
+            />
+          </Field>
+        </div>
+
+        <Field label="Myndighet / mottagare *">
+          <select
+            className={inputCls}
+            value={institution}
+            onChange={e => handleInstitutionChange(e.target.value)}
+            disabled={limitReached}
+          >
+            <option value="">Välj myndighet…</option>
+            {Object.keys(AI_INSTITUTIONS).map(inst => (
+              <option key={inst}>{inst}</option>
+            ))}
+          </select>
+        </Field>
+
+        <Field label="Ärendetyp *">
+          <select
+            className={inputCls}
+            value={caseType}
+            onChange={e => setCaseType(e.target.value)}
+            disabled={!institution || limitReached}
+          >
+            <option value="">
+              {institution ? "Välj ärendetyp…" : "Välj myndighet först"}
+            </option>
+            {caseTypes.map(ct => (
+              <option key={ct}>{ct}</option>
+            ))}
+          </select>
+        </Field>
+
+        <Field label={`Beskriv ditt ärende * (minst 20 tecken, nu: ${description.length})`}>
+          <textarea
+            className={`${textareaCls} ${description.length > 0 && description.length < 20 ? "border-amber-300 ring-amber-200" : ""}`}
+            rows={5}
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            placeholder="Beskriv vad som hänt, vilket beslut du vill överklaga, vad du behöver svar på, eller annan relevant information om ditt ärende…"
+            disabled={limitReached}
+          />
+          {description.length > 0 && description.length < 20 && (
+            <p className="text-xs text-amber-600 mt-1">Minst {20 - description.length} tecken till</p>
+          )}
+        </Field>
+      </div>
+
+      <p className="text-xs text-slate-400 leading-relaxed">
+        Observera: Svar Direkt erbjuder inte juridisk rådgivning. AI-genererade brev är utkast som du granskar och anpassar innan du skickar dem.
+      </p>
+
+      <button
+        onClick={generate}
+        disabled={!canGenerate}
+        className={`w-full py-3.5 rounded-xl font-medium text-sm transition-all flex items-center justify-center gap-2 ${
+          canGenerate
+            ? "bg-primary text-white hover:bg-primary/90 shadow-sm"
+            : "bg-slate-100 text-slate-400 cursor-not-allowed"
+        }`}
+      >
+        {loading ? (
+          <>
+            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+            </svg>
+            Genererar…
+          </>
+        ) : (
+          <>✨ Generera myndighetsbrev med AI</>
+        )}
+      </button>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      {result && (
+        <div className="bg-slate-900 rounded-2xl p-5 flex flex-col gap-3">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-xs font-medium text-emerald-400 bg-emerald-900/40 px-2 py-0.5 rounded-full">
+              ✓ Genererat av AI
+            </span>
+          </div>
+          <pre className="text-slate-100 text-sm whitespace-pre-wrap leading-relaxed font-mono">{result}</pre>
+          <button
+            onClick={() => copyToClipboard(result, setCopied)}
+            className="self-start px-5 py-2.5 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+          >
+            {copied ? "✓ Kopierat!" : "Kopiera brev"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Main page ────────────────────────────────────────────────────────────────
 
 const TABS = [
+  { id: "ai",      label: "✨ AI-Myndighetsbrev" },
   { id: "cv",      label: "CV" },
   { id: "brev",    label: "Personligt brev" },
   { id: "myndighet", label: "Myndighetsbrev" },
@@ -340,7 +641,7 @@ const TABS = [
 type TabId = typeof TABS[number]["id"];
 
 export default function Generator() {
-  const [tab, setTab] = useState<TabId>("cv");
+  const [tab, setTab] = useState<TabId>("ai");
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
@@ -351,12 +652,12 @@ export default function Generator() {
         </p>
       </div>
 
-      <div className="flex rounded-xl bg-slate-100 p-1 mb-8 gap-1">
+      <div className="flex rounded-xl bg-slate-100 p-1 mb-8 gap-1 flex-wrap">
         {TABS.map(t => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
               tab === t.id
                 ? "bg-white text-slate-900 shadow-sm"
                 : "text-slate-500 hover:text-slate-700"
@@ -367,6 +668,7 @@ export default function Generator() {
         ))}
       </div>
 
+      {tab === "ai"        && <AiMyndighetsGenerator />}
       {tab === "cv"        && <CVGenerator />}
       {tab === "brev"      && <PersonligtBrev />}
       {tab === "myndighet" && <MyndighetsMeddelande />}
