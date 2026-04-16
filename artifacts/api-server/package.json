@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=development node ./build.mjs && PORT=3001 node --enable-source-maps ./dist/index.mjs",
+    "dev": "node --enable-source-maps ./dist/index.mjs",
+    "dev:build": "NODE_ENV=development node ./build.mjs && PORT=3000 node --enable-source-maps ./dist/index.mjs",
     "build": "node ./build.mjs",
     "start": "node --enable-source-maps ./dist/index.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"

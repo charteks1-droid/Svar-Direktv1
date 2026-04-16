@@ -31,7 +31,7 @@ app.use(
     origin:
       env.ALLOWED_ORIGINS?.includes("*") ? true : env.ALLOWED_ORIGINS,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-admin-key"],
     credentials: true,
     maxAge: 86400,
   }),
@@ -75,6 +75,10 @@ app.get("/api/download/:filename", (req, res) => {
   res.sendFile(filePath, { root: "/" }, (err) => {
     if (err) res.status(404).json({ error: "File not found" });
   });
+});
+
+app.get("/", (_req, res) => {
+  res.status(200).json({ service: "svar-direkt-api", status: "ok" });
 });
 
 app.use(globalRateLimit);

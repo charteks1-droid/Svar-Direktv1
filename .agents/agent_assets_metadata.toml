@@ -377,3 +377,9 @@ id = "3BrJHhR5wkwyNExNpS3sv"
 uri = "file://svar-direkt-web-v53.zip"
 type = "unspecified"
 title = "Svar Direkt – Webbplats v53"
+
+[[outputs]]
+id = "twjBNX_bkh7SHVxPsEyw7"
+uri = "file://svar-direkt-web-v55.zip"
+type = "unspecified"
+title = "Svar Direkt Webbplats – ZIP v55"

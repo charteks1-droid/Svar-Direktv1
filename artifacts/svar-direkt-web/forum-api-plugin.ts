@@ -41,6 +41,13 @@ function json(res: any, status: number, data: unknown) {
   res.end(JSON.stringify(data));
 }
 
+function checkAdminKey(req: any): boolean {
+  const adminKey = process.env.FORUM_ADMIN_KEY;
+  if (!adminKey) return false;
+  const provided = req.headers["x-admin-key"] || "";
+  return provided === adminKey;
+}
+
 const CASE_TYPES: Record<string, string[]> = {
   Skatteverket: ["Felaktig debitering","Ändring av folkbokföring","Deklarationsfråga","Överklagande av beslut","Begära anstånd","Annat"],
   Kronofogden: ["Bestrida skuld","Begära skuldsanering","Fråga om utmätning","Begära betalningsplan","Invändning mot betalningsföreläggande","Annat"],
@@ -138,12 +145,88 @@ export function forumApiPlugin(): Plugin {
         const seg = pathname.replace("/api/forum", "").replace(/^\//, "");
 
         try {
+          // ── Admin routes ──────────────────────────────────────────────────
+          if (seg.startsWith("admin")) {
+            if (!checkAdminKey(req)) return json(res, 401, { error: "Unauthorized" });
+
+            const adminSeg = seg.replace(/^admin\/?/, "");
+
+            // GET /api/forum/admin/threads
+            if (method === "GET" && adminSeg === "threads") {
+              const r = await pool.query(`
+                SELECT id, category, title, is_solved, is_hidden,
+                       reply_count, created_at, LEFT(body,200) as body_preview,
+                       author_token_hash
+                FROM forum_threads ORDER BY created_at DESC LIMIT 200`);
+              return json(res, 200, r.rows.map(row => ({ ...row, display_name: anonName(row.author_token_hash) })));
+            }
+
+            // GET /api/forum/admin/threads/:id
+            const adminThreadMatch = adminSeg.match(/^threads\/(\d+)$/);
+            if (method === "GET" && adminThreadMatch) {
+              const id = adminThreadMatch[1];
+              const tr = await pool.query(`SELECT * FROM forum_threads WHERE id=$1`, [id]);
+              if (!tr.rows[0]) return json(res, 404, { error: "Not found" });
+              const rr = await pool.query(`SELECT * FROM forum_replies WHERE thread_id=$1 ORDER BY created_at ASC`, [id]);
+              return json(res, 200, {
+                ...tr.rows[0],
+                display_name: anonName(tr.rows[0].author_token_hash),
+                replies: rr.rows.map(r => ({ ...r, display_name: anonName(r.author_token_hash) }))
+              });
+            }
+
+            // PATCH /api/forum/admin/threads/:id/hide
+            const hideThreadMatch = adminSeg.match(/^threads\/(\d+)\/hide$/);
+            if (method === "PATCH" && hideThreadMatch) {
+              const id = hideThreadMatch[1];
+              const r = await pool.query(
+                `UPDATE forum_threads SET is_hidden = NOT is_hidden WHERE id=$1 RETURNING id, is_hidden`, [id]
+              );
+              if (!r.rows[0]) return json(res, 404, { error: "Not found" });
+              return json(res, 200, r.rows[0]);
+            }
+
+            // DELETE /api/forum/admin/threads/:id
+            const deleteThreadMatch = adminSeg.match(/^threads\/(\d+)$/);
+            if (method === "DELETE" && deleteThreadMatch) {
+              const id = deleteThreadMatch[1];
+              await pool.query(`DELETE FROM forum_replies WHERE thread_id=$1`, [id]);
+              const r = await pool.query(`DELETE FROM forum_threads WHERE id=$1 RETURNING id`, [id]);
+              if (!r.rows[0]) return json(res, 404, { error: "Not found" });
+              return json(res, 200, { deleted: true });
+            }
+
+            // PATCH /api/forum/admin/replies/:id/hide
+            const hideReplyMatch = adminSeg.match(/^replies\/(\d+)\/hide$/);
+            if (method === "PATCH" && hideReplyMatch) {
+              const id = hideReplyMatch[1];
+              const r = await pool.query(
+                `UPDATE forum_replies SET is_hidden = NOT is_hidden WHERE id=$1 RETURNING id, is_hidden`, [id]
+              );
+              if (!r.rows[0]) return json(res, 404, { error: "Not found" });
+              return json(res, 200, r.rows[0]);
+            }
+
+            // DELETE /api/forum/admin/replies/:id
+            const deleteReplyMatch = adminSeg.match(/^replies\/(\d+)$/);
+            if (method === "DELETE" && deleteReplyMatch) {
+              const id = deleteReplyMatch[1];
+              const r = await pool.query(`DELETE FROM forum_replies WHERE id=$1 RETURNING id, thread_id`, [id]);
+              if (!r.rows[0]) return json(res, 404, { error: "Not found" });
+              await pool.query(`UPDATE forum_threads SET reply_count=GREATEST(0,reply_count-1) WHERE id=$1`, [r.rows[0].thread_id]);
+              return json(res, 200, { deleted: true });
+            }
+
+            return json(res, 404, { error: "Admin route not found" });
+          }
+
+          // ── Public routes ─────────────────────────────────────────────────
           if (method === "GET" && seg === "categories") {
             const r = await pool.query(`
               SELECT category, COUNT(*) as thread_count,
                      SUM(reply_count) as total_replies,
                      SUM(CASE WHEN is_solved THEN 0 ELSE 1 END) as unanswered
-              FROM forum_threads GROUP BY category`);
+              FROM forum_threads WHERE is_hidden IS NOT TRUE GROUP BY category`);
             const counts: Record<string, any> = {};
             for (const row of r.rows) counts[row.category] = { threads: Number(row.thread_count), replies: Number(row.total_replies || 0), unanswered: Number(row.unanswered || 0) };
             return json(res, 200, CATEGORIES.map(c => ({ ...c, threads: counts[c.id]?.threads ?? 0, replies: counts[c.id]?.replies ?? 0, unanswered: counts[c.id]?.unanswered ?? 0 })));
@@ -154,10 +237,10 @@ export function forumApiPlugin(): Plugin {
             const pageNum = Math.max(1, parseInt(page) || 1);
             const limit = 20;
             const offset = (pageNum - 1) * limit;
-            let q = `SELECT id, category, title, is_solved, reply_count, created_at, LEFT(body,200) as body_preview, author_token_hash FROM forum_threads`;
+            let q = `SELECT id, category, title, is_solved, reply_count, created_at, LEFT(body,200) as body_preview, author_token_hash FROM forum_threads WHERE is_hidden IS NOT TRUE`;
             const params: unknown[] = [];
             if (category && VALID_CATS.has(category)) {
-              q += ` WHERE category=$1 ORDER BY created_at DESC LIMIT $2 OFFSET $3`;
+              q += ` AND category=$1 ORDER BY created_at DESC LIMIT $2 OFFSET $3`;
               params.push(category, limit, offset);
             } else {
               q += ` ORDER BY created_at DESC LIMIT $1 OFFSET $2`;
@@ -170,9 +253,9 @@ export function forumApiPlugin(): Plugin {
           const threadMatch = seg.match(/^threads\/(\d+)$/);
           if (method === "GET" && threadMatch) {
             const id = threadMatch[1];
-            const tr = await pool.query(`SELECT * FROM forum_threads WHERE id=$1`, [id]);
+            const tr = await pool.query(`SELECT * FROM forum_threads WHERE id=$1 AND is_hidden IS NOT TRUE`, [id]);
             if (!tr.rows[0]) return json(res, 404, { error: "Not found" });
-            const rr = await pool.query(`SELECT * FROM forum_replies WHERE thread_id=$1 ORDER BY is_best_answer DESC, helpful_count DESC, created_at ASC`, [id]);
+            const rr = await pool.query(`SELECT * FROM forum_replies WHERE thread_id=$1 AND is_hidden IS NOT TRUE ORDER BY is_best_answer DESC, helpful_count DESC, created_at ASC`, [id]);
             return json(res, 200, { ...tr.rows[0], display_name: anonName(tr.rows[0].author_token_hash), replies: rr.rows.map(r => ({ ...r, display_name: anonName(r.author_token_hash) })) });
           }
 
@@ -196,7 +279,7 @@ export function forumApiPlugin(): Plugin {
             if (!text || !author_token) return json(res, 400, { error: "Fält saknas" });
             if (text.trim().length < 10) return json(res, 400, { error: "Svaret måste vara minst 10 tecken" });
             const h = hashToken(String(author_token));
-            const tc = await pool.query(`SELECT id FROM forum_threads WHERE id=$1`, [id]);
+            const tc = await pool.query(`SELECT id FROM forum_threads WHERE id=$1 AND is_hidden IS NOT TRUE`, [id]);
             if (!tc.rows[0]) return json(res, 404, { error: "Tråd hittades inte" });
             const r = await pool.query(`INSERT INTO forum_replies (thread_id, body, author_token_hash, template_name) VALUES ($1,$2,$3,$4) RETURNING *`, [id, text.trim(), h, template_name || null]);
             await pool.query(`UPDATE forum_threads SET reply_count=reply_count+1 WHERE id=$1`, [id]);

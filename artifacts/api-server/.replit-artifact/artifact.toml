@@ -5,12 +5,12 @@ kind = "api"
   id = "3B4_FFSkEVBkAeYMFRJ2e"
 
   [[services]]
-  localPort = 3001
+  localPort = 8099
   name = "API Server"
   paths = ["/api", "/ai"]
 
   [services.env]
-  PORT = "3001"
+  PORT = "8099"
 
   [services.development]
   run = "pnpm --filter @workspace/api-server run dev"
