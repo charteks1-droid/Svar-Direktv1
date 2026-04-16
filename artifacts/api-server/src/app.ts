@@ -5,6 +5,7 @@ import pinoHttp from "pino-http";
 import path from "path";
 import { fileURLToPath } from "url";
 import router from "./routes/index.js";
+import aiRouter from "./routes/ai.js";
 import { UPLOADS_DIR } from "./routes/uploads.js";
 import { logger } from "./lib/logger.js";
 import { env } from "./lib/env.js";
@@ -79,6 +80,7 @@ app.get("/api/download/:filename", (req, res) => {
 app.use(globalRateLimit);
 
 app.use("/api", router);
+app.use("/ai", aiRouter);
 
 app.use(errorHandler);
 
