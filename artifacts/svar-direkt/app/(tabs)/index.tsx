@@ -234,24 +234,38 @@ export default function HomeScreen() {
         style={({ pressed }) => [
           styles.aiBanner,
           {
-            backgroundColor: pressed ? Colors.primary + "20" : Colors.primary + "10",
-            borderColor: Colors.primary + "35",
+            backgroundColor: pressed ? Colors.primary + "22" : Colors.primary + "12",
+            borderColor: Colors.primary + "40",
             opacity: pressed ? 0.92 : 1,
             transform: [{ scale: pressed ? 0.99 : 1 }],
           },
         ]}
       >
-        <View style={[styles.aiIcon, { backgroundColor: Colors.primary + "20" }]}>
+        <View style={[styles.aiIcon, { backgroundColor: Colors.primary + "25" }]}>
           <Text style={{ fontSize: 22 }}>✨</Text>
         </View>
         <View style={styles.aiText}>
-          <Text style={[styles.aiTitle, { color: theme.text }]}>AI-Myndighetsbrev</Text>
+          <Text style={[styles.aiTitle, { color: theme.text }]}>AI skriver ditt brev</Text>
           <Text style={[styles.aiSub, { color: theme.textSecondary }]}>
-            Generera formella brev med AI — {aiRemaining}/10 kvar idag
+            Beskriv situationen — AI formulerar ett komplett formellt brev på 10 sek · {aiRemaining}/10 kvar
           </Text>
         </View>
         <Feather name="chevron-right" size={18} color={Colors.primary} />
       </Pressable>
+
+      {/* AI Feature Chips */}
+      <View style={styles.aiChips}>
+        {[
+          { emoji: "🏛️", label: "9 myndigheter" },
+          { emoji: "⚡", label: "10 sek" },
+          { emoji: "🇸🇪", label: "På svenska" },
+        ].map((chip) => (
+          <View key={chip.label} style={[styles.aiChip, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+            <Text style={{ fontSize: 13 }}>{chip.emoji}</Text>
+            <Text style={[styles.aiChipText, { color: theme.textSecondary }]}>{chip.label}</Text>
+          </View>
+        ))}
+      </View>
 
       {/* Senast använda */}
       {recentItems.length > 0 && (
@@ -693,7 +707,7 @@ const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 16,
     borderWidth: StyleSheet.hairlineWidth,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   aiIcon: {
     width: 46,
@@ -712,6 +726,25 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "Inter_400Regular",
     marginTop: 2,
+    lineHeight: 17,
+  },
+  aiChips: {
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 20,
+  },
+  aiChip: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  aiChipText: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
   },
 
   forsvarBanner: {
