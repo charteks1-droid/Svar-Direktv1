@@ -359,3 +359,9 @@ id = "1-sFS40zsxwA6kP1AWYm-"
 uri = "file://svar-direkt-web-v50.zip"
 type = "unspecified"
 title = "Svar Direkt webbplats v50"
+
+[[outputs]]
+id = "iv3nfB0w1xIcd_88zMvxN"
+uri = "file://attached_assets/svar-direkt-web-v51.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona www v51"
