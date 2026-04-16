@@ -2,7 +2,7 @@ import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Platform,
   Pressable,
@@ -13,6 +13,8 @@ import {
   useColorScheme,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
@@ -148,6 +150,16 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const { addToHistory, history } = useApp();
 
+  const [aiRemaining, setAiRemaining] = useState(10);
+
+  useEffect(() => {
+    const key = `ai_gen_${new Date().toISOString().slice(0, 10)}`;
+    AsyncStorage.getItem(key).then((val) => {
+      const used = val ? parseInt(val, 10) : 0;
+      setAiRemaining(Math.max(0, 10 - used));
+    }).catch(() => {});
+  }, []);
+
   const topPad = Platform.OS === "web" ? 67 : insets.top;
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
 
@@ -215,6 +227,31 @@ export default function HomeScreen() {
           <Feather name="info" size={20} color={theme.tint} />
         </Pressable>
       </View>
+
+      {/* AI Generator Banner */}
+      <Pressable
+        onPress={() => router.push("/ai-generator")}
+        style={({ pressed }) => [
+          styles.aiBanner,
+          {
+            backgroundColor: pressed ? Colors.primary + "20" : Colors.primary + "10",
+            borderColor: Colors.primary + "35",
+            opacity: pressed ? 0.92 : 1,
+            transform: [{ scale: pressed ? 0.99 : 1 }],
+          },
+        ]}
+      >
+        <View style={[styles.aiIcon, { backgroundColor: Colors.primary + "20" }]}>
+          <Text style={{ fontSize: 22 }}>✨</Text>
+        </View>
+        <View style={styles.aiText}>
+          <Text style={[styles.aiTitle, { color: theme.text }]}>AI-Myndighetsbrev</Text>
+          <Text style={[styles.aiSub, { color: theme.textSecondary }]}>
+            Generera formella brev med AI — {aiRemaining}/10 kvar idag
+          </Text>
+        </View>
+        <Feather name="chevron-right" size={18} color={Colors.primary} />
+      </Pressable>
 
       {/* Senast använda */}
       {recentItems.length > 0 && (
@@ -648,6 +685,34 @@ const styles = StyleSheet.create({
   menuText: { flex: 1 },
   menuTitle: { fontSize: 15 },
   menuSubtitle: { fontSize: 12, marginTop: 2 },
+
+  aiBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    padding: 14,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginBottom: 20,
+  },
+  aiIcon: {
+    width: 46,
+    height: 46,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+  },
+  aiText: { flex: 1 },
+  aiTitle: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+  },
+  aiSub: {
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    marginTop: 2,
+  },
 
   forsvarBanner: {
     borderRadius: 18,
