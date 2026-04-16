@@ -556,7 +556,7 @@ export default function Home() {
           <SectionCard
             icon={<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l1.8 5.5H18l-4.7 3.4 1.8 5.5L10 13l-5.1 3.4 1.8-5.5L2 7.5h6.2L10 2z" fill="#7c3aed" opacity="0.9"/></svg>}
             title="AI-generator"
-            desc="Beskriv ditt ärende — AI skriver ett komplett formellt brev på svenska åt dig. 10 brev per dag."
+            desc="Beskriv vad som hänt på 2–3 meningar — AI skriver ett komplett, formellt brev till rätt myndighet åt dig. Ingår i priset. 10 brev per dag."
           />
           <SectionCard
             icon={<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 7h6M7 11h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}

@@ -5,15 +5,15 @@ const PAYHIP_URL = "https://payhip.com/b/WxtV3";
 
 const testimonials = [
   {
-    quote: "Jag visste inte ens hur jag skulle börja skriva till Försäkringskassan. Med Svar Direkt kopierade jag en mall, anpassade den på 5 minuter och skickade. Fick svar inom en vecka.",
+    quote: "Jag visste inte ens hur jag skulle börja skriva till Försäkringskassan. Jag beskrev situationen med tre meningar och AI genererade ett komplett formellt brev på 8 sekunder. Fick svar inom en vecka.",
     author: "Användare i Stockholm",
   },
   {
-    quote: "Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde för en invändning. AI hjälpte mig formulera det perfekt. Värd varenda krona.",
+    quote: "Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde. AI hjälpte mig formulera invändningen perfekt — utan att jag behövde veta ett enda juridiskt ord.",
     author: "Användare i Göteborg",
   },
   {
-    quote: "Appen sparade mig troligtvis hundratals kronor i juridisk rådgivning. AI-generatorn skrev mitt brev till Skatteverket på under en minut.",
+    quote: "Appen sparade mig säkert hundratals kronor i juridisk rådgivning. Jag beskrev problemet, AI-generatorn spottade ut ett perfekt brev till Skatteverket på 12 sekunder. Häpnadsväckande.",
     author: "Användare i Malmö",
   },
 ];
@@ -50,11 +50,12 @@ export default function Landing() {
               52+ mallar + AI-generator — tillgänglig för Android
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-5">
-              AI skriver ditt myndighetsbrev.<br />
+              Beskriv ditt problem.<br />
+              AI skriver brevet.<br />
               <span className="text-primary">Du skickar det direkt.</span>
             </h1>
             <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl mx-auto">
-              Beskriv din situation på tre rader — AI formulerar ett komplett, formellt brev till Skatteverket, Försäkringskassan, Kronofogden och mer. Ingen juridisk kunskap krävs.
+              Skriv två meningar om vad som hänt — AI levererar ett komplett, formellt brev anpassat för exakt din myndighet. Inga juridiska termer, ingen gissning. Klart på under 10 sekunder.
             </p>
             <a
               href={PAYHIP_URL}
@@ -78,10 +79,10 @@ export default function Landing() {
                 ✨ AI-teknik
               </span>
               <h2 className="text-2xl font-bold text-slate-900 mb-3">
-                Du fyller i tre fält.<br />AI skriver brevet.
+                Sluta stirra på ett tomt papper.<br />AI skriver brevet åt dig.
               </h2>
               <p className="text-slate-500 text-sm max-w-md mx-auto">
-                Inte en tom mall du måste fylla i — ett komplett, formellt brev klart att skicka. På under 10 sekunder.
+                Inte en tom mall du måste fylla i. Inte vaga råd du måste tolka. Ett fullständigt, formellt brev — klart att skicka på under 10 sekunder.
               </p>
             </div>
 
@@ -90,20 +91,20 @@ export default function Landing() {
                 {
                   step: "1",
                   icon: "✍️",
-                  title: "Beskriv situationen",
-                  desc: "Skriv kort vad som hänt och vad du vill. Inga juridiska termer behövs.",
+                  title: "Beskriv ditt ärende",
+                  desc: "Skriv 2–3 meningar om vad som hänt och vad du vill uppnå. Precis som du berättar för en vän — inga juridiska termer behövs.",
                 },
                 {
                   step: "2",
                   icon: "✨",
-                  title: "AI formulerar brevet",
-                  desc: "Gemini AI skriver ett formellt, korrekt brev anpassat för exakt din myndighet.",
+                  title: "AI skriver hela brevet",
+                  desc: "Avancerad AI analyserar ditt ärende och skriver ett formellt, myndighetsanpassat brev med rätt ton och terminologi — klart på sekunder.",
                 },
                 {
                   step: "3",
                   icon: "📤",
                   title: "Kopiera och skicka",
-                  desc: "Brevet är klart. Kopiera med ett tryck och skicka till myndigheten.",
+                  desc: "Brevet är klart och redo. Tryck för att kopiera — klistra sedan in och skicka till myndigheten.",
                 },
               ].map((item) => (
                 <div key={item.step} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 text-center">
@@ -117,10 +118,10 @@ export default function Landing() {
             <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { icon: "🏛️", text: "Stödjer 9 svenska myndigheter — Kronofogden, Skatteverket, Försäkringskassan och fler" },
-                  { icon: "⚡", text: "Brev genereras på under 10 sekunder — snabbare än att hitta rätt blankett" },
-                  { icon: "🔄", text: "10 AI-genererade brev ingår varje dag, utan extra kostnad" },
-                  { icon: "🧠", text: "Ingen AI-kunskap krävs — du behöver inte veta hur man promptar" },
+                  { icon: "🏛️", text: "Stödjer 9 svenska myndigheter — Kronofogden, Skatteverket, Försäkringskassan, Migrationsverket och fler" },
+                  { icon: "⚡", text: "Brev genereras på under 10 sekunder — snabbare än att ens hitta rätt blankett på myndighetens hemsida" },
+                  { icon: "🔄", text: "10 AI-genererade brev per dag ingår — utan extra kostnad, utan prenumeration" },
+                  { icon: "🧠", text: "Inga prompts, inga instruktioner — berätta bara kort vad som hänt, AI gör resten" },
                 ].map((item) => (
                   <div key={item.icon} className="flex items-start gap-3">
                     <span className="text-xl flex-shrink-0">{item.icon}</span>
@@ -289,8 +290,8 @@ export default function Landing() {
                 },
                 {
                   num: "2",
-                  title: "Välj mall eller AI",
-                  desc: "52+ mallar sorterade per myndighet — eller låt AI skriva ett personligt brev på 10 sekunder.",
+                  title: "Välj mall eller låt AI skriva",
+                  desc: "52+ mallar sorterade per myndighet — eller beskriv ditt ärende och låt AI skriva ett komplett, personligt brev på under 10 sekunder.",
                 },
                 {
                   num: "3",
@@ -317,10 +318,10 @@ export default function Landing() {
               ✨ AI ingår i priset
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-              Myndigheter väntar inte.<br />AI-hjälpen heller.
+              Myndigheten väntar inte på ditt svar.<br />Men du behöver inte skriva det själv.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              99 kr en gång. AI-generator + 52 mallar + allt på svenska. Inga prenumerationer, inga dolda kostnader.
+              99 kr en gång. Du får AI-generatorn + 52 färdiga mallar på svenska. Inga prenumerationer, inga dolda avgifter — allt klart direkt efter köp.
             </p>
 
             <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-6">

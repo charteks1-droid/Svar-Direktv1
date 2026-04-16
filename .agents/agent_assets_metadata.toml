@@ -371,3 +371,9 @@ id = "ZswT2PI5HqiqUV4p_yxSI"
 uri = "file://attached_assets/svar-direkt-web-v52.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona www v52 (99 kr)"
+
+[[outputs]]
+id = "3BrJHhR5wkwyNExNpS3sv"
+uri = "file://svar-direkt-web-v53.zip"
+type = "unspecified"
+title = "Svar Direkt – Webbplats v53"
