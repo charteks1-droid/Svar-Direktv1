@@ -383,3 +383,9 @@ id = "twjBNX_bkh7SHVxPsEyw7"
 uri = "file://svar-direkt-web-v55.zip"
 type = "unspecified"
 title = "Svar Direkt v55 – POPRAWIONA wersja dla Hostinger"
+
+[[outputs]]
+id = "5hnqndrdDEo10m0uwO5z7"
+uri = "file://svar-direkt-web-v56.zip"
+type = "unspecified"
+title = "Svar Direkt v56 – Bez forum (dla Hostinger)"
