@@ -1,0 +1,12 @@
+attached_assets/
+.local/
+screenshots/
+artifacts/api-server/dist/
+artifacts/svar-direkt-web/dist/
+artifacts/mockup-sandbox/
+dist/
+web-build/
+android/
+ios/
+.expo/
+*.tsbuildinfo

@@ -1,9 +1,15 @@
-pnpm-workspace.yaml
-artifacts/
-lib/
+# Large assets not needed for Expo build
 attached_assets/
-exports/
-.local/
-.agents/
-.cache/
 screenshots/
+.local/
+
+# Other artifacts (not needed for the Expo build)
+artifacts/api-server/dist/
+artifacts/svar-direkt-web/
+artifacts/mockup-sandbox/
+
+# Build artifacts
+**/dist/
+**/.expo/
+**/web-build/
+**/*.tsbuildinfo
