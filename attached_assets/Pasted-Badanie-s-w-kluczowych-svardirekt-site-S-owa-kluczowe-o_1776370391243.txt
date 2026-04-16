@@ -1,0 +1,39 @@
+Badanie słów kluczowych, svardirekt.site
+🏆 Słowa kluczowe o wysokim priorytecie (gotowe do targetowania)
+Słowo kluczowe (szwedzki)	Szac. wolumen/mies.	Trudność	Intencja	Strona do stworzenia
+överklaga Försäkringskassan mall	500–1 000	Średnia	Transakcyjna	/blogg/overklaga-forsakringskassan-mall
+mall brev Kronofogden	300–700	Niska	Transakcyjna	/blogg/mall-brev-kronofogden
+bestrida Kronofogden mall	200–500	Niska	Transakcyjna	/blogg/bestrida-kronofogden
+komplettering Försäkringskassan exempel	200–400	Niska	Informacyjna	/blogg/komplettering-forsakringskassan
+skriva till Skatteverket mall	200–400	Niska	Transakcyjna	/mallar/skatteverket
+överklagande Migrationsverket brev	150–350	Niska	Transakcyjna	/blogg/overklaga-migrationsverket
+vad händer om man inte svarar Kronofogden	300–600	Niska	Informacyjna	Już masz, zoptymalizuj!
+hur skriver man till Försäkringskassan	400–800	Niska–Średnia	Informacyjna	/blogg/hur-skriver-man-till-forsakringskassan
+22:09
+🎯 Słowa kluczowe z długiego ogona (łatwe zwycięstwa)
+Słowo kluczowe	Szac. wolumen	Trudność	Gotowy artykuł?
+återkrav Försäkringskassan vad gör jag	100–200	Bardzo niska	❌ Stwórz
+sjukpenning avslag vad göra	150–300	Niska	❌ Stwórz
+folkbokföring ändra adress brev Skatteverket	100–250	Bardzo niska	❌ Stwórz
+hyresvärden hör inte av sig brev	100–200	Bardzo niska	❌ Stwórz
+invändning Kronofogden mall	200–400	Bardzo niska	✅ Już rankinujesz!
+Migrationsverket komplettering brev	100–200	Bardzo niska	❌ Stwórz
+skuldsanering ansökan mall	150–300	Niska	❌ Stwórz
+22:09
+📋 Plan działania według priorytetu
+Ten tydzień, zoptymalizuj to co już masz:
+
+Artykuł /blogg/vad-hander-om-du-inte-svarar-myndigheter, dodaj H1 z frazą "vad händer om man inte svarar Kronofogden"
+Artykuł /blogg/svara-pa-krav-fran-kronofogden, dodaj "invändning Kronofogden mall" do tytułu i H1
+Następne 2–3 tygodnie, nowe artykuły z wysokim ROI:
+3. Napisz: "Överklaga Försäkringskassan – mall och steg-för-steg guide"
+4. Napisz: "Hur skriver man till Försäkringskassan – exempel och mallar"
+5. Stwórz dedykowane strony: /mallar/skatteverket, /mallar/forsakringskassan, /mallar/kronofogden
+
+Długoterminowo:
+6. Seria artykułów o konkretnych sytuacjach (sjukpenning avslag, återkrav, folkbokföring)
+7. Każda strona agencji linkuje do powiązanych artykułów bloga i do pobrania aplikacji
+
+22:09
+💡 Kluczowa obserwacja
+Twoja aplikacja jest idealna dla zapytań transakcyjnych, ludzie szukający gotowego wzoru biorą kartę kredytową w rękę. Frazy z "mall", "exempel", "brev", "skriva till" to Twój złoty środek. Nie walcz o ogólne słowa jak "Försäkringskassan" (dominują oficjalne strony), celuj w długi ogon, gdzie masz realną szansę.

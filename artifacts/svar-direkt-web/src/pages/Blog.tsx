@@ -131,9 +131,9 @@ const articles: Article[] = [
   },
   {
     slug: "svara-pa-krav-fran-kronofogden",
-    title: "Hur skriver man till Kronofogden? Steg-för-steg-guide",
+    title: "Invändning Kronofogden mall – hur du skriver och bestrider",
     excerpt:
-      "Hur skriver man till Kronofogden på ett korrekt sätt? Ett brev från Kronofogden kräver snabb respons. Här är vad du ska skriva — och hur du bestrider, förhandlar eller ordnar avbetalning.",
+      "Behöver du en invändning Kronofogden mall? Här får du steg-för-steg-guide för hur du skriver till Kronofogden, bestrider krav och ansöker om avbetalningsplan — med färdiga exempel.",
     category: "Kronofogden",
     readTime: "6 min",
     date: "3 april 2026",
@@ -451,9 +451,9 @@ const articles: Article[] = [
   },
   {
     slug: "vad-hander-om-du-inte-svarar-myndigheter",
-    title: "Vad händer om du inte svarar på ett myndighetsbrev?",
+    title: "Vad händer om man inte svarar Kronofogden – och andra myndigheter?",
     excerpt:
-      "Att lägga brevet på hög är frestande. Men vad händer egentligen om du ignorerar ett brev från Skatteverket, Kronofogden eller Försäkringskassan? Konsekvenserna är allvarligare än du tror.",
+      "Vad händer om man inte svarar Kronofogden, Skatteverket eller Försäkringskassan? Att lägga brevet på hög är frestande — men konsekvenserna är allvarligare än du tror. Läs vad som faktiskt sker.",
     category: "Tips",
     readTime: "4 min",
     date: "2 april 2026",
@@ -557,6 +557,278 @@ const articles: Article[] = [
         <h2>Hur du kommunicerar med din hyresvärd</h2>
         <p>
           All kommunikation med hyresvärden bör ske skriftligen — mejl är tillräckligt men spara alltid kopior. Undvik muntliga överenskommelser. Ange datum, vad ärendet gäller och vad du begär. Ett kort, sakligt brev är alltid mer effektivt än ett långt, frustrerat. Svar Direkt har mallar för hyresgäst-situationer som hjälper dig formulera dig korrekt.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "overklaga-forsakringskassan-mall",
+    title: "Överklaga Försäkringskassan – mall och steg-för-steg guide",
+    excerpt:
+      "Fick du avslag från Försäkringskassan? Här är din kompletta guide för att överklaga Försäkringskassan – med mall du kan kopiera direkt och steg-för-steg-instruktioner för omprövning och förvaltningsrätten.",
+    category: "Försäkringskassan",
+    readTime: "7 min",
+    date: "16 april 2026",
+    content: (
+      <>
+        <p>
+          Att få ett avslag från Försäkringskassan kan kännas som ett slag i magen — särskilt om du verkligen behöver ersättningen. Men ett avslag är inte slutet. Du har rätt att <strong>överklaga Försäkringskassan</strong>, och med rätt mall och rätt ord är chansen stor att du får ett annat beslut. Den här guiden visar dig exakt hur du gör.
+        </p>
+        <h2>Steg 1: Begär omprövning – inte direkt överklagande</h2>
+        <p>
+          Första steget är alltid att begära <strong>omprövning</strong> – inte att gå direkt till förvaltningsrätten. Omprövningen hanteras internt av Försäkringskassan och måste göras inom 2 månader från att du fick beslutet. Det är snabbare, gratis och den vanligaste vägen till ett ändrat beslut.
+        </p>
+        <h2>Steg 2: Läs beslutet noggrant</h2>
+        <p>
+          Innan du skriver ditt överklagande – förstå exakt varför Försäkringskassan nekade dig. Saknade de underlag? Tolkade de ett läkarintyg fel? Missade de att du uppfyller kraven? Svaret finns i beslutet och är nyckeln till ditt överklagande.
+        </p>
+        <h2>Mall: Begäran om omprövning till Försäkringskassan</h2>
+        <p>
+          Använd den här mallen som utgångspunkt — anpassa fet text till din situation:
+        </p>
+        <p>
+          <em>Till Försäkringskassan,</em><br />
+          <em>Jag, [Ditt namn], personnummer [XXXXXX-XXXX], begär omprövning av beslut daterat [datum], avseende [sjukpenning / föräldrapenning / annat].</em><br />
+          <em>Jag anser att beslutet är felaktigt av följande skäl: [Beskriv kortfattat varför – t.ex. "Mitt läkarintyg från [läkare] styrker att jag uppfyller arbetsförmågekraven för rätt till sjukpenning eftersom..."].</em><br />
+          <em>Som stöd för min begäran bifogar jag: [Lista bilagor – läkarintyg, journalanteckningar, intyg från arbetsgivare etc.].</em><br />
+          <em>Jag begär att Försäkringskassan omprövar beslutet och beviljar mig [sjukpenning / föräldrapenning / bostadsbidrag].</em><br />
+          <em>Med vänliga hälsningar,<br />[Ditt namn]<br />[Datum]<br />[Telefon / e-post]</em>
+        </p>
+        <h2>Steg 3: Om omprövningen avslås – överklaga till förvaltningsrätten</h2>
+        <p>
+          Får du avslag även på omprövningen har du 2 månader på dig att överklaga till förvaltningsrätten. Det kostar ingenting och domstolen granskar ärendet självständigt. Här är det extra viktigt att ha starka medicinska intyg och tydliga argument.
+        </p>
+        <h2>Vanliga misstag att undvika</h2>
+        <p>
+          Missa inte tidsfristen på 2 månader. Skicka alltid med bilagor. Var specifik – "beslutet är orättvist" räcker inte, du måste förklara exakt varför det är fel. Svar Direkt-appen har färdiga mallar för alla dessa situationer.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "hur-skriver-man-till-forsakringskassan",
+    title: "Hur skriver man till Försäkringskassan – exempel och mallar",
+    excerpt:
+      "Hur skriver man till Försäkringskassan på rätt sätt? Här är kompletta exempel och mallar för komplettering, omprövning, återkrav och andra vanliga ärenden – kopiera och skicka direkt.",
+    category: "Försäkringskassan",
+    readTime: "6 min",
+    date: "16 april 2026",
+    content: (
+      <>
+        <p>
+          Många undrar hur man skriver till Försäkringskassan utan att råka ut för avslag eller missförstånd. Svaret är enkelt: kort, sakligt och med rätt information. Den här guiden ger dig <strong>konkreta exempel och mallar</strong> för de vanligaste situationerna.
+        </p>
+        <h2>Grundregler för brev till Försäkringskassan</h2>
+        <p>
+          Alltid med: fullständigt namn, personnummer, ärendenummer (finns i brevet du fått), vad du vill och varför. Håll det kort — en A4-sida räcker i de flesta fall. Bifoga alltid de underlag du nämner i brevet.
+        </p>
+        <h2>Exempel 1: Komplettera en ansökan</h2>
+        <p>
+          <em>Till Försäkringskassan,<br />
+          Angående ärende nr [ärendenummer] – komplettering av ansökan om [sjukpenning/föräldrapenning].<br />
+          Jag, [namn], personnummer [XXXXXX-XXXX], skickar härmed kompletterande underlag som efterfrågades i brevet daterat [datum].<br />
+          Bilagor: [Lista dina bilagor – t.ex. "Läkarintyg från Dr. [Namn], daterat [datum]"].<br />
+          Kontakta mig gärna på [telefon/e-post] om ni behöver ytterligare information.<br />
+          Med vänliga hälsningar, [Namn], [Datum]</em>
+        </p>
+        <h2>Exempel 2: Besvara en återkravsbegäran</h2>
+        <p>
+          <em>Till Försäkringskassan,<br />
+          Angående återkrav, ärende nr [ärendenummer].<br />
+          Jag har mottagit ert brev daterat [datum] angående återkrav om [belopp] kr.<br />
+          [Välj ett alternativ:]<br />
+          A) Jag bestrider återkravet eftersom [förklara varför – t.ex. "Jag anmälde ändrade inkomster den [datum], vilket framgår av bifogad bekräftelse"].<br />
+          B) Jag accepterar återkravet men ansöker om avbetalningsplan med [X] kr/månad med hänsyn till min ekonomiska situation.<br />
+          Med vänliga hälsningar, [Namn], [Personnummer], [Datum]</em>
+        </p>
+        <h2>Exempel 3: Begära förlängning av tid</h2>
+        <p>
+          <em>Till Försäkringskassan,<br />
+          Jag, [namn], personnummer [XXXXXX-XXXX], begär anstånd med att svara på ert brev daterat [datum], ärende nr [ärendenummer].<br />
+          Anledningen är att jag behöver inhämta ytterligare läkarintyg / väntar på svar från [instans].<br />
+          Jag räknar med att kunna återkomma senast [datum].<br />
+          Med vänliga hälsningar, [Namn], [Datum]</em>
+        </p>
+        <h2>Viktigt: skicka alltid skriftligt</h2>
+        <p>
+          Telefonsamtal räknas inte — skicka alltid skriftligt via Försäkringskassans Mina sidor, e-post eller rekommenderat brev om det gäller viktiga ärenden. Spar alltid en kopia. Svar Direkt-appen har dessa och fler mallar färdiga att kopiera direkt.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "mall-brev-kronofogden",
+    title: "Mall brev Kronofogden – kopiera och skicka direkt",
+    excerpt:
+      "Behöver du ett mall brev till Kronofogden? Här får du färdiga mallar för bestridande, avbetalningsplan och andra vanliga ärenden — skrivet i korrekt formell svenska redo att skicka.",
+    category: "Kronofogden",
+    readTime: "5 min",
+    date: "16 april 2026",
+    content: (
+      <>
+        <p>
+          Ett <strong>mall brev till Kronofogden</strong> kan vara skillnaden mellan att situationen eskalerar eller löses smidigt. Kronofogden hanterar tusentals ärenden varje dag — ett välformulerat, sakligt brev ger dig bättre förutsättningar än ett halvdant. Här är de mallar du behöver.
+        </p>
+        <h2>Mall 1: Bestrida ett betalningsföreläggande</h2>
+        <p>
+          <em>Till Kronofogdemyndigheten,<br />
+          Jag, [Ditt fullständiga namn], personnummer [XXXXXX-XXXX], bestrider härmed betalningsföreläggande med ärendenummer [nr], avseende krav från [Borgenär] på [belopp] kr.<br />
+          Skäl för bestridandet: [Välj/anpassa: "Skulden existerar inte." / "Skulden är redan betald, se bifogat kvitto." / "Skulden är preskriberad." / "Beloppet är felaktigt — korrekt belopp är [X] kr."]<br />
+          Jag begär att ärendet avskrivs alternativt hänvisas till tingsrätten för prövning.<br />
+          Bilagor: [Lista bilagor]<br />
+          Med vänliga hälsningar,<br />[Namn], [Personnummer], [Adress], [Telefon], [Datum]</em>
+        </p>
+        <h2>Mall 2: Ansöka om avbetalningsplan</h2>
+        <p>
+          <em>Till Kronofogdemyndigheten,<br />
+          Angående ärende nr [ärendenummer].<br />
+          Jag, [Namn], personnummer [XXXXXX-XXXX], ansöker om avbetalningsplan för skuld om [belopp] kr till [Borgenär].<br />
+          Min ekonomiska situation: månadsinkomst [X] kr, fasta utgifter [Y] kr. Jag kan betala [Z] kr per månad.<br />
+          Jag är villig att starta betalningar från [datum] och ber om bekräftelse på att avbetalningsplanen godkänns.<br />
+          Med vänliga hälsningar,<br />[Namn], [Personnummer], [Kontaktuppgifter], [Datum]</em>
+        </p>
+        <h2>Mall 3: Begära anstånd</h2>
+        <p>
+          <em>Till Kronofogdemyndigheten,<br />
+          Angående ärende nr [ärendenummer] – begäran om anstånd.<br />
+          Jag, [Namn], personnummer [XXXXXX-XXXX], begär anstånd med betalning/svar till [datum] på grund av [tillfällig sjukdom / ekonomisk kris / väntar på utbetalning från [instans]].<br />
+          Jag avser att lösa ärendet senast [datum].<br />
+          Med vänliga hälsningar, [Namn], [Datum]</em>
+        </p>
+        <h2>Viktigt om tidsfrister</h2>
+        <p>
+          Bestridande av betalningsföreläggande måste ske inom angiven tidsfrist — vanligtvis 10 dagar. Missar du den har Kronofogden rätt att fatta utslag och påbörja verkställighet. Skicka alltid med post eller via Kronofogdens e-tjänst och spara kvitto. Svar Direkt-appen har alla dessa mallar digitalt, redo att fylla i och kopiera.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "bestrida-kronofogden",
+    title: "Bestrida Kronofogden – mall och guide steg för steg",
+    excerpt:
+      "Hur bestrider man Kronofogden? Här är en komplett guide med mall för bestridande av betalningsföreläggande — vad du ska skriva, när du ska skicka och vad som händer sedan.",
+    category: "Kronofogden",
+    readTime: "6 min",
+    date: "16 april 2026",
+    content: (
+      <>
+        <p>
+          Att <strong>bestrida Kronofogden</strong> låter komplicerat — men det är faktiskt en av de viktigaste saker du kan göra om du fått ett betalningsföreläggande som du anser är felaktigt. Den här guiden ger dig precis vad du behöver: en förklaring av processen och en mall du kan använda direkt.
+        </p>
+        <h2>Vad är ett bestridande?</h2>
+        <p>
+          Ett bestridande är ett skriftligt meddelande till Kronofogden där du meddelar att du <em>inte</em> accepterar det krav som ställts mot dig. Det behöver inte vara långt eller juridiskt avancerat — det räcker att du tydligt skriver att du bestrider kravet och anger ett skäl.
+        </p>
+        <h2>När ska du bestrida?</h2>
+        <p>
+          Du bör bestrida om: skulden inte existerar, är redan betald, är preskriberad (äldre än 3–10 år beroende på skuldtyp), eller om beloppet är felaktigt. Bestrida även om du är osäker — det stoppar processen och ger dig tid att utreda.
+        </p>
+        <h2>Tidsgräns – VIKTIGT</h2>
+        <p>
+          Du har en bestämd tidsfrist, vanligtvis <strong>10 dagar</strong> från att du fått brevet. Missar du den kan Kronofogden utfärda ett utslag utan rättegång — och då kan lön, konto eller tillgångar utmätas. Agera direkt.
+        </p>
+        <h2>Mall: bestridande av betalningsföreläggande</h2>
+        <p>
+          <em>Till Kronofogdemyndigheten,<br />
+          Svarandes fullständiga namn: [Ditt namn]<br />
+          Personnummer: [XXXXXX-XXXX]<br />
+          Ärendenummer: [nr från brevet]<br />
+          Sökande (borgenären): [Företagets namn]<br /><br />
+          Jag bestrider ovanstående betalningsföreläggande.<br />
+          Skäl: [Välj/anpassa: "Skulden existerar inte och jag har aldrig haft något avtal med sökanden." / "Skulden är preskriberad." / "Skulden är betald – se bifogat betalningsbevis." / "Beloppet är felaktigt."]<br /><br />
+          Jag begär att ärendet avvisas alternativt hänskjuts till tingsrätten.<br /><br />
+          Ort och datum: [Stad], [Datum]<br />
+          Underskrift: ____________________<br />
+          [Ditt namn], [Adress], [Telefon]</em>
+        </p>
+        <h2>Vad händer efter bestridandet?</h2>
+        <p>
+          Om du bestrider skickar Kronofogden ärendet vidare till tingsrätten — men bara om borgenären vill driva det vidare. Många mindre fordringsägare väljer att inte göra det eftersom rättegångskostnader tillkommer. Bestridandet är alltså ofta ett effektivt sätt att stoppa kravet helt.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "aterkrav-forsakringskassan-vad-gor-jag",
+    title: "Återkrav Försäkringskassan – vad gör jag?",
+    excerpt:
+      "Fick du ett återkrav från Försäkringskassan? Förstå varför det händer, hur du bestrider om det är fel, och hur du ansöker om avbetalningsplan om du accepterar kravet.",
+    category: "Försäkringskassan",
+    readTime: "5 min",
+    date: "16 april 2026",
+    content: (
+      <>
+        <p>
+          Ett återkrav från Försäkringskassan innebär att de vill ha tillbaka pengar de redan betalat ut till dig. Det kan kännas chockerande — men det finns alltid saker du kan göra. Frågan <strong>"återkrav Försäkringskassan vad gör jag?"</strong> är en av de vanligaste vi ser, och svaret beror på om du anser att kravet är rätt eller fel.
+        </p>
+        <h2>Varför kan du få återkrav?</h2>
+        <p>
+          Vanliga orsaker: du har fått för mycket sjukpenning eller föräldrapenning (t.ex. för att inkomsten ändrades), du anmälde inte en ändring i tid, eller Försäkringskassan anser att du inte uppfyllde villkoren retroaktivt. Ibland är det deras eget misstag.
+        </p>
+        <h2>Om du anser att kravet är fel – bestrida</h2>
+        <p>
+          Du har rätt att begära omprövning av beslutet om återkrav. Gör det skriftligen inom 2 månader. Förklara varför du anser att kravet är felaktigt och bifoga bevis – t.ex. bekräftelse på att du anmälde ändrade inkomster, intyg eller korrespondens med kassan.
+        </p>
+        <h2>Om du accepterar kravet – ansök om avbetalning</h2>
+        <p>
+          Kan du inte betala hela beloppet på en gång? Kontakta Försäkringskassan och be om avbetalningsplan. Var ärlig om din ekonomiska situation. De kan ofta erbjuda flexibla lösningar, särskilt om du agerar proaktivt.
+        </p>
+        <h2>Mall: svar på återkrav från Försäkringskassan</h2>
+        <p>
+          <em>Till Försäkringskassan,<br />
+          Angående återkrav, ärende nr [ärendenummer], daterat [datum].<br />
+          Jag, [Namn], personnummer [XXXXXX-XXXX], har mottagit ert krav på återbetalning av [belopp] kr.<br />
+          [Välj:] Jag bestrider kravet eftersom [förklara skäl och bifoga bevis].<br />
+          ELLER: Jag accepterar kravet men ansöker om avbetalning med [X] kr/mån. Min månadsinkomst är [X] kr och mina fasta kostnader är [Y] kr.<br />
+          Med vänliga hälsningar, [Namn], [Personnummer], [Kontakt], [Datum]</em>
+        </p>
+        <p>
+          Svar Direkt-appen har fler mallar för Försäkringskassan-situationer redo att kopiera.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "skuldsanering-ansoekan-mall",
+    title: "Skuldsanering – ansökan, krav och mall för Kronofogden",
+    excerpt:
+      "Vad är skuldsanering och hur ansöker man? Här är en komplett guide om skuldsanering via Kronofogden – vem som kan ansöka, vad som krävs och hur ansökan ska skrivas.",
+    category: "Kronofogden",
+    readTime: "7 min",
+    date: "16 april 2026",
+    content: (
+      <>
+        <p>
+          Skuldsanering är ett av de kraftfullaste verktygen för den som hamnat i en ekonomisk situation som är omöjlig att ta sig ur på egen hand. Men processen kan verka komplicerad. Den här guiden förklarar hur <strong>skuldsanering ansökan</strong> fungerar och ger dig en mall för att komma igång.
+        </p>
+        <h2>Vad är skuldsanering?</h2>
+        <p>
+          Skuldsanering innebär att Kronofogden fastställer en betalningsplan — vanligtvis 3 år — där du betalar vad du kan utifrån din ekonomi. Skulderna som du inte kan betala skrivs av. Det ger dig en ren start.
+        </p>
+        <h2>Vem kan ansöka om skuldsanering?</h2>
+        <p>
+          Du måste vara privatperson (inte företag), ha skulder som du inte kan betala inom överskådlig tid, och det måste vara "skäligt" att bevilja skuldsanering — hänsyn tas till hur skulderna uppstod, din ålder och hälsa. Du behöver inte vara skyldig till att ha hamnat i situationen.
+        </p>
+        <h2>Hur ansöker man?</h2>
+        <p>
+          Ansökan skickas till Kronofogden. Du behöver en fullständig förteckning över alla skulder, information om din inkomst och utgifter, och en förklaring av din situation. Kronofogden granskar sedan om du uppfyller kraven.
+        </p>
+        <h2>Mall: ansökan om skuldsanering</h2>
+        <p>
+          <em>Till Kronofogdemyndigheten,<br />
+          Ansökan om skuldsanering<br /><br />
+          Sökande: [Fullständigt namn], personnummer [XXXXXX-XXXX]<br />
+          Adress: [Adress], [Postnummer] [Ort]<br />
+          Telefon: [Telefon] | E-post: [E-post]<br /><br />
+          Jag ansöker om skuldsanering enligt skuldsaneringslagen (2016:675).<br /><br />
+          Min ekonomiska situation: Mina totala skulder uppgår till ca [X] kr fördelade på [antal] borgenärer. Min månadsinkomst är [X] kr netto. Mina nödvändiga levnadskostnader uppgår till ca [Y] kr/mån. Jag har ingen möjlighet att betala mina skulder inom överskådlig framtid.<br /><br />
+          Skuldsituationen uppstod på grund av: [Beskriv kortfattat – t.ex. "Sjukdom som ledde till inkomstbortfall under [period]" / "Förlorade arbete" / "Skilsmässa"].<br /><br />
+          Bilagor: Skuldförteckning, kontoutdrag, lönespecifikation, hyreskontrakt/kostnadsintyg.<br /><br />
+          Med vänliga hälsningar,<br />[Namn], [Datum]</em>
+        </p>
+        <h2>Vad händer efter ansökan?</h2>
+        <p>
+          Kronofogden utreder din ansökan, kontaktar borgenärerna och fattar ett beslut. Om skuldsanering beviljas gäller betalningsplanen i 3 år, varefter resterande skulder skrivs av. Svar Direkt-appen har mallar för kommunikation med Kronofogden under hela processen.
         </p>
       </>
     ),

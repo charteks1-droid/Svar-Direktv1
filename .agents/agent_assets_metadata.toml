@@ -389,3 +389,9 @@ id = "5hnqndrdDEo10m0uwO5z7"
 uri = "file://svar-direkt-web-v56.zip"
 type = "unspecified"
 title = "Svar Direkt v56 – Bez forum (dla Hostinger)"
+
+[[outputs]]
+id = "0mPnQYYT0y-yNlSUoKz2P"
+uri = "file://svar-direkt-v57.zip"
+type = "unspecified"
+title = "Svar Direkt v57 – SEO artykuły (Hostinger)"

@@ -32,6 +32,13 @@ const ROUTES = [
   "blogg/vad-hander-om-du-inte-svarar-myndigheter",
   "blogg/skatteverket-6-vanliga-situationer",
   "blogg/hyresgastens-rattigheter-i-sverige",
+  // New SEO articles
+  "blogg/overklaga-forsakringskassan-mall",
+  "blogg/hur-skriver-man-till-forsakringskassan",
+  "blogg/mall-brev-kronofogden",
+  "blogg/bestrida-kronofogden",
+  "blogg/aterkrav-forsakringskassan-vad-gor-jag",
+  "blogg/skuldsanering-ansoekan-mall",
 ];
 
 const html = fs.readFileSync(indexHtml, "utf8");
