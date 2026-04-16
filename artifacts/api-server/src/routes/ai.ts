@@ -93,31 +93,35 @@ router.post("/generate", async (req, res) => {
       .json({ error: "Problembeskrivningen måste vara minst 20 tecken." });
   }
 
-  const prompt = `Du är en professionell assistent specialiserad på formell svenska myndighetskommunikation.
+  const prompt = `Skriv ett komplett formellt brev på svenska. Generera HELA brevet utan avbrott.
 
-Skriv ett formellt brev på svenska baserat på följande uppgifter:
-- Avsändare: ${fullName.trim()}
-- Personnummer: ${personnummer.trim()}
-- Mottagare: ${institution.trim()}
-- Ärendetyp: ${caseType.trim()}
-- Beskrivning av ärendet: ${description.trim()}
+Avsändare: ${fullName.trim()}
+Personnummer: ${personnummer.trim()}
+Mottagare: ${institution.trim()}
+Ärendetyp: ${caseType.trim()}
+Ärendebeskrivning: ${description.trim()}
 
-STRIKTA KRAV:
-1. Brevet ska vara på svenska
-2. Formell och artig ton lämplig för svenska myndigheter
-3. Exakt 6-10 meningar totalt
-4. Börja med "Till ${institution.trim()},"
-5. Andra meningen ska presentera avsändaren med namn och personnummer
-6. Var direkt och tydlig om ärendet
-7. Avsluta med "Med vänliga hälsningar," på en ny rad, sedan avsändarens fullständiga namn
-8. Inga förklaringar, kommentarer eller AI-text utanför brevet
-9. Returnera BARA det färdiga brevet`;
+Brevstruktur (följ exakt):
+1. "Till ${institution.trim()},"
+2. Presentation: vem du är, personnummer
+3. Syfte: vad ärendet gäller
+4. Bakgrund: beskriv situationen (2-3 meningar)
+5. Begäran: vad du vill att myndigheten ska göra
+6. Avslutning: tackar för behandling av ärendet
+7. "Med vänliga hälsningar,"
+8. "${fullName.trim()}"
+
+Krav: Skriv brevet på svenska. Formell ton. Minst 8 meningar. Returnera BARA brevtexten.`;
 
   try {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: [{ role: "user", parts: [{ text: prompt }] }],
-      config: { maxOutputTokens: 600, temperature: 0.25 },
+      config: {
+        maxOutputTokens: 1200,
+        temperature: 0.3,
+        thinkingConfig: { thinkingBudget: 0 },
+      },
     });
 
     const text = response.text?.trim();
