@@ -139,6 +139,9 @@ export default function AiGeneratorScreen() {
 
   useEffect(() => {
     getUsedToday().then(setUsedToday);
+    // Pre-warm the server so it's ready when user clicks generate
+    const apiUrl = APP_CONFIG.apiBaseUrl || "";
+    fetch(`${apiUrl.replace("/api", "")}/api/healthz`).catch(() => {});
   }, []);
 
   const remaining = AI_LIMIT - usedToday;
@@ -164,31 +167,56 @@ export default function AiGeneratorScreen() {
     setError("");
     setResult("");
 
-    try {
-      const apiUrl = APP_CONFIG.apiBaseUrl || "";
-      const res = await fetch(`${apiUrl}/ai/generate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName: fullName.trim(), personnummer: personnummer.trim(), institution, caseType, description: description.trim() }),
-      });
+    const apiUrl = APP_CONFIG.apiBaseUrl || "";
+    const body = JSON.stringify({ fullName: fullName.trim(), personnummer: personnummer.trim(), institution, caseType, description: description.trim() });
+    const MAX_RETRIES = 2;
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error((data as any)?.error || `Fel ${res.status}`);
+    let lastError = "";
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        const res = await fetch(`${apiUrl}/ai/generate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body,
+        });
+
+        if (res.status === 502 || res.status === 503 || res.status === 504) {
+          // Server cold-starting — wait and retry
+          if (attempt < MAX_RETRIES) {
+            setError("Servern startar... försöker igen");
+            await new Promise((r) => setTimeout(r, 4000));
+            setError("");
+            continue;
+          }
+          throw new Error("Servern svarar inte just nu. Försök igen om 10 sekunder.");
+        }
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error((data as any)?.error || `Fel ${res.status}`);
+        }
+
+        const data = await res.json() as { message: string };
+        setResult(data.message);
+        const newUsed = await incrementUsed();
+        setUsedToday(newUsed);
+        await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 200);
+        setLoading(false);
+        return;
+      } catch (e: any) {
+        lastError = e?.message || "Något gick fel. Försök igen.";
+        if (attempt < MAX_RETRIES && (lastError.includes("502") || lastError.includes("503") || lastError.includes("504") || lastError.includes("network"))) {
+          await new Promise((r) => setTimeout(r, 4000));
+          continue;
+        }
+        break;
       }
-
-      const data = await res.json() as { message: string };
-      setResult(data.message);
-      const newUsed = await incrementUsed();
-      setUsedToday(newUsed);
-      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 200);
-    } catch (e: any) {
-      setError(e?.message || "Något gick fel. Försök igen.");
-      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-    } finally {
-      setLoading(false);
     }
+
+    setError(lastError);
+    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+    setLoading(false);
   };
 
   const handleCopy = async () => {
