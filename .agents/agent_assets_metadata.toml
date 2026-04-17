@@ -419,3 +419,9 @@ id = "zHcTuXyP0HMMXajgz6EoC"
 uri = "file://svar-direkt-v61.zip"
 type = "unspecified"
 title = "Svar Direkt v61 – Gwarancja 30 dni + Ostatnio pobrano"
+
+[[outputs]]
+id = "8dV22_eGRmd9hJMTYl8JZ"
+uri = "file://svar-direkt-web.tar.gz"
+type = "unspecified"
+title = "Svar Direkt – kod strony (tar.gz)"

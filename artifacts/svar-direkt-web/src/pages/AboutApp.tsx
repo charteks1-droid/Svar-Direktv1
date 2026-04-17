@@ -117,12 +117,6 @@ export default function AboutApp() {
           Köp appen för 49 kr och kom igång direkt.
         </p>
         <div className="flex justify-center gap-3 flex-wrap">
-          <div className="flex flex-col items-center gap-1">
-            <span className="px-5 py-2.5 bg-white/20 text-white/60 rounded-xl text-sm font-medium cursor-not-allowed border border-white/30 select-none inline-flex items-center gap-2">
-              🔜 Appen snart tillbaka
-            </span>
-            <p className="text-xs text-white/50">Vi jobbar med en liten förbättring</p>
-          </div>
           <Link
             href="/funktioner"
             className="px-5 py-2.5 bg-white/10 text-white border border-white/20 rounded-xl text-sm font-medium hover:bg-white/20 transition-colors"

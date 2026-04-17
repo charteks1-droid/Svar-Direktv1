@@ -211,10 +211,6 @@ function Navbar() {
             </div>
           </nav>
 
-          {/* Desktop CTA – coming soon */}
-          <span className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-100 text-slate-400 text-sm font-medium cursor-not-allowed border border-slate-200 select-none">
-            🔜 Appen – snart tillbaka
-          </span>
 
           {/* Mobile hamburger */}
           <button
@@ -251,14 +247,6 @@ function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <div className="pt-2 mt-1 border-t border-slate-100">
-              <div className="flex flex-col items-center gap-1 px-3 py-2.5">
-                <span className="block w-full px-3 py-2.5 rounded-lg bg-slate-100 text-slate-400 text-sm font-medium text-center cursor-not-allowed border border-slate-200">
-                  🔜 Appen – snart tillbaka
-                </span>
-                <p className="text-xs text-slate-400 text-center">Vi jobbar med en liten förbättring</p>
-              </div>
-            </div>
           </div>
         )}
       </div>

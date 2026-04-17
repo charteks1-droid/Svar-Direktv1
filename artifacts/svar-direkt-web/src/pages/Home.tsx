@@ -242,9 +242,6 @@ function HelpForm() {
             <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
               Vi återkommer så snart vi kan till din e-postadress. Under tiden kan du redan nu använda våra färdiga mallar direkt i appen.
             </p>
-            <span className="mt-2 px-6 py-3 rounded-xl bg-slate-100 text-slate-400 text-sm font-medium cursor-not-allowed border border-slate-200 select-none inline-flex items-center gap-2">
-              🔜 Appen kommer snart tillbaka
-            </span>
           </div>
         ) : (
           <form
@@ -402,14 +399,6 @@ function LossAversion() {
           </div>
         </div>
 
-        <div className="text-center mt-8">
-          <div className="flex flex-col items-center gap-1.5">
-            <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-100 text-slate-400 rounded-xl text-sm font-semibold cursor-not-allowed border border-slate-200 select-none">
-              🔜 Appen kommer snart tillbaka
-            </span>
-            <p className="text-xs text-slate-500">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -502,12 +491,6 @@ export default function Home() {
                 Färdiga mallar + AI-generator för brev till svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
-                <div className="flex flex-col items-start gap-1">
-                  <span className="px-6 py-3 bg-slate-100 text-slate-400 rounded-xl font-medium cursor-not-allowed border border-slate-200 select-none text-sm inline-flex items-center gap-2">
-                    🔜 Appen snart tillbaka
-                  </span>
-                  <p className="text-xs text-slate-400">Vi jobbar med en liten förbättring</p>
-                </div>
                 <Link
                   href="/paket"
                   className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
@@ -1071,10 +1054,6 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 mb-5">
-            <span className="px-7 py-3.5 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none inline-flex items-center gap-2">
-              🔜 Appen kommer snart tillbaka
-            </span>
-            <p className="text-sm text-slate-500">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
             <Link
               href="/kontakt"
               className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
@@ -1109,15 +1088,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sticky mobile – coming soon */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-200 shadow-lg px-4 py-3">
-        <div className="flex flex-col items-center gap-0.5">
-          <span className="flex items-center justify-center gap-2 w-full py-3 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none">
-            🔜 Appen kommer snart tillbaka
-          </span>
-          <p className="text-xs text-slate-400">Vi jobbar med en liten förbättring</p>
-        </div>
-      </div>
 
       <RecentDownload />
     </div>

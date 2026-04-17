@@ -57,14 +57,6 @@ export default function Landing() {
               <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
               <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
             </div>
-            <div className="block">
-              <div className="flex flex-col items-center gap-2">
-                <span className="inline-flex items-center gap-2 px-8 py-4 bg-slate-100 text-slate-400 rounded-xl font-bold text-base cursor-not-allowed border border-slate-200 select-none">
-                  🔜 Appen kommer snart tillbaka
-                </span>
-                <p className="text-sm text-slate-500">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
-              </div>
-            </div>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
                 { icon: "🔒", text: "SSL-säker betalning" },
@@ -198,14 +190,6 @@ export default function Landing() {
                 </tbody>
               </table>
             </div>
-            <div className="text-center">
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none">
-                  🔜 Appen kommer snart tillbaka
-                </span>
-                <p className="text-xs text-slate-500">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -336,9 +320,6 @@ export default function Landing() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
-              <span className="px-8 py-4 bg-slate-100 text-slate-400 rounded-xl font-bold text-base cursor-not-allowed border border-slate-200 select-none w-full sm:w-auto text-center">
-                🔜 Appen kommer snart tillbaka
-              </span>
               <Link
                 href="/kontakt"
                 className="px-6 py-4 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"
@@ -346,7 +327,6 @@ export default function Landing() {
                 Frågor? Kontakta oss
               </Link>
             </div>
-            <p className="text-sm text-slate-500 mb-5">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
 
             {/* Trust badges */}
             <div className="flex flex-wrap justify-center gap-4 mb-5">
@@ -383,15 +363,6 @@ export default function Landing() {
         </p>
       </footer>
 
-      {/* Sticky mobile – coming soon */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-200 shadow-lg px-4 py-3">
-        <div className="flex flex-col items-center gap-0.5">
-          <span className="flex items-center justify-center gap-2 w-full py-3 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none">
-            🔜 Appen kommer snart tillbaka
-          </span>
-          <p className="text-xs text-slate-400">Vi jobbar med en liten förbättring</p>
-        </div>
-      </div>
 
       <RecentDownload />
     </div>

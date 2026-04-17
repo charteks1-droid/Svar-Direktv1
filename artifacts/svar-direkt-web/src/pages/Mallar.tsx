@@ -956,10 +956,6 @@ export default function Mallar() {
           <p className="text-slate-500 text-sm mb-7">
             Svar Direkt-appen innehåller färdiga mallar för CV, ansökningar och myndighetsbrev — redo att använda direkt i mobilen.
           </p>
-          <span className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-400 font-semibold rounded-xl cursor-not-allowed border border-slate-200 select-none text-sm">
-            🔜 Appen snart tillbaka
-          </span>
-          <p className="text-slate-400 text-xs mt-2">Vi jobbar med en liten förbättring</p>
           <p className="text-slate-400 text-xs mt-4">Engångsbetalning · Inga prenumerationer</p>
         </div>
       </section>
@@ -997,10 +993,6 @@ export default function Mallar() {
           <p className="text-sky-100 text-base mb-8">
             Svar Direkt-appen innehåller hundratals färdiga mallar för myndigheter, arbete och vardag — redo att skicka direkt.
           </p>
-          <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/20 text-white/60 font-bold rounded-xl cursor-not-allowed border border-white/30 select-none text-base">
-            🔜 Appen snart tillbaka
-          </span>
-          <p className="text-sky-200 text-xs mt-2">Vi jobbar med en liten förbättring</p>
           <p className="text-sky-200 text-xs mt-4">Engångsbetalning · Inga prenumerationer · Fungerar offline</p>
         </div>
       </section>

@@ -197,12 +197,6 @@ export default function Features() {
           Alla funktioner ingår i appen. Utöka med paket och guider vid behov.
         </p>
         <div className="flex justify-center gap-3 flex-wrap">
-          <div className="flex flex-col items-center gap-1">
-            <span className="px-5 py-2.5 bg-slate-100 text-slate-400 rounded-xl text-sm font-medium cursor-not-allowed border border-slate-200 select-none inline-flex items-center gap-2">
-              🔜 Appen snart tillbaka
-            </span>
-            <p className="text-xs text-slate-400">Vi jobbar med en liten förbättring</p>
-          </div>
           <Link
             href="/paket"
             className="px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50 transition-colors"
