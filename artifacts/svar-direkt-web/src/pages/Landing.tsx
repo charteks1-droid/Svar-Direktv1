@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import logoSrc from "../assets/logo.png";
-import RecentDownload from "../components/RecentDownload";
 
 const PAYHIP_URL = "https://payhip.com/b/WxtV3";
 
@@ -361,7 +360,6 @@ export default function Landing() {
       </footer>
 
 
-      <RecentDownload />
     </div>
   );
 }

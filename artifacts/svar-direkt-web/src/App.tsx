@@ -124,7 +124,6 @@ function Navbar() {
     { href: "/funktioner",  label: "Funktioner" },
     { href: "/mallar",      label: "Mallar & texter" },
     { href: "/pdf-guider",  label: "PDF-guider" },
-    { href: "/generator",   label: "Textgenerator" },
   ];
 
   const allLinks = [...primary, ...secondary];
