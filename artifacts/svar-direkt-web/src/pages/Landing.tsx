@@ -57,17 +57,33 @@ export default function Landing() {
             <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl mx-auto">
               Skriv två meningar om vad som hänt — AI levererar ett komplett, formellt brev anpassat för exakt din myndighet. Inga juridiska termer, ingen gissning. Klart på under 10 sekunder.
             </p>
-            <a
-              href={PAYHIP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-4 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
-            >
-              Skaffa appen – 99 kr
-            </a>
-            <p className="text-xs text-slate-400 mt-3">
-              🔒 Säker betalning via Payhip · Engångsbetalning · Ingen prenumeration
-            </p>
+            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
+              <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
+              <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
+            </div>
+            <div className="block">
+              <a
+                href={PAYHIP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+              >
+                Skaffa appen –{" "}
+                <s className="opacity-50 font-normal text-sm">149 kr</s> 99 kr
+              </a>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 mt-4">
+              {[
+                { icon: "🔒", text: "SSL-säker betalning" },
+                { icon: "🛡️", text: "30-dagars returrätt" },
+                { icon: "✅", text: "Engångskostnad" },
+                { icon: "📲", text: "Direkt nedladdning" },
+              ].map((b) => (
+                <span key={b.text} className="flex items-center gap-1.5 text-xs text-slate-400">
+                  <span>{b.icon}</span>{b.text}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -324,19 +340,21 @@ export default function Landing() {
               99 kr en gång. Du får AI-generatorn + 52 färdiga mallar på svenska. Inga prenumerationer, inga dolda avgifter — allt klart direkt efter köp.
             </p>
 
-            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-6">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 8l2 2 4-4" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round"/><circle cx="8" cy="8" r="6.5" stroke="#16a34a" strokeWidth="1.2"/></svg>
-              <span className="text-xs font-medium text-green-800">Inte nöjd? Kontakta oss inom 14 dagar — <strong>info@svardirekt.site</strong></span>
+            {/* Anchor pricing */}
+            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
+              <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
+              <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
               <a
                 href={PAYHIP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25 w-full sm:w-auto text-center"
               >
-                Ladda ner nu – 99 kr
+                Ladda ner nu –{" "}
+                <s className="opacity-50 font-normal text-sm">149 kr</s> 99 kr
               </a>
               <Link
                 href="/kontakt"
@@ -345,9 +363,20 @@ export default function Landing() {
                 Frågor? Kontakta oss
               </Link>
             </div>
-            <p className="text-xs text-slate-400 mt-4">
-              🔒 Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.
-            </p>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                { icon: "🔒", text: "SSL-säker betalning" },
+                { icon: "🛡️", text: "30-dagars returrätt" },
+                { icon: "✅", text: "Engångskostnad" },
+                { icon: "📲", text: "Direkt nedladdning" },
+              ].map((b) => (
+                <span key={b.text} className="flex items-center gap-1.5 text-xs text-slate-400">
+                  <span>{b.icon}</span>{b.text}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -368,7 +397,7 @@ export default function Landing() {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
         >
-          ✨ Skaffa appen – 99 kr
+          ✨ Skaffa appen – <s className="opacity-50 font-normal text-xs">149</s> 99 kr
         </a>
       </div>
     </div>

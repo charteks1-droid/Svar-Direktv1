@@ -413,10 +413,11 @@ function LossAversion() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
           >
-            Kom igång nu – 99 kr
+            Kom igång nu –{" "}
+            <span><s className="opacity-50 font-normal text-xs">149 kr</s> 99 kr</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
-          <p className="text-xs text-slate-400 mt-2">🔒 Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.</p>
+          <p className="text-xs text-slate-400 mt-2">🔒 Säker betalning via Payhip · Engångsbetalning · Ingen prenumeration</p>
         </div>
       </div>
     </section>
@@ -1076,10 +1077,10 @@ export default function Home() {
             Ladda ner appen en gång. Ha färdiga svar för Skatteverket, Kronofogden, Försäkringskassan och mer — alltid i fickan.
           </p>
 
-          {/* Guarantee badge */}
-          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-6">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.5 3 3.3.5-2.4 2.3.6 3.2L8 9l-3 1.5.6-3.2-2.4-2.3 3.3-.5L8 1.5z" fill="#16a34a" opacity="0.2"/><path d="M8 2l1.4 2.8 3.1.5-2.2 2.2.5 3L8 9l-2.8 1.5.5-3L3.5 5.3l3.1-.5L8 2z" stroke="#16a34a" strokeWidth="1.2" strokeLinejoin="round"/><path d="M5 8l2 2 4-4" stroke="#16a34a" strokeWidth="1.2" strokeLinecap="round"/></svg>
-            <span className="text-xs font-medium text-green-800">Inte nöjd? Kontakta oss inom 14 dagar — <strong>info@svardirekt.site</strong></span>
+          {/* Anchor pricing badge */}
+          <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
+            <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
+            <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
           </div>
 
           <div className="flex justify-center gap-3 flex-wrap items-center mb-5">
@@ -1089,7 +1090,8 @@ export default function Home() {
               rel="noopener noreferrer"
               className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm shadow-lg shadow-primary/25"
             >
-              Få svar direkt – 99 kr
+              Få svar direkt –{" "}
+              <s className="opacity-50 font-normal text-xs">149 kr</s> 99 kr
             </a>
             <Link
               href="/kontakt"
@@ -1099,16 +1101,18 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Payhip explanation */}
-          <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-xs text-slate-400">
-            <span className="flex items-center gap-1">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
-              Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.
-            </span>
-            <span className="flex items-center gap-1">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#94a3b8" strokeWidth="1"/><path d="M4 6l1.5 1.5L8.5 4" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round"/></svg>
-              Engångskostnad — inga prenumerationer
-            </span>
+          {/* Trust badges */}
+          <div className="flex flex-wrap justify-center gap-4 mb-2">
+            {[
+              { icon: "🔒", text: "SSL-säker betalning" },
+              { icon: "🛡️", text: "30-dagars returrätt" },
+              { icon: "✅", text: "Engångskostnad" },
+              { icon: "📲", text: "Nedladdning direkt" },
+            ].map((b) => (
+              <span key={b.text} className="flex items-center gap-1.5 text-xs text-slate-500">
+                <span>{b.icon}</span>{b.text}
+              </span>
+            ))}
           </div>
         </div>
       </section>
@@ -1121,7 +1125,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
         >
-          Få svar direkt – 99 kr
+          Få svar direkt – <s className="opacity-50 font-normal text-xs">149</s> 99 kr
         </a>
       </div>
     </div>
