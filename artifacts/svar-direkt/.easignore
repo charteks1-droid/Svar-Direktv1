@@ -1,8 +1,11 @@
+node_modules/
+**/node_modules/
+.git/
 attached_assets/
 .local/
 screenshots/
-artifacts/api-server/dist/
-artifacts/svar-direkt-web/dist/
+artifacts/api-server/
+artifacts/svar-direkt-web/
 artifacts/mockup-sandbox/
 dist/
 web-build/
@@ -10,3 +13,5 @@ android/
 ios/
 .expo/
 *.tsbuildinfo
+*.log
+tmp/

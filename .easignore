@@ -3,8 +3,12 @@ attached_assets/
 screenshots/
 .local/
 
+# node_modules - EAS installs these itself
+node_modules/
+**/node_modules/
+
 # Other artifacts (not needed for the Expo build)
-artifacts/api-server/dist/
+artifacts/api-server/
 artifacts/svar-direkt-web/
 artifacts/mockup-sandbox/
 
@@ -13,3 +17,4 @@ artifacts/mockup-sandbox/
 **/.expo/
 **/web-build/
 **/*.tsbuildinfo
+**/.git/
