@@ -83,8 +83,9 @@ app.get("/", (_req, res) => {
 
 app.use(globalRateLimit);
 
-app.use("/api", router);
+app.use("/api/ai", aiRouter);
 app.use("/ai", aiRouter);
+app.use("/api", router);
 
 app.use(errorHandler);
 
