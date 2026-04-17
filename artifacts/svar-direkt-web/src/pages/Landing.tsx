@@ -30,9 +30,6 @@ export default function Landing() {
             <img src={logoSrc} alt="Svar Direkt" className="h-9 w-9 rounded-lg object-cover" />
             <span className="font-bold text-slate-900 text-sm">Svar Direkt</span>
           </Link>
-          <span className="inline-flex items-center gap-1.5 px-5 py-2 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none">
-            🔜 Snart tillbaka
-          </span>
         </div>
       </header>
 

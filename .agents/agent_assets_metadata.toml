@@ -425,3 +425,9 @@ id = "8dV22_eGRmd9hJMTYl8JZ"
 uri = "file://svar-direkt-web.tar.gz"
 type = "unspecified"
 title = "Svar Direkt – kod strony (tar.gz)"
+
+[[outputs]]
+id = "f67YMf91ItjbN5VXmxDO4"
+uri = "file://svar-direkt-hostinger.tar.gz"
+type = "unspecified"
+title = "Svar Direkt – gotowe pliki do Hostingera (dist)"
