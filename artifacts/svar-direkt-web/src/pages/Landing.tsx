@@ -366,10 +366,9 @@ export default function Landing() {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 mb-5">
               {[
                 { icon: "🔒", text: "SSL-säker betalning" },
-                { icon: "🛡️", text: "30-dagars returrätt" },
                 { icon: "✅", text: "Engångskostnad" },
                 { icon: "📲", text: "Direkt nedladdning" },
               ].map((b) => (
@@ -377,6 +376,17 @@ export default function Landing() {
                   <span>{b.icon}</span>{b.text}
                 </span>
               ))}
+            </div>
+
+            {/* Guarantee block */}
+            <div className="inline-flex items-center gap-3 bg-green-50 border border-green-200 rounded-2xl px-5 py-3.5 max-w-sm mx-auto">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-xl">
+                🛡️
+              </div>
+              <div className="text-left">
+                <p className="text-sm font-semibold text-green-900">30 dagar pengarna tillbaka</p>
+                <p className="text-xs text-green-700 mt-0.5">Är du inte nöjd — återbetalar vi 100%</p>
+              </div>
             </div>
           </div>
         </section>

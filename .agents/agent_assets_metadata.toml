@@ -413,3 +413,9 @@ id = "Wz3ZZDt29zPp9eemwnv7g"
 uri = "file://svar-direkt-v60.zip"
 type = "unspecified"
 title = "Svar Direkt v60 – Ostatnio pobrano + Gwarancja 30 dni"
+
+[[outputs]]
+id = "zHcTuXyP0HMMXajgz6EoC"
+uri = "file://svar-direkt-v61.zip"
+type = "unspecified"
+title = "Svar Direkt v61 – Gwarancja 30 dni + Ostatnio pobrano"
