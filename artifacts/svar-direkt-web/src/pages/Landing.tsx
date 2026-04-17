@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import logoSrc from "../assets/logo.png";
+import RecentDownload from "../components/RecentDownload";
 
 const PAYHIP_URL = "https://payhip.com/b/WxtV3";
 
@@ -400,6 +401,8 @@ export default function Landing() {
           ✨ Skaffa appen – <s className="opacity-50 font-normal text-xs">149</s> 99 kr
         </a>
       </div>
+
+      <RecentDownload />
     </div>
   );
 }

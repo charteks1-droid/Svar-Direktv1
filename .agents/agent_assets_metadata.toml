@@ -407,3 +407,9 @@ id = "uddA-DDdqqXbn_uUOIUzW"
 uri = "file://svar-direkt-v59.zip"
 type = "unspecified"
 title = "Svar Direkt v59 – Anchor pricing + Trust badges"
+
+[[outputs]]
+id = "Wz3ZZDt29zPp9eemwnv7g"
+uri = "file://svar-direkt-v60.zip"
+type = "unspecified"
+title = "Svar Direkt v60 – Ostatnio pobrano + Gwarancja 30 dni"

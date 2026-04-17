@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
+import RecentDownload from "../components/RecentDownload";
 
 function PhoneMockup() {
   return (
@@ -1128,6 +1129,8 @@ export default function Home() {
           Få svar direkt – <s className="opacity-50 font-normal text-xs">149</s> 99 kr
         </a>
       </div>
+
+      <RecentDownload />
     </div>
   );
 }
