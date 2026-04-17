@@ -211,15 +211,10 @@ function Navbar() {
             </div>
           </nav>
 
-          {/* Desktop CTA */}
-          <a
-            href="https://payhip.com/b/WxtV3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
-          >
-            Ladda ner appen
-          </a>
+          {/* Desktop CTA – coming soon */}
+          <span className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-100 text-slate-400 text-sm font-medium cursor-not-allowed border border-slate-200 select-none">
+            🔜 Appen – snart tillbaka
+          </span>
 
           {/* Mobile hamburger */}
           <button
@@ -257,15 +252,12 @@ function Navbar() {
               </Link>
             ))}
             <div className="pt-2 mt-1 border-t border-slate-100">
-              <a
-                href="https://payhip.com/b/WxtV3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-3 py-2.5 rounded-lg bg-primary text-white text-sm font-medium text-center"
-                onClick={() => setMobileOpen(false)}
-              >
-                Ladda ner appen
-              </a>
+              <div className="flex flex-col items-center gap-1 px-3 py-2.5">
+                <span className="block w-full px-3 py-2.5 rounded-lg bg-slate-100 text-slate-400 text-sm font-medium text-center cursor-not-allowed border border-slate-200">
+                  🔜 Appen – snart tillbaka
+                </span>
+                <p className="text-xs text-slate-400 text-center">Vi jobbar med en liten förbättring</p>
+              </div>
             </div>
           </div>
         )}

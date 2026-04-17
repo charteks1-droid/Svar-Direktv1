@@ -1002,14 +1002,10 @@ function ArticlePage({ slug }: { slug: string }) {
           <p className="text-sm text-slate-500 mb-4">
             Hämta Svar Direkt och få tillgång till färdiga mallar för alla situationer.
           </p>
-          <a
-            href="https://payhip.com/b/WxtV3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-2.5 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            Ladda ner appen – 99 kr
-          </a>
+          <span className="inline-flex items-center gap-2 px-6 py-2.5 bg-slate-100 text-slate-400 text-sm font-medium rounded-lg cursor-not-allowed border border-slate-200 select-none">
+            🔜 Appen snart tillbaka
+          </span>
+          <p className="text-xs text-slate-400 mt-2">Vi jobbar med en liten förbättring</p>
         </div>
       </div>
     </div>
@@ -1058,14 +1054,10 @@ export default function Blog() {
             Försäkringskassan, Kronofogden och mer. 99 kr en gång — inga
             prenumerationer.
           </p>
-          <a
-            href="https://payhip.com/b/WxtV3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-3 bg-white text-primary text-sm font-semibold rounded-lg hover:bg-slate-50 transition-colors"
-          >
-            Ladda ner appen
-          </a>
+          <span className="inline-flex items-center gap-2 px-8 py-3 bg-white/20 text-white/60 text-sm font-semibold rounded-lg cursor-not-allowed border border-white/30 select-none">
+            🔜 Appen snart tillbaka
+          </span>
+          <p className="text-xs text-white/50 mt-2">Vi jobbar med en liten förbättring</p>
         </div>
       </section>
     </div>

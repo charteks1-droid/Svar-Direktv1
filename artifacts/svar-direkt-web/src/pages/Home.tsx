@@ -242,14 +242,9 @@ function HelpForm() {
             <p className="text-sm text-slate-500 leading-relaxed max-w-sm">
               Vi återkommer så snart vi kan till din e-postadress. Under tiden kan du redan nu använda våra färdiga mallar direkt i appen.
             </p>
-            <a
-              href="https://payhip.com/b/WxtV3"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 px-6 py-3 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
-            >
-              Få svar direkt – 99 kr
-            </a>
+            <span className="mt-2 px-6 py-3 rounded-xl bg-slate-100 text-slate-400 text-sm font-medium cursor-not-allowed border border-slate-200 select-none inline-flex items-center gap-2">
+              🔜 Appen kommer snart tillbaka
+            </span>
           </div>
         ) : (
           <form
@@ -408,17 +403,12 @@ function LossAversion() {
         </div>
 
         <div className="text-center mt-8">
-          <a
-            href="https://payhip.com/b/WxtV3"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
-          >
-            Kom igång nu –{" "}
-            <span><s className="opacity-50 font-normal text-xs">149 kr</s> 99 kr</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </a>
-          <p className="text-xs text-slate-400 mt-2">🔒 Säker betalning via Payhip · Engångsbetalning · Ingen prenumeration</p>
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-slate-100 text-slate-400 rounded-xl text-sm font-semibold cursor-not-allowed border border-slate-200 select-none">
+              🔜 Appen kommer snart tillbaka
+            </span>
+            <p className="text-xs text-slate-500">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
+          </div>
         </div>
       </div>
     </section>
@@ -512,15 +502,11 @@ export default function Home() {
                 Färdiga mallar + AI-generator för brev till svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
-                <div className="flex items-center gap-2">
-                  <a
-                    href="https://payhip.com/b/WxtV3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors text-sm"
-                  >
-                    Få svar direkt – 99 kr
-                  </a>
+                <div className="flex flex-col items-start gap-1">
+                  <span className="px-6 py-3 bg-slate-100 text-slate-400 rounded-xl font-medium cursor-not-allowed border border-slate-200 select-none text-sm inline-flex items-center gap-2">
+                    🔜 Appen snart tillbaka
+                  </span>
+                  <p className="text-xs text-slate-400">Vi jobbar med en liten förbättring</p>
                 </div>
                 <Link
                   href="/paket"
@@ -1084,16 +1070,11 @@ export default function Home() {
             <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
           </div>
 
-          <div className="flex justify-center gap-3 flex-wrap items-center mb-5">
-            <a
-              href="https://payhip.com/b/WxtV3"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors text-sm shadow-lg shadow-primary/25"
-            >
-              Få svar direkt –{" "}
-              <s className="opacity-50 font-normal text-xs">149 kr</s> 99 kr
-            </a>
+          <div className="flex flex-col items-center gap-2 mb-5">
+            <span className="px-7 py-3.5 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none inline-flex items-center gap-2">
+              🔜 Appen kommer snart tillbaka
+            </span>
+            <p className="text-sm text-slate-500">Vi jobbar med en liten förbättring – appen är snart tillgänglig igen</p>
             <Link
               href="/kontakt"
               className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
@@ -1128,16 +1109,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sticky mobile CTA */}
+      {/* Sticky mobile – coming soon */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-200 shadow-lg px-4 py-3">
-        <a
-          href="https://payhip.com/b/WxtV3"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-xl font-semibold text-sm"
-        >
-          Få svar direkt – <s className="opacity-50 font-normal text-xs">149</s> 99 kr
-        </a>
+        <div className="flex flex-col items-center gap-0.5">
+          <span className="flex items-center justify-center gap-2 w-full py-3 bg-slate-100 text-slate-400 rounded-xl font-semibold text-sm cursor-not-allowed border border-slate-200 select-none">
+            🔜 Appen kommer snart tillbaka
+          </span>
+          <p className="text-xs text-slate-400">Vi jobbar med en liten förbättring</p>
+        </div>
       </div>
 
       <RecentDownload />
