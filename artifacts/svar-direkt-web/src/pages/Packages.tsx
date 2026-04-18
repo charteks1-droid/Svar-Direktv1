@@ -15,7 +15,7 @@ const smsPackages = [
     badge: "Populär",
     badgeColor: "#0a7ea4",
     downloadFile: "snabba-svar-arbete.json",
-    payhipUrl: "https://payhip.com/b/ZFGdB",
+    payhipUrl: "https://payhip.com/b/tYMcV",
   },
   {
     id: "snabba-svar-relationer",
@@ -33,7 +33,7 @@ const smsPackages = [
     badge: "",
     badgeColor: "#00b894",
     downloadFile: "snabba-svar-relationer.json",
-    payhipUrl: "https://payhip.com/b/tYMcV",
+    payhipUrl: "https://payhip.com/b/ZFGdB",
   },
   {
     id: "snabba-svar-halsa",
