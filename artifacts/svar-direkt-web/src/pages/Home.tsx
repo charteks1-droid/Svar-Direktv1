@@ -619,6 +619,17 @@ export default function Home() {
           <p className="text-center text-xs text-slate-400 mt-4">
             Svar Direkt är inte juridisk rådgivning — det är ett praktiskt verktyg för vardagskommunikation.
           </p>
+          <div className="text-center mt-8">
+            <a
+              href="https://payhip.com/b/WxtV3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+            >
+              Köp appen — 49 kr
+            </a>
+            <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Direkt nedladdning · 30 dagars returrätt</p>
+          </div>
         </div>
       </section>
 
@@ -713,6 +724,57 @@ export default function Home() {
               Se alla funktioner
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Gratis mallar på hemsidan */}
+      <section className="bg-green-50 border-y border-green-100 py-14 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
+              🆓 Gratis mallar
+            </span>
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">
+              Hitta gratis mallar direkt på vår hemsida
+            </h2>
+            <p className="text-slate-600 text-sm max-w-xl mx-auto">
+              Behöver du en mall nu direkt — utan att ladda ner något? Vi har gratis brevmallar och texter som du kan kopiera och använda direkt. Klicka nedan och välj det som passar dig.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-5 mb-8">
+            <Link
+              href="/mallar"
+              className="bg-white rounded-2xl border border-green-200 shadow-sm p-6 hover:shadow-md transition-shadow group"
+            >
+              <div className="text-3xl mb-3">📄</div>
+              <h3 className="font-semibold text-slate-900 mb-1 group-hover:text-primary transition-colors">Jobbansökningar & personliga brev</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-3">Gratis mallar för jobbansökningar inom lager, restaurang, butik, städ och mer. Kopiera direkt — klart att anpassa och skicka.</p>
+              <span className="text-xs font-semibold text-green-700 flex items-center gap-1">Öppna mallar → </span>
+            </Link>
+            <Link
+              href="/blogg"
+              className="bg-white rounded-2xl border border-green-200 shadow-sm p-6 hover:shadow-md transition-shadow group"
+            >
+              <div className="text-3xl mb-3">🏛️</div>
+              <h3 className="font-semibold text-slate-900 mb-1 group-hover:text-primary transition-colors">Brevmallar till myndigheter</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-3">Gratis mallar för Kronofogden, Försäkringskassan, Skatteverket och mer. Kopiera texten, fyll i dina uppgifter och skicka.</p>
+              <span className="text-xs font-semibold text-green-700 flex items-center gap-1">Läs och kopiera → </span>
+            </Link>
+          </div>
+          <div className="text-center bg-white rounded-2xl border border-slate-200 p-5">
+            <p className="text-sm text-slate-600 mb-3">
+              <span className="font-semibold text-slate-900">Vill du ha alla 52+ mallar samlade i en app?</span>{" "}
+              Ladda ner Svar Direkt — fungerar offline, kräver inget konto, alltid i fickan.
+            </p>
+            <a
+              href="https://payhip.com/b/WxtV3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+            >
+              Köp appen — 49 kr
+            </a>
           </div>
         </div>
       </section>
@@ -847,6 +909,17 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="text-center mt-10">
+          <a
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+          >
+            Köp appen — 49 kr
+          </a>
+          <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Fungerar offline · 30 dagars returrätt</p>
         </div>
       </section>
 

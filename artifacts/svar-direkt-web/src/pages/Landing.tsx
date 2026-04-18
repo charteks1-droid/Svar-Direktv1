@@ -185,6 +185,17 @@ export default function Landing() {
                 </tbody>
               </table>
             </div>
+          <div className="text-center mt-6">
+            <a
+              href={PAYHIP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+            >
+              Köp appen — 49 kr
+            </a>
+            <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Direkt nedladdning · Fungerar offline</p>
+          </div>
           </div>
         </section>
 
