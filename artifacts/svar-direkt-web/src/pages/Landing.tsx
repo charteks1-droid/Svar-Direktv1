@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import logoSrc from "../assets/logo.png";
 
-const PAYHIP_URL = "https://payhip.com/b/ZFGdB";
+const PAYHIP_URL = "https://payhip.com/b/WxtV3";
 
 const testimonials = [
   {

@@ -487,7 +487,7 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-3 items-center">
                 <a
-                  href="https://payhip.com/b/ZFGdB"
+                  href="https://payhip.com/b/WxtV3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
@@ -1045,7 +1045,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
             <a
-              href="https://payhip.com/b/ZFGdB"
+              href="https://payhip.com/b/WxtV3"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
