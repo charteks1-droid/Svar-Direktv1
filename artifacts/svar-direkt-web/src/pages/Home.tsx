@@ -126,7 +126,7 @@ function FaqSection() {
   const faqs = [
     {
       q: "Vad är Svar Direkt?",
-      a: "Svar Direkt är en app med 52+ färdiga mallar och en inbyggd AI-generator för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Du beskriver ditt ärende, AI skriver brevet åt dig. Inga tomma sidor, ingen gissning.",
+      a: "Svar Direkt är en app med 52+ färdiga mallar för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Välj rätt mall, kopiera texten och skicka. Inga tomma sidor, ingen gissning.",
     },
     {
       q: "För vem passar appen?",
@@ -142,7 +142,7 @@ function FaqSection() {
     },
     {
       q: "Vad ingår i appen och vad kostar den?",
-      a: "Grundappen kostar 99 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
+      a: "Grundappen kostar 49 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
     },
   ];
 
@@ -335,7 +335,7 @@ const LOSS_ITEMS = [
   { utan: "Risk att skriva fel ton eller missförstås", med: "Korrekt, formell svenska — direkt" },
   { utan: "Stress och osäkerhet inför varje svar", med: "Lugn och trygghet — texten är redan klar" },
   { utan: "Ärendet försenas pga misstag eller tomma sidor", med: "Skickar i tid — missar inga frister" },
-  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "99 kr en gång — inga prenumerationer" },
+  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "49 kr en gång — inga prenumerationer" },
   { utan: "Vet inte ens var du ska börja", med: "Klar text att kopiera och anpassa direkt" },
 ];
 
@@ -422,7 +422,7 @@ export default function Home() {
           "name": "Vad är Svar Direkt?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Svar Direkt är en app med 52+ färdiga mallar och en inbyggd AI-generator för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Du beskriver ditt ärende, AI skriver brevet åt dig. Inga tomma sidor, ingen gissning."
+            "text": "Svar Direkt är en app med 52+ färdiga mallar för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Välj rätt mall, kopiera texten och skicka. Inga tomma sidor, ingen gissning."
           }
         },
         {
@@ -454,7 +454,7 @@ export default function Home() {
           "name": "Vad kostar Svar Direkt och vad ingår?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Grundappen kostar 99 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
+            "text": "Grundappen kostar 49 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
           }
         }
       ]
@@ -477,17 +477,13 @@ export default function Home() {
                   <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
                   Tillgänglig för Android
                 </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-100 text-violet-700 text-xs font-medium">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z" fill="currentColor"/></svg>
-                  AI skriver ditt brev
-                </div>
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-5">
                 Skriv rätt.<br />Få svar.<br />
                 <span className="text-primary">Sluta stressa.</span>
               </h1>
               <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-md">
-                Färdiga mallar + AI-generator för brev till svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
+                52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
                 <Link
@@ -590,12 +586,12 @@ export default function Home() {
                   {
                     alt: "🤖 Skriva med ChatGPT",
                     problem: "Kräver att du vet vad du ska fråga, ger inte alltid korrekt juridisk ton, kopplas inte till din specifika myndighet.",
-                    sd: "AI är inbyggd — beskriv ditt ärende och få ett färdigt formellt brev på svenska. Direkt i appen.",
+                    sd: "52+ färdiga mallar anpassade för svenska myndigheter — klara att kopiera direkt i appen.",
                   },
                   {
                     alt: "⚖️ Juridisk rådgivning",
                     problem: "Kostar 1 000–3 000 kr per timme. Inte rimligt för ett enkelt svar till Försäkringskassan.",
-                    sd: "99 kr en gång. Tillgång till alla mallar direkt.",
+                    sd: "49 kr en gång. Tillgång till alla mallar direkt.",
                   },
                   {
                     alt: "📋 Andras bloggar & forum",
@@ -730,7 +726,7 @@ export default function Home() {
             {
               step: "1",
               title: "Ladda ner appen",
-              desc: "Köp appen för 99 kr och ladda ner den till Android.",
+              desc: "Köp appen för 49 kr och ladda ner den till Android.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -873,7 +869,7 @@ export default function Home() {
                 <a href="https://www.skatteverket.se" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline font-medium">Skatteverkets webbplats</a>.
               </p>
               <p>
-                Appen fungerar offline och kräver inget konto. Du köper en gång för 99 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
+                Appen fungerar offline och kräver inget konto. Du köper en gång för 49 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
               </p>
             </div>
           </div>
@@ -1041,10 +1037,8 @@ export default function Home() {
             Ladda ner appen en gång. Ha färdiga svar för Skatteverket, Kronofogden, Försäkringskassan och mer — alltid i fickan.
           </p>
 
-          {/* Anchor pricing badge */}
           <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-            <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
-            <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
+            <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
           </div>
 
           <div className="flex flex-col items-center gap-2 mb-5">

@@ -5,15 +5,15 @@ const PAYHIP_URL = "https://payhip.com/b/WxtV3";
 
 const testimonials = [
   {
-    quote: "Jag visste inte ens hur jag skulle börja skriva till Försäkringskassan. Jag beskrev situationen med tre meningar och AI genererade ett komplett formellt brev på 8 sekunder. Fick svar inom en vecka.",
+    quote: "Jag visste inte var jag skulle börja med Försäkringskassan. Appen hade exakt rätt mall — färdig, formell och klar att skicka. Fick svar inom en vecka.",
     author: "Användare i Stockholm",
   },
   {
-    quote: "Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde. AI hjälpte mig formulera invändningen perfekt — utan att jag behövde veta ett enda juridiskt ord.",
+    quote: "Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde — professionell svenska, rätt ton, klart att kopiera. Inga juridiska termer att lära sig.",
     author: "Användare i Göteborg",
   },
   {
-    quote: "Appen sparade mig säkert hundratals kronor i juridisk rådgivning. Jag beskrev problemet, AI-generatorn spottade ut ett perfekt brev till Skatteverket på 12 sekunder. Häpnadsväckande.",
+    quote: "Appen sparade mig hundratals kronor i juridisk rådgivning. Jag hittade rätt mall, kopierade texten och skickade direkt. Snabbt, enkelt och korrekt.",
     author: "Användare i Malmö",
   },
 ];
@@ -39,19 +39,18 @@ export default function Landing() {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 py-20 sm:py-28 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
-              52+ mallar + AI-generator — tillgänglig för Android
+              52+ färdiga mallar — tillgänglig för Android
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-5">
-              Beskriv ditt problem.<br />
-              AI skriver brevet.<br />
+              Hitta rätt mall.<br />
+              Kopiera texten.<br />
               <span className="text-primary">Du skickar det direkt.</span>
             </h1>
             <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl mx-auto">
-              Skriv två meningar om vad som hänt — AI levererar ett komplett, formellt brev anpassat för exakt din myndighet. Inga juridiska termer, ingen gissning. Klart på under 10 sekunder.
+              Välj bland 52+ färdiga mallar för svenska myndigheter. Formella, korrekta texter för Skatteverket, Försäkringskassan, Migrationsverket och fler — redo att kopieras och skickas.
             </p>
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-              <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
-              <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
+              <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
             </div>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
@@ -68,18 +67,18 @@ export default function Landing() {
           </div>
         </section>
 
-        {/* 2. AI-SEKTION — MAGNET */}
+        {/* 2. MALLAR-SEKTION */}
         <section className="py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
-                ✨ AI-teknik
+                📄 Färdiga mallar
               </span>
               <h2 className="text-2xl font-bold text-slate-900 mb-3">
-                Sluta stirra på ett tomt papper.<br />AI skriver brevet åt dig.
+                Sluta stirra på ett tomt papper.<br />Välj en mall — kopiera — skicka.
               </h2>
               <p className="text-slate-500 text-sm max-w-md mx-auto">
-                Inte en tom mall du måste fylla i. Inte vaga råd du måste tolka. Ett fullständigt, formellt brev — klart att skicka på under 10 sekunder.
+                52+ professionella mallar skrivna på korrekt, formell svenska. Sorterade per myndighet. Klara att använda direkt.
               </p>
             </div>
 
@@ -87,21 +86,21 @@ export default function Landing() {
               {[
                 {
                   step: "1",
-                  icon: "✍️",
-                  title: "Beskriv ditt ärende",
-                  desc: "Skriv 2–3 meningar om vad som hänt och vad du vill uppnå. Precis som du berättar för en vän — inga juridiska termer behövs.",
+                  icon: "🏛️",
+                  title: "Välj myndighet",
+                  desc: "Öppna appen och välj vilken myndighet du vill skriva till — Skatteverket, Försäkringskassan, Kronofogden och fler.",
                 },
                 {
                   step: "2",
-                  icon: "✨",
-                  title: "AI skriver hela brevet",
-                  desc: "Avancerad AI analyserar ditt ärende och skriver ett formellt, myndighetsanpassat brev med rätt ton och terminologi — klart på sekunder.",
+                  icon: "📄",
+                  title: "Välj rätt mall",
+                  desc: "52+ mallar sorterade per myndighet och ärendetyp. Färdiga, formella texter på korrekt svenska — klara att använda.",
                 },
                 {
                   step: "3",
                   icon: "📤",
                   title: "Kopiera och skicka",
-                  desc: "Brevet är klart och redo. Tryck för att kopiera — klistra sedan in och skicka till myndigheten.",
+                  desc: "Tryck för att kopiera hela texten. Klistra in och skicka till myndigheten — klart på under en minut.",
                 },
               ].map((item) => (
                 <div key={item.step} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 text-center">
@@ -115,10 +114,10 @@ export default function Landing() {
             <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { icon: "🏛️", text: "Stödjer 9 svenska myndigheter — Kronofogden, Skatteverket, Försäkringskassan, Migrationsverket och fler" },
-                  { icon: "⚡", text: "Brev genereras på under 10 sekunder — snabbare än att ens hitta rätt blankett på myndighetens hemsida" },
-                  { icon: "🔄", text: "10 AI-genererade brev per dag ingår — utan extra kostnad, utan prenumeration" },
-                  { icon: "🧠", text: "Inga prompts, inga instruktioner — berätta bara kort vad som hänt, AI gör resten" },
+                  { icon: "🏛️", text: "52+ mallar för svenska myndigheter — Kronofogden, Skatteverket, Försäkringskassan, Migrationsverket och fler" },
+                  { icon: "📝", text: "Professionell, formell svenska — du behöver inte kunna juridiska termer eller myndighetsspråk" },
+                  { icon: "📱", text: "Fungerar offline — ingen internetanslutning behövs när du väl laddat ner appen" },
+                  { icon: "🔖", text: "Spara favoriter och historik — dina använda mallar sparas automatiskt i appen" },
                 ].map((item) => (
                   <div key={item.icon} className="flex items-start gap-3">
                     <span className="text-xl flex-shrink-0">{item.icon}</span>
@@ -157,26 +156,26 @@ export default function Landing() {
               <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
                 Lösningen
               </span>
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">52+ mallar + AI för varje myndighet</h2>
-              <p className="text-slate-500 text-sm">Välj färdig mall → eller låt AI skriva → kopiera → skicka.</p>
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">52+ färdiga mallar för varje myndighet</h2>
+              <p className="text-slate-500 text-sm">Välj mall → kopiera texten → skicka till myndigheten.</p>
             </div>
             <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-sm mb-6">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-slate-900 text-white">
                     <th className="text-left px-5 py-3.5 font-semibold">Myndighet</th>
-                    <th className="text-left px-5 py-3.5 font-semibold text-primary">Mallar + AI</th>
+                    <th className="text-left px-5 py-3.5 font-semibold text-primary">Antal mallar</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 bg-white">
                   {[
-                    { name: "Försäkringskassan", count: "14 mallar + AI-generator" },
-                    { name: "Skatteverket", count: "14 mallar + AI-generator" },
-                    { name: "Migrationsverket", count: "14 mallar + AI-generator" },
-                    { name: "Boverket", count: "10 mallar + AI-generator" },
-                    { name: "Kronofogden", count: "AI-generator" },
-                    { name: "Arbetsförmedlingen", count: "AI-generator" },
-                    { name: "Inkasso", count: "AI-generator" },
+                    { name: "Försäkringskassan", count: "14 mallar" },
+                    { name: "Skatteverket", count: "14 mallar" },
+                    { name: "Migrationsverket", count: "14 mallar" },
+                    { name: "Boverket", count: "10 mallar" },
+                    { name: "Kronofogden", count: "6 mallar" },
+                    { name: "Arbetsförmedlingen", count: "6 mallar" },
+                    { name: "Inkasso", count: "4 mallar" },
                   ].map((row) => (
                     <tr key={row.name} className="hover:bg-slate-50 transition-colors">
                       <td className="px-5 py-4 font-medium text-slate-800">{row.name}</td>
@@ -212,17 +211,17 @@ export default function Landing() {
                     {
                       alt: "🔍 Google",
                       problem: "Generiska texter, på engelska, osäkra källor — tar timmar.",
-                      sd: "Färdiga svenska texter + AI för exakt din situation.",
+                      sd: "Färdiga svenska texter för exakt din situation.",
                     },
                     {
                       alt: "🤖 ChatGPT",
                       problem: "Kräver att du vet vad du frågar. Inte tränat för svenska myndigheter.",
-                      sd: "AI redan anpassad för svenska myndigheter. Inga prompts behövs.",
+                      sd: "Mallar anpassade för svenska myndigheter. Inga juridiska termer behövs.",
                     },
                     {
                       alt: "⚖️ Jurist",
                       problem: "1 000–3 000 kr per timme. Orimligt för ett enkelt svar.",
-                      sd: "99 kr en gång. AI + 52 mallar direkt i mobilen.",
+                      sd: "49 kr en gång. 52+ mallar direkt i mobilen.",
                     },
                   ].map((row) => (
                     <tr key={row.alt} className="hover:bg-slate-50 transition-colors">
@@ -271,12 +270,12 @@ export default function Landing() {
                 {
                   num: "1",
                   title: "Köp appen",
-                  desc: "Betala 99 kr en gång via Payhip. Du får nedladdningslänken direkt.",
+                  desc: "Betala 49 kr en gång via Payhip. Du får nedladdningslänken direkt.",
                 },
                 {
                   num: "2",
-                  title: "Välj mall eller låt AI skriva",
-                  desc: "52+ mallar sorterade per myndighet — eller beskriv ditt ärende och låt AI skriva ett komplett, personligt brev på under 10 sekunder.",
+                  title: "Välj rätt mall",
+                  desc: "52+ mallar sorterade per myndighet och ärendetyp — välj den som passar din situation.",
                 },
                 {
                   num: "3",
@@ -300,19 +299,17 @@ export default function Landing() {
         <section className="bg-gradient-to-b from-slate-50 to-white border-t border-slate-100 py-20 px-4 sm:px-6">
           <div className="max-w-2xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 text-xs font-semibold mb-4">
-              ✨ AI ingår i priset
+              📄 52+ färdiga mallar
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
               Myndigheten väntar inte på ditt svar.<br />Men du behöver inte skriva det själv.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              99 kr en gång. Du får AI-generatorn + 52 färdiga mallar på svenska. Inga prenumerationer, inga dolda avgifter — allt klart direkt efter köp.
+              49 kr en gång. Du får 52+ färdiga mallar på svenska för myndigheter och vardag. Inga prenumerationer, inga dolda avgifter — allt klart direkt efter köp.
             </p>
 
-            {/* Anchor pricing */}
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-              <span className="text-xs text-amber-800">Ordinarie pris: <s className="font-medium">149 kr</s></span>
-              <span className="text-xs font-bold text-amber-900">→ Idag: 99 kr</span>
+              <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
