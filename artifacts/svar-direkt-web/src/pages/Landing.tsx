@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import logoSrc from "../assets/logo.png";
 
-const PAYHIP_URL = "https://payhip.com/b/WxtV3";
+const PAYHIP_URL = "https://payhip.com/b/ZFGdB";
 
 const testimonials = [
   {
@@ -313,6 +313,14 @@ export default function Landing() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
+              <a
+                href={PAYHIP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
+              >
+                Köp appen — 49 kr
+              </a>
               <Link
                 href="/kontakt"
                 className="px-6 py-4 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"

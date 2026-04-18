@@ -486,17 +486,19 @@ export default function Home() {
                 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
+                <a
+                  href="https://payhip.com/b/ZFGdB"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+                >
+                  Köp appen — 49 kr
+                </a>
                 <Link
                   href="/paket"
                   className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
                 >
                   Se paket
-                </Link>
-                <Link
-                  href="/pdf-guider"
-                  className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
-                >
-                  Se PDF-guider
                 </Link>
               </div>
               <p className="text-xs text-slate-400 mt-3">
@@ -1041,10 +1043,18 @@ export default function Home() {
             <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
           </div>
 
-          <div className="flex flex-col items-center gap-2 mb-5">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
+            <a
+              href="https://payhip.com/b/ZFGdB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
+            >
+              Köp appen — 49 kr
+            </a>
             <Link
               href="/kontakt"
-              className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
+              className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"
             >
               Kontakta oss
             </Link>
