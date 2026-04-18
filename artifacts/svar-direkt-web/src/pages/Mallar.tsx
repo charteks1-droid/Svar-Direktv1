@@ -242,6 +242,371 @@ Med vänliga hälsningar,
   },
 ];
 
+const authorityTemplates = [
+  // --- FÖRSÄKRINGSKASSAN ---
+  {
+    id: "fk-1",
+    authority: "Försäkringskassan",
+    color: "blue",
+    title: "Begäran om förlängning av sjukpenning",
+    seo: "Mall för att begära förlängning av sjukpenning från Försäkringskassan.",
+    text: `Till Försäkringskassan
+
+Ärende: Begäran om förlängning av sjukpenning
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och vill med detta brev begära förlängning av min sjukpenning. Jag är för närvarande sjukskriven sedan [datum] till och med [datum] med diagnos [diagnos].
+
+Min läkare har bedömt att min arbetsförmåga fortfarande är nedsatt och att jag behöver ytterligare tid för rehabilitering. Läkarintyg bifogas/har skickats separat.
+
+Jag är tillgänglig för frågor eller komplettering och kan nås på [telefon] eller [e-post].
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Datum]`,
+  },
+  {
+    id: "fk-2",
+    authority: "Försäkringskassan",
+    color: "blue",
+    title: "Överklagande av beslut om nekad ersättning",
+    seo: "Mall för överklagande av Försäkringskassans beslut om nekad sjukpenning eller ersättning.",
+    text: `Till Försäkringskassan
+
+Ärende: Överklagande av beslut [ärendenummer]
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och överklagar härmed ert beslut daterat [datum] om nekad [ersättningstyp, t.ex. sjukpenning/aktivitetsersättning].
+
+Jag anser att beslutet är felaktigt av följande skäl:
+
+[Beskriv varför du anser att beslutet är fel, t.ex.: Min arbetsförmåga är fortfarande nedsatt enligt bifogat läkarintyg. / Jag uppfyller villkoren för ersättning eftersom...]
+
+Jag bifogar följande handlingar till stöd för mitt överklagande:
+- Läkarintyg daterat [datum]
+- [Övriga bilagor]
+
+Jag begär att Försäkringskassan omprövar beslutet snarast möjligt.
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[Datum]`,
+  },
+  {
+    id: "fk-3",
+    authority: "Försäkringskassan",
+    color: "blue",
+    title: "Svar på begäran om komplettering",
+    seo: "Mall för att svara på Försäkringskassans begäran om komplettering av ansökan.",
+    text: `Till Försäkringskassan
+
+Ärende: Komplettering av ansökan [ärendenummer]
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och svarar härmed på er begäran om komplettering daterad [datum].
+
+Ni efterfrågade följande uppgifter/handlingar:
+[Beskriv vad Försäkringskassan begärde]
+
+Nedan följer de uppgifter ni efterfrågade:
+[Fyll i svaren på de frågor som ställdes]
+
+Bifogade handlingar:
+- [Dokument 1]
+- [Dokument 2]
+
+Om ni behöver ytterligare information är ni välkomna att kontakta mig på [telefon] eller [e-post].
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Datum]`,
+  },
+
+  // --- KRONOFOGDEN ---
+  {
+    id: "kf-1",
+    authority: "Kronofogden",
+    color: "red",
+    title: "Bestrida skuld – okänd eller felaktig fordran",
+    seo: "Mall för att bestrida en skuld eller felaktig fordran hos Kronofogden.",
+    text: `Till Kronofogdemyndigheten
+
+Ärende: Bestridande av ansökan om betalningsföreläggande [målinummer]
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och bestrider härmed den fordran som [fordringsägare] har framställt mot mig.
+
+Jag bestrider kravet av följande skäl:
+[Välj ett eller flera alternativ och anpassa:]
+- Jag känner inte igen skulden och bestrider att jag är skyldig detta belopp.
+- Jag har redan betalat detta belopp den [datum]. Kvitto/bevis bifogas.
+- Beloppet är felaktigt beräknat. Det korrekta beloppet är [belopp].
+- Fordran är preskriberad.
+
+Jag begär att ärendet hänskjuts till tingsrätten för prövning.
+
+Bifogade handlingar:
+- [Bevis/kvitton/korrespondens]
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[Datum]`,
+  },
+  {
+    id: "kf-2",
+    authority: "Kronofogden",
+    color: "red",
+    title: "Ansökan om avbetalningsplan",
+    seo: "Mall för att ansöka om avbetalningsplan eller betalningsuppgörelse hos Kronofogden.",
+    text: `Till Kronofogdemyndigheten
+
+Ärende: Ansökan om avbetalningsplan
+Personnummer: [XXXXXXXXXX-XXXX]
+Målinummer: [Målinummer]
+
+Jag heter [Namn] och kontaktar er angående skulden till [borgenär] om [belopp] kr.
+
+Jag erkänner skulden men befinner mig för närvarande i en svår ekonomisk situation på grund av [orsak, t.ex. sjukdom, arbetslöshet, oförutsedda utgifter]. Jag kan inte betala hela beloppet på en gång, men jag är villig och i stånd att betala [belopp] kr per månad.
+
+Mina nuvarande inkomster: [belopp] kr/månad
+Mina fasta utgifter: [belopp] kr/månad
+
+Jag hoppas att vi kan komma överens om en avbetalningsplan som gör det möjligt för mig att reglera skulden.
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[Datum]`,
+  },
+  {
+    id: "kf-3",
+    authority: "Kronofogden",
+    color: "red",
+    title: "Begäran om skuldsanering",
+    seo: "Mall för att ansöka om skuldsanering hos Kronofogden när man har ohanterbara skulder.",
+    text: `Till Kronofogdemyndigheten
+
+Ärende: Ansökan om skuldsanering
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och ansöker härmed om skuldsanering.
+
+Jag har skulder på totalt cirka [totalt belopp] kr till följande borgenärer:
+- [Borgenär 1]: [belopp] kr
+- [Borgenär 2]: [belopp] kr
+- [Borgenär 3]: [belopp] kr
+
+Jag har gjort allt jag kan för att betala mina skulder men min ekonomiska situation omöjliggör detta. Min inkomst är [belopp] kr/månad och mina nödvändiga levnadskostnader uppgår till [belopp] kr/månad.
+
+Jag uppfyller villkoren för skuldsanering eftersom jag är varaktigt betalningsoförmögen och det är skäligt med hänsyn till mina personliga och ekonomiska förhållanden.
+
+Jag bifogar fullständig förteckning över skulder, tillgångar och inkomster.
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[Datum]`,
+  },
+
+  // --- SKATTEVERKET ---
+  {
+    id: "sk-1",
+    authority: "Skatteverket",
+    color: "green",
+    title: "Ansökan om anstånd med skatteinbetalning",
+    seo: "Mall för att ansöka om anstånd med betalning av skatt till Skatteverket.",
+    text: `Till Skatteverket
+
+Ärende: Ansökan om anstånd med betalning av skatt
+Personnummer/Organisationsnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och ansöker härmed om anstånd med betalning av [skatteskuld/preliminärskatt] om [belopp] kr som förfaller [datum].
+
+Anledningen till att jag ansöker om anstånd är:
+[Beskriv skälen, t.ex.: Jag har drabbats av en oväntad ekonomisk svårighet på grund av... / Mitt kassaflöde är tillfälligt ansträngt på grund av...]
+
+Jag bedömer att jag kan betala hela beloppet senast [datum] och hoppas att Skatteverket kan bevilja anstånd till dess.
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[E-post]
+[Datum]`,
+  },
+  {
+    id: "sk-2",
+    authority: "Skatteverket",
+    color: "green",
+    title: "Svar på förfrågan om skattekontroll",
+    seo: "Mall för att svara på Skatteverkets förfrågan om skattekontroll eller granskning.",
+    text: `Till Skatteverket
+
+Ärende: Svar på förfrågan om kontroll [referensnummer]
+Personnummer/Organisationsnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och svarar härmed på er förfrågan daterad [datum] angående [ämne, t.ex. min deklaration för inkomstår X].
+
+Ni efterfrågade uppgifter om:
+[Ange vad Skatteverket frågade om]
+
+Svar:
+[Ge utförliga och korrekta svar på frågorna. Var noggrann och bifoga bevis.]
+
+Bifogade handlingar som styrker ovanstående:
+- [Dokument 1, t.ex. kvitton, kontrakt, kontoutdrag]
+- [Dokument 2]
+
+Om ni behöver ytterligare information är ni välkomna att kontakta mig på [telefon] eller [e-post].
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Datum]`,
+  },
+  {
+    id: "sk-3",
+    authority: "Skatteverket",
+    color: "green",
+    title: "Rättelse av uppgifter i deklaration",
+    seo: "Mall för att rätta eller komplettera uppgifter i deklarationen hos Skatteverket.",
+    text: `Till Skatteverket
+
+Ärende: Begäran om rättelse av deklaration för inkomstår [år]
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och vill rätta följande uppgift i min inkomstdeklaration för [år]:
+
+Felaktig uppgift:
+[Beskriv vad som är fel, t.ex.: Jag har av misstag angett fel belopp för avdraget för resor till arbetet. Det angivna beloppet var X kr, men det korrekta beloppet är Y kr.]
+
+Korrekt uppgift:
+[Ange den korrekta informationen]
+
+Anledning till felet:
+[Förklara varför felet uppstod]
+
+Jag bifogar underlag som styrker den korrekta uppgiften:
+- [Bilaga 1]
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[Datum]`,
+  },
+
+  // --- MIGRATIONSVERKET ---
+  {
+    id: "mv-1",
+    authority: "Migrationsverket",
+    color: "purple",
+    title: "Ansökan om förlängning av uppehållstillstånd",
+    seo: "Mall för att ansöka om förlängning av uppehållstillstånd hos Migrationsverket.",
+    text: `Till Migrationsverket
+
+Ärende: Ansökan om förlängning av uppehållstillstånd
+Personnummer/dossiernummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn], född [datum], och ansöker härmed om förlängning av mitt uppehållstillstånd som löper ut [datum].
+
+Jag är i Sverige på grund av [ange skäl, t.ex.: arbete / familjeanknytning / studier] och min situation är oförändrad sedan mitt senaste tillstånd beviljades.
+
+Mina nuvarande omständigheter:
+- Sysselsättning: [Anställd hos / Studerar vid / Annat]
+- Adress i Sverige: [Adress]
+- Familjesituation: [Beskriv]
+
+Bifogade handlingar:
+- Kopia av passet (sidan med personuppgifter och nuvarande tillstånd)
+- [Anställningsintyg / Studieintyg / Annat relevant dokument]
+- [Övriga bilagor]
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[E-post]
+[Datum]`,
+  },
+  {
+    id: "mv-2",
+    authority: "Migrationsverket",
+    color: "purple",
+    title: "Komplettering av ansökan",
+    seo: "Mall för att komplettera en ansökan hos Migrationsverket med efterfrågade handlingar.",
+    text: `Till Migrationsverket
+
+Ärende: Komplettering av ansökan [dossiernummer]
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och svarar härmed på er begäran om komplettering daterad [datum].
+
+Ni begärde följande handlingar/uppgifter:
+[Lista vad Migrationsverket efterfrågade]
+
+Jag bifogar härmed de efterfrågade handlingarna:
+- [Dokument 1, t.ex. pass, personbevis, intyg]
+- [Dokument 2]
+- [Dokument 3]
+
+[Om något saknas, förklara varför:]
+Angående [dokument X] vill jag informera er om att [förklaring, t.ex. dokumentet är beställt och kommer att skickas separat inom X dagar].
+
+Kontakta mig gärna om ni behöver ytterligare information.
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[E-post]
+[Datum]`,
+  },
+  {
+    id: "mv-3",
+    authority: "Migrationsverket",
+    color: "purple",
+    title: "Överklagande av beslut om uppehållstillstånd",
+    seo: "Mall för överklagande av Migrationsverkets beslut om nekat uppehållstillstånd.",
+    text: `Till Migrationsöverdomstolen / Migrationsdomstolen
+(Via Migrationsverket)
+
+Ärende: Överklagande av beslut [dossiernummer]
+Personnummer: [XXXXXXXXXX-XXXX]
+
+Jag heter [Namn] och överklagar härmed Migrationsverkets beslut daterat [datum] om nekad [typ av tillstånd].
+
+Yrkande:
+Jag yrkar att domstolen upphäver Migrationsverkets beslut och beviljar mig [typ av tillstånd].
+
+Grunder för överklagandet:
+[Beskriv varför du anser att beslutet är felaktigt, t.ex.:]
+- Jag uppfyller villkoren för uppehållstillstånd på grund av [skäl].
+- Migrationsverket har inte beaktat [omständighet].
+- Beslutet strider mot [relevant lag/praxis].
+
+Bifogade handlingar:
+- Kopia av Migrationsverkets beslut
+- [Stöddokument 1]
+- [Stöddokument 2]
+
+Med vänliga hälsningar,
+[Namn]
+[Adress]
+[Telefon]
+[E-post]
+[Datum]`,
+  },
+];
+
 const cvTemplates = [
   {
     id: 101,
@@ -732,6 +1097,60 @@ Språk: [Dina språk och nivå]`,
   },
 ];
 
+const authorityColors: Record<string, { bg: string; border: string; badge: string; text: string }> = {
+  blue:   { bg: "bg-blue-50",   border: "border-blue-200",   badge: "bg-blue-100 text-blue-800",   text: "text-blue-700" },
+  red:    { bg: "bg-red-50",    border: "border-red-200",    badge: "bg-red-100 text-red-800",    text: "text-red-700" },
+  green:  { bg: "bg-green-50",  border: "border-green-200",  badge: "bg-green-100 text-green-800",  text: "text-green-700" },
+  purple: { bg: "bg-purple-50", border: "border-purple-200", badge: "bg-purple-100 text-purple-800", text: "text-purple-700" },
+};
+
+function AuthorityTemplateCard({ template }: { template: typeof authorityTemplates[0] }) {
+  const [copied, setCopied] = useState(false);
+  const textRef = useRef<HTMLTextAreaElement>(null);
+  const c = authorityColors[template.color] ?? authorityColors.blue;
+
+  const handleCopy = () => {
+    const val = textRef.current?.value ?? template.text;
+    navigator.clipboard.writeText(val).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <div className={`bg-white border ${c.border} rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden`}>
+      <div className={`${c.bg} border-b ${c.border} px-5 py-3 flex items-center justify-between gap-2`}>
+        <div>
+          <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.badge} mr-2`}>{template.authority}</span>
+          <span className="font-semibold text-slate-800 text-sm">{template.title}</span>
+        </div>
+        <button
+          onClick={handleCopy}
+          className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+            copied ? "bg-green-100 text-green-700" : "bg-primary text-white hover:bg-primary/90"
+          }`}
+        >
+          {copied ? (
+            <><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>Kopierat!</>
+          ) : (
+            <><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.2"/><path d="M9 4V3a1 1 0 00-1-1H3a1 1 0 00-1 1v5a1 1 0 001 1h1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>Kopiera text</>
+          )}
+        </button>
+      </div>
+      <div className="p-4">
+        <textarea
+          ref={textRef}
+          defaultValue={template.text}
+          rows={12}
+          spellCheck={false}
+          className="w-full text-sm text-slate-700 leading-relaxed bg-slate-50 border border-slate-200 rounded-lg p-3 resize-y focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary font-mono"
+        />
+        <p className="text-xs text-slate-400 mt-2">Klicka i texten och ersätt [Namn], [datum], [belopp] osv. med dina uppgifter.</p>
+      </div>
+    </div>
+  );
+}
+
 function TemplateCard({ template }: { template: typeof templates[0] }) {
   const [copied, setCopied] = useState(false);
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -852,8 +1271,9 @@ export default function Mallar() {
   return (
     <>
       <head>
-        <title>Färdiga mallar för jobbansökningar – enkla att kopiera</title>
-        <meta name="description" content="15 enkla och redigerbara mallar för jobbansökningar. Kopiera, ändra och använd direkt." />
+        <title>Gratis mallar – Jobbansökningar & Myndighetsbrev | Svar Direkt</title>
+        <meta name="description" content="Gratis brevmallar för Försäkringskassan, Kronofogden, Skatteverket och Migrationsverket. Klicka, redigera och kopiera direkt. Även jobbansökningar och CV-mallar." />
+        <meta name="keywords" content="gratis mallar myndigheter, Försäkringskassan mall, Kronofogden brev mall, Skatteverket svar mall, Migrationsverket mall, bestrida skuld mall, överklagande Försäkringskassan, sjukpenning förlängning mall, jobbansökan mall, gratis brevmall, kopiera och skicka, myndighetsbrev gratis" />
       </head>
 
       {/* Hero */}
@@ -900,6 +1320,129 @@ export default function Mallar() {
               <TemplateCard key={t.id} template={t} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== GRATIS MYNDIGHETSBREV ===== */}
+      <div className="bg-slate-900 py-12 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="inline-block bg-primary/20 text-primary text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+            🏛️ Gratis myndighetsbrev
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+            Färdiga brevmallar till svenska myndigheter
+          </h2>
+          <p className="text-slate-400 text-base max-w-2xl mx-auto mb-4">
+            12 gratis mallar för Försäkringskassan, Kronofogden, Skatteverket och Migrationsverket.
+            Klicka i texten, fyll i dina uppgifter och kopiera direkt — klart att skicka.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 mt-2 text-sm text-slate-400">
+            <span className="flex items-center gap-1.5"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" fill="rgba(10,126,164,0.3)"/><path d="M4 7.5l2.5 2.5 4.5-4.5" stroke="#0a7ea4" strokeWidth="1.3" strokeLinecap="round"/></svg>Formell, korrekt svenska</span>
+            <span className="flex items-center gap-1.5"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" fill="rgba(10,126,164,0.3)"/><path d="M4 7.5l2.5 2.5 4.5-4.5" stroke="#0a7ea4" strokeWidth="1.3" strokeLinecap="round"/></svg>Kopiera med ett klick</span>
+            <span className="flex items-center gap-1.5"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" fill="rgba(10,126,164,0.3)"/><path d="M4 7.5l2.5 2.5 4.5-4.5" stroke="#0a7ea4" strokeWidth="1.3" strokeLinecap="round"/></svg>Gratis att använda</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Tip bar for authority templates */}
+      <div className="bg-blue-50 border-b border-blue-100 py-2.5 px-4">
+        <p className="text-center text-xs text-blue-700 font-medium">
+          💡 Tips: Klicka i texten och ersätt <strong>[Namn]</strong>, <strong>[datum]</strong>, <strong>[ärendenummer]</strong>, <strong>[belopp]</strong> osv. med dina egna uppgifter.
+        </p>
+      </div>
+
+      {/* Försäkringskassan mallar */}
+      <section className="py-10 px-4 bg-blue-50/40">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-1">📋 Försäkringskassan – gratis mallar</h2>
+            <p className="text-sm text-slate-500">
+              Mallar för sjukpenning, överklagande och komplettering till Försäkringskassan.
+              Används när du behöver förlänga sjukskrivning, bestrida ett beslut eller svara på en begäran.
+              <strong> Gratis att kopiera och skicka.</strong>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {authorityTemplates.filter(t => t.authority === "Försäkringskassan").map(t => (
+              <AuthorityTemplateCard key={t.id} template={t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Kronofogden mallar */}
+      <section className="py-10 px-4 bg-red-50/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-1">📋 Kronofogden – gratis mallar</h2>
+            <p className="text-sm text-slate-500">
+              Mallar för att bestrida skuld, ansöka om avbetalningsplan och begära skuldsanering hos Kronofogden.
+              Om du fått ett inkassokrav eller betalningsföreläggande — börja här.
+              <strong> Gratis att kopiera och skicka.</strong>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {authorityTemplates.filter(t => t.authority === "Kronofogden").map(t => (
+              <AuthorityTemplateCard key={t.id} template={t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skatteverket mallar */}
+      <section className="py-10 px-4 bg-green-50/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-1">📋 Skatteverket – gratis mallar</h2>
+            <p className="text-sm text-slate-500">
+              Mallar för anstånd med skatteinbetalning, svar på skattekontroll och rättelse av deklaration.
+              Formellt skrivna för att passa Skatteverkets kommunikationsstil.
+              <strong> Gratis att kopiera och skicka.</strong>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {authorityTemplates.filter(t => t.authority === "Skatteverket").map(t => (
+              <AuthorityTemplateCard key={t.id} template={t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Migrationsverket mallar */}
+      <section className="py-10 px-4 bg-purple-50/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-6">
+            <h2 className="text-xl font-bold text-slate-900 mb-1">📋 Migrationsverket – gratis mallar</h2>
+            <p className="text-sm text-slate-500">
+              Mallar för förlängning av uppehållstillstånd, komplettering av ansökan och överklagande hos Migrationsverket.
+              Anpassade för korrekt, formell kommunikation.
+              <strong> Gratis att kopiera och skicka.</strong>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {authorityTemplates.filter(t => t.authority === "Migrationsverket").map(t => (
+              <AuthorityTemplateCard key={t.id} template={t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Authority templates CTA */}
+      <section className="bg-white border-t border-slate-200 py-10 px-4">
+        <div className="max-w-xl mx-auto text-center">
+          <p className="text-slate-600 text-sm mb-4">
+            <strong className="text-slate-900">Vill du ha 52+ mallar samlade i en app?</strong><br/>
+            Svar Direkt-appen innehåller mallar för alla dessa myndigheter och fler — alltid i fickan, fungerar offline.
+          </p>
+          <a
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+          >
+            Köp appen — 49 kr
+          </a>
+          <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Inga prenumerationer · Fungerar offline</p>
         </div>
       </section>
 
