@@ -352,13 +352,6 @@ export default function App() {
         <Route>
           <div className="min-h-screen flex flex-col bg-white">
             <Navbar />
-            {/* App update announcement banner */}
-            <div className="bg-amber-50 border-b border-amber-200 px-4 py-3 text-center">
-              <p className="text-sm text-amber-800 leading-snug">
-                <span className="font-semibold">🔧 Appen uppdateras just nu</span>
-                {" — "}Vi lägger till nya funktioner och mallar. Appen är snart tillgänglig igen. Tack för ditt tålamod!
-              </p>
-            </div>
             <main className="flex-1">
               <Switch>
                 <Route path="/" component={Home} />
