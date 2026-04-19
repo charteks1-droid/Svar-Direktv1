@@ -68,6 +68,12 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    proxy: {
+      "/api/contact": {
+        target: "http://localhost:8099",
+        changeOrigin: true,
+      },
+    },
   },
   preview: {
     port,

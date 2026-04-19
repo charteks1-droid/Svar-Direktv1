@@ -5,6 +5,7 @@ import modulesRouter from "./modules.js";
 import uploadsRouter from "./uploads.js";
 import forumRouter from "./forum.js";
 import aiRouter from "./ai.js";
+import contactRouter from "./contact.js";
 
 const router: IRouter = Router();
 
@@ -13,5 +14,6 @@ router.use(modulesRouter);
 router.use(uploadsRouter);
 router.use("/forum", forumRouter);
 router.use("/ai", aiRouter);
+router.use("/", contactRouter);
 
 export default router;

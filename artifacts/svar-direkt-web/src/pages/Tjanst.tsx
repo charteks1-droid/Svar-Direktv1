@@ -23,30 +23,34 @@ export default function Tjanst() {
     myndighet: "",
     beskrivning: "",
   });
-  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.epost || !form.beskrivning) return;
+    setStatus("sending");
 
-    const subject = encodeURIComponent(
-      `Nytt ärende: ${form.myndighet || "Myndighet ej vald"} – ${form.fornamn} ${form.efternamn}`.trim()
-    );
-    const body = encodeURIComponent(
-      `Förnamn:    ${form.fornamn || "–"}\n` +
-      `Efternamn:  ${form.efternamn || "–"}\n` +
-      `E-post:     ${form.epost}\n` +
-      `Myndighet:  ${form.myndighet || "–"}\n\n` +
-      `Beskrivning:\n${form.beskrivning}\n\n` +
-      `---\nFörsta svaret är gratis. Fortsättning: 99 kr/svar.`
-    );
+    // Try the API server first (works on Replit), then PHP fallback (works on Hostinger)
+    const endpoints = ["/api/contact", "/tjanst-form.php"];
+    for (const url of endpoints) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success) { setStatus("success"); return; }
+        }
+      } catch { /* try next */ }
+    }
 
-    window.location.href = `mailto:info@svardirekt.se?subject=${subject}&body=${body}`;
-    setStatus("success");
+    setStatus("error");
   };
 
   return (
@@ -209,11 +213,18 @@ export default function Tjanst() {
                 />
               </div>
 
+              {status === "error" && (
+                <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-2">
+                  Något gick fel. Försök igen eller kontakta oss direkt på info@svardirekt.se
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="w-full py-3.5 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-md"
+                disabled={status === "sending"}
+                className="w-full py-3.5 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors disabled:opacity-60 shadow-md"
               >
-                Skicka
+                {status === "sending" ? "Skickar…" : "Skicka"}
               </button>
 
               <p className="text-xs text-slate-400 text-center">
