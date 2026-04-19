@@ -94,7 +94,7 @@ export default function Tjanst() {
           <ol className="space-y-4">
             {[
               { n: "1", t: "Beskriv ditt problem", d: "Fyll i formuläret nedan med din situation och vilken myndighet det gäller." },
-              { n: "2", t: "Jag går igenom informationen", d: "Inom 24 timmar läser jag igenom ditt ärende och formulerar ett svar." },
+              { n: "2", t: "Vi går igenom informationen", d: "Inom 24 timmar läser vi igenom ditt ärende och formulerar ett svar." },
               { n: "3", t: "Du får ett färdigt svar", d: "Du får ett klart meddelande på din e-post som du kan skicka direkt." },
             ].map((s) => (
               <li key={s.n} className="flex gap-4 items-start">
