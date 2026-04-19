@@ -20,10 +20,10 @@ if (!$data) {
     exit;
 }
 
-$fornamn    = isset($data['fornamn'])    ? strip_tags(trim($data['fornamn']))    : '';
-$efternamn  = isset($data['efternamn'])  ? strip_tags(trim($data['efternamn']))  : '';
-$epost      = isset($data['epost'])      ? strip_tags(trim($data['epost']))      : '';
-$myndighet  = isset($data['myndighet'])  ? strip_tags(trim($data['myndighet']))  : '—';
+$fornamn     = isset($data['fornamn'])     ? strip_tags(trim($data['fornamn']))     : '';
+$efternamn   = isset($data['efternamn'])   ? strip_tags(trim($data['efternamn']))   : '';
+$epost       = isset($data['epost'])       ? strip_tags(trim($data['epost']))       : '';
+$myndighet   = isset($data['myndighet'])   ? strip_tags(trim($data['myndighet']))   : '—';
 $beskrivning = isset($data['beskrivning']) ? strip_tags(trim($data['beskrivning'])) : '';
 
 if (empty($epost) || !filter_var($epost, FILTER_VALIDATE_EMAIL)) {
@@ -37,19 +37,30 @@ if (empty($beskrivning)) {
     exit;
 }
 
-$to      = 'info@svardirekt.site';
+$to      = 'info@svardirekt.se';
 $subject = '=?UTF-8?B?' . base64_encode('Nytt ärende: ' . $myndighet . ' – ' . $fornamn . ' ' . $efternamn) . '?=';
 
-$message  = "Ny förfrågan – Personlig hjälp via svardirekt.site\n";
-$message .= "========================================\n\n";
-$message .= "Namn:       $fornamn $efternamn\n";
+$message  = "================================================\n";
+$message .= "NY FÖRFRÅGAN – svardirekt.site\n";
+$message .= "================================================\n\n";
+$message .= "AVSÄNDARENS UPPGIFTER\n";
+$message .= "----------------------\n";
+$message .= "Förnamn:    " . ($fornamn ?: '(ej angivet)') . "\n";
+$message .= "Efternamn:  " . ($efternamn ?: '(ej angivet)') . "\n";
 $message .= "E-post:     $epost\n";
 $message .= "Myndighet:  $myndighet\n\n";
-$message .= "Beskrivning:\n$beskrivning\n";
-$message .= "\n========================================\n";
-$message .= "OBS: Första svaret är gratis. Fortsättning faktureras 99 kr/svar via Payhip.\n";
+$message .= "BESKRIVNING AV ÄRENDET\n";
+$message .= "----------------------\n";
+$message .= "$beskrivning\n\n";
+$message .= "================================================\n";
+$message .= "NÄSTA STEG\n";
+$message .= "----------\n";
+$message .= "Svara direkt till användaren på: $epost\n";
+$message .= "Första svaret är gratis.\n";
+$message .= "Fortsättning faktureras 99 kr/svar via Payhip.\n";
+$message .= "================================================\n";
 
-$headers  = "From: noreply@svardirekt.site\r\n";
+$headers  = "From: noreply@svardirekt.se\r\n";
 $headers .= "Reply-To: $epost\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "Content-Transfer-Encoding: 8bit\r\n";
