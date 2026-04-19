@@ -216,13 +216,13 @@ function HelpForm() {
             setSending(false);
             return;
           }
-          setError(json.message || "Något gick fel. Försök igen eller skriv direkt till info@svardirekt.se");
+          setError(json.message || "Något gick fel. Försök igen eller skriv direkt till info@svardirekt.site");
           setSending(false);
           return;
         }
       } catch { /* try next */ }
     }
-    setError("Kunde inte nå servern. Försök igen eller skriv direkt till info@svardirekt.se");
+    setError("Kunde inte nå servern. Försök igen eller skriv direkt till info@svardirekt.site");
     setSending(false);
   }
 
@@ -326,7 +326,7 @@ function HelpForm() {
         </p>
         <p className="mt-2 text-xs text-slate-400 text-center">
           Vill du kontakta oss direkt?{" "}
-          <a href="mailto:info@svardirekt.se" className="text-primary hover:underline">info@svardirekt.se</a>
+          <a href="mailto:info@svardirekt.site" className="text-primary hover:underline">info@svardirekt.site</a>
         </p>
       </div>
     </section>
