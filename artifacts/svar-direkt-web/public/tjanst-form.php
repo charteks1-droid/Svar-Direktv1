@@ -37,7 +37,7 @@ if (empty($beskrivning)) {
     exit;
 }
 
-$to      = 'info@svardirekt.se';
+$to      = 'info@svardirekt.site';
 $subject = '=?UTF-8?B?' . base64_encode('Nytt arende: ' . $myndighet . ' - ' . $fornamn . ' ' . $efternamn) . '?=';
 
 $message  = "NY FORFRAGAN - svardirekt.site\n";
@@ -52,7 +52,7 @@ $message .= "================================\n";
 $message .= "Svara till: $epost\n";
 $message .= "Forsta svaret ar gratis. Fortsattning: 99 kr/svar.\n";
 
-$headers  = "From: info@svardirekt.se\r\n";
+$headers  = "From: info@svardirekt.site\r\n";
 $headers .= "Reply-To: $epost\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 

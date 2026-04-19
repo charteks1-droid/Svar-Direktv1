@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "info@svardirekt.se",
+    user: "info@svardirekt.site",
     pass: "Polska25!!!",
   },
 });
@@ -62,8 +62,8 @@ router.post("/contact", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: '"Svar Direkt" <info@svardirekt.se>',
-      to: "info@svardirekt.se",
+      from: '"Svar Direkt" <info@svardirekt.site>',
+      to: "info@svardirekt.site",
       replyTo: epost,
       subject,
       text: body,

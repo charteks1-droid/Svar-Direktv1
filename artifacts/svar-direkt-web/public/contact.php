@@ -31,7 +31,7 @@ if (empty($epost) || !filter_var($epost, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$to      = 'info@svardirekt.se';
+$to      = 'info@svardirekt.site';
 $subject = '=?UTF-8?B?' . base64_encode('Fraga fran hemsidan: ' . $amne) . '?=';
 
 $message  = "FRAGA FRAN HEMSIDAN - svardirekt.site\n";
@@ -44,7 +44,7 @@ $message .= "$meddelande\n\n";
 $message .= "======================================\n";
 $message .= "Svara till: $epost\n";
 
-$headers  = "From: info@svardirekt.se\r\n";
+$headers  = "From: info@svardirekt.site\r\n";
 $headers .= "Reply-To: $epost\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
