@@ -14,26 +14,30 @@ const transporter = nodemailer.createTransport({
 });
 
 router.post("/contact", async (req, res) => {
-  const { fornamn = "", efternamn = "", epost = "", myndighet = "–", beskrivning = "" } = req.body;
+  const {
+    fornamn = "", efternamn = "", epost = "",
+    myndighet = "", beskrivning = "",
+    kategori = "", amne = "", meddelande = "",
+  } = req.body;
 
-  if (!epost || !beskrivning) {
-    return res.status(400).json({ success: false, message: "E-post och beskrivning krävs" });
+  if (!epost) {
+    return res.status(400).json({ success: false, message: "E-post krävs" });
   }
 
-  try {
-    await transporter.sendMail({
-      from: '"Svar Direkt" <info@svardirekt.se>',
-      to: "info@svardirekt.se",
-      replyTo: epost,
-      subject: `Nytt ärende: ${myndighet} – ${fornamn} ${efternamn}`.trim(),
-      text: [
-        "NY FÖRFRÅGAN – svardirekt.site",
+  // Detect which form submitted (tjanst vs home contact)
+  const isTjanst = !!beskrivning;
+  const subject = isTjanst
+    ? `Nytt ärende: ${myndighet || "–"} – ${fornamn} ${efternamn}`.trim()
+    : `Fråga från hemsidan: ${amne || kategori || "–"}`;
+
+  const body = isTjanst
+    ? [
+        "NY FÖRFRÅGAN – svardirekt.se",
         "================================",
-        "",
         `Förnamn:    ${fornamn || "–"}`,
         `Efternamn:  ${efternamn || "–"}`,
         `E-post:     ${epost}`,
-        `Myndighet:  ${myndighet}`,
+        `Myndighet:  ${myndighet || "–"}`,
         "",
         "BESKRIVNING:",
         beskrivning,
@@ -41,7 +45,28 @@ router.post("/contact", async (req, res) => {
         "================================",
         `Svara till: ${epost}`,
         "Första svaret är gratis. Fortsättning: 99 kr/svar.",
-      ].join("\n"),
+      ].join("\n")
+    : [
+        "FRÅGA FRÅN HEMSIDAN – svardirekt.se",
+        "======================================",
+        `E-post:    ${epost}`,
+        `Kategori:  ${kategori || "–"}`,
+        `Ämne:      ${amne || "–"}`,
+        "",
+        "MEDDELANDE:",
+        meddelande || "–",
+        "",
+        "======================================",
+        `Svara till: ${epost}`,
+      ].join("\n");
+
+  try {
+    await transporter.sendMail({
+      from: '"Svar Direkt" <info@svardirekt.se>',
+      to: "info@svardirekt.se",
+      replyTo: epost,
+      subject,
+      text: body,
     });
 
     res.json({ success: true });

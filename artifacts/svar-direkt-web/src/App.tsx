@@ -19,7 +19,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   "/kontakt": {
     title: "Kontakt – Svar Direkt",
-    description: "Kontakta Svar Direkt med frågor, feedback eller support. Vi svarar på info@svardirekt.site.",
+    description: "Kontakta Svar Direkt med frågor, feedback eller support. Vi svarar på info@svardirekt.se.",
   },
   "/funktioner": {
     title: "Funktioner – Svar Direkt",
@@ -301,8 +301,8 @@ function Footer() {
               Färdiga mallar och snabba svar för verkliga situationer i Sverige.
             </p>
             <div className="mt-4">
-              <a href="mailto:info@svardirekt.site" className="text-sm text-slate-400 hover:text-white transition-colors">
-                info@svardirekt.site
+              <a href="mailto:info@svardirekt.se" className="text-sm text-slate-400 hover:text-white transition-colors">
+                info@svardirekt.se
               </a>
             </div>
           </div>

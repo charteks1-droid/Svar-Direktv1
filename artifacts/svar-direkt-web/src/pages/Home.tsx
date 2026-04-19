@@ -199,27 +199,31 @@ function HelpForm() {
     e.preventDefault();
     setError("");
     setSending(true);
-    try {
-      const res = await fetch("/contact.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ epost, kategori, amne, meddelande }),
-      });
-      const json = await res.json();
-      if (json.success) {
-        setSubmitted(true);
-        setEpost("");
-        setKategori("");
-        setAmne("");
-        setMeddelande("");
-      } else {
-        setError(json.message || "Något gick fel. Försök igen eller skriv direkt till info@svardirekt.site");
-      }
-    } catch {
-      setError("Kunde inte nå servern. Försök igen eller skriv direkt till info@svardirekt.site");
-    } finally {
-      setSending(false);
+    const payload = { epost, kategori, amne, meddelande };
+    const endpoints = ["/api/contact", "/contact.php"];
+    for (const url of endpoints) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success) {
+            setSubmitted(true);
+            setEpost(""); setKategori(""); setAmne(""); setMeddelande("");
+            setSending(false);
+            return;
+          }
+          setError(json.message || "Något gick fel. Försök igen eller skriv direkt till info@svardirekt.se");
+          setSending(false);
+          return;
+        }
+      } catch { /* try next */ }
     }
+    setError("Kunde inte nå servern. Försök igen eller skriv direkt till info@svardirekt.se");
+    setSending(false);
   }
 
   return (
@@ -322,7 +326,7 @@ function HelpForm() {
         </p>
         <p className="mt-2 text-xs text-slate-400 text-center">
           Vill du kontakta oss direkt?{" "}
-          <a href="mailto:info@svardirekt.site" className="text-primary hover:underline">info@svardirekt.site</a>
+          <a href="mailto:info@svardirekt.se" className="text-primary hover:underline">info@svardirekt.se</a>
         </p>
       </div>
     </section>

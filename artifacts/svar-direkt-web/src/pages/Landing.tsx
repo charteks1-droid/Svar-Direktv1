@@ -395,7 +395,7 @@ export default function Landing() {
       {/* Minimal footer */}
       <footer className="border-t border-slate-100 py-6 px-4 text-center">
         <p className="text-xs text-slate-400">
-          © 2026 Svar Direkt · <a href="/integritetspolicy.html" className="hover:text-slate-600 transition-colors">Integritetspolicy</a> · <a href="mailto:info@svardirekt.site" className="hover:text-slate-600 transition-colors">info@svardirekt.site</a>
+          © 2026 Svar Direkt · <a href="/integritetspolicy.html" className="hover:text-slate-600 transition-colors">Integritetspolicy</a> · <a href="mailto:info@svardirekt.se" className="hover:text-slate-600 transition-colors">info@svardirekt.se</a>
         </p>
       </footer>
 
