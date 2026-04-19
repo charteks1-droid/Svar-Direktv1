@@ -139,8 +139,8 @@ export default function Tjanst() {
                   <path d="M5 14l6 6L23 8" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-green-800 mb-2">Tack! Ditt ärende har skickats.</h3>
-              <p className="text-green-700 text-sm">Du får svar inom kort — kolla din e-post (även skräpposten).</p>
+              <h3 className="text-lg font-bold text-green-800 mb-2">Tack! Ditt meddelande har skickats.</h3>
+              <p className="text-green-700 text-sm">Du får svar inom 24 timmar på din e-post.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -229,7 +229,7 @@ export default function Tjanst() {
               </button>
 
               <p className="text-xs text-slate-400 text-center">
-                Dina uppgifter skickas säkert till info@svardirekt.site och delas inte med tredje part.
+                Dina uppgifter skickas säkert och delas inte med tredje part.
               </p>
             </form>
           )}
