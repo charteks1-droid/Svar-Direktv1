@@ -23,35 +23,30 @@ export default function Tjanst() {
     myndighet: "",
     beskrivning: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [status, setStatus] = useState<"idle" | "success">("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.epost || !form.beskrivning) return;
-    setStatus("sending");
-    setErrorMsg("");
-    try {
-      const res = await fetch("/tjanst-form.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const json = await res.json();
-      if (json.success) {
-        setStatus("success");
-      } else {
-        setStatus("error");
-        setErrorMsg(json.message || "Något gick fel. Försök igen.");
-      }
-    } catch {
-      setStatus("error");
-      setErrorMsg("Kunde inte skicka. Kontrollera din anslutning och försök igen.");
-    }
+
+    const subject = encodeURIComponent(
+      `Nytt ärende: ${form.myndighet || "Myndighet ej vald"} – ${form.fornamn} ${form.efternamn}`.trim()
+    );
+    const body = encodeURIComponent(
+      `Förnamn:    ${form.fornamn || "–"}\n` +
+      `Efternamn:  ${form.efternamn || "–"}\n` +
+      `E-post:     ${form.epost}\n` +
+      `Myndighet:  ${form.myndighet || "–"}\n\n` +
+      `Beskrivning:\n${form.beskrivning}\n\n` +
+      `---\nFörsta svaret är gratis. Fortsättning: 99 kr/svar.`
+    );
+
+    window.location.href = `mailto:info@svardirekt.se?subject=${subject}&body=${body}`;
+    setStatus("success");
   };
 
   return (
@@ -214,18 +209,11 @@ export default function Tjanst() {
                 />
               </div>
 
-              {status === "error" && (
-                <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-2">
-                  {errorMsg}
-                </p>
-              )}
-
               <button
                 type="submit"
-                disabled={status === "sending"}
-                className="w-full py-3.5 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors disabled:opacity-60 shadow-md"
+                className="w-full py-3.5 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary/90 transition-colors shadow-md"
               >
-                {status === "sending" ? "Skickar…" : "Skicka"}
+                Skicka
               </button>
 
               <p className="text-xs text-slate-400 text-center">
