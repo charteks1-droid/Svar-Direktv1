@@ -486,23 +486,21 @@ export default function Home() {
                 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
-                <a
-                  href="https://payhip.com/b/WxtV3"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/tjanst"
                   className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
                 >
-                  Köp appen — 49 kr
-                </a>
+                  Personlig hjälp – 99 kr
+                </Link>
                 <Link
-                  href="/paket"
+                  href="/mallar"
                   className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
                 >
-                  Se paket
+                  Gratis mallar
                 </Link>
               </div>
               <p className="text-xs text-slate-400 mt-3">
-                🔒 Säker betalning via Payhip. Du får nedladdningslänken direkt efter köp.
+                Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret.
               </p>
             </div>
             <div className="flex justify-center">
@@ -593,7 +591,7 @@ export default function Home() {
                   {
                     alt: "⚖️ Juridisk rådgivning",
                     problem: "Kostar 1 000–3 000 kr per timme. Inte rimligt för ett enkelt svar till Försäkringskassan.",
-                    sd: "49 kr en gång. Tillgång till alla mallar direkt.",
+                    sd: "Personlig hjälp från 99 kr. Första svaret gratis.",
                   },
                   {
                     alt: "📋 Andras bloggar & forum",
@@ -620,15 +618,13 @@ export default function Home() {
             Svar Direkt är inte juridisk rådgivning — det är ett praktiskt verktyg för vardagskommunikation.
           </p>
           <div className="text-center mt-8">
-            <a
-              href="https://payhip.com/b/WxtV3"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/tjanst"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
             >
-              Köp appen — 49 kr
-            </a>
-            <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Direkt nedladdning · 30 dagars returrätt</p>
+              Personlig hjälp – 99 kr
+            </Link>
+            <p className="text-xs text-slate-400 mt-2">Första svaret gratis · Svar inom 24 timmar</p>
           </div>
         </div>
       </section>
@@ -764,17 +760,15 @@ export default function Home() {
           </div>
           <div className="text-center bg-white rounded-2xl border border-slate-200 p-5">
             <p className="text-sm text-slate-600 mb-3">
-              <span className="font-semibold text-slate-900">Vill du ha alla 52+ mallar samlade i en app?</span>{" "}
-              Ladda ner Svar Direkt — fungerar offline, kräver inget konto, alltid i fickan.
+              <span className="font-semibold text-slate-900">Behöver du ett personligt anpassat svar?</span>{" "}
+              Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret.
             </p>
-            <a
-              href="https://payhip.com/b/WxtV3"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/tjanst"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
             >
-              Köp appen — 49 kr
-            </a>
+              Personlig hjälp – 99 kr
+            </Link>
           </div>
         </div>
       </section>
@@ -789,8 +783,8 @@ export default function Home() {
           {[
             {
               step: "1",
-              title: "Ladda ner appen",
-              desc: "Köp appen för 49 kr och ladda ner den till Android.",
+              title: "Beskriv ditt ärende",
+              desc: "Fyll i formuläret med din situation och vilken myndighet det gäller.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -911,15 +905,13 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mt-10">
-          <a
-            href="https://payhip.com/b/WxtV3"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/tjanst"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
           >
-            Köp appen — 49 kr
-          </a>
-          <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Fungerar offline · 30 dagars returrätt</p>
+            Personlig hjälp – 99 kr
+          </Link>
+          <p className="text-xs text-slate-400 mt-2">Första svaret gratis · Svar inom 24 timmar</p>
         </div>
       </section>
 
@@ -1109,22 +1101,20 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-16 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Redo att börja?</h2>
           <p className="text-slate-500 text-sm mb-6 max-w-md mx-auto">
-            Ladda ner appen en gång. Ha färdiga svar för Skatteverket, Kronofogden, Försäkringskassan och mer — alltid i fickan.
+            Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret — svar inom 24 timmar.
           </p>
 
-          <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-            <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
+          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2 mb-4">
+            <span className="text-xs font-bold text-green-900">✅ Första svaret är gratis · Därefter 99 kr per svar</span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
-            <a
-              href="https://payhip.com/b/WxtV3"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/tjanst"
               className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
             >
-              Köp appen — 49 kr
-            </a>
+              Personlig hjälp – 99 kr
+            </Link>
             <Link
               href="/kontakt"
               className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"

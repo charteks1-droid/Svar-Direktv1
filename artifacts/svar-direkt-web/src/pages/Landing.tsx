@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import logoSrc from "../assets/logo.png";
 
-const PAYHIP_URL = "https://payhip.com/b/WxtV3";
+const TJANST_URL = "/tjanst";
 
 const testimonials = [
   {
@@ -50,7 +50,7 @@ export default function Landing() {
               Välj bland 52+ färdiga mallar för svenska myndigheter. Formella, korrekta texter för Skatteverket, Försäkringskassan, Migrationsverket och fler — redo att kopieras och skickas.
             </p>
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-              <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
+              <span className="text-xs font-bold text-green-900">✅ Första svaret gratis · Därefter 99 kr per svar</span>
             </div>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
@@ -186,15 +186,13 @@ export default function Landing() {
               </table>
             </div>
           <div className="text-center mt-6">
-            <a
-              href={PAYHIP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={TJANST_URL}
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
             >
-              Köp appen — 49 kr
-            </a>
-            <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Direkt nedladdning · Fungerar offline</p>
+              Personlig hjälp – 99 kr
+            </Link>
+            <p className="text-xs text-slate-400 mt-2">Första svaret gratis · Svar inom 24 timmar</p>
           </div>
           </div>
         </section>
@@ -232,7 +230,7 @@ export default function Landing() {
                     {
                       alt: "⚖️ Jurist",
                       problem: "1 000–3 000 kr per timme. Orimligt för ett enkelt svar.",
-                      sd: "49 kr en gång. 52+ mallar direkt i mobilen.",
+                      sd: "Personlig hjälp från 99 kr. Första svaret gratis.",
                     },
                   ].map((row) => (
                     <tr key={row.alt} className="hover:bg-slate-50 transition-colors">
@@ -280,8 +278,8 @@ export default function Landing() {
               {[
                 {
                   num: "1",
-                  title: "Köp appen",
-                  desc: "Betala 49 kr en gång via Payhip. Du får nedladdningslänken direkt.",
+                  title: "Beskriv ditt ärende",
+                  desc: "Fyll i formuläret med din situation och vilken myndighet det gäller.",
                 },
                 {
                   num: "2",
@@ -316,22 +314,20 @@ export default function Landing() {
               Myndigheten väntar inte på ditt svar.<br />Men du behöver inte skriva det själv.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              49 kr en gång. Du får 52+ färdiga mallar på svenska för myndigheter och vardag. Inga prenumerationer, inga dolda avgifter — allt klart direkt efter köp.
+              Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret — svar inom 24 timmar.
             </p>
 
-            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-              <span className="text-xs font-bold text-amber-900">💰 Pris: 49 kr — engångsbetalning</span>
+            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2 mb-4">
+              <span className="text-xs font-bold text-green-900">✅ Första svaret gratis · Därefter 99 kr per svar</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
-              <a
-                href={PAYHIP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={TJANST_URL}
                 className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
               >
-                Köp appen — 49 kr
-              </a>
+                Personlig hjälp – 99 kr
+              </Link>
               <Link
                 href="/kontakt"
                 className="px-6 py-4 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"

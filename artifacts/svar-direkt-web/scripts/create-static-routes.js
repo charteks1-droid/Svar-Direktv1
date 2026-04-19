@@ -39,6 +39,19 @@ const ROUTES = [
   "blogg/bestrida-kronofogden",
   "blogg/aterkrav-forsakringskassan-vad-gor-jag",
   "blogg/skuldsanering-ansoekan-mall",
+  // Tjänst & SEO landing pages
+  "tjanst",
+  "hjalp-kronofogden",
+  "hjalp-forsakringskassan",
+  "hjalp-skatteverket",
+  "hjalp-inkasso",
+  "hjalp-migrationsverket",
+  "hjalp-arbetsformedlingen",
+  "skriv-brev-myndighet",
+  "svar-myndighet-svenska",
+  "help-swedish-authority",
+  "swedish-government-letter-help",
+  "pomoc-urzad-szwecja",
 ];
 
 const html = fs.readFileSync(indexHtml, "utf8");

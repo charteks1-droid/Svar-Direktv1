@@ -67,6 +67,8 @@ import Blog from "@/pages/Blog";
 import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
 import Landing from "@/pages/Landing";
+import Tjanst from "@/pages/Tjanst";
+import SeoLanding, { seoPages } from "@/pages/SeoLanding";
 import NotFound from "@/pages/not-found";
 
 function CookieBanner() {
@@ -364,6 +366,12 @@ export default function App() {
                 <Route path="/blogg" component={Blog} />
                 <Route path="/generator" component={Generator} />
                 <Route path="/mallar" component={Mallar} />
+                <Route path="/tjanst" component={Tjanst} />
+                {seoPages.map((p) => (
+                  <Route key={p.slug} path={`/${p.slug}`}>
+                    {() => <SeoLanding slug={p.slug} />}
+                  </Route>
+                ))}
                 <Route component={NotFound} />
               </Switch>
             </main>
