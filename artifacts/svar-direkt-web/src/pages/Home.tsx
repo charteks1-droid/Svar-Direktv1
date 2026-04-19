@@ -486,21 +486,23 @@ export default function Home() {
                 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
+                <a
+                  href="https://payhip.com/b/WxtV3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+                >
+                  Köp appen — 49 kr
+                </a>
                 <Link
                   href="/tjanst"
-                  className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+                  className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
                 >
                   Personlig hjälp – 99 kr
                 </Link>
-                <Link
-                  href="/mallar"
-                  className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
-                >
-                  Gratis mallar
-                </Link>
               </div>
               <p className="text-xs text-slate-400 mt-3">
-                Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret.
+                🔒 Säker betalning via Payhip. Nedladdningslänk direkt efter köp.
               </p>
             </div>
             <div className="flex justify-center">
@@ -617,15 +619,23 @@ export default function Home() {
           <p className="text-center text-xs text-slate-400 mt-4">
             Svar Direkt är inte juridisk rådgivning — det är ett praktiskt verktyg för vardagskommunikation.
           </p>
-          <div className="text-center mt-8">
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <a
+              href="https://payhip.com/b/WxtV3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+            >
+              Köp appen — 49 kr
+            </a>
             <Link
               href="/tjanst"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
             >
               Personlig hjälp – 99 kr
             </Link>
-            <p className="text-xs text-slate-400 mt-2">Första svaret gratis · Svar inom 24 timmar</p>
           </div>
+          <p className="text-xs text-slate-400 mt-2 text-center">App: engångskostnad · Hjälp: första svaret gratis</p>
         </div>
       </section>
 
@@ -758,17 +768,34 @@ export default function Home() {
               <span className="text-xs font-semibold text-green-700 flex items-center gap-1">Läs och kopiera → </span>
             </Link>
           </div>
-          <div className="text-center bg-white rounded-2xl border border-slate-200 p-5">
-            <p className="text-sm text-slate-600 mb-3">
-              <span className="font-semibold text-slate-900">Behöver du ett personligt anpassat svar?</span>{" "}
-              Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret.
-            </p>
-            <Link
-              href="/tjanst"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
-            >
-              Personlig hjälp – 99 kr
-            </Link>
+          <div className="bg-white rounded-2xl border border-slate-200 p-5">
+            <p className="text-sm font-semibold text-slate-900 mb-4 text-center">Välj ditt alternativ:</p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="border border-primary/20 rounded-xl p-4 text-center bg-primary/5">
+                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Appen</p>
+                <p className="text-2xl font-bold text-slate-900 mb-1">49 kr</p>
+                <p className="text-xs text-slate-500 mb-3">Engångsbetalning · Offline</p>
+                <a
+                  href="https://payhip.com/b/WxtV3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-2.5 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors"
+                >
+                  Köp appen
+                </a>
+              </div>
+              <div className="border border-slate-200 rounded-xl p-4 text-center">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig hjälp</p>
+                <p className="text-2xl font-bold text-slate-900 mb-1">99 kr</p>
+                <p className="text-xs text-slate-500 mb-3">Första svaret gratis · 24h</p>
+                <Link
+                  href="/tjanst"
+                  className="block w-full py-2.5 bg-white border border-slate-300 text-slate-700 rounded-lg font-semibold text-sm hover:bg-slate-50 transition-colors"
+                >
+                  Få hjälp
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -783,8 +810,8 @@ export default function Home() {
           {[
             {
               step: "1",
-              title: "Beskriv ditt ärende",
-              desc: "Fyll i formuläret med din situation och vilken myndighet det gäller.",
+              title: "Köp och ladda ner appen",
+              desc: "Köp appen för 49 kr och ladda ner den till Android — fungerar offline.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -904,15 +931,23 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-10">
+        <div className="flex flex-wrap justify-center gap-3 mt-10">
+          <a
+            href="https://payhip.com/b/WxtV3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+          >
+            Köp appen — 49 kr
+          </a>
           <Link
             href="/tjanst"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
           >
             Personlig hjälp – 99 kr
           </Link>
-          <p className="text-xs text-slate-400 mt-2">Första svaret gratis · Svar inom 24 timmar</p>
         </div>
+        <p className="text-xs text-slate-400 mt-2 text-center">App: engångskostnad · Hjälp: första svaret gratis</p>
       </section>
 
       {/* SEO-rich text block */}
@@ -1101,25 +1136,42 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-16 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Redo att börja?</h2>
           <p className="text-slate-500 text-sm mb-6 max-w-md mx-auto">
-            Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret — svar inom 24 timmar.
+            Välj det alternativ som passar dig bäst — appen för självständig användning, eller personlig hjälp om du vill ha stöd direkt.
           </p>
 
-          <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2 mb-4">
-            <span className="text-xs font-bold text-green-900">✅ Första svaret är gratis · Därefter 99 kr per svar</span>
+          <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-6">
+            <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
+              <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Mobil app</p>
+              <p className="text-3xl font-bold text-slate-900 mb-1">49 kr</p>
+              <p className="text-xs text-slate-500 mb-4">Engångsbetalning · 52+ mallar · Offline</p>
+              <a
+                href="https://payhip.com/b/WxtV3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full py-3 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-md"
+              >
+                Köp appen — 49 kr
+              </a>
+            </div>
+            <div className="border-2 border-slate-200 rounded-2xl p-5 text-center">
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig hjälp</p>
+              <p className="text-3xl font-bold text-slate-900 mb-1">99 kr</p>
+              <p className="text-xs text-slate-500 mb-4">Första svaret gratis · Svar inom 24h</p>
+              <Link
+                href="/tjanst"
+                className="block w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors"
+              >
+                Personlig hjälp – 99 kr
+              </Link>
+            </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
-            <Link
-              href="/tjanst"
-              className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
-            >
-              Personlig hjälp – 99 kr
-            </Link>
+          <div className="text-center mb-4">
             <Link
               href="/kontakt"
-              className="px-6 py-3.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"
+              className="text-sm text-slate-500 underline hover:text-slate-700"
             >
-              Kontakta oss
+              Frågor? Kontakta oss
             </Link>
           </div>
 

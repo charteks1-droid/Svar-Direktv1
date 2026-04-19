@@ -49,9 +49,23 @@ export default function Landing() {
             <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl mx-auto">
               Välj bland 52+ färdiga mallar för svenska myndigheter. Formella, korrekta texter för Skatteverket, Försäkringskassan, Migrationsverket och fler — redo att kopieras och skickas.
             </p>
-            <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 mb-4">
-              <span className="text-xs font-bold text-green-900">✅ Första svaret gratis · Därefter 99 kr per svar</span>
+            <div className="flex flex-wrap justify-center gap-3 mb-4 mt-2">
+              <a
+                href="https://payhip.com/b/WxtV3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+              >
+                Köp appen — 49 kr
+              </a>
+              <Link
+                href={TJANST_URL}
+                className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
+              >
+                Personlig hjälp – 99 kr
+              </Link>
             </div>
+            <p className="text-xs text-slate-400 mb-4">App: 49 kr engångskostnad · Hjälp: första svaret gratis</p>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
                 { icon: "🔒", text: "SSL-säker betalning" },
@@ -314,24 +328,38 @@ export default function Landing() {
               Myndigheten väntar inte på ditt svar.<br />Men du behöver inte skriva det själv.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              Vi arbetar just nu med en ny version av appen. Under tiden erbjuder vi personlig hjälp direkt via formuläret — svar inom 24 timmar.
+              Välj mellan appen (49 kr, 52+ mallar, offline) eller personlig hjälp — beskriv din situation och få ett färdigt svar inom 24 timmar.
             </p>
 
-            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2 mb-4">
-              <span className="text-xs font-bold text-green-900">✅ Första svaret gratis · Därefter 99 kr per svar</span>
+            <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
+              <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
+                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Mobil app</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">49 kr</p>
+                <p className="text-xs text-slate-500 mb-4">Engångsbetalning · Offline</p>
+                <a
+                  href="https://payhip.com/b/WxtV3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-3 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-md"
+                >
+                  Köp appen
+                </a>
+              </div>
+              <div className="border-2 border-slate-200 rounded-2xl p-5 text-center">
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig hjälp</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">99 kr</p>
+                <p className="text-xs text-slate-500 mb-4">Första svaret gratis · 24h</p>
+                <Link
+                  href={TJANST_URL}
+                  className="block w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors"
+                >
+                  Personlig hjälp
+                </Link>
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-5">
-              <Link
-                href={TJANST_URL}
-                className="px-8 py-4 bg-primary text-white rounded-xl font-semibold text-base hover:bg-primary/90 transition-colors w-full sm:w-auto text-center shadow-lg"
-              >
-                Personlig hjälp – 99 kr
-              </Link>
-              <Link
-                href="/kontakt"
-                className="px-6 py-4 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm w-full sm:w-auto text-center"
-              >
+            <div className="text-center mb-4">
+              <Link href="/kontakt" className="text-sm text-slate-500 underline hover:text-slate-700">
                 Frågor? Kontakta oss
               </Link>
             </div>
