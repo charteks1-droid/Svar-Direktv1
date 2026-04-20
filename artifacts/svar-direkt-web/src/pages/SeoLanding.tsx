@@ -432,6 +432,203 @@ const pages: PageData[] = [
     cta: "Wyślij swoje pytanie – pierwsza odpowiedź gratis",
     ctaNote: "Odpowiedź w ciągu 24 godzin.",
   },
+
+  // ===== NEW SEO PAGES =====
+  {
+    slug: "skriva-brev-till-myndighet",
+    lang: "sv",
+    title: "Skriva brev till myndighet – rätt ton, mall och hjälp | Svar Direkt",
+    metaDesc: "Hur skriver man ett korrekt brev till en svensk myndighet? Vi förklarar rätt ton, struktur och formuleringar – eller skriver hela brevet åt dig. Första hjälpen gratis.",
+    h1: "Skriva brev till myndighet – så gör du rätt",
+    intro: "Att skriva brev till en svensk myndighet kräver rätt ton, tydlig struktur och korrekta formuleringar. Fel ord, fel ton eller ett ofullständigt brev kan försena ditt ärende, försvaga din position eller leda till ett avslag. Vi hjälper dig skriva ett korrekt, professionellt brev till vilken myndighet som helst – eller skriver det åt dig.",
+    h2s: [
+      {
+        heading: "Varför myndighetsbrev kräver speciell formulering",
+        body: "Svenska myndigheter hanterar tusentals ärenden dagligen. Ett välformulerat brev som direkt anger vad du vill och varför hanteras snabbare och mer positivt. Undvik känslosamma formuleringar – håll dig till fakta, datum, ärendenummer och en tydlig begäran. Använd alltid 'Jag yrkar att...' eller 'Jag begär att...' när du ber om ett beslut.",
+      },
+      {
+        heading: "Rätt struktur för ett myndighetsbrev",
+        body: "Ett korrekt brev till en myndighet innehåller: (1) Dina uppgifter (namn, personnummer, adress, telefon). (2) Mottagare (myndighetens namn och adress). (3) Ärendebenämning – en tydlig rubrik. (4) Inledning – vilket ärende gäller det och vilket beslut eller brev du svarar på. (5) Brödtext – din begäran med motivering och fakta. (6) Bilagor (om sådana finns). (7) Underskrift.",
+      },
+      {
+        heading: "Rätt ton – formell men tydlig",
+        body: "Undvik att vara aggressiv, emotionell eller oprecis. Myndigheter fattar beslut baserat på fakta och lagstöd – inte på hur arg eller desperat du låter. Skriv 'Jag bestrider kravet med hänvisning till...' snarare än 'Det är orättvist att...'. Var direkt, respektfull och konkret.",
+      },
+      {
+        heading: "Vi skriver brevet åt dig",
+        body: "Om du är osäker på hur du ska formulera dig, eller om ärendet är komplicerat, kan vi skriva hela brevet åt dig. Beskriv din situation i formuläret – vilket brev du fått, vad du vill uppnå och vilken myndighet det gäller. Vi returnerar ett färdigt brev inom 24 timmar som du kan kopiera och skicka direkt.",
+      },
+    ],
+    faq: [
+      { q: "Vilket språk ska jag använda i brev till svenska myndigheter?", a: "Svenska är det officiella språket. Om du inte behärskar svenska tillräckligt väl kan du be en tolk eller oss om hjälp. En del myndigheter accepterar engelska i enklare ärenden, men formella brev (överklaganden, bestridanden) bör alltid skrivas på svenska." },
+      { q: "Behöver jag personnummer i brevet?", a: "Ja, alltid. Utan personnummer kan myndigheten inte matcha ditt brev mot ditt ärende. Ange alltid fullständigt personnummer (YYYYMMDD-XXXX)." },
+      { q: "Hur lång ska svaret vara?", a: "Lagom. Skriv inte för kortfattat – du riskerar att missa viktig information. Skriv inte för långt – handläggaren orkar inte läsa. 1–3 stycken med tydlig struktur är oftast lagom." },
+      { q: "Vad kostar er hjälp?", a: "Första svaret är helt gratis. Ytterligare brev kostar 99 kr per stycke." },
+    ],
+    cta: "Beskriv ditt ärende – vi skriver brevet åt dig",
+    ctaNote: "Första hjälpen gratis. Svar inom 24 timmar.",
+    relatedLinks: [
+      { href: "/generator", label: "Prova vår AI-brevgenerator (gratis)" },
+      { href: "/mallar", label: "Ladda ner gratis brevmallar" },
+      { href: "/skriv-brev-myndighet", label: "Personlig hjälp att skriva brev" },
+    ],
+  },
+  {
+    slug: "formellt-brev-svenska",
+    lang: "sv",
+    title: "Formellt brev på svenska – mall, struktur och exempel | Svar Direkt",
+    metaDesc: "Lär dig skriva ett formellt brev på svenska med rätt struktur och ton. Gratis mall och exempel. Perfekt för brev till myndigheter, hyresvärdar och arbetsgivare.",
+    h1: "Formellt brev på svenska – rätt struktur och ton",
+    intro: "Ett formellt brev på svenska följer en bestämd struktur och kräver ett specifikt språk. Oavsett om du skriver till en myndighet, en hyresvärd, en arbetsgivare eller ett inkassobolag – ett korrekt formulerat brev ger dig ett professionellt intryck och ökar chansen att du får det du vill.",
+    h2s: [
+      {
+        heading: "Struktur för ett formellt brev på svenska",
+        body: "Börja med avsändaruppgifter (namn, adress, telefon, e-post) längst upp till höger. Mottagarens uppgifter till vänster. Datum under mottagaruppgifterna. Ämnesrad/rubrik i fetstil. Inledning: 'Med anledning av...' eller 'Jag skriver till er angående...'. Brödtext med tydlig begäran. Avslutning: 'Med vänliga hälsningar,' + namn. Bilagor listas sist.",
+      },
+      {
+        heading: "Rätt tilltalsform och artighetsfraser",
+        body: "I formella brev på svenska används 'ni' (med liten bokstav) som artigt tilltal – inte 'du'. Inledningsfraser: 'Med anledning av ovan refererade beslut...', 'I enlighet med...', 'Härmed vill jag...'. Avslutningsfraser: 'Med vänliga hälsningar', 'Vänligen', 'Med hälsning'. Undvik 'Hej' och 'Mvh' i formella sammanhang.",
+      },
+      {
+        heading: "Formella brev till myndigheter",
+        body: "Brev till Kronofogden, Skatteverket, Försäkringskassan, Migrationsverket och Arbetsförmedlingen kräver extra precision. Ange alltid ärendenummer om sådant finns, ditt personnummer och ett tydligt yrkande. Använd phrases som 'Jag yrkar att myndigheten...', 'Jag begär omprövning av beslut daterat...' eller 'Jag bestrider kravet med följande motivering:'.",
+      },
+      {
+        heading: "Gratis hjälp och mallar",
+        body: "Vi erbjuder gratis brevmallar till de vanligaste myndigheterna samt en AI-assistent som genererar ett korrekt brev baserat på din situation. Om du behöver personlig hjälp med ett specifikt ärende – fyll i formuläret så svarar vi inom 24 timmar. Första svaret är gratis.",
+      },
+    ],
+    faq: [
+      { q: "Hur börjar man ett formellt brev på svenska?", a: "Börja med 'Med anledning av...' följt av vad brevet gäller, eller 'Jag skriver med anledning av [brev/beslut] daterat [datum] angående [ärende].' Undvik att börja med 'Hej' eller 'Jag heter...'." },
+      { q: "Vad betyder 'Ni' i formella brev?", a: "'Ni' (med liten bokstav) är det formella tilltalsordet på svenska, motsvarar 'Sie' på tyska eller 'vous' på franska. Används alltid i brev till myndigheter och officiella brev." },
+      { q: "Hur avslutar man ett formellt brev?", a: "Vanligast är 'Med vänliga hälsningar,' följt av namn och underskrift. Alternativ: 'Med hälsning,' eller 'Vänligen,'. Undvik 'Mvh' i formella sammanhang." },
+      { q: "Behöver jag bifoga något?", a: "Bifoga alltid relevanta dokument som stödjer din begäran: kopior av det brev du svarar på, läkarintyg, kvitton, avtal. Lista bilagor i slutet av brevet: 'Bilagor: 1. Kopia av beslut 2. Läkarintyg daterat...'." },
+    ],
+    cta: "Skapa ditt formella brev nu – gratis",
+    ctaNote: "AI-genererat på sekunder, eller personlig hjälp inom 24 timmar.",
+    relatedLinks: [
+      { href: "/generator", label: "AI-brevgenerator – generera brev automatiskt" },
+      { href: "/mallar", label: "Gratis brevmallar att kopiera" },
+      { href: "/skriva-brev-till-myndighet", label: "Guide: Skriva brev till myndighet" },
+    ],
+  },
+  {
+    slug: "overklaga-myndighetsbeslut",
+    lang: "sv",
+    title: "Överklaga myndighetsbeslut – guide, mall och hjälp | Svar Direkt",
+    metaDesc: "Hur överklagar man ett myndighetsbeslut? Steg-för-steg guide med gratis mall. Hjälp med överklagande till Försäkringskassan, Kronofogden, Migrationsverket m.fl.",
+    h1: "Överklaga myndighetsbeslut – steg för steg",
+    intro: "Har du fått ett beslut från en myndighet som du tycker är fel? Du har alltid rätt att överklaga ett myndighetsbeslut inom en viss tid. Rätt formulerat överklagande är avgörande – vi hjälper dig formulera ett tydligt, argumenterat överklagande som ger dig bästa möjliga chans.",
+    h2s: [
+      {
+        heading: "Hur lång tid har du på dig att överklaga?",
+        body: "Överklagandetiden varierar: Försäkringskassan – 2 månader från beslutsdatum. Kronofogden – 10 dagar för betalningsföreläggande. Skatteverket – 6 år för omprövning. Migrationsverket – 3 veckor. Socialtjänsten – 3 veckor. Missa aldrig deadline – ett försenat överklagande avvisas nästan alltid. Kontrollera beslutsbrevet för exakt överklagandetid.",
+      },
+      {
+        heading: "Vad ska ett överklagande innehålla?",
+        body: "1. Vilket beslut du överklagar (ärendenummer och datum). 2. Varför du anser beslutet är fel (sakliga argument och lagstöd). 3. Vad du vill att myndigheten ska besluta istället (ditt yrkande). 4. Nya omständigheter eller bevis som inte funnits med tidigare. 5. Dina personuppgifter och underskrift. 6. Bilagor som stödjer dina argument.",
+      },
+      {
+        heading: "Överklagande av olika myndigheters beslut",
+        body: "Försäkringskassan: Begär omprövning hos Försäkringskassan först, sedan Förvaltningsdomstolen. Kronofogden: Bestrida hos Kronofogden, sedan Tingsrätten. Skatteverket: Begär omprövning hos Skatteverket, sedan Förvaltningsdomstolen. Migrationsverket: Överklaga till Migrationsdomstolen. Socialtjänsten: Överklaga till Förvaltningsdomstolen.",
+      },
+      {
+        heading: "Öka dina chanser med rätt formulering",
+        body: "Det viktigaste är att överklagandet är sakligt, tydligt och innehåller konkreta argument kopplade till lag eller rättspraxis. Undvik att vara emotionell – fokusera på fakta. Vi hjälper dig formulera ett professionellt överklagande anpassat till din specifika situation och myndighet.",
+      },
+    ],
+    faq: [
+      { q: "Kan jag överklaga alla myndighetsbeslut?", a: "De flesta myndighetsbeslut kan överklagas, men inte alla. Beslut av ren servicekaraktär (t.ex. bokningsbekräftelser) är inte överklagbara. Det ska alltid framgå av beslutsbrevet om beslutet kan överklagas och till vem." },
+      { q: "Behöver jag ett juridiskt ombud?", a: "Nej, du behöver inte advokat för att överklaga en myndighet. Du kan göra det själv. Vi hjälper dig formulera överklagandet på ett professionellt sätt utan advokatpriser." },
+      { q: "Vad händer om jag missar överklagandetiden?", a: "Beslutet vinner laga kraft och är normalt bindande. I undantagsfall kan du ansöka om återställande av försutten tid om du haft giltig anledning (t.ex. sjukhusvistelse)." },
+      { q: "Hur snabbt får jag hjälp?", a: "Inom 24 timmar. Beskriv din situation och vilket beslut du vill överklaga – vi formulerar överklagandet åt dig. Första svaret gratis." },
+    ],
+    cta: "Beskriv ditt beslut – vi skriver överklagandet åt dig",
+    ctaNote: "Agera snabbt – överklagandetiden löper.",
+    relatedLinks: [
+      { href: "/hjalp-forsakringskassan", label: "Hjälp: Överklaga Försäkringskassan" },
+      { href: "/hjalp-kronofogden", label: "Hjälp: Bestrida Kronofogden" },
+      { href: "/hjalp-migrationsverket", label: "Hjälp: Överklaga Migrationsverket" },
+    ],
+  },
+  {
+    slug: "brev-till-forsakringskassan",
+    lang: "sv",
+    title: "Brev till Försäkringskassan – rätt formulering och mallar | Svar Direkt",
+    metaDesc: "Hur skriver man till Försäkringskassan? Guide med rätt ton, struktur och fraser. Gratis mallar och personlig hjälp. Sjukpenning, föräldrapenning, överklagande.",
+    h1: "Brev till Försäkringskassan – så skriver du rätt",
+    intro: "Att skriva till Försäkringskassan kräver precision och rätt ton. Brev som är vaga, saknar dokument eller har fel formulering kan leda till längre handläggningstid, begäran om komplettering eller avslag. Vi hjälper dig skriva ett korrekt, komplett brev till Försäkringskassan – oavsett om det gäller sjukpenning, föräldrapenning, överklagande eller återkrav.",
+    h2s: [
+      {
+        heading: "Vanliga situationer som kräver brev till Försäkringskassan",
+        body: "Förlängning av sjukpenning – behöver nytt läkarintyg och ev. komplettering. Överklagande av nekad ersättning – kräver sakliga argument och medicinsk dokumentation. Svar på återkrav – bestrida eller begär avbetalningsplan. Begäran om omprövning – ny prövning av ett beslut du är missnöjd med. Ansökan om aktivitetsersättning – kräver fullständig dokumentation av diagnos och funktionsnedsättning.",
+      },
+      {
+        heading: "Rätt sätt att formulera sig till Försäkringskassan",
+        body: "Inled alltid med ärendenumret om du har ett. Ange tydligt vad brevet gäller: 'Gäller: Sjukpenning, ärendenummer XXXXXXXX'. Använd formellt språk: 'Jag yrkar att Försäkringskassan...', 'Jag begär omprövning av beslut daterat...'. Bifoga alltid läkarintyg, journalanteckningar eller andra underlag som styrker din situation.",
+      },
+      {
+        heading: "Komplettering eller överklagande – vad gäller?",
+        body: "Om Försäkringskassan begär komplettering har du en deadline – vanligtvis 2–4 veckor. Svara alltid inom fristen och bifoga alla efterfrågade dokument. Om du är missnöjd med ett beslut har du 2 månader på dig att begära omprövning. Omprövningen görs av Försäkringskassan, och om du fortfarande är missnöjd kan du överklaga till Förvaltningsdomstolen.",
+      },
+      {
+        heading: "Hjälp att skriva till Försäkringskassan",
+        body: "Fyll i formuläret nedan och beskriv din situation – vilket brev du fått, vad Försäkringskassan kräver och vad du vill uppnå. Inom 24 timmar får du ett färdigt, korrekt formulerat brev som du kan kopiera och skicka. Första svaret är alltid gratis.",
+      },
+    ],
+    faq: [
+      { q: "Hur kontaktar man Försäkringskassan skriftligt?", a: "Du kan skicka brev via Mina sidor på forsakringskassan.se (rekommenderat – ger dig kvitto), via post eller via ombud. Vid överklaganden och omprövningar är skriftlig kommunikation obligatorisk." },
+      { q: "Vad är skillnaden mellan omprövning och överklagande?", a: "Omprövning: du begär att Försäkringskassan prövar sitt eget beslut på nytt (görs hos Försäkringskassan). Överklagande: du tar beslutet till Förvaltningsdomstolen. Prova alltid omprövning först – det är gratis, snabbare och löser många fall." },
+      { q: "Måste jag ha läkarintyg?", a: "Vid sjukpenning – ja, alltid. Läkarintyg ska bifogas från dag 8 och sedan regelbundet. Vid föräldrapenning – nej. Vid överklaganden – starkt rekommenderat om beslutet grundas på medicinsk bedömning." },
+      { q: "Hur snabbt svarar ni?", a: "Inom 24 timmar. Beskriver du situationen i formuläret får du ett färdigt brev till Försäkringskassan via e-post. Första hjälpen är alltid gratis." },
+    ],
+    cta: "Beskriv situationen – vi skriver brevet till FK åt dig",
+    ctaNote: "Svar inom 24 timmar. Första hjälpen gratis.",
+    relatedLinks: [
+      { href: "/hjalp-forsakringskassan", label: "Mer hjälp: Överklagande Försäkringskassan" },
+      { href: "/blogg/hur-skriver-man-till-forsakringskassan", label: "Guide: Hur skriver man till Försäkringskassan?" },
+      { href: "/mallar", label: "Gratis brevmallar till Försäkringskassan" },
+    ],
+  },
+  {
+    slug: "svara-brev-kronofogden",
+    lang: "sv",
+    title: "Svara på brev från Kronofogden – deadline och rätt formulering | Svar Direkt",
+    metaDesc: "Fått brev från Kronofogden? Du måste svara inom deadline – annars godkänns skulden automatiskt. Rätt svar, rätt tid. Personlig hjälp – första svaret gratis.",
+    h1: "Svara på brev från Kronofogden – agera snabbt",
+    intro: "Brev från Kronofogden är alltid tidskänsliga. Svarar du inte inom angiven tid godkänns kravet automatiskt och Kronofogden kan börja med löneutmätning, kontoutmätning eller utmätning av tillgångar. Att svara snabbt och rätt är avgörande – vi hjälper dig formulera rätt svar inom 24 timmar.",
+    h2s: [
+      {
+        heading: "Vilka brev skickar Kronofogden?",
+        body: "Betalningsföreläggande – krav på betalning av en skuld. Svarstid: 10–14 dagar. Om du inte svarar godkänns skulden. Föreläggande om löneutmätning – Kronofogden avser ta pengar direkt från din lön. Kallelse till sammanträde – du kallas för att redogöra för din ekonomi. Meddelande om utmätning – Kronofogden har beslutat att utmäta egendom. Varje brev kräver ett specifikt svar – fel svar kan förvärra situationen.",
+      },
+      {
+        heading: "Hur svarar du på ett betalningsföreläggande?",
+        body: "Om du bestrider skulden: Skriv att du bestrider kravet och ange kortfattat varför (skulden är felaktig, preskriberad, redan betald, du är fel person etc.). Ange ärendenumret. Kronofogden vidarebefordrar sedan ärendet till Tingsrätten om borgenären väljer att driva det vidare. Om du accepterar skulden men inte kan betala: Begär avbetalningsplan eller skuldsanering istället.",
+      },
+      {
+        heading: "Vanliga misstag att undvika",
+        body: "Ignorera aldrig ett brev från Kronofogden – tystnad räknas som acceptans. Skriv inte för aggressivt eller emotionellt – det hjälper inte. Bifoga alltid bevis om du bestrider (avtal, kvitto, kommunikation). Missa inte deadline – överklaganden av Kronofogdens beslut har korta tidsfrister. Svara alltid skriftligt – muntliga samtal är svåra att bevisa.",
+      },
+      {
+        heading: "Vi skriver svaret åt dig",
+        body: "Berätta vilket brev du fått, vad Kronofogden kräver och vad du vill uppnå. Inom 24 timmar har du ett korrekt, formulerat svar klart att skicka till Kronofogden. Första svaret är alltid gratis.",
+      },
+    ],
+    faq: [
+      { q: "Vad händer om jag inte svarar på Kronofogdens brev?", a: "Vid ett betalningsföreläggande: skulden godkänns automatiskt och Kronofogden kan påbörja utmätning. Du kan även få betalningsanmärkning som syns i 3 år. Ignorera aldrig brev från Kronofogden." },
+      { q: "Kan jag bestrida en skuld om jag inte minns den?", a: "Ja. Om du inte känner igen skulden eller anser att det är fel – bestrida. Skriv att du bestrider och anger 'Skulden är okänd för mig och jag begär specificering av fordran.' Det är borgenärens ansvar att bevisa att skulden är korrekt." },
+      { q: "Hur lång tid har jag på mig att svara?", a: "Det beror på ärendetypen och anges alltid i brevet. Betalningsförelägganden har vanligtvis 10–14 dagars svarstid. Läs alltid brevet noggrant och agera innan deadline." },
+      { q: "Kostar hjälpen något?", a: "Första svaret är helt gratis. Ytterligare hjälp kostar 99 kr per brev." },
+    ],
+    cta: "Beskriv vad Kronofogden kräver – vi svarar inom 24h",
+    ctaNote: "Agera snabbt – tidsfristen löper.",
+    relatedLinks: [
+      { href: "/hjalp-kronofogden", label: "Mer hjälp med Kronofogden" },
+      { href: "/blogg/svara-pa-krav-fran-kronofogden", label: "Guide: Svara på krav från Kronofogden" },
+      { href: "/blogg/bestrida-kronofogden", label: "Guide: Bestrida Kronofogden" },
+    ],
+  },
 ];
 
 function FaqSection({ items, lang }: { items: Faq[]; lang: "sv" | "en" | "pl" }) {

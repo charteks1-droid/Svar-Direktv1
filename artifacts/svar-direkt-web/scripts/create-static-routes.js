@@ -19,6 +19,30 @@ const META = {
     title: "Gratis mallar till svenska myndigheter – 12 färdiga mallar | Svar Direkt",
     description: "Ladda ner 12 gratis brevmallar till Kronofogden, Försäkringskassan, Skatteverket och Migrationsverket. Klara att kopiera och skicka.",
   },
+  "paket": {
+    title: "Paket & priser – Svar Direkt-appen för myndigheter | Svar Direkt",
+    description: "Välj rätt paket för att kommunicera med svenska myndigheter. Grundpaket med 12 mallar eller specialpaket med situationsanpassade brev. Ladda ner på Android.",
+  },
+  "kontakt": {
+    title: "Kontakta Svar Direkt – frågor och support | Svar Direkt",
+    description: "Har du frågor om appen, en beställning eller tjänsten? Kontakta oss på info@svardirekt.site. Vi svarar inom 24 timmar.",
+  },
+  "funktioner": {
+    title: "Funktioner i Svar Direkt – AI-assistent och mallar | Svar Direkt",
+    description: "Se alla funktioner i Svar Direkt-appen: AI-genererade brev, 12 gratis mallar, personlig hjälp och stöd för Kronofogden, Skatteverket, Försäkringskassan m.fl.",
+  },
+  "om-appen": {
+    title: "Om Svar Direkt – appen som hjälper dig med myndigheter | Svar Direkt",
+    description: "Svar Direkt är appen och tjänsten som hjälper dig kommunicera rätt med svenska myndigheter. Läs mer om vår mission och hur vi hjälper tusentals användare.",
+  },
+  "pdf-guider": {
+    title: "PDF-guider – steg-för-steg hjälp med myndigheter | Svar Direkt",
+    description: "Ladda ner gratis PDF-guider om hur du hanterar brev från Kronofogden, Försäkringskassan, Skatteverket och Migrationsverket. Klara att skriva ut och följa.",
+  },
+  "generator": {
+    title: "AI-brevgenerator – skriv brev till myndighet automatiskt | Svar Direkt",
+    description: "Generera ett korrekt, formellt brev till vilken svensk myndighet som helst på sekunder med vår AI-brevgenerator. Gratis att prova.",
+  },
   "forum": {
     title: "Vanliga frågor om svenska myndigheter | Svar Direkt",
     description: "Svar på vanliga frågor om Kronofogden, Skatteverket, Försäkringskassan, Migrationsverket och Arbetsförmedlingen. Hittar du inget svar – kontakta oss direkt.",
@@ -213,6 +237,26 @@ const META = {
     title: "Skuldsanering ansökan – mall och guide till Kronofogden | Svar Direkt",
     description: "Gratis guide: hur du ansöker om skuldsanering hos Kronofogden. Vad krävs, hur skriver du och vad händer sedan.",
   },
+  "skriva-brev-till-myndighet": {
+    title: "Skriva brev till myndighet – rätt ton, mall och hjälp | Svar Direkt",
+    description: "Hur skriver man ett korrekt brev till en svensk myndighet? Vi förklarar rätt ton, struktur och formuleringar – eller skriver hela brevet åt dig. Första hjälpen gratis.",
+  },
+  "formellt-brev-svenska": {
+    title: "Formellt brev på svenska – mall, struktur och exempel | Svar Direkt",
+    description: "Lär dig skriva ett formellt brev på svenska med rätt struktur och ton. Gratis mall och exempel. Perfekt för brev till myndigheter, hyresvärdar och arbetsgivare.",
+  },
+  "overklaga-myndighetsbeslut": {
+    title: "Överklaga myndighetsbeslut – guide, mall och hjälp | Svar Direkt",
+    description: "Hur överklagar man ett myndighetsbeslut? Steg-för-steg guide med gratis mall. Hjälp med överklagande till Försäkringskassan, Kronofogden, Migrationsverket m.fl.",
+  },
+  "brev-till-forsakringskassan": {
+    title: "Brev till Försäkringskassan – rätt formulering och mallar | Svar Direkt",
+    description: "Hur skriver man till Försäkringskassan? Guide med rätt ton, struktur och fraser. Gratis mallar och personlig hjälp. Sjukpenning, föräldrapenning, överklagande.",
+  },
+  "svara-brev-kronofogden": {
+    title: "Svara på brev från Kronofogden – deadline och rätt formulering | Svar Direkt",
+    description: "Fått brev från Kronofogden? Du måste svara inom deadline – annars godkänns skulden automatiskt. Rätt svar, rätt tid. Personlig hjälp – första svaret gratis.",
+  },
 };
 
 const ROUTES = [
@@ -260,6 +304,12 @@ const ROUTES = [
   "help-swedish-authority",
   "swedish-government-letter-help",
   "pomoc-urzad-szwecja",
+  // New SEO pages
+  "skriva-brev-till-myndighet",
+  "formellt-brev-svenska",
+  "overklaga-myndighetsbeslut",
+  "brev-till-forsakringskassan",
+  "svara-brev-kronofogden",
 ];
 
 const baseHtml = fs.readFileSync(indexHtml, "utf8");
