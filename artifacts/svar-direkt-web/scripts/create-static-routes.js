@@ -19,6 +19,19 @@ const META = {
     title: "Gratis mallar till svenska myndigheter – 12 färdiga mallar | Svar Direkt",
     description: "Ladda ner 12 gratis brevmallar till Kronofogden, Försäkringskassan, Skatteverket och Migrationsverket. Klara att kopiera och skicka.",
   },
+  "mallar-interaktiva": {
+    title: "70 Gratis Interaktiva Brevmallar till Svenska Myndigheter | Svar Direkt",
+    description: "70 gratis interaktiva brevmallar till Kronofogden, Försäkringskassan, Skatteverket, Migrationsverket, Bolagsverket m.fl. Fyll i dina uppgifter direkt online och skriv ut klart brev – helt gratis.",
+    jsonld: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "70 Gratis Brevmallar till Svenska Myndigheter",
+      "description": "Interaktiva brevmallar till Kronofogden, Försäkringskassan, Skatteverket, Migrationsverket, Bolagsverket, Boverket och sjukvård.",
+      "url": "https://svardirekt.site/mallar-interaktiva",
+      "numberOfItems": 70,
+      "provider": { "@type": "Organization", "name": "Svar Direkt", "url": "https://svardirekt.site" }
+    })
+  },
   "paket": {
     title: "Paket & priser – Svar Direkt-appen för myndigheter | Svar Direkt",
     description: "Välj rätt paket för att kommunicera med svenska myndigheter. Grundpaket med 12 mallar eller specialpaket med situationsanpassade brev. Ladda ner på Android.",
@@ -266,6 +279,7 @@ const ROUTES = [
   "funktioner",
   "om-appen",
   "mallar",
+  "mallar-interaktiva",
   "pdf-guider",
   "generator",
   "forum",

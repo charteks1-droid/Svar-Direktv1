@@ -33,6 +33,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Gratis mallar – Svar Direkt",
     description: "Gratis jobbansökningsmallar och textmallar. Ladda ner och anpassa direkt.",
   },
+  "/mallar-interaktiva": {
+    title: "70 Gratis Interaktiva Brevmallar till Svenska Myndigheter | Svar Direkt",
+    description: "70 gratis interaktiva brevmallar till Kronofogden, Försäkringskassan, Skatteverket, Migrationsverket, Bolagsverket m.fl. Fyll i dina uppgifter direkt online och skriv ut klart brev – helt gratis.",
+  },
   "/pdf-guider": {
     title: "PDF-guider – Svar Direkt",
     description: "Nedladdningsbara PDF-guider för Skatteverket, Försäkringskassan, Migrationsverket och mer.",
@@ -66,6 +70,7 @@ import Contact from "@/pages/Contact";
 import Blog from "@/pages/Blog";
 import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
+import MallarInteraktiva from "@/pages/MallarInteraktiva";
 import Landing from "@/pages/Landing";
 import Tjanst from "@/pages/Tjanst";
 import Forum from "@/pages/Forum";
@@ -124,10 +129,11 @@ function Navbar() {
   ];
 
   const secondary = [
-    { href: "/om-appen",    label: "Om appen" },
-    { href: "/funktioner",  label: "Funktioner" },
-    { href: "/mallar",      label: "Mallar & texter" },
-    { href: "/pdf-guider",  label: "PDF-guider" },
+    { href: "/om-appen",           label: "Om appen" },
+    { href: "/funktioner",         label: "Funktioner" },
+    { href: "/mallar",             label: "Mallar & texter" },
+    { href: "/mallar-interaktiva", label: "70 interaktiva mallar" },
+    { href: "/pdf-guider",         label: "PDF-guider" },
   ];
 
   const allLinks = [...primary, ...secondary];
@@ -275,6 +281,7 @@ function Footer() {
       links: [
         { label: "Paket", href: "/paket" },
         { label: "Mallar & texter", href: "/mallar" },
+        { label: "70 interaktiva mallar", href: "/mallar-interaktiva" },
         { label: "PDF-guider", href: "/pdf-guider" },
         { label: "Snabba svar – Arbete", href: "/paket" },
       ],
@@ -369,6 +376,7 @@ export default function App() {
                 <Route path="/blogg" component={Blog} />
                 <Route path="/generator" component={Generator} />
                 <Route path="/mallar" component={Mallar} />
+                <Route path="/mallar-interaktiva" component={MallarInteraktiva} />
                 <Route path="/tjanst" component={Tjanst} />
                 <Route path="/forum" component={Forum} />
                 {seoPages.map((p) => (
