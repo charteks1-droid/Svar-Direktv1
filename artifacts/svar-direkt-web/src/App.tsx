@@ -118,6 +118,7 @@ function Navbar() {
   const primary = [
     { href: "/",       label: "Startsida" },
     { href: "/paket",  label: "Paket" },
+    { href: "/forum",  label: "Forum" },
     { href: "/blogg",  label: "Blogg" },
     { href: "/kontakt",label: "Kontakt" },
   ];
@@ -265,6 +266,7 @@ function Footer() {
         { label: "Om appen", href: "/om-appen" },
         { label: "Funktioner", href: "/funktioner" },
         { label: "Hur det fungerar", href: "/#hur-det-fungerar" },
+        { label: "Forum", href: "/forum" },
         { label: "Blogg", href: "/blogg" },
       ],
     },
