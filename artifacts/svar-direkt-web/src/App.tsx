@@ -68,6 +68,7 @@ import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
 import Landing from "@/pages/Landing";
 import Tjanst from "@/pages/Tjanst";
+import Forum from "@/pages/Forum";
 import SeoLanding, { seoPages } from "@/pages/SeoLanding";
 import NotFound from "@/pages/not-found";
 
@@ -367,6 +368,7 @@ export default function App() {
                 <Route path="/generator" component={Generator} />
                 <Route path="/mallar" component={Mallar} />
                 <Route path="/tjanst" component={Tjanst} />
+                <Route path="/forum" component={Forum} />
                 {seoPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`}>
                     {() => <SeoLanding slug={p.slug} />}

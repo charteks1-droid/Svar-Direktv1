@@ -19,6 +19,10 @@ const META = {
     title: "Gratis mallar till svenska myndigheter – 12 färdiga mallar | Svar Direkt",
     description: "Ladda ner 12 gratis brevmallar till Kronofogden, Försäkringskassan, Skatteverket och Migrationsverket. Klara att kopiera och skicka.",
   },
+  "forum": {
+    title: "Vanliga frågor om svenska myndigheter | Svar Direkt",
+    description: "Svar på vanliga frågor om Kronofogden, Skatteverket, Försäkringskassan, Migrationsverket och Arbetsförmedlingen. Hittar du inget svar – kontakta oss direkt.",
+  },
   "tjanst": {
     title: "Personlig hjälp med myndigheter – 99 kr per svar | Svar Direkt",
     description: "Beskriv ditt ärende och få ett klart svar att skicka till myndigheten. Första svaret gratis. Ytterligare svar 99 kr. Svar inom 24 timmar.",
@@ -242,7 +246,8 @@ const ROUTES = [
   "blogg/bestrida-kronofogden",
   "blogg/aterkrav-forsakringskassan-vad-gor-jag",
   "blogg/skuldsanering-ansoekan-mall",
-  // Tjänst & SEO landing pages
+  // Tjänst, Forum & SEO landing pages
+  "forum",
   "tjanst",
   "hjalp-kronofogden",
   "hjalp-forsakringskassan",
