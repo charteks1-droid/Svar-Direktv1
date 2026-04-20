@@ -326,14 +326,37 @@ const ROUTES = [
   "svara-brev-kronofogden",
 ];
 
+const BASE_URL = "https://svardirekt.site";
 const baseHtml = fs.readFileSync(indexHtml, "utf8");
 let count = 0;
 
-function injectMeta(html, route) {
-  const meta = META[route];
-  if (!meta) return html;
+function buildBreadcrumb(route) {
+  const parts = route.split("/");
+  const items = [
+    { "@type": "ListItem", "position": 1, "name": "Hem", "item": BASE_URL + "/" }
+  ];
+  let pos = 2;
+  if (parts[0] === "blogg") {
+    items.push({ "@type": "ListItem", "position": pos++, "name": "Blogg", "item": BASE_URL + "/blogg" });
+    if (parts[1]) {
+      const slug = parts[1].replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      items.push({ "@type": "ListItem", "position": pos, "name": slug, "item": BASE_URL + "/" + route });
+    }
+  } else {
+    const name = route.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    items.push({ "@type": "ListItem", "position": pos, "name": name, "item": BASE_URL + "/" + route });
+  }
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items
+  });
+}
 
+function injectMeta(html, route) {
+  const meta = META[route] || {};
   let out = html;
+  const pageUrl = `${BASE_URL}/${route}`;
 
   // Replace <title>
   if (meta.title) {
@@ -348,11 +371,46 @@ function injectMeta(html, route) {
     );
   }
 
-  // Inject JSON-LD before </head>
-  if (meta.jsonld) {
-    const script = `<script type="application/ld+json">${meta.jsonld}</script>`;
-    out = out.replace("</head>", `${script}\n</head>`);
+  // Replace canonical URL
+  out = out.replace(
+    /<link rel="canonical" href="[^"]*"/,
+    `<link rel="canonical" href="${pageUrl}"`
+  );
+
+  // Replace OG URL
+  out = out.replace(
+    /<meta property="og:url" content="[^"]*"/,
+    `<meta property="og:url" content="${pageUrl}"`
+  );
+
+  // Replace OG title if we have one
+  if (meta.title) {
+    out = out.replace(
+      /<meta property="og:title" content="[^"]*"/,
+      `<meta property="og:title" content="${meta.title.replace(/"/g, '&quot;')}"`
+    );
+    out = out.replace(
+      /<meta name="twitter:title" content="[^"]*"/,
+      `<meta name="twitter:title" content="${meta.title.replace(/"/g, '&quot;')}"`
+    );
   }
+
+  // Replace OG description if we have one
+  if (meta.description) {
+    out = out.replace(
+      /<meta property="og:description" content="[^"]*"/,
+      `<meta property="og:description" content="${meta.description.replace(/"/g, '&quot;')}"`
+    );
+    out = out.replace(
+      /<meta name="twitter:description" content="[^"]*"/,
+      `<meta name="twitter:description" content="${meta.description.replace(/"/g, '&quot;')}"`
+    );
+  }
+
+  // Inject BreadcrumbList + optional custom JSON-LD before </head>
+  const breadcrumbScript = `<script type="application/ld+json">${buildBreadcrumb(route)}</script>`;
+  const customScript = meta.jsonld ? `<script type="application/ld+json">${meta.jsonld}</script>` : "";
+  out = out.replace("</head>", `${breadcrumbScript}\n${customScript}\n</head>`);
 
   return out;
 }
