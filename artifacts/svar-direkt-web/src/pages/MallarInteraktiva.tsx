@@ -1744,14 +1744,31 @@ function TemplateCard({ t, onClick }: { t: Template; onClick: () => void }) {
 function TemplateEditor({ t, onBack }: { t: Template; onBack: () => void }) {
   const placeholders = extractPlaceholders(t.body);
   const [values, setValues] = useState<Record<string, string>>({});
-  const [printed, setPrinted] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
 
   const setValue = (key: string, val: string) =>
     setValues(prev => ({ ...prev, [key]: val }));
 
-  const handlePrint = () => {
-    setPrinted(true);
-    setTimeout(() => window.print(), 100);
+  const filledText = renderWithValues(t.body, values);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(filledText).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3000);
+    });
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob([filledText], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Mall_${t.id}_${t.authority.replace(/\s*\/\s*/g, "-").replace(/\s+/g, "_")}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 3000);
   };
 
   const allFilled = placeholders.every(p => (values[p] ?? "").trim().length > 0);
@@ -1759,35 +1776,15 @@ function TemplateEditor({ t, onBack }: { t: Template; onBack: () => void }) {
 
   return (
     <div>
-      {/* Print styles */}
-      <style>{`
-        @media print {
-          body > * { display: none !important; }
-          .print-area { display: block !important; position: fixed; top: 0; left: 0; width: 100%; background: white; z-index: 99999; }
-          .no-print { display: none !important; }
-        }
-        @media screen {
-          .print-area { display: none; }
-        }
-      `}</style>
-
-      {/* Print area (hidden on screen, shown on print) */}
-      <div className="print-area" style={{ padding: "40px", fontFamily: "serif", fontSize: "14px", lineHeight: "1.7", whiteSpace: "pre-wrap" }}>
-        <div style={{ fontSize: "10px", color: "#999", marginBottom: "24px" }}>
-          Mall {t.id} – {t.title} | Svar Direkt (svardirekt.site)
-        </div>
-        {renderWithValues(t.body, values)}
-      </div>
-
       {/* Back button */}
-      <div className="no-print mb-4">
+      <div className="mb-4">
         <button onClick={onBack} className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-primary transition-colors">
           ← Tillbaka till mallar
         </button>
       </div>
 
       {/* Header */}
-      <div className="no-print mb-6">
+      <div className="mb-6">
         <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full border mb-2 ${AUTH_COLORS[t.authority] ?? "bg-slate-100"}`}>
           {t.authority}
         </span>
@@ -1795,7 +1792,7 @@ function TemplateEditor({ t, onBack }: { t: Template; onBack: () => void }) {
         <p className="text-sm text-slate-500 mt-1">{t.desc}</p>
       </div>
 
-      <div className="no-print grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {/* Left: fill in form */}
         <div>
           <div className="bg-slate-50 rounded-2xl border border-slate-200 p-4">
@@ -1833,18 +1830,27 @@ function TemplateEditor({ t, onBack }: { t: Template; onBack: () => void }) {
 
             <div className="mt-5 flex gap-2 flex-wrap">
               <button
-                onClick={handlePrint}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-sm ${allFilled ? "bg-primary text-white hover:bg-primary/90" : "bg-slate-200 text-slate-500 cursor-not-allowed"}`}
+                onClick={handleCopy}
                 disabled={!allFilled}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-sm ${allFilled ? "bg-primary text-white hover:bg-primary/90" : "bg-slate-200 text-slate-500 cursor-not-allowed"}`}
                 title={!allFilled ? "Fyll i alla fält först" : ""}
               >
-                🖨️ Skriv ut / Spara som PDF
+                {copied ? "✓ Kopierat!" : "📋 Kopiera text"}
+              </button>
+              <button
+                onClick={handleDownload}
+                disabled={!allFilled}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-sm border ${allFilled ? "bg-white border-slate-300 text-slate-700 hover:border-primary hover:text-primary" : "bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed"}`}
+                title={!allFilled ? "Fyll i alla fält först" : ""}
+              >
+                {downloaded ? "✓ Nedladdat!" : "💾 Spara som .txt"}
               </button>
               {!allFilled && (
-                <p className="text-xs text-slate-400 self-center">Fyll i alla {placeholders.length} fält för att skriva ut.</p>
+                <p className="text-xs text-slate-400 self-center w-full mt-1">Fyll i alla {placeholders.length} fält för att kopiera eller spara.</p>
               )}
             </div>
-            {printed && <p className="text-xs text-emerald-600 mt-2">✓ Utskriftsdialog öppnad. Välj "Spara som PDF" för att ladda ner.</p>}
+            {copied && <p className="text-xs text-emerald-600 mt-2">✓ Texten är kopierad – klistra in i Word eller Anteckningar och skriv ut.</p>}
+            {downloaded && !copied && <p className="text-xs text-emerald-600 mt-2">✓ Fil sparad – öppna i Word eller Anteckningar och skriv ut.</p>}
           </div>
 
           <div className="mt-3 bg-amber-50 border border-amber-100 rounded-xl px-3 py-2.5 text-xs text-amber-700">
