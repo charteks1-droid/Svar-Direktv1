@@ -45,11 +45,14 @@ function timeAgo(iso: string): string {
   return `${Math.floor(h / 24)} dag${Math.floor(h / 24) > 1 ? "ar" : ""} sedan`;
 }
 
-const API = "/api/forum";
+const API = (import.meta.env.VITE_API_BASE_URL ?? "") + "/api/forum";
+const API_UNAVAILABLE = "Forumet kräver en serveranslutning som inte är tillgänglig på den här webbplatsen. Besök svardirekt.site och prova igen om en stund, eller skicka din fråga direkt till info@svardirekt.site.";
 
 async function apiFetch(path: string, opts?: RequestInit) {
   const res = await fetch(API + path, opts);
-  if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || "Fel"); }
+  const ct = res.headers.get("content-type") ?? "";
+  if (!ct.includes("application/json")) throw new Error(API_UNAVAILABLE);
+  if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.error || "Serverfel"); }
   return res.json();
 }
 
@@ -68,6 +71,18 @@ function Spinner() {
 }
 
 function ErrorMsg({ msg }: { msg: string }) {
+  const isOffline = msg.includes("serveranslutning") || msg.includes("info@svardirekt");
+  if (isOffline) {
+    return (
+      <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-4 my-4">
+        <p className="text-sm font-semibold text-amber-800 mb-1">Forumet är inte tillgängligt just nu</p>
+        <p className="text-sm text-amber-700 mb-2">Ställ din fråga direkt via e-post – vi svarar inom 24 timmar.</p>
+        <a href="mailto:info@svardirekt.site" className="text-sm font-bold text-amber-900 underline hover:no-underline">
+          info@svardirekt.site →
+        </a>
+      </div>
+    );
+  }
   return <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 my-3">{msg}</p>;
 }
 
@@ -84,6 +99,8 @@ function CategoriesView({ onSelect }: { onSelect: (id: string) => void }) {
 
   if (loading) return <Spinner />;
 
+  const isOffline = err.includes("serveranslutning") || err.includes("info@svardirekt");
+
   return (
     <div>
       {err && <ErrorMsg msg={err} />}
@@ -91,8 +108,8 @@ function CategoriesView({ onSelect }: { onSelect: (id: string) => void }) {
         {(cats.length ? cats : Object.keys(CAT_META).map(id => ({ id, name: id, icon: "📋", desc: "", color: "#666", threads: 0, replies: 0, unanswered: 0 }))).map(cat => {
           const m = CAT_META[cat.id] ?? { bg: "bg-slate-50", border: "border-slate-200", badge: "bg-slate-100 text-slate-700" };
           return (
-            <button key={cat.id} onClick={() => onSelect(cat.id)}
-              className={`w-full text-left p-4 rounded-2xl border ${m.bg} ${m.border} hover:shadow-md transition-all group flex items-start gap-3`}>
+            <button key={cat.id} onClick={() => !isOffline && onSelect(cat.id)} disabled={isOffline}
+              className={`w-full text-left p-4 rounded-2xl border ${m.bg} ${m.border} transition-all group flex items-start gap-3 ${isOffline ? "opacity-60 cursor-not-allowed" : "hover:shadow-md cursor-pointer"}`}>
               <span className="text-xl mt-0.5 flex-shrink-0">{cat.icon}</span>
               <div className="flex-1 min-w-0">
                 <div className="font-semibold text-slate-900 group-hover:text-primary transition-colors">{cat.name}</div>
