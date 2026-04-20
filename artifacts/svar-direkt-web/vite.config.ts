@@ -69,10 +69,8 @@ export default defineConfig({
       deny: ["**/.*"],
     },
     proxy: {
-      "/api/contact": {
-        target: "http://localhost:8099",
-        changeOrigin: true,
-      },
+      "/api/contact": { target: "http://localhost:8099", changeOrigin: true },
+      "/api/forum":   { target: "http://localhost:8099", changeOrigin: true },
     },
   },
   preview: {
