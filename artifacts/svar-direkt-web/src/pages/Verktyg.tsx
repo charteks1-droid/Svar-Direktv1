@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
 
@@ -31,27 +31,17 @@ function LegalDisclaimer() {
       <p className="text-xs text-slate-400 leading-relaxed">
         <strong className="font-semibold text-slate-500">Obs: Detta är inte juridisk rådgivning.</strong>{" "}
         Svar Direkt erbjuder endast mallar och formuleringar baserade på allmän information.
+        Svar Direkt analyserar inte enskilda ärenden.
       </p>
     </div>
   );
 }
 
-function UpgradeBox({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function SelfServiceNote() {
   return (
-    <div className="mt-5 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 p-5 text-white">
-      <p className="text-sm font-semibold mb-2">Behöver du en bättre formulering?</p>
-      <p className="text-sm text-blue-100 mb-3">Har du en specifik situation? Vi kan justera texten så att den passar bättre för ditt ärende.</p>
-      <ul className="text-sm space-y-1 mb-4 text-blue-100">
-        <li>✔ Anpassad till din situation</li>
-        <li>✔ Starkare formulering</li>
-        <li>✔ Snabbt svar</li>
-      </ul>
-      <button
-        onClick={() => upgradeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
-        className="w-full py-3 bg-white text-blue-700 rounded-xl font-bold text-sm hover:bg-blue-50 transition-colors shadow"
-      >
-        → Få justerad text – 99 kr
-      </button>
+    <div className="mt-5 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-500">
+      Fyll i dina uppgifter och generera en färdig mall direkt i webbläsaren.
+      Kopiera och använd själv.
     </div>
   );
 }
@@ -121,65 +111,6 @@ function Field({
           className="w-full text-sm border-2 border-slate-200 rounded-xl px-3 py-2.5 bg-white focus:outline-none focus:border-primary transition-colors" />
       )}
       {hint && <p className="text-xs text-slate-400 mt-1">{hint}</p>}
-    </div>
-  );
-}
-
-// ── Contact / Upgrade panel (scrolled to) ────────────────────────────────────
-
-function UpgradePanel({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [msg, setMsg] = useState("");
-  const [status, setStatus] = useState<"idle"|"sending"|"ok"|"err">("idle");
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fornamn: name, epost: email, beskrivning: msg }),
-      });
-      const data = await res.json();
-      setStatus(data.success ? "ok" : "err");
-    } catch { setStatus("err"); }
-  }
-
-  return (
-    <div ref={upgradeRef} className="max-w-2xl mx-auto bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 text-white shadow-xl">
-      <div className="text-center mb-6">
-        <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">Textjustering</span>
-        <h2 className="text-2xl font-bold mb-2">Behöver du en bättre formulering?</h2>
-        <p className="text-blue-100 text-sm leading-relaxed">
-          Har du en specifik situation? Vi justerar texten så att den passar bättre för ditt ärende.
-          <strong className="text-white"> Första svaret är alltid gratis.</strong>
-        </p>
-      </div>
-
-      {status === "ok" ? (
-        <div className="bg-white/20 rounded-2xl p-6 text-center">
-          <div className="text-3xl mb-2">✓</div>
-          <p className="font-bold text-lg">Tack! Vi hör av oss snart.</p>
-          <p className="text-blue-100 text-sm mt-1">Vi justerar texten — du betalar 99 kr endast om du vill ha svaret.</p>
-        </div>
-      ) : (
-        <form onSubmit={submit} className="space-y-3">
-          <input value={name} onChange={e => setName(e.target.value)} placeholder="Ditt namn"
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-blue-200 text-sm focus:outline-none focus:border-white" />
-          <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="Din e-postadress *"
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-blue-200 text-sm focus:outline-none focus:border-white" />
-          <textarea value={msg} onChange={e => setMsg(e.target.value)} placeholder="Beskriv kort ditt ärende och vilken myndighet det gäller…" rows={4}
-            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-blue-200 text-sm focus:outline-none focus:border-white resize-none" />
-          <button type="submit" disabled={status === "sending"}
-            className="w-full py-4 bg-white text-blue-700 rounded-xl font-bold text-base hover:bg-blue-50 transition-colors shadow-lg disabled:opacity-60">
-            {status === "sending" ? "Skickar…" : "Skicka – vi justerar texten →"}
-          </button>
-          {status === "err" && <p className="text-red-200 text-sm text-center">Något gick fel. Försök igen.</p>}
-          <p className="text-blue-200 text-xs text-center">Ingen registrering. Inget abonnemang. Betala bara om du är nöjd.</p>
-        </form>
-      )}
     </div>
   );
 }
@@ -260,7 +191,7 @@ const AUTHORITY_TIMES: Record<string, { days: number; lag: string }> = {
   "Annan myndighet": { days: 90, lag: "Förvaltningslagen 9 §" },
 };
 
-function HandlaggningstidVaktaren({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function HandlaggningstidVaktaren() {
   const [namn, setNamn] = useState("");
   const [pnr, setPnr] = useState("");
   const [myndighet, setMyndighet] = useState("");
@@ -318,13 +249,13 @@ ${pnr || ""}`;
       )}
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Handlaggningstid_paminnelse.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
 }
 
-function JOAnmalan({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function JOAnmalan() {
   const [namn, setNamn] = useState("");
   const [pnr, setPnr] = useState("");
   const [adress, setAdress] = useState("");
@@ -392,7 +323,7 @@ Skicka till: jo@jo.se eller via www.jo.se`;
         placeholder="T.ex. om handläggningstiden var orimlig, om du behandlades diskriminerande..." />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="JO_Anmalan.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
@@ -410,7 +341,7 @@ const DAMAGE_TYPES = [
   "Annan skada av myndighetsagerande",
 ];
 
-function SkadestandKalkulator({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function SkadestandKalkulator() {
   const [namn, setNamn] = useState("");
   const [pnr, setPnr] = useState("");
   const [myndighet, setMyndighet] = useState("");
@@ -498,13 +429,13 @@ ${f(namn, "ditt namn")}`;
       )}
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Skadestandsansprak.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
 }
 
-function OffentlighetsTool({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function OffentlighetsTool() {
   const [namn, setNamn] = useState("");
   const [epost, setEpost] = useState("");
   const [telefon, setTelefon] = useState("");
@@ -562,7 +493,7 @@ ${epost || ""}`;
         placeholder="T.ex. Alla inkomna och utgångna e-postmeddelanden rörande ärendenummer 12345 under perioden jan-mars 2026." />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Offentlighetsprincipen_begaran.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
@@ -571,7 +502,7 @@ ${epost || ""}`;
 const DO_GROUNDS = ["Kön","Könsöverskridande identitet eller uttryck","Etnisk tillhörighet","Religion eller annan trosuppfattning","Funktionsnedsättning","Sexuell läggning","Ålder"];
 const DO_CONTEXTS = ["Arbetslivet","Utbildning","Varor och tjänster","Bostadsmarknaden","Socialtjänsten / socialförsäkringen","Hälso- och sjukvård","Offentlig anställning / myndighetsutövning"];
 
-function DOAnmalan({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function DOAnmalan() {
   const [namn, setNamn] = useState("");
   const [pnr, setPnr] = useState("");
   const [epost, setEpost] = useState("");
@@ -640,7 +571,7 @@ Skicka till: anmalan@do.se eller via www.do.se`;
         placeholder="Finns det vittnen? E-postmeddelanden? Inspelningar?" />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="DO_Anmalan.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
@@ -657,7 +588,7 @@ const GDPR_VIOLATIONS = [
   "Annan GDPR-överträdelse",
 ];
 
-function IMYKlagan({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function IMYKlagan() {
   const [namn, setNamn] = useState("");
   const [epost, setEpost] = useState("");
   const [motpart, setMotpart] = useState("");
@@ -721,7 +652,7 @@ Skicka till: imy@imy.se eller via www.imy.se`;
         placeholder="Eventuellt svar, eller notera om du inte fick något svar." />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="IMY_GDPR_Klagan.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
@@ -739,7 +670,7 @@ const APPEAL_AUTHORITIES: Record<string, string> = {
   "Annan myndighet": "Förvaltningsrätten i den ort där du bor",
 };
 
-function ForvaltningsrattenWizard({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function ForvaltningsrattenWizard() {
   const [step, setStep] = useState(1);
   const [namn, setNamn] = useState("");
   const [pnr, setPnr] = useState("");
@@ -856,7 +787,7 @@ OBS: Lämna överklagandet till ${f(myndighet, "myndigheten")}, inte direkt till
 
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Overklagan_Forvaltningsratten.txt" />
-      <UpgradeBox upgradeRef={upgradeRef} />
+      <SelfServiceNote />
       <LegalDisclaimer />
     </div>
   );
@@ -878,7 +809,6 @@ const TOOLS = [
 
 export default function Verktyg() {
   const [active, setActive] = useState<string | null>(null);
-  const upgradeRef = useRef<HTMLDivElement>(null);
 
   const activeTool = TOOLS.find(t => t.id === active);
 
@@ -902,12 +832,9 @@ export default function Verktyg() {
                   <p className="text-sm text-slate-500 mt-1">{activeTool.desc}</p>
                 </div>
               </div>
-              <Component upgradeRef={upgradeRef} />
+              <Component />
             </div>
           </div>
-
-          {/* Upgrade panel anchor */}
-          <UpgradePanel upgradeRef={upgradeRef} />
 
           <TrustBadges />
 
@@ -916,6 +843,7 @@ export default function Verktyg() {
             <p className="text-xs text-slate-400 leading-relaxed text-center">
               <strong className="font-semibold text-slate-500">Obs: Detta är inte juridisk rådgivning.</strong>{" "}
               Svar Direkt erbjuder endast mallar och formuleringar baserade på allmän information.
+              Svar Direkt analyserar inte enskilda ärenden.
             </p>
           </div>
         </div>
@@ -956,7 +884,7 @@ export default function Verktyg() {
               <p className="text-xs text-slate-500 font-medium mb-2">{tool.tagline}</p>
               <p className="text-xs text-slate-400 leading-relaxed mb-4">{tool.desc}</p>
               <div className="flex items-center gap-1 text-xs font-bold text-primary">
-                Öppna och kopiera <span className="group-hover:translate-x-1 transition-transform">→</span>
+                → Öppna och generera <span className="group-hover:translate-x-1 transition-transform inline-block"></span>
               </div>
             </button>
           ))}
