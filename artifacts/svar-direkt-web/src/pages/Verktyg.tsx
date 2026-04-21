@@ -30,27 +30,27 @@ function LegalDisclaimer() {
     <div className="mt-5 border-t border-slate-100 pt-4">
       <p className="text-xs text-slate-400 leading-relaxed">
         <strong className="font-semibold text-slate-500">Obs: Detta är inte juridisk rådgivning.</strong>{" "}
-        Svar Direkt tillhandahåller mallar och exempel baserade på allmän information.
-        För juridisk rådgivning rekommenderas att kontakta en advokat eller jurist.
+        Svar Direkt erbjuder endast mallar och formuleringar baserade på allmän information.
       </p>
     </div>
   );
 }
 
-function UpgradeBox({ toolName, upgradeRef }: { toolName: string; upgradeRef: React.RefObject<HTMLDivElement | null> }) {
+function UpgradeBox({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivElement | null> }) {
   return (
     <div className="mt-5 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 p-5 text-white">
-      <p className="text-sm font-semibold mb-2">Vill du att vi granskar eller förbättrar din text?</p>
+      <p className="text-sm font-semibold mb-2">Behöver du en bättre formulering?</p>
+      <p className="text-sm text-blue-100 mb-3">Har du en specifik situation? Vi kan justera texten så att den passar bättre för ditt ärende.</p>
       <ul className="text-sm space-y-1 mb-4 text-blue-100">
-        <li>✔ Anpassning till din situation</li>
-        <li>✔ Starkare formuleringar</li>
-        <li>✔ Snabbare resultat</li>
+        <li>✔ Anpassad till din situation</li>
+        <li>✔ Starkare formulering</li>
+        <li>✔ Snabbt svar</li>
       </ul>
       <button
         onClick={() => upgradeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
         className="w-full py-3 bg-white text-blue-700 rounded-xl font-bold text-sm hover:bg-blue-50 transition-colors shadow"
       >
-        Få personlig hjälp – 99 kr →
+        → Få justerad text – 99 kr
       </button>
     </div>
   );
@@ -150,10 +150,10 @@ function UpgradePanel({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivEleme
   return (
     <div ref={upgradeRef} className="max-w-2xl mx-auto bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 text-white shadow-xl">
       <div className="text-center mb-6">
-        <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">Personlig hjälp</span>
-        <h2 className="text-2xl font-bold mb-2">Få din text granskad – 99 kr</h2>
+        <span className="inline-block bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">Textjustering</span>
+        <h2 className="text-2xl font-bold mb-2">Behöver du en bättre formulering?</h2>
         <p className="text-blue-100 text-sm leading-relaxed">
-          Vi hjälper dig formulera ett starkare och mer anpassat brev till myndigheten.
+          Har du en specifik situation? Vi justerar texten så att den passar bättre för ditt ärende.
           <strong className="text-white"> Första svaret är alltid gratis.</strong>
         </p>
       </div>
@@ -162,7 +162,7 @@ function UpgradePanel({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivEleme
         <div className="bg-white/20 rounded-2xl p-6 text-center">
           <div className="text-3xl mb-2">✓</div>
           <p className="font-bold text-lg">Tack! Vi hör av oss snart.</p>
-          <p className="text-blue-100 text-sm mt-1">Första svaret är gratis — du betalar endast om du vill fortsätta.</p>
+          <p className="text-blue-100 text-sm mt-1">Vi justerar texten — du betalar 99 kr endast om du vill ha svaret.</p>
         </div>
       ) : (
         <form onSubmit={submit} className="space-y-3">
@@ -174,67 +174,12 @@ function UpgradePanel({ upgradeRef }: { upgradeRef: React.RefObject<HTMLDivEleme
             className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-blue-200 text-sm focus:outline-none focus:border-white resize-none" />
           <button type="submit" disabled={status === "sending"}
             className="w-full py-4 bg-white text-blue-700 rounded-xl font-bold text-base hover:bg-blue-50 transition-colors shadow-lg disabled:opacity-60">
-            {status === "sending" ? "Skickar…" : "Skicka förfrågan – första svaret gratis →"}
+            {status === "sending" ? "Skickar…" : "Skicka – vi justerar texten →"}
           </button>
           {status === "err" && <p className="text-red-200 text-sm text-center">Något gick fel. Försök igen.</p>}
           <p className="text-blue-200 text-xs text-center">Ingen registrering. Inget abonnemang. Betala bara om du är nöjd.</p>
         </form>
       )}
-    </div>
-  );
-}
-
-// ── Lawyer lead modal ─────────────────────────────────────────────────────────
-
-function LawyerModal({ onClose }: { onClose: () => void }) {
-  const [namn, setNamn] = useState("");
-  const [epost, setEpost] = useState("");
-  const [beskrivning, setBeskrivning] = useState("");
-  const [status, setStatus] = useState<"idle"|"sending"|"ok"|"err">("idle");
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/jurist-kontakt", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ namn, epost, beskrivning }),
-      });
-      const data = await res.json();
-      setStatus(data.success ? "ok" : "err");
-    } catch { setStatus("err"); }
-  }
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 relative" onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl font-bold">×</button>
-        {status === "ok" ? (
-          <div className="text-center py-6">
-            <div className="text-4xl mb-3">✓</div>
-            <h3 className="font-bold text-lg text-slate-900 mb-2">Vi återkommer!</h3>
-            <p className="text-slate-500 text-sm">Din förfrågan har skickats. Första kontakt är gratis.</p>
-            <button onClick={onClose} className="mt-4 px-6 py-2.5 bg-primary text-white rounded-xl font-bold text-sm">Stäng</button>
-          </div>
-        ) : (
-          <>
-            <h3 className="font-bold text-xl text-slate-900 mb-1">Kontakta jurist</h3>
-            <p className="text-slate-500 text-sm mb-5">Beskriv ditt ärende – vi hjälper dig komma i kontakt med rätt jurist. Första kontakt gratis.</p>
-            <form onSubmit={submit} className="space-y-3">
-              <Field label="Ditt namn" value={namn} onChange={setNamn} placeholder="Anna Svensson" />
-              <Field label="E-postadress" value={epost} onChange={setEpost} type="email" placeholder="anna@mail.se" required />
-              <Field label="Beskriv ditt ärende" value={beskrivning} onChange={setBeskrivning} type="textarea"
-                placeholder="Vilken myndighet? Vad hände? Vad vill du uppnå?" />
-              <button type="submit" disabled={status === "sending"}
-                className="w-full py-3.5 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors disabled:opacity-60">
-                {status === "sending" ? "Skickar…" : "Skicka förfrågan – gratis"}
-              </button>
-              {status === "err" && <p className="text-red-500 text-xs text-center">Något gick fel. Försök igen.</p>}
-            </form>
-          </>
-        )}
-      </div>
     </div>
   );
 }
@@ -373,7 +318,7 @@ ${pnr || ""}`;
       )}
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Handlaggningstid_paminnelse.txt" />
-      <UpgradeBox toolName="Handläggningstid-väktaren" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -447,7 +392,7 @@ Skicka till: jo@jo.se eller via www.jo.se`;
         placeholder="T.ex. om handläggningstiden var orimlig, om du behandlades diskriminerande..." />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="JO_Anmalan.txt" />
-      <UpgradeBox toolName="JO Anmälan" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -553,7 +498,7 @@ ${f(namn, "ditt namn")}`;
       )}
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Skadestandsansprak.txt" />
-      <UpgradeBox toolName="Skadestånd-kalkulator" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -617,7 +562,7 @@ ${epost || ""}`;
         placeholder="T.ex. Alla inkomna och utgångna e-postmeddelanden rörande ärendenummer 12345 under perioden jan-mars 2026." />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Offentlighetsprincipen_begaran.txt" />
-      <UpgradeBox toolName="Offentlighetsprincipen" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -695,7 +640,7 @@ Skicka till: anmalan@do.se eller via www.do.se`;
         placeholder="Finns det vittnen? E-postmeddelanden? Inspelningar?" />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="DO_Anmalan.txt" />
-      <UpgradeBox toolName="DO Anmälan" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -776,7 +721,7 @@ Skicka till: imy@imy.se eller via www.imy.se`;
         placeholder="Eventuellt svar, eller notera om du inte fick något svar." />
       <DocPreview text={doc} />
       <DocActions text={doc} filename="IMY_GDPR_Klagan.txt" />
-      <UpgradeBox toolName="IMY/GDPR-klagomål" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -880,7 +825,7 @@ OBS: Lämna överklagandet till ${f(myndighet, "myndigheten")}, inte direkt till
           <Field label="Ärendenummer (valfritt)" value={arendenr} onChange={setArendenr} placeholder="Valfritt" />
           {deadline && (
             <div className={`sm:col-span-2 rounded-xl px-4 py-3 text-sm font-semibold border ${(daysLeft ?? 0) < 7 ? "bg-red-50 border-red-200 text-red-700" : "bg-emerald-50 border-emerald-200 text-emerald-700"}`}>
-              {(daysLeft ?? 0) < 0 ? "⚠️ Överklagandefristen har löpt ut! Kontakta jurist." : `⏱ Sista dag: ${deadline.toLocaleDateString("sv-SE")} (${daysLeft} dagar kvar)`}
+              {(daysLeft ?? 0) < 0 ? "⚠️ Överklagandefristen har löpt ut! Använd uppgraderingsalternativet nedan för hjälp med formulering." : `⏱ Sista dag: ${deadline.toLocaleDateString("sv-SE")} (${daysLeft} dagar kvar)`}
             </div>
           )}
           {myndighet && (
@@ -911,7 +856,7 @@ OBS: Lämna överklagandet till ${f(myndighet, "myndigheten")}, inte direkt till
 
       <DocPreview text={doc} />
       <DocActions text={doc} filename="Overklagan_Forvaltningsratten.txt" />
-      <UpgradeBox toolName="Förvaltningsrätten-wizard" upgradeRef={upgradeRef} />
+      <UpgradeBox upgradeRef={upgradeRef} />
       <LegalDisclaimer />
     </div>
   );
@@ -933,7 +878,6 @@ const TOOLS = [
 
 export default function Verktyg() {
   const [active, setActive] = useState<string | null>(null);
-  const [lawyerOpen, setLawyerOpen] = useState(false);
   const upgradeRef = useRef<HTMLDivElement>(null);
 
   const activeTool = TOOLS.find(t => t.id === active);
@@ -965,29 +909,16 @@ export default function Verktyg() {
           {/* Upgrade panel anchor */}
           <UpgradePanel upgradeRef={upgradeRef} />
 
-          {/* Lawyer section */}
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-            <h3 className="font-bold text-slate-900 mb-2">Behöver du professionell juridisk hjälp?</h3>
-            <p className="text-slate-500 text-sm mb-4">Vi kan hjälpa dig komma i kontakt med rätt jurist.<br /><strong>Första kontakt gratis.</strong></p>
-            <button onClick={() => setLawyerOpen(true)}
-              className="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-700 transition-colors">
-              Kontakta jurist →
-            </button>
-          </div>
-
           <TrustBadges />
 
           {/* Global disclaimer */}
           <div className="border border-slate-100 rounded-xl p-4 bg-slate-50">
             <p className="text-xs text-slate-400 leading-relaxed text-center">
               <strong className="font-semibold text-slate-500">Obs: Detta är inte juridisk rådgivning.</strong>{" "}
-              Svar Direkt tillhandahåller mallar och exempel baserade på allmän information.
-              För juridisk rådgivning rekommenderas att kontakta en advokat eller jurist.
+              Svar Direkt erbjuder endast mallar och formuleringar baserade på allmän information.
             </p>
           </div>
         </div>
-
-        {lawyerOpen && <LawyerModal onClose={() => setLawyerOpen(false)} />}
       </>
     );
   }
@@ -1037,18 +968,18 @@ export default function Verktyg() {
         <EmailCapture />
       </section>
 
-      {/* Lawyer section */}
+      {/* Upsell section */}
       <section className="bg-slate-50 border-y border-slate-200 py-12 px-4">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-3">Behöver du professionell juridisk hjälp?</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-3">Behöver du en bättre formulering?</h2>
           <p className="text-slate-500 text-sm leading-relaxed mb-6">
-            Vi kan hjälpa dig komma i kontakt med rätt jurist.<br />
-            <strong>Första kontakt gratis.</strong>
+            Våra verktyg skapar färdiga mallar direkt.<br />
+            Har du en specifik situation? Vi kan justera texten så att den passar bättre för ditt ärende.
           </p>
-          <button onClick={() => setLawyerOpen(true)}
-            className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold text-base hover:bg-slate-700 transition-colors shadow-lg">
-            Kontakta jurist →
-          </button>
+          <a href="/tjanst"
+            className="inline-block px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-base hover:bg-blue-700 transition-colors shadow-lg">
+            → Få justerad text – 99 kr
+          </a>
         </div>
       </section>
 
@@ -1079,7 +1010,7 @@ export default function Verktyg() {
           <h3 className="font-bold text-slate-900 mb-4 text-center">Vanliga frågor</h3>
           <div className="space-y-4">
             {[
-              { q: "Är verktygen juridisk rådgivning?", a: "Nej. Verktygen genererar malltexter baserade på allmän information. De ersätter inte juridisk rådgivning. Vid komplexa ärenden bör du kontakta en jurist." },
+              { q: "Är verktygen juridisk rådgivning?", a: "Nej. Svar Direkt erbjuder endast mallar och formuleringar baserade på allmän information." },
               { q: "Behöver jag skapa ett konto?", a: "Nej. Alla verktyg är anonyma — inga uppgifter sparas." },
               { q: "Kostar det något?", a: "Alla sju verktyg är gratis. Personlig hjälp med formulering kostar 99 kr, och första svaret är alltid gratis." },
               { q: "Hur lång tid har jag att överklaga?", a: "Normalt tre veckor från beslutet. Vår wizard räknar ut deadline automatiskt." },
@@ -1096,13 +1027,10 @@ export default function Verktyg() {
         <div className="border border-slate-200 rounded-xl p-4 bg-slate-50 text-center">
           <p className="text-xs text-slate-400 leading-relaxed">
             <strong className="text-slate-500">Obs: Detta är inte juridisk rådgivning.</strong>{" "}
-            Svar Direkt tillhandahåller mallar och exempel baserade på allmän information.
-            För juridisk rådgivning rekommenderas att kontakta en advokat eller jurist.
+            Svar Direkt erbjuder endast mallar och formuleringar baserade på allmän information.
           </p>
         </div>
       </section>
-
-      {lawyerOpen && <LawyerModal onClose={() => setLawyerOpen(false)} />}
     </>
   );
 }
