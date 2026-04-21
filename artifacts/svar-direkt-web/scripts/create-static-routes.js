@@ -306,6 +306,48 @@ const META = {
     title: "Svara på brev från Kronofogden – deadline och rätt formulering | Svar Direkt",
     description: "Fått brev från Kronofogden? Du måste svara inom deadline – annars godkänns skulden automatiskt. Rätt svar, rätt tid. Personlig hjälp – första svaret gratis.",
   },
+  "hjalp-bolagsverket": {
+    title: "Bolagsverket – Gratis brevmallar & hjälp | Svar Direkt",
+    description: "Förseningsavgift, föreläggande eller ändring av styrelse? Gratis brevmallar till Bolagsverket. Fyll i och kopiera direkt på Svar Direkt.",
+    jsonld: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Vad händer om jag inte svarar på Bolagsverkets föreläggande?", "acceptedAnswer": { "@type": "Answer", "text": "Bolagsverket kan ansöka om att bolaget ska gå i likvidation. Svara alltid – även om du begär anstånd." } },
+        { "@type": "Question", "name": "Kan jag begära mer tid att lämna in årsredovisningen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, du kan begära anstånd skriftligt med motivering och nytt datum. Använd vår gratis brevmall för anstånd." } },
+        { "@type": "Question", "name": "Hur anmäler jag byte av styrelseledamot?", "acceptedAnswer": { "@type": "Answer", "text": "Via Bolagsverkets e-tjänst eller blankett, med protokoll från bolagsstämman. Vi erbjuder gratis mall." } },
+        { "@type": "Question", "name": "Kostar mallarna något?", "acceptedAnswer": { "@type": "Answer", "text": "Nej – alla brevmallar på Svar Direkt är helt gratis." } }
+      ]
+    })
+  },
+  "hjalp-hyresnamnden": {
+    title: "Hyresnämnden – Gratis brevmallar & hjälp | Svar Direkt",
+    description: "Problem med hyresvärd, hyreshöjning eller andrahandsuthyrning? Gratis brevmallar för hyresrätt och Hyresnämnden på Svar Direkt.",
+    jsonld: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Hur anmäler jag min hyresvärd till Hyresnämnden?", "acceptedAnswer": { "@type": "Answer", "text": "Du skickar en skriftlig ansökan till Hyresnämnden i din region med dokumentation. Använd vår gratis mall." } },
+        { "@type": "Question", "name": "Kan jag bestrida en hyreshöjning?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Du har en månad på dig att bestrida efter meddelandet om hyreshöjning." } },
+        { "@type": "Question", "name": "Måste jag ha hyresvärdens tillstånd för andrahandsuthyrning?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, i de flesta fall. Om hyresvärden nekar utan godtagbara skäl kan Hyresnämnden ge tillstånd." } },
+        { "@type": "Question", "name": "Kostar det att använda mallarna?", "acceptedAnswer": { "@type": "Answer", "text": "Nej – alla brevmallar är gratis. Fyll i, kopiera och skicka direkt." } }
+      ]
+    })
+  },
+  "hjalp-sjukvard": {
+    title: "Sjukvård & 1177 – Gratis brevmallar & hjälp | Svar Direkt",
+    description: "Klaga på vård, begära patientjournal eller anmäla till Patientnämnden? Gratis brevmallar för sjukvård på Svar Direkt.",
+    jsonld: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Hur begär jag min patientjournal?", "acceptedAnswer": { "@type": "Answer", "text": "Skicka en skriftlig begäran till den vårdenhet som behandlat dig. Ange personnummer och period. Journalen ska lämnas ut utan onödigt dröjsmål." } },
+        { "@type": "Question", "name": "Vad gör Patientnämnden?", "acceptedAnswer": { "@type": "Answer", "text": "Patientnämnden hjälper patienter att kommunicera med vården och kan medla i tvister. De kan inte besluta om ersättning." } },
+        { "@type": "Question", "name": "Hur begär jag second opinion?", "acceptedAnswer": { "@type": "Answer", "text": "Skicka en skriftlig begäran till din behandlande läkare eller vårdenhetens chef med förklaring av vad du är osäker på." } },
+        { "@type": "Question", "name": "Kostar mallarna något?", "acceptedAnswer": { "@type": "Answer", "text": "Nej – alla brevmallar på Svar Direkt är gratis. Fyll i direkt i webbläsaren och kopiera." } }
+      ]
+    })
+  },
 };
 
 const ROUTES = [
@@ -361,6 +403,10 @@ const ROUTES = [
   "overklaga-myndighetsbeslut",
   "brev-till-forsakringskassan",
   "svara-brev-kronofogden",
+  // New authority pages
+  "hjalp-bolagsverket",
+  "hjalp-hyresnamnden",
+  "hjalp-sjukvard",
 ];
 
 const BASE_URL = "https://svardirekt.site";

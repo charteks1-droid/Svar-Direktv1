@@ -10,6 +10,7 @@ interface PageData {
   lang: "sv" | "en" | "pl";
   title: string;
   metaDesc: string;
+  keywords?: string;
   h1: string;
   intro: string;
   h2s: { heading: string; body: string }[];
@@ -17,6 +18,7 @@ interface PageData {
   cta: string;
   ctaNote?: string;
   relatedLinks?: { href: string; label: string }[];
+  seoText?: string;
 }
 
 const pages: PageData[] = [
@@ -24,9 +26,10 @@ const pages: PageData[] = [
   {
     slug: "hjalp-kronofogden",
     lang: "sv",
-    title: "Hjälp med Kronofogden – bestrida skuld, avbetalningsplan | Svar Direkt",
-    metaDesc: "Fått brev från Kronofogden? Vi formulerar rätt svar åt dig. Bestrida skuld, avbetalningsplan eller skuldsanering – personlig hjälp. Första svaret gratis.",
-    h1: "Hjälp med Kronofogden – vi formulerar svaret åt dig",
+    title: "Kronofogden – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Fick brev från Kronofogden? Ladda ner gratis brevmall för bestridande, betalningsföreläggande och skuldsanering. Enkelt och gratis på Svar Direkt.",
+    keywords: "fick brev från kronofogden, hur svarar jag kronofogden, bestridande betalningsföreläggande, kronofogden vad gör jag, kronofogden skuld hjälp, bestrida inkasso",
+    h1: "Kronofogden – Gratis brevmallar och hjälp att svara rätt",
     intro: "Har du fått ett betalningsföreläggande, inkassokrav eller annat brev från Kronofogden och vet inte hur du ska svara? Att ignorera brevet är det värsta du kan göra – skulden godkänns automatiskt om du inte agerar inom fristen. Vi hjälper dig formulera rätt svar: korrekt, tydligt och klart att skicka.",
     h2s: [
       {
@@ -59,13 +62,42 @@ const pages: PageData[] = [
       { href: "/blogg/bestrida-kronofogden", label: "Läs: Bestrida Kronofogden – steg för steg" },
       { href: "/mallar", label: "Se gratis brevmallar till Kronofogden" },
     ],
+    seoText: `## Fick du brev från Kronofogden? Så här agerar du rätt
+
+Fick brev från Kronofogden och vet inte vad du ska göra? Du är inte ensam. Varje år skickar Kronofogden ut tusentals betalningsförelägganden till privatpersoner och företag i Sverige. Många vet inte att de har rätt att bestrida kravet – och att de måste agera snabbt för att inte skulden ska godkännas automatiskt.
+
+Kronofogden är en statlig myndighet som hanterar skulder, utmätning och betalningsförelägganden. Myndighetens roll är att underlätta indrivning av obestrida skulder. Det betyder att om du inte svarar på ett betalningsföreläggande inom fristen godkänns kravet automatiskt – oavsett om det är korrekt eller inte.
+
+## Hur svarar jag Kronofogden på rätt sätt?
+
+Det första du behöver göra när du fick brev från Kronofogden är att läsa igenom det noga och notera fristen. Vanligtvis har du 10 till 14 dagar på dig att bestrida. Bestridande av betalningsföreläggande behöver inte vara komplicerat – du behöver tydligt ange att du bestrider kravet och helst förklara varför.
+
+Vanliga skäl till bestridande:
+- Skulden är okänd eller tillhör någon annan
+- Beloppet är felaktigt
+- Skulden är preskriberad (äldre än 3 år för privatpersoner)
+- Du har redan betalat
+- Avtalet är ogiltigt
+
+## Kronofogden skuld hjälp – vad gör du om du inte kan betala?
+
+Om skulden är korrekt men du inte kan betala hela beloppet på en gång finns det alternativ. Du kan begära en avbetalningsplan direkt hos Kronofogden eller hos inkassobolaget. Det är nästan alltid bättre att kontakta dem och förhandla än att ignorera kravet.
+
+## Bestrida inkasso – skillnaden mot Kronofogden
+
+Ofta börjar processen med ett inkassokrav från ett privat inkassobolag. Om du inte svarar kan bolaget gå vidare till Kronofogden. Skillnaden är att inkassobolag är privata företag som agerar på uppdrag av borgenären, medan Kronofogden är en statlig myndighet. Bestridande till inkasso och bestridande till Kronofogden är två separata processer med olika frister.
+
+## Gratis brevmallar till Kronofogden
+
+På Svar Direkt hittar du gratis brevmallar för alla vanliga situationer med Kronofogden – bestridande av betalningsföreläggande, ansökan om avbetalningsplan, begäran om anstånd och mer. Fyll i mallen direkt i webbläsaren, kopiera och skicka. Ingen registrering krävs.`,
   },
   {
     slug: "hjalp-forsakringskassan",
     lang: "sv",
-    title: "Hjälp med Försäkringskassan – överklagande och komplettering | Svar Direkt",
-    metaDesc: "Nekad sjukpenning, överklagande eller begäran om komplettering? Vi skriver rätt svar till Försäkringskassan. Personlig hjälp – första svaret gratis.",
-    h1: "Hjälp med Försäkringskassan – skriv rätt svar",
+    title: "Försäkringskassan – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Nekad ersättning från Försäkringskassan? Gratis brevmallar för omprövning, överklagande och komplettering. Snabbt och enkelt på Svar Direkt.",
+    keywords: "försäkringskassan nekat ersättning, överklaga försäkringskassan, sjukskrivning försäkringskassan brev, omprövning försäkringskassan mall, försäkringskassan beslut fel, begäran omprövning",
+    h1: "Försäkringskassan – Gratis brevmallar och hjälp att överklaga",
     intro: "Brev från Försäkringskassan kan vara svåra att förstå och ännu svårare att svara på rätt. Oavsett om du fått ett avslag, en begäran om komplettering eller ett återkrav – ett välformulerat svar kan göra stor skillnad för hur ditt ärende avgörs. Vi hjälper dig formulera ett professionellt svar inom 24 timmar.",
     h2s: [
       {
@@ -98,13 +130,45 @@ const pages: PageData[] = [
       { href: "/blogg/aterkrav-forsakringskassan-vad-gor-jag", label: "Läs: Återkrav från Försäkringskassan" },
       { href: "/mallar", label: "Se gratis brevmallar till Försäkringskassan" },
     ],
+    seoText: `## Försäkringskassan nekat ersättning – vad gör du?
+
+Försäkringskassan nekat ersättning – och du vet inte vad du ska göra. Sjukskrivning, föräldrapenning, aktivitetsersättning eller bostadsbidrag: ett avslagsbeslut kan drabba din ekonomi hårt. Men du har rätt att bestrida beslutet, och rätt formulering är avgörande för utfallet.
+
+Försäkringskassan är den myndighet i Sverige som ansvarar för socialförsäkringen. Trots att det handlar om rättigheter du betalar för via skattsedeln, kan det vara svårt att kommunicera effektivt med myndigheten och få ett rättvist beslut.
+
+## Överklaga Försäkringskassan – steg för steg
+
+Om Försäkringskassan fattar ett beslut du inte håller med om, har du rätt att begära omprövning inom tre veckor. Omprövningen görs av en annan handläggare. Om omprövningsbeslutet fortfarande är negativt kan du överklaga till förvaltningsrätten.
+
+I din omprövningsbegäran bör du:
+- Tydligt ange vilket beslut du bestrider (med ärendenummer)
+- Förklara varför du anser att beslutet är felaktigt
+- Hänvisa till läkarintyg, journaler eller annan dokumentation
+- Begära att ditt ärende prioriteras om situationen är akut
+
+## Sjukskrivning Försäkringskassan brev – vanliga kompletteringar
+
+Försäkringskassan begär ofta kompletteringar av läkarintyg eller annan dokumentation. Det är viktigt att kompletteringen är fullständig och tydlig – ett ofullständigt svar kan leda till ytterligare fördröjning eller avslag. Läkaren kan behöva specificera diagnos, funktionsnedsättning och begränsning mer detaljerat.
+
+## Omprövning Försäkringskassan mall – vad ska det innehålla?
+
+En stark omprövningsbegäran innehåller: dina personuppgifter och ärendenummer, ett tydligt yrkande (vad du begär), en motivering med konkreta argument och bevis, samt eventuella bilagor. Den ska vara saklig och strukturerad – inte emotionell eller aggressiv.
+
+## Försäkringskassan beslut fel – begäran omprövning
+
+Om du fått ett beslut som verkar innehålla fel fakta eller felaktig rättstillämpning, begär omprövning direkt. Ange specifikt vilket faktum som är fel och bifoga bevis. Om Försäkringskassan hänvisar till fel lag eller tolkat lagen felaktigt kan du hänvisa till rätt lagrum.
+
+## Gratis brevmallar till Försäkringskassan
+
+Svar Direkt erbjuder gratis brevmallar för omprövning, komplettering, överklagande och mer. Mallarna är anpassade till Försäkringskassans formatkrav och skrivna i formell svenska. Kopiera, fyll i och skicka – utan registrering.`,
   },
   {
     slug: "hjalp-skatteverket",
     lang: "sv",
-    title: "Hjälp med Skatteverket – rättelse, anstånd och svar | Svar Direkt",
-    metaDesc: "Fråga om deklaration, skattekontroll eller begäran om komplettering från Skatteverket? Vi formulerar ett korrekt svar. Första svaret gratis.",
-    h1: "Hjälp med Skatteverket – formulera rätt svar",
+    title: "Skatteverket – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Fel folkbokföring, skattetillägg eller begäran om anstånd? Gratis brevmallar till Skatteverket. Fyll i, kopiera och skicka på Svar Direkt.",
+    keywords: "skatteverket fel folkbokföring, ändra adress skatteverket, omprövning skatteverket, skatteverket kräver pengar, deklaration hjälp brev, skatteverket anstånd",
+    h1: "Skatteverket – Gratis brevmallar och hjälp att svara rätt",
     intro: "Skatteverket kan ta kontakt om din deklaration, begära komplettering, utfärda skattetillägg eller inleda en granskning. Att svara fel – eller inte svara alls – kan leda till onödiga kostnader och skattetillägg. Vi hjälper dig formulera ett korrekt och välstrukturerat svar.",
     h2s: [
       {
@@ -135,6 +199,31 @@ const pages: PageData[] = [
       { href: "/blogg/skatteverket-6-vanliga-situationer", label: "Läs: 6 vanliga situationer med Skatteverket" },
       { href: "/mallar", label: "Se gratis brevmallar till Skatteverket" },
     ],
+    seoText: `## Skatteverket kräver pengar eller vill ha svar – vad gör du?
+
+Skatteverket kräver pengar eller vill ha svar på din deklaration – och du vet inte hur du ska formulera dig. Oavsett om det handlar om en felaktig folkbokföring, ett skattetillägg du vill bestrida, en begäran om anstånd eller en omprövning av ett beslut – rätt formulering gör verklig skillnad.
+
+Skatteverket är en av de myndigheter som flest svenskar kommer i kontakt med, oftast i samband med deklaration men även vid folkbokföring, arbetsgivardeklarationer, momsredovisning och kontroller.
+
+## Skatteverket fel folkbokföring – vad gör du?
+
+Folkbokföring är grunden för en rad samhällstjänster – sjukvård, skola, socialtjänst och mer. Om Skatteverket har registrerat fel adress, fel civilstånd eller fel personnummer kan det skapa problem i kontakt med alla andra myndigheter. Du har rätt att begära rättelse och Skatteverket är skyldigt att rätta uppenbara fel utan dröjsmål.
+
+## Ändra adress Skatteverket – enkelt men viktigt
+
+Adressändring hos Skatteverket är i grunden en enkel åtgärd, men om den inte hanteras korrekt kan brev och beslut gå till fel adress. Vid en adressändring är det viktigt att säkerställa att folkbokföringsadressen stämmer och att eventuella missuppfattningar kommuniceras skriftligt.
+
+## Omprövning Skatteverket – din rätt att ifrågasätta
+
+Om du anser att Skatteverket fattat ett felaktigt beslut har du rätt att begära omprövning. Det gäller exempelvis felaktiga skattetillägg, nekad avdragsrätt eller felaktig beräkning av skatt. Begäran om omprövning ska lämnas skriftligt och innehålla en tydlig förklaring till varför du anser att beslutet är fel.
+
+## Skatteverket anstånd – när du inte kan betala i tid
+
+Skatteverket kan bevilja anstånd med betalning av skatt i situationer där betalning är temporärt svår. Du behöver lämna in en skriftlig ansökan och förklara skälen till varför du behöver mer tid. En välformulerad ansökan med tydliga skäl ökar chanserna för ett positivt beslut.
+
+## Gratis brevmallar till Skatteverket
+
+Svar Direkt erbjuder gratis brevmallar för de vanligaste situationerna med Skatteverket – rättelse av folkbokföring, begäran om anstånd, omprövning av beslut, svar på deklarationsfrågor och mer. Kopiera mallen, fyll i dina uppgifter och skicka. Ingen registrering krävs.`,
   },
   {
     slug: "hjalp-inkasso",
@@ -177,9 +266,10 @@ const pages: PageData[] = [
   {
     slug: "hjalp-migrationsverket",
     lang: "sv",
-    title: "Hjälp med Migrationsverket – uppehållstillstånd och överklagande | Svar Direkt",
-    metaDesc: "Komplettering, förlängning av uppehållstillstånd eller överklagande? Vi formulerar rätt svar till Migrationsverket. Första svaret gratis.",
-    h1: "Hjälp med Migrationsverket – skriv rätt svar",
+    title: "Migrationsverket – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Komplettera Migrationsverket, överklaga beslut eller begär skyndsam handläggning. Gratis brevmallar och guider på Svar Direkt.",
+    keywords: "komplettera migrationsverket, migrationsverket svarar inte, uppehållstillstånd väntetid, migrationsverket brev hjälp, överklaga migrationsverket beslut, migrationsverket komplettering mall",
+    h1: "Migrationsverket – Gratis brevmallar och hjälp att kommunicera rätt",
     intro: "Kommunikation med Migrationsverket kräver precision, korrekt formalia och rätt ton. Fel formulering eller ofullständig information kan leda till försenad handläggning, onödig kompletteringsbegäran eller i värsta fall avslag. Vi hjälper dig formulera ett tydligt och korrekt meddelande – oavsett om det gäller tillstånd, komplettering eller överklagande.",
     h2s: [
       {
@@ -209,6 +299,34 @@ const pages: PageData[] = [
     relatedLinks: [
       { href: "/mallar", label: "Se gratis mallar till Migrationsverket" },
     ],
+    seoText: `## Migrationsverket svarar inte – och uppehållstillståndet väntar
+
+Migrationsverket svarar inte – och du vet inte vad du ska göra. Det är en situation som tusentals människor i Sverige befinner sig i just nu. Uppehållstillstånd med lång väntetid, kompletteringsbrev som är svåra att förstå, avslagsbeslut utan tydlig motivering. Kommunikation med Migrationsverket kräver precision och tålamod.
+
+Migrationsverket är den myndighet i Sverige som ansvarar för tillstånds- och asylärenden. Handläggningstiderna varierar kraftigt – från några veckor till över ett år – beroende på ärendets typ och omständigheter.
+
+## Komplettera Migrationsverket – vad ska du skriva?
+
+När Migrationsverket skickar en kompletteringsbegäran är det viktigt att du svarar exakt på det de efterfrågar – inte mer, inte mindre. Överflödig information kan fördröja handläggningen.
+
+Vanliga kompletteringar som Migrationsverket begär:
+- Bevis på försörjning (lönespecifikationer, anställningsavtal)
+- Personbevis och identitetshandlingar
+- Bevis på familjeband (vigselbevis, födelsebevis)
+- Uppdaterade bosättningsuppgifter
+- Förklaringar till ändringar i ansökan
+
+## Uppehållstillstånd väntetid – vad kan du göra?
+
+Om din ansökan har legat hos Migrationsverket länge utan beslut har du rätt att kontakta myndigheten och begära information om ärendets status. Om handläggningstiden överstiger myndighetens normtid kan du i vissa fall begära skyndsam handläggning. Det är viktigt att formulera en sådan begäran korrekt för att den ska tas på allvar.
+
+## Överklaga Migrationsverket beslut – hur går det till?
+
+Om Migrationsverket avslår din ansökan har du rätt att överklaga till Migrationsdomstolen inom tre veckor från beslutet. Överklagandet ska lämnas in skriftligt till Migrationsverket, som sedan vidarebefordrar det till domstolen. I överklagandet ska du tydligt förklara varför du anser att beslutet är felaktigt och gärna bifoga nya uppgifter som stöder din sak.
+
+## Migrationsverket brev hjälp – gratis brevmallar
+
+På Svar Direkt hittar du gratis brevmallar för de vanligaste situationerna med Migrationsverket – kompletteringsmall, begäran om skyndsam handläggning, överklagande och mer. Mallarna är anpassade till myndighetens formatkrav och skrivna i korrekt formell svenska. Fyll i, kopiera och skicka – utan registrering.`,
   },
   {
     slug: "hjalp-arbetsformedlingen",
@@ -629,6 +747,219 @@ const pages: PageData[] = [
       { href: "/blogg/bestrida-kronofogden", label: "Guide: Bestrida Kronofogden" },
     ],
   },
+
+  // ===== BOLAGSVERKET =====
+  {
+    slug: "hjalp-bolagsverket",
+    lang: "sv",
+    title: "Bolagsverket – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Förseningsavgift, föreläggande eller ändring av styrelse? Gratis brevmallar till Bolagsverket. Fyll i och kopiera direkt på Svar Direkt.",
+    keywords: "bolagsverket årsredovisning förseningsavgift, ändra styrelse bolagsverket, bolagsverket föreläggande svar, avregistrera företag bolagsverket, bolagsverket brev hjälp",
+    h1: "Bolagsverket – Gratis brevmallar och hjälp att svara rätt",
+    intro: "Fått ett föreläggande från Bolagsverket om årsredovisning, styrelsebyte eller annan registreringsfråga? Bolagsverket hanterar registrering av företag och föreningar i Sverige – och att svara korrekt och i tid är avgörande för att undvika förseningsavgifter eller likvidation.",
+    h2s: [
+      {
+        heading: "Vanliga situationer med Bolagsverket",
+        body: "Svar på föreläggande om utebliven årsredovisning. Anmälan om ändring av styrelseledamöter. Begäran om anstånd med inlämning. Svar på krav om förseningsavgift. Ansökan om avregistrering av bolag. Korrigering av felaktiga uppgifter i bolagsregistret."
+      },
+      {
+        heading: "Bolagsverket årsredovisning förseningsavgift",
+        body: "Om årsredovisningen inte lämnas in i tid skickar Bolagsverket ett föreläggande med krav på inlämning. Om du inte svarar kan det leda till förseningsavgifter och i förlängningen ansökan om likvidation. Du kan i många fall begära anstånd skriftligt – men begäran måste vara välformulerad och innehålla konkreta skäl."
+      },
+      {
+        heading: "Ändra styrelse Bolagsverket",
+        body: "Styrelsebyte kräver en formell anmälan till Bolagsverket med protokoll från bolagsstämman. Ändringar träder i kraft när de registreras, inte när stämman fattade beslutet. Det är viktigt att anmälan görs korrekt och i tid för att undvika att tidigare styrelseledamöter kvarstår i registret med juridiskt ansvar."
+      },
+      {
+        heading: "Avregistrera företag Bolagsverket",
+        body: "Om du vill avregistrera ett aktiebolag, handelsbolag eller enskild firma finns det specifika procedurer. För aktiebolag krävs normalt ett likvidationsförfarande med val av likvidator. En felaktig avregistrering kan leda till skattemässiga och juridiska komplikationer."
+      },
+    ],
+    faq: [
+      { q: "Vad händer om jag inte svarar på Bolagsverkets föreläggande?", a: "Bolagsverket kan ansöka om att bolaget ska gå i likvidation. Det är alltid bättre att svara – även om du behöver begära anstånd – än att ignorera föreläggandet." },
+      { q: "Kan jag begära mer tid att lämna in årsredovisningen?", a: "Ja, du kan begära anstånd skriftligt. Bifoga en motivering och ange nytt datum för inlämning. Använd vår gratis brevmall för anstånd." },
+      { q: "Hur anmäler jag byte av styrelseledamot?", a: "Via Bolagsverkets e-tjänst eller blankett. Du behöver bifoga protokoll från bolagsstämman. Vi erbjuder gratis mall för styrelseprotokoll och anmälningsbrev." },
+      { q: "Kostar mallarna något?", a: "Nej – alla brevmallar på Svar Direkt är helt gratis. Fyll i och kopiera direkt i webbläsaren." },
+    ],
+    cta: "Öppna gratis brevmall till Bolagsverket",
+    ctaNote: "Inget konto krävs. Kopiera och skicka direkt.",
+    relatedLinks: [
+      { href: "/mallar", label: "Se alla gratis brevmallar" },
+      { href: "/hjalp-skatteverket", label: "Hjälp: Skatteverket" },
+    ],
+    seoText: `## Bolagsverket föreläggande svar – så agerar du rätt
+
+Bolagsverket årsredovisning förseningsavgift – det är en av de vanligaste anledningarna till att företagare söker hjälp. Varje år skickar Bolagsverket tusentals förelägganden till bolag som missat inlämningsfristen. Svaret måste vara korrekt formulerat och komma in i tid för att undvika vidare åtgärder.
+
+Bolagsverket är den statliga myndigheten i Sverige som ansvarar för registrering av företag, föreningar och stiftelser. Myndigheten tar emot årsredovisningar, hanterar ändringar i bolagsordning och styrelse, och skickar förelägganden när handlingar saknas eller är försenade.
+
+## Bolagsverket föreläggande svar – vad ska du göra?
+
+När du fått ett föreläggande från Bolagsverket ska du svara skriftligt och snabbt. Svaret ska vara tydligt och svara exakt på det föreläggandet kräver. Om du behöver mer tid, begär anstånd skriftligt med en tydlig motivering och ett konkret nytt datum.
+
+## Ändra styrelse Bolagsverket – steg för steg
+
+Styrelsebyte kräver:
+- Beslut på bolagsstämma med protokoll
+- Formell anmälan till Bolagsverket
+- Uppgifter om ny styrelseledamot (personnummer, adress)
+- Underskrift av behörig firmatecknare
+
+Kom ihåg att ändringar inte gäller förrän de registrerats hos Bolagsverket – inte från stämmans datum.
+
+## Avregistrera företag Bolagsverket
+
+Vill du lägga ner ditt bolag? Proceduren beror på bolagsform. Aktiebolag kräver likvidation med val av likvidator och slutredovisning. Handelsbolag och enskild firma avregistreras enklare men kräver skattemässig avslutning. En gratis brevmall kan hjälpa dig sätta igång processen korrekt.
+
+## Gratis brevmallar till Bolagsverket
+
+På Svar Direkt hittar du gratis brevmallar för de vanligaste situationerna med Bolagsverket – svar på föreläggande, begäran om anstånd, ändringsanmälan och mer. Fyll i mallen direkt i webbläsaren och ladda ner eller kopiera. Ingen registrering krävs.`,
+  },
+
+  // ===== HYRESNÄMNDEN =====
+  {
+    slug: "hjalp-hyresnamnden",
+    lang: "sv",
+    title: "Hyresnämnden – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Problem med hyresvärd, hyreshöjning eller andrahandsuthyrning? Gratis brevmallar för hyresrätt och Hyresnämnden på Svar Direkt.",
+    keywords: "hyresrätt klagomål brev, hyresnämnden ansökan mall, hyresvärd brister bostad, bestridande hyreshöjning, andrahandsuthyrning ansökan, hyreskontrakt problem hjälp",
+    h1: "Hyresnämnden – Gratis brevmallar och hjälp med hyresrätt",
+    intro: "Problem med din hyresvärd? Omotiverad hyreshöjning, brister i bostaden som inte åtgärdas, nekad andrahandsuthyrning? Hyresnämnden är dit du vänder dig – och ett välformulerat brev till din hyresvärd är oftast första steget.",
+    h2s: [
+      {
+        heading: "Vanliga situationer med hyresrätt",
+        body: "Klagomål på brister i bostaden som hyresvärden inte åtgärdar. Bestridande av orimlig hyreshöjning. Ansökan om andrahandsuthyrning (kräver hyresvärdens tillstånd eller Hyresnämndens godkännande). Tvist om hyresvillkor. Ansökan om tillstånd att byta hyresrätt. Klagomål på störningar i fastigheten."
+      },
+      {
+        heading: "Hyresvärd brister bostad – hur agerar du?",
+        body: "Om din hyresvärd inte åtgärdar brister i bostaden – mögel, fukt, trasiga installationer, trasigt lås – ska du alltid framföra klagomål skriftligt. Det skapar ett bevisat spår och ger hyresvärden en formell chans att åtgärda problemet. Om hyresvärden inte agerar kan du vända dig till Hyresnämnden eller din kommuns miljö- och hälsoskyddsnämnd."
+      },
+      {
+        heading: "Bestridande hyreshöjning",
+        body: "Hyresvärden har rätt att höja hyran, men höjningen måste vara skälig och baseras på ökade kostnader eller bruksvärdeshyra. Om du anser att hyreshöjningen är omotiverat hög kan du bestrida den hos Hyresnämnden. Anmälan ska göras inom en månad från att du fick meddelande om höjningen."
+      },
+      {
+        heading: "Andrahandsuthyrning ansökan",
+        body: "Vill du hyra ut din bostad i andra hand? Du behöver normalt hyresvärdens tillstånd. Om hyresvärden nekar utan sakliga skäl kan du ansöka om tillstånd hos Hyresnämnden. Din ansökan ska innehålla skälen till varför du vill hyra ut (t.ex. tillfälligt arbete på annan ort, studier, samboende med ny partner)."
+      },
+    ],
+    faq: [
+      { q: "Hur anmäler jag min hyresvärd till Hyresnämnden?", a: "Du skickar in en skriftlig ansökan till Hyresnämnden i din region. Bifoga dokumentation – foton, tidigare korrespondens med hyresvärden och eventuella besiktningsprotokoll. Använd vår gratis mall." },
+      { q: "Kan jag bestrida en hyreshöjning?", a: "Ja. Du har en månad på dig att bestrida efter att du fått meddelandet om hyreshöjning. Om du inte bestrider anses du ha accepterat höjningen." },
+      { q: "Måste jag ha hyresvärdens tillstånd för andrahandsuthyrning?", a: "Ja, i de flesta fall. Undantag finns för bostadsrätter. Om hyresvärden nekar utan godtagbara skäl kan Hyresnämnden ge tillstånd." },
+      { q: "Kostar det att använda mallarna?", a: "Nej – alla brevmallar är gratis. Fyll i, kopiera och skicka direkt." },
+    ],
+    cta: "Öppna gratis brevmall för hyresrätt",
+    ctaNote: "Inget konto krävs.",
+    relatedLinks: [
+      { href: "/mallar", label: "Se alla gratis brevmallar" },
+    ],
+    seoText: `## Hyresrätt klagomål brev – din rätt som hyresgäst
+
+Hyresrätt klagomål brev – det är ofta det första steget när något inte fungerar i din bostad eller i relationen med hyresvärden. Ett skriftligt klagomål är inte bara ett sätt att kommunicera – det skapar ett juridiskt bevisat spår som kan vara avgörande om tvisten hamnar hos Hyresnämnden.
+
+Hyresnämnden är en statlig nämnd som löser tvister mellan hyresgäster och hyresvärdar utan att du behöver anlita advokat. Det är kostnadsfritt att ansöka och processen är utformad för att vara tillgänglig även utan juridisk utbildning.
+
+## Hyresvärd brister bostad – vad är din rätt?
+
+Du har rätt till en fullt brukbar bostad. Om hyresvärden inte åtgärdar brister har du rätt att:
+- Begära åtgärd skriftligt (spara kopian)
+- Vända dig till Hyresnämnden med begäran om åtgärdsföreläggande
+- I allvarliga fall begära hyresreduktion
+
+Börja alltid med ett skriftligt klagomål till hyresvärden. Om du inte får svar inom rimlig tid – vanligtvis 2–4 veckor – kan du eskalera till Hyresnämnden.
+
+## Bestridande hyreshöjning – när är det befogat?
+
+En hyreshöjning är orimlig om den överstiger bruksvärdeshyran för jämförbara lägenheter i området. Hyresnämnden fastställer vad som är en skälig hyra om ni inte kan komma överens. Du måste bestrida inom en månad från hyreshöjningsmeddelandet – annars anses du ha accepterat.
+
+## Andrahandsuthyrning ansökan – vanliga godkända skäl
+
+Hyresnämnden godkänner andrahandsuthyrning om du har godtagbara skäl, till exempel:
+- Tillfälligt arbete eller studier på annan ort
+- Provsamboende
+- Vård av anhörig på annan ort
+- Längre utlandsvistelse
+
+## Hyresnämnden ansökan mall – gratis på Svar Direkt
+
+På Svar Direkt hittar du gratis brevmallar för klagomål till hyresvärd, bestridande av hyreshöjning, ansökan om andrahandsuthyrning och anmälan till Hyresnämnden. Fyll i mallen direkt i webbläsaren, kopiera och skicka. Inget konto krävs.`,
+  },
+
+  // ===== SJUKVÅRD / 1177 =====
+  {
+    slug: "hjalp-sjukvard",
+    lang: "sv",
+    title: "Sjukvård & 1177 – Gratis brevmallar & hjälp | Svar Direkt",
+    metaDesc: "Klaga på vård, begära patientjournal eller anmäla till Patientnämnden? Gratis brevmallar för sjukvård på Svar Direkt.",
+    keywords: "klaga på vård brev, begära patientjournal, second opinion begäran, patientnämnden anmälan, vårdgaranti brev, rättelse patientjournal",
+    h1: "Sjukvård och 1177 – Gratis brevmallar och hjälp som patient",
+    intro: "Som patient i Sverige har du starka rättigheter – men att utöva dem kräver att du vet hur. Oavsett om du vill klaga på vård, begära din patientjournal, kräva second opinion eller anmäla till Patientnämnden – ett välformulerat brev är alltid det effektivaste verktyget.",
+    h2s: [
+      {
+        heading: "Dina rättigheter som patient",
+        body: "Du har rätt till information om din vård och behandling. Du har rätt att ta del av din patientjournal. Du har rätt att begära second opinion från en annan läkare. Du har rätt att klaga och få ditt klagomål behandlat. Du har rätt till vård inom den nationella vårdgarantins tidsgränser."
+      },
+      {
+        heading: "Klaga på vård brev – hur gör du?",
+        body: "Börja med att skicka ett skriftligt klagomål till den vårdenhet som behandlat dig. Beskriv vad som hänt, när det hände och vad du vill att de ska göra. Om du inte är nöjd med svaret kan du vända dig till Patientnämnden eller IVO (Inspektionen för vård och omsorg)."
+      },
+      {
+        heading: "Begära patientjournal",
+        body: "Du har rätt att ta del av din patientjournal. Begär skriftligt till den vårdenhet som behandlat dig. Journalen ska normalt lämnas ut utan dröjsmål. Om vården nekar, begär ett skriftligt beslut med motivering – det ger dig rätt att överklaga."
+      },
+      {
+        heading: "Patientnämnden anmälan",
+        body: "Patientnämnden är en fristående nämnd i varje region som hjälper patienter att kommunicera med vården. De kan hjälpa dig när du fått felaktig eller otillräcklig vård, behandlats på ett kränkande sätt, inte fått den information du har rätt till, eller nekats vård du anser dig ha rätt till."
+      },
+    ],
+    faq: [
+      { q: "Hur begär jag min patientjournal?", a: "Skicka en skriftlig begäran till den vårdenhet som behandlat dig. Ange ditt personnummer, vilken period och vilka uppgifter du vill ha. Journalen ska lämnas ut utan onödigt dröjsmål." },
+      { q: "Vad gör Patientnämnden?", a: "Patientnämnden hjälper patienter att kommunicera med vården och kan medla i tvister. De kan inte besluta om ersättning men de kan se till att ditt klagomål tas på allvar." },
+      { q: "Hur begär jag second opinion?", a: "Skicka en skriftlig begäran till din behandlande läkare eller vårdenhetens chef. Förklara varför du vill ha en ny bedömning och ange vad du är osäker på." },
+      { q: "Kostar mallarna något?", a: "Nej – alla brevmallar på Svar Direkt är gratis. Fyll i direkt i webbläsaren och kopiera." },
+    ],
+    cta: "Öppna gratis brevmall för sjukvård",
+    ctaNote: "Inget konto krävs.",
+    relatedLinks: [
+      { href: "/mallar", label: "Se alla gratis brevmallar" },
+    ],
+    seoText: `## Klaga på vård brev – din rätt som patient
+
+Sverige har en av världens bästa sjukvårdar, men misstag och brister förekommer. Som patient har du rätt att klaga på vården, begära journalkopior, kräva second opinion och anmäla till Patientnämnden. Det börjar alltid med ett välformulerat skriftligt brev.
+
+## Begära patientjournal – steg för steg
+
+Alla patienter har rätt att få tillgång till sin patientjournal. Begäran görs normalt till den vårdenhet som behandlat dig. Journalen ska lämnas ut utan dröjsmål och utan kostnad för de första kopiorna.
+
+Om vården nekar att lämna ut journalen eller delar av den, begär ett skriftligt beslut med motivering – detta ger dig rätt att överklaga till IVO.
+
+## Second opinion begäran – hur formulerar du det?
+
+Du har rätt att begära en andra medicinsk bedömning om du är osäker på din diagnos eller behandling. Begäran ska göras skriftligt och riktas till din behandlande läkare eller vårdenhetens chef. Var tydlig med vilken diagnos eller behandling du är osäker på och vad du vill ha bedömt.
+
+## Patientnämnden anmälan – när och hur?
+
+Vänder sig till Patientnämnden om:
+- Du fått felaktig eller otillräcklig vård
+- Du behandlats på ett kränkande sätt
+- Du inte fått den information du har rätt till
+- Vården nekat dig vård du anser dig ha rätt till
+
+Patientnämnden kan inte besluta om ersättning, men de kan hjälpa dig kommunicera med vården och i vissa fall meditera i konflikter. Din anmälan ska vara skriftlig och innehålla en tydlig beskrivning av vad som hänt och vad du vill uppnå.
+
+## Rättelse patientjournal
+
+Om journalen innehåller faktafel har du rätt att begära rättelse. Vården är skyldig att notera din invändning i journalen även om de inte ändrar uppgifterna. En skriftlig begäran med tydlig hänvisning till vilka uppgifter som är felaktiga är det effektivaste sättet att agera.
+
+## Vårdgaranti brev – när du väntat för länge
+
+Den nationella vårdgarantin anger maximal väntetid för olika typer av vård. Om du väntat längre än garantin tillåter kan du skriftligt begära att regionen ordnar vård på ett annat sjukhus eller informerar om alternativ.
+
+## Gratis brevmallar för sjukvård
+
+Svar Direkt erbjuder gratis brevmallar för patientjournal-begäran, anmälan till Patientnämnden, second opinion-begäran, rättelse av journal och klagomål till vårdgivare. Fyll i direkt i webbläsaren och kopiera. Ingen registrering krävs.`,
+  },
 ];
 
 function FaqSection({ items, lang }: { items: Faq[]; lang: "sv" | "en" | "pl" }) {
@@ -659,6 +990,7 @@ function SeoPage({ data }: { data: PageData }) {
       <head>
         <title>{data.title}</title>
         <meta name="description" content={data.metaDesc} />
+        {data.keywords && <meta name="keywords" content={data.keywords} />}
         <meta name="robots" content="index, follow" />
       </head>
 
@@ -739,6 +1071,31 @@ function SeoPage({ data }: { data: PageData }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {/* SEO text section */}
+      {data.seoText && (
+        <section className="bg-white border-t border-slate-100 py-10 px-4">
+          <div className="max-w-2xl mx-auto prose prose-sm prose-slate max-w-none">
+            {data.seoText.split("\n\n").map((para, i) => {
+              if (para.startsWith("###")) {
+                return <h3 key={i} className="text-base font-bold text-slate-800 mt-6 mb-2">{para.replace(/^### ?/, "")}</h3>;
+              }
+              if (para.startsWith("##")) {
+                return <h2 key={i} className="text-lg font-bold text-slate-900 mt-8 mb-3">{para.replace(/^## ?/, "")}</h2>;
+              }
+              const lines = para.split("\n");
+              if (lines.every(l => l.trim().startsWith("- "))) {
+                return (
+                  <ul key={i} className="list-disc pl-5 space-y-1 text-slate-600 text-sm">
+                    {lines.map((l, j) => <li key={j}>{l.replace(/^- /, "")}</li>)}
+                  </ul>
+                );
+              }
+              return <p key={i} className="text-slate-600 text-sm leading-relaxed mb-3">{para}</p>;
+            })}
           </div>
         </section>
       )}
