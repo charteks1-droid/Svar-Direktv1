@@ -24,7 +24,6 @@ router.post("/contact", async (req, res) => {
     return res.status(400).json({ success: false, message: "E-post krävs" });
   }
 
-  // Detect which form submitted (tjanst vs home contact)
   const isTjanst = !!beskrivning;
   const subject = isTjanst
     ? `Nytt ärende: ${myndighet || "–"} – ${fornamn} ${efternamn}`.trim()
@@ -73,6 +72,66 @@ router.post("/contact", async (req, res) => {
   } catch (err) {
     console.error("Email error:", err);
     res.status(500).json({ success: false, message: "Kunde inte skicka e-post" });
+  }
+});
+
+// Newsletter / email lead capture
+router.post("/leads", async (req, res) => {
+  const { epost = "", kalla = "verktyg" } = req.body;
+  if (!epost || !epost.includes("@")) {
+    return res.status(400).json({ success: false, message: "Ogiltig e-postadress" });
+  }
+
+  try {
+    await transporter.sendMail({
+      from: '"Svar Direkt" <info@svardirekt.site>',
+      to: "info@svardirekt.site",
+      subject: `Nytt lead – nyhetsbrev (${kalla})`,
+      text: [
+        "NYTT LEAD – NYHETSBREV",
+        "======================",
+        `E-post:  ${epost}`,
+        `Källa:   ${kalla}`,
+        `Datum:   ${new Date().toLocaleString("sv-SE")}`,
+      ].join("\n"),
+    });
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Lead email error:", err);
+    res.status(500).json({ success: false, message: "Kunde inte spara e-post" });
+  }
+});
+
+// Lawyer contact lead
+router.post("/jurist-kontakt", async (req, res) => {
+  const { epost = "", namn = "", beskrivning = "" } = req.body;
+  if (!epost || !epost.includes("@")) {
+    return res.status(400).json({ success: false, message: "Ogiltig e-postadress" });
+  }
+
+  try {
+    await transporter.sendMail({
+      from: '"Svar Direkt" <info@svardirekt.site>',
+      to: "info@svardirekt.site",
+      replyTo: epost,
+      subject: `Juristkontakt – ${namn || epost}`,
+      text: [
+        "JURISTKONTAKT – FÖRFRÅGAN",
+        "==========================",
+        `Namn:    ${namn || "–"}`,
+        `E-post:  ${epost}`,
+        `Datum:   ${new Date().toLocaleString("sv-SE")}`,
+        "",
+        "ÄRENDEBESKRIVNING:",
+        beskrivning || "–",
+      ].join("\n"),
+    });
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Jurist contact error:", err);
+    res.status(500).json({ success: false, message: "Kunde inte skicka förfrågan" });
   }
 });
 
