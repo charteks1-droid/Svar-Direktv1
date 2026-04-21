@@ -22,24 +22,38 @@ const META = {
   "verktyg": {
     title: "Juridiska verktyg – JO-anmälan, Skadestånd, GDPR, Överklagande | Svar Direkt",
     description: "7 gratis verktyg som vänder relationen med myndigheten. JO-anmälan, skadeståndsanspråk, offentlighetsprincipen, diskrimineringsanmälan, GDPR-klagomål och överklagande till förvaltningsrätten.",
-    jsonld: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "Juridiska verktyg – Svar Direkt",
-      "description": "7 gratis verktyg för att anmäla myndigheter, kräva skadestånd, begära handlingar och överklaga beslut.",
-      "url": "https://svardirekt.site/verktyg",
-      "numberOfItems": 7,
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Handläggningstid-väktaren" },
-        { "@type": "ListItem", "position": 2, "name": "JO Anmälan-generator" },
-        { "@type": "ListItem", "position": 3, "name": "Skadestånd-kalkulator" },
-        { "@type": "ListItem", "position": 4, "name": "Offentlighetsprincipen" },
-        { "@type": "ListItem", "position": 5, "name": "DO Anmälan" },
-        { "@type": "ListItem", "position": 6, "name": "IMY/GDPR-klagomål" },
-        { "@type": "ListItem", "position": 7, "name": "Förvaltningsrätten-wizard" }
-      ],
-      "provider": { "@type": "Organization", "name": "Svar Direkt", "url": "https://svardirekt.site" }
-    })
+    jsonld: JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Juridiska verktyg – Svar Direkt",
+        "description": "7 gratis verktyg för att anmäla myndigheter, kräva skadestånd, begära handlingar och överklaga beslut.",
+        "url": "https://svardirekt.site/verktyg",
+        "numberOfItems": 7,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Handläggningstid-väktaren", "url": "https://svardirekt.site/verktyg" },
+          { "@type": "ListItem", "position": 2, "name": "JO Anmälan-generator", "url": "https://svardirekt.site/verktyg" },
+          { "@type": "ListItem", "position": 3, "name": "Skadestånd-kalkulator", "url": "https://svardirekt.site/verktyg" },
+          { "@type": "ListItem", "position": 4, "name": "Offentlighetsprincipen", "url": "https://svardirekt.site/verktyg" },
+          { "@type": "ListItem", "position": 5, "name": "DO Anmälan", "url": "https://svardirekt.site/verktyg" },
+          { "@type": "ListItem", "position": 6, "name": "IMY/GDPR-klagomål", "url": "https://svardirekt.site/verktyg" },
+          { "@type": "ListItem", "position": 7, "name": "Förvaltningsrätten-wizard", "url": "https://svardirekt.site/verktyg" }
+        ],
+        "provider": { "@type": "Organization", "name": "Svar Direkt", "url": "https://svardirekt.site" }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Är verktygen juridisk rådgivning?", "acceptedAnswer": { "@type": "Answer", "text": "Nej. Verktygen genererar malltexter baserade på svenska lagar. De ersätter inte juridisk rådgivning. Vid komplexa ärenden bör du kontakta en jurist." } },
+          { "@type": "Question", "name": "Behöver jag skapa ett konto för att använda verktygen?", "acceptedAnswer": { "@type": "Answer", "text": "Nej. Alla verktyg är helt anonyma. Du fyller i formuläret i webbläsaren och kopierar texten — inga uppgifter sparas." } },
+          { "@type": "Question", "name": "Kostar det något att använda verktygen?", "acceptedAnswer": { "@type": "Answer", "text": "Alla sju verktyg är helt gratis att använda. Du kan också få personlig hjälp med ditt ärende för 99 kr (första svaret gratis)." } },
+          { "@type": "Question", "name": "Hur fungerar JO-anmälan?", "acceptedAnswer": { "@type": "Answer", "text": "JO (Justitieombudsmannen) granskar om myndigheter följer lagar och god förvaltningssed. Du fyller i formuläret, kopierar texten och skickar till jo@jo.se. Det är helt gratis och kan leda till offentlig kritik mot myndigheten." } },
+          { "@type": "Question", "name": "Hur lång tid har jag att överklaga ett myndighetsbeslut?", "acceptedAnswer": { "@type": "Answer", "text": "Du har normalt tre veckor från det att du fick beslutet. Vår Förvaltningsrätten-wizard räknar ut deadline automatiskt när du anger beslutsdatumet." } },
+          { "@type": "Question", "name": "Kan jag kräva skadestånd av staten?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Enligt skadeståndslagen (1972:207) ansvarar staten för skador som uppstår vid felaktig myndighetsutövning. Anspråket skickas till Justitiekanslern (JK) på jk@jk.se." } }
+        ]
+      }
+    ])
   },
   "mallar-interaktiva": {
     title: "70 Gratis Interaktiva Brevmallar till Svenska Myndigheter | Svar Direkt",

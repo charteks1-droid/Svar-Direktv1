@@ -2,6 +2,10 @@ import { useState } from "react";
 
 // ── Utility ────────────────────────────────────────────────────────────────────
 
+function f(val: string, label: string) {
+  return val.trim() ? val.trim() : `[${label}]`;
+}
+
 function copyText(text: string, setCopied: (v: boolean) => void) {
   navigator.clipboard.writeText(text).then(() => {
     setCopied(true);
@@ -66,28 +70,37 @@ function Field({
 function DocActions({ text, filename }: { text: string; filename: string }) {
   const [copied, setCopied] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
+  const hasPlaceholders = text.includes("[");
   return (
-    <div className="flex gap-2 flex-wrap mt-4">
-      <button
-        onClick={() => copyText(text, setCopied)}
-        className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-primary text-white hover:bg-primary/90 transition-all shadow-sm"
-      >
-        {copied ? "✓ Kopierat!" : "📋 Kopiera text"}
-      </button>
-      <button
-        onClick={() => { downloadTxt(text, filename); setDownloaded(true); setTimeout(() => setDownloaded(false), 3000); }}
-        className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-white border border-slate-300 text-slate-700 hover:border-primary hover:text-primary transition-all shadow-sm"
-      >
-        {downloaded ? "✓ Nedladdat!" : "💾 Spara som .txt"}
-      </button>
+    <div className="space-y-2 mt-4">
+      <div className="flex gap-2 flex-wrap">
+        <button
+          onClick={() => copyText(text, setCopied)}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-primary text-white hover:bg-primary/90 transition-all shadow-sm"
+        >
+          {copied ? "✓ Kopierat!" : "📋 Kopiera text"}
+        </button>
+        <button
+          onClick={() => { downloadTxt(text, filename); setDownloaded(true); setTimeout(() => setDownloaded(false), 3000); }}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-white border border-slate-300 text-slate-700 hover:border-primary hover:text-primary transition-all shadow-sm"
+        >
+          {downloaded ? "✓ Nedladdat!" : "💾 Spara som .txt"}
+        </button>
+      </div>
+      {hasPlaceholders && (
+        <p className="text-xs text-amber-600">⚠️ Texten innehåller [platshållare] — fyll i fälten ovan för ett komplett dokument.</p>
+      )}
     </div>
   );
 }
 
 function DocPreview({ text }: { text: string }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-5 font-mono text-xs leading-relaxed text-slate-700 whitespace-pre-wrap max-h-80 overflow-auto mt-4">
-      {text}
+    <div className="mt-4">
+      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Förhandsgranskning</p>
+      <div className="bg-white border border-slate-200 rounded-xl p-5 font-mono text-xs leading-relaxed text-slate-700 whitespace-pre-wrap max-h-80 overflow-auto">
+        {text}
+      </div>
     </div>
   );
 }
@@ -117,22 +130,21 @@ function HandlaggningstidVaktaren() {
 
   const today = new Date();
   const sent = skickad ? new Date(skickad) : null;
-  const diffDays = sent ? Math.floor((today.getTime() - sent.getTime()) / 86400000) : 0;
+  const diffDays = sent ? Math.floor((today.getTime() - sent.getTime()) / 86400000) : null;
   const rule = myndighet ? AUTHORITY_TIMES[myndighet] : null;
-  const exceeded = rule && diffDays > rule.days;
+  const exceeded = rule && diffDays && diffDays > rule.days;
 
-  const doc = namn && myndighet && skickad && arsende ? `${ort || "Ort"}, ${today.toLocaleDateString("sv-SE")}
+  const doc = `${f(ort, "din ort")}, ${today.toLocaleDateString("sv-SE")}
 
-Till: ${myndighet}
-Från: ${namn}
-Personnummer: ${pnr || "XXXXXX-XXXX"}
-${arendenr ? `Ärendenummer: ${arendenr}` : ""}
+Till: ${f(myndighet, "myndighet")}
+Från: ${f(namn, "ditt namn")}
+Personnummer: ${f(pnr, "XXXXXX-XXXX")}${arendenr ? `\nÄrendenummer: ${arendenr}` : ""}
 
-Ämne: Påminnelse om handläggningstid – ${arsende}
+Ämne: Påminnelse om handläggningstid – ${f(arsende, "ärendetyp")}
 
 Med hänvisning till ${rule?.lag || "Förvaltningslagen 9 §"} ska myndigheter avgöra ärenden inom skälig tid.
 
-Jag lämnade in min ansökan/mitt ärende om "${arsende}" den ${sent?.toLocaleDateString("sv-SE")}. Det har nu gått ${diffDays} dagar utan att jag fått ett beslut eller en motivering till fördröjningen.${exceeded ? `\n\nDen normala handläggningstiden för ${myndighet} är ${rule?.days} dagar. Denna tid har överskridits med ${diffDays - rule!.days} dagar.` : ""}
+Jag lämnade in min ansökan/mitt ärende om "${f(arsende, "ärendetyp")}" den ${sent?.toLocaleDateString("sv-SE") || "[datum för ansökan]"}. Det har nu gått ${diffDays ?? "[antal]"} dagar utan att jag fått ett beslut eller en motivering till fördröjningen.${exceeded ? `\n\nDen normala handläggningstiden för ${myndighet} är ${rule?.days} dagar. Denna tid har överskridits med ${diffDays! - rule!.days} dagar.` : ""}
 
 Jag begär:
 1. Svar på aktuell status i mitt ärende inom 5 arbetsdagar
@@ -142,12 +154,9 @@ Jag begär:
 Om svar uteblir förbehåller jag mig rätten att anmäla till Justitieombudsmannen (JO) för bristfällig handläggning.
 
 Med vänliga hälsningar,
-${namn}
-${pnr || ""}
+${f(namn, "ditt namn")}
+${pnr || ""}`;
 
-Kontaktuppgifter: [din e-post / telefon]` : "";
-
-  const ready = !!(namn && myndighet && skickad && arsende);
   return (
     <div className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-3">
@@ -168,8 +177,8 @@ Kontaktuppgifter: [din e-post / telefon]` : "";
             : `✓ ${diffDays} dagar sedan ansökan. Normal tid: ${rule.days} dagar.`}
         </div>
       )}
-      {ready && <><DocPreview text={doc} /><DocActions text={doc} filename="Handlaggningstid_paminnelse.txt" /></>}
-      {!ready && <p className="text-xs text-slate-400">Fyll i markerade fält för att generera påminnelsen.</p>}
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="Handlaggningstid_paminnelse.txt" />
     </div>
   );
 }
@@ -190,28 +199,25 @@ function JOAnmalan() {
   const [ort, setOrt] = useState("");
 
   const today = new Date().toLocaleDateString("sv-SE");
-  const doc = namn && myndighet && vad ? `ANMÄLAN TILL JUSTITIEOMBUDSMANNEN (JO)
+  const doc = `ANMÄLAN TILL JUSTITIEOMBUDSMANNEN (JO)
 
 Datum: ${today}
-Ort: ${ort || "Ort"}
+Ort: ${f(ort, "din ort")}
 
 ANMÄLARE:
-Namn: ${namn}
-Personnummer: ${pnr || "XXXXXX-XXXX"}
-Adress: ${adress || "[din adress]"}
-E-post: ${epost || "[din e-post]"}
+Namn: ${f(namn, "ditt namn")}
+Personnummer: ${f(pnr, "XXXXXX-XXXX")}
+Adress: ${f(adress, "din adress")}
+E-post: ${f(epost, "din e-post")}
 
 ANMÄLAN AVSER:
-Myndighet: ${myndighet}
-${handlaggare ? `Handläggare (om känd): ${handlaggare}` : ""}
-${datum ? `Datum för händelse: ${datum}` : ""}
-${arendenr ? `Ärendenummer: ${arendenr}` : ""}
+Myndighet: ${f(myndighet, "myndighet")}${handlaggare ? `\nHandläggare: ${handlaggare}` : ""}${datum ? `\nDatum för händelse: ${new Date(datum).toLocaleDateString("sv-SE")}` : ""}${arendenr ? `\nÄrendenummer: ${arendenr}` : ""}
 
 VAD HAR HÄNT:
-${vad}
+${f(vad, "Beskriv vad som hände — vad myndigheten gjorde eller inte gjorde, när det hände och hur det påverkade dig.")}
 
 VARFÖR ANSER JAG ATT DET ÄR FEL:
-Myndigheten har inte följt gällande lagar och regler. Förvaltningslagen kräver att myndigheter agerar sakligt, opartiskt och i enlighet med principen om likabehandling. Den agerande myndigheten har brustit i detta avseende.
+Myndigheten har inte följt gällande lagar och regler. Förvaltningslagen kräver att myndigheter agerar sakligt, opartiskt och i enlighet med principen om likabehandling.
 
 ${krav ? `VAD JAG BEGÄR ATT JO UTREDER:\n${krav}` : "VAD JAG BEGÄR ATT JO UTREDER:\nJag begär att JO granskar myndighetens agerande och bedömer om det strider mot gällande lagar och god förvaltningssed."}
 
@@ -221,17 +227,15 @@ BILAGOR:
 [ ] Övriga handlingar
 
 Undertecknat,
-${namn}
+${f(namn, "ditt namn")}
 
 ---
-OBS: Skicka anmälan till jo@jo.se eller via formulär på www.jo.se
-JO är kostnadsfri och alla kan anmäla.` : "";
+Skicka till: jo@jo.se eller via formulär på www.jo.se`;
 
-  const ready = !!(namn && myndighet && vad);
   return (
     <div className="space-y-4">
       <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-xs text-amber-700">
-        <strong>JO (Justitieombudsmannen)</strong> granskar att myndigheter följer lagar och regler. Anmälan är gratis och kan lämnas av vem som helst. Skickas till <strong>jo@jo.se</strong> eller via <strong>jo.se</strong>
+        <strong>JO (Justitieombudsmannen)</strong> granskar att myndigheter följer lagar. Gratis. Skickas till <strong>jo@jo.se</strong>
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
         <Field label="Ditt namn" value={namn} onChange={setNamn} required placeholder="Anna Svensson" />
@@ -247,9 +251,9 @@ JO är kostnadsfri och alla kan anmäla.` : "";
       <Field label="Beskriv vad som hände" value={vad} onChange={setVad} type="textarea" required
         placeholder="Beskriv konkret vad myndigheten gjorde eller inte gjorde, när det hände och hur det påverkade dig." />
       <Field label="Vad vill du att JO ska utreda?" value={krav} onChange={setKrav} type="textarea"
-        placeholder="T.ex. om handläggningstiden var orimlig, om du behandlades diskriminerande, om du fick felaktig information..." />
-      {ready && <><DocPreview text={doc} /><DocActions text={doc} filename="JO_Anmalan.txt" /></>}
-      {!ready && <p className="text-xs text-slate-400">Fyll i namn, myndighet och beskrivning för att generera anmälan.</p>}
+        placeholder="T.ex. om handläggningstiden var orimlig, om du behandlades diskriminerande..." />
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="JO_Anmalan.txt" />
     </div>
   );
 }
@@ -260,7 +264,7 @@ const DAMAGE_TYPES = [
   "Lång handläggningstid (inkomstbortfall)",
   "Felaktigt beslut om sjukpenning",
   "Felaktigt beslut om a-kassa",
-  "Felaktig skattedebiterng",
+  "Felaktig skattedebitering",
   "Socialtjänstens felaktiga omhändertagande",
   "Diskriminering av myndighet",
   "Brott mot GDPR av myndighet",
@@ -285,51 +289,48 @@ function SkadestandKalkulator() {
   const ranta = Math.round(belopp * 0.06);
   const total = belopp + ombud + ranta;
 
-  const doc = namn && myndighet && skadetyp && beloppKr ? `SKADESTÅNDSANSPRÅK MOT STATEN
+  const doc = `SKADESTÅNDSANSPRÅK MOT STATEN
 (Skickas till Justitiekanslern: jk@jk.se eller Box 2308, 103 17 Stockholm)
 
 Datum: ${today}
-Ort: ${ort || "Ort"}
+Ort: ${f(ort, "din ort")}
 
 SÖKANDE:
-Namn: ${namn}
-Personnummer: ${pnr || "XXXXXX-XXXX"}
-E-post: ${epost || "[din e-post]"}
+Namn: ${f(namn, "ditt namn")}
+Personnummer: ${f(pnr, "XXXXXX-XXXX")}
+E-post: ${f(epost, "din e-post")}
 
-ANSPRÅK MOT: ${myndighet} (statlig myndighet)
-
-SKADETYP: ${skadetyp}
-${period ? `PERIOD: ${period}` : ""}
+ANSPRÅK MOT: ${f(myndighet, "myndighetsnamn")}
+SKADETYP: ${f(skadetyp, "välj typ av skada")}${period ? `\nPERIOD: ${period}` : ""}
 
 BESKRIVNING AV SKADAN:
-${vad || "[Beskriv vad som hände och hur det orsakade skadan]"}
+${f(vad, "Beskriv vad som hände och hur det orsakade skadan")}
 
 BERÄKNING AV SKADESTÅND:
-Direkta ekonomiska skador:           ${belopp.toLocaleString("sv-SE")} kr
-Ombudskostnader (uppskattning 25%):  ${ombud.toLocaleString("sv-SE")} kr
-Dröjsmålsränta (6% per år):          ${ranta.toLocaleString("sv-SE")} kr
+Direkta ekonomiska skador:           ${belopp > 0 ? belopp.toLocaleString("sv-SE") : "[belopp]"} kr
+Ombudskostnader (uppskattning 25%):  ${belopp > 0 ? ombud.toLocaleString("sv-SE") : "[25% av belopp]"} kr
+Dröjsmålsränta (6% per år):          ${belopp > 0 ? ranta.toLocaleString("sv-SE") : "[6% av belopp]"} kr
 ─────────────────────────────────────────
-TOTALT ANSPRÅK:                       ${total.toLocaleString("sv-SE")} kr
+TOTALT ANSPRÅK:                       ${belopp > 0 ? total.toLocaleString("sv-SE") : "[totalt]"} kr
 
 RÄTTSLIG GRUND:
 Skadeståndslagen (1972:207) 3 kap. 2 § — staten ansvarar för skada som vållats av fel eller försummelse vid myndighetsutövning.
 
 KRAV:
-Jag begär ersättning med totalt ${total.toLocaleString("sv-SE")} kronor för den skada som ${myndighet} orsakat mig genom felaktigt myndighetsutövande.
+Jag begär ersättning med totalt ${belopp > 0 ? total.toLocaleString("sv-SE") : "[belopp]"} kronor för den skada som ${f(myndighet, "myndigheten")} orsakat mig.
 
 BILAGOR:
 [ ] Kopior av beslut
-[ ] Bevis på ekonomisk skada (intyg, kontoutdrag etc.)
-[ ] Eventuella läkarintyg eller övriga handlingar
+[ ] Bevis på ekonomisk skada
+[ ] Övriga handlingar
 
 Med vänliga hälsningar,
-${namn}` : "";
+${f(namn, "ditt namn")}`;
 
-  const ready = !!(namn && myndighet && skadetyp && beloppKr);
   return (
     <div className="space-y-4">
       <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-xs text-blue-700">
-        <strong>Justitiekanslern (JK)</strong> handlägger skadeståndsanspråk mot staten. Anmäl på <strong>jk.se</strong> eller skicka till <strong>jk@jk.se</strong>. Krav under 7 500 kr kan prövas i tingsrätt direkt.
+        <strong>Justitiekanslern (JK)</strong> handlägger skadeståndsanspråk mot staten. Skicka till <strong>jk@jk.se</strong>
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
         <Field label="Ditt namn" value={namn} onChange={setNamn} required placeholder="Anna Svensson" />
@@ -338,7 +339,7 @@ ${namn}` : "";
           options={["Försäkringskassan","Arbetsförmedlingen","Skatteverket","Kronofogden","Socialtjänsten","Migrationsverket","Polismyndigheten","Annan statlig myndighet"]} />
         <Field label="Typ av skada" value={skadetyp} onChange={setSkadetyp} required options={DAMAGE_TYPES} />
         <Field label="Ekonomisk förlust (kr)" value={beloppKr} onChange={setBeloppKr} required
-          placeholder="t.ex. 15000" hint="Ange din direkta ekonomiska förlust i kronor" />
+          placeholder="t.ex. 15000" hint="Din direkta ekonomiska förlust i kronor" />
         <Field label="Period (valfritt)" value={period} onChange={setPeriod} placeholder="t.ex. jan–mars 2026" />
         <Field label="Din e-post" value={epost} onChange={setEpost} type="email" placeholder="anna@mail.se" />
         <Field label="Din ort" value={ort} onChange={setOrt} placeholder="Stockholm" />
@@ -358,8 +359,8 @@ ${namn}` : "";
           </div>
         </div>
       )}
-      {ready && <><DocPreview text={doc} /><DocActions text={doc} filename="Skadestandsansprak.txt" /></>}
-      {!ready && <p className="text-xs text-slate-400">Fyll i namn, myndighet, skadetyp och belopp för att generera anspråket.</p>}
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="Skadestandsansprak.txt" />
     </div>
   );
 }
@@ -378,44 +379,38 @@ function OffentlighetsTool() {
   const [ort, setOrt] = useState("");
 
   const today = new Date().toLocaleDateString("sv-SE");
-  const doc = namn && myndighet && handling ? `BEGÄRAN OM UTLÄMNANDE AV ALLMÄN HANDLING
+  const doc = `BEGÄRAN OM UTLÄMNANDE AV ALLMÄN HANDLING
 (Offentlighetsprincipen – Tryckfrihetsförordningen 2 kap.)
 
 Datum: ${today}
-Till: ${myndighet}
+Till: ${f(myndighet, "myndighetsnamn")}
 
 SÖKANDE:
-Namn: ${namn}
-E-post: ${epost || "[din e-post]"}
-${telefon ? `Telefon: ${telefon}` : ""}
-Ort: ${ort || "Ort"}
+Namn: ${f(namn, "ditt namn")}
+E-post: ${f(epost, "din e-post")}${telefon ? `\nTelefon: ${telefon}` : ""}
+Ort: ${f(ort, "din ort")}
 
 BEGÄRAN:
-Jag begär att få ta del av följande allmänna handling/-ar hos ${myndighet}:
+Jag begär att få ta del av följande allmänna handling/-ar hos ${f(myndighet, "myndighetsnamn")}:
 
-${handling}
-${period ? `\nAvsedd period: ${period}` : ""}
+${f(handling, "Beskriv vilka handlingar du vill ha — t.ex. alla e-postmeddelanden i ärende nr X under perioden jan–mars 2026")}${period ? `\nAvsedd period: ${period}` : ""}
 
 FORMAT:
-Jag önskar handlingarna ${format}.
-${syfte ? `\nSYFTE/SAMMANHANG:\n${syfte}` : ""}
+Jag önskar handlingarna ${format}.${syfte ? `\n\nSYFTE/SAMMANHANG:\n${syfte}` : ""}
 
 RÄTTSLIG GRUND:
-Enligt Tryckfrihetsförordningen 2 kap. 1 § har var och en rätt att ta del av allmänna handlingar hos myndigheter. Handlingar ska lämnas ut skyndsamt — normalt inom en till två dagar.
+Enligt Tryckfrihetsförordningen 2 kap. 1 § har var och en rätt att ta del av allmänna handlingar. Handlingar ska lämnas ut skyndsamt — normalt inom en till två dagar.
 
-Om handlingen eller delar av den sekretessbeläggs, begär jag ett skriftligt beslut med möjlighet att överklaga till kammarrätten.
-
-Jag lämnar inte per automatik medgivande till att myndigheten registrerar mig eller kräver att jag uppger mitt syfte — detta krävs inte enligt lag, om det inte behövs för sekretessprövning.
+Om handlingen sekretessbeläggs begär jag ett skriftligt beslut med möjlighet att överklaga.
 
 Med vänliga hälsningar,
-${namn}
-${epost || ""}` : "";
+${f(namn, "ditt namn")}
+${epost || ""}`;
 
-  const ready = !!(namn && myndighet && handling);
   return (
     <div className="space-y-4">
       <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 text-xs text-emerald-700">
-        <strong>Offentlighetsprincipen</strong> — du har rätt att begära alla allmänna handlingar hos myndigheter. Du behöver <strong>inte</strong> ange varför. Myndigheten måste svara <strong>skyndsamt</strong> (1–2 dagar).
+        <strong>Offentlighetsprincipen</strong> — rätt att begära alla allmänna handlingar. Du behöver <strong>inte</strong> ange varför. Svar inom 1–2 dagar.
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
         <Field label="Ditt namn" value={namn} onChange={setNamn} required placeholder="Anna Svensson" />
@@ -424,40 +419,23 @@ ${epost || ""}` : "";
         <Field label="Myndighet" value={myndighet} onChange={setMyndighet} required placeholder="Försäkringskassan" />
         <Field label="Önskat format" value={format} onChange={setFormat}
           options={["digitalt (e-post/PDF)", "papperskopia (post)", "för granskning på plats"]} />
-        <Field label="Period (valfritt)" value={period} onChange={setPeriod} placeholder="t.ex. 2025-2026" />
+        <Field label="Period (valfritt)" value={period} onChange={setPeriod} placeholder="t.ex. 2025–2026" />
         <Field label="Din ort" value={ort} onChange={setOrt} placeholder="Stockholm" />
       </div>
       <Field label="Beskriv vilka handlingar du begär" value={handling} onChange={setHandling} type="textarea" required
-        placeholder="T.ex. Alla inkomna och utgångna e-postmeddelanden rörande ärendenummer 12345 under perioden jan-mars 2026. Eller: Alla tjänsteutlåtanden i ärendet om [ämne]." />
+        placeholder="T.ex. Alla inkomna och utgångna e-postmeddelanden rörande ärendenummer 12345 under perioden jan-mars 2026." />
       <Field label="Syfte (frivilligt)" value={syfte} onChange={setSyfte} type="textarea"
-        placeholder="Du behöver inte ange syfte, men det kan påskynda hanteringen. Valfritt." />
-      {ready && <><DocPreview text={doc} /><DocActions text={doc} filename="Offentlighetsprincipen_begaran.txt" /></>}
-      {!ready && <p className="text-xs text-slate-400">Fyll i ditt namn, myndighet och beskriv handlingarna du begär.</p>}
+        placeholder="Du behöver inte ange syfte. Valfritt." />
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="Offentlighetsprincipen_begaran.txt" />
     </div>
   );
 }
 
 // ── Tool: DO Anmälan ──────────────────────────────────────────────────────────
 
-const DO_GROUNDS = [
-  "Kön",
-  "Könsöverskridande identitet eller uttryck",
-  "Etnisk tillhörighet",
-  "Religion eller annan trosuppfattning",
-  "Funktionsnedsättning",
-  "Sexuell läggning",
-  "Ålder",
-];
-
-const DO_CONTEXTS = [
-  "Arbetslivet",
-  "Utbildning",
-  "Varor och tjänster",
-  "Bostadsmarknaden",
-  "Socialtjänsten / socialförsäkringen",
-  "Hälso- och sjukvård",
-  "Offentlig anställning / myndighetsutövning",
-];
+const DO_GROUNDS = ["Kön","Könsöverskridande identitet eller uttryck","Etnisk tillhörighet","Religion eller annan trosuppfattning","Funktionsnedsättning","Sexuell läggning","Ålder"];
+const DO_CONTEXTS = ["Arbetslivet","Utbildning","Varor och tjänster","Bostadsmarknaden","Socialtjänsten / socialförsäkringen","Hälso- och sjukvård","Offentlig anställning / myndighetsutövning"];
 
 function DOAnmalan() {
   const [namn, setNamn] = useState("");
@@ -472,32 +450,31 @@ function DOAnmalan() {
   const [ort, setOrt] = useState("");
 
   const today = new Date().toLocaleDateString("sv-SE");
-  const doc = namn && motpart && grund && vad ? `ANMÄLAN TILL DISKRIMINERINGSOMBUDSMANNEN (DO)
+  const doc = `ANMÄLAN TILL DISKRIMINERINGSOMBUDSMANNEN (DO)
 
 Datum: ${today}
-Ort: ${ort || "Ort"}
+Ort: ${f(ort, "din ort")}
 
 ANMÄLARE:
-Namn: ${namn}
-Personnummer: ${pnr || "XXXXXX-XXXX"}
-E-post: ${epost || "[din e-post]"}
+Namn: ${f(namn, "ditt namn")}
+Personnummer: ${f(pnr, "XXXXXX-XXXX")}
+E-post: ${f(epost, "din e-post")}
 
 ANMÄLAN AVSER:
-Motpart (arbetsgivare/myndighet/företag): ${motpart}
-Diskrimineringsgrund: ${grund}
-Sammanhang: ${sammanhang || "Ej angivet"}
-${datum ? `Datum för händelse: ${datum}` : ""}
+Motpart: ${f(motpart, "arbetsgivare / myndighet / företag")}
+Diskrimineringsgrund: ${f(grund, "välj diskrimineringsgrund")}
+Sammanhang: ${sammanhang || "Ej angivet"}${datum ? `\nDatum: ${new Date(datum).toLocaleDateString("sv-SE")}` : ""}
 
 VAD HAR HÄNT:
-${vad}
+${f(vad, "Beskriv vad som hände, vad som sades eller gjordes och varför du anser att det handlade om diskriminering.")}
 
 ${vittnen ? `VITTNEN/BEVIS:\n${vittnen}` : ""}
 
 RÄTTSLIG GRUND:
-Diskrimineringslagen (2008:567) förbjuder diskriminering på grund av ${grund.toLowerCase()}. Lagen gäller i ${sammanhang.toLowerCase() || "detta sammanhang"}.
+Diskrimineringslagen (2008:567) förbjuder diskriminering på grund av ${grund.toLowerCase() || "[diskrimineringsgrund]"}.
 
 VAD JAG BEGÄR:
-Jag anmäler ovanstående händelse till DO för utredning och begär att DO vidtar lämpliga åtgärder för att komma till rätta med diskrimineringen. Jag förbehåller mig rätten att kräva skadestånd.
+Jag anmäler ovanstående händelse till DO för utredning och förbehåller mig rätten att kräva skadestånd.
 
 BILAGOR:
 [ ] Eventuell skriftlig dokumentation
@@ -505,16 +482,15 @@ BILAGOR:
 [ ] Övriga bevis
 
 Med vänliga hälsningar,
-${namn}
+${f(namn, "ditt namn")}
 
 ---
-Skicka till: anmalan@do.se eller via formulär på www.do.se` : "";
+Skicka till: anmalan@do.se eller via www.do.se`;
 
-  const ready = !!(namn && motpart && grund && vad);
   return (
     <div className="space-y-4">
       <div className="bg-purple-50 border border-purple-200 rounded-xl px-4 py-3 text-xs text-purple-700">
-        <strong>DO (Diskrimineringsombudsmannen)</strong> utreder diskriminering. Anmäl gratis på <strong>do.se</strong> eller <strong>anmalan@do.se</strong>. DO kan kräva skadestånd å dina vägnar.
+        <strong>DO (Diskrimineringsombudsmannen)</strong> utreder diskriminering gratis. Skicka till <strong>anmalan@do.se</strong>
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
         <Field label="Ditt namn" value={namn} onChange={setNamn} required placeholder="Anna Svensson" />
@@ -528,16 +504,27 @@ Skicka till: anmalan@do.se eller via formulär på www.do.se` : "";
         <Field label="Din ort" value={ort} onChange={setOrt} placeholder="Stockholm" />
       </div>
       <Field label="Beskriv diskrimineringen" value={vad} onChange={setVad} type="textarea" required
-        placeholder="Beskriv vad som hände, vad som sades eller gjordes, och varför du anser att det handlade om diskriminering." />
+        placeholder="Beskriv vad som hände, vad som sades eller gjordes och varför du anser att det handlade om diskriminering." />
       <Field label="Vittnen eller bevis" value={vittnen} onChange={setVittnen} type="textarea"
         placeholder="Finns det vittnen? E-postmeddelanden? Inspelningar? Valfritt." />
-      {ready && <><DocPreview text={doc} /><DocActions text={doc} filename="DO_Anmalan.txt" /></>}
-      {!ready && <p className="text-xs text-slate-400">Fyll i namn, motpart, grund och beskrivning för att generera anmälan.</p>}
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="DO_Anmalan.txt" />
     </div>
   );
 }
 
 // ── Tool: IMY/GDPR skarga ─────────────────────────────────────────────────────
+
+const GDPR_VIOLATIONS = [
+  "Utebliven respons på tillgångsbegäran (art. 15)",
+  "Nekad radering av personuppgifter (art. 17)",
+  "Olaglig behandling av personuppgifter",
+  "Dataintrång utan information (art. 34)",
+  "Felaktiga personuppgifter som inte rättats (art. 16)",
+  "Personuppgifter vidarebefordrade utan samtycke",
+  "Avsaknad av integritetspolicy",
+  "Annan GDPR-överträdelse",
+];
 
 function IMYKlagan() {
   const [namn, setNamn] = useState("");
@@ -551,85 +538,62 @@ function IMYKlagan() {
   const [ort, setOrt] = useState("");
 
   const today = new Date().toLocaleDateString("sv-SE");
-  const doc = namn && motpart && vad ? `KLAGOMÅL TILL INTEGRITETSSKYDDSMYNDIGHETEN (IMY)
+  const doc = `KLAGOMÅL TILL INTEGRITETSSKYDDSMYNDIGHETEN (IMY)
 (Artikel 77 GDPR – Rätt att lämna klagomål)
 
 Datum: ${today}
-Ort: ${ort || "Ort"}
+Ort: ${f(ort, "din ort")}
 
 KLAGANDE:
-Namn: ${namn}
-E-post: ${epost || "[din e-post]"}
+Namn: ${f(namn, "ditt namn")}
+E-post: ${f(epost, "din e-post")}
 
 KLAGOMÅL MOT:
-Personuppgiftsansvarig: ${motpart}
-${datum ? `Datum för händelse: ${datum}` : ""}
-Typ av överträdelse: ${overträdelse || "Ej specificerad"}
+Personuppgiftsansvarig: ${f(motpart, "företag / myndighet")}${datum ? `\nDatum: ${new Date(datum).toLocaleDateString("sv-SE")}` : ""}
+Typ av överträdelse: ${f(overträdelse, "välj typ av GDPR-överträdelse")}
 
-BESKRIVNING AV HÄNDELSEN:
-${vad}
+BESKRIVNING:
+${f(vad, "Beskriv konkret vad motparten gjort med dina personuppgifter och varför det strider mot GDPR.")}
 
-${begaran ? `VAD JAG BEGÄRDE (och när):\n${begaran}` : ""}
-${svar ? `SVAR FRÅN MOTPARTEN:\n${svar}` : ""}
+${begaran ? `VAD JAG BEGÄRDE (och när):\n${begaran}` : ""}${svar ? `\nSVAR FRÅN MOTPARTEN:\n${svar}` : ""}
 
 RÄTTSLIG GRUND:
-Enligt GDPR (EU 2016/679) har den registrerade rätt till:
-– Tillgång till sina personuppgifter (art. 15)
-– Rättelse (art. 16) och radering (art. 17)
-– Begränsning av behandling (art. 18)
-– Invändning mot behandling (art. 21)
-– Dataportabilitet (art. 20)
-
-Svar på begäran ska lämnas inom 1 månad (art. 12.3).
+Enligt GDPR (EU 2016/679) har den registrerade rätt till tillgång (art. 15), rättelse (art. 16), radering (art. 17) och begränsning (art. 18). Svar ska lämnas inom 1 månad (art. 12.3).
 
 VAD JAG BEGÄR AV IMY:
-Jag begär att IMY utreder klagomålet och vidtar lämpliga åtgärder mot ${motpart} för brott mot GDPR.
+Jag begär att IMY utreder klagomålet och vidtar åtgärder mot ${f(motpart, "motparten")} för brott mot GDPR.
 
 BILAGOR:
 [ ] Kopia av min begäran till motparten
 [ ] Eventuellt svar (eller bevis om utebliven respons)
-[ ] Övriga handlingar
 
 Med vänliga hälsningar,
-${namn}
+${f(namn, "ditt namn")}
 
 ---
-Skicka till: imy@imy.se eller via formulär på www.imy.se` : "";
+Skicka till: imy@imy.se eller via www.imy.se`;
 
-  const GDPR_VIOLATIONS = [
-    "Utebliven respons på tillgångsbegäran (art. 15)",
-    "Nekad radering av personuppgifter (art. 17)",
-    "Olaglig behandling av personuppgifter",
-    "Dataintrång utan information (art. 34)",
-    "Felaktiga personuppgifter som inte rättats (art. 16)",
-    "Personuppgifter vidarebefordrade utan samtycke",
-    "Avsaknad av integritetspolicy",
-    "Annan GDPR-överträdelse",
-  ];
-
-  const ready = !!(namn && motpart && vad);
   return (
     <div className="space-y-4">
       <div className="bg-rose-50 border border-rose-200 rounded-xl px-4 py-3 text-xs text-rose-700">
-        <strong>IMY (Integritetsskyddsmyndigheten)</strong> övervakar GDPR. Klagomål är gratis. IMY kan utfärda böter upp till <strong>20 miljoner euro</strong> eller 4% av omsättningen. Skicka till <strong>imy@imy.se</strong>
+        <strong>IMY</strong> kan utfärda böter upp till <strong>20 miljoner euro</strong>. Klagomål är gratis. Skicka till <strong>imy@imy.se</strong>
       </div>
       <div className="grid sm:grid-cols-2 gap-3">
         <Field label="Ditt namn" value={namn} onChange={setNamn} required placeholder="Anna Svensson" />
         <Field label="Din e-post" value={epost} onChange={setEpost} type="email" placeholder="anna@mail.se" />
-        <Field label="Motpart (vem behandlar dina data?)" value={motpart} onChange={setMotpart} required
-          placeholder="t.ex. Försäkringskassan / Företaget AB" />
+        <Field label="Motpart" value={motpart} onChange={setMotpart} required placeholder="t.ex. Försäkringskassan / Företaget AB" />
         <Field label="Typ av GDPR-överträdelse" value={overträdelse} onChange={setOverträdelse} options={GDPR_VIOLATIONS} />
         <Field label="Datum för händelse" value={datum} onChange={setDatum} type="date" />
         <Field label="Din ort" value={ort} onChange={setOrt} placeholder="Stockholm" />
       </div>
       <Field label="Vad har hänt?" value={vad} onChange={setVad} type="textarea" required
-        placeholder="Beskriv konkret vad motparten gjort med dina personuppgifter och varför du anser att det strider mot GDPR." />
+        placeholder="Beskriv konkret vad motparten gjort med dina personuppgifter och varför det strider mot GDPR." />
       <Field label="Vad begärde du av motparten (och när)?" value={begaran} onChange={setBegaran} type="textarea"
         placeholder="T.ex. Jag skickade en tillgångsbegäran den 1 mars 2026 och har inte fått svar." />
       <Field label="Vad svarade motparten?" value={svar} onChange={setSvar} type="textarea"
         placeholder="Eventuellt svar du fick — eller notera om du inte fick något svar." />
-      {ready && <><DocPreview text={doc} /><DocActions text={doc} filename="IMY_GDPR_Klagan.txt" /></>}
-      {!ready && <p className="text-xs text-slate-400">Fyll i namn, motpart och beskrivning för att generera klagomålet.</p>}
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="IMY_GDPR_Klagan.txt" />
     </div>
   );
 }
@@ -666,52 +630,46 @@ function ForvaltningsrattenWizard() {
   const beslut = beslutDatum ? new Date(beslutDatum) : null;
   const deadline = beslut ? new Date(beslut.getTime() + 21 * 86400000) : null;
   const daysLeft = deadline ? Math.floor((deadline.getTime() - Date.now()) / 86400000) : null;
-  const domstol = myndighet ? (APPEAL_AUTHORITIES[myndighet] || "Förvaltningsrätten") : "";
+  const domstol = myndighet ? (APPEAL_AUTHORITIES[myndighet] || "Förvaltningsrätten") : "[domstol]";
 
-  const doc = namn && myndighet && beslutDatum && vad && yrkande ? `ÖVERKLAGANDE AV MYNDIGHETSBESLUT
+  const doc = `ÖVERKLAGANDE AV MYNDIGHETSBESLUT
 
 Till: ${domstol}
-Via: ${myndighet} (överklagandet lämnas till myndigheten som fattade beslutet)
+Via: ${f(myndighet, "myndighetsnamn")} (överklagandet lämnas till myndigheten som fattade beslutet)
 
 Datum: ${today}
 
 KLAGANDE:
-Namn: ${namn}
-Personnummer: ${pnr || "XXXXXX-XXXX"}
-Adress: ${adress || "[din adress]"}
-E-post: ${epost || "[din e-post]"}
+Namn: ${f(namn, "ditt namn")}
+Personnummer: ${f(pnr, "XXXXXX-XXXX")}
+Adress: ${f(adress, "din adress")}
+E-post: ${f(epost, "din e-post")}
 
 ÖVERKLAGAT BESLUT:
-Myndighet: ${myndighet}
-Beslutsdatum: ${beslut?.toLocaleDateString("sv-SE")}
-${arendenr ? `Ärendenummer: ${arendenr}` : ""}
+Myndighet: ${f(myndighet, "myndighetsnamn")}${beslut ? `\nBeslutsdatum: ${beslut.toLocaleDateString("sv-SE")}` : ""}${arendenr ? `\nÄrendenummer: ${arendenr}` : ""}
 Överklagandedatum: ${today}
 
 YRKANDE:
-Jag yrkar att ${domstol || "förvaltningsrätten"} ${yrkande}
+Jag yrkar att ${domstol} ${f(yrkande, "t.ex. upphäver beslutet och beviljar min ansökan")}
 
 GRUNDER FÖR ÖVERKLAGANDET:
-${vad}
+${f(vad, "Beskriv varför beslutet är fel — t.ex. myndigheten har feltolkat lagen eller inte tagit hänsyn till rätt fakta")}
 
 ${argument ? `ARGUMENT OCH BEVISNING:\n${argument}` : ""}
 
 RÄTTSLIG GRUND:
-Förvaltningslagen (2017:900) 40–48 §§ ger rätt att överklaga förvaltningsbeslut. Överklagandeskriften ska lämnas till ${myndighet} inom tre veckor från den dag beslutet meddelades.
+Förvaltningslagen (2017:900) 40–48 §§ ger rätt att överklaga förvaltningsbeslut. Överklagandeskriften lämnas till ${f(myndighet, "myndigheten")} inom tre veckor från beslutet.
 
-${bilagor ? `BILAGOR:\n${bilagor}` : `BILAGOR:\n[ ] Kopia av det överklagade beslutet\n[ ] Övriga handlingar`}
+${bilagor ? `BILAGOR:\n${bilagor}` : "BILAGOR:\n[ ] Kopia av det överklagade beslutet\n[ ] Övriga handlingar"}
 
 Undertecknat,
-${namn}
+${f(namn, "ditt namn")}
 
 ---
-OBS: Lämna överklagandet till ${myndighet}, inte direkt till domstolen.
-De vidarebefordrar det till rätt instans.` : "";
-
-  const ready = !!(namn && myndighet && beslutDatum && vad && yrkande);
+OBS: Lämna överklagandet till ${f(myndighet, "myndigheten")}, inte direkt till domstolen.`;
 
   return (
     <div className="space-y-4">
-      {/* Step indicator */}
       <div className="flex gap-2">
         {[1,2,3].map(s => (
           <button key={s} onClick={() => setStep(s)}
@@ -745,7 +703,7 @@ De vidarebefordrar det till rätt instans.` : "";
             <div className={`sm:col-span-2 rounded-xl px-4 py-3 text-sm font-semibold border ${(daysLeft ?? 0) < 7 ? "bg-red-50 border-red-200 text-red-700" : "bg-emerald-50 border-emerald-200 text-emerald-700"}`}>
               {(daysLeft ?? 0) < 0
                 ? "⚠️ Överklagandefristen har löpt ut! Kontakta jurist."
-                : `⏱ Sista dag att överklaga: ${deadline.toLocaleDateString("sv-SE")} (${daysLeft} dagar kvar)`}
+                : `⏱ Sista dag: ${deadline.toLocaleDateString("sv-SE")} (${daysLeft} dagar kvar)`}
             </div>
           )}
           {myndighet && (
@@ -763,21 +721,19 @@ De vidarebefordrar det till rätt instans.` : "";
       {step === 3 && (
         <div className="space-y-3">
           <Field label="Vad är fel med beslutet?" value={vad} onChange={setVad} type="textarea" required
-            placeholder="Beskriv varför beslutet är fel. T.ex. myndigheten har feltolkat lagen, inte tagit hänsyn till rätt fakta, eller fattat beslutet på felaktigt underlag." />
-          <Field label="Ditt yrkande (vad du begär att domstolen gör)" value={yrkande} onChange={setYrkande} type="textarea" required
-            placeholder="T.ex. 'upphäver beslutet och beviljar min ansökan om sjukpenning' eller 'återförvisar ärendet till Försäkringskassan för ny prövning'." />
+            placeholder="Beskriv varför beslutet är fel. T.ex. myndigheten har feltolkat lagen, inte tagit hänsyn till rätt fakta." />
+          <Field label="Ditt yrkande" value={yrkande} onChange={setYrkande} type="textarea" required
+            placeholder="T.ex. 'upphäver beslutet och beviljar min ansökan om sjukpenning' eller 'återförvisar ärendet för ny prövning'." />
           <Field label="Bevisning och argument" value={argument} onChange={setArgument} type="textarea"
-            placeholder="Hänvisa till lagar, förarbeten, läkarintyg eller andra handlingar som stöder ditt överklagande." />
+            placeholder="Hänvisa till lagar, läkarintyg eller andra handlingar som stöder ditt överklagande." />
           <Field label="Bilagor" value={bilagor} onChange={setBilagor} type="textarea"
-            placeholder="Lista de bilagor du bifogar, t.ex. läkarintyg, tidigare beslut, intyg..." />
-          <div className="flex gap-2">
-            <button onClick={() => setStep(2)} className="px-4 py-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold text-sm">← Tillbaka</button>
-          </div>
+            placeholder="Lista bilagor du bifogar, t.ex. läkarintyg, tidigare beslut..." />
+          <button onClick={() => setStep(2)} className="px-4 py-2.5 bg-slate-100 text-slate-700 rounded-xl font-bold text-sm">← Tillbaka</button>
         </div>
       )}
 
-      {step === 3 && ready && <><DocPreview text={doc} /><DocActions text={doc} filename="Overklagan_Forvaltningsratten.txt" /></>}
-      {step === 3 && !ready && <p className="text-xs text-slate-400">Fyll i alla obligatoriska fält i steg 1–3 för att generera överklagandet.</p>}
+      <DocPreview text={doc} />
+      <DocActions text={doc} filename="Overklagan_Forvaltningsratten.txt" />
     </div>
   );
 }
@@ -801,7 +757,7 @@ const TOOLS = [
     icon: "🔴",
     title: "JO Anmälan-generator",
     tagline: "Anmäl felaktig myndighetsutövning",
-    desc: "Generera en komplett JO-anmälan mot myndighet som agerat felaktigt. JO kan rikta offentlig kritik.",
+    desc: "Generera en komplett JO-anmälan mot myndighet som agerat felaktigt.",
     color: "bg-red-50 border-red-200",
     tag: "Alla myndigheter",
     tagColor: "bg-red-100 text-red-700",
@@ -823,7 +779,7 @@ const TOOLS = [
     icon: "📂",
     title: "Offentlighetsprincipen",
     tagline: "Begär ut allmänna handlingar",
-    desc: "Generera en formell begäran om utlämnande av allmänna handlingar. Myndigheten måste svara skyndsamt.",
+    desc: "Generera en formell begäran om utlämnande av allmänna handlingar.",
     color: "bg-emerald-50 border-emerald-200",
     tag: "Alla myndigheter",
     tagColor: "bg-emerald-100 text-emerald-700",
@@ -834,7 +790,7 @@ const TOOLS = [
     icon: "⚖️",
     title: "DO Anmälan",
     tagline: "Anmäl diskriminering",
-    desc: "Generera en anmälan till Diskrimineringsombudsmannen. DO kan driva ärendet och kräva skadestånd.",
+    desc: "Generera en anmälan till Diskrimineringsombudsmannen.",
     color: "bg-purple-50 border-purple-200",
     tag: "Diskriminering",
     tagColor: "bg-purple-100 text-purple-700",
@@ -845,7 +801,7 @@ const TOOLS = [
     icon: "🔒",
     title: "IMY/GDPR-klagomål",
     tagline: "Brott mot dataskyddslagen",
-    desc: "Generera ett GDPR-klagomål till Integritetsskyddsmyndigheten. IMY kan bötfälla med upp till 20 miljoner euro.",
+    desc: "Generera ett GDPR-klagomål till Integritetsskyddsmyndigheten.",
     color: "bg-rose-50 border-rose-200",
     tag: "GDPR",
     tagColor: "bg-rose-100 text-rose-700",
@@ -856,7 +812,7 @@ const TOOLS = [
     icon: "🏛️",
     title: "Förvaltningsrätten-wizard",
     tagline: "Överklaga myndighetsbeslut",
-    desc: "Steg-för-steg-guide som genererar ett komplett överklagande till förvaltningsrätten. Deadlineräknare ingår.",
+    desc: "Steg-för-steg-guide som genererar ett komplett överklagande. Deadlineräknare ingår.",
     color: "bg-slate-50 border-slate-200",
     tag: "Alla beslut",
     tagColor: "bg-slate-100 text-slate-700",
@@ -892,7 +848,7 @@ export default function Verktyg() {
           </div>
         </div>
         <div className="text-xs text-slate-400 text-center">
-          ⚠️ Dessa verktyg genererar malltexter. De ersätter inte juridisk rådgivning. Kontakta jurist vid komplexa ärenden.
+          ⚠️ Dessa verktyg genererar malltexter. De ersätter inte juridisk rådgivning.
         </div>
       </div>
     );
@@ -910,7 +866,7 @@ export default function Verktyg() {
             Vänd relationen med myndigheten
           </h1>
           <p className="text-slate-300 text-base leading-relaxed max-w-2xl mx-auto">
-            7 kraftfulla verktyg som genererar färdiga dokument — JO-anmälningar, skadeståndsanspråk, GDPR-klagomål, överklaganden och mer. Det enda sättet att möta en myndighet på lika villkor.
+            7 kraftfulla verktyg som genererar färdiga dokument — JO-anmälningar, skadeståndsanspråk, GDPR-klagomål, överklaganden och mer. Kopiera texten och skicka direkt.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-6 text-xs text-slate-400">
             <span>✓ 100% gratis</span>
@@ -942,13 +898,13 @@ export default function Verktyg() {
               <p className="text-xs text-slate-500 font-medium mb-2">{tool.tagline}</p>
               <p className="text-xs text-slate-400 leading-relaxed">{tool.desc}</p>
               <div className="mt-4 text-xs font-semibold text-primary flex items-center gap-1">
-                Öppna verktyget <span className="group-hover:translate-x-1 transition-transform">→</span>
+                Öppna och kopiera <span className="group-hover:translate-x-1 transition-transform">→</span>
               </div>
             </button>
           ))}
         </div>
 
-        {/* Bottom note */}
+        {/* CTA */}
         <div className="mt-10 bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
           <p className="text-sm text-slate-600 mb-2">
             Behöver du mer personlig hjälp med ditt ärende?
@@ -957,6 +913,81 @@ export default function Verktyg() {
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-sm">
             Få personlig hjälp – första svaret gratis →
           </a>
+        </div>
+      </section>
+
+      {/* SEO content – rich text for Google */}
+      <section className="bg-slate-50 border-t border-slate-100 py-14 px-4">
+        <div className="max-w-3xl mx-auto space-y-10">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">Om de juridiska verktygen</h2>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Alla verktyg är gratis och genererar färdiga dokument anpassade till svenska myndigheter och lagar. Texten fylls i direkt i webbläsaren och lämnar aldrig din enhet.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">⏱ Handläggningstid-väktaren</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Enligt förvaltningslagen ska myndigheter avgöra ärenden inom skälig tid. Om Försäkringskassan, Arbetsförmedlingen eller Skatteverket dröjer för länge kan du kräva svar. Verktyget beräknar om handläggningstiden är orimlig och genererar en formell påminnelse.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">🔴 JO Anmälan</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Justitieombudsmannen (JO) granskar om myndigheter följer lagar och god förvaltningssed. En JO-anmälan är gratis, kan lämnas av vem som helst och kan leda till offentlig kritik mot myndigheten eller enskild handläggare.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">💰 Skadestånd från staten</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Om ett felaktigt myndighetsbeslut orsakat dig ekonomisk skada kan du kräva skadestånd via Justitiekanslern (JK). Skadeståndslagen ger rätt till ersättning för skador som uppstår vid felaktig myndighetsutövning.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">📂 Offentlighetsprincipen</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Alla har rätt att begära ut allmänna handlingar från svenska myndigheter enligt Tryckfrihetsförordningen. Du behöver inte ange varför du vill ha handlingarna. Myndigheten ska svara skyndsamt — normalt inom en till två dagar.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">⚖️ DO Anmälan – diskriminering</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Diskrimineringslagen skyddar mot diskriminering på grund av kön, etnisk tillhörighet, funktionsnedsättning, ålder, sexuell läggning och religion. En anmälan till Diskrimineringsombudsmannen är gratis och kan leda till ekonomiskt skadestånd.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 mb-2">🔒 GDPR-klagomål till IMY</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Om en myndighet eller ett företag hanterar dina personuppgifter felaktigt — vägrar utlämna dem, behandlar dem utan rättslig grund eller inte svarar på din tillgångsbegäran — kan du anmäla till Integritetsskyddsmyndigheten (IMY).
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-slate-900 mb-2 text-center">🏛️ Överklagande till förvaltningsrätten</h3>
+            <p className="text-sm text-slate-500 leading-relaxed text-center max-w-2xl mx-auto">
+              De flesta myndighetsbeslut kan överklagas till förvaltningsrätten. Du har tre veckor på dig från det att du fick beslutet. Överklagandet skickas till den myndighet som fattat beslutet — de vidarebefordrar det till rätt domstol. Vår wizard guidar dig genom varje steg och räknar ut din deadline automatiskt.
+            </p>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-2xl p-6">
+            <h3 className="font-bold text-slate-900 mb-4 text-center">Vanliga frågor om verktygen</h3>
+            <div className="space-y-4">
+              {[
+                { q: "Är verktygen juridisk rådgivning?", a: "Nej. Verktygen genererar malltexter baserade på svenska lagar. De ersätter inte juridisk rådgivning. Vid komplexa ärenden bör du alltid kontakta en jurist." },
+                { q: "Behöver jag skapa ett konto?", a: "Nej. Alla verktyg är helt anonyma. Du fyller i formuläret i webbläsaren och kopierar texten — inga uppgifter sparas." },
+                { q: "Kostar det något?", a: "Alla sju verktyg är helt gratis att använda. Du kan också få personlig hjälp med ditt ärende för 99 kr (första hjälpen gratis)." },
+                { q: "Vilka myndigheter täcker verktygen?", a: "Försäkringskassan, Arbetsförmedlingen, Skatteverket, Kronofogden, Migrationsverket, Socialtjänsten, kommuner och alla andra svenska myndigheter." },
+              ].map((item, i) => (
+                <div key={i} className="border-b border-slate-100 pb-4 last:border-0 last:pb-0">
+                  <p className="font-semibold text-slate-800 text-sm mb-1">{item.q}</p>
+                  <p className="text-slate-500 text-sm">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>
