@@ -21,6 +21,12 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://svardirekt.site/verktyg</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://svardirekt.site/mallar</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>

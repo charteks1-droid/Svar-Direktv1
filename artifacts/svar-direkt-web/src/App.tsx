@@ -37,6 +37,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "70 Gratis Interaktiva Brevmallar till Svenska Myndigheter | Svar Direkt",
     description: "70 gratis interaktiva brevmallar till Kronofogden, Försäkringskassan, Skatteverket, Migrationsverket, Bolagsverket m.fl. Fyll i dina uppgifter direkt online och skriv ut klart brev – helt gratis.",
   },
+  "/verktyg": {
+    title: "Juridiska verktyg – JO-anmälan, Skadestånd, GDPR, Överklagande | Svar Direkt",
+    description: "7 gratis verktyg som vänder relationen med myndigheten. JO-anmälan, skadeståndsanspråk, offentlighetsprincipen, diskrimineringsanmälan, GDPR-klagomål och överklagande till förvaltningsrätten.",
+  },
   "/pdf-guider": {
     title: "PDF-guider – Svar Direkt",
     description: "Nedladdningsbara PDF-guider för Skatteverket, Försäkringskassan, Migrationsverket och mer.",
@@ -71,6 +75,7 @@ import Blog from "@/pages/Blog";
 import Generator from "@/pages/Generator";
 import Mallar from "@/pages/Mallar";
 import MallarInteraktiva from "@/pages/MallarInteraktiva";
+import Verktyg from "@/pages/Verktyg";
 import Landing from "@/pages/Landing";
 import Tjanst from "@/pages/Tjanst";
 import Forum from "@/pages/Forum";
@@ -129,11 +134,12 @@ function Navbar() {
   ];
 
   const secondary = [
+    { href: "/verktyg",            label: "⚖️ Juridiska verktyg" },
+    { href: "/mallar-interaktiva", label: "70 interaktiva mallar" },
+    { href: "/mallar",             label: "Mallar & texter" },
+    { href: "/pdf-guider",         label: "PDF-guider" },
     { href: "/om-appen",           label: "Om appen" },
     { href: "/funktioner",         label: "Funktioner" },
-    { href: "/mallar",             label: "Mallar & texter" },
-    { href: "/mallar-interaktiva", label: "70 interaktiva mallar" },
-    { href: "/pdf-guider",         label: "PDF-guider" },
   ];
 
   const allLinks = [...primary, ...secondary];
@@ -279,11 +285,11 @@ function Footer() {
     {
       title: "Produkter",
       links: [
-        { label: "Paket", href: "/paket" },
-        { label: "Mallar & texter", href: "/mallar" },
+        { label: "⚖️ Juridiska verktyg", href: "/verktyg" },
         { label: "70 interaktiva mallar", href: "/mallar-interaktiva" },
+        { label: "Mallar & texter", href: "/mallar" },
         { label: "PDF-guider", href: "/pdf-guider" },
-        { label: "Snabba svar – Arbete", href: "/paket" },
+        { label: "Paket", href: "/paket" },
       ],
     },
     {
@@ -377,6 +383,7 @@ export default function App() {
                 <Route path="/generator" component={Generator} />
                 <Route path="/mallar" component={Mallar} />
                 <Route path="/mallar-interaktiva" component={MallarInteraktiva} />
+                <Route path="/verktyg" component={Verktyg} />
                 <Route path="/tjanst" component={Tjanst} />
                 <Route path="/forum" component={Forum} />
                 {seoPages.map((p) => (

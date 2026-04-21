@@ -19,6 +19,28 @@ const META = {
     title: "Gratis mallar till svenska myndigheter – 12 färdiga mallar | Svar Direkt",
     description: "Ladda ner 12 gratis brevmallar till Kronofogden, Försäkringskassan, Skatteverket och Migrationsverket. Klara att kopiera och skicka.",
   },
+  "verktyg": {
+    title: "Juridiska verktyg – JO-anmälan, Skadestånd, GDPR, Överklagande | Svar Direkt",
+    description: "7 gratis verktyg som vänder relationen med myndigheten. JO-anmälan, skadeståndsanspråk, offentlighetsprincipen, diskrimineringsanmälan, GDPR-klagomål och överklagande till förvaltningsrätten.",
+    jsonld: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Juridiska verktyg – Svar Direkt",
+      "description": "7 gratis verktyg för att anmäla myndigheter, kräva skadestånd, begära handlingar och överklaga beslut.",
+      "url": "https://svardirekt.site/verktyg",
+      "numberOfItems": 7,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Handläggningstid-väktaren" },
+        { "@type": "ListItem", "position": 2, "name": "JO Anmälan-generator" },
+        { "@type": "ListItem", "position": 3, "name": "Skadestånd-kalkulator" },
+        { "@type": "ListItem", "position": 4, "name": "Offentlighetsprincipen" },
+        { "@type": "ListItem", "position": 5, "name": "DO Anmälan" },
+        { "@type": "ListItem", "position": 6, "name": "IMY/GDPR-klagomål" },
+        { "@type": "ListItem", "position": 7, "name": "Förvaltningsrätten-wizard" }
+      ],
+      "provider": { "@type": "Organization", "name": "Svar Direkt", "url": "https://svardirekt.site" }
+    })
+  },
   "mallar-interaktiva": {
     title: "70 Gratis Interaktiva Brevmallar till Svenska Myndigheter | Svar Direkt",
     description: "70 gratis interaktiva brevmallar till Kronofogden, Försäkringskassan, Skatteverket, Migrationsverket, Bolagsverket m.fl. Fyll i dina uppgifter direkt online och skriv ut klart brev – helt gratis.",
@@ -280,6 +302,7 @@ const ROUTES = [
   "om-appen",
   "mallar",
   "mallar-interaktiva",
+  "verktyg",
   "pdf-guider",
   "generator",
   "forum",
