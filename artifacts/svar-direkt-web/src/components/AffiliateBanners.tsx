@@ -123,6 +123,80 @@ export function JustInCaseBannerCompact() {
   );
 }
 
+export function TalenomBanner() {
+  return (
+    <a
+      href="https://addrevenue.io/t?a=985498&c=3467552"
+      target="_blank"
+      rel="noopener sponsored"
+      className="block group"
+      aria-label="Talenom – redovisningsbyrå för företag"
+    >
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460] px-6 py-7 sm:px-10 sm:py-8 shadow-lg border border-slate-700/40">
+        <div className="pointer-events-none absolute -top-10 -right-10 w-48 h-48 rounded-full bg-white/4" />
+        <div className="pointer-events-none absolute -bottom-8 -left-6 w-32 h-32 rounded-full bg-white/4" />
+
+        <div className="relative flex flex-col sm:flex-row items-center gap-5">
+          {/* Logo area */}
+          <div className="flex-shrink-0 flex flex-col items-center gap-1.5">
+            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/10">
+              <span className="text-xl font-black text-white tracking-tighter leading-none">TAL</span>
+            </div>
+            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">
+              30 kontor i Sverige
+            </span>
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 text-center sm:text-left">
+            <div className="inline-block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 px-2 py-0.5 rounded-full border border-slate-600/40 bg-white/5">
+              Samarbetspartner · Reklam
+            </div>
+            <h3 className="text-white font-black text-xl sm:text-2xl leading-tight">
+              Redovisning som sparar din tid
+            </h3>
+            <p className="text-slate-300 text-sm mt-1.5 leading-relaxed">
+              <strong className="text-white">Talenom</strong> — kundnära redovisningsbyrå för små och medelstora företag. Digitalt, enkelt, pålitligt. 30 kontor runt om i Sverige.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="flex-shrink-0">
+            <span className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-white text-[#1A1A2E] font-bold text-sm shadow group-hover:shadow-lg group-hover:scale-105 transition-all whitespace-nowrap">
+              Kom igång →
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+export function TalenomBannerCompact() {
+  return (
+    <a
+      href="https://addrevenue.io/t?a=985498&c=3467552"
+      target="_blank"
+      rel="noopener sponsored"
+      className="flex items-center gap-3 group"
+      aria-label="Talenom redovisning"
+    >
+      <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#1A1A2E] to-[#0F3460] flex items-center justify-center">
+        <span className="text-[9px] font-black text-white tracking-tighter">TAL</span>
+      </div>
+      <div className="min-w-0">
+        <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Samarbetspartner</p>
+        <p className="text-sm text-slate-200 group-hover:text-white transition-colors font-medium leading-tight">
+          Talenom – redovisning för företag
+        </p>
+      </div>
+      <span className="ml-auto text-xs text-slate-400 group-hover:text-slate-300 font-semibold whitespace-nowrap transition-colors">
+        Läs mer →
+      </span>
+    </a>
+  );
+}
+
 export function MinDeklarationBannerCompact() {
   return (
     <a
