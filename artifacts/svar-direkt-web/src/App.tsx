@@ -1,6 +1,7 @@
 import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter";
 import { useState, useRef, useEffect } from "react";
 import logoSrc from "./assets/logo.png";
+import { HostingerBannerCompact } from "@/components/HostingerBanner";
 
 const SITE = "https://svardirekt.site";
 
@@ -343,6 +344,11 @@ function Footer() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Hostinger affiliate */}
+        <div className="mb-6 p-4 rounded-xl border border-slate-700 bg-slate-800/50">
+          <HostingerBannerCompact />
         </div>
 
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">

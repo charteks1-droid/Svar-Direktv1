@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
+import { HostingerBannerFull } from "@/components/HostingerBanner";
 
 function PhoneMockup() {
   return (
@@ -1205,6 +1206,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Hostinger affiliate banner */}
+      <section className="bg-white border-t border-slate-100 py-10 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          <HostingerBannerFull />
+        </div>
+      </section>
 
     </div>
   );
