@@ -833,6 +833,119 @@ const articles: Article[] = [
       </>
     ),
   },
+  {
+    slug: "spara-tid-med-fardiga-mallar",
+    title: "Spara tid och energi med färdiga mallar för myndighetsbrev",
+    excerpt:
+      "Att skriva till myndigheter tar tid och energi. Upptäck hur färdiga mallar kan förenkla din vardag och minska stressen när du behöver svara på brev.",
+    category: "Verktyg & Tips",
+    readTime: "4 min",
+    date: "18 april 2026",
+    content: (
+      <>
+        <p>
+          Att få ett brev från en myndighet innebär ofta att man måste sätta sig ner och formulera ett svar. För många av oss är det just detta första steg – att stirra på ett tomt papper eller en tom skärm – som är det allra svåraste. Hur börjar man? Vilka ord ska man använda?
+        </p>
+        <p>
+          I vår stressiga vardag har vi sällan tid eller energi att lägga timmar på att fundera över formuleringar. Mellan jobb, familj och andra åtaganden blir myndighetspost ofta liggande på köksbordet, vilket i sin tur skapar en gnagande känsla av stress. Det är här praktiska verktyg kommer in i bilden.
+        </p>
+        <p>
+          Genom att använda färdiga mallar för dina brev kan du spara otroligt mycket tid. En mall fungerar som en grundstruktur – ett skelett som du enkelt fyller i med dina egna uppgifter. Du slipper uppfinna hjulet på nytt varje gång du behöver kontakta Skatteverket, Försäkringskassan eller någon annan instans.
+        </p>
+        <h2>Fördelarna med att använda mallar</h2>
+        <p>Fördelarna med att använda mallar handlar inte om juridik, utan om ren och skär praktisk nytta:</p>
+        <ul>
+          <li><strong>Du kommer igång direkt:</strong> Det tomma papprets syndrom försvinner när du redan har en färdig struktur att utgå ifrån.</li>
+          <li><strong>Du sparar mental energi:</strong> Istället för att oroa dig över hur du ska skriva, kan du fokusera på vad du behöver förmedla.</li>
+          <li><strong>Du får det gjort:</strong> När tröskeln för att svara sänks, minskar risken att brevet blir liggande och glöms bort.</li>
+        </ul>
+        <p>
+          Att ha tillgång till rätt verktyg gör att du kan hantera din vardagliga administration snabbare och smidigare. Det handlar om att ge sig själv rätt förutsättningar för att få saker gjorda, utan onödigt krångel.
+        </p>
+        <p>
+          <a href="https://svardirekt.site" className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm">
+            Ladda ner Svar Direkt-appen och få tillgång till alla mallar
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "nar-varlden-skakar-hitta-trygghet",
+    title: "När världen skakar och plånboken krymper – så hittar du trygghet i vardagen",
+    excerpt:
+      "Krig, inflation och osäkerhet sätter press på oss alla. Läs om hur du kan återta kontrollen i en orolig tid med hjälp av praktiska verktyg och färdiga mallar.",
+    category: "Samhälle & Vardag",
+    readTime: "4 min",
+    date: "20 april 2026",
+    content: (
+      <>
+        <p>
+          Vi lever i en tid som prövar oss alla. Nyhetsflödet domineras av rapporter om krig, lokala konflikter och global osäkerhet. Samtidigt känner många av oss hur inflationen och stigande kostnader gör att plånboken krymper. Trycket på vanliga människor kommer från alla håll, och det är lätt att känna sig överväldigad av situationen.
+        </p>
+        <p>
+          När världen utanför känns kaotisk och oförutsägbar, blir det ännu viktigare att hitta trygghet och kontroll i vår egen vardag. Ekonomisk stress och oro för framtiden tar mycket energi, och när det dessutom dimper ner krav eller brev från myndigheter kan det kännas som droppen som får bägaren att rinna över.
+        </p>
+        <h2>Ta kontroll över det du kan påverka</h2>
+        <p>
+          I dessa stunder är det avgörande att ha tillgång till rätt verktyg. Vi kan inte alltid styra över världsekonomin eller globala händelser, men vi kan ta kontroll över hur vi hanterar vår egen situation. Att ha praktiska hjälpmedel för att kommunicera, svara på brev och hantera sin administration är ett sätt att återta makten över sin vardag.
+        </p>
+        <p>
+          När du känner dig pressad från alla håll ska du inte behöva sitta ensam och kämpa med att formulera brev till myndigheter. Genom att använda färdiga mallar och tydliga strukturer får du ett konkret stöd. Det handlar om att förenkla det som går att förenkla.
+        </p>
+        <p>
+          Att utrusta sig med rätt verktyg är ett sätt att bygga en sköld mot vardagsstressen. Det ger dig möjlighet att hantera dina ärenden snabbt och effektivt, så att du kan spara din energi till det som verkligen betyder något – din familj, din hälsa och ditt välmående. Du är inte ensam, och det finns hjälpmedel som gör vardagen lite lättare att hantera.
+        </p>
+        <p>
+          <a href="https://svardirekt.site" className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm">
+            Skaffa verktygen du behöver – ladda ner appen idag
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "organisera-dina-papper-enkel-guide",
+    title: "Organisera dina papper och brev – en enkel guide för en lugnare vardag",
+    excerpt:
+      "Känner du dig överväldigad av papper och brev från myndigheter? Få praktiska tips på hur du organiserar dina dokument och minskar stressen.",
+    category: "Tips & Rutiner",
+    readTime: "4 min",
+    date: "22 april 2026",
+    content: (
+      <>
+        <p>
+          En av de vanligaste orsakerna till vardagsstress är oordning. Högar med oöppnade brev, viktiga papper som försvinner och påminnelser som dyker upp när man minst anar det. Att ha ordning på sina dokument är inte bara en fråga om städning – det är ett sätt att skapa sinnesro.
+        </p>
+        <p>
+          När posten från myndigheter, företag och organisationer hopar sig är det lätt att tappa överblicken. Men med några enkla rutiner kan du snabbt ta kontrollen över pappersarbetet och undvika onödig stress.
+        </p>
+        <h2>1. Skapa en fast plats för inkommande post</h2>
+        <p>
+          Låt inte breven hamna lite varstans i hemmet. Ha en specifik korg eller låda där all post läggs direkt när den kommer in. På så sätt vet du alltid var du ska leta.
+        </p>
+        <h2>2. Sortera direkt – släng, spara, agera</h2>
+        <p>Gör det till en vana att gå igenom posten en gång i veckan. Dela upp den i tre högar:</p>
+        <ul>
+          <li><strong>Släng:</strong> Reklam och information du inte behöver.</li>
+          <li><strong>Spara:</strong> Dokument som ska arkiveras (t.ex. årsbesked). Sätt in dem i en pärm direkt.</li>
+          <li><strong>Agera:</strong> Brev som kräver ett svar eller en handling från din sida.</li>
+        </ul>
+        <h2>3. Använd verktyg för att agera snabbt</h2>
+        <p>
+          När du har identifierat de brev som kräver ett svar, är nästa steg att faktiskt skriva det. Här är det lätt att fastna. För att undvika att "agera"-högen växer, använd färdiga mallar. Med en mall behöver du inte fundera på hur du ska formulera dig – du fyller bara i dina uppgifter och skickar iväg svaret. Det gör att du snabbt kan bocka av uppgiften och gå vidare.
+        </p>
+        <p>
+          Att organisera sina papper handlar om att skapa system som fungerar för dig. Genom att kombinera goda rutiner med praktiska verktyg som färdiga svarsmallar, kan du förvandla en stressig pappershög till en hanterbar uppgift.
+        </p>
+        <p>
+          <a href="https://svardirekt.site" className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm">
+            Förenkla ditt pappersarbete med våra färdiga mallar
+          </a>
+        </p>
+      </>
+    ),
+  },
 ];
 
 const categoryColors: Record<string, string> = {
@@ -845,6 +958,9 @@ const categoryColors: Record<string, string> = {
   Samhälle: "bg-slate-100 text-slate-700",
   Skatteverket: "bg-yellow-50 text-yellow-700",
   Rättigheter: "bg-indigo-50 text-indigo-700",
+  "Verktyg & Tips": "bg-teal-50 text-teal-700",
+  "Samhälle & Vardag": "bg-sky-50 text-sky-700",
+  "Tips & Rutiner": "bg-lime-50 text-lime-700",
 };
 
 function ArticleCard({ article }: { article: Article }) {

@@ -286,6 +286,18 @@ const META = {
     title: "Skuldsanering ansökan – mall och guide till Kronofogden | Svar Direkt",
     description: "Gratis guide: hur du ansöker om skuldsanering hos Kronofogden. Vad krävs, hur skriver du och vad händer sedan.",
   },
+  "blogg/spara-tid-med-fardiga-mallar": {
+    title: "Spara tid och energi med färdiga mallar för myndighetsbrev | Svar Direkt",
+    description: "Att skriva till myndigheter tar tid och energi. Upptäck hur färdiga mallar kan förenkla din vardag och minska stressen när du behöver svara på brev.",
+  },
+  "blogg/nar-varlden-skakar-hitta-trygghet": {
+    title: "När världen skakar och plånboken krymper – hitta trygghet i vardagen | Svar Direkt",
+    description: "Krig, inflation och osäkerhet sätter press på oss alla. Läs om hur du kan återta kontrollen i en orolig tid med hjälp av praktiska verktyg och färdiga mallar.",
+  },
+  "blogg/organisera-dina-papper-enkel-guide": {
+    title: "Organisera dina papper och brev – en enkel guide för en lugnare vardag | Svar Direkt",
+    description: "Känner du dig överväldigad av papper och brev från myndigheter? Få praktiska tips på hur du organiserar dina dokument och minskar stressen.",
+  },
   "skriva-brev-till-myndighet": {
     title: "Skriva brev till myndighet – rätt ton, mall och hjälp | Svar Direkt",
     description: "Hur skriver man ett korrekt brev till en svensk myndighet? Vi förklarar rätt ton, struktur och formuleringar – eller skriver hela brevet åt dig. Första hjälpen gratis.",
@@ -383,6 +395,9 @@ const ROUTES = [
   "blogg/bestrida-kronofogden",
   "blogg/aterkrav-forsakringskassan-vad-gor-jag",
   "blogg/skuldsanering-ansoekan-mall",
+  "blogg/spara-tid-med-fardiga-mallar",
+  "blogg/nar-varlden-skakar-hitta-trygghet",
+  "blogg/organisera-dina-papper-enkel-guide",
   // Tjänst, Forum & SEO landing pages
   "forum",
   "tjanst",
