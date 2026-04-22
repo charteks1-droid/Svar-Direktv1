@@ -1,3 +1,79 @@
+export function CheapEnergyBanner() {
+  return (
+    <a
+      href="https://addrevenue.io/t?a=985028&c=3467552"
+      target="_blank"
+      rel="noopener sponsored"
+      className="block group"
+      aria-label="Cheap Energy – billig el med elavtal som tål att jämföras"
+    >
+      <div className="relative overflow-hidden rounded-2xl bg-white px-6 py-7 sm:px-10 sm:py-8 shadow-lg border-2 border-[#E30613]/20 group-hover:border-[#E30613]/40 transition-colors">
+        {/* Red top stripe */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#E30613] via-[#FF1A27] to-[#E30613]" />
+
+        <div className="relative flex flex-col sm:flex-row items-center gap-5">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex flex-col items-center gap-1.5">
+            <img
+              src="/cheap-energy-logo.webp"
+              alt="Cheap Energy"
+              className="h-14 w-auto object-contain"
+            />
+            <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">
+              Äkta svenskt elbolag
+            </span>
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 text-center sm:text-left">
+            <div className="inline-block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 px-2 py-0.5 rounded-full border border-slate-200 bg-slate-50">
+              Samarbetspartner · Reklam
+            </div>
+            <h3 className="text-slate-900 font-black text-xl sm:text-2xl leading-tight">
+              Billig el – elavtal som tål att jämföras!
+            </h3>
+            <p className="text-slate-600 text-sm mt-1.5 leading-relaxed">
+              <strong className="text-[#E30613]">Cheap Energy</strong> har levererat prisvärd el i 20+ år. Enkla avtal, inga dolda avgifter och ett av Sveriges billigaste elbolag på nätet.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="flex-shrink-0">
+            <span className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#E30613] text-white font-bold text-sm shadow group-hover:shadow-lg group-hover:scale-105 transition-all whitespace-nowrap">
+              Jämför nu →
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+export function CheapEnergyBannerCompact() {
+  return (
+    <a
+      href="https://addrevenue.io/t?a=985028&c=3467552"
+      target="_blank"
+      rel="noopener sponsored"
+      className="flex items-center gap-3 group"
+      aria-label="Cheap Energy – billig el"
+    >
+      <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#E30613] flex items-center justify-center overflow-hidden border border-red-200">
+        <img src="/cheap-energy-logo.webp" alt="CE" className="w-8 h-8 object-cover" />
+      </div>
+      <div className="min-w-0">
+        <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Samarbetspartner</p>
+        <p className="text-sm text-slate-200 group-hover:text-white transition-colors font-medium leading-tight">
+          Cheap Energy – billig el till ditt hem
+        </p>
+      </div>
+      <span className="ml-auto text-xs text-red-400 group-hover:text-red-300 font-semibold whitespace-nowrap transition-colors">
+        Jämför →
+      </span>
+    </a>
+  );
+}
+
 export function MinDeklarationBanner() {
   return (
     <a

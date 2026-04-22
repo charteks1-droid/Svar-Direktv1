@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { MinDeklarationBanner, JustInCaseBanner, TalenomBanner } from "@/components/AffiliateBanners";
+import { MinDeklarationBanner, JustInCaseBanner, TalenomBanner, CheapEnergyBanner } from "@/components/AffiliateBanners";
 
 const DISCLAIMER =
   "Denna tjänst är inte juridisk rådgivning. Vi hjälper till att formulera meddelanden baserat på din situation.";
@@ -1071,10 +1071,17 @@ function SeoPage({ data }: { data: PageData }) {
           </div>
         </section>
       )}
-      {["hjalp-bolagsverket", "hjalp-hyresnamnden", "hjalp-konsumentverket", "hjalp-skatteverket"].includes(data.slug) && (
+      {["hjalp-bolagsverket", "hjalp-konsumentverket", "hjalp-skatteverket"].includes(data.slug) && (
         <section className="bg-slate-50 border-t border-slate-100 py-8 px-4">
           <div className="max-w-2xl mx-auto">
             <TalenomBanner />
+          </div>
+        </section>
+      )}
+      {["hjalp-hyresnamnden", "hjalp-hyresavtal", "brev-till-hyresvard"].includes(data.slug) && (
+        <section className="bg-slate-50 border-t border-slate-100 py-8 px-4">
+          <div className="max-w-2xl mx-auto">
+            <CheapEnergyBanner />
           </div>
         </section>
       )}
