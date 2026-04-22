@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
 import { HostingerBannerFull } from "@/components/HostingerBanner";
+import { MinDeklarationBanner } from "@/components/AffiliateBanners";
 
 function PhoneMockup() {
   return (
@@ -1206,9 +1207,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hostinger affiliate banner */}
+      {/* Affiliate banners */}
       <section className="bg-white border-t border-slate-100 py-10 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-4">
+          <MinDeklarationBanner />
           <HostingerBannerFull />
         </div>
       </section>

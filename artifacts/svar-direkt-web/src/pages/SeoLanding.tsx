@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { MinDeklarationBanner } from "@/components/AffiliateBanners";
 
 const DISCLAIMER =
   "Denna tjänst är inte juridisk rådgivning. Vi hjälper till att formulera meddelanden baserat på din situation.";
@@ -1054,6 +1055,15 @@ function SeoPage({ data }: { data: PageData }) {
           </a>
         </div>
       </section>
+
+      {/* Affiliate banner — contextual per page */}
+      {["hjalp-skatteverket", "hjalp-inkasso", "hjalp-kronofogden"].includes(data.slug) && (
+        <section className="bg-slate-50 border-t border-slate-100 py-8 px-4">
+          <div className="max-w-2xl mx-auto">
+            <MinDeklarationBanner />
+          </div>
+        </section>
+      )}
 
       {/* Related links */}
       {data.relatedLinks && data.relatedLinks.length > 0 && (
