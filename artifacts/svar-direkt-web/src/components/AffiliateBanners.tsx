@@ -48,6 +48,81 @@ export function MinDeklarationBanner() {
   );
 }
 
+export function JustInCaseBanner() {
+  return (
+    <a
+      href="https://addrevenue.io/t?a=984578&c=3467552&l=1"
+      target="_blank"
+      rel="noopener sponsored"
+      className="block group"
+      aria-label="JustInCase – livförsäkring utan hälsofrågor"
+    >
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#E8475F] via-[#D63B53] to-[#BF2E44] px-6 py-7 sm:px-10 sm:py-8 shadow-lg border border-red-400/20">
+        {/* decorative circles */}
+        <div className="pointer-events-none absolute -top-12 -right-12 w-52 h-52 rounded-full bg-white/5" />
+        <div className="pointer-events-none absolute -bottom-8 -left-6 w-36 h-36 rounded-full bg-white/5" />
+
+        <div className="relative flex flex-col sm:flex-row items-center gap-5">
+          {/* Icon */}
+          <div className="flex-shrink-0 flex flex-col items-center gap-1.5">
+            <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/15 shadow-inner">
+              <span className="text-2xl font-black text-white leading-none">JiC</span>
+            </div>
+            <span className="text-[9px] font-bold text-red-200 uppercase tracking-wider whitespace-nowrap">
+              Sveriges livförsäkringsspecialist
+            </span>
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 text-center sm:text-left">
+            <div className="inline-block text-[10px] font-bold uppercase tracking-widest text-red-200 mb-1.5 px-2 py-0.5 rounded-full border border-red-300/30 bg-white/10">
+              Samarbetspartner · Reklam
+            </div>
+            <h3 className="text-white font-black text-xl sm:text-2xl leading-tight">
+              Räcker 100 månadslöner?
+            </h3>
+            <p className="text-red-100 text-sm mt-1.5 leading-relaxed">
+              <strong className="text-white">JustInCase</strong> — livförsäkring utan hälsofrågor. 500&nbsp;000&nbsp;kr skattefritt till din familj. Tecknas direkt, fullt arbetsför och under 65 år.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="flex-shrink-0">
+            <span className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-white text-[#D63B53] font-bold text-sm shadow group-hover:shadow-lg group-hover:scale-105 transition-all whitespace-nowrap">
+              Läs mer →
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+export function JustInCaseBannerCompact() {
+  return (
+    <a
+      href="https://addrevenue.io/t?a=984578&c=3467552&l=1"
+      target="_blank"
+      rel="noopener sponsored"
+      className="flex items-center gap-3 group"
+      aria-label="JustInCase livförsäkring"
+    >
+      <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#E8475F] to-[#BF2E44] flex items-center justify-center">
+        <span className="text-[10px] font-black text-white">JiC</span>
+      </div>
+      <div className="min-w-0">
+        <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Samarbetspartner</p>
+        <p className="text-sm text-slate-200 group-hover:text-white transition-colors font-medium leading-tight">
+          JustInCase – livförsäkring utan hälsofrågor
+        </p>
+      </div>
+      <span className="ml-auto text-xs text-red-400 group-hover:text-red-300 font-semibold whitespace-nowrap transition-colors">
+        Läs mer →
+      </span>
+    </a>
+  );
+}
+
 export function MinDeklarationBannerCompact() {
   return (
     <a
