@@ -1,8 +1,7 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
-import { HostingerBannerFull } from "@/components/HostingerBanner";
-import { MinDeklarationBanner, JustInCaseBanner, TalenomBanner, CheapEnergyBanner } from "@/components/AffiliateBanners";
+import { PartnerGrid } from "@/components/AffiliateBanners";
 
 function PhoneMockup() {
   return (
@@ -471,24 +470,29 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80')" }}
+        />
+        <div className="absolute inset-0" style={{ backgroundColor: '#004B87', opacity: 0.90 }} />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-32">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-6">
-                <img src={logoSrc} alt="Svar Direkt" className="h-20 w-20 rounded-2xl object-cover shadow-lg" />
+                <img src={logoSrc} alt="Svar Direkt" className="h-20 w-20 rounded-2xl object-cover shadow-2xl ring-2 ring-white/20" />
               </div>
               <div className="flex flex-wrap gap-2 mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 text-white text-xs font-semibold backdrop-blur-sm border border-white/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFCD00] inline-block" />
                   Tillgänglig för Android
                 </div>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-5">
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5">
                 Skriv rätt.<br />Få svar.<br />
-                <span className="text-primary">Sluta stressa.</span>
+                <span style={{ color: '#FFCD00' }}>Sluta stressa.</span>
               </h1>
-              <p className="text-lg text-slate-500 leading-relaxed mb-8 max-w-md">
+              <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-md">
                 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
@@ -496,18 +500,19 @@ export default function Home() {
                   href="https://payhip.com/b/WxtV3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
+                  className="px-7 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg hover:scale-105 hover:brightness-105"
+                  style={{ backgroundColor: '#FFCD00', color: '#1a2a3a' }}
                 >
                   Köp appen — 49 kr
                 </a>
                 <Link
                   href="/tjanst"
-                  className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-colors text-sm"
+                  className="px-6 py-3 bg-white/15 border border-white/30 text-white rounded-xl font-medium hover:bg-white/25 transition-colors text-sm backdrop-blur-sm"
                 >
                   Personlig hjälp – 99 kr
                 </Link>
               </div>
-              <p className="text-xs text-slate-400 mt-3">
+              <p className="text-xs text-white/45 mt-3">
                 🔒 Säker betalning via Payhip. Nedladdningslänk direkt efter köp.
               </p>
             </div>
@@ -702,26 +707,26 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { name: "Boverket", color: "#0a7ea4", count: "10 mallar", desc: "Hyresrätt & boende" },
-              { name: "Skatteverket", color: "#00b894", count: "14 mallar", desc: "Skatt & deklaration" },
-              { name: "Försäkringskassan", color: "#0984e3", count: "14 mallar", desc: "Bidrag & ersättning" },
-              { name: "Migrationsverket", color: "#6c5ce7", count: "14 mallar", desc: "Tillstånd & asyl" },
+              { name: "Boverket", color: "#0a7ea4", count: "10 mallar", desc: "Hyresrätt & boende", emoji: "🏠" },
+              { name: "Skatteverket", color: "#00b894", count: "14 mallar", desc: "Skatt & deklaration", emoji: "📊" },
+              { name: "Försäkringskassan", color: "#0984e3", count: "14 mallar", desc: "Bidrag & ersättning", emoji: "🏥" },
+              { name: "Migrationsverket", color: "#6c5ce7", count: "14 mallar", desc: "Tillstånd & asyl", emoji: "🛂" },
             ].map((m) => (
               <div
                 key={m.name}
-                className="rounded-2xl bg-white border border-slate-100 p-5 flex flex-col items-center text-center shadow-sm"
+                className="rounded-2xl bg-white border border-slate-100 p-5 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default"
               >
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 text-white font-bold text-lg"
-                  style={{ backgroundColor: m.color }}
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl shadow-sm"
+                  style={{ backgroundColor: m.color + "18" }}
                 >
-                  {m.name[0]}
+                  {m.emoji}
                 </div>
-                <div className="font-semibold text-slate-900 text-sm mb-0.5">{m.name}</div>
-                <div className="text-xs text-slate-400 mb-2">{m.desc}</div>
+                <div className="font-bold text-slate-900 text-sm mb-0.5">{m.name}</div>
+                <div className="text-xs text-slate-400 mb-3">{m.desc}</div>
                 <div
-                  className="text-xs font-medium px-2 py-0.5 rounded-full"
-                  style={{ backgroundColor: m.color + "18", color: m.color }}
+                  className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                  style={{ backgroundColor: m.color + "15", color: m.color }}
                 >
                   {m.count}
                 </div>
@@ -999,20 +1004,26 @@ export default function Home() {
                 stars: 5,
                 quote: "Jag visste inte ens hur jag skulle börja skriva till Försäkringskassan. Med Svar Direkt kopierade jag en mall, anpassade den på 5 minuter och skickade. Fick svar inom en vecka.",
                 author: "Användare i Stockholm",
+                initials: "AS",
+                avatarColor: "#004B87",
               },
               {
                 stars: 5,
                 quote: "Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde för en invändning. Tydlig, professionell text — värd varenda krona.",
                 author: "Användare i Göteborg",
+                initials: "MG",
+                avatarColor: "#0984e3",
               },
               {
                 stars: 5,
                 quote: "Appen sparade mig troligtvis hundratals kronor i juridisk rådgivning. Jag löste mitt Skatteverket-ärende helt själv med hjälp av mallarna.",
                 author: "Användare i Malmö",
+                initials: "LM",
+                avatarColor: "#00b894",
               },
             ].map((t, i) => (
               <div key={i} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex flex-col gap-3">
-                <div className="flex gap-0.5">
+                <div className="flex gap-0.5 mb-1">
                   {Array.from({ length: t.stars }).map((_, si) => (
                     <svg key={si} width="16" height="16" viewBox="0 0 16 16" fill="#f59e0b">
                       <path d="M8 1l1.8 3.6L14 5.6l-3 2.9.7 4.1L8 10.5l-3.7 2.1.7-4.1L2 5.6l4.2-.7L8 1z"/>
@@ -1020,7 +1031,15 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-sm text-slate-600 leading-relaxed italic flex-1">"{t.quote}"</p>
-                <p className="text-xs text-slate-400 font-medium">{t.author}</p>
+                <div className="flex items-center gap-2.5 mt-1">
+                  <div
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+                    style={{ backgroundColor: t.avatarColor }}
+                  >
+                    {t.initials}
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium">{t.author}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -1207,16 +1226,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Affiliate banners */}
-      <section className="bg-white border-t border-slate-100 py-10 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto space-y-4">
-          <CheapEnergyBanner />
-          <TalenomBanner />
-          <JustInCaseBanner />
-          <MinDeklarationBanner />
-          <HostingerBannerFull />
-        </div>
-      </section>
+      {/* Partner grid */}
+      <PartnerGrid />
 
     </div>
   );

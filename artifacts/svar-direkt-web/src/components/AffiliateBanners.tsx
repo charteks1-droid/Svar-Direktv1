@@ -297,3 +297,89 @@ export function MinDeklarationBannerCompact() {
     </a>
   );
 }
+
+export function PartnerGrid() {
+  const partners = [
+    {
+      name: "Cheap Energy",
+      desc: "Billig el i 20+ år",
+      icon: "⚡",
+      color: "#E30613",
+      href: "https://addrevenue.io/t?a=985028&c=3467552",
+      cta: "Jämför nu",
+    },
+    {
+      name: "Talenom",
+      desc: "30 kontor i Sverige",
+      icon: "📊",
+      color: "#0F3460",
+      href: "https://addrevenue.io/t?a=985498&c=3467552",
+      cta: "Kom igång",
+    },
+    {
+      name: "JustInCase",
+      desc: "Livförsäkring utan hälsofrågor",
+      icon: "🛡️",
+      color: "#D63B53",
+      href: "https://addrevenue.io/t?a=984578&c=3467552&l=1",
+      cta: "Läs mer",
+    },
+    {
+      name: "Min Deklaration",
+      desc: "Expert via webbmöte",
+      icon: "📋",
+      color: "#0055A4",
+      href: "https://addrevenue.io/t?a=984566&c=3467552",
+      cta: "Boka möte",
+    },
+    {
+      name: "Hostinger",
+      desc: "Billigt webbhotell",
+      icon: "🌐",
+      color: "#7B2FBE",
+      href: "https://www.hostinger.com?REFERRALCODE=DAJCHARTEFXU",
+      cta: "Se erbjudande",
+    },
+  ];
+
+  return (
+    <section className="bg-[#F7F8FA] border-t border-slate-100 py-14 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-8">
+          <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-slate-400 border border-slate-200 px-3 py-1 rounded-full bg-white">
+            Reklam / Samarbete
+          </span>
+          <h2 className="text-xl font-bold text-slate-800 mt-3">Våra samarbetspartners</h2>
+          <p className="text-slate-400 text-sm mt-1">Vi samarbetar med dessa nordiska tjänster.</p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {partners.map((p) => (
+            <a
+              key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noopener sponsored"
+              aria-label={p.name}
+              className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex flex-col items-center text-center hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+            >
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-3 flex-shrink-0"
+                style={{ backgroundColor: p.color + "15" }}
+              >
+                {p.icon}
+              </div>
+              <div className="font-semibold text-slate-800 text-xs mb-0.5 leading-snug">{p.name}</div>
+              <div className="text-[11px] text-slate-400 mb-3 leading-snug">{p.desc}</div>
+              <span
+                className="text-xs font-semibold mt-auto group-hover:underline"
+                style={{ color: p.color }}
+              >
+                {p.cta} →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
