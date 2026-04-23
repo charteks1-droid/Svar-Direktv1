@@ -470,56 +470,100 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden" style={{ minHeight: '600px' }}>
+        {/* Swedish Parliament photo background */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80')" }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/riksdag-hero.jpg')" }}
         />
-        <div className="absolute inset-0" style={{ backgroundColor: '#004B87', opacity: 0.90 }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-32">
+        {/* Dramatic gradient overlay — Swedish blue, bottom darker for readability */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to bottom right, rgba(0,40,100,0.82) 0%, rgba(0,15,50,0.95) 100%)' }}
+        />
+        {/* Swedish yellow top stripe */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FFCD00]" />
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 sm:py-36">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="mb-6">
+              <div className="mb-5">
                 <img src={logoSrc} alt="Svar Direkt" className="h-20 w-20 rounded-2xl object-cover shadow-2xl ring-2 ring-white/20" />
               </div>
-              <div className="flex flex-wrap gap-2 mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 text-white text-xs font-semibold backdrop-blur-sm border border-white/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFCD00] inline-block" />
+              <div className="flex flex-wrap gap-2 mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-semibold backdrop-blur-sm border border-white/20">
+                  <span className="w-2 h-2 rounded-full bg-[#FFCD00] inline-block animate-pulse" />
                   Tillgänglig för Android
                 </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-xs backdrop-blur-sm border border-white/10">
+                  🏛️ Svenska myndigheter
+                </div>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5">
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
                 Skriv rätt.<br />Få svar.<br />
                 <span style={{ color: '#FFCD00' }}>Sluta stressa.</span>
               </h1>
-              <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-md">
+              <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg">
                 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
               </p>
-              <div className="flex flex-wrap gap-3 items-center">
+              <div className="flex flex-wrap gap-3 items-center mb-4">
                 <a
                   href="https://payhip.com/b/WxtV3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-7 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg hover:scale-105 hover:brightness-105"
+                  className="px-7 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg hover:scale-105 hover:brightness-110"
                   style={{ backgroundColor: '#FFCD00', color: '#1a2a3a' }}
                 >
                   Köp appen — 49 kr
                 </a>
                 <Link
                   href="/tjanst"
-                  className="px-6 py-3 bg-white/15 border border-white/30 text-white rounded-xl font-medium hover:bg-white/25 transition-colors text-sm backdrop-blur-sm"
+                  className="px-6 py-3 bg-white/10 border border-white/25 text-white rounded-xl font-medium hover:bg-white/20 transition-colors text-sm backdrop-blur-sm"
                 >
                   Personlig hjälp – 99 kr
                 </Link>
               </div>
-              <p className="text-xs text-white/45 mt-3">
+              {/* Social proof mini row */}
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {['#004B87','#0984e3','#00b894'].map((c, i) => (
+                    <div key={i} className="w-7 h-7 rounded-full border-2 border-white/30 flex items-center justify-center text-white text-[10px] font-bold" style={{ backgroundColor: c }}>
+                      {['A','M','L'][i]}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-white/65">52+ mallar · Trusted av användare i hela Sverige</p>
+              </div>
+              <p className="text-[11px] text-white/35 mt-3">
                 🔒 Säker betalning via Payhip. Nedladdningslänk direkt efter köp.
               </p>
             </div>
-            <div className="flex justify-center">
-              <PhoneMockup />
+            <div className="flex justify-center md:justify-end">
+              {/* Floating stats card */}
+              <div className="relative">
+                <PhoneMockup />
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl px-3 py-2 shadow-xl hidden sm:flex items-center gap-2">
+                  <span className="text-xl">🏛️</span>
+                  <div>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Myndigheter</p>
+                    <p className="text-sm font-bold text-slate-900 leading-none">4 kategorier</p>
+                  </div>
+                </div>
+                <div className="absolute -top-3 -right-3 bg-[#FFCD00] rounded-xl px-3 py-2 shadow-xl hidden sm:flex items-center gap-2">
+                  <div>
+                    <p className="text-[10px] text-slate-700 font-bold uppercase tracking-wider">Mallar</p>
+                    <p className="text-sm font-black text-slate-900 leading-none">52+</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+        {/* Bottom wave divider */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+          <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" style={{ display:'block' }}>
+            <path d="M0 40 L0 20 Q360 0 720 20 Q1080 40 1440 20 L1440 40 Z" fill="white"/>
+          </svg>
         </div>
       </section>
 
