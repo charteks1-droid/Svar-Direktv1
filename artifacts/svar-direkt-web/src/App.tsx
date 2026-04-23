@@ -47,6 +47,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "PDF-guider – Svar Direkt",
     description: "Nedladdningsbara PDF-guider för Skatteverket, Försäkringskassan, Migrationsverket och mer.",
   },
+  "/rattigheter": {
+    title: "Dina rättigheter – Förstå svenska lagar på ett enkelt sätt | Svar Direkt",
+    description: "En enkel guide till dina rättigheter som konsument, hyresgäst, anställd och medborgare i Sverige. Inget juridiskt krångel, bara klara besked.",
+  },
 };
 
 function CanonicalUpdater() {
@@ -95,6 +99,7 @@ import Landing from "@/pages/Landing";
 import Tjanst from "@/pages/Tjanst";
 import Forum from "@/pages/Forum";
 import SeoLanding, { seoPages } from "@/pages/SeoLanding";
+import Rattigheter from "@/pages/Rattigheter";
 import NotFound from "@/pages/not-found";
 
 function CookieBanner() {
@@ -149,6 +154,7 @@ function Navbar() {
   ];
 
   const secondary = [
+    { href: "/rattigheter",        label: "📖 Dina rättigheter" },
     { href: "/verktyg",            label: "⚖️ Juridiska verktyg" },
     { href: "/mallar-interaktiva", label: "70 interaktiva mallar" },
     { href: "/mallar",             label: "Mallar & texter" },
@@ -300,6 +306,7 @@ function Footer() {
     {
       title: "Produkter",
       links: [
+        { label: "📖 Dina rättigheter", href: "/rattigheter" },
         { label: "⚖️ Juridiska verktyg", href: "/verktyg" },
         { label: "70 interaktiva mallar", href: "/mallar-interaktiva" },
         { label: "Mallar & texter", href: "/mallar" },
@@ -406,6 +413,7 @@ export default function App() {
                 <Route path="/verktyg" component={Verktyg} />
                 <Route path="/tjanst" component={Tjanst} />
                 <Route path="/forum" component={Forum} />
+                <Route path="/rattigheter" component={Rattigheter} />
                 {seoPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`}>
                     {() => <SeoLanding slug={p.slug} />}

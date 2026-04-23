@@ -286,6 +286,10 @@ const META = {
     title: "Skuldsanering ansökan – mall och guide till Kronofogden | Svar Direkt",
     description: "Gratis guide: hur du ansöker om skuldsanering hos Kronofogden. Vad krävs, hur skriver du och vad händer sedan.",
   },
+  "rattigheter": {
+    title: "Dina rättigheter – Förstå svenska lagar på ett enkelt sätt | Svar Direkt",
+    description: "En enkel guide till dina rättigheter som konsument, hyresgäst, anställd och medborgare i Sverige. Inget juridiskt krångel, bara klara besked.",
+  },
   "blogg/spara-tid-med-fardiga-mallar": {
     title: "Spara tid och energi med färdiga mallar för myndighetsbrev | Svar Direkt",
     description: "Att skriva till myndigheter tar tid och energi. Upptäck hur färdiga mallar kan förenkla din vardag och minska stressen när du behöver svara på brev.",
@@ -375,6 +379,7 @@ const ROUTES = [
   "generator",
   "forum",
   "landing",
+  "rattigheter",
   // Blog articles
   "blogg/varfor-ar-det-svart-att-skriva-till-myndigheter",
   "blogg/ratt-ton-i-myndighetsbrev",
