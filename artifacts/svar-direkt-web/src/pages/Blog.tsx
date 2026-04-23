@@ -984,7 +984,7 @@ const articles: Article[] = [
         </p>
         <p>
           <Link
-            href="/mallar"
+            href="/mallar-interaktiva"
             className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
           >
             Se våra färdiga mallar för Kronofogden →
@@ -1029,7 +1029,7 @@ const articles: Article[] = [
         </p>
         <p>
           <Link
-            href="/mallar"
+            href="/mallar-interaktiva"
             className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
           >
             Ladda ner mall för omprövning hos Försäkringskassan →
@@ -1079,7 +1079,7 @@ const articles: Article[] = [
         </p>
         <p>
           <Link
-            href="/mallar"
+            href="/mallar-interaktiva"
             className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
           >
             Se våra mallar för Migrationsverket →
