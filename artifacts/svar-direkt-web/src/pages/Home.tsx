@@ -61,13 +61,16 @@ function PhoneMockup() {
 
 function SectionCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex gap-4 hover:shadow-md transition-shadow">
-      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-        {icon}
-      </div>
-      <div>
-        <div className="font-semibold text-slate-900 text-sm mb-1">{title}</div>
-        <div className="text-slate-500 text-xs leading-relaxed">{desc}</div>
+    <div className="bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      <div className="h-1.5 bg-gradient-to-r from-[#004B87] to-[#0984e3]" />
+      <div className="p-6 flex gap-4">
+        <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#004B87]/10 to-[#0984e3]/10 flex items-center justify-center flex-shrink-0 text-[#004B87]">
+          {icon}
+        </div>
+        <div>
+          <div className="font-bold text-slate-900 text-sm mb-1">{title}</div>
+          <div className="text-slate-500 text-xs leading-relaxed">{desc}</div>
+        </div>
       </div>
     </div>
   );
@@ -526,9 +529,9 @@ export default function Home() {
                   🏛️ Svenska myndigheter
                 </div>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-5 drop-shadow-lg">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-[1.05] mb-5" style={{ textShadow: '0 2px 24px rgba(0,0,0,0.45)' }}>
                 Skriv rätt.<br />Få svar.<br />
-                <span style={{ color: '#FFCD00' }}>Sluta stressa.</span>
+                <span style={{ color: '#FFCD00', textShadow: '0 0 30px rgba(255,205,0,0.4)' }}>Sluta stressa.</span>
               </h1>
               <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg">
                 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
@@ -538,8 +541,12 @@ export default function Home() {
                   href="https://payhip.com/b/WxtV3"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-7 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg hover:scale-105 hover:brightness-110"
-                  style={{ backgroundColor: '#FFCD00', color: '#1a2a3a' }}
+                  className="px-8 py-4 rounded-2xl font-extrabold text-base transition-all hover:scale-105 hover:brightness-110"
+                  style={{
+                    backgroundColor: '#FFCD00',
+                    color: '#1a2a3a',
+                    boxShadow: '0 0 20px rgba(255,205,0,0.5), 0 4px 16px rgba(0,0,0,0.2)',
+                  }}
                 >
                   Köp appen — 49 kr
                 </a>
@@ -617,14 +624,17 @@ export default function Home() {
       </section>
 
       {/* Snabbknappar */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Vad erbjuder Svar Direkt?</h2>
-          <p className="text-slate-500 text-sm max-w-md mx-auto">
-            Allt du behöver för att kommunicera tydligt med myndigheter och i vardagen.
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+        <div className="text-center mb-12">
+          <span className="inline-block bg-[#FFCD00]/20 text-[#9a7a00] text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest">
+            Funktioner
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">Allt du behöver — samlat på ett ställe</h2>
+          <p className="text-slate-500 max-w-md mx-auto">
+            Kommunicera tydligt med myndigheter och i vardagen — utan stress.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <SectionCard
             icon={<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="14" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 7h6M7 11h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}
             title="Färdiga mallar"
@@ -792,44 +802,82 @@ export default function Home() {
       </section>
 
       {/* Myndigheter */}
-      <section className="bg-slate-50 border-y border-slate-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Mallar för svenska myndigheter</h2>
-            <p className="text-slate-500 text-sm">Förberedda svar och brev för de vanligaste myndigheterna.</p>
+      <section className="bg-gradient-to-b from-slate-50 to-white border-y border-slate-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[#004B87]/10 text-[#004B87] text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest">
+              Svenska myndigheter
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">Mallar för de vanligaste myndigheterna</h2>
+            <p className="text-slate-500 max-w-md mx-auto">Förberedda svar och brev — klara att kopiera och skicka.</p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
             {[
-              { name: "Boverket", color: "#0a7ea4", count: "10 mallar", desc: "Hyresrätt & boende", emoji: "🏠" },
-              { name: "Skatteverket", color: "#00b894", count: "14 mallar", desc: "Skatt & deklaration", emoji: "📊" },
-              { name: "Försäkringskassan", color: "#0984e3", count: "14 mallar", desc: "Bidrag & ersättning", emoji: "🏥" },
-              { name: "Migrationsverket", color: "#6c5ce7", count: "14 mallar", desc: "Tillstånd & asyl", emoji: "🛂" },
+              {
+                name: "Boverket",
+                color: "#0a7ea4",
+                count: "10 mallar",
+                desc: "Hyresrätt & boende",
+                emoji: "🏠",
+                img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=60",
+              },
+              {
+                name: "Skatteverket",
+                color: "#00b894",
+                count: "14 mallar",
+                desc: "Skatt & deklaration",
+                emoji: "📊",
+                img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=60",
+              },
+              {
+                name: "Försäkringskassan",
+                color: "#0984e3",
+                count: "14 mallar",
+                desc: "Bidrag & ersättning",
+                emoji: "🏥",
+                img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=60",
+              },
+              {
+                name: "Migrationsverket",
+                color: "#6c5ce7",
+                count: "14 mallar",
+                desc: "Tillstånd & asyl",
+                emoji: "🛂",
+                img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=400&q=60",
+              },
             ].map((m) => (
               <div
                 key={m.name}
-                className="rounded-2xl bg-white border border-slate-100 p-5 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-default"
+                className="rounded-3xl bg-white border border-slate-100 flex flex-col text-center shadow-md hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-default overflow-hidden group"
               >
+                {/* Top image */}
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-3 text-2xl shadow-sm"
-                  style={{ backgroundColor: m.color + "18" }}
+                  className="h-28 bg-cover bg-center relative"
+                  style={{ backgroundImage: `url(${m.img})` }}
                 >
-                  {m.emoji}
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, ${m.color}55, ${m.color}cc)` }} />
+                  <div className="absolute inset-0 flex items-center justify-center text-4xl">
+                    {m.emoji}
+                  </div>
                 </div>
-                <div className="font-bold text-slate-900 text-sm mb-0.5">{m.name}</div>
-                <div className="text-xs text-slate-400 mb-3">{m.desc}</div>
-                <div
-                  className="text-xs font-semibold px-2.5 py-1 rounded-full"
-                  style={{ backgroundColor: m.color + "15", color: m.color }}
-                >
-                  {m.count}
+                {/* Card body */}
+                <div className="p-4 flex flex-col items-center flex-1">
+                  <div className="font-extrabold text-slate-900 text-sm mb-0.5 leading-tight">{m.name}</div>
+                  <div className="text-xs text-slate-400 mb-3">{m.desc}</div>
+                  <div
+                    className="text-xs font-bold px-3 py-1 rounded-full mt-auto"
+                    style={{ backgroundColor: m.color + "18", color: m.color }}
+                  >
+                    {m.count}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <Link
               href="/funktioner"
-              className="text-sm text-primary font-medium hover:underline inline-flex items-center gap-1"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#004B87] text-white rounded-2xl font-semibold text-sm hover:bg-[#003a6e] transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
               Se alla funktioner
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -905,10 +953,13 @@ export default function Home() {
       </section>
 
       {/* Hur det fungerar */}
-      <section id="hur-det-fungerar" className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Hur det fungerar</h2>
-          <p className="text-slate-500 text-sm max-w-md mx-auto">Tre enkla steg till ett tydligt svar.</p>
+      <section id="hur-det-fungerar" className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+        <div className="text-center mb-12">
+          <span className="inline-block bg-[#004B87]/10 text-[#004B87] text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest">
+            Tre steg
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">Hur det fungerar</h2>
+          <p className="text-slate-500 max-w-md mx-auto">Från köp till klart svar — på under en minut.</p>
         </div>
         <div className="grid sm:grid-cols-3 gap-6">
           {[
@@ -948,14 +999,15 @@ export default function Home() {
               ),
             },
           ].map((item) => (
-            <div key={item.step} className="relative bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-              <div className="absolute -top-3 left-5 w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shadow">
+            <div key={item.step} className="relative bg-white rounded-3xl border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-7 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#004B87] to-[#FFCD00]" />
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#004B87] to-[#0984e3] text-white text-sm font-black flex items-center justify-center mb-5 shadow-md">
                 {item.step}
               </div>
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4 mt-2">
+              <div className="w-12 h-12 rounded-2xl bg-[#004B87]/10 flex items-center justify-center text-[#004B87] mb-4">
                 {item.icon}
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
+              <h3 className="font-extrabold text-slate-900 mb-2">{item.title}</h3>
               <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
             </div>
           ))}
