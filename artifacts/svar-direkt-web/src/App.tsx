@@ -2,6 +2,7 @@ import { Switch, Route, Router as WouterRouter, Link, useLocation } from "wouter
 import { useState, useRef, useEffect } from "react";
 import logoSrc from "./assets/logo.png";
 import { HostingerBannerCompact } from "@/components/HostingerBanner";
+import { BLOG_META } from "@/blogMeta";
 
 const SITE = "https://svardirekt.site";
 
@@ -56,11 +57,24 @@ function CanonicalUpdater() {
     const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
     if (canonical) canonical.href = url;
     if (ogUrl) ogUrl.content = url;
-    const meta = PAGE_META[loc];
+
+    let meta = PAGE_META[loc];
+
+    // Blog article pages: look up from BLOG_META
+    if (!meta && loc.startsWith("/blogg/")) {
+      const slug = loc.replace("/blogg/", "");
+      const blogMeta = BLOG_META[slug];
+      if (blogMeta) meta = blogMeta;
+    }
+
     if (meta) {
       document.title = meta.title;
       const desc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
       if (desc) desc.content = meta.description;
+      const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement | null;
+      const ogDesc = document.querySelector('meta[property="og:description"]') as HTMLMetaElement | null;
+      if (ogTitle) ogTitle.content = meta.title;
+      if (ogDesc) ogDesc.content = meta.description;
     }
   }, [loc]);
   return null;
