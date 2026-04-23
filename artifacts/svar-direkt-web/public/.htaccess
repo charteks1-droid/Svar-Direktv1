@@ -17,6 +17,9 @@ RewriteRule ^ index.html [QSA,L]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
+# Force correct Content-Type for XML (sitemap)
+AddType application/xml .xml
+
 # Cache static assets
 <IfModule mod_expires.c>
   ExpiresActive On
