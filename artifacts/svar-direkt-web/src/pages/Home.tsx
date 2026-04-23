@@ -1,7 +1,18 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
+import heroRiksdag from "../assets/riksdag-hero.jpg";
+import heroRosenbad from "../assets/stockholm-rosenbad.jpg";
+import heroStadshuset from "../assets/stockholm-stadshuset.jpg";
+import heroDramatiska from "../assets/stockholm-dramatiska.jpg";
 import { PartnerGrid } from "@/components/AffiliateBanners";
+
+const HERO_SLIDES = [
+  { src: heroRiksdag,     caption: "Sveriges riksdag" },
+  { src: heroRosenbad,    caption: "Regeringskvarteret Rosenbad" },
+  { src: heroStadshuset,  caption: "Stockholms stadshus" },
+  { src: heroDramatiska,  caption: "Kungliga Dramatiska Teatern" },
+];
 
 function PhoneMockup() {
   return (
@@ -409,6 +420,15 @@ function LossAversion() {
 }
 
 export default function Home() {
+  const [slideIdx, setSlideIdx] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setSlideIdx(i => (i + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, []);
+
   useEffect(() => {
     const id = "faq-jsonld";
     let script = document.getElementById(id) as HTMLScriptElement | null;
@@ -471,12 +491,19 @@ export default function Home() {
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden" style={{ minHeight: '600px' }}>
-        {/* Swedish Parliament photo background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/riksdag-hero.jpg')" }}
-        />
-        {/* Dramatic gradient overlay — Swedish blue, bottom darker for readability */}
+        {/* Slideshow — all 4 images stacked, only current one visible */}
+        {HERO_SLIDES.map((slide, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${slide.src})`,
+              opacity: i === slideIdx ? 1 : 0,
+              transition: 'opacity 1.2s ease-in-out',
+            }}
+          />
+        ))}
+        {/* Gradient overlay */}
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom right, rgba(0,40,100,0.82) 0%, rgba(0,15,50,0.95) 100%)' }}
@@ -559,6 +586,28 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* Slide indicators + caption */}
+        <div className="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-2 z-10">
+          <p className="text-white/50 text-[11px] tracking-widest uppercase font-medium">
+            {HERO_SLIDES[slideIdx].caption}
+          </p>
+          <div className="flex gap-2">
+            {HERO_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSlideIdx(i)}
+                className="transition-all duration-300 rounded-full"
+                style={{
+                  width: i === slideIdx ? '24px' : '8px',
+                  height: '8px',
+                  backgroundColor: i === slideIdx ? '#FFCD00' : 'rgba(255,255,255,0.35)',
+                }}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Bottom wave divider */}
         <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
           <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" style={{ display:'block' }}>
