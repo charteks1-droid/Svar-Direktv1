@@ -946,6 +946,148 @@ const articles: Article[] = [
       </>
     ),
   },
+  {
+    slug: "kronofogden-skulder-2026",
+    title: "Över 400 000 svenskar hos Kronofogden 2026 – så undviker du att bli en av dem",
+    excerpt: "Skulderna hos Kronofogden slår nya rekord under 2026. Läs om varför så många hamnar i skuldfällan och vad du kan göra om du får ett kravbrev.",
+    category: "Ekonomi & Skulder",
+    readTime: "4 min",
+    date: "23 april 2026",
+    content: (
+      <>
+        <p>
+          Under våren 2026 nådde svenskarnas skuldsättning nya, mörka rekordnivåer. Enligt ny statistik från kreditupplysningsföretag och Kronofogden finns nu över <strong>436 000 svenskar</strong> registrerade hos myndigheten. Det totala skuldberget har växt till ofattbara <strong>138 miljarder kronor</strong>. Men vilka är det egentligen som hamnar där, och vad händer om du själv får ett brev i brevlådan?
+        </p>
+
+        <h2>Vilka är det som hamnar hos Kronofogden?</h2>
+        <p>
+          De senaste årens tuffa ekonomi med hög inflation, dyra matpriser och höga räntor har slagit hårt mot vanliga människor. Pengarna räcker helt enkelt inte till. Många av de som nu hamnar hos Kronofogden är vanliga löntagare mellan 35 och 44 år.
+        </p>
+        <p>De vanligaste orsakerna är:</p>
+        <ul>
+          <li>Obetalda skatteskulder</li>
+          <li>Billån som vuxit sig för stora</li>
+          <li>Snabblån och blancolån med hög ränta</li>
+        </ul>
+
+        <h2>Det största misstaget du kan göra</h2>
+        <p>
+          Det största misstaget många gör när de får ett inkassokrav eller ett brev från Kronofogden är att <strong>stoppa huvudet i sanden</strong>. Att ignorera breven gör bara att skulden växer snabbare genom dyra avgifter och dröjsmålsräntor.
+        </p>
+        <p>
+          Om du får ett krav som du anser är felaktigt – till exempel en bluffaktura eller ett krav på en prenumeration du redan sagt upp – har du rätt att <strong>bestrida (invända mot) kravet</strong>. Så fort du bestrider kravet skriftligt, pausas processen och Kronofogden kan inte göra en utmätning förrän saken är utredd.
+        </p>
+
+        <h2>Så agerar du rätt</h2>
+        <p>
+          Att skriva till Kronofogden kan kännas skrämmande, men det behöver inte vara komplicerat. Det viktigaste är att du agerar snabbt och tydligt förklarar varför du inte ska betala. Om du känner dig osäker på hur du ska formulera dig, finns det färdiga mallar som hjälper dig att svara på rätt sätt — utan att du behöver kunna några juridiska termer.
+        </p>
+        <p>
+          <Link
+            href="/paket"
+            className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
+          >
+            Se våra färdiga mallar för Kronofogden →
+          </Link>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "forsakringskassan-aterkrav-fel-2026",
+    title: "Rättsliga fel i 6 av 10 återkrav från Försäkringskassan – så skyddar du dig",
+    excerpt: "Har Försäkringskassan krävt tillbaka din sjukpenning? En ny granskning från 2026 visar att över hälften av alla återkrav innehåller fel. Så här gör du för att överklaga.",
+    category: "Bidrag & Ersättning",
+    readTime: "4 min",
+    date: "23 april 2026",
+    content: (
+      <>
+        <p>
+          Att vara sjukskriven är tillräckligt stressande i sig. Att sedan få ett brev från Försäkringskassan med ett krav på att betala tillbaka tiotusentals kronor kan kännas som en mardröm. Under 2025 och början av 2026 har Försäkringskassan skickat ut återkrav på totalt <strong>1,5 miljarder kronor</strong>. Men en ny, oberoende granskning från Inspektionen för socialförsäkringen (ISF) avslöjar något chockerande: mer än hälften av dessa krav är felaktiga.
+        </p>
+
+        <h2>Varför blir det fel?</h2>
+        <p>
+          Granskningen, som publicerades i februari 2026, visar att hela <strong>59 procent</strong> av Försäkringskassans återkrav gällande sjukpenning och föräldrapenning har rättsliga brister. Det betyder att tusentals svenskar kan ha tvingats betala tillbaka pengar helt i onödan, trots att de inte gjort något fel.
+        </p>
+        <p>
+          Ofta beror problemen på att Försäkringskassans beslut är så otydligt skrivna att det är omöjligt för en vanlig person att förstå varför de plötsligt blivit återbetalningsskyldiga. Många av felen uppstår när Försäkringskassan anser att du <em>"borde ha förstått"</em> att du fick för mycket pengar, även om det var myndigheten själv som räknade fel.
+        </p>
+
+        <h2>Acceptera inte beslutet rakt av</h2>
+        <p>
+          Om du drabbas av ett återkrav är det absolut viktigaste att du <strong>inte bara accepterar beslutet rakt av</strong>. Du har alltid rätt att begära en omprövning.
+        </p>
+        <p>När du begär omprövning är det viktigt att du:</p>
+        <ul>
+          <li>Är saklig och tydlig i ditt svar</li>
+          <li>Förklarar varför du anser att kravet är fel</li>
+          <li>Bifogar eventuella bevis, som lönespecifikationer eller läkarintyg</li>
+        </ul>
+        <p>
+          Eftersom granskningen visar att myndigheten ofta gör fel i sina bedömningar, är chansen stor att ett välskrivet överklagande kan få dem att ändra sitt beslut. Använd gärna en färdig mall för att säkerställa att ditt svar blir formellt och korrekt.
+        </p>
+        <p>
+          <Link
+            href="/paket"
+            className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
+          >
+            Ladda ner mall för omprövning hos Försäkringskassan →
+          </Link>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "migrationsverket-nya-regler-arbetstillstand-2026",
+    title: "Nya tuffare regler för arbetstillstånd 2026 – detta måste du veta",
+    excerpt: "Den 1 juni 2026 införs nya, hårdare regler för arbetstillstånd i Sverige, inklusive ett nytt lönekrav. Läs vår sammanfattning av vad som gäller.",
+    category: "Tillstånd & Samhälle",
+    readTime: "5 min",
+    date: "23 april 2026",
+    content: (
+      <>
+        <p>
+          Sveriges migrationspolitik fortsätter att stramas åt. Den <strong>1 juni 2026</strong> träder nya, striktare regler i kraft för alla som ansöker om eller ska förlänga sitt arbetstillstånd i Sverige. Förändringarna påverkar tusentals människor och deras arbetsgivare, och det är viktigt att vara förberedd för att undvika att få avslag på sin ansökan.
+        </p>
+
+        <h2>Det nya lönekravet</h2>
+        <p>
+          Den absolut största förändringen är det nya, höjda lönekravet. Tidigare räckte det med att lönen låg på 80 procent av den svenska medianlönen (vilket motsvarade cirka <strong>29 680 kronor</strong>).
+        </p>
+        <p>
+          Från och med den 1 juni 2026 höjs denna gräns. Nu krävs det att din lön uppgår till minst <strong>90 procent av medianlönen</strong> i Sverige vid den tidpunkt du ansöker. Dessutom måste lönen givetvis fortfarande vara i nivå med svenska kollektivavtal för din specifika bransch.
+        </p>
+
+        <h2>Hårdare krav på försäkringar och arbetsgivare</h2>
+        <p>
+          Ett annat viktigt nytt krav är att du måste kunna bevisa att du har, eller har ansökt om, en <strong>heltäckande sjukförsäkring</strong> om du planerar att stanna i Sverige i högst ett år.
+        </p>
+        <p>
+          Migrationsverket får också utökade befogenheter att ge avslag på ansökningar om de hittar brister hos din arbetsgivare, till exempel om företaget tidigare brutit mot regler eller saknar rätt försäkringar för sina anställda.
+        </p>
+
+        <h2>Vad gör du om du får avslag?</h2>
+        <p>
+          Om du får ett avslag från Migrationsverket på grund av de nya reglerna, kom ihåg att beslutet inte alltid är slutgiltigt. Du har rätt att <strong>överklaga</strong>.
+        </p>
+        <p>
+          Ett överklagande måste skickas in inom en viss tid (oftast <strong>tre veckor</strong>) och det är avgörande att du tydligt pekar på varför Migrationsverkets bedömning är felaktig, till exempel genom att skicka in kompletterande anställningsavtal.
+        </p>
+        <p>
+          Att skriva ett formellt överklagande kan vara svårt, men med rätt verktyg och mallar blir det betydligt enklare att formulera sig korrekt — och öka dina chanser att få ett positivt besked.
+        </p>
+        <p>
+          <Link
+            href="/paket"
+            className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
+          >
+            Se våra mallar för Migrationsverket →
+          </Link>
+        </p>
+      </>
+    ),
+  },
 ];
 
 const categoryColors: Record<string, string> = {
@@ -961,6 +1103,9 @@ const categoryColors: Record<string, string> = {
   "Verktyg & Tips": "bg-teal-50 text-teal-700",
   "Samhälle & Vardag": "bg-sky-50 text-sky-700",
   "Tips & Rutiner": "bg-lime-50 text-lime-700",
+  "Ekonomi & Skulder": "bg-red-50 text-red-700",
+  "Bidrag & Ersättning": "bg-orange-50 text-orange-700",
+  "Tillstånd & Samhälle": "bg-violet-50 text-violet-700",
 };
 
 function ArticleCard({ article }: { article: Article }) {

@@ -83,4 +83,16 @@ export const BLOG_META: Record<string, { title: string; description: string }> =
     title: "Organisera dina papper och brev – en enkel guide för en lugnare vardag | Svar Direkt",
     description: "Känner du dig överväldigad av papper och brev från myndigheter? Få praktiska tips på hur du organiserar dina dokument och minskar stressen.",
   },
+  "kronofogden-skulder-2026": {
+    title: "Över 400 000 svenskar hos Kronofogden 2026 – så undviker du fällan | Svar Direkt",
+    description: "Skulderna hos Kronofogden slår nya rekord under 2026. Läs om varför så många hamnar i skuldfällan och vad du kan göra om du får ett kravbrev.",
+  },
+  "forsakringskassan-aterkrav-fel-2026": {
+    title: "Rättsliga fel i 6 av 10 återkrav från Försäkringskassan | Svar Direkt",
+    description: "Har Försäkringskassan krävt tillbaka din sjukpenning? En ny granskning från 2026 visar att över hälften av alla återkrav innehåller fel. Så överklagar du.",
+  },
+  "migrationsverket-nya-regler-arbetstillstand-2026": {
+    title: "Nya tuffare regler för arbetstillstånd 2026 – detta gäller | Svar Direkt",
+    description: "Den 1 juni 2026 införs nya, hårdare regler för arbetstillstånd i Sverige, inklusive ett nytt lönekrav. Läs vår sammanfattning av vad som gäller.",
+  },
 };
