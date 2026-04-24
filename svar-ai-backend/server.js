@@ -2,7 +2,6 @@ import express from "express";
 
 const app = express();
 
-// CORS — allow requests from any origin (mobile app, web)
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -17,8 +16,8 @@ const PORT = process.env.PORT || 3000;
 const apiKey = process.env.GEMINI_API_KEY;
 
 console.log("API KEY EXISTS:", !!apiKey);
+console.log("NODE VERSION:", process.version);
 
-// gemini-1.5-flash via v1beta (gemini-pro is deprecated)
 const GEMINI_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
@@ -28,11 +27,9 @@ const usageMap = new Map();
 function todayKey(userId) {
   return `${userId}:${new Date().toISOString().slice(0, 10)}`;
 }
-
 function getCount(userId) {
   return usageMap.get(todayKey(userId)) || 0;
 }
-
 function increment(userId) {
   const key = todayKey(userId);
   usageMap.set(key, (usageMap.get(key) || 0) + 1);
@@ -65,14 +62,42 @@ app.get("/test", (_req, res) => {
   res.send("OK");
 });
 
+// Debug endpoint — shows env var status and tests Gemini
+app.get("/debug", async (req, res) => {
+  const keyExists = !!apiKey;
+  const keyPrefix = apiKey ? apiKey.slice(0, 8) + "..." : "BRAK";
+
+  let geminiStatus = "nie testowano";
+  if (keyExists) {
+    try {
+      const r = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: "Powiedz: OK" }] }],
+        }),
+      });
+      const body = await r.text();
+      geminiStatus = `HTTP ${r.status}: ${body.slice(0, 200)}`;
+    } catch (e) {
+      geminiStatus = "FETCH ERROR: " + e.message;
+    }
+  }
+
+  res.json({
+    keyExists,
+    keyPrefix,
+    nodeVersion: process.version,
+    geminiStatus,
+  });
+});
+
 app.post("/api/ai/ask", async (req, res) => {
   if (!apiKey) {
-    console.error("GEMINI ERROR: GEMINI_API_KEY not set");
     return res.status(503).json({ error: "Brak GEMINI_API_KEY." });
   }
 
   const { message, userId } = req.body;
-
   if (!message || !userId) {
     return res.status(400).json({ error: "Brakuje message lub userId" });
   }
