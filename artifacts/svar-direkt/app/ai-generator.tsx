@@ -20,7 +20,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "@/constants/colors";
 import { getDeviceId } from "@/services/deviceId";
 
-const AI_BACKEND = "https://lightgoldenrodyellow-zebra-953586.hostingersite.com";
+const AI_BACKEND = "https://peachpuff-dragonfly-448047.hostingersite.com";
 const AI_LIMIT = 10;
 
 const CASE_TYPES: Record<string, string[]> = {
