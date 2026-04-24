@@ -1,20 +1,15 @@
 import express from "express";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const apiKey = process.env.GEMINI_API_KEY;
 
-let model = null;
+console.log("API KEY EXISTS:", !!apiKey);
 
-if (!GEMINI_API_KEY) {
-  console.error("WARNING: GEMINI_API_KEY is not set. AI endpoints will return 503.");
-} else {
-  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-  model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-}
+const GEMINI_URL =
+  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent";
 
 const DAILY_LIMIT = 10;
 const usageMap = new Map();
@@ -33,16 +28,30 @@ function increment(userId) {
 }
 
 async function askGemini(message, attempt = 1) {
-  try {
-    const result = await model.generateContent(message);
-    return result.response.text();
-  } catch (err) {
+  const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [
+        {
+          parts: [{ text: message }],
+        },
+      ],
+    }),
+  });
+
+  if (!res.ok) {
+    const errBody = await res.text();
+    console.error("GEMINI ERROR:", res.status, errBody);
     if (attempt < 2) {
       await new Promise((r) => setTimeout(r, 1000));
       return askGemini(message, 2);
     }
-    throw err;
+    throw new Error(`Gemini ${res.status}: ${errBody}`);
   }
+
+  const data = await res.json();
+  return data.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
 }
 
 app.get("/test", (_req, res) => {
@@ -50,7 +59,8 @@ app.get("/test", (_req, res) => {
 });
 
 app.post("/api/ai/ask", async (req, res) => {
-  if (!model) {
+  if (!apiKey) {
+    console.error("GEMINI ERROR: GEMINI_API_KEY not set");
     return res.status(503).json({ error: "AI nie jest skonfigurowane (brak GEMINI_API_KEY)." });
   }
 
@@ -62,10 +72,7 @@ app.post("/api/ai/ask", async (req, res) => {
 
   const used = getCount(userId);
   if (used >= DAILY_LIMIT) {
-    return res.status(429).json({
-      error: "Przekroczono dzienny limit 10 zapytań",
-      remaining: 0,
-    });
+    return res.status(429).json({ error: "Przekroczono dzienny limit 10 zapytań", remaining: 0 });
   }
 
   try {
@@ -74,8 +81,8 @@ app.post("/api/ai/ask", async (req, res) => {
     const remaining = DAILY_LIMIT - getCount(userId);
     return res.json({ reply, remaining });
   } catch (err) {
-    console.error("Gemini error:", err.message);
-    return res.status(500).json({ error: "Błąd serwera AI. Spróbuj ponownie później." });
+    console.error("GEMINI ERROR:", err.message);
+    return res.status(500).json({ error: "Gemini failed" });
   }
 });
 
