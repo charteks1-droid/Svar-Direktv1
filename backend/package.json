@@ -1,0 +1,12 @@
+{
+  "name": "svar-direkt-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.1",
+    "express": "^4.21.2"
+  }
+}
