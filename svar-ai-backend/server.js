@@ -7,13 +7,14 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-if (!GEMINI_API_KEY) {
-  console.error("ERROR: GEMINI_API_KEY is not set.");
-  process.exit(1);
-}
+let model = null;
 
-const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+if (!GEMINI_API_KEY) {
+  console.error("WARNING: GEMINI_API_KEY is not set. AI endpoints will return 503.");
+} else {
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+  model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+}
 
 const DAILY_LIMIT = 10;
 const usageMap = new Map();
@@ -45,10 +46,14 @@ async function askGemini(message, attempt = 1) {
 }
 
 app.get("/test", (_req, res) => {
-  res.send("Server działa");
+  res.send("OK");
 });
 
 app.post("/api/ai/ask", async (req, res) => {
+  if (!model) {
+    return res.status(503).json({ error: "AI nie jest skonfigurowane (brak GEMINI_API_KEY)." });
+  }
+
   const { message, userId } = req.body;
 
   if (!message || !userId) {
