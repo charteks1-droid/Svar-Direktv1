@@ -1,6 +1,16 @@
 import express from "express";
 
 const app = express();
+
+// CORS — allow requests from any origin (mobile app, web)
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
@@ -8,8 +18,9 @@ const apiKey = process.env.GEMINI_API_KEY;
 
 console.log("API KEY EXISTS:", !!apiKey);
 
+// gemini-1.5-flash via v1beta (gemini-pro is deprecated)
 const GEMINI_URL =
-  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent";
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
 const DAILY_LIMIT = 10;
 const usageMap = new Map();
@@ -32,11 +43,7 @@ async function askGemini(message, attempt = 1) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      contents: [
-        {
-          parts: [{ text: message }],
-        },
-      ],
+      contents: [{ parts: [{ text: message }] }],
     }),
   });
 
@@ -61,7 +68,7 @@ app.get("/test", (_req, res) => {
 app.post("/api/ai/ask", async (req, res) => {
   if (!apiKey) {
     console.error("GEMINI ERROR: GEMINI_API_KEY not set");
-    return res.status(503).json({ error: "AI nie jest skonfigurowane (brak GEMINI_API_KEY)." });
+    return res.status(503).json({ error: "Brak GEMINI_API_KEY." });
   }
 
   const { message, userId } = req.body;
@@ -72,7 +79,7 @@ app.post("/api/ai/ask", async (req, res) => {
 
   const used = getCount(userId);
   if (used >= DAILY_LIMIT) {
-    return res.status(429).json({ error: "Przekroczono dzienny limit 10 zapytań", remaining: 0 });
+    return res.status(429).json({ error: "Limit dzienny osiągnięty", remaining: 0 });
   }
 
   try {
@@ -82,7 +89,7 @@ app.post("/api/ai/ask", async (req, res) => {
     return res.json({ reply, remaining });
   } catch (err) {
     console.error("GEMINI ERROR:", err.message);
-    return res.status(500).json({ error: "Gemini failed" });
+    return res.status(500).json({ error: "Gemini failed: " + err.message });
   }
 });
 
