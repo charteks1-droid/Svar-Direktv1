@@ -1,5 +1,4 @@
 import { Feather } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
@@ -19,8 +18,9 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
-import { APP_CONFIG } from "@/constants/config";
+import { getDeviceId } from "@/services/deviceId";
 
+const AI_BACKEND = "https://lightgoldenrodyellow-zebra-953586.hostingersite.com";
 const AI_LIMIT = 10;
 
 const CASE_TYPES: Record<string, string[]> = {
@@ -37,29 +37,7 @@ const CASE_TYPES: Record<string, string[]> = {
 
 const INSTITUTIONS = Object.keys(CASE_TYPES);
 
-function todayKey() {
-  return `ai_gen_${new Date().toISOString().slice(0, 10)}`;
-}
-
-async function getUsedToday(): Promise<number> {
-  try {
-    const val = await AsyncStorage.getItem(todayKey());
-    return val ? parseInt(val, 10) : 0;
-  } catch {
-    return 0;
-  }
-}
-
-async function incrementUsed(): Promise<number> {
-  try {
-    const cur = await getUsedToday();
-    const next = cur + 1;
-    await AsyncStorage.setItem(todayKey(), String(next));
-    return next;
-  } catch {
-    return 0;
-  }
-}
+const ERROR_MSG = "AI-tjänsten är tillfälligt otillgänglig. Försök igen senare.";
 
 interface PickerProps {
   label: string;
@@ -133,18 +111,14 @@ export default function AiGeneratorScreen() {
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+  const [remaining, setRemaining] = useState<number | null>(null);
 
-  const [usedToday, setUsedToday] = useState(0);
   const scrollRef = useRef<ScrollView>(null);
 
   useEffect(() => {
-    getUsedToday().then(setUsedToday);
-    // Pre-warm the server so it's ready when user clicks generate
-    const apiUrl = APP_CONFIG.apiBaseUrl || "";
-    fetch(`${apiUrl.replace("/api", "")}/api/healthz`).catch(() => {});
+    // Warm-up ping
+    fetch(`${AI_BACKEND}/test`).catch(() => {});
   }, []);
-
-  const remaining = AI_LIMIT - usedToday;
 
   const handleInstitutionChange = useCallback((val: string) => {
     setInstitution(val);
@@ -157,7 +131,6 @@ export default function AiGeneratorScreen() {
     institution.length > 0 &&
     caseType.length > 0 &&
     description.trim().length >= 20 &&
-    remaining > 0 &&
     !loading;
 
   const handleGenerate = async () => {
@@ -167,54 +140,59 @@ export default function AiGeneratorScreen() {
     setError("");
     setResult("");
 
-    const apiUrl = APP_CONFIG.apiBaseUrl || "";
-    const body = JSON.stringify({ fullName: fullName.trim(), personnummer: personnummer.trim(), institution, caseType, description: description.trim() });
-    const MAX_RETRIES = 2;
+    const userId = await getDeviceId();
 
-    let lastError = "";
-    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    const message =
+      `Skriv ett formellt brev på svenska från ${fullName.trim()} (personnummer: ${personnummer.trim()}) till ${institution} angående ärendet: ${caseType}.\n\nBakgrund och situation:\n${description.trim()}\n\nBrevet ska vara professionellt, kortfattat och tydligt.`;
+
+    for (let attempt = 1; attempt <= 2; attempt++) {
       try {
-        const res = await fetch(`${apiUrl}/ai/generate`, {
+        const res = await fetch(`${AI_BACKEND}/api/ai/ask`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body,
+          body: JSON.stringify({ message, userId }),
         });
 
-        if (res.status === 502 || res.status === 503 || res.status === 504) {
-          // Server cold-starting — wait and retry
-          if (attempt < MAX_RETRIES) {
+        if (res.status === 503 || res.status === 502 || res.status === 504) {
+          if (attempt < 2) {
             setError("Servern startar... försöker igen");
-            await new Promise((r) => setTimeout(r, 4000));
+            await new Promise((r) => setTimeout(r, 3000));
             setError("");
             continue;
           }
-          throw new Error("Servern svarar inte just nu. Försök igen om 10 sekunder.");
+          setError(ERROR_MSG);
+          break;
+        }
+
+        if (res.status === 429) {
+          setError("Du har använt alla 10 genereringar idag — återställs imorgon.");
+          break;
         }
 
         if (!res.ok) {
           const data = await res.json().catch(() => ({}));
-          throw new Error((data as any)?.error || `Fel ${res.status}`);
+          setError((data as any)?.error || ERROR_MSG);
+          break;
         }
 
-        const data = await res.json() as { message: string };
-        setResult(data.message);
-        const newUsed = await incrementUsed();
-        setUsedToday(newUsed);
+        const data = await res.json() as { reply: string; remaining?: number };
+        setResult(data.reply);
+        if (typeof data.remaining === "number") {
+          setRemaining(data.remaining);
+        }
         await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 200);
         setLoading(false);
         return;
-      } catch (e: any) {
-        lastError = e?.message || "Något gick fel. Försök igen.";
-        if (attempt < MAX_RETRIES && (lastError.includes("502") || lastError.includes("503") || lastError.includes("504") || lastError.includes("network"))) {
-          await new Promise((r) => setTimeout(r, 4000));
+      } catch {
+        if (attempt < 2) {
+          await new Promise((r) => setTimeout(r, 3000));
           continue;
         }
-        break;
+        setError(ERROR_MSG);
       }
     }
 
-    setError(lastError);
     await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     setLoading(false);
   };
@@ -228,6 +206,12 @@ export default function AiGeneratorScreen() {
 
   const topPad = Platform.OS === "web" ? 67 : insets.top;
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
+
+  const remainingLabel = remaining !== null
+    ? `${remaining}/${AI_LIMIT} genereringar kvar idag`
+    : `Max ${AI_LIMIT} genereringar per dag`;
+
+  const remainingOut = remaining !== null ? remaining === 0 : false;
 
   return (
     <KeyboardAvoidingView
@@ -261,15 +245,13 @@ export default function AiGeneratorScreen() {
         <View style={[
           styles.usageBanner,
           {
-            backgroundColor: remaining > 0 ? Colors.primary + "12" : theme.card,
-            borderColor: remaining > 0 ? Colors.primary + "30" : theme.cardBorder,
+            backgroundColor: remainingOut ? theme.card : Colors.primary + "12",
+            borderColor: remainingOut ? theme.cardBorder : Colors.primary + "30",
           }
         ]}>
-          <Feather name="zap" size={16} color={remaining > 0 ? Colors.primary : theme.textTertiary} />
-          <Text style={[styles.usageText, { color: remaining > 0 ? Colors.primary : theme.textTertiary }]}>
-            {remaining > 0
-              ? `${remaining}/${AI_LIMIT} genereringar kvar idag`
-              : "Du har använt alla 10 genereringar idag — återställs imorgon"}
+          <Feather name="zap" size={16} color={remainingOut ? theme.textTertiary : Colors.primary} />
+          <Text style={[styles.usageText, { color: remainingOut ? theme.textTertiary : Colors.primary }]}>
+            {remainingLabel}
           </Text>
         </View>
 

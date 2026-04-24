@@ -23,8 +23,8 @@ function todayKey(userId) {
   return `${userId}:${new Date().toISOString().slice(0, 10)}`;
 }
 
-function withinLimit(userId) {
-  return (usageMap.get(todayKey(userId)) || 0) < DAILY_LIMIT;
+function getCount(userId) {
+  return usageMap.get(todayKey(userId)) || 0;
 }
 
 function increment(userId) {
@@ -60,14 +60,19 @@ app.post("/api/ai/ask", async (req, res) => {
     return res.status(400).json({ error: "Brakuje message lub userId" });
   }
 
-  if (!withinLimit(userId)) {
-    return res.status(429).json({ error: "Przekroczono dzienny limit 10 zapytań" });
+  const used = getCount(userId);
+  if (used >= DAILY_LIMIT) {
+    return res.status(429).json({
+      error: "Przekroczono dzienny limit 10 zapytań",
+      remaining: 0,
+    });
   }
 
   try {
     const reply = await askGemini(message);
     increment(userId);
-    return res.json({ reply });
+    const remaining = DAILY_LIMIT - getCount(userId);
+    return res.json({ reply, remaining });
   } catch (err) {
     console.error("Gemini error:", err.message);
     return res.status(500).json({ error: "Błąd serwera AI. Spróbuj ponownie później." });
