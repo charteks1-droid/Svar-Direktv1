@@ -1,12 +1,12 @@
 {
-  "name": "svar-direkt-backend",
+  "name": "svar-ai-backend",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "@google/genai": "^1.0.1",
+    "@google/generative-ai": "^0.24.0",
     "express": "^4.21.2"
   }
 }

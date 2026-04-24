@@ -431,3 +431,9 @@ id = "f67YMf91ItjbN5VXmxDO4"
 uri = "file://svar-direkt-hostinger.tar.gz"
 type = "unspecified"
 title = "svar-direkt-hostinger.tar.gz – wgraj na Hostinger"
+
+[[outputs]]
+id = "VzLu7dEyaZ1jtaNnOuqnL"
+uri = "file://svar-ai-backend.zip"
+type = "unspecified"
+title = "svar-ai-backend.zip – wgraj na Hostinger"
