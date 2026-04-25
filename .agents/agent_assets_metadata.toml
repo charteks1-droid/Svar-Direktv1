@@ -449,3 +449,9 @@ id = "uX9MAI3TNyuwWStw_hEiI"
 uri = "file://exports/svar-ai-backend-forum.zip"
 type = "unspecified"
 title = "Pliki do wgrania na Hostinger (server.js + forum.js)"
+
+[[outputs]]
+id = "eWTu7EjuY0ZwkYUDIeYw6"
+uri = "file://exports/svar-direkt-website.zip"
+type = "unspecified"
+title = "Strona svardirekt.site (rozpakuj i wgraj na hosting statyczny)"
