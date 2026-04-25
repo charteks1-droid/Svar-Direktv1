@@ -1,7 +1,6 @@
 {
   "name": "svar-ai-backend",
-  "version": "1.0.0",
-  "type": "module",
+  "version": "2.0.0",
   "scripts": {
     "start": "node server.js"
   },
