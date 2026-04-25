@@ -25,9 +25,13 @@ import {
   Category,
   CvCategory,
   FORSAKRINGSKASSAN_TEMPLATES,
+  HYRESNAMND_TEMPLATES,
   KRONOFOGDEN_TEMPLATES,
   MIGRATIONSVERKET_TEMPLATES,
+  PENSIONSMYNDIGHETEN_TEMPLATES,
   SKATTEVERKET_TEMPLATES,
+  SOCIALTJANSTEN_TEMPLATES,
+  TRANSPORTSTYRELSEN_TEMPLATES,
   Template,
 } from "@/data/situations";
 
@@ -38,6 +42,10 @@ const ALL_MYNDIGHET_TEMPLATES: Template[] = [
   ...MIGRATIONSVERKET_TEMPLATES,
   ...KRONOFOGDEN_TEMPLATES,
   ...ARBETSFORMEDLINGEN_TEMPLATES,
+  ...SOCIALTJANSTEN_TEMPLATES,
+  ...HYRESNAMND_TEMPLATES,
+  ...TRANSPORTSTYRELSEN_TEMPLATES,
+  ...PENSIONSMYNDIGHETEN_TEMPLATES,
 ];
 
 type Mode = "myndighet" | "cv";
@@ -368,6 +376,14 @@ export default function TemplatesScreen() {
                 ? "forsakringskassan"
                 : item.id.startsWith("mig-")
                 ? "migrationsverket"
+                : item.id.startsWith("soc-")
+                ? "socialtjansten"
+                : item.id.startsWith("hn-")
+                ? "hyresnamnd"
+                : item.id.startsWith("ts-")
+                ? "transportstyrelsen"
+                : item.id.startsWith("pm-")
+                ? "pensionsmyndigheten"
                 : "boverket"
             }
           />

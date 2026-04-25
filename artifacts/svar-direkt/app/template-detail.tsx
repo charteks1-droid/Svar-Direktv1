@@ -18,7 +18,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
 import { useTheme } from "@/contexts/ThemeContext";
-import { ARBETSFORMEDLINGEN_TEMPLATES, BOVERKET_TEMPLATES, CV_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, KRONOFOGDEN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
+import { ARBETSFORMEDLINGEN_TEMPLATES, BOVERKET_TEMPLATES, CV_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, HYRESNAMND_TEMPLATES, KRONOFOGDEN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, PENSIONSMYNDIGHETEN_TEMPLATES, SKATTEVERKET_TEMPLATES, SOCIALTJANSTEN_TEMPLATES, TRANSPORTSTYRELSEN_TEMPLATES } from "@/data/situations";
 
 export default function TemplateDetailScreen() {
   const { theme } = useTheme();
@@ -46,6 +46,14 @@ export default function TemplateDetailScreen() {
       ? KRONOFOGDEN_TEMPLATES.find((t) => t.id === id) ?? null
       : source === "arbetsformedlingen"
       ? ARBETSFORMEDLINGEN_TEMPLATES.find((t) => t.id === id) ?? null
+      : source === "socialtjansten"
+      ? SOCIALTJANSTEN_TEMPLATES.find((t) => t.id === id) ?? null
+      : source === "hyresnamnd"
+      ? HYRESNAMND_TEMPLATES.find((t) => t.id === id) ?? null
+      : source === "transportstyrelsen"
+      ? TRANSPORTSTYRELSEN_TEMPLATES.find((t) => t.id === id) ?? null
+      : source === "pensionsmyndigheten"
+      ? PENSIONSMYNDIGHETEN_TEMPLATES.find((t) => t.id === id) ?? null
       : source === "cv"
       ? CV_TEMPLATES.find((t) => t.id === id) ?? null
       : BOVERKET_TEMPLATES.find((t) => t.id === id) ?? null;

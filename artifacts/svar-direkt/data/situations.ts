@@ -1268,6 +1268,512 @@ Med vänliga hälsningar,
   },
 ];
 
+export const SOCIALTJANSTEN_TEMPLATES: Template[] = [
+  {
+    id: "soc-001",
+    title: "Ansökan om försörjningsstöd",
+    category: "Ekonomi",
+    description: "Ansök om ekonomiskt bistånd (socialbidrag) från socialtjänsten",
+    tags: ["socialtjänsten", "försörjningsstöd", "bistånd", "ekonomi"],
+    content: `Till Socialtjänsten, [KOMMUNENS NAMN]
+
+Ansökan om försörjningsstöd
+
+Jag, [DITT NAMN], personnummer [PERSONNUMMER], ansöker om försörjningsstöd fr.o.m. [DATUM].
+
+Mina aktuella förhållanden:
+- Civilstånd: [ENSAMSTÅENDE/SAMBO/GIFT]
+- Antal hemmaboende barn: [ANTAL]
+- Bostadssituation: [HYRESRÄTT/INNEBOENDE/ANNAT]
+- Hyra per månad: [BELOPP] kr
+
+Inkomstsituation:
+- Lön/ersättning: [BELOPP] kr/mån (eller 0 kr om ingen inkomst)
+- Orsak till att jag saknar tillräcklig inkomst: [t.ex. nyligen blivit arbetslös / sjukskriven / a-kassan täcker inte levnadskostnaderna]
+
+Jag bifogar:
+- Hyreskontrakt
+- Kontoutdrag
+- Intyg från [ARBETSFÖRMEDLINGEN/FÖRSÄKRINGSKASSAN/ARBETSGIVARE]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[ADRESS]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "soc-002",
+    title: "Överklaga avslag på bistånd",
+    category: "Ekonomi",
+    description: "Överklaga socialtjänstens beslut om avslag på bistånd",
+    tags: ["socialtjänsten", "överklagande", "bistånd", "avslag"],
+    content: `Till Förvaltningsrätten i [ORT]
+(via Socialtjänsten, [KOMMUNENS NAMN])
+
+Överklagande av beslut om ekonomiskt bistånd
+
+Jag överklagar Socialtjänstens beslut daterat [DATUM], diarienummer [DIARIENUMMER], om avslag på min ansökan om försörjningsstöd/[ANNAN INSATS].
+
+Skäl till överklagande:
+[Beskriv varför du anser att beslutet är felaktigt, t.ex.: Beslutet tar inte hänsyn till mina faktiska kostnader / Behovsbedömningen är felaktig / Beslutet strider mot socialtjänstlagen]
+
+Jag yrkar att förvaltningsrätten upphäver beslutet och beviljar ansökan om [INSATS/BELOPP].
+
+Bilagor:
+- Kopia på överklagat beslut
+- [ÖVRIGA DOKUMENT]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[ADRESS]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "soc-003",
+    title: "Begära boendestöd eller hemtjänst",
+    category: "Vård & Omsorg",
+    description: "Ansök om stöd i hemmet från socialtjänsten",
+    tags: ["socialtjänsten", "hemtjänst", "boendestöd", "omsorg"],
+    content: `Till Socialtjänsten, [KOMMUNENS NAMN]
+
+Ansökan om [HEMTJÄNST / BOENDESTÖD / PERSONLIG ASSISTANS]
+
+Jag, [DITT NAMN], personnummer [PERSONNUMMER], ansöker om stödinsatser i hemmet.
+
+Bakgrund:
+Jag har [BESKRIV SITUATION, t.ex.: en funktionsnedsättning / en sjukdom / svårigheter att klara vardagen självständigt] och behöver stöd med [BESKRIV BEHOVEN, t.ex.: personlig hygien / matlagning / städning / medicinhantering].
+
+Nuvarande situation:
+- Jag bor [ENSAM / MED FAMILJ] på [ADRESS]
+- Jag har [INGEN / BEGRÄNSAD] hjälp från närstående
+
+Jag önskar att en utredning görs och att insatser beviljas snarast möjligt.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[ADRESS]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "soc-004",
+    title: "Klagomål på socialtjänstens handläggning",
+    category: "Vård & Omsorg",
+    description: "Framför klagomål om brister i socialtjänstens bemötande eller handläggning",
+    tags: ["socialtjänsten", "klagomål", "handläggning", "IVO"],
+    content: `Till Socialtjänsten, [KOMMUNENS NAMN]
+
+Klagomål på handläggning
+
+Jag vill framföra ett klagomål gällande handläggningen av mitt ärende, diarienummer [DIARIENUMMER].
+
+Vad som inträffade:
+[Beskriv händelsen med datum och detaljer, t.ex.: Min handläggare har inte återkopplat på [X] veckor / Jag bemöttes på ett kränkande sätt / Mitt ärende har handlagts felaktigt]
+
+Konsekvenser:
+[Beskriv hur detta påverkat dig]
+
+Jag begär:
+- Skriftligt svar på detta klagomål inom 14 dagar
+- Åtgärder för att rätta till situationen
+
+Om jag inte får ett tillfredsställande svar förbehåller jag mig rätten att anmäla ärendet till Inspektionen för vård och omsorg (IVO).
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+];
+
+export const HYRESNAMND_TEMPLATES: Template[] = [
+  {
+    id: "hn-001",
+    title: "Ansökan om hyresminskning",
+    category: "Bostad",
+    description: "Begär nedsättning av hyran vid brister i lägenheten",
+    tags: ["hyresnämnden", "hyra", "hyresminskning", "brist"],
+    content: `Till Hyresnämnden i [ORT]
+
+Ansökan om hyresminskning
+
+Sökande:
+[DITT NAMN]
+[ADRESS]
+[PERSONNUMMER/KONTAKTUPPGIFTER]
+
+Motpart (hyresvärd):
+[HYRESVÄRDENS NAMN OCH ADRESS]
+
+Fastighet/lägenhet: [ADRESS, LGH NR]
+
+Yrkande:
+Jag yrkar att hyresnämnden nedsätter hyran med [BELOPP] kr/mån (motsvarar [PROCENT]%) fr.o.m. [DATUM] till dess att bristerna är åtgärdade.
+
+Grunder:
+Lägenheten lider av följande brister som väsentligt påverkar mitt boende:
+1. [BRIST 1, t.ex.: Fukt och mögel i badrum sedan DATUM]
+2. [BRIST 2, t.ex.: Trasig värmeanläggning]
+3. [BRIST 3]
+
+Jag har reklamerat bristerna till hyresvärden [DATUM] (se bilaga) utan att de åtgärdats.
+
+Bilagor:
+- Kopia på reklamation till hyresvärd
+- Fotografier
+- [ÖVRIGA DOKUMENT]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "hn-002",
+    title: "Ansökan om tillstånd att hyra ut i andra hand",
+    category: "Bostad",
+    description: "Ansök om godkännande för andrahandsuthyrning",
+    tags: ["hyresnämnden", "andrahand", "uthyrning", "tillstånd"],
+    content: `Till Hyresnämnden i [ORT]
+
+Ansökan om tillstånd att hyra ut lägenhet i andra hand
+
+Sökande:
+[DITT NAMN]
+[ADRESS]
+[PERSONNUMMER/KONTAKTUPPGIFTER]
+
+Hyresvärd: [HYRESVÄRDENS NAMN]
+Lägenhet: [ADRESS, LGH NR]
+Hyresvärd har nekat tillstånd: [JA/NEJ, DATUM]
+
+Begärd period: [STARTDATUM] – [SLUTDATUM]
+
+Skäl för andrahandsuthyrning:
+[Beskriv skälet, t.ex.: Jag arbetar/studerar i annan ort under perioden / Jag vårdar en närstående / Jag provar samboende]
+
+Andrahandshyresgäst: [NAMN, PERSONNUMMER]
+
+Jag yrkar att hyresnämnden beviljar tillstånd till andrahandsuthyrning för angiven period.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "hn-003",
+    title: "Bestrida hyreshöjning",
+    category: "Bostad",
+    description: "Invänd mot en oskälig höjning av hyran",
+    tags: ["hyresnämnden", "hyreshöjning", "hyra", "bestrid"],
+    content: `Till Hyresnämnden i [ORT]
+
+Bestridande av hyreshöjning
+
+Sökande:
+[DITT NAMN]
+[ADRESS, LGH NR]
+[KONTAKTUPPGIFTER]
+
+Motpart: [HYRESVÄRDENS NAMN]
+
+Jag bestrider hyresvärdens krav på hyreshöjning från [NUVARANDE BELOPP] kr till [NYTT BELOPP] kr per månad, en höjning med [BELOPP] kr ([PROCENT]%).
+
+Skäl:
+[t.ex.: Höjningen är inte skälig i förhållande till bruksvärdet / Lägenheten har brister som inte åtgärdats / Höjningen överstiger kraftigt KPI och branschnorm]
+
+Jag yrkar att hyresnämnden fastställer en skälig hyra för lägenheten.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "hn-004",
+    title: "Ansökan om reparationsföreläggande",
+    category: "Bostad",
+    description: "Begär att hyresnämnden tvingar hyresvärden att åtgärda brister",
+    tags: ["hyresnämnden", "reparation", "brist", "föreläggande"],
+    content: `Till Hyresnämnden i [ORT]
+
+Ansökan om reparationsföreläggande
+
+Sökande:
+[DITT NAMN]
+[ADRESS, LGH NR]
+[KONTAKTUPPGIFTER]
+
+Motpart (hyresvärd): [NAMN OCH ADRESS]
+
+Jag ansöker om att hyresnämnden förelägger hyresvärden att åtgärda följande brister i lägenheten:
+
+1. [BRIST 1 – t.ex. fukt i badrum]
+2. [BRIST 2 – t.ex. trasigt fönster]
+3. [BRIST 3]
+
+Bristerna har påpekats för hyresvärden [DATUM] (se bilaga) men inte åtgärdats.
+
+Bilagor:
+- Kopia på reklamation
+- Fotodokumentation
+- [ÖVRIGA INTYG]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+];
+
+export const TRANSPORTSTYRELSEN_TEMPLATES: Template[] = [
+  {
+    id: "ts-001",
+    title: "Överklaga körkortsåterkallelse",
+    category: "Körkort & Fordon",
+    description: "Överklaga Transportstyrelsens beslut om återkallelse av körkort",
+    tags: ["transportstyrelsen", "körkort", "återkallelse", "överklagande"],
+    content: `Till Förvaltningsrätten i [ORT]
+(via Transportstyrelsen)
+
+Överklagande av beslut om körkortsåterkallelse
+
+Klagande:
+[DITT NAMN]
+[PERSONNUMMER]
+[ADRESS]
+[KONTAKTUPPGIFTER]
+
+Jag överklagar Transportstyrelsens beslut daterat [DATUM], diarienummer [DIARIENUMMER], om återkallelse av mitt körkort.
+
+Skäl till överklagande:
+[Beskriv varför du anser att beslutet är felaktigt, t.ex.: Omständigheterna vid tillfället var [FÖRKLARING] / Beslutet tar inte hänsyn till [OMSTÄNDIGHET] / Medicinska förutsättningar har förändrats]
+
+Körkortets vikt för mig:
+Körkortet är nödvändigt för [t.ex.: mitt arbete / att hämta/lämna barn / vård av närstående].
+
+Bilagor:
+- Kopia på överklagat beslut
+- [LÄKARINTYG / ÖVRIGA HANDLINGAR]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "ts-002",
+    title: "Ansökan om undantag från fordonsskatt",
+    category: "Körkort & Fordon",
+    description: "Begär undantag eller nedsättning av fordonsskatt",
+    tags: ["transportstyrelsen", "fordonsskatt", "undantag", "fordon"],
+    content: `Till Transportstyrelsen
+
+Ansökan om [UNDANTAG FRÅN / NEDSÄTTNING AV] fordonsskatt
+
+Fordonsuppgifter:
+Registreringsnummer: [REG.NR]
+Fordonstyp: [TYP]
+Ägare: [DITT NAMN], personnummer [PERSONNUMMER]
+
+Skäl för ansökan:
+[Beskriv skälet, t.ex.: Fordonet används uteslutande för [ÄNDAMÅL] / Fordonet är parkerat och inte i trafik (avställning) / Jag är berättigad till nedsättning pga. funktionsnedsättning]
+
+Jag bifogar:
+- [INTYG / DOKUMENTATION]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[ADRESS]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "ts-003",
+    title: "Anmälan om felparkeringsavgift",
+    category: "Körkort & Fordon",
+    description: "Bestrid en felaktig parkeringsbot från kommunen",
+    tags: ["parkering", "parkeringsbot", "bestrid", "transportstyrelsen"],
+    content: `Till [KOMMUNENS PARKERINGSENHET / BOLAGET SOM UTFÄRDAT AVGIFTEN]
+
+Bestridande av felparkeringsavgift
+
+Ärendenummer: [ÄRENDENUMMER PÅ AVGIFTSBESLUTET]
+Registreringsnummer: [REG.NR]
+Datum för parkeringen: [DATUM, KLOCKSLAG]
+Plats: [ADRESS]
+
+Jag bestrider parkeringsavgiften på [BELOPP] kr av följande skäl:
+
+[Välj och beskriv: Skylten var otydlig eller saknades / Jag hade giltig parkeringsbiljett (se bilaga) / Parkeringsplatsen var inte korrekt markerad / Fordonet stod inte på angiven plats / Annan orsak]
+
+Bilagor:
+- Fotografier från platsen
+- [PARKERINGSBILJETT / KVITTO]
+
+Jag yrkar att avgiften upphävs.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "ts-004",
+    title: "Begära tillbaka beslagtaget körkort",
+    category: "Körkort & Fordon",
+    description: "Ansök om att återfå körkort efter tillfällig återkallelse",
+    tags: ["transportstyrelsen", "körkort", "återkallelse", "begäran"],
+    content: `Till Transportstyrelsen
+
+Begäran om återlämnande av körkort
+
+Namn: [DITT NAMN]
+Personnummer: [PERSONNUMMER]
+Adress: [ADRESS]
+Diarienummer: [DIARIENUMMER]
+
+Mitt körkort återkallades/omhändertogs [DATUM]. Jag ansöker nu om att körkortet återlämnas/att körkortsåterkallelsen hävs.
+
+Skäl:
+[Beskriv förändringen, t.ex.: Återkallelsetiden har löpt ut / Jag har genomgått krävda åtgärder (läkarintyg bifogat) / Polisens omhändertagande har upphävts]
+
+Bilagor:
+- [LÄKARINTYG / INTYG OM GENOMGÅNGEN REHABILITERING]
+- [ÖVRIGA HANDLINGAR]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+];
+
+export const PENSIONSMYNDIGHETEN_TEMPLATES: Template[] = [
+  {
+    id: "pm-001",
+    title: "Ansöka om ålderspension",
+    category: "Pension",
+    description: "Ansök om ålderspension hos Pensionsmyndigheten",
+    tags: ["pensionsmyndigheten", "pension", "ålderspension", "ansökan"],
+    content: `Till Pensionsmyndigheten
+
+Ansökan om ålderspension
+
+Personuppgifter:
+Namn: [DITT NAMN]
+Personnummer: [PERSONNUMMER]
+Adress: [ADRESS]
+E-post: [E-POST]
+Bankgiro/kontonummer för utbetalning: [KONTONUMMER]
+
+Jag ansöker om ålderspension fr.o.m. [DATUM / MÅNAD ÅR].
+
+Önskat uttag:
+- [HELA / DEL AV] intjänad inkomstpension
+- [HELA / DEL AV] premiepension
+- Andel: [100% / 75% / 50% / 25%]
+
+Jag har [FORTFARANDE KVAR / AVSLUTAT] mitt förvärvsarbete.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "pm-002",
+    title: "Överklaga pensionsbeslut",
+    category: "Pension",
+    description: "Överklaga ett felaktigt beslut om pension eller pensionsbelopp",
+    tags: ["pensionsmyndigheten", "överklagande", "pension", "beslut"],
+    content: `Till Pensionsmyndigheten / Förvaltningsrätten i [ORT]
+
+Överklagande av pensionsbeslut
+
+Namn: [DITT NAMN]
+Personnummer: [PERSONNUMMER]
+Adress: [ADRESS]
+Diarienummer: [DIARIENUMMER]
+
+Jag överklagar Pensionsmyndighetens beslut daterat [DATUM] angående [BESKRIV BESLUTET, t.ex.: beräkning av inkomstpension / avslag på garantipension / belopp].
+
+Skäl:
+[Beskriv varför du anser att beslutet är felaktigt, t.ex.: Mina inkomstuppgifter har inte beaktats korrekt / Arbetsår från [LAND] har inte räknats med / Beloppet är felaktigt beräknat]
+
+Jag yrkar att [BESKRIV ÖNSKAT UTFALL].
+
+Bilagor:
+- Kopia på överklagat beslut
+- [LÖNESPECIFIKATIONER / INTYG]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+  {
+    id: "pm-003",
+    title: "Ansöka om garantipension",
+    category: "Pension",
+    description: "Ansök om garantipension för låginkomsttagare",
+    tags: ["pensionsmyndigheten", "garantipension", "pension", "ansökan"],
+    content: `Till Pensionsmyndigheten
+
+Ansökan om garantipension
+
+Namn: [DITT NAMN]
+Personnummer: [PERSONNUMMER]
+Adress: [ADRESS]
+Bankgiro/kontonummer: [KONTONUMMER]
+
+Jag ansöker om garantipension fr.o.m. [DATUM].
+
+Jag har bott i Sverige sedan [ÅR] och har totalt [ANTAL] år bosättningstid i Sverige.
+
+Mina övriga pensionsförmåner:
+- Inkomstpension: [BELOPP] kr/mån (eller 0 kr)
+- Tjänstepension: [BELOPP] kr/mån (eller 0 kr)
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "pm-004",
+    title: "Ändra pensionsuttag eller fondval",
+    category: "Pension",
+    description: "Begär ändring av pensionsuttag eller val av premiepensionsfonder",
+    tags: ["pensionsmyndigheten", "pension", "fondval", "ändring"],
+    content: `Till Pensionsmyndigheten
+
+Begäran om ändring av [PENSIONSUTTAG / FONDVAL]
+
+Namn: [DITT NAMN]
+Personnummer: [PERSONNUMMER]
+Adress: [ADRESS]
+
+Jag önskar göra följande ändring fr.o.m. [DATUM / NÄSTA MÖJLIGA TILLFÄLLE]:
+
+Ändring av pensionsuttag:
+[ ] Ändra uttag från [NUVARANDE %] till [NY %]
+[ ] Pausa uttaget tillfälligt
+[ ] Återuppta uttaget
+
+Ändring av premiepensionsfonder:
+[ ] Byta till följande fonder: [FONDNAMN / FONDKOD]
+[ ] Gå över till förvalsalternativet AP7 Såfa
+
+Kontaktuppgifter för bekräftelse:
+Telefon: [TELEFON]
+E-post: [E-POST]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[DATUM]`,
+  },
+];
+
 export const CV_TEMPLATES: Template[] = [
   {
     id: "cv-001",

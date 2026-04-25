@@ -18,7 +18,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
 import { useTheme } from "@/contexts/ThemeContext";
-import { ARBETSFORMEDLINGEN_TEMPLATES, BOVERKET_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, KRONOFOGDEN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
+import { ARBETSFORMEDLINGEN_TEMPLATES, BOVERKET_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, HYRESNAMND_TEMPLATES, KRONOFOGDEN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, PENSIONSMYNDIGHETEN_TEMPLATES, SKATTEVERKET_TEMPLATES, SOCIALTJANSTEN_TEMPLATES, TRANSPORTSTYRELSEN_TEMPLATES } from "@/data/situations";
 
 interface MenuItemProps {
   icon: React.ReactNode;
@@ -208,6 +208,42 @@ export default function HomeScreen() {
     router.push({
       pathname: "/template-detail",
       params: { id: template.id, source: "arbetsformedlingen" },
+    });
+  };
+
+  const handleSocialtjanstenTemplate = async (template: (typeof SOCIALTJANSTEN_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "socialtjansten" },
+    });
+  };
+
+  const handleHyresnamndTemplate = async (template: (typeof HYRESNAMND_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "hyresnamnd" },
+    });
+  };
+
+  const handleTransportstyrelsemTemplate = async (template: (typeof TRANSPORTSTYRELSEN_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "transportstyrelsen" },
+    });
+  };
+
+  const handlePensionsmyndighetenTemplate = async (template: (typeof PENSIONSMYNDIGHETEN_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "pensionsmyndigheten" },
     });
   };
 
@@ -518,6 +554,78 @@ export default function HomeScreen() {
             <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
               {template.category}
             </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Socialtjänsten templates */}
+      <SectionHeader title="SOCIALTJÄNSTENS MALLAR" badge={`${SOCIALTJANSTEN_TEMPLATES.length} mallar`} />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.boverketRow}>
+        {SOCIALTJANSTEN_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleSocialtjanstenTemplate(template)}
+            style={({ pressed }) => [styles.boverketCard, { backgroundColor: theme.card, borderColor: theme.cardBorder, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] }]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#fd79a815" }]}>
+              <Feather name="heart" size={22} color="#fd79a8" />
+            </View>
+            <Text style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]} numberOfLines={2}>{template.title}</Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>{template.category}</Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Hyresnämnden templates */}
+      <SectionHeader title="HYRESNÄMNDENS MALLAR" badge={`${HYRESNAMND_TEMPLATES.length} mallar`} />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.boverketRow}>
+        {HYRESNAMND_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleHyresnamndTemplate(template)}
+            style={({ pressed }) => [styles.boverketCard, { backgroundColor: theme.card, borderColor: theme.cardBorder, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] }]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#fdcb6e15" }]}>
+              <Feather name="home" size={22} color="#fdcb6e" />
+            </View>
+            <Text style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]} numberOfLines={2}>{template.title}</Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>{template.category}</Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Transportstyrelsen templates */}
+      <SectionHeader title="TRANSPORTSTYRELSENS MALLAR" badge={`${TRANSPORTSTYRELSEN_TEMPLATES.length} mallar`} />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.boverketRow}>
+        {TRANSPORTSTYRELSEN_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleTransportstyrelsemTemplate(template)}
+            style={({ pressed }) => [styles.boverketCard, { backgroundColor: theme.card, borderColor: theme.cardBorder, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] }]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#74b9ff15" }]}>
+              <Feather name="truck" size={22} color="#74b9ff" />
+            </View>
+            <Text style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]} numberOfLines={2}>{template.title}</Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>{template.category}</Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Pensionsmyndigheten templates */}
+      <SectionHeader title="PENSIONSMYNDIGHETENS MALLAR" badge={`${PENSIONSMYNDIGHETEN_TEMPLATES.length} mallar`} />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.boverketRow}>
+        {PENSIONSMYNDIGHETEN_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handlePensionsmyndighetenTemplate(template)}
+            style={({ pressed }) => [styles.boverketCard, { backgroundColor: theme.card, borderColor: theme.cardBorder, opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] }]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#a29bfe15" }]}>
+              <Feather name="umbrella" size={22} color="#a29bfe" />
+            </View>
+            <Text style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]} numberOfLines={2}>{template.title}</Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>{template.category}</Text>
           </Pressable>
         ))}
       </ScrollView>
