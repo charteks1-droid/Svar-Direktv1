@@ -436,7 +436,7 @@ title = "svar-direkt-hostinger.tar.gz – z 4 nowymi stronami SEO"
 id = "VzLu7dEyaZ1jtaNnOuqnL"
 uri = "file://svar-ai-backend.zip"
 type = "unspecified"
-title = "svar-ai-backend.zip – nowa wersja (CommonJS)"
+title = "svar-ai-backend.zip – wersja v3 (bez fetch, działa na każdym Node.js)"
 
 [[outputs]]
 id = "Z81_JB53rumToq9txEZ26"
