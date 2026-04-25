@@ -2,7 +2,7 @@
   "expo": {
     "name": "Svar Direkt",
     "slug": "svar-direkt-new",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "svar-direkt",
@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "com.svardirekt.app",
-      "versionCode": 6,
+      "versionCode": 7,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#0a7ea4"
