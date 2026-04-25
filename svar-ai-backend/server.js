@@ -89,7 +89,7 @@ function httpsPost(hostname, path, data) {
 
 function askGemini(message) {
   const apiPath =
-    "/v1beta/models/gemini-2.0-flash:generateContent?key=" + GEMINI_API_KEY;
+    "/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY;
   const data = {
     contents: [{ parts: [{ text: message }] }],
   };
@@ -135,7 +135,7 @@ app.get("/debug", function(_req, res) {
     return res.json({ error: "Brak GEMINI_API_KEY", node: process.version });
   }
   var apiPath =
-    "/v1beta/models/gemini-2.0-flash:generateContent?key=" + GEMINI_API_KEY;
+    "/v1beta/models/gemini-2.5-flash:generateContent?key=" + GEMINI_API_KEY;
   var data = { contents: [{ parts: [{ text: "Odpowiedz: OK" }] }] };
   httpsPost("generativelanguage.googleapis.com", apiPath, data)
     .then(function(r) {
