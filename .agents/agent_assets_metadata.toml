@@ -443,3 +443,9 @@ id = "Z81_JB53rumToq9txEZ26"
 uri = "file://svar-direkt-update.tar.gz"
 type = "unspecified"
 title = "svar-direkt-update.tar.gz – tylko zmienione pliki (4.2 KB)"
+
+[[outputs]]
+id = "uX9MAI3TNyuwWStw_hEiI"
+uri = "file://exports/svar-ai-backend-forum.zip"
+type = "unspecified"
+title = "Pliki do wgrania na Hostinger (server.js + forum.js)"
