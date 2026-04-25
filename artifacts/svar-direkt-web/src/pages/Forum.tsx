@@ -45,7 +45,10 @@ function timeAgo(iso: string): string {
   return `${Math.floor(h / 24)} dag${Math.floor(h / 24) > 1 ? "ar" : ""} sedan`;
 }
 
-const API = (import.meta.env.VITE_API_BASE_URL ?? "") + "/api/forum";
+const API_BASE = import.meta.env.PROD
+  ? "https://antiquewhite-lapwing-486017.hostingersite.com"
+  : "";
+const API = API_BASE + "/api/forum";
 const API_UNAVAILABLE = "Forumet kräver en serveranslutning som inte är tillgänglig på den här webbplatsen. Besök svardirekt.site och prova igen om en stund, eller skicka din fråga direkt till info@svardirekt.site.";
 
 async function apiFetch(path: string, opts?: RequestInit) {
