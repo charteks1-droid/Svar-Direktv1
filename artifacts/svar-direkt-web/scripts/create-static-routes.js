@@ -362,6 +362,22 @@ const META = {
       ]
     })
   },
+  "kronofogden-skuldsanering": {
+    title: "Skuldsanering – Hur du ansöker och skriver till Kronofogden | Svar Direkt",
+    description: "Har du skulder du inte kan betala? Lär dig hur du ansöker om skuldsanering hos Kronofogden – steg för steg guide med färdig exempeltext på svenska.",
+  },
+  "skatteverket-deklaration": {
+    title: "Problem med deklaration? Så skriver du till Skatteverket | Svar Direkt",
+    description: "Har du fått fel på deklarationen eller vill ändra något? Lär dig hur du skriver ett korrekt brev till Skatteverket – med färdig exempeltext att kopiera.",
+  },
+  "forsakringskassan-nekad-ersattning": {
+    title: "Försäkringskassan nekade din ansökan – Så överklagar du | Svar Direkt",
+    description: "Fick du avslag från Försäkringskassan? Lär dig hur du begär omprövning eller överklagar – steg för steg med färdigt brev på svenska att kopiera.",
+  },
+  "migrationsverket-ansokan": {
+    title: "Problem med Migrationsverket – Hur du skriver rätt brev | Svar Direkt",
+    description: "Fått avslag eller problem med ansökan hos Migrationsverket? Guide med färdigt brev på svenska – för uppehållstillstånd, arbetstillstånd och mer.",
+  },
   "hjalp-sjukvard": {
     title: "Sjukvård & 1177 – Gratis brevmallar & hjälp | Svar Direkt",
     description: "Klaga på vård, begära patientjournal eller anmäla till Patientnämnden? Gratis brevmallar för sjukvård på Svar Direkt.",
@@ -443,6 +459,11 @@ const ROUTES = [
   "hjalp-bolagsverket",
   "hjalp-hyresnamnden",
   "hjalp-sjukvard",
+  // New SEO guide pages (authority-specific)
+  "kronofogden-skuldsanering",
+  "skatteverket-deklaration",
+  "forsakringskassan-nekad-ersattning",
+  "migrationsverket-ansokan",
 ];
 
 const BASE_URL = "https://svardirekt.site";

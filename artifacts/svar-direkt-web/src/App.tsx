@@ -51,6 +51,22 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Dina rättigheter – Förstå svenska lagar på ett enkelt sätt | Svar Direkt",
     description: "En enkel guide till dina rättigheter som konsument, hyresgäst, anställd och medborgare i Sverige. Inget juridiskt krångel, bara klara besked.",
   },
+  "/kronofogden-skuldsanering": {
+    title: "Skuldsanering – Hur du ansöker och skriver till Kronofogden | Svar Direkt",
+    description: "Har du skulder du inte kan betala? Lär dig hur du ansöker om skuldsanering hos Kronofogden – steg för steg guide med färdig exempeltext på svenska.",
+  },
+  "/skatteverket-deklaration": {
+    title: "Problem med deklaration? Så skriver du till Skatteverket | Svar Direkt",
+    description: "Har du fått fel på deklarationen eller vill ändra något? Lär dig hur du skriver ett korrekt brev till Skatteverket – med färdig exempeltext att kopiera.",
+  },
+  "/forsakringskassan-nekad-ersattning": {
+    title: "Försäkringskassan nekade din ansökan – Så överklagar du | Svar Direkt",
+    description: "Fick du avslag från Försäkringskassan? Lär dig hur du begär omprövning eller överklagar – steg för steg med färdigt brev på svenska att kopiera.",
+  },
+  "/migrationsverket-ansokan": {
+    title: "Problem med Migrationsverket – Hur du skriver rätt brev | Svar Direkt",
+    description: "Fått avslag eller problem med ansökan hos Migrationsverket? Guide med färdigt brev på svenska – för uppehållstillstånd, arbetstillstånd och mer.",
+  },
 };
 
 function CanonicalUpdater() {
@@ -99,6 +115,7 @@ import Landing from "@/pages/Landing";
 import Tjanst from "@/pages/Tjanst";
 import Forum from "@/pages/Forum";
 import SeoLanding, { seoPages } from "@/pages/SeoLanding";
+import SeoGuide, { seoGuidePages } from "@/pages/SeoGuide";
 import Rattigheter from "@/pages/Rattigheter";
 import NotFound from "@/pages/not-found";
 
@@ -417,6 +434,11 @@ export default function App() {
                 {seoPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`}>
                     {() => <SeoLanding slug={p.slug} />}
+                  </Route>
+                ))}
+                {seoGuidePages.map((p) => (
+                  <Route key={p.slug} path={`/${p.slug}`}>
+                    {() => <SeoGuide slug={p.slug} />}
                   </Route>
                 ))}
                 <Route component={NotFound} />
