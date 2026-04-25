@@ -147,11 +147,15 @@ export default function AiGeneratorScreen() {
 
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
+        const controller = new AbortController();
+        const fetchTimeout = setTimeout(() => controller.abort(), 20000);
         const res = await fetch(`${AI_BACKEND}/api/ai/ask`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message, userId }),
+          signal: controller.signal,
         });
+        clearTimeout(fetchTimeout);
 
         if (res.status === 503 || res.status === 502 || res.status === 504) {
           if (attempt < 2) {
