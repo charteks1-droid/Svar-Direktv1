@@ -12,18 +12,16 @@ import {
   StyleSheet,
   Text,
   View,
-  useColorScheme,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
-import { BOVERKET_TEMPLATES, CV_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
+import { useTheme } from "@/contexts/ThemeContext";
+import { ARBETSFORMEDLINGEN_TEMPLATES, BOVERKET_TEMPLATES, CV_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, KRONOFOGDEN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
 
 export default function TemplateDetailScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
   const insets = useSafeAreaInsets();
   const { id, source } = useLocalSearchParams<{ id: string; source: string }>();
   const { customTemplates, toggleFavorite, isFavorite, addToHistory } = useApp();
@@ -44,6 +42,10 @@ export default function TemplateDetailScreen() {
       ? FORSAKRINGSKASSAN_TEMPLATES.find((t) => t.id === id) ?? null
       : source === "migrationsverket"
       ? MIGRATIONSVERKET_TEMPLATES.find((t) => t.id === id) ?? null
+      : source === "kronofogden"
+      ? KRONOFOGDEN_TEMPLATES.find((t) => t.id === id) ?? null
+      : source === "arbetsformedlingen"
+      ? ARBETSFORMEDLINGEN_TEMPLATES.find((t) => t.id === id) ?? null
       : source === "cv"
       ? CV_TEMPLATES.find((t) => t.id === id) ?? null
       : BOVERKET_TEMPLATES.find((t) => t.id === id) ?? null;

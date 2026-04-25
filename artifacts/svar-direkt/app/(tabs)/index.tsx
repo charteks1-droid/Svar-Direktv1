@@ -10,7 +10,6 @@ import {
   StyleSheet,
   Text,
   View,
-  useColorScheme,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -18,7 +17,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
-import { BOVERKET_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
+import { useTheme } from "@/contexts/ThemeContext";
+import { ARBETSFORMEDLINGEN_TEMPLATES, BOVERKET_TEMPLATES, FORSAKRINGSKASSAN_TEMPLATES, KRONOFOGDEN_TEMPLATES, MIGRATIONSVERKET_TEMPLATES, SKATTEVERKET_TEMPLATES } from "@/data/situations";
 
 interface MenuItemProps {
   icon: React.ReactNode;
@@ -29,9 +29,7 @@ interface MenuItemProps {
 }
 
 function MenuItem({ icon, title, subtitle, onPress, accent }: MenuItemProps) {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
 
   return (
     <Pressable
@@ -69,9 +67,7 @@ interface SectionHeaderProps {
 }
 
 function SectionHeader({ title, badge, action }: SectionHeaderProps) {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
 
   return (
     <View style={styles.sectionHeader}>
@@ -97,9 +93,7 @@ function SectionHeader({ title, badge, action }: SectionHeaderProps) {
 }
 
 function RecentCard({ item }: { item: { id: string; templateTitle: string; content: string } }) {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
   const [copied, setCopied] = React.useState(false);
 
   const handleCopy = async () => {
@@ -144,9 +138,7 @@ function RecentCard({ item }: { item: { id: string; templateTitle: string; conte
 }
 
 export default function HomeScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { isDark, theme, toggleDark } = useTheme();
   const insets = useSafeAreaInsets();
   const { addToHistory, history } = useApp();
 
@@ -201,6 +193,24 @@ export default function HomeScreen() {
     });
   };
 
+  const handleKronofogdenTemplate = async (template: (typeof KRONOFOGDEN_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "kronofogden" },
+    });
+  };
+
+  const handleArbetsformedlingenTemplate = async (template: (typeof ARBETSFORMEDLINGEN_TEMPLATES)[0]) => {
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    addToHistory({ templateTitle: template.title, content: template.content });
+    router.push({
+      pathname: "/template-detail",
+      params: { id: template.id, source: "arbetsformedlingen" },
+    });
+  };
+
   return (
     <ScrollView
       style={[styles.container, { backgroundColor: theme.background }]}
@@ -212,7 +222,7 @@ export default function HomeScreen() {
     >
       {/* Header */}
       <View style={styles.heroRow}>
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={[styles.heroTitle, { color: theme.text, fontFamily: "Inter_700Bold" }]}>
             Svar Direkt
           </Text>
@@ -220,12 +230,20 @@ export default function HomeScreen() {
             Skriv rätt. Få svar direkt.
           </Text>
         </View>
-        <Pressable
-          onPress={() => router.push("/about")}
-          style={[styles.aboutBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
-        >
-          <Feather name="info" size={20} color={theme.tint} />
-        </Pressable>
+        <View style={{ flexDirection: "row", gap: 8 }}>
+          <Pressable
+            onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); toggleDark(); }}
+            style={[styles.aboutBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+          >
+            <Feather name={isDark ? "sun" : "moon"} size={20} color={theme.tint} />
+          </Pressable>
+          <Pressable
+            onPress={() => router.push("/about")}
+            style={[styles.aboutBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+          >
+            <Feather name="info" size={20} color={theme.tint} />
+          </Pressable>
+        </View>
       </View>
 
       {/* AI Generator Banner */}
@@ -416,6 +434,80 @@ export default function HomeScreen() {
           >
             <View style={[styles.boverketIconWrap, { backgroundColor: "#6c5ce7" + "15" }]}>
               <Feather name="globe" size={22} color="#6c5ce7" />
+            </View>
+            <Text
+              style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
+              numberOfLines={2}
+            >
+              {template.title}
+            </Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              {template.category}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Kronofogden templates */}
+      <SectionHeader title="KRONOFOGDENS MALLAR" badge={`${KRONOFOGDEN_TEMPLATES.length} mallar`} />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.boverketRow}
+      >
+        {KRONOFOGDEN_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleKronofogdenTemplate(template)}
+            style={({ pressed }) => [
+              styles.boverketCard,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.cardBorder,
+                opacity: pressed ? 0.85 : 1,
+                transform: [{ scale: pressed ? 0.97 : 1 }],
+              },
+            ]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#e17055" + "15" }]}>
+              <Feather name="alert-circle" size={22} color="#e17055" />
+            </View>
+            <Text
+              style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}
+              numberOfLines={2}
+            >
+              {template.title}
+            </Text>
+            <Text style={[styles.boverketCategory, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+              {template.category}
+            </Text>
+          </Pressable>
+        ))}
+      </ScrollView>
+
+      {/* Arbetsförmedlingen templates */}
+      <SectionHeader title="ARBETSFÖRMEDLINGENS MALLAR" badge={`${ARBETSFORMEDLINGEN_TEMPLATES.length} mallar`} />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.boverketRow}
+      >
+        {ARBETSFORMEDLINGEN_TEMPLATES.map((template) => (
+          <Pressable
+            key={template.id}
+            onPress={() => handleArbetsformedlingenTemplate(template)}
+            style={({ pressed }) => [
+              styles.boverketCard,
+              {
+                backgroundColor: theme.card,
+                borderColor: theme.cardBorder,
+                opacity: pressed ? 0.85 : 1,
+                transform: [{ scale: pressed ? 0.97 : 1 }],
+              },
+            ]}
+          >
+            <View style={[styles.boverketIconWrap, { backgroundColor: "#00b894" + "15" }]}>
+              <Feather name="briefcase" size={22} color="#00b894" />
             </View>
             <Text
               style={[styles.boverketTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}

@@ -1022,6 +1022,252 @@ Med vänliga hälsningar,
   },
 ];
 
+export const KRONOFOGDEN_TEMPLATES: Template[] = [
+  {
+    id: "kron-001",
+    title: "Bestrida betalningsföreläggande",
+    category: "Ekonomi",
+    description: "Bestrid ett felaktigt betalningsföreläggande från Kronofogden",
+    tags: ["kronofogden", "betalningsföreläggande", "bestrid", "skuld"],
+    content: `Till Kronofogdemyndigheten
+
+Ärendenummer: [ÄRENDENUMMER]
+
+Jag bestrider betalningsföreläggandet daterat [DATUM] på [BELOPP] kr från [BORGENÄR].
+
+Skäl till bestridande:
+[Beskriv varför du bestrider, t.ex.: Skulden är redan betald / Skulden tillhör inte mig / Beloppet är felaktigt beräknat / Skulden är preskriberad]
+
+Jag bifogar [BIFOGADE DOKUMENT] som underlag för mitt bestridande.
+
+Kontakta mig på [TELEFON/E-POST] om ni behöver ytterligare information.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[ADRESS]
+[DATUM]`,
+  },
+  {
+    id: "kron-002",
+    title: "Ansökan om skuldsanering",
+    category: "Ekonomi",
+    description: "Formell ansökan om skuldsanering hos Kronofogden",
+    tags: ["skuldsanering", "kronofogden", "skulder", "ansökan"],
+    content: `Till Kronofogdemyndigheten
+
+Ansökan om skuldsanering
+
+Jag, [DITT NAMN], personnummer [PERSONNUMMER], ansöker härmed om skuldsanering enligt skuldsaneringslagen.
+
+Mina ekonomiska förhållanden:
+- Månadsinkomst: [BELOPP] kr
+- Månadskostnader: [BELOPP] kr
+- Totala skulder: [BELOPP] kr
+
+Jag har under de senaste [ANTAL] åren gjort allt i min makt för att betala mina skulder, men min ekonomiska situation omöjliggör detta.
+
+Jag bifogar:
+- Kopia på lönespecifikation
+- Förteckning över samtliga skulder och borgenärer
+- Kontoutdrag de senaste tre månaderna
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[ADRESS]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "kron-003",
+    title: "Begära betalningsplan",
+    category: "Ekonomi",
+    description: "Begär en avbetalningsplan för skuld hos Kronofogden",
+    tags: ["betalningsplan", "avbetalning", "kronofogden", "skuld"],
+    content: `Till Kronofogdemyndigheten
+
+Ärendenummer: [ÄRENDENUMMER]
+
+Jag skriver angående min skuld på [BELOPP] kr till [BORGENÄR].
+
+Jag erkänner skulden men saknar möjlighet att betala hela beloppet på en gång. Jag ansöker om en betalningsplan enligt följande:
+
+Föreslagen avbetalning: [BELOPP] kr per månad
+Startdatum: [DATUM]
+
+Min månadsinkomst uppgår till [BELOPP] kr och mina nödvändiga levnadskostnader till [BELOPP] kr, vilket lämnar [BELOPP] kr disponibelt för avbetalning.
+
+Jag ser fram emot er bekräftelse på denna betalningsplan.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "kron-004",
+    title: "Invändning om preskriberad skuld",
+    category: "Ekonomi",
+    description: "Invänd mot skuld som är preskriberad enligt lag",
+    tags: ["preskription", "kronofogden", "skuld", "preskriberad"],
+    content: `Till Kronofogdemyndigheten
+
+Ärendenummer: [ÄRENDENUMMER]
+
+Jag bestrider betalningsföreläggandet från [BORGENÄR] då skulden är preskriberad.
+
+Skulden uppkom [ÅR] och preskriptionstiden på [3/10] år har löpt ut utan att preskriptionsavbrott skett. Enligt preskriptionslagen (1981:130) är fordringsrätten därmed preskriberad.
+
+Jag yrkar att Kronofogdemyndigheten avskriver ärendet.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[ADRESS]
+[DATUM]`,
+  },
+  {
+    id: "kron-005",
+    title: "Begära utmätningsfrihet",
+    category: "Ekonomi",
+    description: "Ansök om att viss egendom ska vara fri från utmätning",
+    tags: ["utmätning", "kronofogden", "undantag", "egendom"],
+    content: `Till Kronofogdemyndigheten
+
+Ärendenummer: [ÄRENDENUMMER]
+
+Jag begär att följande egendom undantas från utmätning:
+
+[BESKRIV EGENDOMEN, t.ex.: Bil registreringsnummer XXX, värde ca BELOPP kr]
+
+Skäl till undantag:
+[t.ex.: Egendomen är nödvändig för mitt arbete / Egendomen tillhör min make/maka / Egendomen är av ringa värde]
+
+Bifogade handlingar: [DOKUMENT]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+];
+
+export const ARBETSFORMEDLINGEN_TEMPLATES: Template[] = [
+  {
+    id: "af-001",
+    title: "Överklaga beslut om a-kassa",
+    category: "Ekonomi",
+    description: "Överklaga nekad eller reducerad a-kasseersättning",
+    tags: ["a-kassa", "arbetsförmedlingen", "överklagande", "ersättning"],
+    content: `Till Arbetsförmedlingen / [A-KASSAN NAMN]
+
+Överklagande av beslut
+
+Jag överklagar beslutet daterat [DATUM], diarienummer [DIARIENUMMER], om [BESKRIVNING AV BESLUTET].
+
+Skäl till överklagande:
+[Beskriv varför beslutet är felaktigt, t.ex.: Jag uppfyller arbetsvillkoret / Jag var inte självmant arbetslös / Informationen i beslutet är felaktig]
+
+Jag bifogar följande handlingar som styrker mitt överklagande:
+- [DOKUMENT 1]
+- [DOKUMENT 2]
+
+Jag begär att beslutet ändras och att ersättning beviljas från [DATUM].
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "af-002",
+    title: "Aktivitetsrapport – förklaring",
+    category: "Ekonomi",
+    description: "Förklara varför aktivitetsrapport inte lämnats i tid",
+    tags: ["aktivitetsrapport", "arbetsförmedlingen", "förklaring"],
+    content: `Till Arbetsförmedlingen
+
+Förklaring avseende aktivitetsrapport för [MÅNAD/ÅR]
+
+Jag skriver angående min aktivitetsrapport för [MÅNAD] som inte lämnades in i tid.
+
+Orsak till förseningen:
+[Beskriv orsaken, t.ex.: Tekniska problem med Min sida / Sjukdom / Missförstånd om tidsfristen]
+
+Jag bifogar aktivitetsrapporten för den aktuella perioden och ber Arbetsförmedlingen ta hänsyn till omständigheterna.
+
+Mina aktiviteter under perioden:
+- [AKTIVITET 1, DATUM]
+- [AKTIVITET 2, DATUM]
+- [AKTIVITET 3, DATUM]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "af-003",
+    title: "Begära anvisning till utbildning",
+    category: "Ekonomi",
+    description: "Begär att bli anvisad till en specifik utbildning",
+    tags: ["utbildning", "arbetsförmedlingen", "anvisning", "kompetensutveckling"],
+    content: `Till Arbetsförmedlingen
+
+Begäran om anvisning till utbildning
+
+Jag, [DITT NAMN], personnummer [PERSONNUMMER], är inskriven hos Arbetsförmedlingen sedan [DATUM] och söker arbete inom [BRANSCH/YRKE].
+
+Jag önskar bli anvisad till följande utbildning:
+Utbildning: [UTBILDNINGENS NAMN]
+Anordnare: [SKOLA/UTBILDNINGSLEVERANTÖR]
+Period: [STARTDATUM – SLUTDATUM]
+
+Utbildningen är relevant för mitt jobbsökande eftersom [MOTIVERING].
+
+Jag ser fram emot att diskutera detta med min handläggare.
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+  {
+    id: "af-004",
+    title: "Klagomål på handläggning",
+    category: "Ekonomi",
+    description: "Lämna klagomål på Arbetsförmedlingens handläggning",
+    tags: ["klagomål", "arbetsförmedlingen", "handläggning", "fel"],
+    content: `Till Arbetsförmedlingen
+
+Klagomål på handläggning
+
+Jag vill framföra ett klagomål angående handläggningen av mitt ärende, personnummer [PERSONNUMMER].
+
+Vad som inträffade:
+[Beskriv händelsen/problemet noggrant med datum]
+
+Konsekvenser för mig:
+[Beskriv hur felet påverkat dig, t.ex. förlorad ersättning, försenade beslut]
+
+Jag begär:
+- Skriftligt svar på mitt klagomål
+- Rättelse av ärendet
+- [EVENTUELLT: Ersättning för uppkommen skada]
+
+Med vänliga hälsningar,
+[DITT NAMN]
+[PERSONNUMMER]
+[TELEFON/E-POST]
+[DATUM]`,
+  },
+];
+
 export const CV_TEMPLATES: Template[] = [
   {
     id: "cv-001",

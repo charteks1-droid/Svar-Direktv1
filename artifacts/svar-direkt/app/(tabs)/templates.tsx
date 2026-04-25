@@ -10,21 +10,35 @@ import {
   Text,
   TextInput,
   View,
-  useColorScheme,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { useApp } from "@/contexts/AppContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import {
+  ARBETSFORMEDLINGEN_TEMPLATES,
   BOVERKET_TEMPLATES,
   CATEGORIES,
   CV_CATEGORIES,
   CV_TEMPLATES,
   Category,
   CvCategory,
+  FORSAKRINGSKASSAN_TEMPLATES,
+  KRONOFOGDEN_TEMPLATES,
+  MIGRATIONSVERKET_TEMPLATES,
+  SKATTEVERKET_TEMPLATES,
   Template,
 } from "@/data/situations";
+
+const ALL_MYNDIGHET_TEMPLATES: Template[] = [
+  ...BOVERKET_TEMPLATES,
+  ...SKATTEVERKET_TEMPLATES,
+  ...FORSAKRINGSKASSAN_TEMPLATES,
+  ...MIGRATIONSVERKET_TEMPLATES,
+  ...KRONOFOGDEN_TEMPLATES,
+  ...ARBETSFORMEDLINGEN_TEMPLATES,
+];
 
 type Mode = "myndighet" | "cv";
 
@@ -35,9 +49,7 @@ function ModeToggle({
   mode: Mode;
   onSelect: (m: Mode) => void;
 }) {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
 
   return (
     <View
@@ -82,9 +94,7 @@ function CategoryPill({
   selected: boolean;
   onPress: () => void;
 }) {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
 
   return (
     <Pressable
@@ -119,9 +129,7 @@ function TemplateCard({
   template: Template;
   source: string;
 }) {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
   const { toggleFavorite, isFavorite } = useApp();
   const fav = isFavorite(template.id);
 
@@ -213,9 +221,7 @@ function TemplateCard({
 }
 
 export default function TemplatesScreen() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
-  const theme = isDark ? Colors.dark : Colors.light;
+  const { theme } = useTheme();
   const insets = useSafeAreaInsets();
 
   const [mode, setMode] = useState<Mode>("myndighet");
@@ -236,7 +242,7 @@ export default function TemplatesScreen() {
 
   const filtered =
     mode === "myndighet"
-      ? BOVERKET_TEMPLATES.filter((t) => {
+      ? ALL_MYNDIGHET_TEMPLATES.filter((t) => {
           const matchCat =
             selectedCategory === "Alla" || t.category === selectedCategory;
           const q = search.toLowerCase();
@@ -349,7 +355,21 @@ export default function TemplatesScreen() {
         renderItem={({ item }) => (
           <TemplateCard
             template={item}
-            source={mode === "myndighet" ? "boverket" : "cv"}
+            source={
+              mode === "cv"
+                ? "cv"
+                : item.id.startsWith("kron-")
+                ? "kronofogden"
+                : item.id.startsWith("af-")
+                ? "arbetsformedlingen"
+                : item.id.startsWith("skatt-")
+                ? "skatteverket"
+                : item.id.startsWith("fk-")
+                ? "forsakringskassan"
+                : item.id.startsWith("mig-")
+                ? "migrationsverket"
+                : "boverket"
+            }
           />
         )}
         ListEmptyComponent={
