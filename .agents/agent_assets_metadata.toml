@@ -455,3 +455,9 @@ id = "eWTu7EjuY0ZwkYUDIeYw6"
 uri = "file://exports/svar-direkt-website.zip"
 type = "unspecified"
 title = "Strona svardirekt.site (rozpakuj i wgraj na hosting statyczny)"
+
+[[outputs]]
+id = "BPqFYBeDhpCmR3Y_hJ8fX"
+uri = "file://exports/forum-with-password.zip"
+type = "unspecified"
+title = "forum.js z hasłem (rozpakuj i wgraj na Hostinger w folder nodejs/, zastąp stary plik)"

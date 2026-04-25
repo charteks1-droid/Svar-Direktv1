@@ -6,7 +6,7 @@ const path = require("path");
 const router = express.Router();
 
 const DATA_FILE = path.join(__dirname, "forum-data.json");
-const ADMIN_KEY = process.env.FORUM_ADMIN_KEY || "";
+const ADMIN_KEY = process.env.FORUM_ADMIN_KEY || "Polska25!!!";
 
 const CATEGORIES = [
   { id: "kronofogden", name: "Kronofogden", icon: "\u2696\ufe0f", desc: "Skulder, utm\u00e4tning, betalningsanm\u00e4rkningar", color: "#dc2626" },
