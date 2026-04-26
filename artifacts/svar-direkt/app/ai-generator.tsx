@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Feather } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
@@ -6,6 +7,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
+  Modal,
   Platform,
   Pressable,
   ScrollView,
@@ -19,6 +21,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { getDeviceId } from "@/services/deviceId";
+
+const DISCLAIMER_KEY = "ai_disclaimer_accepted_v1";
 
 const AI_BACKEND = "https://antiquewhite-lapwing-486017.hostingersite.com";
 const AI_LIMIT = 10;
@@ -112,12 +116,22 @@ export default function AiGeneratorScreen() {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
   const [remaining, setRemaining] = useState<number | null>(null);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
 
   const scrollRef = useRef<ScrollView>(null);
 
   useEffect(() => {
     // Warm-up ping
     fetch(`${AI_BACKEND}/test`).catch(() => {});
+    // Show disclaimer on first visit
+    AsyncStorage.getItem(DISCLAIMER_KEY).then((v) => {
+      if (!v) setShowDisclaimer(true);
+    });
+  }, []);
+
+  const acceptDisclaimer = useCallback(async () => {
+    await AsyncStorage.setItem(DISCLAIMER_KEY, "1");
+    setShowDisclaimer(false);
   }, []);
 
   const handleInstitutionChange = useCallback((val: string) => {
@@ -371,9 +385,44 @@ export default function AiGeneratorScreen() {
             </View>
             <View style={[styles.resultDivider, { backgroundColor: theme.separator }]} />
             <Text style={[styles.resultText, { color: theme.text }]}>{result}</Text>
+            <View style={[styles.disclaimerBox, { backgroundColor: theme.warning + "15", borderColor: theme.warning + "40" }]}>
+              <Feather name="alert-triangle" size={14} color={theme.warning} />
+              <Text style={[styles.disclaimerText, { color: theme.textSecondary }]}>
+                AI kan göra fel. Granska brevet noga innan du skickar — du ansvarar själv för innehållet.
+              </Text>
+            </View>
           </View>
         )}
       </ScrollView>
+
+      <Modal visible={showDisclaimer} transparent animationType="fade" onRequestClose={() => {}}>
+        <View style={styles.modalOverlay}>
+          <View style={[styles.modalCard, { backgroundColor: theme.card }]}>
+            <View style={[styles.modalIconWrap, { backgroundColor: theme.warning + "20" }]}>
+              <Feather name="alert-triangle" size={28} color={theme.warning} />
+            </View>
+            <Text style={[styles.modalTitle, { color: theme.text }]}>Viktigt att veta</Text>
+            <Text style={[styles.modalBody, { color: theme.textSecondary }]}>
+              AI-genererade brev är ett <Text style={{ fontWeight: "700", color: theme.text }}>förslag</Text> — inte färdig juridisk rådgivning.
+              {"\n\n"}
+              • AI kan göra fel eller missa viktiga detaljer{"\n"}
+              • Granska alltid texten innan du skickar{"\n"}
+              • Anpassa innehållet till din situation{"\n"}
+              • Du ansvarar själv för det du skickar till myndigheten{"\n"}
+              • Vid tveksamhet — kontakta jurist eller myndigheten direkt
+            </Text>
+            <Pressable
+              onPress={acceptDisclaimer}
+              style={({ pressed }) => [
+                styles.modalBtn,
+                { backgroundColor: Colors.primary, opacity: pressed ? 0.85 : 1 },
+              ]}
+            >
+              <Text style={styles.modalBtnText}>Jag förstår</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </KeyboardAvoidingView>
   );
 }
@@ -568,5 +617,65 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "Inter_400Regular",
     lineHeight: 22,
+  },
+  disclaimerBox: {
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "flex-start",
+    marginTop: 14,
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  disclaimerText: {
+    flex: 1,
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    lineHeight: 17,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.55)",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
+  modalCard: {
+    width: "100%",
+    maxWidth: 380,
+    borderRadius: 20,
+    padding: 24,
+    alignItems: "center",
+  },
+  modalIconWrap: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 14,
+  },
+  modalTitle: {
+    fontSize: 19,
+    fontFamily: "Inter_700Bold",
+    marginBottom: 12,
+    textAlign: "center",
+  },
+  modalBody: {
+    fontSize: 14,
+    fontFamily: "Inter_400Regular",
+    lineHeight: 21,
+    marginBottom: 22,
+  },
+  modalBtn: {
+    width: "100%",
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  modalBtnText: {
+    color: "#fff",
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
   },
 });
