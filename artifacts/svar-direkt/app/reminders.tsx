@@ -267,7 +267,7 @@ function ReminderCard({ reminder }: { reminder: Reminder }) {
   );
 }
 
-export default function RemindersScreen() {
+function RemindersScreenInner() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -440,3 +440,13 @@ const styles = StyleSheet.create({
   label: { fontSize: 11, letterSpacing: 0.5, textTransform: "uppercase" },
   input: { fontSize: 16, minHeight: 36 },
 });
+
+import { PremiumGate } from "@/components/PremiumGate";
+
+export default function RemindersScreen() {
+  return (
+    <PremiumGate featureName="Påminnelser – przypomnienia">
+      <RemindersScreenInner />
+    </PremiumGate>
+  );
+}

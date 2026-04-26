@@ -4,15 +4,23 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-admin-key");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, x-admin-key, stripe-signature");
   if (req.method === "OPTIONS") return res.sendStatus(204);
   next();
 });
+
+const subscriptionRouter = require("./subscription");
+app.post(
+  "/api/subscription/webhook",
+  express.raw({ type: "application/json" }),
+  subscriptionRouter.webhookHandler
+);
+
+app.use(express.json());
 
 const forumRouter = require("./forum");
 app.use("/api/forum", forumRouter);
@@ -20,14 +28,22 @@ app.use("/api/forum", forumRouter);
 const toolsRouter = require("./tools");
 app.use("/api/tools", toolsRouter);
 
+const authRouter = require("./auth");
+app.use("/api/auth", authRouter);
+app.use("/api/subscription", subscriptionRouter);
+
+const { authMiddleware, publicUser } = authRouter;
+
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || "";
 const DAILY_LIMIT = 10;
 const USAGE_FILE = path.join(__dirname, "usage.json");
 
 console.log("=== Backend start ===");
 console.log("PORT:", PORT);
 console.log("GEMINI_API_KEY set:", !!GEMINI_API_KEY);
+console.log("STRIPE_SECRET_KEY set:", !!STRIPE_SECRET_KEY);
 console.log("Node.js:", process.version);
 
 function loadUsage() {
@@ -156,15 +172,19 @@ app.get("/debug", function(_req, res) {
     });
 });
 
-app.post("/api/ai/ask", function(req, res) {
+app.post("/api/ai/ask", authMiddleware, function(req, res) {
   if (!GEMINI_API_KEY) {
     return res.status(503).json({ error: "Brak GEMINI_API_KEY na serwerze." });
   }
-  var message = req.body && req.body.message;
-  var userId = req.body && req.body.userId;
-  if (!message || !userId) {
-    return res.status(400).json({ error: "Brakuje message lub userId." });
+  var pUser = publicUser(req.user);
+  if (!pUser.isPremium) {
+    return res.status(402).json({ error: "Wymagana subskrypcja Premium.", code: "PREMIUM_REQUIRED" });
   }
+  var message = req.body && req.body.message;
+  if (!message) {
+    return res.status(400).json({ error: "Brakuje message." });
+  }
+  var userId = req.user.id;
   var used = getCount(userId);
   if (used >= DAILY_LIMIT) {
     return res.status(429).json({ error: "Limit dzienny osiągnięty.", remaining: 0 });

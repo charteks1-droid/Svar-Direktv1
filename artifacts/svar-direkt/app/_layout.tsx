@@ -15,6 +15,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { AppProvider } from "@/contexts/AppContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
 SplashScreen.preventAutoHideAsync();
@@ -62,6 +63,18 @@ function RootLayoutNav() {
       <Stack.Screen
         name="guides"
         options={{ title: "PDF Guider", headerShown: false }}
+      />
+      <Stack.Screen
+        name="auth"
+        options={{ title: "Konto", headerShown: false, presentation: "modal" }}
+      />
+      <Stack.Screen
+        name="profile"
+        options={{ title: "Profil", headerBackTitle: "Tillbaka" }}
+      />
+      <Stack.Screen
+        name="paywall"
+        options={{ title: "Premium", headerShown: false, presentation: "modal" }}
       />
     </Stack>
   );
@@ -115,13 +128,15 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <ErrorBoundary>
         <ThemeProvider>
-          <AppProvider>
-            <GestureHandlerRootView style={{ flex: 1 }}>
-              <KeyboardProvider>
-                <RootLayoutNav />
-              </KeyboardProvider>
-            </GestureHandlerRootView>
-          </AppProvider>
+          <AuthProvider>
+            <AppProvider>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                <KeyboardProvider>
+                  <RootLayoutNav />
+                </KeyboardProvider>
+              </GestureHandlerRootView>
+            </AppProvider>
+          </AuthProvider>
         </ThemeProvider>
       </ErrorBoundary>
     </SafeAreaProvider>

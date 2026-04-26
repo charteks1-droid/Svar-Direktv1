@@ -20,11 +20,12 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
-import { getDeviceId } from "@/services/deviceId";
+import { PremiumGate } from "@/components/PremiumGate";
+import { askAi, API_BASE, ApiError } from "@/services/api";
 
 const DISCLAIMER_KEY = "ai_disclaimer_accepted_v1";
 
-const AI_BACKEND = "https://antiquewhite-lapwing-486017.hostingersite.com";
+const AI_BACKEND = API_BASE;
 const AI_LIMIT = 10;
 
 const CASE_TYPES: Record<string, string[]> = {
@@ -99,7 +100,7 @@ function InlinePicker({ label, value, options, placeholder, onSelect, theme, dis
   );
 }
 
-export default function AiGeneratorScreen() {
+function AiGeneratorScreenInner() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -154,46 +155,12 @@ export default function AiGeneratorScreen() {
     setError("");
     setResult("");
 
-    const userId = await getDeviceId();
-
     const message =
       `Skriv ett formellt brev på svenska från ${fullName.trim()} (personnummer: ${personnummer.trim()}) till ${institution} angående ärendet: ${caseType}.\n\nBakgrund och situation:\n${description.trim()}\n\nBrevet ska vara professionellt, kortfattat och tydligt.`;
 
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
-        const controller = new AbortController();
-        const fetchTimeout = setTimeout(() => controller.abort(), 20000);
-        const res = await fetch(`${AI_BACKEND}/api/ai/ask`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message, userId }),
-          signal: controller.signal,
-        });
-        clearTimeout(fetchTimeout);
-
-        if (res.status === 503 || res.status === 502 || res.status === 504) {
-          if (attempt < 2) {
-            setError("Servern startar... försöker igen");
-            await new Promise((r) => setTimeout(r, 3000));
-            setError("");
-            continue;
-          }
-          setError(ERROR_MSG);
-          break;
-        }
-
-        if (res.status === 429) {
-          setError("Du har använt alla 10 genereringar idag — återställs imorgon.");
-          break;
-        }
-
-        if (!res.ok) {
-          const data = await res.json().catch(() => ({}));
-          setError((data as any)?.error || ERROR_MSG);
-          break;
-        }
-
-        const data = await res.json() as { reply: string; remaining?: number };
+        const data = await askAi(message);
         setResult(data.reply);
         if (typeof data.remaining === "number") {
           setRemaining(data.remaining);
@@ -202,7 +169,40 @@ export default function AiGeneratorScreen() {
         setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 200);
         setLoading(false);
         return;
-      } catch {
+      } catch (err: any) {
+        if (err instanceof ApiError) {
+          if (err.status === 402 || err.code === "PREMIUM_REQUIRED") {
+            setError("Wymagana subskrypcja Premium.");
+            setLoading(false);
+            router.push("/paywall");
+            return;
+          }
+          if (err.status === 401) {
+            setError("Sesja wygasła – zaloguj się ponownie.");
+            setLoading(false);
+            router.push("/auth");
+            return;
+          }
+          if (err.status === 429) {
+            setError("Du har använt alla 10 genereringar idag — återställs imorgon.");
+            setLoading(false);
+            return;
+          }
+          if (err.status === 503 || err.status === 502 || err.status === 504) {
+            if (attempt < 2) {
+              setError("Servern startar... försöker igen");
+              await new Promise((r) => setTimeout(r, 3000));
+              setError("");
+              continue;
+            }
+            setError(ERROR_MSG);
+            setLoading(false);
+            return;
+          }
+          setError(err.message || ERROR_MSG);
+          setLoading(false);
+          return;
+        }
         if (attempt < 2) {
           await new Promise((r) => setTimeout(r, 3000));
           continue;
@@ -679,3 +679,11 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
   },
 });
+
+export default function AiGeneratorScreen() {
+  return (
+    <PremiumGate featureName="AI Generator listów">
+      <AiGeneratorScreenInner />
+    </PremiumGate>
+  );
+}

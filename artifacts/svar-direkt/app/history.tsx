@@ -111,7 +111,7 @@ function HistoryCard({ item, onDelete }: { item: HistoryItem; onDelete: () => vo
   );
 }
 
-export default function HistoryScreen() {
+function HistoryScreenInner() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -232,3 +232,13 @@ const styles = StyleSheet.create({
   emptyTitle: { fontSize: 18, marginTop: 4 },
   emptySub: { fontSize: 14 },
 });
+
+import { PremiumGate } from "@/components/PremiumGate";
+
+export default function HistoryScreen() {
+  return (
+    <PremiumGate featureName="Historik – historia generowanych pism">
+      <HistoryScreenInner />
+    </PremiumGate>
+  );
+}

@@ -362,7 +362,7 @@ function FieldInput({
   );
 }
 
-export default function ForsvarScreen() {
+function ForsvarScreenInner() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const theme = isDark ? Colors.dark : Colors.light;
@@ -689,3 +689,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 });
+
+import { PremiumGate } from "@/components/PremiumGate";
+
+export default function ForsvarScreen() {
+  return (
+    <PremiumGate featureName="Försvar – obrona prawna">
+      <ForsvarScreenInner />
+    </PremiumGate>
+  );
+}

@@ -279,6 +279,12 @@ export default function HomeScreen() {
           >
             <Feather name="info" size={20} color={theme.tint} />
           </Pressable>
+          <Pressable
+            onPress={() => router.push("/profile")}
+            style={[styles.aboutBtn, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+          >
+            <Feather name="user" size={20} color={theme.tint} />
+          </Pressable>
         </View>
       </View>
 
