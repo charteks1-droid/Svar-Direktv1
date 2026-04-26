@@ -114,7 +114,7 @@ export default function AboutApp() {
       <div className="rounded-2xl bg-primary text-white p-6 sm:p-8 text-center">
         <h3 className="text-xl font-bold mb-2">Redo att prova?</h3>
         <p className="text-white/80 text-sm mb-5">
-          Köp appen för 49 kr och kom igång direkt.
+          Köp appen för 79 kr och kom igång direkt.
         </p>
         <div className="flex justify-center gap-3 flex-wrap">
           <Link

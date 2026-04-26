@@ -159,7 +159,7 @@ function FaqSection() {
     },
     {
       q: "Vad ingår i appen och vad kostar den?",
-      a: "Grundappen kostar 49 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
+      a: "Grundappen kostar 79 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
     },
   ];
 
@@ -356,7 +356,7 @@ const LOSS_ITEMS = [
   { utan: "Risk att skriva fel ton eller missförstås", med: "Korrekt, formell svenska — direkt" },
   { utan: "Stress och osäkerhet inför varje svar", med: "Lugn och trygghet — texten är redan klar" },
   { utan: "Ärendet försenas pga misstag eller tomma sidor", med: "Skickar i tid — missar inga frister" },
-  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "49 kr en gång — inga prenumerationer" },
+  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "79 kr en gång — inga prenumerationer" },
   { utan: "Vet inte ens var du ska börja", med: "Klar text att kopiera och anpassa direkt" },
 ];
 
@@ -484,7 +484,7 @@ export default function Home() {
           "name": "Vad kostar Svar Direkt och vad ingår?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Grundappen kostar 49 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
+            "text": "Grundappen kostar 79 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
           }
         }
       ]
@@ -550,7 +550,7 @@ export default function Home() {
                     boxShadow: '0 0 20px rgba(255,205,0,0.5), 0 4px 16px rgba(0,0,0,0.2)',
                   }}
                 >
-                  Köp appen — 49 kr
+                  Köp appen — 79 kr
                 </a>
                 <Link
                   href="/tjanst"
@@ -774,7 +774,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
             >
-              Köp appen — 49 kr
+              Köp appen — 79 kr
             </a>
             <Link
               href="/tjanst"
@@ -959,7 +959,7 @@ export default function Home() {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="border border-primary/20 rounded-xl p-4 text-center bg-primary/5">
                 <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Appen</p>
-                <p className="text-2xl font-bold text-slate-900 mb-1">49 kr</p>
+                <p className="text-2xl font-bold text-slate-900 mb-1">79 kr</p>
                 <p className="text-xs text-slate-500 mb-3">Engångsbetalning · Offline</p>
                 <a
                   href="https://payhip.com/b/WxtV3"
@@ -1000,7 +1000,7 @@ export default function Home() {
             {
               step: "1",
               title: "Köp och ladda ner appen",
-              desc: "Köp appen för 49 kr och ladda ner den till Android — fungerar offline.",
+              desc: "Köp appen för 79 kr och ladda ner den till Android — fungerar offline.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -1128,7 +1128,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
           >
-            Köp appen — 49 kr
+            Köp appen — 79 kr
           </a>
           <Link
             href="/tjanst"
@@ -1161,7 +1161,7 @@ export default function Home() {
                 <a href="https://www.skatteverket.se" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline font-medium">Skatteverkets webbplats</a>.
               </p>
               <p>
-                Appen fungerar offline och kräver inget konto. Du köper en gång för 49 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
+                Appen fungerar offline och kräver inget konto. Du köper en gång för 79 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
               </p>
             </div>
           </div>
@@ -1346,7 +1346,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-6">
             <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
               <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Mobil app</p>
-              <p className="text-3xl font-bold text-slate-900 mb-1">49 kr</p>
+              <p className="text-3xl font-bold text-slate-900 mb-1">79 kr</p>
               <p className="text-xs text-slate-500 mb-4">Engångsbetalning · 52+ mallar · Offline</p>
               <a
                 href="https://payhip.com/b/WxtV3"
@@ -1354,7 +1354,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="block w-full py-3 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-md"
               >
-                Köp appen — 49 kr
+                Köp appen — 79 kr
               </a>
             </div>
             <div className="border-2 border-slate-200 rounded-2xl p-5 text-center">

@@ -9,7 +9,7 @@ const SITE = "https://svardirekt.site";
 const PAGE_META: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Svar Direkt – Färdiga svar och mallar till svenska myndigheter",
-    description: "App med färdiga mallar för Skatteverket, Försäkringskassan, Boverket och Migrationsverket. Kopiera och skicka direkt – spara tid. 49 kr engångspris.",
+    description: "App med färdiga mallar för Skatteverket, Försäkringskassan, Boverket och Migrationsverket. Kopiera och skicka direkt – spara tid. 79 kr engångspris.",
   },
   "/blogg": {
     title: "Blogg & Guider – Svar Direkt",

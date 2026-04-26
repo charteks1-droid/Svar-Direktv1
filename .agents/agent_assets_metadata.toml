@@ -436,7 +436,7 @@ title = "svar-direkt-hostinger.tar.gz – z 4 nowymi stronami SEO"
 id = "VzLu7dEyaZ1jtaNnOuqnL"
 uri = "file://svar-ai-backend.zip"
 type = "unspecified"
-title = "svar-ai-backend.zip – gemini-2.5-flash (najnowszy model)"
+title = "svar-ai-backend.zip (do wgrania na Hostinger)"
 
 [[outputs]]
 id = "Z81_JB53rumToq9txEZ26"
@@ -473,3 +473,9 @@ id = "rzU0ZDvlHt9HeO8SaqTJB"
 uri = "file://exports/svar-direkt-website-v2.zip"
 type = "unspecified"
 title = "2️⃣ Strona (potem)"
+
+[[outputs]]
+id = "3TuyWezNgts-bh3VHaY16"
+uri = "file://DEPLOY-INSTRUKCJA.md"
+type = "text"
+title = "Instrukcja wgrywania (PL)"

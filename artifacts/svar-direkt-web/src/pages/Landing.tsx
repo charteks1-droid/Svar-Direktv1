@@ -56,7 +56,7 @@ export default function Landing() {
                 rel="noopener noreferrer"
                 className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
               >
-                Köp appen — 49 kr
+                Köp appen — 79 kr
               </a>
               <Link
                 href={TJANST_URL}
@@ -65,7 +65,7 @@ export default function Landing() {
                 Personlig hjälp – 99 kr
               </Link>
             </div>
-            <p className="text-xs text-slate-400 mb-4">App: 49 kr engångskostnad · Hjälp: första svaret gratis</p>
+            <p className="text-xs text-slate-400 mb-4">App: 79 kr engångskostnad · Hjälp: första svaret gratis</p>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
                 { icon: "🔒", text: "SSL-säker betalning" },
@@ -328,13 +328,13 @@ export default function Landing() {
               Myndigheten väntar inte på ditt svar.<br />Men du behöver inte skriva det själv.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              Välj mellan appen (49 kr, 52+ mallar, offline) eller personlig hjälp — beskriv din situation och få ett färdigt svar inom 24 timmar.
+              Välj mellan appen (79 kr, 52+ mallar, offline) eller personlig hjälp — beskriv din situation och få ett färdigt svar inom 24 timmar.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
               <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
                 <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Mobil app</p>
-                <p className="text-3xl font-bold text-slate-900 mb-1">49 kr</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">79 kr</p>
                 <p className="text-xs text-slate-500 mb-4">Engångsbetalning · Offline</p>
                 <a
                   href="https://payhip.com/b/WxtV3"
