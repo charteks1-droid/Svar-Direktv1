@@ -17,6 +17,9 @@ app.use((req, res, next) => {
 const forumRouter = require("./forum");
 app.use("/api/forum", forumRouter);
 
+const toolsRouter = require("./tools");
+app.use("/api/tools", toolsRouter);
+
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const DAILY_LIMIT = 10;

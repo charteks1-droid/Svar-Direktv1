@@ -117,6 +117,10 @@ import Forum from "@/pages/Forum";
 import SeoLanding, { seoPages } from "@/pages/SeoLanding";
 import SeoGuide, { seoGuidePages } from "@/pages/SeoGuide";
 import Rattigheter from "@/pages/Rattigheter";
+import Kalender from "@/pages/Kalender";
+import Lexikon from "@/pages/Lexikon";
+import Nyheter from "@/pages/Nyheter";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import NotFound from "@/pages/not-found";
 
 function CookieBanner() {
@@ -164,20 +168,23 @@ function Navbar() {
 
   const primary = [
     { href: "/",       label: "Startsida" },
-    { href: "/paket",  label: "Paket" },
     { href: "/forum",  label: "Forum" },
+    { href: "/nyheter", label: "Nyheter" },
+    { href: "/kalender", label: "Kalender" },
     { href: "/blogg",  label: "Blogg" },
-    { href: "/kontakt",label: "Kontakt" },
   ];
 
   const secondary = [
+    { href: "/lexikon",            label: "📖 Lexikon" },
     { href: "/rattigheter",        label: "📖 Dina rättigheter" },
     { href: "/verktyg",            label: "⚖️ Juridiska verktyg" },
     { href: "/mallar-interaktiva", label: "70 interaktiva mallar" },
     { href: "/mallar",             label: "Mallar & texter" },
     { href: "/pdf-guider",         label: "PDF-guider" },
+    { href: "/paket",              label: "Paket" },
     { href: "/om-appen",           label: "Om appen" },
     { href: "/funktioner",         label: "Funktioner" },
+    { href: "/kontakt",            label: "Kontakt" },
   ];
 
   const allLinks = [...primary, ...secondary];
@@ -314,21 +321,20 @@ function Footer() {
       links: [
         { label: "Startsida", href: "/" },
         { label: "Om appen", href: "/om-appen" },
-        { label: "Funktioner", href: "/funktioner" },
-        { label: "Hur det fungerar", href: "/#hur-det-fungerar" },
         { label: "Forum", href: "/forum" },
         { label: "Blogg", href: "/blogg" },
+        { label: "Kontakt", href: "/kontakt" },
       ],
     },
     {
-      title: "Produkter",
+      title: "Verktyg & Resurser",
       links: [
+        { label: "📢 Senaste lagändringar", href: "/nyheter" },
+        { label: "📅 Myndighetskalender", href: "/kalender" },
+        { label: "📖 Lexikon", href: "/lexikon" },
         { label: "📖 Dina rättigheter", href: "/rattigheter" },
         { label: "⚖️ Juridiska verktyg", href: "/verktyg" },
         { label: "70 interaktiva mallar", href: "/mallar-interaktiva" },
-        { label: "Mallar & texter", href: "/mallar" },
-        { label: "PDF-guider", href: "/pdf-guider" },
-        { label: "Paket", href: "/paket" },
       ],
     },
     {
@@ -352,13 +358,15 @@ function Footer() {
               <img src={logoSrc} alt="Svar Direkt" className="h-12 w-12 rounded-xl object-cover" />
               <span className="font-semibold text-white text-[15px]">Svar Direkt</span>
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed mb-3">
               Färdiga mallar och snabba svar för verkliga situationer i Sverige.
             </p>
-            <div className="mt-4">
-              <a href="mailto:info@svardirekt.site" className="text-sm text-slate-400 hover:text-white transition-colors">
-                info@svardirekt.site
-              </a>
+            <a href="mailto:info@svardirekt.site" className="text-sm text-slate-400 hover:text-white transition-colors block mb-4">
+              info@svardirekt.site
+            </a>
+            <div>
+              <p className="text-xs text-slate-500 mb-2 font-medium uppercase tracking-wide">📬 Veckobrev</p>
+              <NewsletterForm variant="footer" />
             </div>
           </div>
 
@@ -431,6 +439,9 @@ export default function App() {
                 <Route path="/tjanst" component={Tjanst} />
                 <Route path="/forum" component={Forum} />
                 <Route path="/rattigheter" component={Rattigheter} />
+                <Route path="/kalender" component={Kalender} />
+                <Route path="/lexikon" component={Lexikon} />
+                <Route path="/nyheter" component={Nyheter} />
                 {seoPages.map((p) => (
                   <Route key={p.slug} path={`/${p.slug}`}>
                     {() => <SeoLanding slug={p.slug} />}

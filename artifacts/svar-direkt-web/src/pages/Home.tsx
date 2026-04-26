@@ -6,6 +6,8 @@ import heroRosenbad from "../assets/stockholm-rosenbad.jpg";
 import heroStadshuset from "../assets/stockholm-stadshuset.jpg";
 import heroDramatiska from "../assets/stockholm-dramatiska.jpg";
 import { PartnerGrid } from "@/components/AffiliateBanners";
+import { StatsBar } from "@/components/StatsBar";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 const HERO_SLIDES = [
   { src: heroRiksdag,     caption: "Sveriges riksdag" },
@@ -621,6 +623,38 @@ export default function Home() {
             <path d="M0 40 L0 20 Q360 0 720 20 Q1080 40 1440 20 L1440 40 Z" fill="white"/>
           </svg>
         </div>
+      </section>
+
+      {/* Live stats bar */}
+      <StatsBar />
+
+      {/* New tools quick access */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Link href="/nyheter" className="group bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-100 rounded-2xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="text-3xl mb-2">📢</div>
+            <h3 className="font-bold text-slate-900 mb-1">Senaste lagändringar</h3>
+            <p className="text-sm text-slate-600">Nyheter från Skatteverket, FK, Migrationsverket m.fl.</p>
+            <div className="mt-3 text-sm font-medium text-primary group-hover:underline">Läs nyheter →</div>
+          </Link>
+          <Link href="/kalender" className="group bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border border-amber-100 rounded-2xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="text-3xl mb-2">📅</div>
+            <h3 className="font-bold text-slate-900 mb-1">Myndighetskalender</h3>
+            <p className="text-sm text-slate-600">Alla viktiga deadlines för 2026 — deklaration, kvarskatt, A-kassa.</p>
+            <div className="mt-3 text-sm font-medium text-amber-700 group-hover:underline">Se deadlines →</div>
+          </Link>
+          <Link href="/lexikon" className="group bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 border border-emerald-100 rounded-2xl p-5 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="text-3xl mb-2">📖</div>
+            <h3 className="font-bold text-slate-900 mb-1">Myndighets-lexikon</h3>
+            <p className="text-sm text-slate-600">Förstå svenska byråkratiska termer — SGI, förbehållsbelopp, preskription.</p>
+            <div className="mt-3 text-sm font-medium text-emerald-700 group-hover:underline">Slå upp termer →</div>
+          </Link>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12">
+        <NewsletterForm />
       </section>
 
       {/* Snabbknappar */}

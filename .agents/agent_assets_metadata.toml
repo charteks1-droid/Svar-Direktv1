@@ -461,3 +461,15 @@ id = "BPqFYBeDhpCmR3Y_hJ8fX"
 uri = "file://exports/forum-with-password.zip"
 type = "unspecified"
 title = "forum.js z hasłem (rozpakuj i wgraj na Hostinger w folder nodejs/, zastąp stary plik)"
+
+[[outputs]]
+id = "6375nvYez7xshGdEb-tBD"
+uri = "file://exports/svar-ai-backend-v2.zip"
+type = "unspecified"
+title = "1️⃣ Backend (najpierw)"
+
+[[outputs]]
+id = "rzU0ZDvlHt9HeO8SaqTJB"
+uri = "file://exports/svar-direkt-website-v2.zip"
+type = "unspecified"
+title = "2️⃣ Strona (potem)"
