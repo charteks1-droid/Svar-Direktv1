@@ -479,3 +479,9 @@ id = "3TuyWezNgts-bh3VHaY16"
 uri = "file://DEPLOY-INSTRUKCJA.md"
 type = "text"
 title = "Instrukcja wgrywania (PL)"
+
+[[outputs]]
+id = "l2DnAualkiufFfEFnwt3L"
+uri = "file://newsletter-hostinger.zip"
+type = "unspecified"
+title = "newsletter-hostinger.zip"
