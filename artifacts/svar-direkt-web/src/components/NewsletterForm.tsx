@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const API_BASE = import.meta.env.PROD
-  ? "https://antiquewhite-lapwing-486017.hostingersite.com"
-  : "";
+const NEWSLETTER_URL = import.meta.env.PROD
+  ? "https://antiquewhite-lapwing-486017.hostingersite.com/api/tools/newsletter"
+  : "/api/tools/newsletter";
 
 export function NewsletterForm({ variant = "default" }: { variant?: "default" | "footer" }) {
   const [email, setEmail] = useState("");
@@ -14,19 +14,19 @@ export function NewsletterForm({ variant = "default" }: { variant?: "default" | 
     if (!email.trim()) return;
     setStatus("loading");
     try {
-      const r = await fetch(`${API_BASE}/api/tools/newsletter`, {
+      const r = await fetch(NEWSLETTER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim() }),
       });
       const data = await r.json();
-      if (r.ok) {
+      if (r.ok && data.success) {
         setStatus("ok");
-        setMessage(data.message || "Tack för din prenumeration!");
+        setMessage("Tack! Du är nu prenumerant.");
         setEmail("");
       } else {
         setStatus("err");
-        setMessage(data.error || "Ett fel uppstod.");
+        setMessage(data.message || "Ett fel uppstod.");
       }
     } catch {
       setStatus("err");
@@ -95,10 +95,11 @@ export function NewsletterForm({ variant = "default" }: { variant?: "default" | 
             {status === "loading" ? "Skickar..." : "Prenumerera"}
           </button>
         </div>
-        {message && (
-          <p className={`text-sm text-center ${status === "ok" ? "text-emerald-600" : "text-red-600"}`}>
-            {message}
-          </p>
+        {status === "ok" && (
+          <p className="text-sm text-center text-emerald-600 font-medium">{message}</p>
+        )}
+        {status === "err" && (
+          <p className="text-sm text-center text-red-600">{message}</p>
         )}
       </form>
     </div>
