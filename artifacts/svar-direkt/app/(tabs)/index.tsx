@@ -327,6 +327,24 @@ export default function HomeScreen() {
         ))}
       </View>
 
+      {/* Premium shortcut row */}
+      <View style={styles.premiumRow}>
+        {[
+          { emoji: "📷", label: "Skanna brev", route: "/scanner" },
+          { emoji: "🌍", label: "Översätt", route: "/translate" },
+          { emoji: "💬", label: "AI Historia", route: "/ai-history" },
+        ].map((item) => (
+          <Pressable
+            key={item.route}
+            onPress={() => router.push(item.route as any)}
+            style={[styles.premiumChip, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}
+          >
+            <Text style={{ fontSize: 18 }}>{item.emoji}</Text>
+            <Text style={[styles.premiumChipText, { color: theme.text }]}>{item.label}</Text>
+          </Pressable>
+        ))}
+      </View>
+
       {/* Senast använda */}
       {recentItems.length > 0 && (
         <>
@@ -951,6 +969,25 @@ const styles = StyleSheet.create({
   aiChipText: {
     fontSize: 12,
     fontFamily: "Inter_500Medium",
+  },
+  premiumRow: {
+    flexDirection: "row",
+    gap: 10,
+    marginBottom: 20,
+  },
+  premiumChip: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    gap: 4,
+  },
+  premiumChipText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    textAlign: "center",
   },
 
   forsvarBanner: {

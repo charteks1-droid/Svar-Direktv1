@@ -1,6 +1,7 @@
 import { Feather } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
-import React, { useState } from "react";
+import * as Notifications from "expo-notifications";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -17,6 +18,32 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { Colors } from "@/constants/colors";
 import { Reminder, useApp } from "@/contexts/AppContext";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowBanner: true,
+    shouldShowList: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
+async function scheduleReminderNotification(title: string, description: string, date: string) {
+  if (Platform.OS === "web") return;
+  const trigger = new Date(date);
+  if (trigger <= new Date()) return;
+  trigger.setHours(9, 0, 0, 0);
+  if (trigger <= new Date()) return;
+  try {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: `📅 Påminnelse: ${title}`,
+        body: description || "Du har en påminnelse om ett ärende.",
+      },
+      trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: trigger },
+    });
+  } catch {}
+}
 
 function formatDate(isoString: string) {
   const d = new Date(isoString);
@@ -275,6 +302,17 @@ function RemindersScreenInner() {
   const { reminders, addReminder } = useApp();
   const [modalVisible, setModalVisible] = useState(false);
 
+  useEffect(() => {
+    if (Platform.OS !== "web") {
+      Notifications.requestPermissionsAsync().catch(() => {});
+    }
+  }, []);
+
+  const handleAddReminder = async (title: string, description: string, date: string) => {
+    addReminder({ title, description, date, completed: false });
+    await scheduleReminderNotification(title, description, date);
+  };
+
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
 
   const active = reminders.filter((r) => !r.completed);
@@ -359,9 +397,7 @@ function RemindersScreenInner() {
       <ReminderModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onSave={(title, description, date) =>
-          addReminder({ title, description, date, completed: false })
-        }
+        onSave={handleAddReminder}
       />
     </View>
   );

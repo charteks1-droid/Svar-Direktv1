@@ -22,6 +22,14 @@ export interface HistoryItem {
   usedAt: string;
 }
 
+export interface AiConversation {
+  id: string;
+  question: string;
+  reply: string;
+  institution: string;
+  createdAt: string;
+}
+
 export interface QuickResponse {
   id: string;
   title: string;
@@ -76,6 +84,11 @@ interface AppContextType {
   addToHistory: (item: Omit<HistoryItem, "id" | "usedAt">) => void;
   deleteHistoryItem: (id: string) => void;
   clearHistory: () => void;
+
+  aiConversations: AiConversation[];
+  addAiConversation: (item: Omit<AiConversation, "id" | "createdAt">) => void;
+  deleteAiConversation: (id: string) => void;
+  clearAiConversations: () => void;
 
   addQuickResponse: (qr: Omit<QuickResponse, "id" | "createdAt">) => void;
   updateQuickResponse: (id: string, updates: Partial<QuickResponse>) => void;
@@ -135,6 +148,7 @@ const STORAGE_KEYS = {
   favorites: "@svardirekt:favorites",
   notes: "@svardirekt:notes",
   history: "@svardirekt:history",
+  aiConversations: "@svardirekt:aiConversations",
   quickResponses: "@svardirekt:quickResponses",
   reminders: "@svardirekt:reminders",
   customTemplates: "@svardirekt:customTemplates",
@@ -146,6 +160,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [notes, setNotes] = useState<Note[]>([]);
   const [history, setHistory] = useState<HistoryItem[]>([]);
+  const [aiConversations, setAiConversations] = useState<AiConversation[]>([]);
   const [quickResponses, setQuickResponses] = useState<QuickResponse[]>([]);
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>([]);
@@ -155,10 +170,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const load = async () => {
       try {
-        const [favs, nts, hist, qrs, rems, cts, mods, disc] = await Promise.all([
+        const [favs, nts, hist, aiConvs, qrs, rems, cts, mods, disc] = await Promise.all([
           AsyncStorage.getItem(STORAGE_KEYS.favorites),
           AsyncStorage.getItem(STORAGE_KEYS.notes),
           AsyncStorage.getItem(STORAGE_KEYS.history),
+          AsyncStorage.getItem(STORAGE_KEYS.aiConversations),
           AsyncStorage.getItem(STORAGE_KEYS.quickResponses),
           AsyncStorage.getItem(STORAGE_KEYS.reminders),
           AsyncStorage.getItem(STORAGE_KEYS.customTemplates),
@@ -168,6 +184,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         if (favs) setFavorites(JSON.parse(favs));
         if (nts) setNotes(JSON.parse(nts));
         if (hist) setHistory(JSON.parse(hist));
+        if (aiConvs) setAiConversations(JSON.parse(aiConvs));
         if (qrs) {
           const parsed: QuickResponse[] = JSON.parse(qrs);
           if (parsed.length > 0) {
@@ -289,6 +306,38 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const clearHistory = useCallback(() => {
     setHistory([]);
     persist(STORAGE_KEYS.history, []);
+  }, [persist]);
+
+  const addAiConversation = useCallback(
+    (item: Omit<AiConversation, "id" | "createdAt">) => {
+      const newItem: AiConversation = {
+        ...item,
+        id: generateId(),
+        createdAt: new Date().toISOString(),
+      };
+      setAiConversations((prev) => {
+        const next = [newItem, ...prev].slice(0, 100);
+        persist(STORAGE_KEYS.aiConversations, next);
+        return next;
+      });
+    },
+    [persist]
+  );
+
+  const deleteAiConversation = useCallback(
+    (id: string) => {
+      setAiConversations((prev) => {
+        const next = prev.filter((c) => c.id !== id);
+        persist(STORAGE_KEYS.aiConversations, next);
+        return next;
+      });
+    },
+    [persist]
+  );
+
+  const clearAiConversations = useCallback(() => {
+    setAiConversations([]);
+    persist(STORAGE_KEYS.aiConversations, []);
   }, [persist]);
 
   const addQuickResponse = useCallback(
@@ -550,6 +599,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         addToHistory,
         deleteHistoryItem,
         clearHistory,
+        aiConversations,
+        addAiConversation,
+        deleteAiConversation,
+        clearAiConversations,
         addQuickResponse,
         updateQuickResponse,
         deleteQuickResponse,

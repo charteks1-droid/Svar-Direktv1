@@ -22,6 +22,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "@/constants/colors";
 import { PremiumGate } from "@/components/PremiumGate";
 import { askAi, API_BASE, ApiError } from "@/services/api";
+import { useApp } from "@/contexts/AppContext";
 
 const DISCLAIMER_KEY = "ai_disclaimer_accepted_v1";
 
@@ -106,6 +107,8 @@ function AiGeneratorScreenInner() {
   const theme = isDark ? Colors.dark : Colors.light;
   const insets = useSafeAreaInsets();
 
+  const { addAiConversation } = useApp();
+
   const [fullName, setFullName] = useState("");
   const [personnummer, setPersonnummer] = useState("");
   const [institution, setInstitution] = useState("");
@@ -162,6 +165,7 @@ function AiGeneratorScreenInner() {
       try {
         const data = await askAi(message);
         setResult(data.reply);
+        addAiConversation({ question: description.trim(), reply: data.reply, institution });
         if (typeof data.remaining === "number") {
           setRemaining(data.remaining);
         }
