@@ -71,6 +71,7 @@ export default defineConfig({
     proxy: {
       "/api/contact": { target: "http://localhost:8099", changeOrigin: true },
       "/api/forum":   { target: "http://localhost:8099", changeOrigin: true },
+      "/api/tools":   { target: "http://localhost:8099", changeOrigin: true },
     },
   },
   preview: {

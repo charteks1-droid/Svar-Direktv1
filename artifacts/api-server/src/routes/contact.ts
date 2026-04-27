@@ -1,5 +1,6 @@
 import { Router } from "express";
 import nodemailer from "nodemailer";
+import { pool } from "@workspace/db";
 
 const router = Router();
 
@@ -132,6 +133,40 @@ router.post("/jurist-kontakt", async (req, res) => {
   } catch (err) {
     console.error("Jurist contact error:", err);
     res.status(500).json({ success: false, message: "Kunde inte skicka förfrågan" });
+  }
+});
+
+// Newsletter subscription – saved to PostgreSQL
+router.post("/api/tools/newsletter", async (req, res) => {
+  const { email = "" } = req.body;
+  if (!email || !email.includes("@")) {
+    return res.status(400).json({ success: false, message: "Ogiltig e-postadress" });
+  }
+  try {
+    await pool.query(
+      `INSERT INTO newsletter_subscribers (email) VALUES ($1) ON CONFLICT (email) DO NOTHING`,
+      [email.trim().toLowerCase()]
+    );
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Newsletter error:", err);
+    res.status(500).json({ success: false });
+  }
+});
+
+// Newsletter list – admin only
+router.get("/api/tools/newsletter", async (req, res) => {
+  const key = req.headers["x-admin-key"];
+  if (key !== process.env.FORUM_ADMIN_KEY) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  try {
+    const result = await pool.query(
+      `SELECT email, created_at FROM newsletter_subscribers ORDER BY created_at DESC`
+    );
+    res.json({ subscribers: result.rows, count: result.rows.length });
+  } catch (err) {
+    res.status(500).json({ error: "DB error" });
   }
 });
 
