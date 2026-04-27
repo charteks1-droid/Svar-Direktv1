@@ -485,3 +485,9 @@ id = "l2DnAualkiufFfEFnwt3L"
 uri = "file://newsletter-hostinger.zip"
 type = "unspecified"
 title = "newsletter-hostinger.zip"
+
+[[outputs]]
+id = "UF1G7S_5oDZMjpQvcLjnS"
+uri = "file://strona-hostinger.zip"
+type = "unspecified"
+title = "strona-hostinger.zip – wgraj zawartość do public_html/builds/"
