@@ -45,7 +45,6 @@ router.post("/uploads/pdf", upload.single("file"), (req, res) => {
 
   const fileUrl = `/api/uploads/${req.file.filename}`;
   logger.info({ path: req.file.path, filename: req.file.filename, size: req.file.size }, "PDF uploaded");
-  console.log(`[upload] PDF saved at: ${req.file.path}`);
 
   res.status(201).json({
     url: fileUrl,

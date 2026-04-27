@@ -135,6 +135,22 @@ export default function AboutScreen() {
           Vid allvarliga tvister rekommenderas kontakt med Hyresgästföreningen eller juridisk rådgivning.
         </Text>
       </View>
+
+      {/* Copyright notice */}
+      <View style={[styles.copyrightCard, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
+        <View style={styles.copyrightHeader}>
+          <MaterialCommunityIcons name="shield-lock" size={16} color={Colors.primary} />
+          <Text style={[styles.copyrightTitle, { color: theme.text, fontFamily: "Inter_600SemiBold" }]}>
+            Upphovsrätt
+          </Text>
+        </View>
+        <Text style={[styles.copyrightText, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+          © Sebastian Charewicz. Svar Direkt och dess appkod, struktur och funktioner är skyddade. Kopiering, återpublicering eller kommersiell användning av appens kod och system utan skriftligt tillstånd är förbjuden. Användare får däremot kopiera och använda de texter som appen genererar eller visar för eget bruk.
+        </Text>
+        <Text style={[styles.copyrightSub, { color: theme.textSecondary, fontFamily: "Inter_400Regular" }]}>
+          Alla rättigheter förbehållna · All rights reserved
+        </Text>
+      </View>
     </ScrollView>
   );
 }
@@ -206,4 +222,19 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   legalText: { flex: 1, fontSize: 13, lineHeight: 19 },
+  copyrightCard: {
+    borderRadius: 14,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 16,
+    gap: 10,
+    marginTop: 4,
+  },
+  copyrightHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  copyrightTitle: { fontSize: 14 },
+  copyrightText: { fontSize: 12, lineHeight: 18 },
+  copyrightSub: { fontSize: 11, marginTop: 2 },
 });

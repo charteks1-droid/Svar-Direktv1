@@ -3,6 +3,8 @@
     "name": "Svar Direkt",
     "slug": "svar-direkt-new",
     "version": "1.5.1",
+    "owner": "Sebastian Charewicz",
+    "description": "Svar Direkt – färdiga mallar och AI-svar för svenska myndigheter. © Sebastian Charewicz. Alla rättigheter förbehållna.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "svar-direkt",

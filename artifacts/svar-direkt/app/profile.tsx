@@ -188,6 +188,10 @@ export default function ProfileScreen() {
         <Feather name="log-out" size={18} color={theme.textSecondary} />
         <Text style={[styles.logoutText, { color: theme.textSecondary }]}>Wyloguj się</Text>
       </Pressable>
+
+      <Text style={[styles.copyright, { color: theme.textSecondary }]}>
+        © Sebastian Charewicz · Svar Direkt · Alla rättigheter förbehållna
+      </Text>
     </ScrollView>
   );
 }
@@ -227,4 +231,5 @@ const styles = StyleSheet.create({
     paddingVertical: 14, borderRadius: 12, borderWidth: 1,
   },
   logoutText: { fontSize: 15, fontWeight: "500" },
+  copyright: { fontSize: 11, textAlign: "center", marginTop: 8, marginBottom: 4 },
 });
