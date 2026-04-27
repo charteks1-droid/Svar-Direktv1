@@ -10,7 +10,6 @@ type Stats = {
   forum_solved: number;
   templates_count: number;
   online_now: number;
-  newsletter_subscribers: number;
   page_views: number;
   news_count: number;
 };

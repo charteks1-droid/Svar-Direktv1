@@ -120,7 +120,6 @@ import Rattigheter from "@/pages/Rattigheter";
 import Kalender from "@/pages/Kalender";
 import Lexikon from "@/pages/Lexikon";
 import Nyheter from "@/pages/Nyheter";
-import { NewsletterForm } from "@/components/NewsletterForm";
 import NotFound from "@/pages/not-found";
 
 function CookieBanner() {
@@ -364,10 +363,6 @@ function Footer() {
             <a href="mailto:info@svardirekt.site" className="text-sm text-slate-400 hover:text-white transition-colors block mb-4">
               info@svardirekt.site
             </a>
-            <div>
-              <p className="text-xs text-slate-500 mb-2 font-medium uppercase tracking-wide">📬 Veckobrev</p>
-              <NewsletterForm variant="footer" />
-            </div>
           </div>
 
           {sections.map((s) => (

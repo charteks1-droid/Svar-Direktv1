@@ -7,7 +7,6 @@ import heroStadshuset from "../assets/stockholm-stadshuset.jpg";
 import heroDramatiska from "../assets/stockholm-dramatiska.jpg";
 import { PartnerGrid } from "@/components/AffiliateBanners";
 import { StatsBar } from "@/components/StatsBar";
-import { NewsletterForm } from "@/components/NewsletterForm";
 
 const HERO_SLIDES = [
   { src: heroRiksdag,     caption: "Sveriges riksdag" },
@@ -656,11 +655,6 @@ export default function Home() {
             <div className="mt-3 text-sm font-medium text-emerald-700 group-hover:underline">Slå upp termer →</div>
           </Link>
         </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-12">
-        <NewsletterForm />
       </section>
 
       {/* Snabbknappar */}
