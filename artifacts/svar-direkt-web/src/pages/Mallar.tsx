@@ -1440,9 +1440,9 @@ export default function Mallar() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
           >
-            Köp appen — 79 kr
+            Ladda ner gratis
           </a>
-          <p className="text-xs text-slate-400 mt-2">Engångsbetalning · Inga prenumerationer · Fungerar offline</p>
+          <p className="text-xs text-slate-400 mt-2">Gratis · Inget konto · Fungerar offline</p>
         </div>
       </section>
 

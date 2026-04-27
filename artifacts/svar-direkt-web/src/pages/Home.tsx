@@ -159,7 +159,7 @@ function FaqSection() {
     },
     {
       q: "Vad ingår i appen och vad kostar den?",
-      a: "Grundappen kostar 79 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
+      a: "Grundappen är gratis och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer.",
     },
   ];
 
@@ -356,7 +356,7 @@ const LOSS_ITEMS = [
   { utan: "Risk att skriva fel ton eller missförstås", med: "Korrekt, formell svenska — direkt" },
   { utan: "Stress och osäkerhet inför varje svar", med: "Lugn och trygghet — texten är redan klar" },
   { utan: "Ärendet försenas pga misstag eller tomma sidor", med: "Skickar i tid — missar inga frister" },
-  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "79 kr en gång — inga prenumerationer" },
+  { utan: "Dyr juridisk rådgivning för ett enkelt svar", med: "Gratis — inga prenumerationer" },
   { utan: "Vet inte ens var du ska börja", med: "Klar text att kopiera och anpassa direkt" },
 ];
 
@@ -484,7 +484,7 @@ export default function Home() {
           "name": "Vad kostar Svar Direkt och vad ingår?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Grundappen kostar 79 kr och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
+            "text": "Grundappen är gratis och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). Du kan bygga ut med paket för arbete (19 kr), relationer (19 kr) och mer. Engångskostnad — inga prenumerationer."
           }
         }
       ]
@@ -550,13 +550,13 @@ export default function Home() {
                     boxShadow: '0 0 20px rgba(255,205,0,0.5), 0 4px 16px rgba(0,0,0,0.2)',
                   }}
                 >
-                  Köp appen — 79 kr
+                  Ladda ner gratis
                 </a>
                 <Link
                   href="/tjanst"
                   className="px-6 py-3 bg-white/10 border border-white/25 text-white rounded-xl font-medium hover:bg-white/20 transition-colors text-sm backdrop-blur-sm"
                 >
-                  Personlig hjälp – 99 kr
+                  Personlig mall – 99 kr
                 </Link>
               </div>
               {/* Social proof mini row */}
@@ -571,7 +571,7 @@ export default function Home() {
                 <p className="text-xs text-white/65">52+ mallar · Trusted av användare i hela Sverige</p>
               </div>
               <p className="text-[11px] text-white/35 mt-3">
-                🔒 Säker betalning via Payhip. Nedladdningslänk direkt efter köp.
+                🔒 Gratis nedladdning. Inget konto krävs.
               </p>
             </div>
             <div className="flex justify-center md:justify-end">
@@ -774,16 +774,16 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
             >
-              Köp appen — 79 kr
+              Ladda ner gratis
             </a>
             <Link
               href="/tjanst"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
             >
-              Personlig hjälp – 99 kr
+              Personlig mall – 99 kr
             </Link>
           </div>
-          <p className="text-xs text-slate-400 mt-2 text-center">App: engångskostnad · Hjälp: första svaret gratis</p>
+          <p className="text-xs text-slate-400 mt-2 text-center">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mc</p>
         </div>
       </section>
 
@@ -958,16 +958,16 @@ export default function Home() {
             <p className="text-sm font-semibold text-slate-900 mb-4 text-center">Välj ditt alternativ:</p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="border border-primary/20 rounded-xl p-4 text-center bg-primary/5">
-                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Appen</p>
-                <p className="text-2xl font-bold text-slate-900 mb-1">79 kr</p>
-                <p className="text-xs text-slate-500 mb-3">Engångsbetalning · Offline</p>
+                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Gratis app</p>
+                <p className="text-2xl font-bold text-slate-900 mb-1">0 kr</p>
+                <p className="text-xs text-slate-500 mb-3">52+ mallar · Offline · Inget konto</p>
                 <a
                   href="https://payhip.com/b/WxtV3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full py-2.5 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary/90 transition-colors"
                 >
-                  Köp appen
+                  Ladda ner gratis
                 </a>
               </div>
               <div className="border border-slate-200 rounded-xl p-4 text-center">
@@ -1000,7 +1000,7 @@ export default function Home() {
             {
               step: "1",
               title: "Köp och ladda ner appen",
-              desc: "Köp appen för 79 kr och ladda ner den till Android — fungerar offline.",
+              desc: "Ladda ner appen gratis den till Android — fungerar offline.",
               icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -1128,7 +1128,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
           >
-            Köp appen — 79 kr
+            Ladda ner gratis
           </a>
           <Link
             href="/tjanst"
@@ -1137,7 +1137,7 @@ export default function Home() {
             Personlig hjälp – 99 kr
           </Link>
         </div>
-        <p className="text-xs text-slate-400 mt-2 text-center">App: engångskostnad · Hjälp: första svaret gratis</p>
+        <p className="text-xs text-slate-400 mt-2 text-center">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mc</p>
       </section>
 
       {/* SEO-rich text block */}
@@ -1161,7 +1161,7 @@ export default function Home() {
                 <a href="https://www.skatteverket.se" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:no-underline font-medium">Skatteverkets webbplats</a>.
               </p>
               <p>
-                Appen fungerar offline och kräver inget konto. Du köper en gång för 79 kr och har tillgång till alla mallar direkt — på korrekt, formell svenska.
+                Appen fungerar offline och kräver inget konto. Du laddar ner gratis och har tillgång till alla mallar direkt — på korrekt, formell svenska.
               </p>
             </div>
           </div>
@@ -1343,29 +1343,43 @@ export default function Home() {
             Välj det alternativ som passar dig bäst — appen för självständig användning, eller personlig hjälp om du vill ha stöd direkt.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-6">
+          <div className="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-6">
+            {/* Tier 1 – AI app (coming soon) */}
+            <div className="border-2 border-slate-200 rounded-2xl p-5 text-center bg-slate-50 opacity-60">
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">App med AI</p>
+              <p className="text-3xl font-bold text-slate-400 mb-1">79 kr<span className="text-base font-normal">/mc</span></p>
+              <p className="text-xs text-slate-400 mb-4">7 dagars gratis provperiod · Kort krävs</p>
+              <button
+                disabled
+                className="block w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold text-sm cursor-not-allowed"
+              >
+                Snart tillgänglig
+              </button>
+            </div>
+            {/* Tier 2 – Free app (Payhip) */}
             <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
-              <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Mobil app</p>
-              <p className="text-3xl font-bold text-slate-900 mb-1">79 kr</p>
-              <p className="text-xs text-slate-500 mb-4">Engångsbetalning · 52+ mallar · Offline</p>
+              <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Gratis app</p>
+              <p className="text-3xl font-bold text-slate-900 mb-1">0 kr</p>
+              <p className="text-xs text-slate-500 mb-4">52+ mallar · Offline · Inget konto</p>
               <a
                 href="https://payhip.com/b/WxtV3"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full py-3 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-md"
               >
-                Köp appen — 79 kr
+                Ladda ner gratis
               </a>
             </div>
+            {/* Tier 3 – Personal template */}
             <div className="border-2 border-slate-200 rounded-2xl p-5 text-center">
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig hjälp</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig mall</p>
               <p className="text-3xl font-bold text-slate-900 mb-1">99 kr</p>
-              <p className="text-xs text-slate-500 mb-4">Första svaret gratis · Svar inom 24h</p>
+              <p className="text-xs text-slate-500 mb-4">Svar inom 24h · Första gratis</p>
               <Link
                 href="/tjanst"
                 className="block w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors"
               >
-                Personlig hjälp – 99 kr
+                Beställ nu
               </Link>
             </div>
           </div>

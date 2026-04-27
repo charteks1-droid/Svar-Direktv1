@@ -56,16 +56,16 @@ export default function Landing() {
                 rel="noopener noreferrer"
                 className="px-7 py-3.5 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-primary/90 transition-colors shadow-md"
               >
-                Köp appen — 79 kr
+                Ladda ner gratis
               </a>
               <Link
                 href={TJANST_URL}
                 className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
               >
-                Personlig hjälp – 99 kr
+                Personlig mall – 99 kr
               </Link>
             </div>
-            <p className="text-xs text-slate-400 mb-4">App: 79 kr engångskostnad · Hjälp: första svaret gratis</p>
+            <p className="text-xs text-slate-400 mb-4">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mc</p>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
                 { icon: "🔒", text: "SSL-säker betalning" },
@@ -328,32 +328,46 @@ export default function Landing() {
               Myndigheten väntar inte på ditt svar.<br />Men du behöver inte skriva det själv.
             </h2>
             <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
-              Välj mellan appen (79 kr, 52+ mallar, offline) eller personlig hjälp — beskriv din situation och få ett färdigt svar inom 24 timmar.
+              Välj mellan gratisappen (52+ mallar, offline) eller personlig hjälp — beskriv din situation och få ett färdigt svar inom 24 timmar.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
+            <div className="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-6">
+              {/* Tier 1 – AI app (coming soon) */}
+              <div className="border-2 border-slate-200 rounded-2xl p-5 text-center bg-slate-50 opacity-60">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">App med AI</p>
+                <p className="text-3xl font-bold text-slate-400 mb-1">79 kr<span className="text-base font-normal">/mc</span></p>
+                <p className="text-xs text-slate-400 mb-4">7 dagars gratis provperiod · Kort krävs</p>
+                <button
+                  disabled
+                  className="block w-full py-3 bg-slate-200 text-slate-400 rounded-xl font-bold text-sm cursor-not-allowed"
+                >
+                  Snart tillgänglig
+                </button>
+              </div>
+              {/* Tier 2 – Free app (Payhip) */}
               <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
-                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Mobil app</p>
-                <p className="text-3xl font-bold text-slate-900 mb-1">79 kr</p>
-                <p className="text-xs text-slate-500 mb-4">Engångsbetalning · Offline</p>
+                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Gratis app</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">0 kr</p>
+                <p className="text-xs text-slate-500 mb-4">52+ mallar · Offline · Inget konto</p>
                 <a
                   href="https://payhip.com/b/WxtV3"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full py-3 bg-primary text-white rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors shadow-md"
                 >
-                  Köp appen
+                  Ladda ner gratis
                 </a>
               </div>
+              {/* Tier 3 – Personal template */}
               <div className="border-2 border-slate-200 rounded-2xl p-5 text-center">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig hjälp</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig mall</p>
                 <p className="text-3xl font-bold text-slate-900 mb-1">99 kr</p>
-                <p className="text-xs text-slate-500 mb-4">Första svaret gratis · 24h</p>
+                <p className="text-xs text-slate-500 mb-4">Svar inom 24h · Första gratis</p>
                 <Link
                   href={TJANST_URL}
                   className="block w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors"
                 >
-                  Personlig hjälp
+                  Beställ nu
                 </Link>
               </div>
             </div>
