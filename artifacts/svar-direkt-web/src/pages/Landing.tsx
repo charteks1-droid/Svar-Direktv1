@@ -331,7 +331,7 @@ export default function Landing() {
               Välj mellan gratisappen (52+ mallar, offline) eller personlig hjälp — beskriv din situation och få ett färdigt svar inom 24 timmar.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-6">
+            <div className="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-6">
               {/* Tier 1 – Free app (Payhip) */}
               <div className="border-2 border-primary rounded-2xl p-5 text-center bg-primary/5">
                 <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Gratis app</p>
@@ -346,7 +346,19 @@ export default function Landing() {
                   Ladda ner gratis
                 </a>
               </div>
-              {/* Tier 2 – Personal template */}
+              {/* Tier 2 – AI app (coming soon) */}
+              <div className="border-2 border-amber-400 rounded-2xl p-5 text-center bg-amber-50">
+                <p className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">App med AI ✨</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">79 kr<span className="text-base font-normal">/mc</span></p>
+                <p className="text-xs text-slate-500 mb-4">7 dagars gratis provperiod · Kort krävs</p>
+                <button
+                  disabled
+                  className="block w-full py-3 bg-amber-400 text-white rounded-xl font-bold text-sm cursor-not-allowed"
+                >
+                  Snart tillgänglig
+                </button>
+              </div>
+              {/* Tier 3 – Personal template */}
               <div className="border-2 border-slate-200 rounded-2xl p-5 text-center">
                 <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personlig mall</p>
                 <p className="text-3xl font-bold text-slate-900 mb-1">99 kr</p>
