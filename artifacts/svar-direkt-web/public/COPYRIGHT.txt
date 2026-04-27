@@ -1,0 +1,51 @@
+================================================================================
+  SVAR DIREKT — PRAWA AUTORSKIE / COPYRIGHT NOTICE
+================================================================================
+
+Autor / Author:       Sebastian Charewicz
+Produkt / Product:    Svar Direkt
+Strona / Website:     https://svardirekt.site
+Kontakt / Contact:    charteks1@gmail.com
+
+Data utworzenia / Created:  2024
+Wszelkie prawa zastrzeżone / All rights reserved.
+
+================================================================================
+  OŚWIADCZENIE O PRAWACH AUTORSKICH
+================================================================================
+
+Svar Direkt, w tym jego nazwa, logo, projekt graficzny, struktura, treść,
+kod źródłowy aplikacji mobilnej i strony internetowej, stanowią własność
+intelektualną Sebastiana Charewicza i są chronione przepisami prawa
+autorskiego.
+
+Bez pisemnej zgody autora zabrania się:
+- kopiowania, reprodukowania lub dystrybucji jakichkolwiek elementów
+- modyfikowania lub tworzenia dzieł pochodnych
+- wykorzystywania nazwy "Svar Direkt" lub logo do celów komercyjnych
+- dekompilacji lub inżynierii wstecznej aplikacji
+
+================================================================================
+  COPYRIGHT STATEMENT (ENGLISH)
+================================================================================
+
+Svar Direkt, including its name, logo, visual design, structure, content,
+source code of the mobile application and website, is the intellectual
+property of Sebastian Charewicz and is protected by copyright law.
+
+Without the written consent of the author, it is prohibited to:
+- copy, reproduce or distribute any elements
+- modify or create derivative works
+- use the name "Svar Direkt" or logo for commercial purposes
+- decompile or reverse engineer the application
+
+================================================================================
+  VERIFIERING / VERIFICATION
+================================================================================
+
+Detta dokument utgör ett juridiskt bevis på upphovsrätten till Svar Direkt.
+This document constitutes legal proof of copyright ownership of Svar Direkt.
+Ten dokument stanowi dowód prawny praw autorskich do Svar Direkt.
+
+Signatur / Signature: Sebastian Charewicz
+================================================================================

@@ -130,6 +130,25 @@
     }
     </script>
 
+    <!-- Copyright -->
+    <meta name="author" content="Sebastian Charewicz" />
+    <meta name="copyright" content="© 2024 Sebastian Charewicz. Wszelkie prawa zastrzeżone." />
+
+    <!-- Copy protection -->
+    <script>
+      (function() {
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('keydown', function(e) {
+          if (
+            (e.ctrlKey && (e.key === 'u' || e.key === 'U')) ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J')) ||
+            e.key === 'F12'
+          ) { e.preventDefault(); }
+        });
+        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+      })();
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
