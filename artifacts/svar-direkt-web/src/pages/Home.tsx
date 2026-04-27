@@ -552,6 +552,12 @@ export default function Home() {
                 >
                   Ladda ner gratis
                 </a>
+                <button
+                  disabled
+                  className="px-6 py-3 bg-amber-400/80 border border-amber-300 text-white rounded-xl font-medium text-sm cursor-not-allowed"
+                >
+                  App med AI – 79 kr/mc
+                </button>
                 <Link
                   href="/tjanst"
                   className="px-6 py-3 bg-white/10 border border-white/25 text-white rounded-xl font-medium hover:bg-white/20 transition-colors text-sm backdrop-blur-sm"

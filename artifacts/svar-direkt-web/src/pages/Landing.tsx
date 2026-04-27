@@ -58,6 +58,12 @@ export default function Landing() {
               >
                 Ladda ner gratis
               </a>
+              <button
+                disabled
+                className="px-6 py-3 bg-amber-400 text-white rounded-xl font-semibold text-sm cursor-not-allowed"
+              >
+                App med AI – 79 kr/mc
+              </button>
               <Link
                 href={TJANST_URL}
                 className="px-6 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
