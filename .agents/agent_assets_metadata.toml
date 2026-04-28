@@ -575,3 +575,9 @@ id = "wABSqoaFTCico7JrkXKxz"
 uri = "file://env-szablon.zip"
 type = "unspecified"
 title = "Plik .env – wgraj do nodejs/"
+
+[[outputs]]
+id = "cWlfOrIL2ujaBZ_Ve4YYO"
+uri = "file://hostinger-backend-update.zip"
+type = "unspecified"
+title = "Backend update – wgraj do nodejs/ na Hostingerze"
