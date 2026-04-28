@@ -551,3 +551,9 @@ id = "l-ddmPXrYeOSU3MwIn6Y7"
 uri = "file://hostinger-tylko-assets.zip"
 type = "unspecified"
 title = "MINIMALNY ZIP – tylko 5 plików"
+
+[[outputs]]
+id = "CDVSSg79CoycuL0BDbWyC"
+uri = "file://hostinger-blog-index.zip"
+type = "unspecified"
+title = "Statyczny blog – 1 plik, 27 artykułów"
