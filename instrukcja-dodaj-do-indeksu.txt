@@ -1,7 +1,6 @@
 INSTRUKCJA:
-Otwórz plik blogg/index.html na Hostingerze.
-Znajdź koniec listy artykułów (przed zamykającym </div></div>).
-Wklej poniższy kod HTML tuż przed tym miejscem.
+Otwórz plik blogg/index.html na Hostingerze (lub index.html w folderze blogg).
+Znajdź koniec listy artykułów i wklej poniższy kod HTML przed zamykającym tagiem.
 
 ============= WKLEJ TEN KOD =============
 
@@ -11,7 +10,7 @@ Wklej poniższy kod HTML tuż przed tym miejscem.
       <p>Fick du ett brev med begäran om komplettering? Lär dig vad det innebär, vilka tidsfrister som gäller och hur du skriver ett korrekt svar steg för steg.</p>
       <div class="card-footer">
         <span>8 min · 28 april 2026</span>
-        <a href="/blogg/migrationsverket-begaran-om-komplettering.html">Läs mer →</a>
+        <a href="/blogg/migrationsverket-begaran-om-komplettering/">Läs mer →</a>
       </div>
     </div>
 
@@ -21,7 +20,7 @@ Wklej poniższy kod HTML tuż przed tym miejscem.
       <p>Mobbning, diskriminering, utebliven lön eller olaglig uppsägning — vi visar hur du formulerar ett professionellt brev som faktiskt tas på allvar.</p>
       <div class="card-footer">
         <span>9 min · 28 april 2026</span>
-        <a href="/blogg/kraenkt-pa-jobbet-skriv-till-arbetsgivaren.html">Läs mer →</a>
+        <a href="/blogg/kraenkt-pa-jobbet-skriv-till-arbetsgivaren/">Läs mer →</a>
       </div>
     </div>
 
@@ -31,7 +30,7 @@ Wklej poniższy kod HTML tuż przed tym miejscem.
       <p>Nekad förskoleplats, felaktig parkeringsbot eller avslag på bygglov? Lär dig dina rättigheter och hur du skriver ett effektivt överklagande till kommunen.</p>
       <div class="card-footer">
         <span>8 min · 28 april 2026</span>
-        <a href="/blogg/nar-kommunen-bestammer-forskolaparkeringbygglov.html">Läs mer →</a>
+        <a href="/blogg/nar-kommunen-bestammer-forskolaparkeringbygglov/">Läs mer →</a>
       </div>
     </div>
 

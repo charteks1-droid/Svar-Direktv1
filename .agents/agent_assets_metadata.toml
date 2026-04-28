@@ -514,4 +514,10 @@ title = "3 nowe artykuły (tylko nowe pliki)"
 id = "saV6qiilzWGTOGsjHhKfJ"
 uri = "file://instrukcja-dodaj-do-indeksu.txt"
 type = "text"
-title = "Instrukcja – dodaj karty do indeksu bloga"
+title = "Instrukcja – kod do wklejenia w index.html"
+
+[[outputs]]
+id = "sawW8BCaVUyOYTQ8C0XxS"
+uri = "file://hostinger-nowe-artykuly.zip"
+type = "unspecified"
+title = "3 nowe artykuły – struktura folderów"
