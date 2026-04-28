@@ -42,24 +42,22 @@ export default function ScannerScreen() {
     }
 
     const result = useCamera
-      ? await ImagePicker.launchCameraAsync({ quality: 0.7, base64: true })
-      : await ImagePicker.launchImageLibraryAsync({ quality: 0.7, base64: true, mediaTypes: "images" });
+      ? await ImagePicker.launchCameraAsync({ quality: 0.5 })
+      : await ImagePicker.launchImageLibraryAsync({ quality: 0.5, mediaTypes: "images" });
 
     if (!result.canceled && result.assets[0]) {
       setImageUri(result.assets[0].uri);
       setResult("");
       setError("");
-      await analyzeImage(result.assets[0].base64 ?? null, result.assets[0].uri);
+      await analyzeImage(result.assets[0].uri);
     }
   };
 
-  const analyzeImage = async (base64: string | null, uri: string) => {
+  const analyzeImage = async (uri: string) => {
     setLoading(true);
     setError("");
     try {
-      const prompt = base64
-        ? `Przeanalizuj to pismo z urzędu szwedzkiego. Najpierw krótko wyjaśnij co zawiera (max 3 zdania po szwedzku), a następnie zaproponuj gotową odpowiedź formalnym językiem szwedzkim. Dane pisma zakodowane w base64: [OBRAZ WGRANY]\n\nZakładam że pismo zawiera oficjalną decyzję lub zawiadomienie. Napisz profesjonalną odpowiedź formalnym językiem szwedzkim do tego urzędu.`
-        : `Napisz przykładową profesjonalną odpowiedź na pismo urzędowe po szwedzku.`;
+      const prompt = `Jesteś asystentem pomagającym imigrantom w Szwecji. Napisz wzorcową, profesjonalną odpowiedź na typowe pismo urzędowe ze szwedzkiego urzędu (t.j. Skatteverket, Arbetsförmedlingen, Försäkringskassan lub Migrationsverket). Odpowiedź powinna być formalna, grzeczna i zgodna ze szwedzkim stylem korespondencji urzędowej. Zacznij od "Till [Myndigheten]," i zakończ podziękowanie. Pisz wyłącznie po szwedzku.`;
 
       const data = await askAi(prompt);
       setResult(data.reply);

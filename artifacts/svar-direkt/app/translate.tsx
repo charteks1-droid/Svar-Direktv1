@@ -42,7 +42,7 @@ export default function TranslateScreen() {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const canTranslate = text.trim().length > 10 && !loading;
+  const canTranslate = text.trim().length > 2 && !loading;
 
   const handleTranslate = async () => {
     if (!canTranslate) return;
