@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Svar Direkt – Skriv rätt. Få svar. Sluta stressa.</title>
+  <meta name="description" content="52+ färdiga mallar för svenska myndigheter — gratis direkt i mobilen. Boverket, Skatteverket, Försäkringskassan, Migrationsverket." />
+  <meta property="og:title" content="Svar Direkt – Gratis mallar för svenska myndigheter" />
+  <meta property="og:description" content="52+ färdiga mallar direkt i mobilen. Ladda ner gratis." />
+  <meta property="og:image" content="https://svardirekt.site/opengraph.jpg" />
+  <meta property="og:url" content="https://svardirekt.site/promo" />
+  <link rel="icon" href="https://svardirekt.site/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1e3a5f;
+      --navy-dark: #142a47;
+      --navy-light: #2a4f7c;
+      --yellow: #FFD700;
+      --yellow-dark: #e6c200;
+      --white: #ffffff;
+      --off-white: #f4f8fc;
+      --text-muted: #b0c4d8;
+      --card-bg: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILS ── */
+    .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 64px 0; }
+    .section-alt { background: var(--navy-dark); }
+    .tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    /* ── BTN ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--navy);
+      box-shadow: 0 4px 20px rgba(255,215,0,0.35);
+    }
+    .btn-primary:hover { background: var(--yellow-dark); box-shadow: 0 6px 28px rgba(255,215,0,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+    .btn-full { width: 100%; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(30,58,95,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 20px;
+    }
+    .nav-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo span { color: var(--yellow); }
+    .nav-btn { padding: 10px 20px; font-size: 14px; border-radius: 10px; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 0 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,215,0,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(42,79,124,0.4) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-app-icon {
+      width: 96px;
+      height: 96px;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-dark));
+      border-radius: 22px;
+      border: 2px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .hero h1 {
+      font-size: clamp(30px, 7vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 em { color: var(--yellow); font-style: normal; }
+    .hero-sub {
+      font-size: clamp(16px, 3vw, 18px);
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+    .hero-cta { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .hero-note { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+    .hero-badges {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
+
+    /* ── PROBLEM ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 500px) { .problem-grid { grid-template-columns: 1fr; } }
+    .problem-col {
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .problem-col.bad {
+      background: rgba(220,60,60,0.1);
+      border: 1px solid rgba(220,60,60,0.2);
+    }
+    .problem-col.good {
+      background: rgba(50,180,100,0.1);
+      border: 1px solid rgba(50,180,100,0.2);
+    }
+    .problem-col-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .bad .problem-col-title { color: #ff7070; }
+    .good .problem-col-title { color: #68d391; }
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .problem-item:last-child { margin-bottom: 0; }
+    .pi-icon { flex-shrink: 0; font-size: 16px; line-height: 1.5; }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(255,215,0,0.3); }
+    .feature-icon { font-size: 32px; margin-bottom: 12px; }
+    .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── MYNDIGHETER ── */
+    .myndigheter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 500px) { .myndigheter-grid { grid-template-columns: 1fr; } }
+    .mynd-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .mynd-card:hover { border-color: rgba(255,215,0,0.4); transform: translateY(-2px); }
+    .mynd-emoji { font-size: 36px; }
+    .mynd-name { font-size: 16px; font-weight: 700; }
+    .mynd-count {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+    .mynd-examples { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── EMAIL FORM ── */
+    .email-section {
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-dark));
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 48px 32px;
+      text-align: center;
+    }
+    @media (max-width: 500px) { .email-section { padding: 32px 20px; } }
+    .email-form {
+      display: flex;
+      gap: 10px;
+      max-width: 440px;
+      margin: 24px auto 0;
+    }
+    @media (max-width: 500px) { .email-form { flex-direction: column; } }
+    .email-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-input::placeholder { color: var(--text-muted); }
+    .email-input:focus { border-color: var(--yellow); }
+    .email-submit {
+      padding: 14px 24px;
+      border-radius: 12px;
+      background: var(--yellow);
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .email-submit:hover { background: var(--yellow-dark); }
+    .email-submit:active { transform: scale(0.97); }
+    .email-privacy { font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+    .email-success {
+      display: none;
+      background: rgba(50,180,100,0.15);
+      border: 1px solid rgba(50,180,100,0.3);
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 15px;
+      color: #68d391;
+      margin-top: 16px;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      text-align: left;
+      padding: 18px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--yellow); }
+    .faq-icon { flex-shrink: 0; font-size: 18px; transition: transform 0.2s; }
+    .faq-a {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open { border-color: rgba(255,215,0,0.25); }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      text-align: center;
+      padding: 72px 0 80px;
+    }
+    .final-cta h2 {
+      font-size: clamp(26px, 6vw, 40px);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .final-cta h2 em { color: var(--yellow); font-style: normal; }
+    .final-cta p { color: var(--text-muted); font-size: 16px; margin-bottom: 32px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      border-top: 1px solid var(--card-border);
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 760px; margin: 0 auto; }
+    .footer-logo { font-size: 18px; font-weight: 800; margin-bottom: 12px; }
+    .footer-logo span { color: var(--yellow); }
+    .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: 12px; color: var(--text-muted); }
+
+    /* ── SCROLL ANIM ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://svardirekt.site">Svar<span>Direkt</span></a>
+    <a class="btn btn-primary nav-btn" href="https://expo.dev/accounts/charteks/projects/svar-direkt-new">Ladda ner</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-app-icon">📋</div>
+    <div class="tag">100% gratis</div>
+    <h1>Skriv rätt.<br><em>Sluta stressa.</em></h1>
+    <p class="hero-sub">52+ färdiga mallar för svenska myndigheter — direkt i mobilen. Inga blanketter, inga tomma sidor.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" style="font-size:17px;padding:18px 40px;" href="https://expo.dev/accounts/charteks/projects/svar-direkt-new">
+        📲 Ladda ner gratis
+      </a>
+      <p class="hero-note">Ingen registrering krävs &nbsp;·&nbsp; Fungerar direkt</p>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><div class="badge-dot"></div>52+ mallar</div>
+      <div class="badge"><div class="badge-dot"></div>4 myndigheter</div>
+      <div class="badge"><div class="badge-dot"></div>Gratis för alltid</div>
+      <div class="badge"><div class="badge-dot"></div>Alltid i mobilen</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section section-alt">
+  <div class="container reveal">
+    <div class="tag">Varför Svar Direkt?</div>
+    <h2 class="section-title">Vad kostar det att vänta?</h2>
+    <p class="section-sub">Utan rätt svar kan en enkel fråga bli ett stort problem.</p>
+    <div class="problem-grid">
+      <div class="problem-col bad">
+        <div class="problem-col-title">❌ Utan appen</div>
+        <div class="problem-item"><span class="pi-icon">😰</span><span>Du vet inte hur du ska formulera dig på svenska</span></div>
+        <div class="problem-item"><span class="pi-icon">⏳</span><span>Du väntar veckor utan svar för att brevet var fel</span></div>
+        <div class="problem-item"><span class="pi-icon">🔁</span><span>Du skickar samma förfrågan om och om igen</span></div>
+        <div class="problem-item"><span class="pi-icon">😞</span><span>Du känner dig lost i systemet</span></div>
+      </div>
+      <div class="problem-col good">
+        <div class="problem-col-title">✅ Med Svar Direkt</div>
+        <div class="problem-item"><span class="pi-icon">✍️</span><span>Hitta rätt mall på 30 sekunder</span></div>
+        <div class="problem-item"><span class="pi-icon">📬</span><span>Skicka ett professionellt brev direkt</span></div>
+        <div class="problem-item"><span class="pi-icon">🎯</span><span>Skrivet för verkliga svenska situationer</span></div>
+        <div class="problem-item"><span class="pi-icon">😌</span><span>Sluta oroa dig — du har svaret</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="container reveal">
+    <div class="tag">Fördelar</div>
+    <h2 class="section-title">Allt du behöver, direkt i fickan</h2>
+    <p class="section-sub">Inga krångliga formulär. Ingen väntan. Bara klart och tydligt.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Sparar tid</div>
+        <div class="feature-desc">Hitta och anpassa en mall på under en minut. Inga tomma sidor att stirra på.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">😌</div>
+        <div class="feature-title">Minskar stress</div>
+        <div class="feature-desc">Sluta oroa dig för om brevet är korrekt. Mallarna är redan professionellt formulerade.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <div class="feature-title">Tydliga texter</div>
+        <div class="feature-desc">Skrivet på korrekt, formell svenska. Myndigheterna förstår direkt vad du menar.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Alltid i mobilen</div>
+        <div class="feature-desc">Öppna appen var du än är — hemma, på bussen, eller vid ett möte.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🇸🇪</div>
+        <div class="feature-title">Byggt för Sverige</div>
+        <div class="feature-desc">Verkliga situationer som du faktiskt möter i det svenska systemet.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">Privat & säkert</div>
+        <div class="feature-desc">Allt stannar på din telefon. Inget lagras på externa servrar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MYNDIGHETER -->
+<section class="section section-alt">
+  <div class="container reveal">
+    <div class="tag">Mallar</div>
+    <h2 class="section-title">52+ mallar för 4 myndigheter</h2>
+    <p class="section-sub">De vanligaste situationerna — redan klara att skicka.</p>
+    <div class="myndigheter-grid">
+      <div class="mynd-card">
+        <div class="mynd-emoji">🏠</div>
+        <div class="mynd-name">Boverket</div>
+        <div class="mynd-count">10 mallar</div>
+        <div class="mynd-examples">Bostadsbidrag, andrahandsuthyrning, hyreskontrakt och mer.</div>
+      </div>
+      <div class="mynd-card">
+        <div class="mynd-emoji">📊</div>
+        <div class="mynd-name">Skatteverket</div>
+        <div class="mynd-count">14 mallar</div>
+        <div class="mynd-examples">Personnummer, deklaration, folkbokföring, F-skatt.</div>
+      </div>
+      <div class="mynd-card">
+        <div class="mynd-emoji">🏥</div>
+        <div class="mynd-name">Försäkringskassan</div>
+        <div class="mynd-count">14 mallar</div>
+        <div class="mynd-examples">Sjukpenning, föräldrapenning, aktivitetsersättning.</div>
+      </div>
+      <div class="mynd-card">
+        <div class="mynd-emoji">🛂</div>
+        <div class="mynd-name">Migrationsverket</div>
+        <div class="mynd-count">14 mallar</div>
+        <div class="mynd-examples">Uppehållstillstånd, medborgarskap, familjeåterförening.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL FORM -->
+<section class="section">
+  <div class="container reveal">
+    <div class="email-section">
+      <div class="tag">Håll dig uppdaterad</div>
+      <h2 class="section-title" style="margin-bottom:8px;">Nya mallar varje månad</h2>
+      <p style="color:var(--text-muted);font-size:15px;max-width:400px;margin:0 auto;">Lämna din e-post och vi meddelar dig när vi lägger till nya mallar eller funktioner.</p>
+      <form class="email-form" id="emailForm" onsubmit="handleSubmit(event)">
+        <input
+          class="email-input"
+          type="email"
+          id="emailInput"
+          placeholder="din@email.com"
+          required
+          autocomplete="email"
+        />
+        <button class="email-submit" type="submit">Håll mig uppdaterad →</button>
+      </form>
+      <div class="email-success" id="emailSuccess">
+        ✅ Tack! Vi hör av oss när det finns nyheter.
+      </div>
+      <p class="email-privacy">🔒 Ingen spam. Avsluta när som helst.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt">
+  <div class="container reveal">
+    <div class="tag">FAQ</div>
+    <h2 class="section-title">Vanliga frågor</h2>
+    <p class="section-sub" style="margin-bottom:24px;">Har du en fråga? Svaret finns troligtvis här.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Är appen helt gratis?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja, appen med alla 52+ mallar är helt gratis. Du laddar ner den och använder direkt — ingen registrering, inget kreditkort.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Fungerar mallarna på riktigt?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja. Mallarna är formulerade på korrekt, formell svenska och baserade på verkliga situationer. Du fyller i dina uppgifter, kopierar och skickar.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Vilka telefoner stöds?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Appen fungerar på Android och iPhone. Du laddar ner den via Expo Go från App Store eller Google Play — ingen separat installation behövs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Är mina uppgifter säkra?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Allt du skriver stannar på din telefon. Vi lagrar inga personuppgifter och skickar inget till externa servrar när du använder de gratis mallarna.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Hur ofta kommer nya mallar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Vi lägger till nya mallar regelbundet baserat på användarnas behov. Lämna din e-post ovan så meddelar vi dig direkt när det finns nyheter.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container reveal">
+    <h2>Börja nu —<br><em>helt gratis</em></h2>
+    <p>Ladda ner appen och skriv ditt första brev idag.</p>
+    <a class="btn btn-primary" style="font-size:17px;padding:18px 44px;" href="https://expo.dev/accounts/charteks/projects/svar-direkt-new">
+      📲 Ladda ner gratis
+    </a>
+    <p style="font-size:13px;color:var(--text-muted);margin-top:14px;">Ingen registrering krävs &nbsp;·&nbsp; Android & iPhone</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Svar<span>Direkt</span></div>
+    <div class="footer-links">
+      <a href="https://svardirekt.site">Om appen</a>
+      <a href="mailto:info@svardirekt.site">Kontakt</a>
+      <a href="https://svardirekt.site/integritetspolicy.html">Integritetspolicy</a>
+      <a href="https://svardirekt.site/anvandarvillkor.html">Användarvillkor</a>
+    </div>
+    <p class="footer-copy">© 2025 Svar Direkt · Sebastian Charewicz · info@svardirekt.site</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Email form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+    const btn = e.target.querySelector('.email-submit');
+    btn.textContent = '...';
+    btn.disabled = true;
+
+    // Send to backend newsletter endpoint
+    fetch('https://antiquewhite-lapwing-486017.hostingersite.com/api/tools/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'promo-page' })
+    })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .catch(() => ({})) // silent fail — still show success
+    .finally(() => {
+      document.getElementById('emailForm').style.display = 'none';
+      document.getElementById('emailSuccess').style.display = 'block';
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
