@@ -1088,6 +1088,192 @@ const articles: Article[] = [
       </>
     ),
   },
+  {
+    slug: "migrationsverket-begaran-om-komplettering",
+    title: "Migrationsverket begär komplettering – så svarar du rätt",
+    excerpt: "Fått ett brev från Migrationsverket om begäran om komplettering? Lär dig vad det innebär, vad du ska skicka in och hur du formulerar ditt svar korrekt.",
+    category: "Migrationsverket",
+    readTime: "6 min",
+    date: "25 april 2026",
+    content: (
+      <>
+        <p>
+          Ett brev från Migrationsverket med rubriken <strong>"Begäran om komplettering"</strong> kan kännas oroande. Men det är viktigt att förstå att detta inte automatiskt betyder att din ansökan kommer att avslås — tvärtom är det en möjlighet för dig att ge Migrationsverket den information de behöver för att fatta ett korrekt beslut.
+        </p>
+        <h2>Vad är en begäran om komplettering?</h2>
+        <p>
+          En begäran om komplettering (ibland kallad en <em>kommunicering</em>) innebär att Migrationsverket anser att de saknar tillräckligt underlag för att avgöra ditt ärende. Det kan handla om att de vill ha:
+        </p>
+        <ul>
+          <li>Kopior av pass eller identitetshandlingar</li>
+          <li>Anställningsavtal, lönespecifikationer eller arbetsgivarintyg</li>
+          <li>Hyreskontrakt eller bevis på bostad</li>
+          <li>Försäkringsintyg eller sjukförsäkringsbevis</li>
+          <li>Kompletterande personliga uppgifter eller förklaringar</li>
+        </ul>
+        <h2>Tidsfristen är avgörande</h2>
+        <p>
+          I brevet anges alltid en <strong>tidsfrist</strong> — vanligtvis 2–4 veckor. Det är mycket viktigt att du svarar inom denna tid. Om du inte svarar kan Migrationsverket fatta beslut enbart baserat på det underlag de redan har, vilket ofta leder till avslag.
+        </p>
+        <p>
+          Om du behöver mer tid — till exempel för att samla in dokument från utlandet — kan du begära en förlängning av tidsfristen. Gör detta skriftligt och så snart som möjligt.
+        </p>
+        <h2>Hur skriver du svaret?</h2>
+        <p>
+          Ditt svar till Migrationsverket bör vara tydligt, sakligt och formellt. Inkludera alltid:
+        </p>
+        <ul>
+          <li>Ditt ärendenummer (finns i det brev du fått)</li>
+          <li>Ditt fullständiga namn och personnummer/dossiernummer</li>
+          <li>En tydlig lista över de dokument du bifogar</li>
+          <li>En kort förklaring om något behöver förtydligas</li>
+        </ul>
+        <h2>Vanliga misstag att undvika</h2>
+        <p>
+          Många gör misstaget att skicka in för lite — eller för mycket. Fokusera på exakt det Migrationsverket efterfrågar. Om brevet ber om ett anställningsavtal, skicka anställningsavtalet. Lägg inte till onödiga dokument som kan skapa förvirring.
+        </p>
+        <p>
+          Ett annat vanligt misstag är att skriva ett allt för informellt eller känslomässigt svar. Migrationsverket fattar beslut baserat på fakta och lag — håll dig saklig.
+        </p>
+        <h2>Behöver du hjälp att formulera dig?</h2>
+        <p>
+          Med rätt mall kan du snabbt och korrekt svara på Migrationsverkets begäran utan att stressa. Svar Direkt erbjuder färdiga brevmallar för de vanligaste situationerna hos Migrationsverket.
+        </p>
+        <p>
+          <Link
+            href="/mallar-interaktiva"
+            className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
+          >
+            Se mallar för Migrationsverket →
+          </Link>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "kraenkt-pa-jobbet-skriv-till-arbetsgivaren",
+    title: "Kränkt på jobbet – skriv till arbetsgivaren och skydda dina rättigheter",
+    excerpt: "Upplever du kränkande särbehandling på jobbet? Lär dig hur du dokumenterar, anmäler och skriver formellt till din arbetsgivare – med gratis brevmall.",
+    category: "Arbetsrätt",
+    readTime: "7 min",
+    date: "25 april 2026",
+    content: (
+      <>
+        <p>
+          Kränkande särbehandling på arbetsplatsen är tyvärr vanligare än många tror. Enligt Arbetsmiljöverket upplever var femte anställd i Sverige någon form av kränkning eller mobbning under sin karriär. Men vad gör du när det händer dig — och hur skriver du till din arbetsgivare på ett sätt som faktiskt leder till förändring?
+        </p>
+        <h2>Vad räknas som kränkande särbehandling?</h2>
+        <p>
+          Arbetsmiljöverkets föreskrift AFS 2015:4 definierar kränkande särbehandling som <em>"handlingar som riktas mot en eller flera arbetstagare på ett kränkande sätt och som kan leda till ohälsa eller att dessa ställs utanför arbetsplatsens gemenskap"</em>. Det kan handla om:
+        </p>
+        <ul>
+          <li>Systematisk utfrysning eller ignorering</li>
+          <li>Orättvisa arbetsuppgifter, bestraffningar eller kritik</li>
+          <li>Spridning av rykten eller nedsättande kommentarer</li>
+          <li>Att bli förbigången vid befordringar utan sakliga skäl</li>
+          <li>Trakasserier av sexuell natur eller på grund av kön, ålder, etnicitet m.m.</li>
+        </ul>
+        <h2>Dokumentera — det är din viktigaste åtgärd</h2>
+        <p>
+          Innan du gör något annat: <strong>börja dokumentera</strong>. Skriv ned datum, klockslag, vad som sades eller gjordes och om det fanns vittnen. Spara relevanta mejl, meddelanden eller andra bevis. Denna dokumentation är avgörande om situationen eskalerar och du behöver involvera facket, Diskrimineringsombudsmannen (DO) eller en domstol.
+        </p>
+        <h2>Prata med din chef — eller chefens chef</h2>
+        <p>
+          Första steget är oftast att ta upp situationen med din närmaste chef. Om din chef <em>är</em> den som kränker dig, ska du istället vända dig till din chefs chef eller HR-avdelningen.
+        </p>
+        <p>
+          Många väljer att ha detta samtal muntligt, men det är klokt att följa upp med ett skriftligt mejl eller brev direkt efteråt — så att det finns ett dokumenterat spår av att du anmält situationen.
+        </p>
+        <h2>Skriv ett formellt brev till arbetsgivaren</h2>
+        <p>
+          Om situationen inte löser sig efter ett samtal, eller om du vill vara extra tydlig från start, kan du skriva ett formellt brev. Brevet bör innehålla:
+        </p>
+        <ul>
+          <li>En saklig beskrivning av vad som har hänt (med datum)</li>
+          <li>En tydlig hänvisning till att detta strider mot AML (Arbetsmiljölagen) och/eller AFS 2015:4</li>
+          <li>Ditt krav på åtgärd (till exempel: utredning, medling, eller omorganisation)</li>
+          <li>En begäran om skriftligt svar inom en rimlig tid (t.ex. 14 dagar)</li>
+        </ul>
+        <h2>Involvera facket eller DO</h2>
+        <p>
+          Om du är fackligt ansluten — kontakta ditt fackförbund direkt. De kan stödja dig i processen och ibland agera å dina vägnar. Om kränkningen har samband med diskriminering (kön, ålder, etnisk bakgrund, funktionsnedsättning etc.) kan du även anmäla till <strong>Diskrimineringsombudsmannen (DO)</strong>.
+        </p>
+        <p>
+          <Link
+            href="/mallar-interaktiva"
+            className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
+          >
+            Se brevmallar för arbetsplatssituationer →
+          </Link>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "nar-kommunen-bestammer-forskolaparkeringbygglov",
+    title: "När kommunen bestämmer – förskola, parkering och bygglov",
+    excerpt: "Hur kommunicerar du med kommunen om plats på förskola, parkeringsböter eller bygglovsansökan? Gratis mallar och guide för vanliga kommunärenden.",
+    category: "Kommunen",
+    readTime: "6 min",
+    date: "25 april 2026",
+    content: (
+      <>
+        <p>
+          Kommunen spelar en central roll i vardagen för alla som bor i Sverige — från barnomsorg och skola till parkering, bygglov och socialtjänst. Men att kommunicera med kommunen kan ibland kännas krångligt, särskilt om du fått ett beslut du inte håller med om eller om din ansökan har fastnat.
+        </p>
+        <h2>Plats på förskola – dina rättigheter</h2>
+        <p>
+          Enligt skollagen har alla barn rätt till förskola från och med ett års ålder. Kommunen är skyldig att erbjuda en plats inom <strong>fyra månader</strong> från att du ansökt — förutsatt att barnet har fyllt ett år och du önskar en plats.
+        </p>
+        <p>
+          Om kommunen inte erbjuder en plats inom denna tid har du rätt att klaga. Du kan:
+        </p>
+        <ul>
+          <li>Skriva ett formellt brev till kommunens utbildningsförvaltning och påminna om den lagstadgade skyldigheten</li>
+          <li>Anmäla till Skolinspektionen om kommunen inte följer lagen</li>
+          <li>Begära skadestånd om du till exempel tvingas stanna hemma från jobbet på grund av kommunens dröjsmål</li>
+        </ul>
+        <h2>Parkeringsböter – bestrid om du anser dig oskyldigt</h2>
+        <p>
+          Kommunala parkeringsböter (felparkeringsavgifter) är inte straffrättsliga — det är en avgift som du kan bestrida om du anser att den är felaktig. Vanliga grunder för bestridande är:
+        </p>
+        <ul>
+          <li>Otydlig skyltning eller skadad skylt</li>
+          <li>Du hade rätt att stå kvar (tillstånd, undantag)</li>
+          <li>Fordonet var i nödläge (sjukdom, olycka)</li>
+          <li>Avgiften är felaktigt utfärdad (fel registreringsnummer, fel tid)</li>
+        </ul>
+        <p>
+          Du har normalt <strong>tre veckor</strong> på dig att bestrida en parkeringsbot. Gör det skriftligt och bifoga eventuella bevis (foton, kvitton, intyg).
+        </p>
+        <h2>Bygglov – när kommunen säger nej</h2>
+        <p>
+          Att få avslag på en bygglovsansökan behöver inte vara slutet. Kommunens beslut kan överklagas till <strong>Länsstyrelsen</strong>. I ditt överklagande bör du:
+        </p>
+        <ul>
+          <li>Tydligt ange vilket beslut du överklagar (diarienummer och datum)</li>
+          <li>Förklara varför du anser att beslutet är felaktigt</li>
+          <li>Hänvisa till plan- och bygglagen (PBL) om relevant</li>
+          <li>Bifoga ritningar, foton eller andra underlag som stöder din ansökan</li>
+        </ul>
+        <p>
+          Överklagandet måste skickas till kommunen (som vidarebefordrar det till Länsstyrelsen) inom <strong>tre veckor</strong> från att du fick ta del av beslutet.
+        </p>
+        <h2>Skriv rätt från start</h2>
+        <p>
+          Oavsett om det handlar om förskola, parkering eller bygglov gäller samma regel: ett välformulerat, sakligt brev ger dig bäst chans att nå fram. Undvik känslouttryck och håll dig till fakta, lagtext och tidsramar.
+        </p>
+        <p>
+          <Link
+            href="/mallar-interaktiva"
+            className="inline-block mt-2 px-5 py-2.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm"
+          >
+            Se mallar för kommunärenden →
+          </Link>
+        </p>
+      </>
+    ),
+  },
 ];
 
 const categoryColors: Record<string, string> = {
@@ -1106,6 +1292,9 @@ const categoryColors: Record<string, string> = {
   "Ekonomi & Skulder": "bg-red-50 text-red-700",
   "Bidrag & Ersättning": "bg-orange-50 text-orange-700",
   "Tillstånd & Samhälle": "bg-violet-50 text-violet-700",
+  Migrationsverket: "bg-violet-50 text-violet-700",
+  Arbetsrätt: "bg-pink-50 text-pink-700",
+  Kommunen: "bg-cyan-50 text-cyan-700",
 };
 
 function ArticleCard({ article }: { article: Article }) {

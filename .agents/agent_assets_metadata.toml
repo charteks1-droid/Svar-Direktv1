@@ -539,3 +539,9 @@ id = "ZIB1GfsP85IAay5yQeNzZ"
 uri = "file://hostinger-bezpieczny.zip"
 type = "unspecified"
 title = "Aktualizacja – BEZPIECZNA (bez nadpisania artykułów)"
+
+[[outputs]]
+id = "fijRKnkP25GGr6lBa3GM9"
+uri = "file://hostinger-final.zip"
+type = "unspecified"
+title = "FINALNY ZIP – 3 artykuły na blogu"
