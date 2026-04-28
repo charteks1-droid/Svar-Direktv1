@@ -34,6 +34,14 @@ app.use("/api/subscription", subscriptionRouter);
 
 const { authMiddleware, publicUser } = authRouter;
 
+const webRouter = require("./web-subscription");
+app.post(
+  "/api/web/webhook",
+  express.raw({ type: "application/json" }),
+  webRouter.webhookHandler
+);
+app.use("/api/web", webRouter);
+
 const PORT = process.env.PORT || 3000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || "";
