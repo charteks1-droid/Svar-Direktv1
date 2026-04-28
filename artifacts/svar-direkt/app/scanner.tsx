@@ -32,24 +32,39 @@ export default function ScannerScreen() {
   const [copied, setCopied] = useState(false);
 
   const pickImage = async (useCamera: boolean) => {
-    const perm = useCamera
-      ? await ImagePicker.requestCameraPermissionsAsync()
-      : await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-    if (perm.status !== "granted") {
-      setError("Brak zgody na dostęp do " + (useCamera ? "aparatu" : "galerii"));
-      return;
-    }
-
-    const result = useCamera
-      ? await ImagePicker.launchCameraAsync({ quality: 0.5 })
-      : await ImagePicker.launchImageLibraryAsync({ quality: 0.5, mediaTypes: "images" });
-
-    if (!result.canceled && result.assets[0]) {
-      setImageUri(result.assets[0].uri);
-      setResult("");
-      setError("");
-      await analyzeImage(result.assets[0].uri);
+    try {
+      if (useCamera) {
+        const perm = await ImagePicker.requestCameraPermissionsAsync();
+        if (perm.status !== "granted") {
+          setError("Brak zgody na aparat. Zezwól w ustawieniach telefonu.");
+          return;
+        }
+        const picked = await ImagePicker.launchCameraAsync({ quality: 0.5 });
+        if (!picked.canceled && picked.assets?.[0]?.uri) {
+          setImageUri(picked.assets[0].uri);
+          setResult("");
+          setError("");
+          await analyzeImage(picked.assets[0].uri);
+        }
+      } else {
+        const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (perm.status !== "granted") {
+          setError("Brak zgody na galerię. Zezwól w ustawieniach telefonu.");
+          return;
+        }
+        const picked = await ImagePicker.launchImageLibraryAsync({
+          quality: 0.5,
+          mediaTypes: "images" as any,
+        });
+        if (!picked.canceled && picked.assets?.[0]?.uri) {
+          setImageUri(picked.assets[0].uri);
+          setResult("");
+          setError("");
+          await analyzeImage(picked.assets[0].uri);
+        }
+      }
+    } catch (e: any) {
+      setError("Nie można otworzyć " + (useCamera ? "aparatu" : "galerii") + ". Spróbuj ponownie.");
     }
   };
 
