@@ -569,3 +569,9 @@ id = "J43FeIWRwW1gwddX2sow0"
 uri = "file://hostinger-CALY-PROJEKT.zip"
 type = "unspecified"
 title = "CAŁY PROJEKT – wgraj do public_html"
+
+[[outputs]]
+id = "wABSqoaFTCico7JrkXKxz"
+uri = "file://env-szablon.zip"
+type = "unspecified"
+title = "Plik .env – wgraj do nodejs/"
