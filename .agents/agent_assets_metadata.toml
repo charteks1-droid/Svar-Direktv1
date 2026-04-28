@@ -521,3 +521,9 @@ id = "sawW8BCaVUyOYTQ8C0XxS"
 uri = "file://hostinger-nowe-artykuly.zip"
 type = "unspecified"
 title = "3 nowe artykuły – struktura folderów"
+
+[[outputs]]
+id = "fhDqci9xxMJVEePCjEJRy"
+uri = "file://hostinger-wszystkie-zmiany.zip"
+type = "unspecified"
+title = "Wszystkie zmiany – Hostinger"
