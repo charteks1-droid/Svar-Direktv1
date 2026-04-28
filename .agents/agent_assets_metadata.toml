@@ -545,3 +545,9 @@ id = "fijRKnkP25GGr6lBa3GM9"
 uri = "file://hostinger-final.zip"
 type = "unspecified"
 title = "FINALNY ZIP – 3 artykuły na blogu"
+
+[[outputs]]
+id = "l-ddmPXrYeOSU3MwIn6Y7"
+uri = "file://hostinger-tylko-assets.zip"
+type = "unspecified"
+title = "MINIMALNY ZIP – tylko 5 plików"
