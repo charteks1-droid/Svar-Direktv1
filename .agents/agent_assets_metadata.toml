@@ -491,3 +491,9 @@ id = "UF1G7S_5oDZMjpQvcLjnS"
 uri = "file://strona-hostinger.zip"
 type = "unspecified"
 title = "strona-hostinger.zip – wgraj zawartość do public_html/builds/"
+
+[[outputs]]
+id = "je5-NIddSR-rS73kqZhJq"
+uri = "file://.local/promo-svardirekt.zip"
+type = "unspecified"
+title = "promo.html – wgraj do public_html na Hostingerze"
