@@ -563,3 +563,9 @@ id = "biIsFX-q-wUOPxrD_UkLZ"
 uri = "file://hostinger-blog-v2.zip"
 type = "unspecified"
 title = "Blog poprawiony – prawidłowa nawigacja"
+
+[[outputs]]
+id = "J43FeIWRwW1gwddX2sow0"
+uri = "file://hostinger-CALY-PROJEKT.zip"
+type = "unspecified"
+title = "CAŁY PROJEKT – wgraj do public_html"
