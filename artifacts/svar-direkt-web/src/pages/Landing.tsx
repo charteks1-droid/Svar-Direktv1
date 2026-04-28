@@ -62,7 +62,7 @@ export default function Landing() {
                 disabled
                 className="px-6 py-3 bg-amber-400 text-white rounded-xl font-semibold text-sm cursor-not-allowed"
               >
-                App med AI – 79 kr/mc
+                App med AI – 79 kr/mån
               </button>
               <Link
                 href={TJANST_URL}
@@ -71,7 +71,7 @@ export default function Landing() {
                 Personlig mall – 99 kr
               </Link>
             </div>
-            <p className="text-xs text-slate-400 mb-4">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mc</p>
+            <p className="text-xs text-slate-400 mb-4">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mån</p>
             <div className="flex flex-wrap justify-center gap-4 mt-4">
               {[
                 { icon: "🔒", text: "SSL-säker betalning" },
@@ -355,7 +355,7 @@ export default function Landing() {
               {/* Tier 2 – AI app (coming soon) */}
               <div className="border-2 border-amber-400 rounded-2xl p-5 text-center bg-amber-50">
                 <p className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">App med AI ✨</p>
-                <p className="text-3xl font-bold text-slate-900 mb-1">79 kr<span className="text-base font-normal">/mc</span></p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">79 kr<span className="text-base font-normal">/mån</span></p>
                 <p className="text-xs text-slate-500 mb-4">7 dagars gratis provperiod · Kort krävs</p>
                 <button
                   disabled

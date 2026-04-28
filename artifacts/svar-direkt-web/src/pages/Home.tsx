@@ -556,7 +556,7 @@ export default function Home() {
                   disabled
                   className="px-6 py-3 bg-amber-400/80 border border-amber-300 text-white rounded-xl font-medium text-sm cursor-not-allowed"
                 >
-                  App med AI – 79 kr/mc
+                  App med AI – 79 kr/mån
                 </button>
                 <Link
                   href="/tjanst"
@@ -789,7 +789,7 @@ export default function Home() {
               Personlig mall – 99 kr
             </Link>
           </div>
-          <p className="text-xs text-slate-400 mt-2 text-center">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mc</p>
+          <p className="text-xs text-slate-400 mt-2 text-center">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mån</p>
         </div>
       </section>
 
@@ -1143,7 +1143,7 @@ export default function Home() {
             Personlig hjälp – 99 kr
           </Link>
         </div>
-        <p className="text-xs text-slate-400 mt-2 text-center">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mc</p>
+        <p className="text-xs text-slate-400 mt-2 text-center">App: gratis · Personlig mall: 99 kr · App med AI: 79 kr/mån</p>
       </section>
 
       {/* SEO-rich text block */}
@@ -1367,7 +1367,7 @@ export default function Home() {
             {/* Tier 2 – AI app (coming soon) */}
             <div className="border-2 border-amber-400 rounded-2xl p-5 text-center bg-amber-50">
               <p className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">App med AI ✨</p>
-              <p className="text-3xl font-bold text-slate-900 mb-1">79 kr<span className="text-base font-normal">/mc</span></p>
+              <p className="text-3xl font-bold text-slate-900 mb-1">79 kr<span className="text-base font-normal">/mån</span></p>
               <p className="text-xs text-slate-500 mb-4">7 dagars gratis provperiod · Kort krävs</p>
               <button
                 disabled
