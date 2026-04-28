@@ -127,9 +127,21 @@ export const subscriptionApi = {
     }),
 };
 
+function decodeTokenUserId(token: string): string | null {
+  try {
+    const payload = token.split(".")[1];
+    const decoded = JSON.parse(atob(payload));
+    return decoded.sub || decoded.id || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function askAi(message: string): Promise<{ reply: string; remaining: number }> {
+  const token = await getToken();
+  const userId = token ? decodeTokenUserId(token) : null;
   return request<{ reply: string; remaining: number }>("/api/ai/ask", {
     method: "POST",
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({ message, userId }),
   });
 }
