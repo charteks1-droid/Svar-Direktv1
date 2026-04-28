@@ -557,3 +557,9 @@ id = "CDVSSg79CoycuL0BDbWyC"
 uri = "file://hostinger-blog-index.zip"
 type = "unspecified"
 title = "Statyczny blog – 1 plik, 27 artykułów"
+
+[[outputs]]
+id = "biIsFX-q-wUOPxrD_UkLZ"
+uri = "file://hostinger-blog-v2.zip"
+type = "unspecified"
+title = "Blog poprawiony – prawidłowa nawigacja"
