@@ -497,3 +497,9 @@ id = "je5-NIddSR-rS73kqZhJq"
 uri = "file://.local/promo-svardirekt.zip"
 type = "unspecified"
 title = "promo.html – wgraj do public_html na Hostingerze"
+
+[[outputs]]
+id = "FBEHwCvwtrElxmNgKN8Uq"
+uri = "file://hostinger-update.zip"
+type = "unspecified"
+title = "Svar Direkt – aktualizacja Hostinger"
