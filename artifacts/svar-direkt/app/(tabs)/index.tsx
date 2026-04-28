@@ -330,8 +330,6 @@ export default function HomeScreen() {
       {/* Premium shortcut row */}
       <View style={styles.premiumRow}>
         {[
-          { emoji: "📷", label: "Skanna brev", route: "/scanner" },
-          { emoji: "🌍", label: "Översätt", route: "/translate" },
           { emoji: "💬", label: "AI Historia", route: "/ai-history" },
         ].map((item) => (
           <Pressable
