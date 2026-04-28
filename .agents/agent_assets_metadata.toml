@@ -503,3 +503,15 @@ id = "FBEHwCvwtrElxmNgKN8Uq"
 uri = "file://hostinger-update.zip"
 type = "unspecified"
 title = "Svar Direkt – aktualizacja Hostinger"
+
+[[outputs]]
+id = "M6x0OW6EliyQbHNtaaNcL"
+uri = "file://hostinger-tylko-nowe.zip"
+type = "unspecified"
+title = "3 nowe artykuły (tylko nowe pliki)"
+
+[[outputs]]
+id = "saV6qiilzWGTOGsjHhKfJ"
+uri = "file://instrukcja-dodaj-do-indeksu.txt"
+type = "text"
+title = "Instrukcja – dodaj karty do indeksu bloga"
