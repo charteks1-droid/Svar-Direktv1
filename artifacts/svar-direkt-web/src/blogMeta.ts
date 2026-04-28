@@ -95,4 +95,16 @@ export const BLOG_META: Record<string, { title: string; description: string }> =
     title: "Nya tuffare regler för arbetstillstånd 2026 – detta gäller | Svar Direkt",
     description: "Den 1 juni 2026 införs nya, hårdare regler för arbetstillstånd i Sverige, inklusive ett nytt lönekrav. Läs vår sammanfattning av vad som gäller.",
   },
+  "migrationsverket-begaran-om-komplettering": {
+    title: "Migrationsverket begär komplettering – så svarar du rätt | Svar Direkt",
+    description: "Fått ett brev från Migrationsverket om begäran om komplettering? Lär dig vad det innebär, vad du ska skicka in och hur du formulerar ditt svar korrekt.",
+  },
+  "kraenkt-pa-jobbet-skriv-till-arbetsgivaren": {
+    title: "Kränkt på jobbet – skriv till arbetsgivaren och skydda dina rättigheter | Svar Direkt",
+    description: "Upplever du kränkande särbehandling på jobbet? Lär dig hur du dokumenterar, anmäler och skriver formellt till din arbetsgivare – med gratis brevmall.",
+  },
+  "nar-kommunen-bestammer-forskolaparkeringbygglov": {
+    title: "När kommunen bestämmer – förskola, parkering och bygglov | Svar Direkt",
+    description: "Hur kommunicerar du med kommunen om plats på förskola, parkeringsböter eller bygglovsansökan? Gratis mallar och guide för vanliga kommunärenden.",
+  },
 };
