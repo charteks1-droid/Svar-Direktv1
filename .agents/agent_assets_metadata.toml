@@ -533,3 +533,9 @@ id = "Lg_N4e8QAgsNBRgXayyLm"
 uri = "file://hostinger-aktualizacja-blog.zip"
 type = "unspecified"
 title = "Aktualizacja strony – 3 nowe artykuły"
+
+[[outputs]]
+id = "ZIB1GfsP85IAay5yQeNzZ"
+uri = "file://hostinger-bezpieczny.zip"
+type = "unspecified"
+title = "Aktualizacja – BEZPIECZNA (bez nadpisania artykułów)"
