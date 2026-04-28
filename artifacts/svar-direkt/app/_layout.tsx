@@ -80,6 +80,10 @@ function RootLayoutNav() {
         name="ai-history"
         options={{ title: "Historia AI", headerBackTitle: "Tillbaka" }}
       />
+      <Stack.Screen
+        name="calculator"
+        options={{ title: "Kalkylator lön", headerBackTitle: "Tillbaka" }}
+      />
     </Stack>
   );
 }
