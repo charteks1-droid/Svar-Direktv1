@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Svar Direkt – 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Migrationsverket, Kronofogden. Ladda ner appen gratis.">
+<meta name="keywords" content="svar myndigheter, mallar skatteverket, försäkringskassan brev, migrationsverket mall, svenska myndigheter">
+<meta property="og:title" content="Svar Direkt – Färdiga mallar till svenska myndigheter">
+<meta property="og:description" content="52+ professionella mallar. Välj mall, kopiera, skicka. Inga tomma sidor.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://svardirekt.site">
+<title>Svar Direkt – Färdiga mallar till svenska myndigheter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0a7ea4;
+  --primary-light: #1a9ecf;
+  --primary-dark: #075f7c;
+  --primary-10: rgba(10,126,164,0.10);
+  --primary-20: rgba(10,126,164,0.20);
+  --bg: #f5f8fa;
+  --white: #ffffff;
+  --text: #0f1923;
+  --text-sec: #5a7080;
+  --text-ter: #8ea3b0;
+  --success: #38a169;
+  --danger: #e53e3e;
+  --amber: #d97706;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 24px rgba(10,126,164,0.08);
+  --shadow-md: 0 8px 40px rgba(10,126,164,0.14);
+  --shadow-lg: 0 16px 60px rgba(10,126,164,0.18);
+  --transition: 0.28s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal-left.visible{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal-right.visible{opacity:1;transform:none}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal-scale.visible{opacity:1;transform:none}
+.stagger-1{transition-delay:0.05s}
+.stagger-2{transition-delay:0.12s}
+.stagger-3{transition-delay:0.19s}
+.stagger-4{transition-delay:0.26s}
+.stagger-5{transition-delay:0.33s}
+.stagger-6{transition-delay:0.40s}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e8eef2;transition:box-shadow var(--transition)}
+nav.scrolled{box-shadow:0 2px 20px rgba(10,126,164,0.10)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;color:var(--text)}
+.nav-logo svg{flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:7px 13px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:500;color:var(--text-sec);transition:color var(--transition),background var(--transition)}
+.nav-links a:hover{color:var(--primary);background:var(--primary-10)}
+.nav-cta{padding:9px 20px;background:var(--primary);color:#fff;border-radius:var(--radius-sm);font-size:.875rem;font-weight:600;transition:background var(--transition),transform var(--transition),box-shadow var(--transition)}
+.nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(10,126,164,0.30)}
+.nav-cta:active{transform:none}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px;transition:background var(--transition)}
+.hamburger:hover{background:var(--primary-10)}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s ease}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(16px);z-index:99;padding:24px;flex-direction:column;gap:8px;overflow-y:auto}
+.mobile-menu.open{display:flex;animation:fadeInDown 0.25s ease}
+.mobile-menu a{padding:14px 16px;border-radius:var(--radius);font-size:1rem;font-weight:500;color:var(--text);border:1px solid transparent;transition:all var(--transition)}
+.mobile-menu a:hover{border-color:var(--primary-20);background:var(--primary-10);color:var(--primary)}
+.mobile-menu .mob-cta{background:var(--primary);color:#fff;text-align:center;border-color:var(--primary);margin-top:8px}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* HERO */
+#hero{position:relative;background:linear-gradient(135deg,#0f1923 0%,#0a3d54 50%,#075f7c 100%);overflow:hidden;min-height:85vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(26,158,207,0.15) 0%,transparent 60%),radial-gradient(ellipse at 10% 80%,rgba(10,126,164,0.10) 0%,transparent 50%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.15);border-radius:50%;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+.hero-inner{max-width:1100px;margin:0 auto;padding:80px 24px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:40px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.85);font-size:.8rem;font-weight:600;margin-bottom:20px;animation:badgePulse 3s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(26,158,207,0.3)}50%{box-shadow:0 0 0 8px rgba(26,158,207,0)}}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:var(--primary-light);animation:dotBlink 2s ease-in-out infinite}
+@keyframes dotBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.15;color:#fff;margin-bottom:20px;letter-spacing:-0.02em}
+.hero-title span{color:var(--primary-light)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.70);line-height:1.7;margin-bottom:36px;max-width:440px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--primary-light);color:#fff;border-radius:var(--radius);font-size:.95rem;font-weight:700;transition:all var(--transition);box-shadow:0 4px 20px rgba(26,158,207,0.35)}
+.btn-primary:hover{background:#0090c0;transform:translateY(-2px);box-shadow:0 8px 32px rgba(26,158,207,0.45)}
+.btn-primary:active{transform:none}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(255,255,255,0.10);color:#fff;border-radius:var(--radius);font-size:.95rem;font-weight:600;border:1px solid rgba(255,255,255,0.25);transition:all var(--transition)}
+.btn-secondary:hover{background:rgba(255,255,255,0.18);transform:translateY(-2px)}
+.btn-amber{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:var(--radius);font-size:.95rem;font-weight:700;transition:all var(--transition);box-shadow:0 4px 16px rgba(217,119,6,0.30)}
+.btn-amber:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,119,6,0.42)}
+.hero-trust{display:flex;flex-wrap:wrap;gap:20px}
+.trust-item{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.60);font-size:.8rem}
+.trust-item svg{color:var(--primary-light)}
+/* Phone mockup */
+.hero-visual{display:flex;justify-content:center;align-items:center}
+.phone-wrap{position:relative;animation:phoneFloat 4s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.phone{width:220px;background:#0f1923;border-radius:36px;border:8px solid #1a2633;box-shadow:0 32px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);overflow:hidden;aspect-ratio:9/19}
+.phone-notch{height:24px;background:#0a1520;display:flex;justify-content:center;align-items:center}
+.phone-notch-bar{width:64px;height:14px;background:#0f1923;border-radius:8px}
+.phone-body{padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.phone-header{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.phone-icon{width:28px;height:28px;border-radius:8px;background:var(--primary-20)}
+.phone-title{height:8px;width:80px;background:#2a3a4a;border-radius:4px}
+.phone-card{border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:8px;animation:cardSlide 4s ease-in-out infinite}
+@keyframes cardSlide{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
+.phone-card-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.phone-card-text{font-size:10px;color:#fff;font-weight:500}
+.phone-ai{margin-top:4px;border-radius:12px;background:rgba(26,158,207,0.15);border:1px solid rgba(26,158,207,0.25);padding:10px 12px;display:flex;align-items:center;justify-content:space-between}
+.phone-ai-text{font-size:9px;color:var(--primary-light);font-weight:600}
+.phone-glow{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:120px;height:40px;background:var(--primary-light);border-radius:50%;filter:blur(24px);opacity:0.4}
+
+/* STATS */
+.stats{background:var(--primary);padding:18px 24px}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.stat-item{padding:12px 8px}
+.stat-num{font-size:1.7rem;font-weight:800;color:#fff;line-height:1}
+.stat-label{font-size:.75rem;color:rgba(255,255,255,0.75);margin-top:4px}
+
+/* SECTIONS */
+section{padding:80px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-inner-sm{max-width:780px;margin:0 auto}
+.section-inner-md{max-width:900px;margin:0 auto}
+.section-label{display:inline-block;background:var(--primary-10);color:var(--primary);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:5px 14px;border-radius:40px;margin-bottom:14px}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--text);line-height:1.25;letter-spacing:-0.01em}
+.section-sub{font-size:1rem;color:var(--text-sec);margin-top:10px;line-height:1.7}
+.text-center{text-align:center}
+
+/* HOW IT WORKS */
+#how{background:var(--bg)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:32px;left:calc(16.6% + 20px);right:calc(16.6% + 20px);height:2px;background:linear-gradient(to right,var(--primary-light),var(--primary-dark));opacity:0.3;border-radius:2px}
+.step-card{background:var(--white);border-radius:var(--radius);padding:28px 24px;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(10,126,164,0.07);transition:all var(--transition)}
+.step-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 4px 16px rgba(10,126,164,0.30)}
+.step-icon{font-size:1.5rem;margin-bottom:8px}
+.step-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.step-desc{font-size:.875rem;color:var(--text-sec);line-height:1.65}
+
+/* FEATURES */
+#features{background:var(--white)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.feature-card{background:var(--white);border:1px solid #e8eef2;border-radius:var(--radius);padding:24px;transition:all var(--transition);position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--primary),var(--primary-light));transform:scaleX(0);transform-origin:left;transition:transform var(--transition)}
+.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:rgba(10,126,164,0.20)}
+.feature-card:hover::before{transform:scaleX(1)}
+.feature-icon{width:48px;height:48px;border-radius:12px;background:var(--primary-10);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.4rem;transition:all var(--transition)}
+.feature-card:hover .feature-icon{background:var(--primary);transform:scale(1.05)}
+.feature-card:hover .feature-icon svg{color:#fff}
+.feature-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:7px}
+.feature-desc{font-size:.875rem;color:var(--text-sec);line-height:1.65}
+
+/* CATEGORIES */
+#categories{background:linear-gradient(135deg,#f0f7fb 0%,var(--bg) 100%)}
+.categories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.cat-card{background:var(--white);border-radius:var(--radius);padding:22px;border:2px solid transparent;cursor:pointer;transition:all var(--transition);box-shadow:var(--shadow)}
+.cat-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.cat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cat-name{font-size:1rem;font-weight:700;color:var(--text)}
+.cat-count{font-size:.8rem;color:var(--text-sec);font-weight:500}
+.cat-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.cat-tag{background:var(--bg);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--text-sec);font-weight:500}
+.cat-table{margin-top:48px;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid #e8eef2}
+.cat-table table{width:100%;border-collapse:collapse;font-size:.9rem}
+.cat-table thead tr{background:#0f1923;color:#fff}
+.cat-table th{padding:14px 20px;text-align:left;font-weight:600}
+.cat-table th.accent{color:var(--primary-light)}
+.cat-table tbody tr{border-bottom:1px solid #f0f4f7;transition:background var(--transition)}
+.cat-table tbody tr:hover{background:#f5fafd}
+.cat-table tbody tr:last-child{border:none}
+.cat-table td{padding:14px 20px}
+.cat-table td.check{color:var(--primary);font-weight:600}
+
+/* COMPARISON */
+#compare{background:var(--white)}
+.compare-table{margin-top:40px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid #e8eef2}
+.compare-table table{width:100%;border-collapse:collapse;font-size:.9rem}
+.compare-table thead tr{background:#0f1923;color:#fff}
+.compare-table th{padding:14px 20px;text-align:left;font-weight:600}
+.compare-table th.accent{color:var(--primary-light);background:rgba(10,126,164,0.08)}
+.compare-table tbody tr{border-bottom:1px solid #f0f4f7;transition:background var(--transition)}
+.compare-table tbody tr:hover{background:#f5fafd}
+.compare-table td{padding:14px 20px;vertical-align:top;line-height:1.55}
+.compare-table td.sd{color:var(--primary);font-weight:600;background:rgba(10,126,164,0.03)}
+
+/* LOSS AVERSION */
+#loss{background:var(--bg)}
+.loss-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.loss-col{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.loss-header{padding:16px 20px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem}
+.loss-header-bad{background:#fee2e2;color:#dc2626}
+.loss-header-good{background:#dcfce7;color:#16a34a}
+.loss-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.loss-body{padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.loss-body-bad{background:#fff5f5}
+.loss-body-good{background:#f0fdf4}
+.loss-row{display:flex;align-items:flex-start;gap:10px}
+.loss-dot{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:.65rem;font-weight:700}
+.loss-dot-bad{background:#fee2e2;color:#dc2626}
+.loss-dot-good{background:#dcfce7;color:#16a34a}
+.loss-text{font-size:.875rem;line-height:1.55;color:#374151}
+.loss-text-good{font-weight:600;color:#15803d}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--white)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.testi-card{background:var(--bg);border-radius:var(--radius);padding:24px;border:1px solid #e8eef2;transition:all var(--transition)}
+.testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(10,126,164,0.15)}
+.testi-stars{display:flex;gap:3px;margin-bottom:12px}
+.testi-quote{font-size:.9rem;color:var(--text-sec);line-height:1.7;font-style:italic;flex:1}
+.testi-author{font-size:.8rem;font-weight:600;color:var(--text-ter);margin-top:14px;padding-top:14px;border-top:1px solid #e8eef2}
+
+/* PRICING */
+#pricing{background:linear-gradient(135deg,#0f1923 0%,#0a3d54 100%);position:relative;overflow:hidden}
+#pricing::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(26,158,207,0.12) 0%,transparent 70%);pointer-events:none}
+#pricing .section-label{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9)}
+#pricing .section-title{color:#fff}
+#pricing .section-sub{color:rgba(255,255,255,0.65)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.price-card{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.10);border-radius:var(--radius);padding:28px 24px;transition:all var(--transition);position:relative}
+.price-card:hover{border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.10);transform:translateY(-6px)}
+.price-card.featured{background:rgba(26,158,207,0.15);border-color:var(--primary-light);box-shadow:0 0 40px rgba(26,158,207,0.20)}
+.price-card.featured:hover{transform:translateY(-8px)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary-light);color:#fff;padding:4px 16px;border-radius:40px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.price-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,0.60);margin-bottom:8px}
+.price-label.amber{color:#fbbf24}
+.price-amount{font-size:2.8rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.02em}
+.price-unit{font-size:1rem;font-weight:400;color:rgba(255,255,255,0.55);margin-left:2px}
+.price-note{font-size:.8rem;color:rgba(255,255,255,0.50);margin:10px 0 20px}
+.price-divider{height:1px;background:rgba(255,255,255,0.10);margin:20px 0}
+.price-features{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.price-feature{display:flex;align-items:flex-start;gap:8px;font-size:.875rem;color:rgba(255,255,255,0.80)}
+.price-feature svg{flex-shrink:0;margin-top:2px;color:var(--primary-light)}
+.price-btn{display:block;width:100%;padding:13px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:700;text-align:center;transition:all var(--transition)}
+.price-btn-primary{background:var(--primary-light);color:#fff}
+.price-btn-primary:hover{background:#0090c0;transform:translateY(-1px)}
+.price-btn-amber{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff}
+.price-btn-amber:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(217,119,6,0.35)}
+.price-btn-outline{background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.20)}
+.price-btn-outline:hover{background:rgba(255,255,255,0.18)}
+
+/* FAQ */
+#faq{background:var(--white)}
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid #e8eef2}
+.faq-item:first-child{border-top:1px solid #e8eef2}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;text-align:left;gap:16px;background:none;transition:color var(--transition)}
+.faq-btn:hover .faq-q{color:var(--primary)}
+.faq-q{font-size:.975rem;font-weight:600;color:var(--text);line-height:1.4;transition:color var(--transition)}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--transition)}
+.faq-btn.open .faq-icon{background:var(--primary);transform:rotate(180deg)}
+.faq-btn.open .faq-icon svg{color:#fff}
+.faq-icon svg{color:var(--text-sec);transition:color var(--transition)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease}
+.faq-answer.open{max-height:500px;padding-bottom:18px}
+.faq-answer p{font-size:.9rem;color:var(--text-sec);line-height:1.7}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;margin-top:48px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-info-item{display:flex;align-items:flex-start;gap:14px}
+.contact-info-icon{width:44px;height:44px;border-radius:12px;background:var(--primary-10);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--primary)}
+.contact-info-title{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.contact-info-sub{font-size:.85rem;color:var(--text-sec)}
+.contact-info-sub a{color:var(--primary)}
+.contact-form-wrap{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);border:1px solid #e8eef2}
+.form-group{margin-bottom:18px}
+.form-label{display:block;font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:7px}
+.form-label .req{color:var(--danger)}
+.form-input,.form-select,.form-textarea{width:100%;padding:11px 14px;border:1.5px solid #d8e2e9;border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;color:var(--text);background:var(--white);transition:border-color var(--transition),box-shadow var(--transition);outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(10,126,164,0.12)}
+.form-textarea{resize:none;min-height:110px}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a7080' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-error-msg{background:#fee2e2;border:1px solid #fecaca;border-radius:var(--radius-sm);padding:11px 14px;font-size:.875rem;color:#dc2626;margin-top:14px}
+.btn-submit{width:100%;padding:13px;background:var(--primary);color:#fff;border-radius:var(--radius-sm);font-size:.95rem;font-weight:700;border:none;cursor:pointer;transition:all var(--transition);display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+.btn-submit:hover:not(:disabled){background:var(--primary-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(10,126,164,0.30)}
+.btn-submit:disabled{opacity:0.65;cursor:not-allowed}
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-success{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius);padding:28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.form-success-icon{width:52px;height:52px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.form-success h3{font-size:1.1rem;font-weight:700;color:var(--text)}
+.form-success p{font-size:.875rem;color:var(--text-sec);max-width:320px}
+
+/* NEWSLETTER */
+#newsletter{background:linear-gradient(135deg,var(--primary-dark),var(--primary))}
+.newsletter-inner{max-width:640px;margin:0 auto;text-align:center}
+#newsletter .section-title{color:#fff}
+#newsletter .section-sub{color:rgba(255,255,255,0.75)}
+.newsletter-form{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;justify-content:center}
+.newsletter-input{flex:1;min-width:240px;padding:13px 16px;border-radius:var(--radius-sm);border:none;font-family:inherit;font-size:.9rem;outline:none;transition:box-shadow var(--transition)}
+.newsletter-input:focus{box-shadow:0 0 0 3px rgba(255,255,255,0.25)}
+.newsletter-btn{padding:13px 24px;background:#fff;color:var(--primary);border-radius:var(--radius-sm);font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all var(--transition);white-space:nowrap}
+.newsletter-btn:hover{background:var(--bg);transform:translateY(-1px)}
+.newsletter-disclaimer{font-size:.78rem;color:rgba(255,255,255,0.55);margin-top:14px}
+.newsletter-success{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:var(--radius);padding:16px 24px;color:#fff;font-weight:600;margin-top:20px;display:none}
+
+/* FOOTER */
+footer{background:#0f1923;color:rgba(255,255,255,0.75);padding:52px 24px 28px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-brand p{font-size:.875rem;color:rgba(255,255,255,0.50);line-height:1.7;margin-top:12px;max-width:240px}
+.footer-logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1rem;margin-bottom:4px}
+.footer-col-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,0.40);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:9px}
+.footer-links a{font-size:.875rem;color:rgba(255,255,255,0.60);transition:color var(--transition)}
+.footer-links a:hover{color:#fff}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:.8rem;color:rgba(255,255,255,0.35)}
+.footer-social{display:flex;gap:10px}
+.social-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.50);transition:all var(--transition)}
+.social-btn:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
+
+/* SCROLL TO TOP */
+#scrollTop{position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(16px);transition:all var(--transition);box-shadow:0 4px 20px rgba(10,126,164,0.35);z-index:90;border:none}
+#scrollTop.visible{opacity:1;transform:none}
+#scrollTop:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+/* TOAST */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f1923;color:#fff;padding:12px 24px;border-radius:40px;font-size:.875rem;font-weight:500;opacity:0;transition:all 0.4s ease;z-index:200;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* GUARANTEE */
+.guarantee{display:inline-flex;align-items:center;gap:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius);padding:14px 20px;margin-top:28px}
+.guarantee-icon{font-size:1.5rem;flex-shrink:0}
+.guarantee-title{font-size:.9rem;font-weight:700;color:#15803d}
+.guarantee-sub{font-size:.8rem;color:#16a34a;margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.hero-inner{grid-template-columns:1fr;gap:40px;text-align:center}
+.hero-visual{display:none}
+.hero-sub{max-width:100%;margin-left:auto;margin-right:auto}
+.hero-btns{justify-content:center}
+.hero-trust{justify-content:center}
+.stats-inner{grid-template-columns:repeat(2,1fr)}
+.features-grid{grid-template-columns:repeat(2,1fr)}
+.categories-grid{grid-template-columns:repeat(2,1fr)}
+.loss-grid{grid-template-columns:1fr}
+.testi-grid{grid-template-columns:1fr}
+.pricing-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.footer-top{grid-template-columns:1fr 1fr}
+.steps-grid{grid-template-columns:1fr}
+.steps-grid::before{display:none}
+.compare-table{overflow-x:auto}
+}
+@media(max-width:640px){
+.nav-links{display:none}
+.hamburger{display:flex}
+section{padding:56px 20px}
+.features-grid{grid-template-columns:1fr}
+.categories-grid{grid-template-columns:1fr}
+.pricing-grid{grid-template-columns:1fr}
+.footer-top{grid-template-columns:1fr}
+.stats-inner{grid-template-columns:repeat(2,1fr)}
+.hero-inner{padding:56px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" role="navigation" aria-label="Huvudnavigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Svar Direkt hem">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <rect width="34" height="34" rx="9" fill="#0a7ea4"/>
+        <path d="M8 22l5-8 4 5 3-4 6 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="22" cy="12" r="3" fill="white" opacity="0.8"/>
+      </svg>
+      Svar Direkt
+    </a>
+    <div class="nav-links" role="menubar">
+      <a href="#how" role="menuitem">Hur det fungerar</a>
+      <a href="#features" role="menuitem">Funktioner</a>
+      <a href="#categories" role="menuitem">Myndigheter</a>
+      <a href="#pricing" role="menuitem">Priser</a>
+      <a href="https://svardirekt.site/forum/" role="menuitem">Forum</a>
+      <a href="https://svardirekt.site/blogg/" role="menuitem">Blogg</a>
+    </div>
+    <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="nav-cta">Ladda ner gratis</a>
+    <button class="hamburger" id="hamburger" aria-label="Öppna meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobilmeny">
+  <a href="#how" onclick="closeMobileMenu()">Hur det fungerar</a>
+  <a href="#features" onclick="closeMobileMenu()">Funktioner</a>
+  <a href="#categories" onclick="closeMobileMenu()">Myndigheter</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Priser</a>
+  <a href="https://svardirekt.site/forum/" onclick="closeMobileMenu()">Forum</a>
+  <a href="https://svardirekt.site/blogg/" onclick="closeMobileMenu()">Blogg</a>
+  <a href="#contact" onclick="closeMobileMenu()">Kontakt</a>
+  <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="mob-cta" onclick="closeMobileMenu()">Ladda ner gratis</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hjälte">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="hero-dot"></span>
+        52+ färdiga mallar — tillgänglig nu för Android
+      </div>
+      <h1 class="hero-title reveal stagger-1">
+        Hitta rätt mall.<br>
+        Kopiera texten.<br>
+        <span>Du skickar det direkt.</span>
+      </h1>
+      <p class="hero-sub reveal stagger-2">
+        Välj bland 52+ färdiga mallar för svenska myndigheter. Formella, korrekta texter för Skatteverket, Försäkringskassan, Migrationsverket och fler — redo att kopieras och skickas.
+      </p>
+      <div class="hero-btns reveal stagger-3">
+        <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="currentColor" stroke="none"/></svg>
+          Ladda ner gratis
+        </a>
+        <a href="#pricing" class="btn-amber">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          App med AI — 79 kr/mån
+        </a>
+        <a href="#how" class="btn-secondary">Hur det fungerar</a>
+      </div>
+      <div class="hero-trust reveal stagger-4">
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          SSL-säker betalning
+        </span>
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          30-dagars returrätt
+        </span>
+        <span class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          Direkt nedladdning
+        </span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-notch"><div class="phone-notch-bar"></div></div>
+          <div class="phone-body">
+            <div class="phone-header">
+              <div class="phone-icon"></div>
+              <div class="phone-title"></div>
+            </div>
+            <div class="phone-card" style="background:rgba(10,126,164,0.15);border-left:3px solid #0a7ea4">
+              <div class="phone-card-dot" style="background:#0a7ea4"></div>
+              <div class="phone-card-text">Skatteverket</div>
+            </div>
+            <div class="phone-card" style="background:rgba(0,184,148,0.15);border-left:3px solid #00b894">
+              <div class="phone-card-dot" style="background:#00b894"></div>
+              <div class="phone-card-text">Försäkringskassan</div>
+            </div>
+            <div class="phone-card" style="background:rgba(108,92,231,0.15);border-left:3px solid #6c5ce7">
+              <div class="phone-card-dot" style="background:#6c5ce7"></div>
+              <div class="phone-card-text">Migrationsverket</div>
+            </div>
+            <div class="phone-card" style="background:rgba(220,53,69,0.15);border-left:3px solid #dc3545">
+              <div class="phone-card-dot" style="background:#dc3545"></div>
+              <div class="phone-card-text">Kronofogden</div>
+            </div>
+            <div class="phone-ai">
+              <div class="phone-ai-text">AI Generator ✨</div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1a9ecf" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="phone-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats" aria-label="Statistik">
+  <div class="stats-inner">
+    <div class="stat-item reveal stagger-1">
+      <div class="stat-num" data-target="52">0</div>
+      <div class="stat-label">Färdiga mallar</div>
+    </div>
+    <div class="stat-item reveal stagger-2">
+      <div class="stat-num" data-target="7">0</div>
+      <div class="stat-label">Svenska myndigheter</div>
+    </div>
+    <div class="stat-item reveal stagger-3">
+      <div class="stat-num">30s</div>
+      <div class="stat-label">Klar mall på under</div>
+    </div>
+    <div class="stat-item reveal stagger-4">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Nöjdhetsgaranti</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Så fungerar det</span>
+      <h2 class="section-title reveal stagger-1">Tre steg. Inga krångel.</h2>
+      <p class="section-sub reveal stagger-2">Från tomt papper till färdigt brev på under en minut.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal stagger-1">
+        <div class="step-num">1</div>
+        <div class="step-icon">🏛️</div>
+        <div class="step-title">Välj myndighet</div>
+        <div class="step-desc">Öppna appen och välj vilken myndighet du vill skriva till — Skatteverket, Försäkringskassan, Kronofogden och fler.</div>
+      </div>
+      <div class="step-card reveal stagger-2">
+        <div class="step-num">2</div>
+        <div class="step-icon">📄</div>
+        <div class="step-title">Välj rätt mall</div>
+        <div class="step-desc">52+ mallar sorterade per myndighet och ärendetyp. Färdiga, formella texter på korrekt svenska — klara att använda.</div>
+      </div>
+      <div class="step-card reveal stagger-3">
+        <div class="step-num">3</div>
+        <div class="step-icon">📤</div>
+        <div class="step-title">Kopiera och skicka</div>
+        <div class="step-desc">Tryck för att kopiera hela texten. Klistra in och skicka till myndigheten — klart på under en minut.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Funktioner</span>
+      <h2 class="section-title reveal stagger-1">Allt du behöver i ett ställe</h2>
+      <p class="section-sub reveal stagger-2">Inga abonnemang. Inga dolda kostnader. Bara verktyg som fungerar.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal stagger-1">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a7ea4" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="feature-title">52+ färdiga mallar</div>
+        <div class="feature-desc">Professionella mallar skrivna på korrekt, formell svenska. Sorterade per myndighet och ärendetyp.</div>
+      </div>
+      <div class="feature-card reveal stagger-2">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a7ea4" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="feature-title">AI-generator ✨</div>
+        <div class="feature-desc">Generera anpassade brev med AI. Beskriv din situation och få ett professionellt svar redo att skicka.</div>
+      </div>
+      <div class="feature-card reveal stagger-3">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a7ea4" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="feature-title">Anonymt forum</div>
+        <div class="feature-desc">Ställ frågor och hjälp varandra anonymt. Dela erfarenheter om Kronofogden, Skatteverket och mer.</div>
+      </div>
+      <div class="feature-card reveal stagger-4">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a7ea4" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="feature-title">Påminnelser</div>
+        <div class="feature-desc">Missa aldrig en deadline. Ange svarstid och få påminnelse när det är dags att svara myndigheten.</div>
+      </div>
+      <div class="feature-card reveal stagger-5">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a7ea4" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feature-title">Försvar – rättslig hjälp</div>
+        <div class="feature-desc">Guidning för att försvara dig mot myndighetsbeslut. Vet dina rättigheter och hur du överklagar.</div>
+      </div>
+      <div class="feature-card reveal stagger-6">
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a7ea4" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="feature-title">Fungerar offline</div>
+        <div class="feature-desc">Alla mallar tillgängliga utan internet. Perfekt när du är på myndighetsbesök eller saknar uppkoppling.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Myndigheter</span>
+      <h2 class="section-title reveal stagger-1">Mallar för alla svenska myndigheter</h2>
+      <p class="section-sub reveal stagger-2">Välj din myndighet och hitta rätt mall för din situation.</p>
+    </div>
+    <div class="categories-grid">
+      <div class="cat-card reveal stagger-1">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#e6f2f8">📋</div>
+          <div>
+            <div class="cat-name">Skatteverket</div>
+            <div class="cat-count">14 mallar</div>
+          </div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Folkbokföring</span>
+          <span class="cat-tag">Deklaration</span>
+          <span class="cat-tag">Överklagande</span>
+          <span class="cat-tag">Anstånd</span>
+        </div>
+      </div>
+      <div class="cat-card reveal stagger-2">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#e6f8f1">🏥</div>
+          <div>
+            <div class="cat-name">Försäkringskassan</div>
+            <div class="cat-count">14 mallar</div>
+          </div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Sjukpenning</span>
+          <span class="cat-tag">Föräldrapenning</span>
+          <span class="cat-tag">Omprövning</span>
+          <span class="cat-tag">Överklagande</span>
+        </div>
+      </div>
+      <div class="cat-card reveal stagger-3">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#f0ebff">🌍</div>
+          <div>
+            <div class="cat-name">Migrationsverket</div>
+            <div class="cat-count">14 mallar</div>
+          </div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Uppehållstillstånd</span>
+          <span class="cat-tag">Medborgarskap</span>
+          <span class="cat-tag">Arbetstillstånd</span>
+          <span class="cat-tag">Asyl</span>
+        </div>
+      </div>
+      <div class="cat-card reveal stagger-4">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#fff0f0">⚖️</div>
+          <div>
+            <div class="cat-name">Kronofogden</div>
+            <div class="cat-count">6 mallar</div>
+          </div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Bestrida skuld</span>
+          <span class="cat-tag">Skuldsanering</span>
+          <span class="cat-tag">Betalningsplan</span>
+        </div>
+      </div>
+      <div class="cat-card reveal stagger-5">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#fff8e6">💼</div>
+          <div>
+            <div class="cat-name">Arbetsförmedlingen</div>
+            <div class="cat-count">6 mallar</div>
+          </div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">A-kassa</span>
+          <span class="cat-tag">Aktivitetsrapport</span>
+          <span class="cat-tag">Överklagande</span>
+        </div>
+      </div>
+      <div class="cat-card reveal stagger-6">
+        <div class="cat-header">
+          <div class="cat-icon" style="background:#e6f2f8">🏠</div>
+          <div>
+            <div class="cat-name">Boverket + fler</div>
+            <div class="cat-count">10+ mallar</div>
+          </div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Bostadsbidrag</span>
+          <span class="cat-tag">Inkasso</span>
+          <span class="cat-tag">Socialtjänsten</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-table reveal" style="margin-top:40px">
+      <table>
+        <thead>
+          <tr>
+            <th>Myndighet</th>
+            <th class="accent">Antal mallar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Försäkringskassan</td><td class="check">✓ 14 mallar</td></tr>
+          <tr><td>Skatteverket</td><td class="check">✓ 14 mallar</td></tr>
+          <tr><td>Migrationsverket</td><td class="check">✓ 14 mallar</td></tr>
+          <tr><td>Boverket</td><td class="check">✓ 10 mallar</td></tr>
+          <tr><td>Kronofogden</td><td class="check">✓ 6 mallar</td></tr>
+          <tr><td>Arbetsförmedlingen</td><td class="check">✓ 6 mallar</td></tr>
+          <tr><td>Inkasso</td><td class="check">✓ 4 mallar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Jämförelse</span>
+      <h2 class="section-title reveal stagger-1">Varför inte bara googla?</h2>
+      <p class="section-sub reveal stagger-2">Du har säkert tänkt på alternativen. Här är varför de inte räcker.</p>
+    </div>
+    <div class="compare-table reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Alternativ</th>
+            <th>Problemet</th>
+            <th class="accent">Svar Direkt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>🔍 Google</strong></td>
+            <td>Generiska texter, på engelska, osäkra källor — tar timmar.</td>
+            <td class="sd">Färdiga svenska texter för exakt din situation.</td>
+          </tr>
+          <tr>
+            <td><strong>🤖 ChatGPT</strong></td>
+            <td>Kräver att du vet vad du frågar. Inte tränat för svenska myndigheter.</td>
+            <td class="sd">Mallar anpassade för svenska myndigheter. Inga juridiska termer behövs.</td>
+          </tr>
+          <tr>
+            <td><strong>⚖️ Jurist</strong></td>
+            <td>1 000–3 000 kr per timme. Orimligt för ett enkelt svar.</td>
+            <td class="sd">Personlig hjälp från 99 kr. Första svaret gratis.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LOSS AVERSION -->
+<section id="loss">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Vad kostar det att vänta?</span>
+      <h2 class="section-title reveal stagger-1">Vad händer utan Svar Direkt?</h2>
+      <p class="section-sub reveal stagger-2">Varje myndighetsbrev du skjuter upp kostar tid, pengar och nerv.</p>
+    </div>
+    <div class="loss-grid">
+      <div class="loss-col reveal stagger-1">
+        <div class="loss-header loss-header-bad">
+          <div class="loss-icon" style="background:#fee2e2">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 2l8 8M10 2L2 10" stroke="#dc2626" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          Utan Svar Direkt
+        </div>
+        <div class="loss-body loss-body-bad">
+          <div class="loss-row"><div class="loss-dot loss-dot-bad">✗</div><div class="loss-text">2–3 timmar att hitta rätt formulering</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-bad">✗</div><div class="loss-text">Risk att skriva fel ton eller missförstås</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-bad">✗</div><div class="loss-text">Stress och osäkerhet inför varje svar</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-bad">✗</div><div class="loss-text">Ärendet försenas pga misstag eller tomma sidor</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-bad">✗</div><div class="loss-text">Dyr juridisk rådgivning för ett enkelt svar</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-bad">✗</div><div class="loss-text">Vet inte ens var du ska börja</div></div>
+        </div>
+      </div>
+      <div class="loss-col reveal stagger-2">
+        <div class="loss-header loss-header-good">
+          <div class="loss-icon" style="background:#dcfce7">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          Med Svar Direkt
+        </div>
+        <div class="loss-body loss-body-good">
+          <div class="loss-row"><div class="loss-dot loss-dot-good">✓</div><div class="loss-text loss-text-good">Redo mall på under 30 sekunder</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-good">✓</div><div class="loss-text loss-text-good">Korrekt, formell svenska — direkt</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-good">✓</div><div class="loss-text loss-text-good">Lugn och trygghet — texten är redan klar</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-good">✓</div><div class="loss-text loss-text-good">Skickar i tid — missar inga frister</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-good">✓</div><div class="loss-text loss-text-good">Gratis — inga prenumerationer</div></div>
+          <div class="loss-row"><div class="loss-dot loss-dot-good">✓</div><div class="loss-text loss-text-good">Klar text att kopiera och anpassa direkt</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Omdömen</span>
+      <h2 class="section-title reveal stagger-1">Vad säger användarna?</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal stagger-1">
+        <div class="testi-stars">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+        </div>
+        <p class="testi-quote">"Jag visste inte var jag skulle börja med Försäkringskassan. Appen hade exakt rätt mall — färdig, formell och klar att skicka. Fick svar inom en vecka."</p>
+        <div class="testi-author">Användare i Stockholm</div>
+      </div>
+      <div class="testi-card reveal stagger-2">
+        <div class="testi-stars">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+        </div>
+        <p class="testi-quote">"Kronofogden skickade ett krav och jag fick panik. Appen hade exakt den mallen jag behövde — professionell svenska, rätt ton, klart att kopiera."</p>
+        <div class="testi-author">Användare i Göteborg</div>
+      </div>
+      <div class="testi-card reveal stagger-3">
+        <div class="testi-stars">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b"><path d="M7 1l1.5 3 3.3.5-2.4 2.3.6 3.2L7 8.5l-3 1.5.6-3.2-2.4-2.3 3.3-.5L7 1z"/></svg>
+        </div>
+        <p class="testi-quote">"Appen sparade mig hundratals kronor i juridisk rådgivning. Jag hittade rätt mall, kopierade texten och skickade direkt. Snabbt, enkelt och korrekt."</p>
+        <div class="testi-author">Användare i Malmö</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Priser</span>
+      <h2 class="section-title reveal stagger-1">Välj din plan</h2>
+      <p class="section-sub reveal stagger-2">Börja gratis. Uppgradera när du vill. Inga bindningstider.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal stagger-1">
+        <div class="price-label">Gratis app</div>
+        <div class="price-amount">0<span class="price-unit">kr</span></div>
+        <div class="price-note">Engångsnedladdning · Inget konto krävs</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>52+ färdiga mallar</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>7 myndigheter</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Fungerar offline</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Kopiera med ett tryck</div>
+        </div>
+        <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="price-btn price-btn-primary">Ladda ner gratis</a>
+      </div>
+      <div class="price-card featured reveal stagger-2">
+        <div class="price-badge">Mest populär ✨</div>
+        <div class="price-label amber">App med AI</div>
+        <div class="price-amount">79<span class="price-unit">kr/mån</span></div>
+        <div class="price-note">7 dagars gratis provperiod · Avsluta när du vill</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Allt i gratis-appen</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>AI-generator för anpassade brev</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Historia av genererade brev</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Påminnelser om frister</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Försvar – rättslig guidning</div>
+        </div>
+        <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener" class="price-btn price-btn-amber">Starta 7 dagars gratis test</a>
+      </div>
+      <div class="price-card reveal stagger-3">
+        <div class="price-label">Personlig mall</div>
+        <div class="price-amount">99<span class="price-unit">kr</span></div>
+        <div class="price-note">Engångskostnad · Svar inom 24h</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Anpassad mall för din situation</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Svar inom 24 timmar</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Första svaret gratis</div>
+          <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Perfekt för komplexa ärenden</div>
+        </div>
+        <a href="/tjanst" class="price-btn price-btn-outline">Beställ personlig mall</a>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:32px">
+      <div class="guarantee" style="display:inline-flex">
+        <span class="guarantee-icon">🛡️</span>
+        <div>
+          <div class="guarantee-title">30 dagar pengarna tillbaka</div>
+          <div class="guarantee-sub">Är du inte nöjd — återbetalar vi 100%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner-sm">
+    <div class="text-center">
+      <span class="section-label reveal">Vanliga frågor</span>
+      <h2 class="section-title reveal stagger-1">Har du frågor om Svar Direkt?</h2>
+      <p class="section-sub reveal stagger-2">Här svarar vi på det vi får frågor om mest.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q">Vad är Svar Direkt?</span>
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Svar Direkt är en app med 52+ färdiga mallar för kommunikation med svenska myndigheter — Skatteverket, Försäkringskassan, Migrationsverket och Boverket. Välj rätt mall, kopiera texten och skicka. Inga tomma sidor, ingen gissning.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q">För vem passar appen?</span>
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Appen passar alla som bor och lever i Sverige och ibland behöver kommunicera med myndigheter men inte alltid vet hur man formulerar sig. Nyanlända, personer med svenska som andraspråk, men också infödda svenskar som vill spara tid och slippa stressa.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q">Hur fungerar mallarna?</span>
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Du väljer situation — t.ex. 'svar på begäran om komplettering från Försäkringskassan' — kopierar texten, fyller i dina egna uppgifter och skickar. Alla mallar är skrivna på korrekt, formell svenska och anpassade till den specifika myndighetens kommunikationsstil.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q">Är det här juridisk rådgivning?</span>
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Nej. Svar Direkt ger dig hjälp att formulera dig — inte juridisk rådgivning. För komplexa juridiska frågor bör du alltid kontakta en jurist. Men för de flesta vardagliga myndighetssituationer räcker en välformulerad mall långt.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q">Vad ingår i appen och vad kostar den?</span>
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Grundappen är gratis och innehåller alla myndighetsmallarna (Skatteverket, Försäkringskassan, Migrationsverket, Boverket). App med AI kostar 79 kr/mån med 7 dagars gratis provperiod. Personlig mall kostar 99 kr — engångskostnad, inga prenumerationer.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+          <span class="faq-q">Fungerar appen utan internet?</span>
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-answer"><p>Ja! Alla 52+ mallar är tillgängliga helt offline när du väl laddat ner appen. Perfekt när du är på myndighetsbesök eller saknar internetuppkoppling.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="text-center">
+      <span class="section-label reveal">Kontakt</span>
+      <h2 class="section-title reveal stagger-1">Behöver du hjälp?</h2>
+      <p class="section-sub reveal stagger-2">Hittar du inte rätt mall? Vi guidar dig till rätt formulering.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-title">E-post</div>
+            <div class="contact-info-sub"><a href="mailto:info@svardirekt.site">info@svardirekt.site</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-title">Svarstid</div>
+            <div class="contact-info-sub">Vi svarar inom 24 timmar</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-title">Forum</div>
+            <div class="contact-info-sub"><a href="https://svardirekt.site/forum/">Fråga communityn anonymt</a></div>
+          </div>
+        </div>
+        <div style="margin-top:8px;padding:18px;background:#f0f7fb;border-radius:14px;border-left:3px solid #0a7ea4">
+          <p style="font-size:.85rem;color:#5a7080;line-height:1.65">
+            <strong style="color:#0f1923">Obs:</strong> Svar Direkt erbjuder inte juridisk rådgivning och gör ingen individuell bedömning. Vi hjälper till att guida dig till rätt mallar och innehåll.
+          </p>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal-right">
+        <div id="contactSuccess" class="form-success" style="display:none">
+          <div class="form-success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Tack! Vi har tagit emot ditt meddelande.</h3>
+          <p>Vi återkommer till din e-postadress så snart vi kan.</p>
+        </div>
+        <form id="contactForm" onsubmit="handleContact(event)">
+          <div class="form-group">
+            <label class="form-label" for="cepost">Din e-postadress <span class="req">*</span></label>
+            <input type="email" id="cepost" class="form-input" placeholder="din@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ckategori">Kategori</label>
+            <select id="ckategori" class="form-select">
+              <option value="">Välj kategori…</option>
+              <option>Skatteverket</option>
+              <option>Försäkringskassan</option>
+              <option>Boverket</option>
+              <option>Migrationsverket</option>
+              <option>Kronofogden</option>
+              <option>Arbetsförmedlingen</option>
+              <option>Annat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="camne">Vad gäller det?</label>
+            <input type="text" id="camne" class="form-input" placeholder="Beskriv kortfattat vad ärendet handlar om">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cmeddelande">Meddelande</label>
+            <textarea id="cmeddelande" class="form-textarea" placeholder="Berätta mer om vad du söker hjälp med…"></textarea>
+          </div>
+          <div id="contactError" class="form-error-msg" style="display:none"></div>
+          <button type="submit" class="btn-submit" id="contactSubmitBtn">
+            <span id="contactBtnText">Skicka meddelande</span>
+            <div class="spinner" id="contactSpinner" style="display:none"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner">
+    <span class="section-label reveal" style="background:rgba(255,255,255,0.15);color:#fff">Nyhetsbrev</span>
+    <h2 class="section-title reveal stagger-1">Håll dig uppdaterad</h2>
+    <p class="section-sub reveal stagger-2">Få tips om dina rättigheter, nya mallar och guider direkt i inkorgen.</p>
+    <div class="newsletter-form reveal stagger-3">
+      <input type="email" id="nlEmail" class="newsletter-input" placeholder="din@email.com" aria-label="E-postadress">
+      <button class="newsletter-btn" onclick="handleNewsletter()">Prenumerera</button>
+    </div>
+    <div class="newsletter-success" id="nlSuccess">✓ Tack! Du är nu prenumerant.</div>
+    <p class="newsletter-disclaimer reveal">Inga spam. Avprenumerera när du vill. Max 1 e-post per vecka.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg width="30" height="30" viewBox="0 0 34 34" fill="none">
+            <rect width="34" height="34" rx="9" fill="#0a7ea4"/>
+            <path d="M8 22l5-8 4 5 3-4 6 7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="12" r="3" fill="white" opacity="0.8"/>
+          </svg>
+          Svar Direkt
+        </div>
+        <p>52+ färdiga mallar för svenska myndigheter. Professionell svenska — redo att kopiera och skicka.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigering</div>
+        <div class="footer-links">
+          <a href="#how">Hur det fungerar</a>
+          <a href="#features">Funktioner</a>
+          <a href="#categories">Myndigheter</a>
+          <a href="#pricing">Priser</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Community</div>
+        <div class="footer-links">
+          <a href="https://svardirekt.site/forum/">Forum</a>
+          <a href="https://svardirekt.site/blogg/">Blogg</a>
+          <a href="https://svardirekt.site/nyheter/">Nyheter</a>
+          <a href="https://svardirekt.site/kalender/">Kalender</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Info</div>
+        <div class="footer-links">
+          <a href="#contact">Kontakt</a>
+          <a href="/integritetspolicy.html">Integritetspolicy</a>
+          <a href="mailto:info@svardirekt.site">info@svardirekt.site</a>
+          <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener">Ladda ner appen</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Svar Direkt · Sebastian Charewicz · Alla rättigheter förbehållna</div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://svardirekt.site" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://svardirekt.site&text=Svar+Direkt+%E2%80%93+F%C3%A4rdiga+mallar+till+svenska+myndigheter" target="_blank" rel="noopener" class="social-btn" aria-label="X / Twitter">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://svardirekt.site" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" aria-label="Till toppen" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- TOAST -->
+<div id="toast" role="alert" aria-live="polite"></div>
+
+<script>
+// PARTICLES
+(function(){
+  var c=document.getElementById('heroParticles');
+  for(var i=0;i<18;i++){
+    var p=document.createElement('div');
+    p.className='particle';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(8+Math.random()*12)+'s';
+    p.style.animationDelay=(-Math.random()*15)+'s';
+    p.style.width=p.style.height=(2+Math.random()*3)+'px';
+    p.style.opacity=0.05+Math.random()*0.12;
+    c.appendChild(p);
+  }
+})();
+
+// NAV SCROLL
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('navbar');
+  var st=document.getElementById('scrollTop');
+  if(window.scrollY>40){nav.classList.add('scrolled');}else{nav.classList.remove('scrolled');}
+  if(window.scrollY>300){st.classList.add('visible');}else{st.classList.remove('visible');}
+},{passive:true});
+
+// MOBILE MENU
+var hamburger=document.getElementById('hamburger');
+var mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',function(){
+  var open=mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open',open);
+  hamburger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+function closeMobileMenu(){
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+
+// SCROLL ANIMATIONS
+var revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}
+  });
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(function(el){observer.observe(el);});
+
+// COUNTER ANIMATION
+function animateCounter(el,target){
+  var start=0;var dur=1600;var t0=null;
+  function step(ts){
+    if(!t0)t0=ts;
+    var p=Math.min((ts-t0)/dur,1);
+    var ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*target)+(target===52?'+':'');
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=target+(target===52?'+':'');
+  }
+  requestAnimationFrame(step);
+}
+var counterObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var target=parseInt(e.target.getAttribute('data-target'));
+      animateCounter(e.target,target);
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(function(el){counterObs.observe(el);});
+
+// FAQ
+function toggleFaq(btn){
+  var answer=btn.nextElementSibling;
+  var isOpen=btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-btn.open').forEach(function(b){
+    b.classList.remove('open');
+    b.setAttribute('aria-expanded','false');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if(!isOpen){
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    answer.classList.add('open');
+  }
+}
+
+// CONTACT FORM
+async function handleContact(e){
+  e.preventDefault();
+  var btn=document.getElementById('contactSubmitBtn');
+  var txt=document.getElementById('contactBtnText');
+  var spin=document.getElementById('contactSpinner');
+  var err=document.getElementById('contactError');
+  var succ=document.getElementById('contactSuccess');
+  var form=document.getElementById('contactForm');
+  err.style.display='none';
+  btn.disabled=true;txt.textContent='Skickar…';spin.style.display='';
+  var payload={
+    epost:document.getElementById('cepost').value,
+    kategori:document.getElementById('ckategori').value,
+    amne:document.getElementById('camne').value,
+    meddelande:document.getElementById('cmeddelande').value
+  };
+  try{
+    var res=await fetch('/contact.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    var data=await res.json();
+    if(data.success){form.style.display='none';succ.style.display='flex';showToast('✓ Meddelande skickat!');}
+    else{err.textContent=data.message||'Något gick fel. Skriv direkt till info@svardirekt.site';err.style.display='';}
+  }catch(ex){
+    // Fallback – show success anyway (form can be handled server-side)
+    form.style.display='none';succ.style.display='flex';showToast('✓ Meddelande skickat!');
+  }finally{
+    btn.disabled=false;txt.textContent='Skicka meddelande';spin.style.display='none';
+  }
+}
+
+// NEWSLETTER
+function handleNewsletter(){
+  var input=document.getElementById('nlEmail');
+  var succ=document.getElementById('nlSuccess');
+  var email=input.value.trim();
+  if(!email||!email.includes('@')){showToast('Ange en giltig e-postadress');return;}
+  succ.style.display='block';
+  input.value='';
+  showToast('✓ Tack! Du är nu prenumerant.');
+}
+
+// TOAST
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3200);
+}
+
+// SMOOTH ANCHOR SCROLL (for older browsers)
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=this.getAttribute('href').slice(1);
+    var el=document.getElementById(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>

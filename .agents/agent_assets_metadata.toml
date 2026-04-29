@@ -581,3 +581,9 @@ id = "cWlfOrIL2ujaBZ_Ve4YYO"
 uri = "file://hostinger-backend-update.zip"
 type = "unspecified"
 title = "Backend update – wgraj do nodejs/ na Hostingerze"
+
+[[outputs]]
+id = "otZwjEj22qnIud5nEt0na"
+uri = "file://svardirekt-strona.zip"
+type = "unspecified"
+title = "Nowa strona svardirekt.site – gotowa do wgrania"
