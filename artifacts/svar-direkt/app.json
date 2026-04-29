@@ -2,8 +2,8 @@
   "expo": {
     "name": "Svar Direkt",
     "slug": "svar-direkt-new",
-    "version": "1.5.1",
-    "owner": "Sebastian Charewicz",
+    "version": "1.6.0",
+    "owner": "charteks",
     "description": "Svar Direkt – färdiga mallar och AI-svar för svenska myndigheter. © Sebastian Charewicz. Alla rättigheter förbehållna.",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -21,7 +21,7 @@
     },
     "android": {
       "package": "com.svardirekt.app",
-      "versionCode": 7,
+      "versionCode": 8,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#0a7ea4"
@@ -51,7 +51,7 @@
       "reactCompiler": true
     },
     "extra": {
-      "apiBaseUrl": "https://svar-direkt.replit.app/api",
+      "apiBaseUrl": "https://antiquewhite-lapwing-486017.hostingersite.com",
       "eas": {
         "projectId": "0e221c32-280f-44c7-a998-e7aa0a722e0c"
       }
