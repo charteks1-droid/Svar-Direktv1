@@ -60,6 +60,8 @@
   },
   "dependencies": {
     "@google/genai": "^1.50.1",
+    "@octokit/rest": "^21.1.1",
+    "@replit/connectors-sdk": "^0.4.0",
     "expo-document-picker": "~14.0.8",
     "expo-file-system": "~19.0.21",
     "expo-sharing": "~14.0.8"
