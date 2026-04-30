@@ -22,21 +22,22 @@ import { subscriptionApi } from "@/services/api";
 
 function formatDate(ts: number | null) {
   if (!ts) return "-";
-  return new Date(ts).toLocaleDateString("pl-PL", {
+  return new Date(ts).toLocaleDateString("sv-SE", {
     day: "2-digit", month: "2-digit", year: "numeric",
   });
 }
 
 function statusLabel(s: string) {
   switch (s) {
-    case "owner": return "Właściciel (dożywotnio)";
-    case "trialing": return "Okres próbny";
-    case "active": return "Aktywna";
-    case "past_due": return "Zaległa płatność";
-    case "canceled": return "Anulowana";
-    case "incomplete": return "Niezakończona";
-    case "incomplete_expired": return "Wygasła";
-    default: return "Brak subskrypcji";
+    case "owner": return "Ägare (livstid)";
+    case "trialing": return "Provperiod";
+    case "active": return "Aktiv";
+    case "canceling": return "Avslutas vid periodens slut";
+    case "past_due": return "Betalning försenad";
+    case "canceled": return "Avslutad";
+    case "incomplete": return "Ej slutförd";
+    case "incomplete_expired": return "Utgången";
+    default: return "Ingen prenumeration";
   }
 }
 
@@ -141,17 +142,17 @@ export default function ProfileScreen() {
         </Text>
         {isOwner && (
           <Text style={[styles.statusNote, { color: Colors.primary }]}>
-            ⭐ Konto właściciela – pełen dostęp dożywotnio
-          </Text>
-        )}
-        {!isOwner && user.trialEndsAt && (
-          <Text style={[styles.statusNote, { color: theme.textSecondary }]}>
-            Okres próbny do: {formatDate(user.trialEndsAt)}
+            ⭐ Ägarkonto – full tillgång för alltid
           </Text>
         )}
         {!isOwner && user.currentPeriodEnd && (
           <Text style={[styles.statusNote, { color: theme.textSecondary }]}>
-            Następna płatność: {formatDate(user.currentPeriodEnd)}
+            Nästa betalning: {formatDate(user.currentPeriodEnd)}
+          </Text>
+        )}
+        {!isOwner && !isPremium && typeof user.freeLettersRemaining === "number" && (
+          <Text style={[styles.statusNote, { color: theme.textSecondary }]}>
+            Gratis brev kvar: {user.freeLettersRemaining}/3
           </Text>
         )}
 
@@ -160,7 +161,7 @@ export default function ProfileScreen() {
             onPress={() => router.push("/paywall")}
             style={[styles.primaryBtn, { backgroundColor: Colors.primary, marginTop: 14 }]}
           >
-            <Text style={styles.primaryBtnText}>Aktywuj Premium</Text>
+            <Text style={styles.primaryBtnText}>Prenumerera — 79 kr/mån</Text>
           </Pressable>
         )}
 

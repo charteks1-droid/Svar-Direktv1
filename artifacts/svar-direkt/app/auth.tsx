@@ -173,7 +173,7 @@ export default function AuthScreen() {
           <View style={[styles.infoBox, { backgroundColor: theme.backgroundTertiary, borderColor: theme.cardBorder }]}>
             <Feather name="info" size={16} color={Colors.primary} />
             <Text style={[styles.infoText, { color: theme.textSecondary }]}>
-              Po rejestracji masz 7 dni darmowego okresu próbnego Premium. Anuluj kiedy chcesz.
+              Nytt konto får 3 gratis AI-brev. Prenumerera för obegränsad åtkomst — 79 kr/mån.
             </Text>
           </View>
         )}

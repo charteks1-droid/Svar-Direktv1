@@ -20,10 +20,10 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { subscriptionApi } from "@/services/api";
 
 const FEATURES = [
-  { icon: "cpu", title: "AI Generator listów", desc: "Generuj profesjonalne pisma do urzędów" },
-  { icon: "clock", title: "Historia generowanych pism", desc: "Wszystkie Twoje wygenerowane teksty" },
-  { icon: "shield", title: "Försvar – obrona prawna", desc: "Pomoc przy obronie przed urzędami" },
-  { icon: "bell", title: "Påminnelser – przypomnienia", desc: "Nigdy nie przegap terminu" },
+  { icon: "cpu", title: "Obegränsad AI-generator", desc: "Skapa professionella brev till myndigheter utan gräns" },
+  { icon: "clock", title: "Sparad brevhistorik", desc: "Alla dina genererade brev på ett ställe" },
+  { icon: "file-text", title: "Mallar för alla ärenden", desc: "Färdiga mallar för vanliga myndighetskontakter" },
+  { icon: "bell", title: "Påminnelser om deadlines", desc: "Missa aldrig ett viktigt datum" },
 ];
 
 export default function PaywallScreen() {
@@ -59,13 +59,11 @@ export default function PaywallScreen() {
         await refreshSubscription();
       }
     } catch (e: any) {
-      Alert.alert("Błąd", e?.message || "Nie udało się otworzyć płatności");
+      Alert.alert("Fel", e?.message || "Det gick inte att öppna betalningssidan. Försök igen.");
     } finally {
       setBusy(false);
     }
   }
-
-  const alreadyTrial = !!(user?.trialEndsAt && user.trialEndsAt < Date.now());
 
   return (
     <ScrollView
@@ -85,23 +83,17 @@ export default function PaywallScreen() {
         </View>
         <Text style={[styles.title, { color: theme.text }]}>Svar Direkt Premium</Text>
         <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
-          Pełen dostęp do wszystkich funkcji
+          Full tillgång till alla funktioner
         </Text>
       </View>
 
       <View style={[styles.priceCard, { backgroundColor: theme.card, borderColor: Colors.primary }]}>
         <View style={styles.priceRow}>
-          <Text style={[styles.price, { color: theme.text }]}>79 SEK</Text>
-          <Text style={[styles.priceUnit, { color: theme.textSecondary }]}>/miesiąc</Text>
+          <Text style={[styles.price, { color: theme.text }]}>79 kr</Text>
+          <Text style={[styles.priceUnit, { color: theme.textSecondary }]}>/mån</Text>
         </View>
-        {!alreadyTrial && (
-          <View style={[styles.trialBadge, { backgroundColor: Colors.primary }]}>
-            <Feather name="gift" size={14} color="#fff" />
-            <Text style={styles.trialText}>7 dni za darmo</Text>
-          </View>
-        )}
         <Text style={[styles.priceNote, { color: theme.textTertiary }]}>
-          Anuluj kiedy chcesz · Bez zobowiązań
+          Avsluta när du vill · Inga bindningstider
         </Text>
       </View>
 
@@ -137,11 +129,7 @@ export default function PaywallScreen() {
           <>
             <Feather name="credit-card" size={20} color="#fff" />
             <Text style={styles.ctaText}>
-              {!isAuthenticated
-                ? "Załóż konto i rozpocznij"
-                : alreadyTrial
-                ? "Subskrybuj 79 SEK/mc"
-                : "Rozpocznij 7-dniowy okres próbny"}
+              {!isAuthenticated ? "Skapa konto och prenumerera" : "Prenumerera nu — 79 kr/mån"}
             </Text>
           </>
         )}
@@ -152,14 +140,14 @@ export default function PaywallScreen() {
           onPress={() => router.push({ pathname: "/auth", params: { redirect: "/paywall" } })}
           style={styles.linkBtn}
         >
-          <Text style={[styles.linkText, { color: Colors.primary }]}>Mam już konto – zaloguj się</Text>
+          <Text style={[styles.linkText, { color: Colors.primary }]}>Har redan konto – logga in</Text>
         </Pressable>
       )}
 
       <Text style={[styles.disclaimer, { color: theme.textTertiary }]}>
-        Płatność za pomocą karty obsługiwana przez Stripe.{"\n"}
-        Subskrypcja odnawia się automatycznie co miesiąc.{"\n"}
-        Po okresie próbnym zostaniesz obciążony 79 SEK – możesz anulować w dowolnym momencie w profilu.
+        Betalning med kort via Stripe.{"\n"}
+        Prenumerationen förnyas automatiskt varje månad för 79 kr.{"\n"}
+        Du kan avsluta när som helst via din profil.
       </Text>
     </ScrollView>
   );
@@ -181,11 +169,6 @@ const styles = StyleSheet.create({
   priceRow: { flexDirection: "row", alignItems: "baseline", gap: 6 },
   price: { fontSize: 40, fontWeight: "700" },
   priceUnit: { fontSize: 16 },
-  trialBadge: {
-    flexDirection: "row", alignItems: "center", gap: 6,
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, marginTop: 10,
-  },
-  trialText: { color: "#fff", fontSize: 13, fontWeight: "600" },
   priceNote: { fontSize: 12, marginTop: 8 },
   features: { gap: 10 },
   featureRow: {
@@ -199,11 +182,11 @@ const styles = StyleSheet.create({
   featureTitle: { fontSize: 15, fontWeight: "600", marginBottom: 2 },
   featureDesc: { fontSize: 13 },
   ctaBtn: {
-    flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 10,
-    paddingVertical: 16, borderRadius: 14, marginTop: 4,
+    flexDirection: "row", alignItems: "center", justifyContent: "center",
+    gap: 10, paddingVertical: 16, borderRadius: 14,
   },
-  ctaText: { color: "#fff", fontSize: 16, fontWeight: "600" },
+  ctaText: { color: "#fff", fontSize: 17, fontWeight: "700" },
   linkBtn: { alignItems: "center", paddingVertical: 8 },
-  linkText: { fontSize: 14, fontWeight: "500" },
-  disclaimer: { fontSize: 11, textAlign: "center", lineHeight: 16, marginTop: 8 },
+  linkText: { fontSize: 14, fontWeight: "600" },
+  disclaimer: { fontSize: 11, textAlign: "center", lineHeight: 18 },
 });
