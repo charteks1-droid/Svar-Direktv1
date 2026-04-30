@@ -593,3 +593,9 @@ id = "wQzXTdygG44h_GCpRzS0l"
 uri = "file://svardirekt-hostinger.zip"
 type = "unspecified"
 title = "Svar Direkt – pliki do Hostingera (ZIP)"
+
+[[outputs]]
+id = "jHM0eAThhASiW_J3VX215"
+uri = "file://svar-ai-backend-v3.zip"
+type = "unspecified"
+title = "svar-ai-backend-v3.zip — nowy backend dla Hostingera"
