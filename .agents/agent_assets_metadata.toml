@@ -599,3 +599,9 @@ id = "jHM0eAThhASiW_J3VX215"
 uri = "file://svar-ai-backend-v3.zip"
 type = "unspecified"
 title = "svar-ai-backend-v3.zip — nowy backend dla Hostingera"
+
+[[outputs]]
+id = "npbOy8vLnHEHYb6IfQEDG"
+uri = "file://svar-ai-backend-v4.zip"
+type = "unspecified"
+title = "Svar Direkt Backend v4 – z ochroną przed nadużyciami"

@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const API_BASE = "https://antiquewhite-lapwing-486017.hostingersite.com";
 export const TOKEN_KEY = "@svar_direkt_auth_token";
+const DEVICE_ID_KEY = "@svar_direkt_device_id";
 
 export interface PublicUser {
   id: string;
@@ -13,6 +14,28 @@ export interface PublicUser {
   trialEndsAt: number | null;
   currentPeriodEnd: number | null;
   stripeCustomerId: string | null;
+  freeLettersRemaining: number | null;
+}
+
+function generateUUID(): string {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+export async function getDeviceId(): Promise<string> {
+  try {
+    let id = await AsyncStorage.getItem(DEVICE_ID_KEY);
+    if (!id) {
+      id = generateUUID();
+      await AsyncStorage.setItem(DEVICE_ID_KEY, id);
+    }
+    return id;
+  } catch {
+    return generateUUID();
+  }
 }
 
 export interface AuthResponse {
@@ -84,12 +107,14 @@ async function request<T>(
 }
 
 export const authApi = {
-  register: (email: string, password: string) =>
-    request<AuthResponse>("/api/auth/register", {
+  register: async (email: string, password: string) => {
+    const deviceId = await getDeviceId();
+    return request<AuthResponse>("/api/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, deviceId }),
       auth: false,
-    }),
+    });
+  },
   login: (email: string, password: string) =>
     request<AuthResponse>("/api/auth/login", {
       method: "POST",

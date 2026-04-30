@@ -25,9 +25,11 @@ import { Colors } from "@/constants/colors";
 import { PremiumGate } from "@/components/PremiumGate";
 import { askAi, API_BASE, ApiError } from "@/services/api";
 import { useApp } from "@/contexts/AppContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const DISCLAIMER_KEY = "ai_disclaimer_accepted_v1";
 const AI_LIMIT = 10;
+const FREE_LIMIT = 3;
 
 const CYAN = "#1a9ecf";
 const CYAN_DIM = "#0a7ea4";
@@ -226,6 +228,7 @@ function FutureInput({
 function AiGeneratorScreenInner() {
   const insets = useSafeAreaInsets();
   const { addAiConversation } = useApp();
+  const { user, isPremium } = useAuth();
 
   const [fullName, setFullName] = useState("");
   const [personnummer, setPersonnummer] = useState("");
@@ -319,8 +322,15 @@ function AiGeneratorScreenInner() {
     setTimeout(() => setCopied(false), 2400);
   };
 
-  const usedCount = remaining !== null ? AI_LIMIT - remaining : null;
-  const progressPct = remaining !== null ? remaining / AI_LIMIT : 1;
+  // For free users: track free letters (3 total); for premium: daily usage (10/day)
+  const isFreeUser = !isPremium;
+  const limit = isFreeUser ? FREE_LIMIT : AI_LIMIT;
+  // Seed from user object, update from AI response
+  const seedRemaining = isFreeUser
+    ? (user?.freeLettersRemaining ?? FREE_LIMIT)
+    : AI_LIMIT;
+  const displayRemaining = remaining !== null ? remaining : seedRemaining;
+  const progressPct = Math.max(0, Math.min(1, displayRemaining / limit));
   const topPad = Platform.OS === "web" ? 67 : insets.top;
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
 
@@ -381,11 +391,15 @@ function AiGeneratorScreenInner() {
           <View style={styles.usageCard}>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
-                <Feather name="zap" size={14} color={CYAN} />
-                <Text style={styles.usageLabel}>Dagliga genereringar</Text>
+                <Feather name={isFreeUser ? "gift" : "zap"} size={14} color={CYAN} />
+                <Text style={styles.usageLabel}>
+                  {isFreeUser ? "Gratis brev" : "Dagliga genereringar"}
+                </Text>
               </View>
-              <Text style={styles.usageCount}>
-                {remaining !== null ? `${remaining} kvar` : `${AI_LIMIT} kvar`}
+              <Text style={[styles.usageCount, displayRemaining === 0 && { color: "#ff6b6b" }]}>
+                {isFreeUser
+                  ? `${displayRemaining}/${FREE_LIMIT} kvar`
+                  : `${displayRemaining}/${AI_LIMIT} kvar`}
               </Text>
             </View>
             <View style={styles.progressTrack}>
@@ -394,7 +408,11 @@ function AiGeneratorScreenInner() {
               />
               <View style={[styles.progressGlow, { width: `${progressPct * 100}%` as any }]} />
             </View>
-            <Text style={styles.usageSub}>Max {AI_LIMIT} genereringar per dag · återställs midnatt</Text>
+            <Text style={styles.usageSub}>
+              {isFreeUser
+                ? `${FREE_LIMIT} gratis brev totalt · Prenumerera för obegränsad åtkomst`
+                : `Max ${AI_LIMIT} per dag · återställs midnatt`}
+            </Text>
           </View>
 
           {/* Section: User data */}
