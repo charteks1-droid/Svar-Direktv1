@@ -1,62 +1,60 @@
 import { Link } from "wouter";
 import { useState, useEffect } from "react";
 import logoSrc from "../assets/logo.png";
-import heroRiksdag from "../assets/riksdag-hero.jpg";
-import heroRosenbad from "../assets/stockholm-rosenbad.jpg";
-import heroStadshuset from "../assets/stockholm-stadshuset.jpg";
-import heroDramatiska from "../assets/stockholm-dramatiska.jpg";
 import { PartnerGrid } from "@/components/AffiliateBanners";
 import { StatsBar } from "@/components/StatsBar";
 import { NewsletterForm } from "@/components/NewsletterForm";
 
-const HERO_SLIDES = [
-  { src: heroRiksdag,     caption: "Sveriges riksdag" },
-  { src: heroRosenbad,    caption: "Regeringskvarteret Rosenbad" },
-  { src: heroStadshuset,  caption: "Stockholms stadshus" },
-  { src: heroDramatiska,  caption: "Kungliga Dramatiska Teatern" },
+const PHONE_CATEGORIES = [
+  { color: "#00b894", label: "Skatteverket" },
+  { color: "#0984e3", label: "Försäkringskassan" },
+  { color: "#6c5ce7", label: "Migrationsverket" },
+  { color: "#d63031", label: "Kronofogden" },
 ];
 
 function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-[200px] sm:w-[240px]">
-      <div className="relative w-full aspect-[9/19] bg-slate-900 rounded-[2.5rem] border-[8px] border-slate-800 shadow-2xl overflow-hidden">
-        <div className="absolute top-0 inset-x-0 flex justify-center pt-2 z-10">
-          <div className="w-20 h-4 bg-slate-800 rounded-full" />
+    <div style={{ position: "relative", animation: "phoneFloat 4s ease-in-out infinite" }}>
+      <style>{`@keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}`}</style>
+      <div style={{
+        width: "220px", background: "#0f1923", borderRadius: "36px",
+        border: "8px solid #1a2633", boxShadow: "0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)",
+        overflow: "hidden", aspectRatio: "9/19"
+      }}>
+        <div style={{ height: "24px", background: "#0a1520", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <div style={{ width: "64px", height: "14px", background: "#0f1923", borderRadius: "8px" }} />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900 pt-8 px-3 pb-3 flex flex-col gap-2">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-6 h-6 rounded-md bg-primary/40" />
-            <div className="h-2 w-24 bg-slate-600 rounded-full" />
+        <div style={{ padding: "10px 12px", display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+            <img src={logoSrc} alt="" style={{ width: "28px", height: "28px", borderRadius: "8px", objectFit: "cover" }} />
+            <div style={{ height: "8px", width: "80px", background: "#2a3a4a", borderRadius: "4px" }} />
           </div>
-          {[
-            { color: "#0a7ea4", label: "Boverket" },
-            { color: "#00b894", label: "Skatteverket" },
-            { color: "#0984e3", label: "Försäkringskassan" },
-            { color: "#6c5ce7", label: "Migrationsverket" },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-xl px-3 py-2.5 flex items-center gap-2"
-              style={{ backgroundColor: item.color + "22", borderLeft: `3px solid ${item.color}` }}
-            >
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
-              <div className="text-[10px] text-white font-medium">{item.label}</div>
+          {PHONE_CATEGORIES.map((item) => (
+            <div key={item.label} style={{
+              borderRadius: "12px", padding: "10px 12px", display: "flex", alignItems: "center", gap: "8px",
+              backgroundColor: item.color + "22", borderLeft: `3px solid ${item.color}`
+            }}>
+              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: item.color, flexShrink: 0 }} />
+              <div style={{ fontSize: "10px", color: "#fff", fontWeight: 500 }}>{item.label}</div>
             </div>
           ))}
-          <div className="mt-1 rounded-xl bg-slate-700/50 px-3 py-2.5">
-            <div className="h-1.5 w-3/4 bg-slate-500 rounded-full mb-2" />
-            <div className="h-1.5 w-1/2 bg-slate-500/60 rounded-full" />
-          </div>
-          <div className="mt-auto rounded-xl bg-primary/20 border border-primary/30 px-3 py-2 flex items-center justify-between">
-            <div className="text-[10px] text-primary font-semibold">Snabba svar</div>
-            <div className="w-4 h-4 rounded-full bg-primary/30 flex items-center justify-center">
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                <path d="M2 4h4M4 2l2 2-2 2" stroke="#0a7ea4" strokeWidth="1" strokeLinecap="round"/>
-              </svg>
-            </div>
+          <div style={{
+            marginTop: "4px", borderRadius: "12px", background: "rgba(26,158,207,0.15)",
+            border: "1px solid rgba(26,158,207,0.25)", padding: "10px 12px",
+            display: "flex", alignItems: "center", justifyContent: "space-between"
+          }}>
+            <span style={{ fontSize: "9px", color: "#1a9ecf", fontWeight: 600 }}>AI Generator ✨</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7 3l4 4-4 4" stroke="#1a9ecf" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
         </div>
       </div>
+      <div style={{
+        position: "absolute", bottom: "-20px", left: "50%", transform: "translateX(-50%)",
+        width: "120px", height: "40px", background: "#1a9ecf",
+        borderRadius: "50%", filter: "blur(24px)", opacity: 0.4, pointerEvents: "none"
+      }} />
     </div>
   );
 }
@@ -424,16 +422,30 @@ function LossAversion() {
   );
 }
 
+function HeroParticles() {
+  const particles = Array.from({ length: 18 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 8,
+    duration: 8 + Math.random() * 6,
+    size: 2 + Math.random() * 2,
+  }));
+  return (
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+      {particles.map(p => (
+        <div key={p.id} style={{
+          position: "absolute", left: `${p.left}%`, bottom: "-10px",
+          width: `${p.size}px`, height: `${p.size}px`,
+          background: "rgba(255,255,255,0.15)", borderRadius: "50%",
+          animation: `particleFloat ${p.duration}s ${p.delay}s linear infinite`,
+        }} />
+      ))}
+      <style>{`@keyframes particleFloat{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-110vh) rotate(360deg);opacity:0}}`}</style>
+    </div>
+  );
+}
+
 export default function Home() {
-  const [slideIdx, setSlideIdx] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setSlideIdx(i => (i + 1) % HERO_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(t);
-  }, []);
-
   useEffect(() => {
     const id = "faq-jsonld";
     let script = document.getElementById(id) as HTMLScriptElement | null;
@@ -494,139 +506,132 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative overflow-hidden" style={{ minHeight: '600px' }}>
-        {/* Slideshow — all 4 images stacked, only current one visible */}
-        {HERO_SLIDES.map((slide, i) => (
-          <div
-            key={i}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${slide.src})`,
-              opacity: i === slideIdx ? 1 : 0,
-              transition: 'opacity 1.2s ease-in-out',
-            }}
-          />
-        ))}
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom right, rgba(0,40,100,0.82) 0%, rgba(0,15,50,0.95) 100%)' }}
-        />
-        {/* Swedish yellow top stripe */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FFCD00]" />
+      {/* Hero — nowy ciemny design */}
+      <section style={{
+        position: "relative", overflow: "hidden", minHeight: "85vh",
+        background: "linear-gradient(135deg,#0f1923 0%,#0a3d54 50%,#075f7c 100%)",
+        display: "flex", alignItems: "center"
+      }}>
+        {/* Radial glow */}
+        <div style={{
+          position: "absolute", inset: 0, pointerEvents: "none",
+          background: "radial-gradient(ellipse at 60% 40%,rgba(26,158,207,0.15) 0%,transparent 60%), radial-gradient(ellipse at 10% 80%,rgba(10,126,164,0.10) 0%,transparent 50%)"
+        }} />
+        <HeroParticles />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 sm:py-36">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 w-full" style={{ paddingTop: "80px", paddingBottom: "80px", zIndex: 2 }}>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Lewa strona */}
             <div>
-              <div className="mb-5">
-                <img src={logoSrc} alt="Svar Direkt" className="h-20 w-20 rounded-2xl object-cover shadow-2xl ring-2 ring-white/20" />
+              {/* Badge */}
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                padding: "7px 16px", borderRadius: "40px",
+                background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.18)",
+                color: "rgba(255,255,255,0.85)", fontSize: ".8rem", fontWeight: 600, marginBottom: "20px",
+                animation: "badgePulse 3s ease-in-out infinite"
+              }}>
+                <style>{`@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(26,158,207,0.3)}50%{box-shadow:0 0 0 8px rgba(26,158,207,0)}}`}</style>
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#1a9ecf", display: "inline-block", animation: "dotBlink 2s ease-in-out infinite" }} />
+                <style>{`@keyframes dotBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}`}</style>
+                52+ mallar — tillgänglig nu för Android
               </div>
-              <div className="flex flex-wrap gap-2 mb-5">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-xs font-semibold backdrop-blur-sm border border-white/20">
-                  <span className="w-2 h-2 rounded-full bg-[#FFCD00] inline-block animate-pulse" />
-                  Tillgänglig för Android
-                </div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white/70 text-xs backdrop-blur-sm border border-white/10">
-                  🏛️ Svenska myndigheter
-                </div>
-              </div>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-[1.05] mb-5" style={{ textShadow: '0 2px 24px rgba(0,0,0,0.45)' }}>
-                Skriv rätt.<br />Få svar.<br />
-                <span style={{ color: '#FFCD00', textShadow: '0 0 30px rgba(255,205,0,0.4)' }}>Sluta stressa.</span>
+
+              <h1 style={{
+                fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 900, lineHeight: 1.15,
+                color: "#fff", marginBottom: "20px", letterSpacing: "-0.02em"
+              }}>
+                Hitta rätt mall.<br />
+                Kopiera texten.<br />
+                <span style={{ color: "#1a9ecf" }}>Du skickar det direkt.</span>
               </h1>
-              <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-lg">
-                52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Boverket och fler — direkt i mobilen.
+
+              <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.70)", lineHeight: 1.7, marginBottom: "36px", maxWidth: "440px" }}>
+                Välj bland 52+ färdiga mallar för svenska myndigheter. Skatteverket, Försäkringskassan, Migrationsverket och fler — direkt i mobilen.
               </p>
-              <div className="flex flex-wrap gap-3 items-center mb-4">
-                <a
-                  href="https://payhip.com/b/WxtV3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-2xl font-extrabold text-base transition-all hover:scale-105 hover:brightness-110"
+
+              <div className="flex flex-wrap gap-3 mb-8">
+                <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener noreferrer"
                   style={{
-                    backgroundColor: '#FFCD00',
-                    color: '#1a2a3a',
-                    boxShadow: '0 0 20px rgba(255,205,0,0.5), 0 4px 16px rgba(0,0,0,0.2)',
+                    display: "inline-flex", alignItems: "center", gap: "8px",
+                    padding: "14px 28px", background: "#1a9ecf", color: "#fff",
+                    borderRadius: "14px", fontSize: ".95rem", fontWeight: 700,
+                    boxShadow: "0 4px 20px rgba(26,158,207,0.35)", transition: "all 0.28s"
                   }}
+                  onMouseOver={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(26,158,207,0.45)"; }}
+                  onMouseOut={e => { (e.currentTarget as HTMLElement).style.transform = "none"; (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(26,158,207,0.35)"; }}
                 >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v13M7 11l5 5 5-5M20 19H4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   Ladda ner gratis
                 </a>
-                <button
-                  disabled
-                  className="px-6 py-3 bg-amber-400/80 border border-amber-300 text-white rounded-xl font-medium text-sm cursor-not-allowed"
-                >
-                  App med AI – 79 kr/mån
+                <button disabled style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  padding: "14px 24px", background: "linear-gradient(135deg,#f59e0b,#d97706)",
+                  color: "#fff", borderRadius: "14px", fontSize: ".95rem", fontWeight: 700,
+                  border: "none", cursor: "not-allowed", opacity: 0.75
+                }}>
+                  ✨ App med AI – 79 kr/mån
                 </button>
-                <Link
-                  href="/tjanst"
-                  className="px-6 py-3 bg-white/10 border border-white/25 text-white rounded-xl font-medium hover:bg-white/20 transition-colors text-sm backdrop-blur-sm"
-                >
+                <Link href="/tjanst" style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  padding: "14px 24px", background: "rgba(255,255,255,0.10)",
+                  color: "#fff", borderRadius: "14px", fontSize: ".95rem", fontWeight: 600,
+                  border: "1px solid rgba(255,255,255,0.25)"
+                }}>
                   Personlig mall – 99 kr
                 </Link>
               </div>
-              {/* Social proof mini row */}
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {['#004B87','#0984e3','#00b894'].map((c, i) => (
-                    <div key={i} className="w-7 h-7 rounded-full border-2 border-white/30 flex items-center justify-center text-white text-[10px] font-bold" style={{ backgroundColor: c }}>
-                      {['A','M','L'][i]}
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-white/65">52+ mallar · Trusted av användare i hela Sverige</p>
+
+              {/* Trust row */}
+              <div className="flex flex-wrap gap-5">
+                {[
+                  { icon: "🔒", text: "Gratis nedladdning" },
+                  { icon: "📲", text: "Inget konto krävs" },
+                  { icon: "🏛️", text: "Svenska myndigheter" },
+                ].map(t => (
+                  <div key={t.text} style={{ display: "flex", alignItems: "center", gap: "7px", color: "rgba(255,255,255,0.60)", fontSize: ".8rem" }}>
+                    <span>{t.icon}</span>{t.text}
+                  </div>
+                ))}
               </div>
-              <p className="text-[11px] text-white/35 mt-3">
-                🔒 Gratis nedladdning. Inget konto krävs.
-              </p>
             </div>
+
+            {/* Prawa strona — telefon */}
             <div className="flex justify-center md:justify-end">
-              {/* Floating stats card */}
-              <div className="relative">
+              <div style={{ position: "relative" }}>
                 <PhoneMockup />
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl px-3 py-2 shadow-xl hidden sm:flex items-center gap-2">
-                  <span className="text-xl">🏛️</span>
+                <div style={{
+                  position: "absolute", bottom: "-8px", left: "-16px",
+                  background: "#fff", borderRadius: "12px", padding: "8px 12px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.18)",
+                  display: "flex", alignItems: "center", gap: "8px"
+                }} className="hidden sm:flex">
+                  <span style={{ fontSize: "20px" }}>🏛️</span>
                   <div>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Myndigheter</p>
-                    <p className="text-sm font-bold text-slate-900 leading-none">4 kategorier</p>
+                    <div style={{ fontSize: "10px", color: "#94a3b8", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>Myndigheter</div>
+                    <div style={{ fontSize: "13px", fontWeight: 700, color: "#0f172a", lineHeight: 1 }}>4 kategorier</div>
                   </div>
                 </div>
-                <div className="absolute -top-3 -right-3 bg-[#FFCD00] rounded-xl px-3 py-2 shadow-xl hidden sm:flex items-center gap-2">
+                <div style={{
+                  position: "absolute", top: "-12px", right: "-12px",
+                  background: "#1a9ecf", borderRadius: "12px", padding: "8px 12px",
+                  boxShadow: "0 8px 32px rgba(26,158,207,0.35)",
+                  display: "flex", alignItems: "center", gap: "6px"
+                }} className="hidden sm:flex">
                   <div>
-                    <p className="text-[10px] text-slate-700 font-bold uppercase tracking-wider">Mallar</p>
-                    <p className="text-sm font-black text-slate-900 leading-none">52+</p>
+                    <div style={{ fontSize: "10px", color: "rgba(255,255,255,0.80)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>Mallar</div>
+                    <div style={{ fontSize: "13px", fontWeight: 900, color: "#fff", lineHeight: 1 }}>52+</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        {/* Slide indicators + caption */}
-        <div className="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-2 z-10">
-          <p className="text-white/50 text-[11px] tracking-widest uppercase font-medium">
-            {HERO_SLIDES[slideIdx].caption}
-          </p>
-          <div className="flex gap-2">
-            {HERO_SLIDES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setSlideIdx(i)}
-                className="transition-all duration-300 rounded-full"
-                style={{
-                  width: i === slideIdx ? '24px' : '8px',
-                  height: '8px',
-                  backgroundColor: i === slideIdx ? '#FFCD00' : 'rgba(255,255,255,0.35)',
-                }}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
           </div>
         </div>
 
-        {/* Bottom wave divider */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
-          <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" style={{ display:'block' }}>
-            <path d="M0 40 L0 20 Q360 0 720 20 Q1080 40 1440 20 L1440 40 Z" fill="white"/>
+        {/* Wave bottom */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, overflow: "hidden", lineHeight: 0 }}>
+          <svg viewBox="0 0 1440 48" fill="none" style={{ display: "block", width: "100%" }}>
+            <path d="M0 48 L0 28 Q360 0 720 28 Q1080 48 1440 28 L1440 48 Z" fill="white"/>
           </svg>
         </div>
       </section>
