@@ -142,9 +142,9 @@ export default function AiHistoryScreen() {
         ListEmptyComponent={
           <View style={styles.empty}>
             <Feather name="cpu" size={44} color={theme.textTertiary} />
-            <Text style={[styles.emptyTitle, { color: theme.text }]}>Brak historii AI</Text>
+            <Text style={[styles.emptyTitle, { color: theme.text }]}>Ingen AI-historik</Text>
             <Text style={[styles.emptySub, { color: theme.textSecondary }]}>
-              Twoje rozmowy z AI pojawią się tutaj
+              Dina AI-brev visas här när du har genererat dem
             </Text>
           </View>
         }

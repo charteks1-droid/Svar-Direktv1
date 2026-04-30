@@ -36,11 +36,11 @@ export default function AuthScreen() {
   async function submit() {
     setError(null);
     if (!email.trim() || !password) {
-      setError("Wpisz email i hasło");
+      setError("Ange e-post och lösenord");
       return;
     }
     if (mode === "register" && password !== password2) {
-      setError("Hasła nie są takie same");
+      setError("Lösenorden matchar inte");
       return;
     }
     setBusy(true);
@@ -57,7 +57,7 @@ export default function AuthScreen() {
         router.replace("/(tabs)");
       }
     } catch (e: any) {
-      setError(e?.message || "Błąd logowania");
+      setError(e?.message || "Inloggningsfel. Försök igen.");
     } finally {
       setBusy(false);
     }
@@ -81,7 +81,7 @@ export default function AuthScreen() {
           </View>
           <Text style={[styles.title, { color: theme.text }]}>Svar Direkt</Text>
           <Text style={[styles.subtitle, { color: theme.textSecondary }]}>
-            {mode === "login" ? "Zaloguj się do konta" : "Utwórz nowe konto"}
+            {mode === "login" ? "Logga in på ditt konto" : "Skapa nytt konto"}
           </Text>
         </View>
 
@@ -90,7 +90,7 @@ export default function AuthScreen() {
           <TextInput
             value={email}
             onChangeText={setEmail}
-            placeholder="twoj@email.com"
+            placeholder="din@email.com"
             placeholderTextColor={theme.textTertiary}
             keyboardType="email-address"
             autoCapitalize="none"
@@ -99,11 +99,11 @@ export default function AuthScreen() {
             editable={!busy}
           />
 
-          <Text style={[styles.label, { color: theme.textSecondary, marginTop: 14 }]}>Hasło</Text>
+          <Text style={[styles.label, { color: theme.textSecondary, marginTop: 14 }]}>Lösenord</Text>
           <TextInput
             value={password}
             onChangeText={setPassword}
-            placeholder="min. 6 znaków"
+            placeholder="minst 6 tecken"
             placeholderTextColor={theme.textTertiary}
             secureTextEntry
             autoCapitalize="none"
@@ -114,12 +114,12 @@ export default function AuthScreen() {
           {mode === "register" && (
             <>
               <Text style={[styles.label, { color: theme.textSecondary, marginTop: 14 }]}>
-                Powtórz hasło
+                Upprepa lösenord
               </Text>
               <TextInput
                 value={password2}
                 onChangeText={setPassword2}
-                placeholder="powtórz hasło"
+                placeholder="upprepa lösenord"
                 placeholderTextColor={theme.textTertiary}
                 secureTextEntry
                 autoCapitalize="none"
@@ -148,7 +148,7 @@ export default function AuthScreen() {
               <ActivityIndicator color="#fff" />
             ) : (
               <Text style={styles.primaryBtnText}>
-                {mode === "login" ? "Zaloguj się" : "Utwórz konto"}
+                {mode === "login" ? "Logga in" : "Skapa konto"}
               </Text>
             )}
           </Pressable>
@@ -163,8 +163,8 @@ export default function AuthScreen() {
           >
             <Text style={[styles.switchText, { color: Colors.primary }]}>
               {mode === "login"
-                ? "Nie masz konta? Zarejestruj się"
-                : "Masz już konto? Zaloguj się"}
+                ? "Inget konto? Registrera dig"
+                : "Har redan konto? Logga in"}
             </Text>
           </Pressable>
         </View>
@@ -179,7 +179,7 @@ export default function AuthScreen() {
         )}
 
         <Pressable onPress={() => router.back()} style={styles.skipBtn}>
-          <Text style={[styles.skipText, { color: theme.textTertiary }]}>← Wróć</Text>
+          <Text style={[styles.skipText, { color: theme.textTertiary }]}>← Tillbaka</Text>
         </Pressable>
       </ScrollView>
     </KeyboardAvoidingView>

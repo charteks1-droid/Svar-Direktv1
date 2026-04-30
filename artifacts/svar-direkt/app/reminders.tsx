@@ -481,7 +481,7 @@ import { PremiumGate } from "@/components/PremiumGate";
 
 export default function RemindersScreen() {
   return (
-    <PremiumGate featureName="Påminnelser – przypomnienia">
+    <PremiumGate featureName="Påminnelser">
       <RemindersScreenInner />
     </PremiumGate>
   );

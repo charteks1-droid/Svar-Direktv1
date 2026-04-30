@@ -108,17 +108,17 @@ export default function CalculatorScreen() {
         <View style={[styles.infoBox, { backgroundColor: Colors.primary + "10", borderColor: Colors.primary + "30" }]}>
           <Feather name="info" size={14} color={Colors.primary} />
           <Text style={[styles.infoText, { color: Colors.primary }]}>
-            Obliczenia przybliżone wg stawek podatkowych Szwecji 2024. Podstawa: pensja miesięczna brutto.
+            Ungefärliga beräkningar enligt Sveriges skattesatser 2024. Baserat på månadslön brutto.
           </Text>
         </View>
 
         {/* Input */}
         <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
-          <Text style={[styles.label, { color: theme.textSecondary }]}>Pensja brutto (SEK/miesiąc)</Text>
+          <Text style={[styles.label, { color: theme.textSecondary }]}>Bruttolön (SEK/månad)</Text>
           <View style={styles.inputRow}>
             <TextInput
               style={[styles.input, { color: theme.text, borderColor: theme.cardBorder }]}
-              placeholder="np. 35 000"
+              placeholder="t.ex. 35 000"
               placeholderTextColor={theme.textTertiary}
               keyboardType="numeric"
               value={grossStr}
@@ -168,7 +168,7 @@ export default function CalculatorScreen() {
           <View style={[styles.card, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
             {/* Netto big */}
             <View style={styles.nettoHeader}>
-              <Text style={[styles.nettoLabel, { color: theme.textSecondary }]}>Netto (do ręki)</Text>
+              <Text style={[styles.nettoLabel, { color: theme.textSecondary }]}>Netto (utbetalat)</Text>
               <Text style={[styles.nettoValue, { color: theme.success }]}>{fmt(result.netto)}</Text>
             </View>
 
@@ -177,7 +177,7 @@ export default function CalculatorScreen() {
               <View style={[styles.barFill, { width: `${Math.min(100, nettoRatio * 100)}%` as any, backgroundColor: theme.success }]} />
             </View>
             <Text style={[styles.barLabel, { color: theme.textSecondary }]}>
-              {result.effectiveRate}% efektywna stawka podatkowa
+              {result.effectiveRate}% effektiv skattesats
             </Text>
 
             {/* Breakdown */}
@@ -189,8 +189,8 @@ export default function CalculatorScreen() {
               <Row label="Statlig skatt (20%)" value={"−" + fmt(result.statligSkatt)} color={theme.danger} theme={theme} />
             )}
             <View style={[styles.separator, { backgroundColor: theme.separator }]} />
-            <Row label="Netto / miesiąc" value={fmt(result.netto)} color={theme.success} theme={theme} bold />
-            <Row label="Netto / rok" value={fmt(result.netto * 12)} color={theme.textSecondary} theme={theme} />
+            <Row label="Netto / månad" value={fmt(result.netto)} color={theme.success} theme={theme} bold />
+            <Row label="Netto / år" value={fmt(result.netto * 12)} color={theme.textSecondary} theme={theme} />
           </View>
         )}
 
@@ -199,7 +199,7 @@ export default function CalculatorScreen() {
           <View style={[styles.placeholder, { backgroundColor: theme.card, borderColor: theme.cardBorder }]}>
             <Text style={{ fontSize: 36 }}>🧮</Text>
             <Text style={[styles.placeholderText, { color: theme.textSecondary }]}>
-              Wpisz pensję brutto, żeby zobaczyć ile dostaniesz netto w Szwecji.
+              Ange din bruttolön för att se hur mycket du får netto i Sverige.
             </Text>
           </View>
         )}

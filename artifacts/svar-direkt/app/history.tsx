@@ -237,7 +237,7 @@ import { PremiumGate } from "@/components/PremiumGate";
 
 export default function HistoryScreen() {
   return (
-    <PremiumGate featureName="Historik – historia generowanych pism">
+    <PremiumGate featureName="Historik">
       <HistoryScreenInner />
     </PremiumGate>
   );

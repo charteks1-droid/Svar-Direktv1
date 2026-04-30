@@ -52,15 +52,15 @@ export default function ProfileScreen() {
     return (
       <View style={[styles.center, { backgroundColor: theme.background, paddingTop: insets.top + 60 }]}>
         <Feather name="user" size={48} color={theme.textTertiary} />
-        <Text style={[styles.emptyTitle, { color: theme.text }]}>Brak konta</Text>
+        <Text style={[styles.emptyTitle, { color: theme.text }]}>Inget konto</Text>
         <Text style={[styles.emptyText, { color: theme.textSecondary }]}>
-          Zaloguj się lub utwórz konto, aby korzystać z subskrypcji Premium.
+          Logga in eller skapa ett konto för att använda Premium.
         </Text>
         <Pressable
           onPress={() => router.push("/auth")}
           style={[styles.primaryBtn, { backgroundColor: Colors.primary, marginTop: 20 }]}
         >
-          <Text style={styles.primaryBtnText}>Zaloguj się / Zarejestruj</Text>
+          <Text style={styles.primaryBtnText}>Logga in / Registrera</Text>
         </Pressable>
       </View>
     );
@@ -83,17 +83,17 @@ export default function ProfileScreen() {
       await WebBrowser.openAuthSessionAsync(url, returnUrl);
       await refreshSubscription();
     } catch (e: any) {
-      Alert.alert("Błąd", e?.message || "Nie udało się otworzyć panelu Stripe");
+      Alert.alert("Fel", e?.message || "Kunde inte öppna Stripe-portalen. Försök igen.");
     } finally {
       setBusy(false);
     }
   }
 
   function confirmLogout() {
-    Alert.alert("Wyloguj", "Na pewno chcesz się wylogować?", [
-      { text: "Anuluj", style: "cancel" },
+    Alert.alert("Logga ut", "Vill du verkligen logga ut?", [
+      { text: "Avbryt", style: "cancel" },
       {
-        text: "Wyloguj",
+        text: "Logga ut",
         style: "destructive",
         onPress: async () => {
           await logout();
@@ -118,7 +118,7 @@ export default function ProfileScreen() {
         </View>
         <Text style={[styles.email, { color: theme.text }]}>{user.email}</Text>
         <Text style={[styles.joinDate, { color: theme.textTertiary }]}>
-          Konto od {formatDate(user.createdAt)}
+          Konto sedan {formatDate(user.createdAt)}
         </Text>
       </View>
 
@@ -134,7 +134,7 @@ export default function ProfileScreen() {
             color={isPremium ? Colors.primary : theme.textSecondary}
           />
           <Text style={[styles.statusTitle, { color: theme.text }]}>
-            {isPremium ? "Premium aktywny" : "Brak Premium"}
+            {isPremium ? "Premium aktiv" : "Inget Premium"}
           </Text>
         </View>
         <Text style={[styles.statusLabel, { color: theme.textSecondary }]}>
@@ -175,7 +175,7 @@ export default function ProfileScreen() {
               <ActivityIndicator color={Colors.primary} />
             ) : (
               <Text style={[styles.secondaryBtnText, { color: Colors.primary }]}>
-                Zarządzaj subskrypcją
+                Hantera prenumeration
               </Text>
             )}
           </Pressable>
@@ -187,7 +187,7 @@ export default function ProfileScreen() {
         style={[styles.logoutBtn, { borderColor: theme.cardBorder }]}
       >
         <Feather name="log-out" size={18} color={theme.textSecondary} />
-        <Text style={[styles.logoutText, { color: theme.textSecondary }]}>Wyloguj się</Text>
+        <Text style={[styles.logoutText, { color: theme.textSecondary }]}>Logga ut</Text>
       </Pressable>
 
       <Text style={[styles.copyright, { color: theme.textSecondary }]}>

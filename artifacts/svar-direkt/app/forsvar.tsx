@@ -694,7 +694,7 @@ import { PremiumGate } from "@/components/PremiumGate";
 
 export default function ForsvarScreen() {
   return (
-    <PremiumGate featureName="Försvar – obrona prawna">
+    <PremiumGate featureName="Försvar">
       <ForsvarScreenInner />
     </PremiumGate>
   );
