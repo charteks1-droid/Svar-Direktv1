@@ -84,6 +84,10 @@ function RootLayoutNav() {
         name="calculator"
         options={{ title: "Kalkylator lön", headerBackTitle: "Tillbaka" }}
       />
+      <Stack.Screen
+        name="ai-generator"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 }

@@ -22,7 +22,7 @@ const KOMMUNALSKATT_OPTIONS = [
   { label: "Malmö", rate: 0.3335 },
   { label: "Uppsala", rate: 0.3283 },
   { label: "Linköping", rate: 0.3220 },
-  { label: "Średnia (32%)", rate: 0.3200 },
+  { label: "Genomsnitt (32%)", rate: 0.3200 },
 ];
 
 function calcSwedishTax(grossMonthly: number, kommunRate: number) {
@@ -128,7 +128,7 @@ export default function CalculatorScreen() {
           </View>
 
           {/* Kommunalskatt selector */}
-          <Text style={[styles.label, { color: theme.textSecondary, marginTop: 14 }]}>Gmina (kommunalskatt)</Text>
+          <Text style={[styles.label, { color: theme.textSecondary, marginTop: 14 }]}>Kommun (kommunalskatt)</Text>
           <Pressable
             onPress={() => { setShowKomm(!showKomm); Haptics.selectionAsync(); }}
             style={[styles.selector, { backgroundColor: theme.background, borderColor: theme.cardBorder }]}
