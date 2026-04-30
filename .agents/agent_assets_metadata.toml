@@ -587,3 +587,9 @@ id = "otZwjEj22qnIud5nEt0na"
 uri = "file://svardirekt-strona.zip"
 type = "unspecified"
 title = "Nowa strona svardirekt.site – gotowa do wgrania"
+
+[[outputs]]
+id = "wQzXTdygG44h_GCpRzS0l"
+uri = "file://svardirekt-hostinger.zip"
+type = "unspecified"
+title = "Svar Direkt – pliki do Hostingera (ZIP)"

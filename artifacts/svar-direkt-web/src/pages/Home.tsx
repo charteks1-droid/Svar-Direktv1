@@ -16,7 +16,10 @@ const NEW_CSS = `
 .sd-hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.70);line-height:1.7;margin-bottom:36px;max-width:440px}
 .sd-btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#1a9ecf;color:#fff;border-radius:14px;font-size:.95rem;font-weight:700;transition:all .28s;box-shadow:0 4px 20px rgba(26,158,207,0.35);border:none;cursor:pointer;text-decoration:none}
 .sd-btn-primary:hover{background:#0090c0;transform:translateY(-2px);box-shadow:0 8px 32px rgba(26,158,207,0.45)}
-.sd-btn-amber{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:14px;font-size:.95rem;font-weight:700;border:none;cursor:not-allowed;opacity:.8;text-decoration:none}
+.sd-btn-amber{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border-radius:14px;font-size:.95rem;font-weight:700;border:none;cursor:not-allowed;opacity:.65;text-decoration:none;position:relative}
+.sd-coming-soon-badge{position:absolute;top:-10px;right:-10px;background:#dc2626;color:#fff;font-size:.6rem;font-weight:800;padding:3px 8px;border-radius:20px;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase}
+.sd-price-coming-soon{background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.25);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.8rem;color:#dc2626;font-weight:500;display:flex;align-items:center;gap:7px}
+.sd-price-btn-disabled{display:block;width:100%;padding:13px;border-radius:10px;font-size:.9rem;font-weight:700;text-align:center;transition:all .28s;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.40);border:1px solid rgba(255,255,255,0.12)!important;cursor:not-allowed}
 .sd-btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:rgba(255,255,255,0.10);color:#fff;border-radius:14px;font-size:.95rem;font-weight:600;border:1px solid rgba(255,255,255,0.25);transition:all .28s;text-decoration:none}
 .sd-btn-outline:hover{background:rgba(255,255,255,0.18);transform:translateY(-2px)}
 .sd-trust{display:flex;flex-wrap:wrap;gap:20px}
@@ -375,9 +378,10 @@ export default function Home() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2v13M7 11l5 5 5-5M20 19H4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   Ladda ner gratis
                 </a>
-                <a href="#pricing" className="sd-btn-amber" onClick={e => { e.preventDefault(); document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" }); }}>
+                <span className="sd-btn-amber" title="Appen med AI lanseras inom kort">
+                  <span className="sd-coming-soon-badge">Kommer snart</span>
                   ✨ App med AI — 79 kr/mån
-                </a>
+                </span>
                 <a href="#how" className="sd-btn-outline" onClick={e => { e.preventDefault(); document.getElementById("how")?.scrollIntoView({ behavior: "smooth" }); }}>
                   Hur det fungerar
                 </a>
@@ -673,7 +677,11 @@ export default function Home() {
                   <div key={f} className="sd-price-feature"><CheckIcon />{f}</div>
                 ))}
               </div>
-              <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener noreferrer" className="sd-price-btn sd-price-btn-amber">Starta 7 dagars gratis test</a>
+              <div className="sd-price-coming-soon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Appen med AI är under utveckling — lanseras inom kort!
+              </div>
+              <div className="sd-price-btn-disabled">🔒 Inte tillgänglig än</div>
             </div>
             {/* Personal */}
             <div className="sd-price-card sd-reveal sd-s3">
