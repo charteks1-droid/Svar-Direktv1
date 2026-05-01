@@ -1,0 +1,2 @@
+artifacts/svar-direkt-web/public/svar-direkt.apk filter=lfs diff=lfs merge=lfs -text
+attached_assets/application-976b036a-b47c-498e-8c27-9e4981ba1ba0_1777610938165.apk filter=lfs diff=lfs merge=lfs -text
