@@ -617,3 +617,9 @@ id = "Czy1ks2LmzpiJUIaTFQ1m"
 uri = "file://svar-direkt-web.zip"
 type = "unspecified"
 title = "Svar Direkt – Strona (wgraj na Hostingera)"
+
+[[outputs]]
+id = "DeiGdW5ZLQQMWyA1PN7N1"
+uri = "file://svar-ai-backend-v5.1.zip"
+type = "unspecified"
+title = "Backend v5.1 – wgraj na Hostingera (diagnostyczny)"
