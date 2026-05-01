@@ -629,3 +629,9 @@ id = "Ml32obxqA2pKmOxGTikxt"
 uri = "file://svar-ai-backend-v5.2.zip"
 type = "unspecified"
 title = "Backend v5.2 – nowe Price ID (wgraj na Hostingera)"
+
+[[outputs]]
+id = "z1CzGQw7o4dtKprxrOimJ"
+uri = "file://svar-ai-backend-v5.3.zip"
+type = "unspecified"
+title = "Backend v5.3 – Price ID wbudowany na stałe (wgraj na Hostingera)"
