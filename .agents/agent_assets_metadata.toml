@@ -647,3 +647,9 @@ id = "xaFbX4fbazX-egVAkVMTU"
 uri = "file://svar-direkt-web-v2.zip"
 type = "unspecified"
 title = "Strona v2 – bez APK (1.8MB) – wgraj na Hostingera"
+
+[[outputs]]
+id = "pP9omJFGNnUq3XmchNhch"
+uri = "file://svar-ai-backend-v5.4.zip"
+type = "unspecified"
+title = "Backend v5.4 – naprawiony AI prompt (wgraj na Hostingera)"

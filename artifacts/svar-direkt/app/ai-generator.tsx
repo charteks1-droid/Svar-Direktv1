@@ -284,7 +284,7 @@ function AiGeneratorScreenInner() {
 
     setLoading(true); setError(""); setResult("");
 
-    const message = `Skriv ett formellt brev på svenska från ${fullName.trim()} (personnummer: ${personnummer.trim()}) till ${institution} angående ärendet: ${caseType}.\n\nBakgrund och situation:\n${description.trim()}\n\nBrevet ska vara professionellt, kortfattat och tydligt.`;
+    const message = `Skriv ETT formellt brev på svenska från ${fullName.trim()} (personnummer: ${personnummer.trim()}) till ${institution} angående ärendet: ${caseType}.\n\nBakgrund och situation:\n${description.trim()}\n\nKrav: Returnera ENBART brevtexten på svenska. Inga förklaringar, inga kommentarer, ingen engelsk text. Börja direkt med avsändarens namn.`;
 
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
