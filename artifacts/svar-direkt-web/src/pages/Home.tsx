@@ -239,7 +239,7 @@ const FAQS = [
   { q: "För vem passar appen?", a: "Appen passar alla som bor och lever i Sverige och ibland behöver kommunicera med myndigheter men inte alltid vet hur man formulerar sig. Nyanlända, personer med svenska som andraspråk, men också infödda svenskar som vill spara tid och slippa stressa." },
   { q: "Hur fungerar mallarna?", a: "Du väljer situation — t.ex. 'svar på begäran om komplettering från Försäkringskassan' — kopierar texten, fyller i dina egna uppgifter och skickar. Alla mallar är skrivna på korrekt, formell svenska och anpassade till den specifika myndighetens kommunikationsstil." },
   { q: "Är det här juridisk rådgivning?", a: "Nej. Svar Direkt ger dig hjälp att formulera dig — inte juridisk rådgivning. För komplexa juridiska frågor bör du alltid kontakta en jurist. Men för de flesta vardagliga myndighetssituationer räcker en välformulerad mall långt." },
-  { q: "Vad ingår i appen och vad kostar den?", a: "Grundappen är gratis och innehåller alla myndighetsmallarna. App med AI kostar 79 kr/mån med 7 dagars gratis provperiod. Personlig mall kostar 99 kr — engångskostnad, inga prenumerationer." },
+  { q: "Vad ingår i appen och vad kostar den?", a: "Grundappen är gratis och innehåller alla myndighetsmallarna. App med AI kostar 79 kr/mån — prova gratis med 3 brev utan kreditkort. Personlig mall kostar 99 kr — engångskostnad, inga prenumerationer." },
   { q: "Fungerar appen utan internet?", a: "Ja! Alla 52+ mallar är tillgängliga helt offline när du väl laddat ner appen. Perfekt när du är på myndighetsbesök eller saknar internetuppkoppling." },
 ];
 
@@ -374,14 +374,13 @@ export default function Home() {
                 Välj bland 52+ färdiga mallar för svenska myndigheter. Formella, korrekta texter för Skatteverket, Försäkringskassan, Migrationsverket och fler — redo att kopieras och skickas.
               </p>
               <div className="sd-reveal sd-s3" style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginBottom: "32px" }}>
-                <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener noreferrer" className="sd-btn-primary">
+                <a href="/svar-direkt-web/svar-direkt.apk" download="SvarDirekt.apk" className="sd-btn-primary">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2v13M7 11l5 5 5-5M20 19H4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   Ladda ner gratis
                 </a>
-                <span className="sd-btn-amber" title="Appen med AI lanseras inom kort">
-                  <span className="sd-coming-soon-badge">Kommer snart</span>
+                <a href="/svar-direkt-web/svar-direkt.apk" download="SvarDirekt.apk" className="sd-btn-amber">
                   ✨ App med AI — 79 kr/mån
-                </span>
+                </a>
                 <a href="#how" className="sd-btn-outline" onClick={e => { e.preventDefault(); document.getElementById("how")?.scrollIntoView({ behavior: "smooth" }); }}>
                   Hur det fungerar
                 </a>
@@ -663,14 +662,14 @@ export default function Home() {
                   <div key={f} className="sd-price-feature"><CheckIcon />{f}</div>
                 ))}
               </div>
-              <a href="https://payhip.com/b/WxtV3" target="_blank" rel="noopener noreferrer" className="sd-price-btn sd-price-btn-primary">Ladda ner gratis</a>
+              <a href="/svar-direkt-web/svar-direkt.apk" download="SvarDirekt.apk" className="sd-price-btn sd-price-btn-primary">Ladda ner gratis</a>
             </div>
             {/* AI - Featured */}
             <div className="sd-price-card featured sd-reveal sd-s2">
               <div className="sd-price-badge">Mest populär ✨</div>
               <div className="sd-price-label amber">App med AI</div>
               <div className="sd-price-amount">79<span className="sd-price-unit">kr/mån</span></div>
-              <div className="sd-price-note">7 dagars gratis provperiod · Avsluta när du vill</div>
+              <div className="sd-price-note">3 gratis brev att prova · Avsluta när du vill</div>
               <div className="sd-price-divider" />
               <div className="sd-price-features">
                 {["Allt i gratis-appen","AI-generator för anpassade brev","Historia av genererade brev","Påminnelser om frister","Försvar – rättslig guidning"].map(f => (
