@@ -635,3 +635,9 @@ id = "z1CzGQw7o4dtKprxrOimJ"
 uri = "file://svar-ai-backend-v5.3.zip"
 type = "unspecified"
 title = "Backend v5.3 – Price ID wbudowany na stałe (wgraj na Hostingera)"
+
+[[outputs]]
+id = "FH6R_NFtPE2TkVUKUNH2D"
+uri = "file://svar-direkt-web-v2-full.zip"
+type = "unspecified"
+title = "Strona v2 – pełny ZIP z APK (44MB) – wgraj na Hostingera"

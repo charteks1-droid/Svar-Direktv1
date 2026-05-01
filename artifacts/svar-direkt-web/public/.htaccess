@@ -20,6 +20,9 @@ RewriteRule ^ index.html [QSA,L]
 # Force correct Content-Type for XML (sitemap)
 AddType application/xml .xml
 
+# Force correct Content-Type for Android APK
+AddType application/vnd.android.package-archive .apk
+
 # Cache static assets
 <IfModule mod_expires.c>
   ExpiresActive On
