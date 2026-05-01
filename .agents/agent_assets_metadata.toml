@@ -605,3 +605,9 @@ id = "npbOy8vLnHEHYb6IfQEDG"
 uri = "file://svar-ai-backend-v4.zip"
 type = "unspecified"
 title = "Svar Direkt Backend v4 – wgraj na Hostinger"
+
+[[outputs]]
+id = "GS2gKhJjAblbZ34Qo2rJL"
+uri = "file://svar-ai-backend-v5.zip"
+type = "unspecified"
+title = "Svar Direkt Backend v5 – bez natywnych modułów (wgraj na Hostinger)"
