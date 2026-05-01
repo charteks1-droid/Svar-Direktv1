@@ -641,3 +641,9 @@ id = "FH6R_NFtPE2TkVUKUNH2D"
 uri = "file://svar-direkt-web-v2-full.zip"
 type = "unspecified"
 title = "Strona v2 – pełny ZIP z APK (44MB) – wgraj na Hostingera"
+
+[[outputs]]
+id = "xaFbX4fbazX-egVAkVMTU"
+uri = "file://svar-direkt-web-v2.zip"
+type = "unspecified"
+title = "Strona v2 – bez APK (1.8MB) – wgraj na Hostingera"
