@@ -611,3 +611,9 @@ id = "GS2gKhJjAblbZ34Qo2rJL"
 uri = "file://svar-ai-backend-v5.zip"
 type = "unspecified"
 title = "Svar Direkt Backend v5 – bez natywnych modułów (wgraj na Hostinger)"
+
+[[outputs]]
+id = "Czy1ks2LmzpiJUIaTFQ1m"
+uri = "file://svar-direkt-web.zip"
+type = "unspecified"
+title = "Svar Direkt – Strona (wgraj na Hostingera)"
