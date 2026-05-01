@@ -623,3 +623,9 @@ id = "DeiGdW5ZLQQMWyA1PN7N1"
 uri = "file://svar-ai-backend-v5.1.zip"
 type = "unspecified"
 title = "Backend v5.1 – wgraj na Hostingera (diagnostyczny)"
+
+[[outputs]]
+id = "Ml32obxqA2pKmOxGTikxt"
+uri = "file://svar-ai-backend-v5.2.zip"
+type = "unspecified"
+title = "Backend v5.2 – nowe Price ID (wgraj na Hostingera)"
