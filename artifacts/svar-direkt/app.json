@@ -39,7 +39,15 @@
         }
       ],
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraGradlePropertiesContent": "org.gradle.jvmargs=-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
