@@ -26,11 +26,7 @@
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#0a7ea4"
       },
-      "permissions": [
-        "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.WRITE_EXTERNAL_STORAGE",
-        "android.permission.CAMERA"
-      ]
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/images/icon.png"
@@ -43,8 +39,7 @@
         }
       ],
       "expo-font",
-      "expo-web-browser",
-      "expo-image-picker"
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
