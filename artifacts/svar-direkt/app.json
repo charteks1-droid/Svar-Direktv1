@@ -2,7 +2,7 @@
   "expo": {
     "name": "Svar Direkt",
     "slug": "svar-direkt-new",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "owner": "charteks",
     "description": "Svar Direkt – färdiga mallar och AI-svar för svenska myndigheter. © Sebastian Charewicz. Alla rättigheter förbehållna.",
     "orientation": "portrait",
@@ -21,7 +21,7 @@
     },
     "android": {
       "package": "com.svardirekt.app",
-      "versionCode": 9,
+      "versionCode": 10,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#0a7ea4"

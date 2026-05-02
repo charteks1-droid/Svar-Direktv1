@@ -284,7 +284,24 @@ function AiGeneratorScreenInner() {
 
     setLoading(true); setError(""); setResult("");
 
-    const message = `Skriv ETT formellt brev på svenska från ${fullName.trim()} (personnummer: ${personnummer.trim()}) till ${institution} angående ärendet: ${caseType}.\n\nBakgrund och situation:\n${description.trim()}\n\nKrav: Returnera ENBART brevtexten på svenska. Inga förklaringar, inga kommentarer, ingen engelsk text. Börja direkt med avsändarens namn.`;
+    const today = new Date().toLocaleDateString("sv-SE", { day: "numeric", month: "long", year: "numeric" });
+    const message = `Skriv ett formellt myndighetsbrev på svenska med följande uppgifter:
+
+AVSÄNDARE: ${fullName.trim()}
+PERSONNUMMER: ${personnummer.trim()}
+DATUM: ${today}
+MOTTAGARE: ${institution}
+ÄRENDETYP: ${caseType}
+
+SITUATION OCH BAKGRUND:
+${description.trim()}
+
+INSTRUKTIONER:
+- Skriv ett komplett, professionellt brev på svenska
+- Följ svensk brevstandard med avsändare, datum, mottagare, ärenderubrik, brödtext och avslutning
+- Anpassa tonen och argumenten specifikt för ${institution}
+- Var tydlig med vad avsändaren begär eller vill ha svar på
+- Returnera ENBART brevtexten — inga kommentarer, inga förklaringar`;
 
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
