@@ -659,3 +659,9 @@ id = "YyRJT4lZjV9AxvgWsufpe"
 uri = "file://svar-ai-backend-v5.5.zip"
 type = "unspecified"
 title = "Backend v5.5 – Forum + Nyheter + Kalender"
+
+[[outputs]]
+id = "cVaa5OOtHB-VIJGpk8PW0"
+uri = "file://svar-direkt-web-v3-full.zip"
+type = "unspecified"
+title = "Strona www v3 – poprawione ścieżki (Hostinger-ready)"
