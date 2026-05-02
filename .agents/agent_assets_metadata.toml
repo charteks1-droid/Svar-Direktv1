@@ -653,3 +653,9 @@ id = "pP9omJFGNnUq3XmchNhch"
 uri = "file://svar-ai-backend-v5.4.zip"
 type = "unspecified"
 title = "Backend v5.4 – naprawiony AI prompt (wgraj na Hostingera)"
+
+[[outputs]]
+id = "YyRJT4lZjV9AxvgWsufpe"
+uri = "file://svar-ai-backend-v5.5.zip"
+type = "unspecified"
+title = "Backend v5.5 – Forum + Nyheter + Kalender"
