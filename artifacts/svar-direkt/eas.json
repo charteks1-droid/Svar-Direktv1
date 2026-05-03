@@ -11,11 +11,17 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "JAVA_TOOL_OPTIONS": "-XX:+IgnoreUnrecognizedVMOptions"
       }
     },
     "production": {
       "android": {
         "buildType": "app-bundle"
+      },
+      "env": {
+        "JAVA_TOOL_OPTIONS": "-XX:+IgnoreUnrecognizedVMOptions"
       }
     }
   },
